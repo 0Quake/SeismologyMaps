@@ -20,13 +20,13 @@
   <!-- <script type="text/javascript" src="./js.lib/jquery/ZeroClipboard2.0.2/ZeroClipboard.js"></script> -->
   <script type="text/javascript" src="./js.lib/jquery/jquery.xdomainrequest.min.js"></script>
   <script type="text/javascript" src="./js.lib/jquery/jquery-ui.min.js"></script>
-<!--  <script type="text/javascript" src="./js.lib/jquery/jquery.ui.touch-punch.js"></script> -->
+  <!--  <script type="text/javascript" src="./js.lib/jquery/jquery.ui.touch-punch.js"></script> -->
   <script type="text/javascript" src="./js.lib/jquery/jquery.qrcode/jquery.qrcode.min.js"></script>
   <script type="text/javascript" src="./js.lib/jquery/jquery.csv/jquery.csv.min.js"></script>
 
-<!--  <script type="text/javascript" src="./js.lib/jquery/jquery.cookie.js"></script> -->
-<script type="text/javascript" src="./js.lib/js.cookie.min.js"></script>
-<link rel="stylesheet" href="./js.lib/jquery/jquery.alerts.css" type="text/css" media="all" />
+  <!--  <script type="text/javascript" src="./js.lib/jquery/jquery.cookie.js"></script> -->
+  <script type="text/javascript" src="./js.lib/js.cookie.min.js"></script>
+  <link rel="stylesheet" href="./js.lib/jquery/jquery.alerts.css" type="text/css" media="all" />
   <script type="text/javascript" src="./js.lib/jquery/jquery.alerts.js"></script>
 
   <link rel="stylesheet" type="text/css" href="./js.lib/jquery/colorpicker/jquery.simple-color-picker.css" />
@@ -82,11 +82,11 @@
     </div>
   </noscript>
   <script type="text/javascript">
-    if(L.Browser.ie) {
+    if (L.Browser.ie) {
 
       // 202303
       // ieの場合は別ブラウザ推奨ページへ
-      setTimeout(function() {
+      setTimeout(function () {
         location.href = "/deprecated.html";
       }, 0);
 
@@ -101,14 +101,14 @@
 </head>
 
 <body>
-  <div id = "incompatible">
-    地理院地図は Microsoft Edge, Google Chrome, Mozilla Firefox, Apple Safari でご利用ください。<br>
+  <div id="incompatible">
+    地震学地図は Microsoft Edge, Google Chrome, Mozilla Firefox, Apple Safari でご利用ください。<br>
     （これらのブラウザでこのメッセージが表示されている場合は、キャッシュデータの削除をお試しください。）
   </div>
   <div id="header" class="logo_s">
 
     <div class="logoarea">
-       <a style="text-decoration:none;" href="">
+      <a style="text-decoration:none;" href="">
         <div id="title_logo_upper">地震学地図</div>
         <div id="title_logo_lower">By Benidate</div>
       </a>
@@ -129,14 +129,15 @@
   <div id="map"></div>
   <div class="leaflet-control-flatpanel leaflet-control" id="zoomGuidePanel" style="display: none;z-index: 2;position: absolute;right: 10px;bottom: 35px;">
     <div class="leaflet-control-crpanel" id="zoomGuideMinMax" style="border-radius: 5px 5px 0px 0px;">この情報はズームmin～maxで表示されます。</div>
-    <div class="leaflet-control-crpanel">なお、整備範囲が全国であるとは限りません。</div><div class="leaflet-control-crpanel" style="border-radius: 0px 0px 5px 5px;">
+    <div class="leaflet-control-crpanel">なお、整備範囲が全国であるとは限りません。</div>
+    <div class="leaflet-control-crpanel" style="border-radius: 0px 0px 5px 5px;">
       <input class="" type="checkbox" id="zoomGuideCheckbox">
       <label class="" for="zoomGuideCheckbox">以後、この案内を表示しない</label>
     </div>
   </div>
 
   <canvas id="measure" width="0" height="0" style="visibility:hidden;position:absolute;"></canvas>
-<!-- test10 -->
+  <!-- test10 -->
 </body>
 
 </html>

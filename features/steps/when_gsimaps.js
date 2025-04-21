@@ -29,16 +29,16 @@ defineParameterType({
 });
 
 When(
-  "地理院地図が開かれている",
-  async function() {
+  "地震学地図が開かれている",
+  async function () {
     await openUrl.call(this, "http://localhost:4444");
   }
 );
 
 When(
   '{string} をクリック',
-  async function(title) {
-    await clickElement.call(this, `[title=${title}]`,  null);
+  async function (title) {
+    await clickElement.call(this, `[title=${title}]`, null);
   }
 );
 
@@ -49,14 +49,14 @@ When(
 
 When(
   "{string} の地図を選択する",
-  async function(mapName) {
+  async function (mapName) {
     await clickElement.call(this, `.gsi-basemappanel-container [title=${mapName}]`, null);
   }
 );
 
 When(
   "地図を {direction} に {int} px移動する",
-  async function(direction, pixels) {
+  async function (direction, pixels) {
     await clickAndDragElement.call(this, '.leaflet-container', direction, pixels);
   }
 )

@@ -25,7 +25,7 @@ CONFIG.ISPREVIEWSITE = false;
 CONFIG.SHOWVIEWLISTAFTERLAYERSELECT = true;
 
 // 外部タイルのZL選択範囲
-CONFIG.OUTSIDETILE = {"ZOOMRANGE" : { "MIN":2, "MAX" : 24} };
+CONFIG.OUTSIDETILE = { "ZOOMRANGE": { "MIN": 2, "MAX": 24 } };
 
 CONFIG.layersTab = null;
 CONFIG.layersTabUrl = "./layers_txt/tab.txt";
@@ -182,7 +182,7 @@ CONFIG.HANREILIST = {
       "maxZoom": 16
     }
   },
-    "vlcd_yakedake": {
+  "vlcd_yakedake": {
     "url": "https://maps.gsi.go.jp/xyz/vlcd_yakedake/vlcd_yakedake.csv",
     "layer": {
       "url": "https://maps.gsi.go.jp/xyz/vlcd_yakedake/{z}/{x}/{y}.png",
@@ -836,11 +836,11 @@ if ((ua.indexOf("msie") >= 0) && (vs.indexOf("msie 9") >= 0)) {
  設定：メニュー：ヘルプ
  ************************************************************************/
 CONFIG.HELPMENU = [
-  { 'Moji': 'ヘルプ', 'Img': './image/help/help_icon.png', 'Link': 'https://maps.gsi.go.jp/help/' },
+  /*{ 'Moji': 'ヘルプ', 'Img': './image/help/help_icon.png', 'Link': 'https://maps.gsi.go.jp/help/' },
   { 'Moji': 'Twitter', 'Img': './image/help/x.png', 'Link': 'https://x.com/gsi_cyberjapan' },
   { 'Moji': 'GitHub', 'Img': './image/help/github.png', 'Link': 'https://github.com/gsi-cyberjapan' },
   { 'Moji': 'パートナーネットワーク', 'Img': './image/help/partner_icon.png', 'Link': 'https://maps.gsi.go.jp/pn/' },
-  { 'Moji': '国土地理院トップ', 'Img': './image/help/gsi_top.png', 'Link': 'http://www.gsi.go.jp/' }
+  { 'Moji': '国土地理院トップ', 'Img': './image/help/gsi_top.png', 'Link': 'http://www.gsi.go.jp/' }*/
 ];
 
 
@@ -1151,7 +1151,7 @@ CONFIG.DEMAREA3 = [
 ];
 
 CONFIG.CHIIKIMESH = {};
-CONFIG.CHIIKIMESH.STYLEURL =  "https://cyberjapandata.gsi.go.jp/xyz/chiikimesh/style.js";
+CONFIG.CHIIKIMESH.STYLEURL = "https://cyberjapandata.gsi.go.jp/xyz/chiikimesh/style.js";
 CONFIG.CHIIKIMESH.GEOJSONURL = 'https://cyberjapandata.gsi.go.jp/xyz/chiikimesh/{z}/{x}/{y}.geojson';
 
 CONFIG.DEMURLLIST = [
@@ -1270,7 +1270,7 @@ CONFIG.BASEMAPLIST = [
     "id": "std",
     "title": "標準地図",
     "url": "https://maps.gsi.go.jp/xyz/std/{z}/{x}/{y}.png",
-    "thumb" : ""
+    "thumb": ""
   },
 
   {
@@ -1278,27 +1278,27 @@ CONFIG.BASEMAPLIST = [
     "id": "pale",
     "title": "淡色地図",
     "url": "https://maps.gsi.go.jp/xyz/pale/{z}/{x}/{y}.png",
-    "thumb" : ""
+    "thumb": ""
   },
   {
     "layerType": "tile",
     "id": "blank",
     "title": "白地図",
     "url": "https://maps.gsi.go.jp/xyz/blank/{z}/{x}/{y}.png",
-    "thumb" : ""
+    "thumb": ""
   },
   {
     "layerType": "tile",
     "id": "english",
     "title": "English",
     "url": "https://maps.gsi.go.jp/xyz/english/{z}/{x}/{y}.png",
-    "thumb" : ""
+    "thumb": ""
   },
   {
     "layerType": "tile",
     "id": "ort",
     "title": "写真",
     "url": "https://maps.gsi.go.jp/xyz/seamlessphoto/{z}/{x}/{y}.jpg",
-    "thumb" : ""
+    "thumb": ""
   }
 ];

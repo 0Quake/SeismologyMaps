@@ -2,18 +2,18 @@
  設定
 ************************************************************************/
 var GSI = {
-  ClientMode  : {}
-  ,Modal       : {}
-  ,Control     : {}
-  ,Utils       : {
-    Browser  : {}
+  ClientMode: {}
+  , Modal: {}
+  , Control: {}
+  , Utils: {
+    Browser: {}
   }
-  ,GLOBALS     : {}
-  ,FILEURL     : {}
+  , GLOBALS: {}
+  , FILEURL: {}
 };
 var CONFIG = {};
 
-CONFIG.ISFROMGSIMAP = (function(){
+CONFIG.ISFROMGSIMAP = (function () {
   // 高さ、緯度、経度、（倍率）の指定はあり、カメラ角度の指定が無い場合に真
   var params = location.hash.replace(/^#/, '').replace(/\/?\&.*/, '').split('/');
   var result = false;
@@ -26,22 +26,21 @@ CONFIG.LAYERTYPEDISPLAY = false;
 
 var MATEST = {
   enabled: null,
-  
-  proxyUrl: function( url )
-  {
+
+  proxyUrl: function (url) {
     return url;
     //return (url.match && url.match(/^(http|\/\/)/) ? "RequestAgent.php?p=" + url : url);
   }
 };
 
 // 自分で作る色別標高図
-CONFIG.FREERELIEFID= "relief_free";
+CONFIG.FREERELIEFID = "relief_free";
 
 // 自分で作る色別表構図のカラーパターン
 // HTMLカラー（#付きの7文字）or{r,g,b}
 CONFIG.FREERELIEF_COLORPATTERNS = [
   {
-    "colors" : [
+    "colors": [
       "#0000FF",
       "#0095FF",
       "#00EEFF",
@@ -52,37 +51,37 @@ CONFIG.FREERELIEF_COLORPATTERNS = [
     ]
   },
   {
-    "title" : "黒→白",
-    "colors" : [
-      {"r":70,"g":70,"b":70},
-      {"r":101,"g":101,"b":101},
-      {"r":132,"g":132,"b":132},
-      {"r":163,"g":163,"b":163},
-      {"r":193,"g":193,"b":193},
-      {"r":224,"g":224,"b":224},
-      {"r":255,"g":255,"b":255}]
+    "title": "黒→白",
+    "colors": [
+      { "r": 70, "g": 70, "b": 70 },
+      { "r": 101, "g": 101, "b": 101 },
+      { "r": 132, "g": 132, "b": 132 },
+      { "r": 163, "g": 163, "b": 163 },
+      { "r": 193, "g": 193, "b": 193 },
+      { "r": 224, "g": 224, "b": 224 },
+      { "r": 255, "g": 255, "b": 255 }]
   },
   {
-    "title" : "青→白",
-    "colors" : [
-      {"r":0,"g":0,"b":255},
-      {"r":43,"g":43,"b":255},
-      {"r":85,"g":85,"b":255},
-      {"r":128,"g":128,"b":255},
-      {"r":170,"g":170,"b":255},
-      {"r":213,"g":213,"b":255},
-      {"r":255,"g":255,"b":255}]
+    "title": "青→白",
+    "colors": [
+      { "r": 0, "g": 0, "b": 255 },
+      { "r": 43, "g": 43, "b": 255 },
+      { "r": 85, "g": 85, "b": 255 },
+      { "r": 128, "g": 128, "b": 255 },
+      { "r": 170, "g": 170, "b": 255 },
+      { "r": 213, "g": 213, "b": 255 },
+      { "r": 255, "g": 255, "b": 255 }]
   },
   {
-    "title" : "赤→白",
-    "colors" : [
-      {"r":255,"g":0,"b":0},
-      {"r":255,"g":43,"b":43},
-      {"r":255,"g":85,"b":85},
-      {"r":255,"g":128,"b":128},
-      {"r":255,"g":170,"b":170},
-      {"r":255,"g":213,"b":213},
-      {"r":255,"g":255,"b":255}
+    "title": "赤→白",
+    "colors": [
+      { "r": 255, "g": 0, "b": 0 },
+      { "r": 255, "g": 43, "b": 43 },
+      { "r": 255, "g": 85, "b": 85 },
+      { "r": 255, "g": 128, "b": 128 },
+      { "r": 255, "g": 170, "b": 170 },
+      { "r": 255, "g": 213, "b": 213 },
+      { "r": 255, "g": 255, "b": 255 }
     ]
   }
 ];
@@ -94,124 +93,124 @@ CONFIG.FREERELIEF_AUTOLOWCOLOR = "#0000FF";
  標高タイルのエリア
 *******************************************************/
 
-CONFIG.DEMAREA=[
-"8/215/108",
-"8/215/109",
-"8/215/110",
-"8/216/108",
-"8/216/109",
-"8/216/110",
-"8/217/109",
-"8/218/107",
-"8/218/108",
-"8/219/101",
-"8/219/102",
-"8/219/103",
-"8/219/104",
-"8/219/105",
-"8/219/106",
-"8/219/107",
-"8/219/108",
-"8/220/101",
-"8/220/102",
-"8/220/103",
-"8/220/104",
-"8/220/105",
-"8/220/106",
-"8/220/107",
-"8/221/101",
-"8/221/102",
-"8/221/103",
-"8/221/104",
-"8/221/105",
-"8/221/108",
-"8/221/109",
-"8/221/110",
-"8/221/99",
-"8/222/100",
-"8/222/101",
-"8/222/102",
-"8/222/103",
-"8/223/100",
-"8/223/101",
-"8/223/102",
-"8/224/100",
-"8/224/101",
-"8/224/102",
-"8/224/113",
-"8/224/99",
-"8/225/100",
-"8/225/101",
-"8/225/102",
-"8/225/98",
-"8/225/99",
-"8/226/100",
-"8/226/101",
-"8/226/102",
-"8/226/98",
-"8/226/99",
-"8/227/100",
-"8/227/101",
-"8/227/102",
-"8/227/103",
-"8/227/104",
-"8/227/105",
-"8/227/93",
-"8/227/94",
-"8/227/95",
-"8/227/96",
-"8/227/97",
-"8/227/98",
-"8/227/99",
-"8/228/100",
-"8/228/107",
-"8/228/108",
-"8/228/109",
-"8/228/110",
-"8/228/91",
-"8/228/92",
-"8/228/93",
-"8/228/94",
-"8/228/95",
-"8/228/96",
-"8/228/97",
-"8/228/98",
-"8/228/99",
-"8/229/107",
-"8/229/108",
-"8/229/91",
-"8/229/92",
-"8/229/93",
-"8/229/94",
-"8/229/95",
-"8/229/97",
-"8/230/92",
-"8/230/93",
-"8/230/94",
-"8/231/92",
-"8/231/93",
-"8/231/94",
-"8/232/91",
-"8/232/92",
-"8/232/93",
-"8/233/91",
-"8/233/92",
-"8/237/110"
+CONFIG.DEMAREA = [
+  "8/215/108",
+  "8/215/109",
+  "8/215/110",
+  "8/216/108",
+  "8/216/109",
+  "8/216/110",
+  "8/217/109",
+  "8/218/107",
+  "8/218/108",
+  "8/219/101",
+  "8/219/102",
+  "8/219/103",
+  "8/219/104",
+  "8/219/105",
+  "8/219/106",
+  "8/219/107",
+  "8/219/108",
+  "8/220/101",
+  "8/220/102",
+  "8/220/103",
+  "8/220/104",
+  "8/220/105",
+  "8/220/106",
+  "8/220/107",
+  "8/221/101",
+  "8/221/102",
+  "8/221/103",
+  "8/221/104",
+  "8/221/105",
+  "8/221/108",
+  "8/221/109",
+  "8/221/110",
+  "8/221/99",
+  "8/222/100",
+  "8/222/101",
+  "8/222/102",
+  "8/222/103",
+  "8/223/100",
+  "8/223/101",
+  "8/223/102",
+  "8/224/100",
+  "8/224/101",
+  "8/224/102",
+  "8/224/113",
+  "8/224/99",
+  "8/225/100",
+  "8/225/101",
+  "8/225/102",
+  "8/225/98",
+  "8/225/99",
+  "8/226/100",
+  "8/226/101",
+  "8/226/102",
+  "8/226/98",
+  "8/226/99",
+  "8/227/100",
+  "8/227/101",
+  "8/227/102",
+  "8/227/103",
+  "8/227/104",
+  "8/227/105",
+  "8/227/93",
+  "8/227/94",
+  "8/227/95",
+  "8/227/96",
+  "8/227/97",
+  "8/227/98",
+  "8/227/99",
+  "8/228/100",
+  "8/228/107",
+  "8/228/108",
+  "8/228/109",
+  "8/228/110",
+  "8/228/91",
+  "8/228/92",
+  "8/228/93",
+  "8/228/94",
+  "8/228/95",
+  "8/228/96",
+  "8/228/97",
+  "8/228/98",
+  "8/228/99",
+  "8/229/107",
+  "8/229/108",
+  "8/229/91",
+  "8/229/92",
+  "8/229/93",
+  "8/229/94",
+  "8/229/95",
+  "8/229/97",
+  "8/230/92",
+  "8/230/93",
+  "8/230/94",
+  "8/231/92",
+  "8/231/93",
+  "8/231/94",
+  "8/232/91",
+  "8/232/92",
+  "8/232/93",
+  "8/233/91",
+  "8/233/92",
+  "8/237/110"
 ];
-CONFIG.DEMAREA2=[
-"9/442/198",
-"9/438/202",
-"9/438/203",
-"9/439/202",
-"9/439/203",
-"9/457/182",
-"9/458/182",
-"9/442/197"
+CONFIG.DEMAREA2 = [
+  "9/442/198",
+  "9/438/202",
+  "9/438/203",
+  "9/439/202",
+  "9/439/203",
+  "9/457/182",
+  "9/458/182",
+  "9/442/197"
 ];
 
-CONFIG.DEMAREA3=[
-"10/879/406",
-"10/879/407"
+CONFIG.DEMAREA3 = [
+  "10/879/406",
+  "10/879/407"
 ];
 
 
@@ -231,9 +230,9 @@ CONFIG.TERRAINPROVIDEROPTIONS = {
 // 地理院地図用 layersファイル指定。
 CONFIG.layersTab = null;
 
-CONFIG.layerBase          = ['../layers_txt/layers0.txt'];
+CONFIG.layerBase = ['../layers_txt/layers0.txt'];
 CONFIG.layerBaseDefaultID = "std";
-CONFIG.layerBaseFolder    = "ベースマップ";
+CONFIG.layerBaseFolder = "ベースマップ";
 CONFIG.layerBaseFolderSYS = "GSI.MAP.BASE";
 CONFIG.layersURL = '../layers_txt/layers.txt';
 /*
@@ -294,53 +293,53 @@ CONFIG.LOADCOCOTILECACHE = true;
 
 // レイヤータイプリスト
 CONFIG.LAYERTYPELIST = {
-  "kml"           : { caption : "KML", isTile: false },
-  "tile"          : { caption : "タイル", isTile: true, isTileImage : true },
-  "geojson"       : { caption : "GeoJSON", isTile: false },
-  "topojson"      : { caption : "TopoJSON", isTile: false },
-  "geojson_tile"  : { caption : "GeoJSONタイル", isTile: true },
-  "topojson_tile" : { caption : "TopoJSONタイル", isTile: true },
-  "tms"           : { caption : "TMS", isTile: true, isTileImage : true },
-  "multiLayer"    : { caption : "複数レイヤ", isTile: false }
+  "kml": { caption: "KML", isTile: false },
+  "tile": { caption: "タイル", isTile: true, isTileImage: true },
+  "geojson": { caption: "GeoJSON", isTile: false },
+  "topojson": { caption: "TopoJSON", isTile: false },
+  "geojson_tile": { caption: "GeoJSONタイル", isTile: true },
+  "topojson_tile": { caption: "TopoJSONタイル", isTile: true },
+  "tms": { caption: "TMS", isTile: true, isTileImage: true },
+  "multiLayer": { caption: "複数レイヤ", isTile: false }
 };
 
 // 背景地図
 CONFIG.BASETILES = [];
 // パラメータ用
 CONFIG.HIDDENCONTROLPARAMETER = {
-  INFOMENU : 'i',
-  FUNCMENU : 'f',
-    FOOTER : 'footer',
-  HEADER : 'h',
-  CONTEXTMENU : 'c',
-  BASEMAPSELECTOR : 'b',
-  ALL : 'all'
+  INFOMENU: 'i',
+  FUNCMENU: 'f',
+  FOOTER: 'footer',
+  HEADER: 'h',
+  CONTEXTMENU: 'c',
+  BASEMAPSELECTOR: 'b',
+  ALL: 'all'
 };
 
 CONFIG.DIALOGPARAMETER = {
-  VIEWLISTDIALOG : 'v',
-  LAYERTREEDIALOG : 'l'
+  VIEWLISTDIALOG: 'v',
+  LAYERTREEDIALOG: 'l'
 };
 // ダイアログ表示等エフェクト
 CONFIG.EFFECTS = {
   // メニュー表示エフェクト
-  MENU : {
-    ROOT : {
-      animation : "slide",
-      option : {"easing": "linear"},
-      speed : "fast"
+  MENU: {
+    ROOT: {
+      animation: "slide",
+      option: { "easing": "linear" },
+      speed: "fast"
     },
-    OTHER : {
-      animation : "scale",
-      option : {"direction": "both","easing": "linear"},
-      speed : "fast"
+    OTHER: {
+      animation: "scale",
+      option: { "direction": "both", "easing": "linear" },
+      speed: "fast"
     }
   },
   // ダイアログ表示エフェクト
-  DIALOG : {
-    animation : "puff",
-    option : {"percent": 10},
-    speed : "fast"
+  DIALOG: {
+    animation: "puff",
+    option: { "percent": 10 },
+    speed: "fast"
   }
 
 };
@@ -350,7 +349,7 @@ CONFIG.LAYERTREEDIALOGKEEPCURRENT = true;
 CONFIG.SERVERAPI = {};
 
 CONFIG.SERVERAPI.GETADDR = "https://mreversegeocoder.gsi.go.jp/reverse-geocoder/LonLatToAddress";
-CONFIG.SERVERAPI.CHIMEI_SEARCH="https://msearch.gsi.go.jp/address-search/AddressSearch";
+CONFIG.SERVERAPI.CHIMEI_SEARCH = "https://msearch.gsi.go.jp/address-search/AddressSearch";
 
 
 
@@ -462,7 +461,7 @@ CONFIG.DEFAULTSTYLES = {
  設定：メニュー：情報
 ************************************************************************/
 CONFIG.MAPMENU = {
-  title : '情報'
+  title: '情報'
 };
 
 /************************************************************************
@@ -470,27 +469,27 @@ CONFIG.MAPMENU = {
 ************************************************************************/
 
 CONFIG.FUNCMENU = {
-  title : '機能',
-  children : [
+  title: '機能',
+  children: [
     {
-      title : 'ツール',
-      arrow : true,
-      childrenWidth:160,
-      children : [
+      title: 'ツール',
+      arrow: true,
+      childrenWidth: 160,
+      children: [
         {
-          id : 'file_read',
-          title : 'ファイル読込',
-          arrow : true
+          id: 'file_read',
+          title: 'ファイル読込',
+          arrow: true
         },
         {
-          id : 'height_power',
-          title : '高さ倍率',
-          arrow : true
+          id: 'height_power',
+          title: '高さ倍率',
+          arrow: true
         },
         {
-          id : 'share_link',
-          title : 'リンクを取得',
-          arrow : true
+          id: 'share_link',
+          title: 'リンクを取得',
+          arrow: true
         },
         {
           id: 'loadoutsidetile',
@@ -500,37 +499,37 @@ CONFIG.FUNCMENU = {
       ]
     },
     {
-      title : '現在位置',
-      arrow : true,
-      id : 'currentpos'
+      title: '現在位置',
+      arrow: true,
+      id: 'currentpos'
     },
     {
-      title : '地理院地図',
-      arrow : true,
-      href : 'gsi2d'
+      title: '地震学地図',
+      arrow: true,
+      href: 'gsi2d'
     },
     {
-      title : '3D',
-      arrow : true,
-      childrenWidth:180,
-      children : [
+      title: '3D',
+      arrow: true,
+      childrenWidth: 180,
+      children: [
         {
-          id : 'gsi3d_2048',
-          title : '大 (2048x2048)',
-          arrow : true,
-          href  : 'gsi3d_2048'
+          id: 'gsi3d_2048',
+          title: '大 (2048x2048)',
+          arrow: true,
+          href: 'gsi3d_2048'
         },
         {
-          id : 'gsi3d_1024',
-          title : '小 (1024x1024)',
-          arrow : true,
-          href  : 'gsi3d_1024'
+          id: 'gsi3d_1024',
+          title: '小 (1024x1024)',
+          arrow: true,
+          href: 'gsi3d_1024'
         },
         {
-          id : 'gsi3d_custom',
-          title : 'カスタム',
-          arrow : true,
-          href  : 'gsi3d_custom'
+          id: 'gsi3d_custom',
+          title: 'カスタム',
+          arrow: true,
+          href: 'gsi3d_custom'
         }
       ]
     }
@@ -550,8 +549,8 @@ GSI.TEXT = {};
 GSI.TEXT.SAKUZU = {};
 
 GSI.TEXT.SAKUZU.DIALOG_LOAD_COMMENT = '<strong>KML,GeoJSON</strong>ファイルを選択してください<br><div style="font-size:85%">※ファイルを地図上にドラッグ＆ドロップすることでも読み込めます</div>';
-GSI.TEXT.SAKUZU.DIALOG_LOAD_COMMENT_IE8 = '<strong>KML,GeoJSON</strong>ファイルの内容を入力して下さい<br><div style="font-size:85%">※ファイルを地図上にドラッグ＆ドロップすることでも読み込めます</div>' ;
-GSI.TEXT.SAKUZU.DIALOG_LOAD_FILENAMECAPTION = 'パネル上の表示名' ;
+GSI.TEXT.SAKUZU.DIALOG_LOAD_COMMENT_IE8 = '<strong>KML,GeoJSON</strong>ファイルの内容を入力して下さい<br><div style="font-size:85%">※ファイルを地図上にドラッグ＆ドロップすることでも読み込めます</div>';
+GSI.TEXT.SAKUZU.DIALOG_LOAD_FILENAMECAPTION = 'パネル上の表示名';
 
 GSI.TEXT.SAKUZU.DIALOG_LOAD_OKBTN = '読込を開始';
 GSI.TEXT.SAKUZU.DIALOG_LOAD_CANCELBTN = '中　止';
@@ -571,11 +570,11 @@ GSI.TEXT.GEOLOCATION.ERROR = {
 GSI.TEXT.EVAC = {};
 GSI.TEXT.EVAC.KIYAKU = '最新の状況などは当該市町村にご確認ください。';
 GSI.TEXT.EVAC.KIYAKULINK = '<a href="https://www.gsi.go.jp/bousaichiri/hinanbasho.html" target="blank">「指定緊急避難場所」について</a>　<a href="https://disaportal.gsi.go.jp/hinanbasho/koukaidate.html" target="blank">市町村別公開日・更新日一覧</a>';
-GSI.TEXT.EVAC.CONFIRMTOP = '地理院地図及び重ねるハザードマップに掲載されている指定緊急避難場所データ（以下、「本データ」といいます）を利用される場合は、<a href="https://www.gsi.go.jp/kikakuchousei/kikakuchousei40182.html" target="blank">国土地理院コンテンツ利用規約</a>のほか、以下のご利用上の注意をご確認いただき、内容に同意された場合のみご利用ください。';
+GSI.TEXT.EVAC.CONFIRMTOP = '地震学地図及び重ねるハザードマップに掲載されている指定緊急避難場所データ（以下、「本データ」といいます）を利用される場合は、<a href="https://www.gsi.go.jp/kikakuchousei/kikakuchousei40182.html" target="blank">国土地理院コンテンツ利用規約</a>のほか、以下のご利用上の注意をご確認いただき、内容に同意された場合のみご利用ください。';
 GSI.TEXT.EVAC.ATTENTION = '【ご利用上の注意】';
 GSI.TEXT.EVAC.CONFIRMITEM1 = '本データは、災害対策基本法第49条の4に基づき市町村長が指定した指定緊急避難場所の情報を各市町村に提供いただき、当該市町村に確認の上、地図上に表示したものです。<span style="font-weight:bold; color:#ff0000;">最新かつ詳細の状況などは必ず当該市町村にご確認ください。</span>';
-GSI.TEXT.EVAC.CONFIRMITEM2 = '本データを、ダウンロードや印刷等を行い国土地理院サーバ外で利用される場合は、本データの更新にあわせて最新の情報をご利用ください（参照：<a href="https://hinan.gsi.go.jp/hinanjocjp/hinanbasho/koukaidate.html" target="blank">市町村別公開日・更新日一覧</a>）。';
-GSI.TEXT.EVAC.CONFIRMITEM3 = '指定緊急避難場所は、災害種別ごとに指定されています。本データをダウンロードや印刷等を行い国土地理院サーバ外で利用される場合、指定された災害種別を利用者が正確に理解できるよう、十分にご留意ください。';
+GSI.TEXT.EVAC.CONFIRMITEM2 = '本データを、ダウンロードや印刷等を行い本サーバ外で利用される場合は、本データの更新にあわせて最新の情報をご利用ください（参照：<a href="https://hinan.gsi.go.jp/hinanjocjp/hinanbasho/koukaidate.html" target="blank">市町村別公開日・更新日一覧</a>）。';
+GSI.TEXT.EVAC.CONFIRMITEM3 = '指定緊急避難場所は、災害種別ごとに指定されています。本データをダウンロードや印刷等を行い本サーバ外で利用される場合、指定された災害種別を利用者が正確に理解できるよう、十分にご留意ください。';
 GSI.TEXT.EVAC.ATTENTIONDATA = '【データについて】';
 GSI.TEXT.EVAC.DATAITEM1 = '<a href="https://www.gsi.go.jp/bousaichiri/hinanbasho.html" target="blank">「指定緊急避難場所」について</a>';
 GSI.TEXT.EVAC.DATAITEM2 = '<a href="https://www.gsi.go.jp/bousaichiri/hinanbasho-help.html" target="blank">利用方法</a>';
@@ -2516,20 +2515,18 @@ Proj4js.defs["EPSG:3101"] = "+proj=utm +zone=55 +ellps=GRS80 +towgs84=0,0,0,0,0,
 Proj4js.defs["SR-ORG:1235"] = "+proj=utm +zone=56 +ellps=GRS80 +towgs84=0,0,0,0,0,0,0 +units=m +no_defs";	    //UTM Zone56
 Proj4js.defs['EPSG:4301'] = "+proj=longlat +ellps=bessel +towgs84=-146.336,506.832,680.254,0,0,0,0 +no_defs";	//日本測地系（経緯度座標）
 
-dslorethumbnail_click = function(elements){
+dslorethumbnail_click = function (elements) {
   var x = new GSI.Modal.dsloreDialog(elements);
-  x.show();  
-  
+  x.show();
+
   //return false;
 };
-  
 
-GSI.GLOBALS.isBaseLayer = function( info ) {
+
+GSI.GLOBALS.isBaseLayer = function (info) {
   var isBase = false;
-  for (var baseIndex=0; baseIndex<CONFIG.BASETILES.length; baseIndex++)
-  {
-    if ( CONFIG.BASETILES[baseIndex].id == info.id )
-    {
+  for (var baseIndex = 0; baseIndex < CONFIG.BASETILES.length; baseIndex++) {
+    if (CONFIG.BASETILES[baseIndex].id == info.id) {
       isBase = true;
     }
   }
@@ -2548,34 +2545,32 @@ var GLOBE = {};
   GSI.Utils
 ************************************************************************/
 GSI.Utils = {};
-GSI.Utils.convertIconURL = function( url )
-{
+GSI.Utils.convertIconURL = function (url) {
   url = url.replace(/cyberjapandata.gsi.go.jp/, "maps.gsi.go.jp");
   url = MATEST.proxyUrl(url);
   return url;
 };
 
-GSI.Utils.encodeHTML = function( src)
-{
-  src = src.replace( /&/g , '&amp;' );
-  src = src.replace( /</g , '&lt;' );
-  src = src.replace( />/g , '&gt;' );
+GSI.Utils.encodeHTML = function (src) {
+  src = src.replace(/&/g, '&amp;');
+  src = src.replace(/</g, '&lt;');
+  src = src.replace(/>/g, '&gt;');
   return src;
 };
 
-GSI.Utils.getInternetExplorerVersion = function (){
+GSI.Utils.getInternetExplorerVersion = function () {
   var rv = -1;
-  if (navigator.appName == 'Microsoft Internet Explorer'){
+  if (navigator.appName == 'Microsoft Internet Explorer') {
     var ua = navigator.userAgent;
-    var re  = new RegExp("MSIE ([0-9]{1,}[\.0-9]{0,})");
+    var re = new RegExp("MSIE ([0-9]{1,}[\.0-9]{0,})");
     if (re.exec(ua) != null)
-    rv = parseFloat( RegExp.$1 );
+      rv = parseFloat(RegExp.$1);
   }
-  else if (navigator.appName == 'Netscape'){
+  else if (navigator.appName == 'Netscape') {
     var ua = navigator.userAgent;
-    var re  = new RegExp("Trident/.*rv:([0-9]{1,}[\.0-9]{0,})");
+    var re = new RegExp("Trident/.*rv:([0-9]{1,}[\.0-9]{0,})");
     if (re.exec(ua) != null)
-    rv = parseFloat( RegExp.$1 );
+      rv = parseFloat(RegExp.$1);
   }
   return rv;
 };
@@ -2585,12 +2580,12 @@ GSI.Utils.Browser.userAgent = window.navigator.userAgent.toLowerCase();
 
 if (typeof document.documentElement.style.maxHeight != "undefined") {
 
-  var ieVersion= GSI.Utils.getInternetExplorerVersion();
+  var ieVersion = GSI.Utils.getInternetExplorerVersion();
 
-  if (ieVersion < 1 ){
-  // IE 以外
-  }else {
-  // IE8 以降
+  if (ieVersion < 1) {
+    // IE 以外
+  } else {
+    // IE8 以降
     GSI.Utils.Browser.ie = true;
     GSI.Utils.Browser.version = ieVersion;
   }
@@ -2606,29 +2601,28 @@ GSI.Utils.Browser.isiPod = GSI.Utils.Browser.userAgent.indexOf('ipod') >= 0;
 GSI.Utils.Browser.isiPad = GSI.Utils.Browser.userAgent.indexOf('ipad') >= 0;
 GSI.Utils.Browser.isiOS = (GSI.Utils.Browser.isiPhone || GSI.Utils.Browser.isiPod || GSI.Utils.Browser.isiPad);
 GSI.Utils.Browser.isAndroid = GSI.Utils.Browser.userAgent.indexOf('android') >= 0;
-GSI.Utils.Browser.isSmartMobile = ( GSI.Utils.Browser.isiOS || GSI.Utils.Browser.isAndroid );
+GSI.Utils.Browser.isSmartMobile = (GSI.Utils.Browser.isiOS || GSI.Utils.Browser.isAndroid);
 GSI.Utils.Browser.isChrome = GSI.Utils.Browser.userAgent.indexOf('chrome') != -1;
 
-GSI.Utils.hasFileAPI =( window.File && window.FileReader && window.FileList && window.Blob );
+GSI.Utils.hasFileAPI = (window.File && window.FileReader && window.FileList && window.Blob);
 
-GSI.Utils.Browser.TouchDevice = function(){
-    var f = false;
-    if(GSI.Utils.Browser.isiPhone     ||
-      GSI.Utils.Browser.isiPod       ||
-      GSI.Utils.Browser.isiPad       ||
-      GSI.Utils.Browser.isiOS        ||
-      GSI.Utils.Browser.isAndroid    ||
-      GSI.Utils.Browser.isSmartMobile
-    ){
-        f = true;
-    }
-    return f;
+GSI.Utils.Browser.TouchDevice = function () {
+  var f = false;
+  if (GSI.Utils.Browser.isiPhone ||
+    GSI.Utils.Browser.isiPod ||
+    GSI.Utils.Browser.isiPad ||
+    GSI.Utils.Browser.isiOS ||
+    GSI.Utils.Browser.isAndroid ||
+    GSI.Utils.Browser.isSmartMobile
+  ) {
+    f = true;
+  }
+  return f;
 };
 
-GSI.Utils.getCurrentID = function() {
+GSI.Utils.getCurrentID = function () {
   var id = 1;
-  if ( !GSI.Utils._currentID )
-  {
+  if (!GSI.Utils._currentID) {
     GSI.Utils._currentID = 1;
   }
   id = GSI.Utils._currentID;
@@ -2636,68 +2630,62 @@ GSI.Utils.getCurrentID = function() {
   return id;
 };
 
-GSI.Utils.isLocalUrl = function(url) {
+GSI.Utils.isLocalUrl = function (url) {
 
-  if ( ( GSI.ClientMode .baseUrl && GSI.ClientMode .baseUrl != '' ) || url.match(/(http|https):\/\/.+/) )
-  {
+  if ((GSI.ClientMode.baseUrl && GSI.ClientMode.baseUrl != '') || url.match(/(http|https):\/\/.+/)) {
     return false;
   }
-  else
-  {
+  else {
     return true;
   }
 };
 
 GSI.Utils.flashPlayerVersion = null;
 
-GSI.Utils.canUseFlashPlayer = function()
-{
-  if ( GSI.Utils.flashPlayerVersion == null )
-  {
+GSI.Utils.canUseFlashPlayer = function () {
+  if (GSI.Utils.flashPlayerVersion == null) {
     GSI.Utils.flashPlayerVersion = GSI.Utils.getFlashPlayerVersion();
 
   }
-  return ( GSI.Utils.flashPlayerVersion > 0 );
+  return (GSI.Utils.flashPlayerVersion > 0);
 };
 
-GSI.Utils.getFlashPlayerVersion = function()
-{
+GSI.Utils.getFlashPlayerVersion = function () {
   var result = 0;
-  if(navigator.plugins && navigator.mimeTypes['application/x-shockwave-flash']){
+  if (navigator.plugins && navigator.mimeTypes['application/x-shockwave-flash']) {
     var plugin = navigator.mimeTypes["application/x-shockwave-flash"].enabledPlugin;
-    if(plugin){
+    if (plugin) {
       result = parseInt(plugin.description.match(/\d+\.\d+/));
     }
   } else {
-    try{
+    try {
       var flashOCX = new ActiveXObject("ShockwaveFlash.ShockwaveFlash").GetVariable("$version").match(/([0-9]+)/);
-      if(flashOCX){
+      if (flashOCX) {
         result = parseInt(flashOCX[0]);
       }
-    }catch(e){}
+    } catch (e) { }
   }
-  if(result <= 6){
+  if (result <= 6) {
     result = 0;
   }
   return result;
 };
 
-GSI.Utils.getCurrentPath = function()
-{
-  var _location = ( GSI.ClientMode .location ? GSI.ClientMode .location : location );
+GSI.Utils.getCurrentPath = function () {
+  var _location = (GSI.ClientMode.location ? GSI.ClientMode.location : location);
   var port = _location.port;
   var pathName = _location.pathname;
 
-  if ( pathName.length <= 0 || pathName.charAt( 0 ) != '/' )
+  if (pathName.length <= 0 || pathName.charAt(0) != '/')
     pathName = '/' + pathName;
 
   return _location.protocol + '//' +
-    ( _location.host ? _location.host: _location.hostname ) +
+    (_location.host ? _location.host : _location.hostname) +
     pathName;
 
 };
 
-GSI.Utils.getTimeStampString = function() {
+GSI.Utils.getTimeStampString = function () {
   var now = new Date();
 
   var year = now.getFullYear(); // 年
@@ -2709,75 +2697,73 @@ GSI.Utils.getTimeStampString = function() {
   var msec = now.getMilliseconds(); // ミリ秒
   var result =
     year + '' +
-    ( '00' + month ).slice(-2)  +
-    ( '00' + day ).slice(-2) +
-    ( '00' + hour ).slice(-2) +
-    ( '00' + min ).slice(-2) +
-    ( '00' + sec ).slice(-2) +
-    msec ;
+    ('00' + month).slice(-2) +
+    ('00' + day).slice(-2) +
+    ('00' + hour).slice(-2) +
+    ('00' + min).slice(-2) +
+    ('00' + sec).slice(-2) +
+    msec;
   return result;
 };
 
-GSI.Utils.getScreenSize = function() {
+GSI.Utils.getScreenSize = function () {
   return {
-    w : window.innerWidth ? window.innerWidth: $(window).width(),
-    h : window.innerHeight ? window.innerHeight: $(window).height()
+    w: window.innerWidth ? window.innerWidth : $(window).width(),
+    h: window.innerHeight ? window.innerHeight : $(window).height()
   };
 };
 
-GSI.Utils.world2Japan = function(latLng){
+GSI.Utils.world2Japan = function (latLng) {
   var worldLonLat = new Proj4js.Proj('EPSG:4326');
   var japanLonLat = new Proj4js.Proj('EPSG:4301');
-  var worldP = new Proj4js.Point(latLng.lng,latLng.lat);
-  var japanP = Proj4js.transform(worldLonLat,japanLonLat,worldP);
-  return {x:japanP.x, y:japanP.y}
+  var worldP = new Proj4js.Point(latLng.lng, latLng.lat);
+  var japanP = Proj4js.transform(worldLonLat, japanLonLat, worldP);
+  return { x: japanP.x, y: japanP.y }
 };
 
 
-GSI.Utils.latLngToDMS = function(latLng) {
-  
-  var latLng = { lat : latLng.lat, lng : latLng.lng};
-  var latMinus = ( latLng.lat < 0 ? -1 : 1 );
-  var lngMinus = ( latLng.lng < 0 ? -1 : 1 );
-  
-  latLng.lat = Math.abs( latLng.lat);
-  latLng.lng = Math.abs( latLng.lng);
-  
-  var latD = Math.floor(latLng.lat);
-  var latM = Math.floor( ( latLng.lat - latD ) * 60 );
-  var latS = (latLng.lat-latD-(latM/60))*3600;
+GSI.Utils.latLngToDMS = function (latLng) {
 
-  if(latS==60){latS=0; latM=latM+1;};
-  if(latM==60){latM=0; latD=latD+1;};
+  var latLng = { lat: latLng.lat, lng: latLng.lng };
+  var latMinus = (latLng.lat < 0 ? -1 : 1);
+  var lngMinus = (latLng.lng < 0 ? -1 : 1);
+
+  latLng.lat = Math.abs(latLng.lat);
+  latLng.lng = Math.abs(latLng.lng);
+
+  var latD = Math.floor(latLng.lat);
+  var latM = Math.floor((latLng.lat - latD) * 60);
+  var latS = (latLng.lat - latD - (latM / 60)) * 3600;
+
+  if (latS == 60) { latS = 0; latM = latM + 1; };
+  if (latM == 60) { latM = 0; latD = latD + 1; };
 
   var lngD = Math.floor(latLng.lng);
-  var lngM = Math.floor( ( latLng.lng - lngD ) * 60 );
-  var lngS = (latLng.lng-lngD-(lngM/60))*3600;
+  var lngM = Math.floor((latLng.lng - lngD) * 60);
+  var lngS = (latLng.lng - lngD - (lngM / 60)) * 3600;
 
-  if(lngS==60){lngS=0; lngM=lngM+1;};
-  if(lngM==60){lngM=0; lngD=lngD+1;};
+  if (lngS == 60) { lngS = 0; lngM = lngM + 1; };
+  if (lngM == 60) { lngM = 0; lngD = lngD + 1; };
 
   return {
-    lat : {
-      d : latD, m:latM, s: latS
+    lat: {
+      d: latD, m: latM, s: latS
     },
-    lng : {
-      d : lngD, m:lngM, s: lngS
+    lng: {
+      d: lngD, m: lngM, s: lngS
     }
   };
 };
 
 // 磁北線を表示できる範囲内かどうかを返す
-GSI.Utils.isVaridVariation = function(latLng)
-{
+GSI.Utils.isVaridVariation = function (latLng) {
   //経度：122度～154度
   //緯度：20度～46度
-  return !( latLng.lat < 20 || latLng.lat > 46 || latLng.lng <122 || latLng.lng >154 );
+  return !(latLng.lat < 20 || latLng.lat > 46 || latLng.lng < 122 || latLng.lng > 154);
 }
 
 // 指定緯度経度の偏角を算出し、角度を返す
-GSI.Utils.getVariation = function(latLng)
-{
+GSI.Utils.getVariation = function (latLng) {
   var px = latLng.lng;
   var py = latLng.lat;
 
@@ -2792,67 +2778,62 @@ GSI.Utils.getVariation = function(latLng)
   //西偏角計算
   var KEE = px - 138;
   var KNN = py - 37;
-  var KKK = (7+40.585/60) + (19.003/60) * KNN - (6.265 / 60) * KEE + (0.009 / 60) * KNN * KNN + (0.024 / 60) * KNN * KEE - (0.591 / 60) * KEE * KEE;
+  var KKK = (7 + 40.585 / 60) + (19.003 / 60) * KNN - (6.265 / 60) * KEE + (0.009 / 60) * KNN * KNN + (0.024 / 60) * KNN * KEE - (0.591 / 60) * KEE * KEE;
 
   return KKK;
 };
 
-GSI.Utils.ConverUnit = function(map, shape, radius, unit_src, unit_to)
-{
-    if(unit_src == "px" && unit_to == "m" ){
-        var r_radius = radius;
-        var r_latlng = shape.getLatLng();
-        var p        = map.latLngToContainerPoint(r_latlng);
-        var p_to_x   = p.x;
-        var p_to_y   = p.y;
-        p_to_x += r_radius;
+GSI.Utils.ConverUnit = function (map, shape, radius, unit_src, unit_to) {
+  if (unit_src == "px" && unit_to == "m") {
+    var r_radius = radius;
+    var r_latlng = shape.getLatLng();
+    var p = map.latLngToContainerPoint(r_latlng);
+    var p_to_x = p.x;
+    var p_to_y = p.y;
+    p_to_x += r_radius;
 
-        var r_latlng_to = map.containerPointToLatLng( MA.point( p_to_x, p_to_y ) );
-        var r           = r_latlng.distanceTo(r_latlng_to);
+    var r_latlng_to = map.containerPointToLatLng(MA.point(p_to_x, p_to_y));
+    var r = r_latlng.distanceTo(r_latlng_to);
 
-        radius = r;
-    }
+    radius = r;
+  }
 
-    if(unit_src == "m"  && unit_to == "px"){ 
-        var r_latlng = shape.getBounds();
-        var n_p = map.latLngToContainerPoint(r_latlng._northEast);
-        var s_p = map.latLngToContainerPoint(r_latlng._southWest);
+  if (unit_src == "m" && unit_to == "px") {
+    var r_latlng = shape.getBounds();
+    var n_p = map.latLngToContainerPoint(r_latlng._northEast);
+    var s_p = map.latLngToContainerPoint(r_latlng._southWest);
 
-        var r   = Math.floor((n_p.x - s_p.x) * 0.5);
+    var r = Math.floor((n_p.x - s_p.x) * 0.5);
 
-        radius = r;
-    }
-    return radius;
+    radius = r;
+  }
+  return radius;
 };
 
-GSI.Utils.getNextOutsideTileNo = function(){
-  if ( !GSI.Utils._outsideTileNo ){
+GSI.Utils.getNextOutsideTileNo = function () {
+  if (!GSI.Utils._outsideTileNo) {
     GSI.Utils._outsideTileNo = 0;
   }
 
   return GSI.Utils._outsideTileNo++;
 };
 
-GSI.Utils.Cookie = MA.Class.extend( {
-  
-  _config : {
-    defaults : {}
+GSI.Utils.Cookie = MA.Class.extend({
+
+  _config: {
+    defaults: {}
   },
-  initialize : function () {},
-  _encode : function(s)
-  {
+  initialize: function () { },
+  _encode: function (s) {
     return this._config.raw ? s : encodeURIComponent(s);
   },
-  _decode : function (s) 
-  {
+  _decode: function (s) {
     return this._config.raw ? s : decodeURIComponent(s);
   },
-  _stringifyCookieValue : function(value) 
-  {
+  _stringifyCookieValue: function (value) {
     return this._encode(this._config.json ? JSON.stringify(value) : String(value));
   },
-  _parseCookieValue : function (s)
-  {
+  _parseCookieValue: function (s) {
     if (s.indexOf('"') === 0) {
       s = s.slice(1, -1).replace(/\\"/g, '"').replace(/\\\\/g, '\\');
     }
@@ -2861,20 +2842,17 @@ GSI.Utils.Cookie = MA.Class.extend( {
       var pluses = /\+/g;
       s = decodeURIComponent(s.replace(pluses, ' '));
       return this._config.json ? JSON.parse(s) : s;
-    } catch(e) {}
+    } catch (e) { }
   },
-  _read : function(s, converter) 
-  {
+  _read: function (s, converter) {
     //var value = this._config.raw ? s : this._parseCookieValue(s);
     return this._config.raw ? s : this._parseCookieValue(s);
   },
-  get : function( key )
-  {
+  get: function (key) {
     var result = key ? undefined : {};
     var cookies = document.cookie ? document.cookie.split('; ') : [];
 
-    for (var i = 0, l = cookies.length; i < l; i++) 
-    {
+    for (var i = 0, l = cookies.length; i < l; i++) {
       var parts = cookies[i].split('=');
       var name = this._decode(parts.shift());
       var cookie = parts.join('=');
@@ -2890,48 +2868,45 @@ GSI.Utils.Cookie = MA.Class.extend( {
 
     return result;
   },
-  set : function(key, value, options)
-  {
+  set: function (key, value, options) {
     options = $.extend({}, this._config.defaults, options);
 
     if (typeof options.expires === 'number') {
       var hours = options.expires, t = options.expires = new Date();
-      t.setTime(+t + hours * 1000 * 60 * 60 );// 
+      t.setTime(+t + hours * 1000 * 60 * 60);// 
     }
 
     return (document.cookie = [
       this._encode(key), '=', this._stringifyCookieValue(value),
       options.expires ? '; expires=' + options.expires.toUTCString() : '', // use expires attribute, max-age is not supported by IE
-      options.path    ? '; path=' + options.path : '',
-      options.domain  ? '; domain=' + options.domain : '',
-      options.secure  ? '; secure' : ''
+      options.path ? '; path=' + options.path : '',
+      options.domain ? '; domain=' + options.domain : '',
+      options.secure ? '; secure' : ''
     ].join(''));
-  
+
 
   },
-  remove : function (key, options)
-  {
-    if (this.get(key) === undefined) 
-    {
+  remove: function (key, options) {
+    if (this.get(key) === undefined) {
       return false;
     }
 
     this.set(key, '', $.extend({}, options, { expires: -1 }));
     return !this.get(key);
   }
-} );
+});
 
-GSI.Utils.sendSelectedLayer = function(id){
-    $.ajax({
-        type : "GET",
-        data : id,
-        url : "../layers_txt/anchor.txt",
-        datatype : "text",
-        cache : false,
-    });
+GSI.Utils.sendSelectedLayer = function (id) {
+  $.ajax({
+    type: "GET",
+    data: id,
+    url: "../layers_txt/anchor.txt",
+    datatype: "text",
+    cache: false,
+  });
 };
 
-GSI.Utils.round = function(val, precision){
+GSI.Utils.round = function (val, precision) {
   var digit = Math.pow(10, precision);
   val = val * digit;
   val = Math.round(val);
@@ -2947,263 +2922,227 @@ GSI.Utils.round = function(val, precision){
 /************************************************************************
   - GSI.Dialog
 ************************************************************************/
-GSI.Dialog = MA.Class.extend( {
-  options : {
-    containerClass : 'gsi_dialog',
-    headerClass : 'gsi_dialog_header',
-    contentClass : 'gsi_dialog_content',
-    effect : null,
-    top : 0,
-    left : 0,
-    width : 300,
-    resizable : ""
+GSI.Dialog = MA.Class.extend({
+  options: {
+    containerClass: 'gsi_dialog',
+    headerClass: 'gsi_dialog_header',
+    contentClass: 'gsi_dialog_content',
+    effect: null,
+    top: 0,
+    left: 0,
+    width: 300,
+    resizable: ""
   },
-  _userResized : false,
-  initialize : function( options )
-  {
+  _userResized: false,
+  initialize: function (options) {
     options = MA.setOptions(this, options);
 
-    if ( !GSI.Dialog._dialogManager )GSI.Dialog._dialogManager = new GSI.DialogManager();
+    if (!GSI.Dialog._dialogManager) GSI.Dialog._dialogManager = new GSI.DialogManager();
 
-    GSI.Dialog._dialogManager.append( this );
+    GSI.Dialog._dialogManager.append(this);
     this.create();
 
-    if ( options.visible )
+    if (options.visible)
       this.show();
   },
-  isResizable : function()
-  {
-    return ( this.options.resizable && this.options.resizable != '' ? true : false );
+  isResizable: function () {
+    return (this.options.resizable && this.options.resizable != '' ? true : false);
   },
-  createHeader : function()
-  {
-    return $('<span>').html('　　　　　　　' );
+  createHeader: function () {
+    return $('<span>').html('　　　　　　　');
   },
-  createContent : function()
-  {
-    return $( '<div>' ).html('　　　　　　　');
+  createContent: function () {
+    return $('<div>').html('　　　　　　　');
   },
-  create : function()
-  {
-    if ( this.container ) return;
-    this.container = $( '<div>' ).addClass( this.options.containerClass );
-    this.headerFrame = $( '<div>' ).addClass( this.options.headerClass );
-    this.contentFrame = $( '<div>' ).addClass( this.options.contentClass );
+  create: function () {
+    if (this.container) return;
+    this.container = $('<div>').addClass(this.options.containerClass);
+    this.headerFrame = $('<div>').addClass(this.options.headerClass);
+    this.contentFrame = $('<div>').addClass(this.options.contentClass);
 
-    this.closeBtn = $( '<a>' ).html( '×' ).attr({'href':'javascript:void(0);'}).addClass( 'closebtn' );
+    this.closeBtn = $('<a>').html('×').attr({ 'href': 'javascript:void(0);' }).addClass('closebtn');
 
-    this.headerTitle = $( '<div>' ).addClass( 'title' );
-    this.headerFrame.append(this.headerTitle );
-    this.headerFrame.append( this.closeBtn );
-    this.headerTitle.append(this.createHeader() );
+    this.headerTitle = $('<div>').addClass('title');
+    this.headerFrame.append(this.headerTitle);
+    this.headerFrame.append(this.closeBtn);
+    this.headerTitle.append(this.createHeader());
 
-    this.contentFrame.append( this.createContent());
+    this.contentFrame.append(this.createContent());
 
-    this.container.append( this.headerFrame );
-    this.container.append( this.contentFrame );
+    this.container.append(this.headerFrame);
+    this.container.append(this.contentFrame);
 
-    $( document.body).append( this.container );
+    $(document.body).append(this.container);
 
     this.container.draggable({
-      delay : 100,
+      delay: 100,
       scroll: false,
-      handle : this.headerFrame,
-      stop : MA.bind( function() { GSI.Dialog._dialogManager.adjust( this ); }, this )
+      handle: this.headerFrame,
+      stop: MA.bind(function () { GSI.Dialog._dialogManager.adjust(this); }, this)
     })
-    .on( 'mousedown', MA.bind( this.onClick, this ) )
-    .on( 'touchstart', MA.bind( this.onClick, this ) );
+      .on('mousedown', MA.bind(this.onClick, this))
+      .on('touchstart', MA.bind(this.onClick, this));
 
-    if ( this.options.width )
-    {
-      this.container.css( {width:this.options.width } );
+    if (this.options.width) {
+      this.container.css({ width: this.options.width });
     }
-    this.closeBtn.click( MA.bind( function(){ this.hide(true);}, this ) );
+    this.closeBtn.click(MA.bind(function () { this.hide(true); }, this));
     this.container.hide();
 
     var left = this.options.left;
-    if ( left == 'center' )
-    {
+    if (left == 'center') {
       var screenSize = GSI.Utils.getScreenSize();
-      left = Math.floor( (screenSize.w/2)-( parseInt(this.options.width) / 2 ) );
+      left = Math.floor((screenSize.w / 2) - (parseInt(this.options.width) / 2));
     }
 
-    this.container .css( {
-      left : left + 'px' ,
-      top : this.options.top + 'px',
-      width : this.options.width + 'px',
-      "min-width" : "80px",
+    this.container.css({
+      left: left + 'px',
+      top: this.options.top + 'px',
+      width: this.options.width + 'px',
+      "min-width": "80px",
       height: 'auto'
-    } );
+    });
 
-    if ( this.isResizable() )
-    {
+    if (this.isResizable()) {
       this.container.resizable({
-        resize : MA.bind( function() {
+        resize: MA.bind(function () {
           this._onResize();
           this._userResized = true;
-        },this ),
+        }, this),
         handles: this.options.resizable
       });
     }
   },
-  css : function( css )
-  {
-    if ( this.container ) this.container.css( css );
+  css: function (css) {
+    if (this.container) this.container.css(css);
   },
-  _onResize : function() {},
-  addClass : function( className )
-  {
-    if ( this.container ) this.container.addClass( className );
+  _onResize: function () { },
+  addClass: function (className) {
+    if (this.container) this.container.addClass(className);
   },
-  removeClass : function( className )
-  {
-    if ( this.container ) this.container.removeClass( className );
+  removeClass: function (className) {
+    if (this.container) this.container.removeClass(className);
   },
-  show : function(noActivate)
-  {
-    if ( !this.container ) this.create();
+  show: function (noActivate) {
+    if (!this.container) this.create();
 
-    GSI.Dialog._dialogManager.appendVisibleList( this, noActivate );
-    if ( this.options.effect )
-    {
-      this.container.show(this.options.effect.animation, this.options.effect.option,this.options.effect.speed,
-        MA.bind( function() { if ( this.afterShow ) this.afterShow(); }, this )
-        );
+    GSI.Dialog._dialogManager.appendVisibleList(this, noActivate);
+    if (this.options.effect) {
+      this.container.show(this.options.effect.animation, this.options.effect.option, this.options.effect.speed,
+        MA.bind(function () { if (this.afterShow) this.afterShow(); }, this)
+      );
     }
-    else
-    {
-      this.container.show(MA.bind( function() { if ( this.afterShow ) this.afterShow(); }, this ));
+    else {
+      this.container.show(MA.bind(function () { if (this.afterShow) this.afterShow(); }, this));
     }
   },
-  hide : function()
-  {
-    GSI.Dialog._dialogManager.removeVisibleList( this );
+  hide: function () {
+    GSI.Dialog._dialogManager.removeVisibleList(this);
 
-    if ( this.options.effect )
-    {
-      this.container.hide(this.options.effect.animation, this.options.effect.option,this.options.effect.speed);
+    if (this.options.effect) {
+      this.container.hide(this.options.effect.animation, this.options.effect.option, this.options.effect.speed);
     }
-    else
-    {
+    else {
       this.container.hide();
     }
   },
-  setMaxScrollHeight : function( maxHeight ) {},
-  getVisible : function()
-  {
-    return( this.container && this.container.is(':visible') ? true : false );
+  setMaxScrollHeight: function (maxHeight) { },
+  getVisible: function () {
+    return (this.container && this.container.is(':visible') ? true : false);
   },
-  onClick : function ()
-  {
-    GSI.Dialog._dialogManager.activate( this );
+  onClick: function () {
+    GSI.Dialog._dialogManager.activate(this);
   }
-} );
+});
 
 
 
 /************************************************************************
   - GSI.DialogManager
 ************************************************************************/
-GSI.DialogManager = MA.Class.extend( {
-  dialogList : [],
-  visibleList : [],
-  initialize : function() {},
-  append : function( dlg )
-  {
-    this.dialogList.push( dlg );
+GSI.DialogManager = MA.Class.extend({
+  dialogList: [],
+  visibleList: [],
+  initialize: function () { },
+  append: function (dlg) {
+    this.dialogList.push(dlg);
   },
-  appendVisibleList : function( dlg, noActivate )
-  {
-    for ( var i=0; i<this.visibleList.length; i++ )
-    {
+  appendVisibleList: function (dlg, noActivate) {
+    for (var i = 0; i < this.visibleList.length; i++) {
       var d = this.visibleList[i];
-      if ( d == dlg )
-      {
-        if ( noActivate ) return;
-        this.visibleList.splice( i,1 );
+      if (d == dlg) {
+        if (noActivate) return;
+        this.visibleList.splice(i, 1);
         break;
       }
     }
 
-    if ( !dlg._originalDialog ) this.adjust( dlg );
-    if ( noActivate && this.visibleList.length > 0)
-    {
-      this.visibleList.splice( this.visibleList.length-1, 0, dlg );
+    if (!dlg._originalDialog) this.adjust(dlg);
+    if (noActivate && this.visibleList.length > 0) {
+      this.visibleList.splice(this.visibleList.length - 1, 0, dlg);
     }
     else
-      this.visibleList.push( dlg );
+      this.visibleList.push(dlg);
     this.refreshZIndex();
 
-    if ( !this._onWindowResize )
-    {
-      this._onWindowResize = MA.bind( this.onWindowResize, this );
-      $( window ).on( 'resize', this._onWindowResize );
+    if (!this._onWindowResize) {
+      this._onWindowResize = MA.bind(this.onWindowResize, this);
+      $(window).on('resize', this._onWindowResize);
     }
   },
-  removeVisibleList : function( dlg )
-  {
-    for ( var i=0; i<this.visibleList.length; i++ )
-    {
+  removeVisibleList: function (dlg) {
+    for (var i = 0; i < this.visibleList.length; i++) {
       var d = this.visibleList[i];
-      if ( d == dlg )
-      {
-        this.visibleList.splice( i,1 );
+      if (d == dlg) {
+        this.visibleList.splice(i, 1);
         break;
       }
     }
     this.refreshZIndex();
 
-    if ( this.visibleList.length <= 0 )
-    {
-      if ( this._onWindowResize )
-      {
-        $( window ).off( 'resize', this._onWindowResize );
+    if (this.visibleList.length <= 0) {
+      if (this._onWindowResize) {
+        $(window).off('resize', this._onWindowResize);
         this._onWindowResize = null;
       }
     }
   },
-  activate : function( dlg )
-  {
-    this.appendVisibleList( dlg );
+  activate: function (dlg) {
+    this.appendVisibleList(dlg);
   },
-  refreshZIndex : function()
-  {
+  refreshZIndex: function () {
     var zIndex = 10000;
     var dlgIndex = -1;
     var idx = 1;
 
-    for ( var i=0; i<this.visibleList.length-1; i++ )
-    {
-      var opacity = 0.6 + ( 0.4 / this.visibleList.length * idx );
+    for (var i = 0; i < this.visibleList.length - 1; i++) {
+      var opacity = 0.6 + (0.4 / this.visibleList.length * idx);
       var container = this.visibleList[i];
-      if ( !container.css ) container = container.container;
-      container.css({'z-index':zIndex, opacity: opacity} );
-      container.addClass( "deactive");
-      
+      if (!container.css) container = container.container;
+      container.css({ 'z-index': zIndex, opacity: opacity });
+      container.addClass("deactive");
+
       zIndex++;
       idx++;
     }
 
-    if ( this.visibleList.length > 0 )
-    {
-      
+    if (this.visibleList.length > 0) {
+
       var container = this.visibleList[this.visibleList.length - 1];
-      if ( !container.css ) container = container.container;
-      container.css({'z-index':zIndex, opacity: 0.95} );
-      
+      if (!container.css) container = container.container;
+      container.css({ 'z-index': zIndex, opacity: 0.95 });
+
       container = this.visibleList[i];
-      if ( !container.css ) container = container.container;
-      container.removeClass( "deactive");
+      if (!container.css) container = container.container;
+      container.removeClass("deactive");
     }
   },
-  adjust : function( d, windowSize )
-  {
-    if ( !windowSize ) windowSize = GSI.Utils.getScreenSize();
+  adjust: function (d, windowSize) {
+    if (!windowSize) windowSize = GSI.Utils.getScreenSize();
 
-    var visible = d.container.is( ':visible' );
-    if (  !visible )
-    {
-      d.container.css( { 'visibility' : 'hidden' } );
+    var visible = d.container.is(':visible');
+    if (!visible) {
+      d.container.css({ 'visibility': 'hidden' });
       d.container.show();
     }
 
@@ -3214,111 +3153,90 @@ GSI.DialogManager = MA.Class.extend( {
     var top = null;
 
     // width
-    if ( !d.isResizable() )
-    {
-      if ( windowSize.h > windowSize.w )
-      {
-        var newWidth = Math.floor( windowSize.w * 0.9 );
-        if ( d.options.width > newWidth )
-        {
-          d.container.css( { "max-width" : newWidth } );
+    if (!d.isResizable()) {
+      if (windowSize.h > windowSize.w) {
+        var newWidth = Math.floor(windowSize.w * 0.9);
+        if (d.options.width > newWidth) {
+          d.container.css({ "max-width": newWidth });
           width = newWidth;
         }
-        else
-        {
-          d.container.css( { "max-width" : d.options.width } );
-          width =d.options.width;
+        else {
+          d.container.css({ "max-width": d.options.width });
+          width = d.options.width;
         }
       }
-      else
-      {
-        var newWidth = Math.floor( windowSize.w * 0.6 );
-        if ( d.options.width > newWidth )
-        {
-          d.container.css( { "max-width" : newWidth } );
+      else {
+        var newWidth = Math.floor(windowSize.w * 0.6);
+        if (d.options.width > newWidth) {
+          d.container.css({ "max-width": newWidth });
           width = newWidth;
         }
-        else
-        {
-          d.container.css( { "max-width" : d.options.width } );
-          width =d.options.width;
+        else {
+          d.container.css({ "max-width": d.options.width });
+          width = d.options.width;
         }
       }
     }
 
     // height
-    if ( !d._userResized )
-    {
-      if ( windowSize.h > windowSize.w )
-      {
-        d.setMaxScrollHeight( Math.floor( windowSize.h * 0.4 )  );
+    if (!d._userResized) {
+      if (windowSize.h > windowSize.w) {
+        d.setMaxScrollHeight(Math.floor(windowSize.h * 0.4));
       }
-      else
-      {
-        d.setMaxScrollHeight( Math.floor( windowSize.h * 0.65 ) );
+      else {
+        d.setMaxScrollHeight(Math.floor(windowSize.h * 0.65));
       }
     }
 
     //left
-    if ( offset.left > windowSize.w - ( width / 2 ) )
-    {
-      left = (windowSize.w - ( width / 2 )) ;
+    if (offset.left > windowSize.w - (width / 2)) {
+      left = (windowSize.w - (width / 2));
     }
 
-    if ( offset.left <= -( width / 2 ) )
-    {
-      left =  -Math.floor( width / 2 );
-      d.container.css( {left: -Math.floor( width / 2 ) + 'px'} );
+    if (offset.left <= -(width / 2)) {
+      left = -Math.floor(width / 2);
+      d.container.css({ left: -Math.floor(width / 2) + 'px' });
     }
 
-    if ( left != null )
-    {
-      d.container.css( {left: left + 'px'} );
+    if (left != null) {
+      d.container.css({ left: left + 'px' });
     }
 
     //top
-    if ( offset.top > windowSize.h - ( height / 2 ) )
-    {
-      top = (windowSize.h - ( height / 2 )) ;
+    if (offset.top > windowSize.h - (height / 2)) {
+      top = (windowSize.h - (height / 2));
     }
 
-    if ( offset.top < 0 )
-    {
+    if (offset.top < 0) {
       top = 0;
     }
 
-    if ( top != null )
-    {
-      d.container.css( {top: top + 'px'} );
+    if (top != null) {
+      d.container.css({ top: top + 'px' });
     }
 
-    if ( !visible )
-    {
+    if (!visible) {
       d.container.hide();
-      d.container.css( { 'visibility' : 'visible' } );
+      d.container.css({ 'visibility': 'visible' });
     }
   },
-  onWindowResize : function()
-  {
+  onWindowResize: function () {
     var windowSize = GSI.Utils.getScreenSize();
-    for ( var i=0; i<this.visibleList.length; i++ )
-    {
+    for (var i = 0; i < this.visibleList.length; i++) {
       var d = this.visibleList[i];
-      if ( !d._originalDialog ) this.adjust( d,windowSize );
+      if (!d._originalDialog) this.adjust(d, windowSize);
     }
   },
-  isVisibleDialog : function( dlg ){
-    for ( var i=0; i<this.visibleList.length; i++ )
-    {
+  isVisibleDialog: function (dlg) {
+    for (var i = 0; i < this.visibleList.length; i++) {
       var d = this.visibleList[i];
-      if ( d == dlg )
-      {
+      if (d == dlg) {
         return true;
       }
     }
     return false;
   }
-} );
+});
 
 
 /************************************************************************
@@ -3328,22 +3246,18 @@ GSI.UTM = {};
 
 GSI.UTM.Utils = {
 
-  PROJ_WORLD : new Proj4js.Proj('EPSG:4326'),
-  lng2Zone : function( lng )
-  {
-    return Math.floor(lng/6) + 31;
+  PROJ_WORLD: new Proj4js.Proj('EPSG:4326'),
+  lng2Zone: function (lng) {
+    return Math.floor(lng / 6) + 31;
   },
-  zone2Lng : function( zone )
-  {
-    return ( zone - 31 ) * 6;
+  zone2Lng: function (zone) {
+    return (zone - 31) * 6;
   },
-  getUTMDefName : function( zone)
-  {
+  getUTMDefName: function (zone) {
     var defName = '';
 
-    if ( !zone ) return defName;
-    switch( zone + '' )
-    {
+    if (!zone) return defName;
+    switch (zone + '') {
       case '51':
         defName = 'EPSG:3097';
         break;
@@ -3365,24 +3279,22 @@ GSI.UTM.Utils = {
     }
     return defName;
   },
-  getUTMMark : function ( lat )
-  {
-    var mark ='';
-    if(lat >= 16 && lat < 24) {
+  getUTMMark: function (lat) {
+    var mark = '';
+    if (lat >= 16 && lat < 24) {
       mark = "Q";
-    } else if(lat >= 24 && lat < 32) {
+    } else if (lat >= 24 && lat < 32) {
       mark = "R";
-    } else if(lat >= 32 && lat < 40) {
+    } else if (lat >= 32 && lat < 40) {
       mark = "S";
-    } else if(lat >= 40 && lat < 48) {
+    } else if (lat >= 40 && lat < 48) {
       mark = "T";
-    } else if(lat >= 48 && lat < 56) {
+    } else if (lat >= 48 && lat < 56) {
       mark = "U";
     }
     return mark;
   },
-  _parseUSNGText : function (s)
-  {
+  _parseUSNGText: function (s) {
     var result = {};
     var j = 0;
     var k;
@@ -3392,230 +3304,216 @@ GSI.UTM.Utils = {
     usngStr_temp = s.toUpperCase()
 
     var regexp = /%20/g
-    usngStr = usngStr_temp.replace(regexp,"")
+    usngStr = usngStr_temp.replace(regexp, "")
     regexp = / /g
-    usngStr = usngStr_temp.replace(regexp,"")
+    usngStr = usngStr_temp.replace(regexp, "")
 
     if (usngStr.length < 7) {
       return null;
     }
 
-    result.zone = usngStr.charAt(j++)*10 + usngStr.charAt(j++)*1;
+    result.zone = usngStr.charAt(j++) * 10 + usngStr.charAt(j++) * 1;
     result.mylet = usngStr.charAt(j++)
     result.sq1 = usngStr.charAt(j++)
     result.sq2 = usngStr.charAt(j++)
 
-    result.precision = (usngStr.length-j) / 2;
-    result.east='';
-    result.north='';
-    for (var k=0; k<result.precision; k++)
-    {
+    result.precision = (usngStr.length - j) / 2;
+    result.east = '';
+    result.north = '';
+    for (var k = 0; k < result.precision; k++) {
       result.east += usngStr.charAt(j++)
     }
 
     if (usngStr[j] == " ") { j++ }
-    for (var k=0; k<result.precision; k++)
-    {
+    for (var k = 0; k < result.precision; k++) {
       result.north += usngStr.charAt(j++)
     }
-    
+
     return result;
   },
-  _USNGtoUTM : function (zone,mylet,sq1,sq2,east,north)
-  { 
+  _USNGtoUTM: function (zone, mylet, sq1, sq2, east, north) {
     var result = {};
-    
-    //Starts (southern edge) of N-S zones in millons of meters
-    var zoneBase = [1.1,2.0,2.9,3.8,4.7,5.6,6.5,7.3,8.2,9.1,   0, 0.8, 1.7, 2.6, 3.5, 4.4, 5.3, 6.2, 7.0, 7.9];
 
-    var segBase = [0,2,2,2,4,4,6,6,8,8,   0,0,0,2,2,4,4,6,6,6];  //Starts of 2 million meter segments, indexed by zone 
-    
+    //Starts (southern edge) of N-S zones in millons of meters
+    var zoneBase = [1.1, 2.0, 2.9, 3.8, 4.7, 5.6, 6.5, 7.3, 8.2, 9.1, 0, 0.8, 1.7, 2.6, 3.5, 4.4, 5.3, 6.2, 7.0, 7.9];
+
+    var segBase = [0, 2, 2, 2, 4, 4, 6, 6, 8, 8, 0, 0, 0, 2, 2, 4, 4, 6, 6, 6];  //Starts of 2 million meter segments, indexed by zone 
+
     // convert easting to UTM
-    var eSqrs="ABCDEFGHJKLMNPQRSTUVWXYZ".indexOf(sq1);          
-    var appxEast=1+eSqrs%8; 
+    var eSqrs = "ABCDEFGHJKLMNPQRSTUVWXYZ".indexOf(sq1);
+    var appxEast = 1 + eSqrs % 8;
 
     // convert northing to UTM
     var letNorth = "CDEFGHJKLMNPQRSTUVWX".indexOf(mylet);
-    if (zone%2)  //odd number zone
-    var nSqrs="ABCDEFGHJKLMNPQRSTUV".indexOf(sq2) 
+    if (zone % 2)  //odd number zone
+      var nSqrs = "ABCDEFGHJKLMNPQRSTUV".indexOf(sq2)
     else        // even number zone
-    var nSqrs="FGHJKLMNPQRSTUVABCDE".indexOf(sq2); 
+      var nSqrs = "FGHJKLMNPQRSTUVABCDE".indexOf(sq2);
 
     var zoneStart = zoneBase[letNorth];
-    var appxNorth = Number(segBase[letNorth])+nSqrs/10;
-    if ( appxNorth < zoneStart)
-      appxNorth += 2; 	  
+    var appxNorth = Number(segBase[letNorth]) + nSqrs / 10;
+    if (appxNorth < zoneStart)
+      appxNorth += 2;
 
-    result.N=appxNorth*1000000+Number(north)*Math.pow(10,5-north.length);
-    result.E=appxEast*100000+Number(east)*Math.pow(10,5-east.length)
-    result.zone=zone;
-    result.letter=mylet;
+    result.N = appxNorth * 1000000 + Number(north) * Math.pow(10, 5 - north.length);
+    result.E = appxEast * 100000 + Number(east) * Math.pow(10, 5 - east.length)
+    result.zone = zone;
+    result.letter = mylet;
 
     return result;
   },
-  _UTMtoLL : function (UTMNorthing, UTMEasting, UTMZoneNumber, ret)
-  {
-    var EASTING_OFFSET  = 500000.0;   // (meters)
+  _UTMtoLL: function (UTMNorthing, UTMEasting, UTMZoneNumber, ret) {
+    var EASTING_OFFSET = 500000.0;   // (meters)
     var NORTHING_OFFSET = 10000000.0; // (meters)
     var k0 = 0.9996;
-    var EQUATORIAL_RADIUS    = 6378137.0; // GRS80 ellipsoid (meters)
+    var EQUATORIAL_RADIUS = 6378137.0; // GRS80 ellipsoid (meters)
     var ECC_SQUARED = 0.006694380023;
     var ECC_PRIME_SQUARED = ECC_SQUARED / (1 - ECC_SQUARED);
     var E1 = (1 - Math.sqrt(1 - ECC_SQUARED)) / (1 + Math.sqrt(1 - ECC_SQUARED));
-    var RAD_2_DEG   = 180.0 / Math.PI;
-    
+    var RAD_2_DEG = 180.0 / Math.PI;
+
     // remove 500,000 meter offset for longitude
-    var xUTM = parseFloat(UTMEasting) - EASTING_OFFSET; 
+    var xUTM = parseFloat(UTMEasting) - EASTING_OFFSET;
     var yUTM = parseFloat(UTMNorthing);
     var zoneNumber = parseInt(UTMZoneNumber);
 
     // origin longitude for the zone (+3 puts origin in zone center) 
-    var lonOrigin = (zoneNumber - 1) * 6 - 180 + 3; 
+    var lonOrigin = (zoneNumber - 1) * 6 - 180 + 3;
 
     // M is the "true distance along the central meridian from the Equator to phi
     // (latitude)
     var M = yUTM / k0;
-    var mu = M / ( EQUATORIAL_RADIUS * (1 - ECC_SQUARED / 4 - 3 * ECC_SQUARED * 
-                  ECC_SQUARED / 64 - 5 * ECC_SQUARED * ECC_SQUARED * ECC_SQUARED / 256 ));
+    var mu = M / (EQUATORIAL_RADIUS * (1 - ECC_SQUARED / 4 - 3 * ECC_SQUARED *
+      ECC_SQUARED / 64 - 5 * ECC_SQUARED * ECC_SQUARED * ECC_SQUARED / 256));
 
     // phi1 is the "footprint latitude" or the latitude at the central meridian which
     // has the same y coordinate as that of the point (phi (lat), lambda (lon) ).
-    var phi1Rad = mu + (3 * E1 / 2 - 27 * E1 * E1 * E1 / 32 ) * Math.sin( 2 * mu) 
-                + ( 21 * E1 * E1 / 16 - 55 * E1 * E1 * E1 * E1 / 32) * Math.sin( 4 * mu)
-                + (151 * E1 * E1 * E1 / 96) * Math.sin(6 * mu);
+    var phi1Rad = mu + (3 * E1 / 2 - 27 * E1 * E1 * E1 / 32) * Math.sin(2 * mu)
+      + (21 * E1 * E1 / 16 - 55 * E1 * E1 * E1 * E1 / 32) * Math.sin(4 * mu)
+      + (151 * E1 * E1 * E1 / 96) * Math.sin(6 * mu);
     var phi1 = phi1Rad * RAD_2_DEG;
 
     // Terms used in the conversion equations
-    var N1 = EQUATORIAL_RADIUS / Math.sqrt( 1 - ECC_SQUARED * Math.sin(phi1Rad) * 
-              Math.sin(phi1Rad));
+    var N1 = EQUATORIAL_RADIUS / Math.sqrt(1 - ECC_SQUARED * Math.sin(phi1Rad) *
+      Math.sin(phi1Rad));
     var T1 = Math.tan(phi1Rad) * Math.tan(phi1Rad);
     var C1 = ECC_PRIME_SQUARED * Math.cos(phi1Rad) * Math.cos(phi1Rad);
-    var R1 = EQUATORIAL_RADIUS * (1 - ECC_SQUARED) / Math.pow(1 - ECC_SQUARED * 
-                Math.sin(phi1Rad) * Math.sin(phi1Rad), 1.5);
+    var R1 = EQUATORIAL_RADIUS * (1 - ECC_SQUARED) / Math.pow(1 - ECC_SQUARED *
+      Math.sin(phi1Rad) * Math.sin(phi1Rad), 1.5);
     var D = xUTM / (N1 * k0);
 
     // Calculate latitude, in decimal degrees
-    var lat = phi1Rad - ( N1 * Math.tan(phi1Rad) / R1) * (D * D / 2 - (5 + 3 * T1 + 10
-        * C1 - 4 * C1 * C1 - 9 * ECC_PRIME_SQUARED) * D * D * D * D / 24 + (61 + 90 * 
-          T1 + 298 * C1 + 45 * T1 * T1 - 252 * ECC_PRIME_SQUARED - 3 * C1 * C1) * D * D *
-          D * D * D * D / 720);
+    var lat = phi1Rad - (N1 * Math.tan(phi1Rad) / R1) * (D * D / 2 - (5 + 3 * T1 + 10
+      * C1 - 4 * C1 * C1 - 9 * ECC_PRIME_SQUARED) * D * D * D * D / 24 + (61 + 90 *
+        T1 + 298 * C1 + 45 * T1 * T1 - 252 * ECC_PRIME_SQUARED - 3 * C1 * C1) * D * D *
+      D * D * D * D / 720);
     lat = lat * RAD_2_DEG;
 
     // Calculate longitude, in decimal degrees
-    var lng = (D - (1 + 2 * T1 + C1) * D * D * D / 6 + (5 - 2 * C1 + 28 * T1 - 3 * 
-            C1 * C1 + 8 * ECC_PRIME_SQUARED + 24 * T1 * T1) * D * D * D * D * D / 120) /
-            Math.cos(phi1Rad);
+    var lng = (D - (1 + 2 * T1 + C1) * D * D * D / 6 + (5 - 2 * C1 + 28 * T1 - 3 *
+      C1 * C1 + 8 * ECC_PRIME_SQUARED + 24 * T1 * T1) * D * D * D * D * D / 120) /
+      Math.cos(phi1Rad);
 
     lng = lonOrigin + lng * RAD_2_DEG;
     return L.latLng(lat, lng);
   },
-  point2LatLng : function( s )
-  {
+  point2LatLng: function (s) {
     var latLng = null;
-    try
-    {
-      var usngp = this._parseUSNGText(s,usngp);
-      if ( !usngp ) return null;
-      var coords = this._USNGtoUTM(usngp.zone,usngp.mylet,usngp.sq1,usngp.sq2,usngp.east,usngp.north) 
-      
-      if (usngp.mylet < 'N') 
-      {
+    try {
+      var usngp = this._parseUSNGText(s, usngp);
+      if (!usngp) return null;
+      var coords = this._USNGtoUTM(usngp.zone, usngp.mylet, usngp.sq1, usngp.sq2, usngp.east, usngp.north)
+
+      if (usngp.mylet < 'N') {
         coords.N -= NORTHING_OFFSET
       }
 
       latLng = this._UTMtoLL(coords.N, coords.E, usngp.zone)
     }
-    catch( e )
-    {
+    catch (e) {
       latLng = null;
     }
     return latLng;
   },
-  latlng2PointName : function(lat, lng)
-  {
-    var zone = GSI.UTM.Utils.lng2Zone( lng );
-    var defName = GSI.UTM.Utils.getUTMDefName( zone );
+  latlng2PointName: function (lat, lng) {
+    var zone = GSI.UTM.Utils.lng2Zone(lng);
+    var defName = GSI.UTM.Utils.getUTMDefName(zone);
 
-    if ( defName == '' ) return '';
+    if (defName == '') return '';
 
     var projUTM = new Proj4js.Proj(defName);
-    var latLngPoint = new Proj4js.Point( lng,lat );
-    var utmPoint = Proj4js.transform(GSI.UTM.Utils.PROJ_WORLD,projUTM,latLngPoint);
+    var latLngPoint = new Proj4js.Point(lng, lat);
+    var utmPoint = Proj4js.transform(GSI.UTM.Utils.PROJ_WORLD, projUTM, latLngPoint);
 
     return GSI.UTM.Utils.getUTMPointName(
       zone,
-      GSI.UTM.Utils.getUTMMark( lat ),
+      GSI.UTM.Utils.getUTMMark(lat),
       utmPoint.x,
       utmPoint.y,
       4
     );
   },
-  getUTMPointName : function( zone, mark, x, y, num, hideNumber)
-  {
+  getUTMPointName: function (zone, mark, x, y, num, hideNumber) {
 
     var x10mNumber = '';
     var y10mNumber = '';
-    if ( !hideNumber && x && y )
-    {
+    if (!hideNumber && x && y) {
       var zero = '';
-      for ( var i=0; i<num; i++ )
-      {
+      for (var i = 0; i < num; i++) {
         zero += '0';
       }
 
-      x10mNumber = zero + Math.floor( x /10 );
+      x10mNumber = zero + Math.floor(x / 10);
       x10mNumber = x10mNumber.substr(x10mNumber.length - num, num);
-      y10mNumber = zero + Math.floor( y /10 );
+      y10mNumber = zero + Math.floor(y / 10);
       y10mNumber = y10mNumber.substr(y10mNumber.length - num, num);
     }
-    
-    var letters = GSI.UTM.Utils.findGridLetters(zone, Math.floor( y /10 ) * 10, Math.floor( x /10 ) * 10);
+
+    var letters = GSI.UTM.Utils.findGridLetters(zone, Math.floor(y / 10) * 10, Math.floor(x / 10) * 10);
     return zone + mark + letters + x10mNumber + y10mNumber;
   },
-  findSet : function(zoneNum)
-  {
+  findSet: function (zoneNum) {
     zoneNum = parseInt(zoneNum);
     zoneNum = zoneNum % 6;
     switch (zoneNum) {
 
-    case 0:
-      return 6;
-      break;
+      case 0:
+        return 6;
+        break;
 
-    case 1:
-      return 1;
-      break;
+      case 1:
+        return 1;
+        break;
 
-    case 2:
-      return 2;
-      break;
+      case 2:
+        return 2;
+        break;
 
-    case 3:
-      return 3;
-      break;
+      case 3:
+        return 3;
+        break;
 
-    case 4:
-      return 4;
-      break;
+      case 4:
+        return 4;
+        break;
 
-    case 5:
-      return 5;
-      break;
+      case 5:
+        return 5;
+        break;
 
-    default:
-      return -1;
-      break;
+      default:
+        return -1;
+        break;
     }
   },
-  BLOCK_SIZE : 100000,
-  GRIDSQUARE_SET_ROW_SIZE : 20,
-  GRIDSQUARE_SET_COL_SIZE : 8,
+  BLOCK_SIZE: 100000,
+  GRIDSQUARE_SET_ROW_SIZE: 20,
+  GRIDSQUARE_SET_COL_SIZE: 8,
 
-  findGridLetters : function (zoneNum, northing, easting)
-  {
-    zoneNum  = parseInt(zoneNum);
+  findGridLetters: function (zoneNum, northing, easting) {
+    zoneNum = parseInt(zoneNum);
     northing = parseFloat(northing);
-    easting  = parseFloat(easting);
+    easting = parseFloat(easting);
     row = 1;
 
     // northing coordinate to single-meter precision
@@ -3635,7 +3533,7 @@ GSI.UTM.Utils = {
     east_1m = Math.round(easting);
 
     // Get the column position for the square identifier that contains the point
-    while (east_1m >= GSI.UTM.Utils.BLOCK_SIZE){
+    while (east_1m >= GSI.UTM.Utils.BLOCK_SIZE) {
       east_1m = east_1m - GSI.UTM.Utils.BLOCK_SIZE;
       col++;
     }
@@ -3645,8 +3543,7 @@ GSI.UTM.Utils = {
 
     return GSI.UTM.Utils.lettersHelper(GSI.UTM.Utils.findSet(zoneNum), row, col);
   },
-  lettersHelper : function (set, row, col)
-  {
+  lettersHelper: function (set, row, col) {
     // handle case of last row
     if (row == 0) {
       row = GSI.UTM.Utils.GRIDSQUARE_SET_ROW_SIZE - 1;
@@ -3662,43 +3559,43 @@ GSI.UTM.Utils = {
       col--;
     }
 
-    switch(set) {
+    switch (set) {
 
-    case 1:
-      l1="ABCDEFGH";              // column ids
-      l2="ABCDEFGHJKLMNPQRSTUV";  // row ids
-      return l1.charAt(col) + l2.charAt(row);
-      break;
+      case 1:
+        l1 = "ABCDEFGH";              // column ids
+        l2 = "ABCDEFGHJKLMNPQRSTUV";  // row ids
+        return l1.charAt(col) + l2.charAt(row);
+        break;
 
-    case 2:
-      l1="JKLMNPQR";
-      l2="FGHJKLMNPQRSTUVABCDE";
-      return l1.charAt(col) + l2.charAt(row);
-      break;
+      case 2:
+        l1 = "JKLMNPQR";
+        l2 = "FGHJKLMNPQRSTUVABCDE";
+        return l1.charAt(col) + l2.charAt(row);
+        break;
 
-    case 3:
-      l1="STUVWXYZ";
-      l2="ABCDEFGHJKLMNPQRSTUV";
-      return l1.charAt(col) + l2.charAt(row);
-      break;
+      case 3:
+        l1 = "STUVWXYZ";
+        l2 = "ABCDEFGHJKLMNPQRSTUV";
+        return l1.charAt(col) + l2.charAt(row);
+        break;
 
-    case 4:
-      l1="ABCDEFGH";
-      l2="FGHJKLMNPQRSTUVABCDE";
-      return l1.charAt(col) + l2.charAt(row);
-      break;
+      case 4:
+        l1 = "ABCDEFGH";
+        l2 = "FGHJKLMNPQRSTUVABCDE";
+        return l1.charAt(col) + l2.charAt(row);
+        break;
 
-    case 5:
-      l1="JKLMNPQR";
-      l2="ABCDEFGHJKLMNPQRSTUV";
-      return l1.charAt(col) + l2.charAt(row);
-      break;
+      case 5:
+        l1 = "JKLMNPQR";
+        l2 = "ABCDEFGHJKLMNPQRSTUV";
+        return l1.charAt(col) + l2.charAt(row);
+        break;
 
-    case 6:
-      l1="STUVWXYZ";
-      l2="FGHJKLMNPQRSTUVABCDE";
-      return l1.charAt(col) + l2.charAt(row);
-      break;
+      case 6:
+        l1 = "STUVWXYZ";
+        l2 = "FGHJKLMNPQRSTUVABCDE";
+        return l1.charAt(col) + l2.charAt(row);
+        break;
     }
   }
 };
@@ -3707,11 +3604,10 @@ GLOBE.CLASS = {};
 
 
 /***** ダイアログ *****/
-GLOBE.CLASS.DIALOG = function( elementId )
-{
+GLOBE.CLASS.DIALOG = function (elementId) {
   this._initialize(elementId);
 };
-GLOBE.CLASS.DIALOG.prototype = 
+GLOBE.CLASS.DIALOG.prototype =
 {
   id: null,
   container: null,
@@ -3719,35 +3615,33 @@ GLOBE.CLASS.DIALOG.prototype =
   headerTitle: null,
   closeBtn: null,
   contentFrame: null,
-  
-  containerClass : 'gsi_dialog',
-  headerClass : 'gsi_dialog_header',
-  contentClass : 'gsi_dialog_content',
-  
-  defaultTop   : '50px',
-  defaultLeft  : '10px',
-  defaultRight : '',
-  
-  resizable : true,
-  draggable : true,
-  
+
+  containerClass: 'gsi_dialog',
+  headerClass: 'gsi_dialog_header',
+  contentClass: 'gsi_dialog_content',
+
+  defaultTop: '50px',
+  defaultLeft: '10px',
+  defaultRight: '',
+
+  resizable: true,
+  draggable: true,
+
   // ダイアログを作成する
-  _initialize: function(elementId)
-  {
+  _initialize: function (elementId) {
     this._originalDialog = true;
     this.id = elementId;
-    
-    if ( !GSI.Dialog._dialogManager )GSI.Dialog._dialogManager = new GSI.DialogManager();
 
-    GSI.Dialog._dialogManager.append( this );
-    
+    if (!GSI.Dialog._dialogManager) GSI.Dialog._dialogManager = new GSI.DialogManager();
+
+    GSI.Dialog._dialogManager.append(this);
+
   },
-  
-  createDialog: function()
-  {
+
+  createDialog: function () {
     this._createDialogHeader();
     this._createDialogContent();
-    
+
     this.container = $('<div></div>')
       .attr('id', this.id)
       .addClass(this.containerClass)
@@ -3759,163 +3653,153 @@ GLOBE.CLASS.DIALOG.prototype =
         'position': 'absolute',
         'overflow': 'hidden'
       });
-    
-    if ( this.defaultTop )    this.container.css('top', this.defaultTop);
-    if ( this.defaultLeft )   this.container.css('left', this.defaultLeft);
-    if ( this.defaultRight )  this.container.css('right', this.defaultRight);
-    if ( this.defaultBottom ) this.container.css('bottom', this.defaultBottom);
-    
-    if ( this.resizable )
-    {
+
+    if (this.defaultTop) this.container.css('top', this.defaultTop);
+    if (this.defaultLeft) this.container.css('left', this.defaultLeft);
+    if (this.defaultRight) this.container.css('right', this.defaultRight);
+    if (this.defaultBottom) this.container.css('bottom', this.defaultBottom);
+
+    if (this.resizable) {
       this.container.resizable({
         handles: 'all',
         containment: 'document',
-        minWidth : 88,
+        minWidth: 88,
         minHeight: 88,
-        resize: function(e, elm){
+        resize: function (e, elm) {
           this.onResize();
         }.bind(this)
       });
     }
-    if ( this.draggable )
-    {
+    if (this.draggable) {
       this.container.draggable({
         scroll: false,
         handle: this.headerFrame,
-        start: function(){
+        start: function () {
           this.onDragStart();
         }.bind(this),
-        stop: function(){
+        stop: function () {
           this.onDragStop();
           this.adjustPosition();
         }.bind(this)
       });
-      
-      $(window).on('resize', function(){
+
+      $(window).on('resize', function () {
         this.adjustPosition();
       }.bind(this));
     }
-    
+
     $(document.body).append(this.container);
   },
-  
+
   // ダイアログヘッダを作成して返す（内部関数）
-  _createDialogHeader: function()
-  {
+  _createDialogHeader: function () {
     this.headerFrame = $('<div></div>').addClass(this.headerClass);
-    
+
     this.headerTitle = $('<div></div>').addClass('title');
     this.closeBtn = $('<a href="javascript:void(0);">×</a>')
       .addClass('closebtn')
-      .on('click', function(){
+      .on('click', function () {
         this.onBeforeClose();
         this.hide();
         this.onAfterClose();
       }.bind(this));
-    
+
     var $cont = $('<div>　　　</div>');
     this.headerTitle.append($cont);
-    
+
     this.headerFrame.append(this.headerTitle);
     this.headerFrame.append(this.closeBtn);
   },
-  
+
   // ダイアログコンテンツを作成して返す（内部関数）
-  _createDialogContent: function()
-  {
+  _createDialogContent: function () {
     this.contentFrame = $('<div></div>').addClass(this.contentClass);
-    
+
     var $cont = $('<div>　　　</div>');
     this.contentFrame.append($cont);
   },
-  
+
   // ダイアログヘッダを書き込む
-  setDialogHeader: function( $element )
-  {
+  setDialogHeader: function ($element) {
     var $header = (!$element ? $('<div>　</div>') : $element);
     this.headerTitle.empty().append($header);
   },
-  
+
   // ダイアログコンテンツを書き込む（引数はjQueryObject）
-  setDialogContent: function( $element )
-  {
+  setDialogContent: function ($element) {
     this.contentFrame.empty().append($element);
   },
-  
+
   // 位置修正
-  adjustPosition: function()
-  {
-    if (this.container.offset().top < 0 )  //上
+  adjustPosition: function () {
+    if (this.container.offset().top < 0)  //上
     {
-      this.container.animate({'top': '0px'}, 100);
+      this.container.animate({ 'top': '0px' }, 100);
     }
-    else if ( this.container.offset().top > $(window).height()-30 )  //下
+    else if (this.container.offset().top > $(window).height() - 30)  //下
     {
-      this.container.animate({'top': ($(window).height()-30) + 'px'}, 100);
+      this.container.animate({ 'top': ($(window).height() - 30) + 'px' }, 100);
     }
-    
-    if ( this.container.offset().left < this.container.outerWidth(true) / -2 )  //左
+
+    if (this.container.offset().left < this.container.outerWidth(true) / -2)  //左
     {
-      this.container.animate({'left': (this.container.outerWidth(true) / -2) + 'px'}, 100);
+      this.container.animate({ 'left': (this.container.outerWidth(true) / -2) + 'px' }, 100);
     }
-    else if ( this.container.offset().left > $(window).width()-(this.container.outerWidth(true) / 2) )  //右
+    else if (this.container.offset().left > $(window).width() - (this.container.outerWidth(true) / 2))  //右
     {
-      this.container.animate({'left': ($(window).width()-(this.container.outerWidth(true) / 2)) + 'px'}, 100);
+      this.container.animate({ 'left': ($(window).width() - (this.container.outerWidth(true) / 2)) + 'px' }, 100);
     }
   },
-  
+
   // ダイアログを表示する
-  show: function()
-  {
-    
-    GSI.Dialog._dialogManager.appendVisibleList( this );
+  show: function () {
+
+    GSI.Dialog._dialogManager.appendVisibleList(this);
     this.onBeforeShow();
-    this.container.show(300, function(){
+    this.container.show(300, function () {
       this.onAfterShow();
     }.bind(this));
     //this.onActive();
   },
-  
+
   // ダイアログを非表示にする
-  hide: function()
-  {
+  hide: function () {
     this.onBeforeClose();
-    GSI.Dialog._dialogManager.removeVisibleList( this );
-    this.container.hide(300, function(){
+    GSI.Dialog._dialogManager.removeVisibleList(this);
+    this.container.hide(300, function () {
       this.onAfterClose();
     }.bind(this));
   },
-  
-  
+
+
   // ダイアログがアクティブになった時
-  onActive: function()
-  {
+  onActive: function () {
     //GLOBE.DIALOGMANAGER.activeIs(this.id)
-    GSI.Dialog._dialogManager.activate( this );
+    GSI.Dialog._dialogManager.activate(this);
   },
-  
+
   ///// 設定可能イベント
-  
+
   // ドラッグ開始時
-  onDragStart: function(){},
-  
+  onDragStart: function () { },
+
   // ドラッグ終了時
-  onDragStop: function(){},
-  
+  onDragStop: function () { },
+
   // サイズ変更時
-  onResize: function(){},
-  
+  onResize: function () { },
+
   // ダイアログを開く直前
-  onBeforeShow: function(){},
-  
+  onBeforeShow: function () { },
+
   // ダイアログを開いた直後
-  onAfterShow: function(){},
-  
+  onAfterShow: function () { },
+
   // ダイアログを閉じる直前
-  onBeforeClose: function(){},
-  
+  onBeforeClose: function () { },
+
   // ダイアログを閉じた直後
-  onAfterClose:  function(){}
+  onAfterClose: function () { }
 };
 
 
@@ -3929,43 +3813,38 @@ GLOBE.MENU = {};
 /***** 機能ボタン *****/
 GLOBE.MENU.FUNC = {
   container: null,
-  
-  options:{
-    zIndex   : 15000,
-    position : 'right',
-    visible  : true,
-    getCheckState : function( defaultState)
-    {
+
+  options: {
+    zIndex: 15000,
+    position: 'right',
+    visible: true,
+    getCheckState: function (defaultState) {
       return defaultState;
     },
-    rootEffect      : CONFIG.EFFECTS.MENU.ROOT,
-    otherEffect     : CONFIG.EFFECTS.MENU.OTHER,
-    onMenuItemClick : function(info)
-    {
-      switch ( info.id )
-      {
+    rootEffect: CONFIG.EFFECTS.MENU.ROOT,
+    otherEffect: CONFIG.EFFECTS.MENU.OTHER,
+    onMenuItemClick: function (info) {
+      switch (info.id) {
         case 'currentpos':
-          if (navigator.geolocation)
-          {
+          if (navigator.geolocation) {
             navigator.geolocation.getCurrentPosition(
-              function(position){
+              function (position) {
                 var lon = position.coords.longitude;
                 var lat = position.coords.latitude;
                 GLOBE.MAP.fly(lon, lat);
               },
-              function(error){
-                alert( GSI.TEXT.GEOLOCATION.ERROR[error.code] + "\n\n(message)\n" + error.message );
+              function (error) {
+                alert(GSI.TEXT.GEOLOCATION.ERROR[error.code] + "\n\n(message)\n" + error.message);
               },
               {
-                "enableHighAccuracy" : true,
-                "timeout" : 5000,
-                "maximumAge" : 0
+                "enableHighAccuracy": true,
+                "timeout": 5000,
+                "maximumAge": 0
               }
             );
           }
-          else
-          {
-            alert( GSI.TEXT.GEOLOCATION.ERROR[5] );
+          else {
+            alert(GSI.TEXT.GEOLOCATION.ERROR[5]);
           }
           break;
         case 'file_read':
@@ -3974,332 +3853,279 @@ GLOBE.MENU.FUNC = {
         case 'height_power':
           GLOBE.DIALOG.HEIGHTPOWER.show();
           break;
-          case 'share_link':
-            GLOBE.DIALOG.GETLINK.show();
-            break;
-          case 'gsi3d_custom':
-            GLOBE.DIALOG.GSI3DCUSTOM.show();
-            break;
-          case 'loadoutsidetile':
-            GLOBE.DIALOG.LOADOUTSIDETILE.show();
-            break;
+        case 'share_link':
+          GLOBE.DIALOG.GETLINK.show();
+          break;
+        case 'gsi3d_custom':
+          GLOBE.DIALOG.GSI3DCUSTOM.show();
+          break;
+        case 'loadoutsidetile':
+          GLOBE.DIALOG.LOADOUTSIDETILE.show();
+          break;
       }
     }
   },
-  
+
   map: null,
   rootItem: {},
-  
-  create: function()
-  {
+
+  create: function () {
     this.map = $('#cesiumContainer');
-    
-    this.initialize( CONFIG.FUNCMENU );
+
+    this.initialize(CONFIG.FUNCMENU);
   },
-  
-  onBtnClick: function(event)
-  {
+
+  onBtnClick: function (event) {
     this.container.append('<div>追加</div>');
   },
-  
-  initialize : function ( treeConfig )
-  {
-    this.initializeTree( treeConfig );
-    this.map.on( 'mousedown', function(){ this.hide(); }.bind(this) );
-    this.map.on( 'touchstart', function(){ this.hide(); }.bind(this) );
-    $( window ).on( 'resize', function(){ this.hide(true); }.bind(this) );
+
+  initialize: function (treeConfig) {
+    this.initializeTree(treeConfig);
+    this.map.on('mousedown', function () { this.hide(); }.bind(this));
+    this.map.on('touchstart', function () { this.hide(); }.bind(this));
+    $(window).on('resize', function () { this.hide(true); }.bind(this));
   },
-  
-  initializeTree : function(treeConfig)
-  {
+
+  initializeTree: function (treeConfig) {
     // トップボタン生成
-    var elem = $( '<a>' )
-      .attr( { 'href' : 'javascript:void(0);'} )
-      .html( treeConfig.title )
-      .addClass( 'menu_btn' )
-      .attr( 'id', 'menu_func' )
-      .click( this.onItemClick.bind(this) );
-      
+    var elem = $('<a>')
+      .attr({ 'href': 'javascript:void(0);' })
+      .html(treeConfig.title)
+      .addClass('menu_btn')
+      .attr('id', 'menu_func')
+      .click(this.onItemClick.bind(this));
+
     $(document.body).append(elem);
 
     this.rootItem = {
-      elem : elem,
-      children : [],
-      depth : 0
+      elem: elem,
+      children: [],
+      depth: 0
     };
 
-    elem.data( { 'data' : this.rootItem } );
+    elem.data({ 'data': this.rootItem });
 
-    this.initializeTreeItems( this.rootItem, treeConfig, 1);
+    this.initializeTreeItems(this.rootItem, treeConfig, 1);
   },
-  
-  initializeTreeItems : function( parent, treeConfig, depth  )
-  {
-    if ( treeConfig.children && treeConfig.children.length > 0  )
-    {
-      var ul = $( '<ul>' )
-        .addClass( 'menu_item_frame' )
-        .css( {'z-index' : this.options.zIndex  + depth   } )
+
+  initializeTreeItems: function (parent, treeConfig, depth) {
+    if (treeConfig.children && treeConfig.children.length > 0) {
+      var ul = $('<ul>')
+        .addClass('menu_item_frame')
+        .css({ 'z-index': this.options.zIndex + depth })
         .hide();
 
-      if ( treeConfig.childrenWidth )
-      {
-        ul.css( {width: treeConfig.childrenWidth+ 'px'} );
+      if (treeConfig.childrenWidth) {
+        ul.css({ width: treeConfig.childrenWidth + 'px' });
       }
 
-      for ( var i=0; i<treeConfig.children.length; i++ )
-      {
+      for (var i = 0; i < treeConfig.children.length; i++) {
 
         var childConfig = treeConfig.children[i];
-        if( !childConfig ) continue;
-        if ( childConfig.checkCondition && !childConfig.checkCondition() ) continue;
-        var li = $( '<li>' );
+        if (!childConfig) continue;
+        if (childConfig.checkCondition && !childConfig.checkCondition()) continue;
+        var li = $('<li>');
         var item = {};
 
-        if ( childConfig.typeA && childConfig.typeA == 'check' )
-        {
-          
-        }
-        else
-        {
-          // 通常
-          var a = $( '<a>' )
-            .attr( { 'href' : 'javascript:void(0);'} )
-            .html( childConfig.title )
-            .click( this.onItemClick.bind(this) )
-            .mouseover( this.onItemMouseover.bind(this) )
-            .mouseout( this.onItemMouseout.bind(this) );
+        if (childConfig.typeA && childConfig.typeA == 'check') {
 
-          if ( childConfig.arrow )
-          {
-            a.addClass( "arrow" );
-            a.addClass( this.options.position );
+        }
+        else {
+          // 通常
+          var a = $('<a>')
+            .attr({ 'href': 'javascript:void(0);' })
+            .html(childConfig.title)
+            .click(this.onItemClick.bind(this))
+            .mouseover(this.onItemMouseover.bind(this))
+            .mouseout(this.onItemMouseout.bind(this));
+
+          if (childConfig.arrow) {
+            a.addClass("arrow");
+            a.addClass(this.options.position);
           }
-          else if ( childConfig.right )
-          {
-            a.addClass( "right" );
+          else if (childConfig.right) {
+            a.addClass("right");
           }
 
           item = {
-            elem : a,
-            id : childConfig.id,
-            children : [],
-            depth : depth,
-            parent :parent,
-            href : childConfig.href
+            elem: a,
+            id: childConfig.id,
+            children: [],
+            depth: depth,
+            parent: parent,
+            href: childConfig.href
           };
 
-          a.data( { 'data' : item } );
-          parent.children.push( item );
-          li.append( a );
+          a.data({ 'data': item });
+          parent.children.push(item);
+          li.append(a);
         }
-        ul.append( li );
+        ul.append(li);
         parent.childrenFrame = ul;
 
-        this.initializeTreeItems( item, childConfig,depth + 1 );
+        this.initializeTreeItems(item, childConfig, depth + 1);
       }
 
-      $( document.body).append( ul );
+      $(document.body).append(ul);
     }
   },
-  
-  hideChildren : function(info, noEffect)
-  {
-    if ( info.childrenFrame )
-    {
-      if ( noEffect )
-      {
+
+  hideChildren: function (info, noEffect) {
+    if (info.childrenFrame) {
+      if (noEffect) {
         info.childrenFrame.hide();
       }
-      else
-      {
-        if ( info.depth <= 0  )
-        {
-          this.showChildFrame( info.childrenFrame, true, {"direction": "up"}, true );
+      else {
+        if (info.depth <= 0) {
+          this.showChildFrame(info.childrenFrame, true, { "direction": "up" }, true);
         }
-        else
-        {
-          this.showChildFrame( info.childrenFrame, false, {"origin": ["top", "right"]}, true );
+        else {
+          this.showChildFrame(info.childrenFrame, false, { "origin": ["top", "right"] }, true);
         }
       }
     }
 
-    if (info.children)
-    {
-      for ( var i=0; i<info.children.length; i++ )
-      {
-        this.hideChildren( info.children[i],noEffect );
+    if (info.children) {
+      for (var i = 0; i < info.children.length; i++) {
+        this.hideChildren(info.children[i], noEffect);
 
       }
     }
   },
-  
-  _fireOnShow : function()
-  {
-    
-  },
-  
-  showChildFrame : function(elem, isRoot, option, isHide)
-  {
-    var effect = ( isRoot  ? this.options.rootEffect : this.options.otherEffect );
-    if ( effect )
-    {
-      if ( !effect.option ) effect.option = {};
 
-      if ( option )
-      {
-        for( var key in option )
-        {
-          effect.option[ key ] = option[key];
+  _fireOnShow: function () {
+
+  },
+
+  showChildFrame: function (elem, isRoot, option, isHide) {
+    var effect = (isRoot ? this.options.rootEffect : this.options.otherEffect);
+    if (effect) {
+      if (!effect.option) effect.option = {};
+
+      if (option) {
+        for (var key in option) {
+          effect.option[key] = option[key];
         }
       }
 
-      if ( !isHide )
-      {
+      if (!isHide) {
         elem.show(effect.animation, effect.option, effect.speed);
         this._fireOnShow();
       }
       else
         elem.hide(effect.animation, effect.option, effect.speed);
     }
-    else
-    {
-      if ( !isHide )
-      {
+    else {
+      if (!isHide) {
         elem.show();
         this._fireOnShow();
       }
-      else
-      {
+      else {
         elem.hide();
       }
     }
   },
-  
-  onItemClick : function( event )
-  {
-    var target =  event.currentTarget;
-    var info = $( target ).data( 'data' );
+
+  onItemClick: function (event) {
+    var target = event.currentTarget;
+    var info = $(target).data('data');
     var windowSize = GSI.Utils.getScreenSize();
 
-    if ( info.parent )
-    {
-      if ( info.parent.children )
-      {
-        for ( var i=0;i<info.parent.children.length;i++ )
-          this.hideChildren( info.parent.children[i] );
+    if (info.parent) {
+      if (info.parent.children) {
+        for (var i = 0; i < info.parent.children.length; i++)
+          this.hideChildren(info.parent.children[i]);
       }
     }
-    if ( info && info.childrenFrame )
-    {
-      if ( info.childrenFrame.is( ':visible' ) )
-      {
-        this.hideChildren( info );
+    if (info && info.childrenFrame) {
+      if (info.childrenFrame.is(':visible')) {
+        this.hideChildren(info);
       }
-      else
-      {
+      else {
         var pos = $(target).offset();
-        if ( info.depth >= 1 )
-        {
-          pos.top += Math.floor( $(target).outerHeight(true ) / 2 );
+        if (info.depth >= 1) {
+          pos.top += Math.floor($(target).outerHeight(true) / 2);
         }
-        else
-        {
-          pos.top += Math.floor( $(target).outerHeight(true )+2 );
+        else {
+          pos.top += Math.floor($(target).outerHeight(true) + 2);
         }
 
-        info.childrenFrame.css( { 'visibility' : 'hidden' } ).show();
-        var frameHeight = info.childrenFrame.outerHeight(true );
-        var frameWidth = info.childrenFrame.outerWidth(true );
-        info.childrenFrame.css( { 'visibility' : 'visible' } ).hide();
+        info.childrenFrame.css({ 'visibility': 'hidden' }).show();
+        var frameHeight = info.childrenFrame.outerHeight(true);
+        var frameWidth = info.childrenFrame.outerWidth(true);
+        info.childrenFrame.css({ 'visibility': 'visible' }).hide();
 
-        if ( pos.top + frameHeight > windowSize.h )
-        {
-          pos.top -= ( pos.top + frameHeight - windowSize.h );
-          if ( pos.top < 0 ) pos.top = 0;
+        if (pos.top + frameHeight > windowSize.h) {
+          pos.top -= (pos.top + frameHeight - windowSize.h);
+          if (pos.top < 0) pos.top = 0;
         }
 
-        if ( this.options.position == "left" )
-        {
-          if ( pos.top + frameHeight > windowSize.h )
-          {
-            pos.top -= ( pos.top + frameHeight - windowSize.h );
-            if ( pos.top < 0 ) pos.top = 0;
+        if (this.options.position == "left") {
+          if (pos.top + frameHeight > windowSize.h) {
+            pos.top -= (pos.top + frameHeight - windowSize.h);
+            if (pos.top < 0) pos.top = 0;
           }
 
-          if ( info.depth >= 1 )
-          {
-            pos.left+= Math.floor( $(target).outerWidth(true ) -30 );
+          if (info.depth >= 1) {
+            pos.left += Math.floor($(target).outerWidth(true) - 30);
           }
           info.childrenFrame
             .css({
-              left : pos.left + 'px',
-              top  : pos.top + 'px'
-            } );
+              left: pos.left + 'px',
+              top: pos.top + 'px'
+            });
 
-          if ( info.depth <= 0  )
-          {
-            this.showChildFrame( info.childrenFrame, true, {direction:'up'} );
+          if (info.depth <= 0) {
+            this.showChildFrame(info.childrenFrame, true, { direction: 'up' });
           }
-          else
-          {
-            this.showChildFrame( info.childrenFrame, false, { origin : ["top", "left"] } );
+          else {
+            this.showChildFrame(info.childrenFrame, false, { origin: ["top", "left"] });
           }
         }
-        else
-        {
-          if ( info.depth >= 1 )
-          {
+        else {
+          if (info.depth >= 1) {
             pos.left -= frameWidth - 30;
           }
-          else
-          {
-            pos.left += Math.floor( $(target).outerWidth(true ));
+          else {
+            pos.left += Math.floor($(target).outerWidth(true));
             pos.left -= frameWidth;
           }
-          if ( pos.left < 0 ) pos.left = 0;
+          if (pos.left < 0) pos.left = 0;
 
           info.childrenFrame
-          .css({
-            left : pos.left + 'px',
-            top  : pos.top + 'px'
-          } );
+            .css({
+              left: pos.left + 'px',
+              top: pos.top + 'px'
+            });
 
-          if ( info.depth <= 0  )
-          {
-            this.showChildFrame( info.childrenFrame, true, {direction:'up'} );
+          if (info.depth <= 0) {
+            this.showChildFrame(info.childrenFrame, true, { direction: 'up' });
           }
-          else
-          {
-            this.showChildFrame( info.childrenFrame, false, { origin : ["top", "right"] } );
+          else {
+            this.showChildFrame(info.childrenFrame, false, { origin: ["top", "right"] });
           }
         }
       }
     }
-    else if ( info )
-    {
-      if ( info.href && info.href != '' )
-      {
-        this.openLink( info.href );
+    else if (info) {
+      if (info.href && info.href != '') {
+        this.openLink(info.href);
       }
-      if ( this.options.onMenuItemClick )
-      {
+      if (this.options.onMenuItemClick) {
         this.options.onMenuItemClick(info);
       }
       this.hide();
     }
   },
-  
+
   // マウスオーバー時のイベント
-  onItemMouseover : function( event )
-  {
-    var target =  event.currentTarget;
-    var info = $( target ).data( 'data' );
-    
+  onItemMouseover: function (event) {
+    var target = event.currentTarget;
+    var info = $(target).data('data');
+
     var zoom = GLOBE.MAP.getCurrentZoom();
-    
-    switch ( info.id )
-    {
+
+    switch (info.id) {
       case 'gsi3d_2048':
         this.showSampleScreenRect(true, 2048);
         break;
@@ -4308,15 +4134,13 @@ GLOBE.MENU.FUNC = {
         break;
     }
   },
-  
+
   // マウスアウト時のイベント
-  onItemMouseout : function( event )
-  {
-    var target =  event.currentTarget;
-    var info = $( target ).data( 'data' );
-    
-    switch ( info.id )
-    {
+  onItemMouseout: function (event) {
+    var target = event.currentTarget;
+    var info = $(target).data('data');
+
+    switch (info.id) {
       case 'gsi3d_2048':
         this.showSampleScreenRect(false, 2048);
         break;
@@ -4325,23 +4149,20 @@ GLOBE.MENU.FUNC = {
         break;
     }
   },
-  
-  hide : function(noEffect)
-  {
-    this.hideChildren( this.rootItem, noEffect );
+
+  hide: function (noEffect) {
+    this.hideChildren(this.rootItem, noEffect);
   },
-  
-  openLink : function( url )
-  {
+
+  openLink: function (url) {
     GLOBE.MAP.currents.zoomlevel = GLOBE.MAP.getCurrentZoom();
     var currents = GLOBE.MAP.currents;
     var centerLatLng = GLOBE.MAP.getCenterPosition(true);
     var u = '';
-    
-    switch ( url )
-    {
+
+    switch (url) {
       case 'gsi2d':
-        u  = 'https://maps.gsi.go.jp/'
+        u = 'https://maps.gsi.go.jp/'
           + '#' + currents.zoomlevel
           + '/' + centerLatLng[0]
           + '/' + centerLatLng[1]
@@ -4354,17 +4175,15 @@ GLOBE.MENU.FUNC = {
       case 'gsi3d_1024':
         var pxsize = url.split('_')[1];
         var layers = currents.layers.split('|');
-        var show   = currents.layersShow;
+        var show = currents.layersShow;
         var showlayers = [];
-        for ( var i=0; i<layers.length; i++ )
-        {
-          if ( show.length > i && show.charAt(i) == '1' )
-          {
-            showlayers.push( layers[i] );
+        for (var i = 0; i < layers.length; i++) {
+          if (show.length > i && show.charAt(i) == '1') {
+            showlayers.push(layers[i]);
           }
         }
-        
-        u  = 'https://maps.gsi.go.jp/index_3d.html'
+
+        u = 'https://maps.gsi.go.jp/index_3d.html'
           + '?z=' + currents.zoomlevel
           + '&lat=' + centerLatLng[0]
           + '&lon=' + centerLatLng[1]
@@ -4375,27 +4194,23 @@ GLOBE.MENU.FUNC = {
           + '#&a=' + currents.heightPower;
         break;
     }
-    
-    if ( u )
-    {
+
+    if (u) {
       //console.log("url", u);
-      window.open( u, 'GSIMAPS' );
+      window.open(u, 'GSIMAPS');
     }
   },
-  
+
   // 地理院地図3Dでの、おおよその表示範囲を示す矩形を表示
-  showSampleScreenRect : function(showFlg, pxsize)
-  {
-    if ( showFlg )
-    {
+  showSampleScreenRect: function (showFlg, pxsize) {
+    if (showFlg) {
       var rect = GLOBE.DIALOG.GSI3DCUSTOM.getCenterRectFromPixelsize(pxsize);
       var entity = GLOBE.DIALOG.GSI3DCUSTOM.getSampleRectEntity('sampleRect', rect);
-      
+
       GLOBE.MAP.viewer.entities.add(entity);
       this._sampleRectEntity = entity;
     }
-    else
-    {
+    else {
       GLOBE.MAP.viewer.entities.remove(this._sampleRectEntity);
     }
   }
@@ -4405,9 +4220,8 @@ GLOBE.MENU.FUNC = {
 /***** 情報ボタン *****/
 GLOBE.MENU.INFO = {
   container: null,
-  
-  create: function()
-  {
+
+  create: function () {
     this.container = $('<div>情報</div>')
       .addClass('menu_btn')
       .attr({
@@ -4417,20 +4231,18 @@ GLOBE.MENU.INFO = {
       .on('click', this.onClick.bind(this))
       .appendTo(document.body);
   },
-  
-  onClick: function()
-  {
-      GSI.GLOBALS.viewListDialog.show();
-      GSI.GLOBALS.layerTreeDialog.show();
+
+  onClick: function () {
+    GSI.GLOBALS.viewListDialog.show();
+    GSI.GLOBALS.layerTreeDialog.show();
   }
 };
 
 /***** カメラリセットボタン *****/
 GLOBE.MENU.CAMERARESET = {
   container: null,
-  
-  create: function()
-  {
+
+  create: function () {
     this.container = $('<div>視点<br>リセット</div>')
       .addClass('menu_btn')
       .attr({
@@ -4440,9 +4252,8 @@ GLOBE.MENU.CAMERARESET = {
       .on('click', this.onClick.bind(this))
       .appendTo(document.body);
   },
-  
-  onClick: function()
-  {
+
+  onClick: function () {
     GLOBE.MAP.flyToDefault();
   }
 };
@@ -4454,9 +4265,8 @@ GLOBE.MENU.POINTINFO = {
   _mouseEventHandler: null,
   _canvas: null,
   _state: 0,
-  
-  create: function()
-  {
+
+  create: function () {
     this.container = $('<div>地点<br>情報</div>')
       .addClass('menu_btn')
       .attr({
@@ -4465,106 +4275,99 @@ GLOBE.MENU.POINTINFO = {
       })
       .on('mouseup', this.onClick.bind(this))
       .appendTo(document.body);
-    
+
     this._mouseEventHandler = new Cesium.ScreenSpaceEventHandler(GLOBE.MAP.viewer.scene.canvas);
-    
+
     this._createCursorHelp();
   },
-  
+
   // ボタン押下時のイベントハンドラ
-  onClick: function(event)
-  {
-    if ( this._state == 1 )
-    {
+  onClick: function (event) {
+    if (this._state == 1) {
       this.endInfoMode(event);
     }
-    else
-    {
+    else {
       this.beginInfoMode(event);
     }
   },
-  
+
   // 地点情報モードを開始
-  beginInfoMode: function(event)
-  {
+  beginInfoMode: function (event) {
     var that = this;
     var diffY = $("#header").outerHeight() + $(that._canvas).outerHeight() / 2;
     var diffX = 35;
-    var mousemoveHandler = function(event){
+    var mousemoveHandler = function (event) {
       $("#" + GLOBE.MAP.mapElementId).css('cursor', 'url("./image/system/cursor_target64.cur"), help');
       that._canvas.css({
         'position': 'absolute',
-        'z-index' : 10000,
-        'top'     : (event.pageY - diffY) + "px",
-        'left'    : (event.pageX + diffX) + "px"
+        'z-index': 10000,
+        'top': (event.pageY - diffY) + "px",
+        'left': (event.pageX + diffX) + "px"
       });
     };
-    
-    this._mouseEventHandler.setInputAction( GLOBE.MAP.showPointInfo, Cesium.ScreenSpaceEventType.LEFT_CLICK );
+
+    this._mouseEventHandler.setInputAction(GLOBE.MAP.showPointInfo, Cesium.ScreenSpaceEventType.LEFT_CLICK);
     this._beforeCursor = $("#" + GLOBE.MAP.mapElementId).css("cursor") || "auto";
     $("#" + GLOBE.MAP.mapElementId).css('cursor', 'url("./image/system/cursor_target64.cur"), help');
     $("body").on("mousemove.cursorhelp", mousemoveHandler.bind(this));
     this._canvas.show();
     mousemoveHandler(event);
-    
+
     this._state = 1;
   },
-  
+
   // 地点情報モードを終了
-  endInfoMode: function(event)
-  {
-    this._mouseEventHandler.removeInputAction( Cesium.ScreenSpaceEventType.LEFT_CLICK );
+  endInfoMode: function (event) {
+    this._mouseEventHandler.removeInputAction(Cesium.ScreenSpaceEventType.LEFT_CLICK);
     $("#" + GLOBE.MAP.mapElementId).css("cursor", this._beforeCursor);
     $("body").off("mousemove.cursorhelp");
     this._canvas.hide();
-    
+
     this._state = 0;
   },
-  
+
   // 地点情報モードの吹き出しを作成
-  _createCursorHelp: function()
-  {
-    var balloonMargin  = 2;
+  _createCursorHelp: function () {
+    var balloonMargin = 2;
     var balloonPadding = 15;
-    var anchorWidth    = 30;
-    var anchorHeight   = 15;
-    var fontSize       = 15;
-    var radius         = 10;
-    var lineWidth      = 3;
-    var textlineSpace  = 15;
-    
+    var anchorWidth = 30;
+    var anchorHeight = 15;
+    var fontSize = 15;
+    var radius = 10;
+    var lineWidth = 3;
+    var textlineSpace = 15;
+
     var font = fontSize + 'px "Lucida Grande", "Hiragino Kaku Gothic ProN", "ヒラギノ角ゴ ProN W3", Meiryo, メイリオ, sans-serif';
-    
-    var textRows = ['調べたい地点を','左クリック'];
-    
-    var balloonWidth  = 0;
+
+    var textRows = ['調べたい地点を', '左クリック'];
+
+    var balloonWidth = 0;
     var balloonHeight = 0;
-    
+
     // 新規作成
     var canvas = document.createElement('canvas');
     var ctx = canvas.getContext('2d');
     ctx.font = font;
-    
+
     // サイズ計測
     balloonHeight = balloonPadding * 2 + fontSize + (textlineSpace + fontSize) * (textRows.length - 1);
     balloonWidth = 0;
-    for ( var i=0; i<textRows.length; i++ )
-    {
+    for (var i = 0; i < textRows.length; i++) {
       metrix = ctx.measureText(textRows[i]);
       balloonWidth = (balloonWidth > metrix.width ? balloonWidth : metrix.width);
     }
     balloonWidth += balloonPadding * 2;
-    
+
     canvas.height = balloonHeight + balloonMargin * 2 + parseInt(lineWidth / 2);
-    canvas.width  = balloonWidth + anchorWidth + balloonMargin + parseInt(lineWidth / 2);	//marginはanchorの反対側だけ
-    
+    canvas.width = balloonWidth + anchorWidth + balloonMargin + parseInt(lineWidth / 2);	//marginはanchorの反対側だけ
+
     // 吹き出し描画
-    var balloonLeft   = balloonMargin + anchorWidth;
-    var balloonRight  = balloonLeft + balloonWidth;
-    var balloonTop    = balloonMargin;
+    var balloonLeft = balloonMargin + anchorWidth;
+    var balloonRight = balloonLeft + balloonWidth;
+    var balloonTop = balloonMargin;
     var balloonBottom = balloonMargin + balloonHeight;
     var balloonCenter = (balloonMargin * 2 + balloonHeight) / 2;
-    
+
     ctx.font = font;
     ctx.shadowBlur = balloonMargin;
     ctx.shadowColor = '#666666';
@@ -4580,28 +4383,27 @@ GLOBE.MENU.POINTINFO = {
     //ctx.lineTo(balloonCenter, balloonBottom + anchorHeight);
     //ctx.lineTo(balloonCenter-(anchorWidth/2), balloonBottom);
     ctx.arcTo(balloonLeft, balloonBottom, balloonLeft, balloonTop, radius);
-    ctx.lineTo(balloonLeft, balloonCenter+parseInt(anchorHeight/2));
-    ctx.lineTo(balloonLeft-anchorWidth, balloonCenter);
-    ctx.lineTo(balloonLeft, balloonCenter-parseInt(anchorHeight/2));
+    ctx.lineTo(balloonLeft, balloonCenter + parseInt(anchorHeight / 2));
+    ctx.lineTo(balloonLeft - anchorWidth, balloonCenter);
+    ctx.lineTo(balloonLeft, balloonCenter - parseInt(anchorHeight / 2));
     ctx.arcTo(balloonLeft, balloonTop, balloonRight, balloonTop, radius);
     ctx.closePath();
     ctx.fill();
     ctx.stroke();
-    
+
     // テキスト描画
     ctx.shadowBlur = 0;
     ctx.shadowOffsetX = 0;
     ctx.shadowOffsetY = 0;
     ctx.fillStyle = '#000000';
     ctx.textBaseline = 'bottom';
-    for ( var i=0; i<textRows.length; i++ )
-    {
+    for (var i = 0; i < textRows.length; i++) {
       var x = balloonLeft + balloonPadding + parseInt(lineWidth / 2);
-      var y = balloonTop + balloonPadding + lineWidth + fontSize + (fontSize + textlineSpace)*i;
-      ctx.fillText(textRows[i], x, y );
+      var y = balloonTop + balloonPadding + lineWidth + fontSize + (fontSize + textlineSpace) * i;
+      ctx.fillText(textRows[i], x, y);
     }
-    
-    this._canvas = $(canvas).css({'display':'none'});
+
+    this._canvas = $(canvas).css({ 'display': 'none' });
     $("#" + GLOBE.MAP.mapElementId).append(this._canvas);
   }
 };
@@ -4612,7 +4414,7 @@ GSI.COCOTileLayer
 ************************************************************************/
 GSI.COCOTileLayer = MA.Class.extend({
   includes: MA.Mixin.Events,
-  visible : true,
+  visible: true,
   options: {
     minZoom: 0,
     maxZoom: 18,
@@ -4626,59 +4428,54 @@ GSI.COCOTileLayer = MA.Class.extend({
     options = MA.setOptions(this, options);
     this.visible = options.visible;
   },
-  getVisible : function()
-  {
+  getVisible: function () {
     return this.visible;
   },
-  setVisible : function( on)
-  {
-    
+  setVisible: function (on) {
+
   },
-  refresh : function()
-  {
-    if ( this.visible )
-    {
-      
+  refresh: function () {
+    if (this.visible) {
+
     }
   },
-  _reset: function (e) {},
-  _moveend : function() {},
-  _movestart : function() {
+  _reset: function (e) { },
+  _moveend: function () { },
+  _movestart: function () {
     this._reset();
   },
-  _timerRefresh : function() {
+  _timerRefresh: function () {
     this._update();
   },
-  _update : function() {
-    if ( this.refreshTimerId )
-    {
-      clearTimeout( this.refreshTimerId );
+  _update: function () {
+    if (this.refreshTimerId) {
+      clearTimeout(this.refreshTimerId);
       this.refreshTimerId = null;
     }
 
     if (!this._map) { return; }
 
     var map = this._map,
-        bounds = this.map.getPixelBounds(),
-        zoom = this.map.getZoom(),
-        tileSize = this._getTileSize();
+      bounds = this.map.getPixelBounds(),
+      zoom = this.map.getZoom(),
+      tileSize = this._getTileSize();
 
     if (zoom > this.options.maxZoom || zoom < this.options.minZoom) {
       return;
     }
 
     var tileBounds = L.bounds(
-            bounds.min.divideBy(tileSize)._floor(),
-            bounds.max.divideBy(tileSize)._floor());
+      bounds.min.divideBy(tileSize)._floor(),
+      bounds.max.divideBy(tileSize)._floor());
 
     this._addTilesFromCenterOut(tileBounds);
 
   },
   _getTileSize: function () {
     var map = this._map,
-        zoom = this.map.getZoom() + this.options.zoomOffset,
-        zoomN = this.options.maxNativeZoom,
-        tileSize = this.options.tileSize;
+      zoom = this.map.getZoom() + this.options.zoomOffset,
+      zoomN = this.options.maxNativeZoom,
+      tileSize = this.options.tileSize;
 
     if (zoomN && zoom > zoomN) {
       tileSize = Math.round(this.map.getZoomScale(zoom) / this.map.getZoomScale(zoomN) * tileSize);
@@ -4703,10 +4500,10 @@ GSI.COCOTileLayer = MA.Class.extend({
 
     if (options.bounds) {
       var tileSize = options.tileSize,
-          nwPoint = tilePoint.multiplyBy(tileSize),
-          sePoint = nwPoint.add([tileSize, tileSize]),
-          nw = this._map.unproject(nwPoint),
-          se = this._map.unproject(sePoint);
+        nwPoint = tilePoint.multiplyBy(tileSize),
+        sePoint = nwPoint.add([tileSize, tileSize]),
+        nw = this._map.unproject(nwPoint),
+        se = this._map.unproject(sePoint);
 
       // TODO temporary hack, will be removed after refactoring projections
       // https://github.com/Leaflet/Leaflet/issues/1618
@@ -4721,7 +4518,7 @@ GSI.COCOTileLayer = MA.Class.extend({
   },
   _addTilesFromCenterOut: function (bounds) {
     var queue = [],
-        center = bounds.getCenter();
+      center = bounds.getCenter();
 
     var j, i, point;
 
@@ -4749,11 +4546,11 @@ GSI.COCOTileLayer = MA.Class.extend({
       this._addTile(queue[i]);
     }
 
-    this.fire('loadstart', null );
+    this.fire('loadstart', null);
   },
   _getTilePos: function (tilePoint) {
     var origin = this._map.getPixelOrigin(),
-        tileSize = this._getTileSize();
+      tileSize = this._getTileSize();
 
     return tilePoint.multiplyBy(tileSize).subtract(origin);
   },
@@ -4764,7 +4561,7 @@ GSI.COCOTileLayer = MA.Class.extend({
     this._tiles[tilePoint.x + ':' + tilePoint.y] = tile;
     this._loadTile(tile, tilePoint);
   },
-  _resetTile: function (/*tile*/) {},
+  _resetTile: function (/*tile*/) { },
   _adjustTilePoint: function (tilePoint) {
 
     var limit = this._getWrapTileNum();
@@ -4782,7 +4579,7 @@ GSI.COCOTileLayer = MA.Class.extend({
   _getZoomForUrl: function () {
 
     var options = this.options,
-        zoom = this._map.getZoom();
+      zoom = this._map.getZoom();
 
     if (options.zoomReverse) {
       zoom = options.maxZoom - zoom;
@@ -4793,7 +4590,7 @@ GSI.COCOTileLayer = MA.Class.extend({
   },
   _getWrapTileNum: function () {
     var crs = this._map.options.crs,
-        size = crs.getSize(this._map.getZoom());
+      size = crs.getSize(this._map.getZoom());
     return size.divideBy(this._getTileSize())._floor();
   },
   getTileUrl: function (url, tilePoint) {
@@ -4805,90 +4602,84 @@ GSI.COCOTileLayer = MA.Class.extend({
   },
   _loadTile: function (tile, tilePoint) {
     this._adjustTilePoint(tilePoint);
-        
-        this._loadTileAjax(this._url.concat(), tile, tilePoint);
+
+    this._loadTileAjax(this._url.concat(), tile, tilePoint);
   },
-  _loadTileAjax: function (url, tile, tilePoint){
-        if(url.length != 0){
-        tile.src = this.getTileUrl(url[0], tilePoint);
-        tile.ajax = $.ajax({
-          url: tile.src,
-          cache: CONFIG.LOADCOCOTILECACHE,
-          crossDomain : true,
-          success : L.Util.bind( this._tileLoaded  , this, url, tile, tilePoint),
+  _loadTileAjax: function (url, tile, tilePoint) {
+    if (url.length != 0) {
+      tile.src = this.getTileUrl(url[0], tilePoint);
+      tile.ajax = $.ajax({
+        url: tile.src,
+        cache: CONFIG.LOADCOCOTILECACHE,
+        crossDomain: true,
+        success: L.Util.bind(this._tileLoaded, this, url, tile, tilePoint),
         //error   : L.Util.bind( this._tileLoaded_Error  , this, url, tile, tilePoint),
-                complete: L.Util.bind( this._tileLoaded_Complete, this, url, tile, tilePoint)
-        });
-        }
+        complete: L.Util.bind(this._tileLoaded_Complete, this, url, tile, tilePoint)
+      });
+    }
   },
-  _tileLoaded : function(url, tile, tilePoint){
-    if ( tile.ajax )
-    {
-      var lines = tile.ajax.responseText.split( "\n" );
-      if ( lines.length > 0 )
-      {
+  _tileLoaded: function (url, tile, tilePoint) {
+    if (tile.ajax) {
+      var lines = tile.ajax.responseText.split("\n");
+      if (lines.length > 0) {
 
-        var line = lines[ 0 ];
-        var ids = line.split( ',' );
+        var line = lines[0];
+        var ids = line.split(',');
 
-        for ( var i=0; i< ids.length; i ++ )
-        {
-          var tileId = ids[ i ];
-          this._haveTiles[ tileId ] = true;
+        for (var i = 0; i < ids.length; i++) {
+          var tileId = ids[i];
+          this._haveTiles[tileId] = true;
         }
       }
     }
   },
-  _tileLoaded_Complete : function(url, tile, tilePoint){
-    if ( tile.ajax )
-    {
-            var ret = false;
-            if(url.length > 0){
-                url.shift();
-                if(url.length > 0){
-                    this._loadTileAjax(url, tile, tilePoint);
-                    ret = true;
-                }
-            }
-
-            if(!ret){
-          tile.ajax = null;
-            }
+  _tileLoaded_Complete: function (url, tile, tilePoint) {
+    if (tile.ajax) {
+      var ret = false;
+      if (url.length > 0) {
+        url.shift();
+        if (url.length > 0) {
+          this._loadTileAjax(url, tile, tilePoint);
+          ret = true;
         }
+      }
 
-        tile.loaded = true;
-        var n = 0;
-    for ( var id in this._tiles )
-    {
-            n++;
-      var tile = this._tiles[ id ];
-      if ( tile.ajax || !tile.loaded )
-      {
+      if (!ret) {
+        tile.ajax = null;
+      }
+    }
+
+    tile.loaded = true;
+    var n = 0;
+    for (var id in this._tiles) {
+      n++;
+      var tile = this._tiles[id];
+      if (tile.ajax || !tile.loaded) {
         return;
       }
     }
 
-    if ( this.options.onLoad ) this.options.onLoad( this._haveTiles );
+    if (this.options.onLoad) this.options.onLoad(this._haveTiles);
 
-        if(this.refreshTimerId_load){
-            clearTimeout(this.refreshTimerId_load);
-            this.refreshTimerId_load = null;
-        }
-
-        if(n == 0){
-            return;
-        }
-
-        var that = this;
-    this.refreshTimerId_load =  setTimeout(
-            function(){
-                that.refreshTimerId_load = null;
-            that.fire('load', { tileIds : that._haveTiles } );
-            }
-        , 100 );
-
+    if (this.refreshTimerId_load) {
+      clearTimeout(this.refreshTimerId_load);
+      this.refreshTimerId_load = null;
     }
-} );
+
+    if (n == 0) {
+      return;
+    }
+
+    var that = this;
+    this.refreshTimerId_load = setTimeout(
+      function () {
+        that.refreshTimerId_load = null;
+        that.fire('load', { tileIds: that._haveTiles });
+      }
+      , 100);
+
+  }
+});
 
 
 /************************************************************************
@@ -4896,330 +4687,285 @@ GSI.COCOTileLayer = MA.Class.extend({
 ************************************************************************/
 
 GLOBE.SEARCHFORM = {
-  QUERY_NONE : 9,
-  QUERY_LATLNG : 2,
-  QUERY_LATLNG2 : 3,
-  QUERY_UTMPOINT : 5,
-  QUERY_QUERY : 4,
-  QUERY_EXCHANGE : 7,
-  QUERY_LATLNGNE : 8,
-  
+  QUERY_NONE: 9,
+  QUERY_LATLNG: 2,
+  QUERY_LATLNG2: 3,
+  QUERY_UTMPOINT: 5,
+  QUERY_QUERY: 4,
+  QUERY_EXCHANGE: 7,
+  QUERY_LATLNGNE: 8,
+
   formSelector: '#search_f',
   querySelector: '#query',
   magnifySelector: '#magnifyimage',
-  
+
   query: '',
   chimeiAjax: null,
   dialog: null,
-  
+
   // このオブジェクトを活性化（最初に呼ぶ）
-  create: function()
-  {
+  create: function () {
     this.dialog = GLOBE.DIALOG.SEARCH;
-    $(this.formSelector).on( 'submit', this.onSubmit.bind(this) );
-    $(this.magnifySelector).on( 'click', this.onSubmit.bind(this) );
+    $(this.formSelector).on('submit', this.onSubmit.bind(this));
+    $(this.magnifySelector).on('click', this.onSubmit.bind(this));
   },
-  
+
   // イベント：検索フォームの送信時
-  onSubmit: function( event )
-  {
+  onSubmit: function (event) {
     event.preventDefault();
-    
-    var query = $( this.querySelector ).val();
-    if ( $.trim(query) == '' ) return;
-    
+
+    var query = $(this.querySelector).val();
+    if ($.trim(query) == '') return;
+
     GLOBE.MAP.clearPinLayers("SEARCH");
-    
+
     var qType = this.checkQuery(query);
-    
-    if ( qType == this.QUERY_QUERY )
-    {
-      this.searchStart( query );
+
+    if (qType == this.QUERY_QUERY) {
+      this.searchStart(query);
     }
-    else
-    {
+    else {
       this.clearSearch();
       this.dialog.hide();
-      if ( qType == this.QUERY_LATLNG  || qType == this.QUERY_LATLNG2)
-      {
-        var latLng = ( qType == this.QUERY_LATLNG ? this.parseLatLngText( query ) : this.parseLatLngText2( query ) );
+      if (qType == this.QUERY_LATLNG || qType == this.QUERY_LATLNG2) {
+        var latLng = (qType == this.QUERY_LATLNG ? this.parseLatLngText(query) : this.parseLatLngText2(query));
 
-        if ( latLng[0] > 90 || latLng[0] < -90 || latLng[1] > 180 || latLng[1] < -180 )
-        {
-          alert( '緯度経度を正しく入力して下さい\n' +
-            '緯度:' + latLng[0] + ' 経度:' + latLng[1] );
+        if (latLng[0] > 90 || latLng[0] < -90 || latLng[1] > 180 || latLng[1] < -180) {
+          alert('緯度経度を正しく入力して下さい\n' +
+            '緯度:' + latLng[0] + ' 経度:' + latLng[1]);
         }
-        else
-        {
-          this.setView( latLng );
+        else {
+          this.setView(latLng);
         }
       }
-      else if ( qType == this.QUERY_UTMPOINT )
-      {
-        var latLng = GSI.UTM.Utils.point2LatLng( query );
-        
-        if ( latLng )
-        {
-          this.setView( [ latLng.lat, latLng.lng ] );
-        }
-        else
-        {
-          alert( 'UTMポイントを正しく入力して下さい' );
-        }
-      }
-      else if ( qType == this.QUERY_EXCHANGE )
-      {
-        var latLng = this.parseLatLngText3( query );
-        
-        if (!latLng)
-        {
-          alert( '緯度経度を正しく入力して下さい\n');
-        }
-        else if ( latLng[0] > 90 || latLng[0] < -90 || latLng[1] > 180 || latLng[1] < -180 )
-        {
-          alert( '緯度経度を正しく入力して下さい\n' +
-            '緯度:' + latLng[0] + ' 経度:' + latLng[1] );
-        }
-        else
-        {
-          this.setView( latLng );
-        }
-      }
-      else if ( qType == this.QUERY_LATLNGNE )
-      {
-        var latLng = this.parseLatLngText4( query );
+      else if (qType == this.QUERY_UTMPOINT) {
+        var latLng = GSI.UTM.Utils.point2LatLng(query);
 
-        if (!latLng)
-        {
-          alert( '緯度経度を正しく入力して下さい\n');
+        if (latLng) {
+          this.setView([latLng.lat, latLng.lng]);
         }
-        else if ( latLng[0] > 90 || latLng[0] < -90 || latLng[1] > 180 || latLng[1] < -180 )
-        {
-          alert( '緯度経度を正しく入力して下さい\n' +
-            '緯度:' + latLng[0] + ' 経度:' + latLng[1] );
+        else {
+          alert('UTMポイントを正しく入力して下さい');
         }
-        else
-        {
-          this.setView( latLng );
+      }
+      else if (qType == this.QUERY_EXCHANGE) {
+        var latLng = this.parseLatLngText3(query);
+
+        if (!latLng) {
+          alert('緯度経度を正しく入力して下さい\n');
+        }
+        else if (latLng[0] > 90 || latLng[0] < -90 || latLng[1] > 180 || latLng[1] < -180) {
+          alert('緯度経度を正しく入力して下さい\n' +
+            '緯度:' + latLng[0] + ' 経度:' + latLng[1]);
+        }
+        else {
+          this.setView(latLng);
+        }
+      }
+      else if (qType == this.QUERY_LATLNGNE) {
+        var latLng = this.parseLatLngText4(query);
+
+        if (!latLng) {
+          alert('緯度経度を正しく入力して下さい\n');
+        }
+        else if (latLng[0] > 90 || latLng[0] < -90 || latLng[1] > 180 || latLng[1] < -180) {
+          alert('緯度経度を正しく入力して下さい\n' +
+            '緯度:' + latLng[0] + ' 経度:' + latLng[1]);
+        }
+        else {
+          this.setView(latLng);
         }
       }
     }
-    
+
     this.query = query;
-    
+
     return false;
   },
-  
-  setView: function( latLng )
-  {
-    this.getDemPng( latLng );
+
+  setView: function (latLng) {
+    this.getDemPng(latLng);
   },
-  
-  clearSearch : function()
-  {
-    if ( this.chimeiAjax )
-    {
-      try{ this.chimeiAjax.abort(); } catch(e){}
+
+  clearSearch: function () {
+    if (this.chimeiAjax) {
+      try { this.chimeiAjax.abort(); } catch (e) { }
       this.chimeiAjax = null;
     }
     this.dialog.clear();
   },
-  
-  searchStart : function( q )
-  {
+
+  searchStart: function (q) {
     this.clearSearch();
     this.dialog.show();
-    this.chimeiAjax = this.searchChimei( q, "","" );
+    this.chimeiAjax = this.searchChimei(q, "", "");
   },
-  
-  searchChimei : function (q, pref, muni)
-  {
+
+  searchChimei: function (q, pref, muni) {
     var constraint = '';
     var url = CONFIG.SERVERAPI.CHIMEI_SEARCH;
-    var parameter = { "q" : q };
+    var parameter = { "q": q };
 
     return $.ajax({
       type: "GET",
-      url:url,
+      url: url,
       data: parameter,
       dataType: "json",
       timeout: 30000,
       success: this.setChimeiRusult.bind(this),
-      error:function(){
+      error: function () {
       }
     });
   },
-  
-  setChimeiRusult : function(json)
-  {
-    this.dialog.setChimeiResult( json );
-  },
-  
-  // 検索タイプを判定。判定結果を返す。
-  checkQuery : function( q )
-  {
-    q = $.trim(q);
-    q = q.replace( ',', ' ' );
 
-    if (q == '')
-    {
+  setChimeiRusult: function (json) {
+    this.dialog.setChimeiResult(json);
+  },
+
+  // 検索タイプを判定。判定結果を返す。
+  checkQuery: function (q) {
+    q = $.trim(q);
+    q = q.replace(',', ' ');
+
+    if (q == '') {
       return this.QUERY_NONE;
     }
-    else if ( q.length == 13
+    else if (q.length == 13
       && q.substring(0, 2).match(/^[0-9]+$/)
       && q.substring(2, 4).match(/^[A-Z]+$/)
-      && q.substring(5, 13).match(/^[0-9]+$/) )
-    {
+      && q.substring(5, 13).match(/^[0-9]+$/)) {
       return this.QUERY_UTMPOINT;
     }
-    else if( q.match(/^(-|\+)*[0-9]+(\.[0-9]+)*\s+(-|\+)*[0-9]+(\.[0-9]+)*$/)  )
-    {
+    else if (q.match(/^(-|\+)*[0-9]+(\.[0-9]+)*\s+(-|\+)*[0-9]+(\.[0-9]+)*$/)) {
       return this.QUERY_LATLNG;
     }
-    else if ( q.match(/^(-|\+)*[0-9]+度[\s]+(-|\+)*[0-9]+度$/)
+    else if (q.match(/^(-|\+)*[0-9]+度[\s]+(-|\+)*[0-9]+度$/)
       ||
       q.match(/^(-|\+)*[0-9]+度[0-9]+分[\s]+(-|\+)*[0-9]+度[0-9]+分$/)
       ||
       q.match(/^(-|\+)*[0-9]+度[0-9]+分[0-9]+(\.[0-9]+)*秒[\s]+(-|\+)*[0-9]+度[0-9]+分[0-9]+(\.[0-9]+)*秒$/)
-    )
-    {
+    ) {
       return this.QUERY_LATLNG2;
     }
-    else
-    {
-      if ( ( q.match(/^(?:N|S|北緯|南緯|-|\+)*([0-9]{1,3}(?:\.[0-9]+)*)(?:,|\s)(?:E|W|東経|西経|-|\+)*([0-9]{1,3}(?:\.[0-9]+)*)/) )
+    else {
+      if ((q.match(/^(?:N|S|北緯|南緯|-|\+)*([0-9]{1,3}(?:\.[0-9]+)*)(?:,|\s)(?:E|W|東経|西経|-|\+)*([0-9]{1,3}(?:\.[0-9]+)*)/))
         ||
-        ( q.match(/^(?:E|W|東経|西経|-|\+)*([0-9]{1,3}(?:\.[0-9]+)*)(?:,|\s)(?:N|S|北緯|南緯|-|\+)*([0-9]{1,3}(?:\.[0-9]+)*)/) ) )
-      {
+        (q.match(/^(?:E|W|東経|西経|-|\+)*([0-9]{1,3}(?:\.[0-9]+)*)(?:,|\s)(?:N|S|北緯|南緯|-|\+)*([0-9]{1,3}(?:\.[0-9]+)*)/))) {
         //NE表記
         return this.QUERY_LATLNGNE;
       }
-      else if ( ( q.match(/^(?:N|S|北緯|南緯|-|\+)*([0-9]{1,3}[度°])([0-9]{1,2}['分′])*([0-9]{1,2}(?:\.[0-9]+)*[秒″\"])*(?:,|\s)(?:E|W|東経|西経|-|\+)*([0-9]{1,3}[度°])([0-9]{1,2}['分′])*([0-9]{1,2}(?:\.[0-9]+)*[秒″\"])*$/) )
-          || 
-          ( q.match(/^(?:E|W|東経|西経|-|\+)*([0-9]{1,3}[度°])([0-9]{1,2}['分′])*([0-9]{1,2}(?:\.[0-9]+)*[秒″\"])*(?:,|\s)(?:N|S|北緯|南緯|-|\+)*([0-9]{1,3}[度°])([0-9]{1,2}['分′])*([0-9]{1,2}(?:\.[0-9]+)*[秒″\"])*$/) ) )
-      {
+      else if ((q.match(/^(?:N|S|北緯|南緯|-|\+)*([0-9]{1,3}[度°])([0-9]{1,2}['分′])*([0-9]{1,2}(?:\.[0-9]+)*[秒″\"])*(?:,|\s)(?:E|W|東経|西経|-|\+)*([0-9]{1,3}[度°])([0-9]{1,2}['分′])*([0-9]{1,2}(?:\.[0-9]+)*[秒″\"])*$/))
+        ||
+        (q.match(/^(?:E|W|東経|西経|-|\+)*([0-9]{1,3}[度°])([0-9]{1,2}['分′])*([0-9]{1,2}(?:\.[0-9]+)*[秒″\"])*(?:,|\s)(?:N|S|北緯|南緯|-|\+)*([0-9]{1,3}[度°])([0-9]{1,2}['分′])*([0-9]{1,2}(?:\.[0-9]+)*[秒″\"])*$/))) {
         //°′″表記
         return this.QUERY_EXCHANGE;
       }
-      else
-      {
+      else {
         return this.QUERY_QUERY;
       }
     }
   },
-  
-  parseLatLngText2 : function( s )
-  {
+
+  parseLatLngText2: function (s) {
     s = $.trim(s);
-    s = s.replace( ',', ' ' );
+    s = s.replace(',', ' ');
     var latwSign;
     var lngwSign;
-    var matchArr =  s.match( /^(-|\+)*([0-9]+)度[\s]+(-|\+)*([0-9]+)度$/ );
+    var matchArr = s.match(/^(-|\+)*([0-9]+)度[\s]+(-|\+)*([0-9]+)度$/);
 
-    if ( matchArr && matchArr.length > 0 )
-    {
-      var lat = parseInt( (matchArr[1] ? matchArr[1] : "") + matchArr[2] );
-      var lng = parseInt( (matchArr[3] ? matchArr[3] : "") + matchArr[4] );
-      return [ lat, lng ];
+    if (matchArr && matchArr.length > 0) {
+      var lat = parseInt((matchArr[1] ? matchArr[1] : "") + matchArr[2]);
+      var lng = parseInt((matchArr[3] ? matchArr[3] : "") + matchArr[4]);
+      return [lat, lng];
     }
 
     matchArr = s.match(/^(-|\+)*([0-9]+)度([0-9]+)分[\s]+(-|\+)*([0-9]+)度([0-9]+)分$/);
 
-    if ( matchArr && matchArr.length > 0 )
-    {
-      latwSign = (matchArr[1] && matchArr[1] == "-"? -1 : 1);
-      lngwSign = (matchArr[4] && matchArr[4] == "-"? -1 : 1);
-      var lat = parseInt( matchArr[2] ) + ( parseFloat( matchArr[3] ) / 60.0 );
-      var lng = parseInt( matchArr[5] ) + ( parseFloat( matchArr[6] ) / 60.0 );
+    if (matchArr && matchArr.length > 0) {
+      latwSign = (matchArr[1] && matchArr[1] == "-" ? -1 : 1);
+      lngwSign = (matchArr[4] && matchArr[4] == "-" ? -1 : 1);
+      var lat = parseInt(matchArr[2]) + (parseFloat(matchArr[3]) / 60.0);
+      var lng = parseInt(matchArr[5]) + (parseFloat(matchArr[6]) / 60.0);
 
       lat = lat * latwSign;
       lng = lng * lngwSign;
-      return [ lat, lng ];
+      return [lat, lng];
     }
 
     matchArr = s.match(/^(-|\+)*([0-9]+)度([0-9]+)分([0-9]+)秒[\s]+(-|\+)*([0-9]+)度([0-9]+)分([0-9]+)秒$/);
 
-    if ( matchArr && matchArr.length > 0 )
-    {
-      latwSign = (matchArr[1] && matchArr[1] == "-"? -1 : 1);
-      lngwSign = (matchArr[5] && matchArr[5] == "-"? -1 : 1);
-      var lat = parseInt( matchArr[2] ) + ( parseFloat( matchArr[3] ) / 60.0 ) + ( parseFloat( matchArr[4] ) / 3600.0 );
-      var lng = parseInt( matchArr[6] ) + ( parseFloat( matchArr[7] ) / 60.0 ) + ( parseFloat( matchArr[8] ) / 3600.0 );
+    if (matchArr && matchArr.length > 0) {
+      latwSign = (matchArr[1] && matchArr[1] == "-" ? -1 : 1);
+      lngwSign = (matchArr[5] && matchArr[5] == "-" ? -1 : 1);
+      var lat = parseInt(matchArr[2]) + (parseFloat(matchArr[3]) / 60.0) + (parseFloat(matchArr[4]) / 3600.0);
+      var lng = parseInt(matchArr[6]) + (parseFloat(matchArr[7]) / 60.0) + (parseFloat(matchArr[8]) / 3600.0);
 
       lat = lat * latwSign;
       lng = lng * lngwSign;
-      return [ lat, lng ];
+      return [lat, lng];
     }
 
     matchArr = s.match(/^(-|\+)*([0-9]+)度([0-9]+)分([0-9]+\.[0-9]+)秒[\s]+(-|\+)*([0-9]+)度([0-9]+)分([0-9]+\.[0-9]+)秒$/);
 
-    if ( matchArr && matchArr.length > 0 )
-    {
-      latwSign = (matchArr[1] && matchArr[1] == "-"? -1 : 1);
-      lngwSign = (matchArr[5] && matchArr[5] == "-"? -1 : 1);
-      var lat = parseInt( matchArr[2] ) + ( parseFloat( matchArr[3] ) / 60.0 ) + ( parseFloat( matchArr[4] ) / 3600.0 );
-      var lng = parseInt( matchArr[6] ) + ( parseFloat( matchArr[7] ) / 60.0 ) + ( parseFloat( matchArr[8] ) / 3600.0 );
+    if (matchArr && matchArr.length > 0) {
+      latwSign = (matchArr[1] && matchArr[1] == "-" ? -1 : 1);
+      lngwSign = (matchArr[5] && matchArr[5] == "-" ? -1 : 1);
+      var lat = parseInt(matchArr[2]) + (parseFloat(matchArr[3]) / 60.0) + (parseFloat(matchArr[4]) / 3600.0);
+      var lng = parseInt(matchArr[6]) + (parseFloat(matchArr[7]) / 60.0) + (parseFloat(matchArr[8]) / 3600.0);
 
       lat = lat * latwSign;
       lng = lng * lngwSign;
-      return [ lat, lng ];
+      return [lat, lng];
     }
 
     matchArr = s.match(/^(-|\+)*([0-9]+)度([0-9]+)分([0-9]+(?:\.[0-9]+)*)秒[\s]+(-|\+)*([0-9]+)度([0-9]+)分([0-9]+(?:\.[0-9]+)*)秒$/);
 
-    if ( matchArr && matchArr.length > 0 )
-    {
-      latwSign = (matchArr[1] && matchArr[1] == "-"? -1 : 1);
-      lngwSign = (matchArr[5] && matchArr[5] == "-"? -1 : 1);
-      var lat = parseInt( matchArr[2] ) + ( parseFloat( matchArr[3] ) / 60.0 ) + ( parseFloat( matchArr[4] ) / 3600.0 );
-      var lng = parseInt( matchArr[6] ) + ( parseFloat( matchArr[7] ) / 60.0 ) + ( parseFloat( matchArr[8] ) / 3600.0 );
+    if (matchArr && matchArr.length > 0) {
+      latwSign = (matchArr[1] && matchArr[1] == "-" ? -1 : 1);
+      lngwSign = (matchArr[5] && matchArr[5] == "-" ? -1 : 1);
+      var lat = parseInt(matchArr[2]) + (parseFloat(matchArr[3]) / 60.0) + (parseFloat(matchArr[4]) / 3600.0);
+      var lng = parseInt(matchArr[6]) + (parseFloat(matchArr[7]) / 60.0) + (parseFloat(matchArr[8]) / 3600.0);
 
       lat = lat * latwSign;
       lng = lng * lngwSign;
-      return [ lat, lng ];
+      return [lat, lng];
     }
 
 
     return null;
   },
-  parseLatLngText3 : function( s )
-  {
+  parseLatLngText3: function (s) {
     s = $.trim(s);
-    s = s.replace( ',', ' ' );
-    
-    var matchArr =  s.match(/^(N|S|北緯|南緯|-|\+)*([0-9]{1,3}[度°])([0-9]{1,2}[分′'])*([0-9]{1,2}(?:\.[0-9]+)*[秒″\"])*(?:,|\s)(E|W|東経|西経|-|\+)*([0-9]{1,3}[度°])([0-9]{1,2}[分′'])*([0-9]{1,2}(?:\.[0-9]+)*[秒″\"])*$/);
+    s = s.replace(',', ' ');
+
+    var matchArr = s.match(/^(N|S|北緯|南緯|-|\+)*([0-9]{1,3}[度°])([0-9]{1,2}[分′'])*([0-9]{1,2}(?:\.[0-9]+)*[秒″\"])*(?:,|\s)(E|W|東経|西経|-|\+)*([0-9]{1,3}[度°])([0-9]{1,2}[分′'])*([0-9]{1,2}(?:\.[0-9]+)*[秒″\"])*$/);
     var revflg = false;
-    
-    if (!matchArr)
-    {
-      matchArr =  s.match(/^(E|W|東経|西経|-|\+)*([0-9]{1,3}[度°])([0-9]{1,2}[分′'])*([0-9]{1,2}(?:\.[0-9]+)*[秒″\"])*(?:,|\s)(N|S|北緯|南緯|-|\+)*([0-9]{1,3}[度°])([0-9]{1,2}[分′'])*([0-9]{1,2}(?:\.[0-9]+)*[秒″\"])*$/);
+
+    if (!matchArr) {
+      matchArr = s.match(/^(E|W|東経|西経|-|\+)*([0-9]{1,3}[度°])([0-9]{1,2}[分′'])*([0-9]{1,2}(?:\.[0-9]+)*[秒″\"])*(?:,|\s)(N|S|北緯|南緯|-|\+)*([0-9]{1,3}[度°])([0-9]{1,2}[分′'])*([0-9]{1,2}(?:\.[0-9]+)*[秒″\"])*$/);
       revflg = true;
     }
-    var lath,latm,lats,lonh,lonm,lons;
-    if (matchArr && matchArr.length == 9)
-    {
+    var lath, latm, lats, lonh, lonm, lons;
+    if (matchArr && matchArr.length == 9) {
       lath = parseInt(matchArr[2]);
       lonh = parseInt(matchArr[6]);
-      
+
       latm = matchArr[3] ? parseFloat(matchArr[3]) / 60 : 0;
       lonm = matchArr[7] ? parseFloat(matchArr[7]) / 60 : 0;
 
       lats = matchArr[4] ? parseFloat(matchArr[4]) / 3600 : 0;
       lons = matchArr[8] ? parseFloat(matchArr[8]) / 3600 : 0;
-      
+
       var la = lath + latm + lats;
       var lo = lonh + lonm + lons;
 
-      if ( matchArr[1] && (matchArr[1] == 'S' || matchArr[1] == 'W' || matchArr[1] == '南緯' || matchArr[1] == '西経' || matchArr[1] == '-') )
-      {
+      if (matchArr[1] && (matchArr[1] == 'S' || matchArr[1] == 'W' || matchArr[1] == '南緯' || matchArr[1] == '西経' || matchArr[1] == '-')) {
         la = -1 * la;
       }
-      if ( matchArr[5] && (matchArr[5] == 'S' || matchArr[5] == 'W' || matchArr[5] == '南緯' || matchArr[5] == '西経' || matchArr[5] == '-') )
-      {
+      if (matchArr[5] && (matchArr[5] == 'S' || matchArr[5] == 'W' || matchArr[5] == '南緯' || matchArr[5] == '西経' || matchArr[5] == '-')) {
         lo = -1 * lo;
       }
-      if (revflg)
-      {
+      if (revflg) {
         var t = la;
         la = lo;
         lo = t;
@@ -5228,38 +4974,32 @@ GLOBE.SEARCHFORM = {
       return [la, lo];
     }
     return null;
-    
+
   },
-  
-  parseLatLngText4 : function( s )
-  {
+
+  parseLatLngText4: function (s) {
     s = $.trim(s);
 
     var matchArr = s.match(/^(N|S|北緯|南緯|-|\+)*([0-9]{1,3}(?:\.[0-9]+)*)(?:,|\s)(E|W|東経|西経|-|\+)*([0-9]{1,3}(?:\.[0-9]+)*)/)
     var revflg = false;
-    
-    if (!matchArr)
-    {
+
+    if (!matchArr) {
       matchArr = s.match(/^(E|W|東経|西経|-|\+)*([0-9]{1,3}(?:\.[0-9]+)*)(?:,|\s)(N|S|北緯|南緯|-|\+)*([0-9]{1,3}(?:\.[0-9]+)*)/)
       revflg = true;
     }
 
     var lat, lon;
-    try{
-      if (matchArr && matchArr.length == 5)
-      {
-        lat = parseFloat( matchArr[2] );
-        lon = parseFloat( matchArr[4] );
-        if ( matchArr[1] && (matchArr[1] == 'S' || matchArr[1] == 'W' || matchArr[1] == '南緯' || matchArr[1] == '西経' || matchArr[1] == '-') )
-        {
+    try {
+      if (matchArr && matchArr.length == 5) {
+        lat = parseFloat(matchArr[2]);
+        lon = parseFloat(matchArr[4]);
+        if (matchArr[1] && (matchArr[1] == 'S' || matchArr[1] == 'W' || matchArr[1] == '南緯' || matchArr[1] == '西経' || matchArr[1] == '-')) {
           lat = -1 * lat;
         }
-        if ( matchArr[3] && (matchArr[3] == 'S' || matchArr[3] == 'W' || matchArr[3] == '南緯' || matchArr[3] == '西経' || matchArr[3] == '-') )
-        {
+        if (matchArr[3] && (matchArr[3] == 'S' || matchArr[3] == 'W' || matchArr[3] == '南緯' || matchArr[3] == '西経' || matchArr[3] == '-')) {
           lon = -1 * lon;
         }
-        if (revflg)
-        {
+        if (revflg) {
           var t = lat;
           lat = lon;
           lon = t;
@@ -5267,68 +5007,62 @@ GLOBE.SEARCHFORM = {
 
         return [lat, lon];
       }
-      
+
       return null;
     }
-    catch( e )
-    {
+    catch (e) {
       return null;
     }
-    
+
   },
-  
-  parseLatLngText : function( s )
-  {
+
+  parseLatLngText: function (s) {
     s = $.trim(s);
-    s = s.replace( ',', ' ' );
+    s = s.replace(',', ' ');
 
-    var latLng = s.split( ' ' );
+    var latLng = s.split(' ');
 
-    if ( latLng.length < 2 ) return null;
+    if (latLng.length < 2) return null;
 
-    try
-    {
-      var lat = parseFloat( latLng[0] );
-      var lng = parseFloat( latLng[1] );
-      result =  [ lat, lng ];
-      
+    try {
+      var lat = parseFloat(latLng[0]);
+      var lng = parseFloat(latLng[1]);
+      result = [lat, lng];
+
       return result;
     }
-    catch( e )
-    {
+    catch (e) {
       return null;
     }
   },
-  getDemPng : function ( latlng )
-  {
-        var lon = latlng[1] * .017453292519943295; // DEG → RAD : lon = (lon / 180) * Math.PI;
-        var lat = latlng[0] * .017453292519943295; // DEG → RAD : lat = (lat / 180) * Math.PI;
-      var R	= 128 / Math.PI;
-      var x = R * (lon + Math.PI);
-      var y = (-1) * R / 2 * Math.log((1 + Math.sin(lat)) / (1 - Math.sin(lat))) + 128;
-      var z = 14;
-        var vX_px     = x * Math.pow(2, z);
-        var vY_px     = y * Math.pow(2, z);
-        var vX_Tile   = Math.floor(vX_px / 256);
-        var vY_Tile	  = Math.floor(vY_px / 256);
+  getDemPng: function (latlng) {
+    var lon = latlng[1] * .017453292519943295; // DEG → RAD : lon = (lon / 180) * Math.PI;
+    var lat = latlng[0] * .017453292519943295; // DEG → RAD : lat = (lat / 180) * Math.PI;
+    var R = 128 / Math.PI;
+    var x = R * (lon + Math.PI);
+    var y = (-1) * R / 2 * Math.log((1 + Math.sin(lat)) / (1 - Math.sin(lat))) + 128;
+    var z = 14;
+    var vX_px = x * Math.pow(2, z);
+    var vY_px = y * Math.pow(2, z);
+    var vX_Tile = Math.floor(vX_px / 256);
+    var vY_Tile = Math.floor(vY_px / 256);
     var demUrl = "https://maps.gsi.go.jp/xyz/dem_png/" + z + "/" + vX_Tile + "/" + vY_Tile + ".png";
-      
-    if ( latlng )
-    {
-      var aj =$.ajax ({
-        type : "GET",
-        url : demUrl,
+
+    if (latlng) {
+      var aj = $.ajax({
+        type: "GET",
+        url: demUrl,
         success: MA.bind(this.jumpToPoint, this, latlng, CONFIG.Z2HEIGHT[15]),
         error: MA.bind(this.jumpToPoint, this, latlng, CONFIG.Z2HEIGHT[5]),
       });
     }
   },
-  jumpToPoint : function (latLng, z2height) {
+  jumpToPoint: function (latLng, z2height) {
     //this.map.setView(latlng, zoom, {reset : true});
     GLOBE.MAP.pindrop(latLng[1], latLng[0], "SEARCH");
     GLOBE.MAP.fly(latLng[1], latLng[0], z2height);
   }
-  
+
 };
 
 
@@ -5345,31 +5079,26 @@ GLOBE.DIALOGMANAGER = {
     'z-index': 1,
     'opacity': 0.8
   },
-  
+
   dialogIds: [],
   activeDialogId: null,
-  
-  activeIs: function( id )
-  {
+
+  activeIs: function (id) {
     this.activeDialogId = id;
-    
+
     var newIds = [];
-    for ( var i=0; i<this.dialogIds.length; i++ )
-    {
-      if ( this.dialogIds[i] != id )
-      {
-        newIds.push( this.dialogIds[i] );
+    for (var i = 0; i < this.dialogIds.length; i++) {
+      if (this.dialogIds[i] != id) {
+        newIds.push(this.dialogIds[i]);
       }
     }
-    newIds.push( id );
+    newIds.push(id);
     this.dialogIds = newIds;
     this.refreshZindex();
   },
-  
-  refreshZindex: function()
-  {
-    for ( var i=0; i<this.dialogIds.length; i++ )
-    {
+
+  refreshZindex: function () {
+    for (var i = 0; i < this.dialogIds.length; i++) {
       var tempCss = $.extend(true, {}, this.negativeCss);
       tempCss['z-index'] += i;
       $('#' + this.dialogIds[i])
@@ -5400,41 +5129,39 @@ GLOBE.DIALOG.LOADOUTSIDETILE = $.extend({}, new GLOBE.CLASS.DIALOG('gsi_dialog_l
   options: {
     title: '外部タイル読込'
   },
-  
-  defaultTop:   '45px',
-  defaultLeft:  'auto',
+
+  defaultTop: '45px',
+  defaultLeft: 'auto',
   defaultRight: '10px',
-  defaultBottom:'auto',
-  
+  defaultBottom: 'auto',
+
   defaultPixelsize: 256,
   sampleBorderSize: 3,
   sampleHandleSize: 15,
   sampleHandleIndent: 3,
-  
+
   resizable: false,
-  
-  onBeforeShow: function()
-  {
+
+  onBeforeShow: function () {
     this._map = GLOBE.MAP;
     this._mapLayerList = GSI.GLOBALS.mapLayerList;
     this._viewListDialog = GSI.GLOBALS.viewListDialog;
   },
-  
-  create: function()
-  {
+
+  create: function () {
     this.createDialog();
-    this.container.css({'width':'300px'});
-    
-    this.setDialogHeader( this.createHeader() );
-    this.setDialogContent( this.createContent() );
+    this.container.css({ 'width': '300px' });
+
+    this.setDialogHeader(this.createHeader());
+    this.setDialogContent(this.createContent());
   },
-  
+
   createHeader: function () {
     this.title = $('<div>').html(this.options.title);
 
     return $('<div>').append(this.title);
   },
-  
+
   createContent: function () {
     this.frame = $('<div>').css({ "padding": "5px" }).addClass("gsi_loadoutsidetiledialog_content");
 
@@ -5566,7 +5293,7 @@ GLOBE.DIALOG.LOADOUTSIDETILE = $.extend({}, new GLOBE.CLASS.DIALOG('gsi_dialog_l
     this.frame.append(dl);
 
 
-    var msgFrame = $("<div>").addClass("msg_frame").html("※国土地理院以外の機関が配信しているデータをご利用の際は、当該データの利用規約に従いご利用ください。");
+    var msgFrame = $("<div>").addClass("msg_frame").html("データの利用規約に従いご利用ください。");
     this.frame.append(msgFrame);
 
     var btnFrame = $("<div>").addClass("button_frame");
@@ -5688,7 +5415,7 @@ GLOBE.DIALOG.LOADOUTSIDETILE = $.extend({}, new GLOBE.CLASS.DIALOG('gsi_dialog_l
       var url = info.url;
       var title = info.title;
 
-      if (!info.layerType){
+      if (!info.layerType) {
         info.layerType = GSI.LayersJSON.url2LayerType(url);
       }
       delete info["url"];
@@ -5861,26 +5588,25 @@ GLOBE.DIALOG.EDITOUTSIDETILE = $.extend({}, new GLOBE.CLASS.DIALOG('gsi_dialog_e
   options: {
     title: '外部タイル編集'
   },
-  
-  defaultTop:   'auto',
-  defaultLeft:  'auto',
+
+  defaultTop: 'auto',
+  defaultLeft: 'auto',
   defaultRight: 'auto',
-  defaultBottom:'auto',
-  
+  defaultBottom: 'auto',
+
   defaultPixelsize: 256,
   sampleBorderSize: 3,
   sampleHandleSize: 15,
   sampleHandleIndent: 3,
-  
+
   resizable: false,
-  
-  onBeforeShow: function()
-  {
+
+  onBeforeShow: function () {
     this._map = GLOBE.MAP;
   },
-  
+
   // 表示
-  showEditDialog: function(target) {
+  showEditDialog: function (target) {
     this._target = target;
     this.show();
     this._layerNameInput.val(this._target.title);
@@ -5894,22 +5620,21 @@ GLOBE.DIALOG.EDITOUTSIDETILE = $.extend({}, new GLOBE.CLASS.DIALOG('gsi_dialog_e
     this._maxZoomSelect.val(this._target.maxZoom);
     this._maxNativeZoomSelect.val(this._target.maxNativeZoom);
   },
-  
-  create: function()
-  {
+
+  create: function () {
     this.createDialog();
-    this.container.css({'width':'300px'});
-    
-    this.setDialogHeader( this.createHeader() );
-    this.setDialogContent( this.createContent() );
+    this.container.css({ 'width': '300px' });
+
+    this.setDialogHeader(this.createHeader());
+    this.setDialogContent(this.createContent());
   },
-  
+
   createHeader: function () {
     this.title = $('<div>').html(this.options.title);
 
     return $('<div>').append(this.title);
   },
-  
+
   createContent: function () {
     this.frame = $('<div>').css({ "padding": "5px" }).addClass("gsi_editoutsidetiledialog_content");
     var div = null;
@@ -6036,9 +5761,9 @@ GLOBE.DIALOG.EDITOUTSIDETILE = $.extend({}, new GLOBE.CLASS.DIALOG('gsi_dialog_e
 
     return select;
   },
-  
-  onChange: function(target) {}
-  
+
+  onChange: function (target) { }
+
 });
 
 
@@ -6048,38 +5773,35 @@ GLOBE.DIALOG.GSI3DCUSTOM = $.extend({}, new GLOBE.CLASS.DIALOG('gsi_dialog_3dcus
   options: {
     title: '3D範囲を選択'
   },
-  
-  defaultTop:   '45px',
-  defaultLeft:  'auto',
+
+  defaultTop: '45px',
+  defaultLeft: 'auto',
   defaultRight: '10px',
-  defaultBottom:'auto',
-  
+  defaultBottom: 'auto',
+
   defaultPixelsize: 256,
   sampleBorderSize: 3,
   sampleHandleSize: 15,
   sampleHandleIndent: 3,
-  
-  resizable: false,
-  
-  create: function()
-  {
-    this.createDialog();
-    this.container.css({'width':'220px'});
-    
-    this.setDialogHeader( this.createHeader() );
-    this.setDialogContent( this.createContent() );
-  },
-  
-  createHeader : function()
-  {
-    this._title = $( '<div>' ).html( this.options.title );
 
-    return $( '<div>' ).append( this._title );
+  resizable: false,
+
+  create: function () {
+    this.createDialog();
+    this.container.css({ 'width': '220px' });
+
+    this.setDialogHeader(this.createHeader());
+    this.setDialogContent(this.createContent());
   },
-  createContent : function()
-  {
-    this._content = $( '<div>' ).addClass( 'gsi_threeddialog_content' );
-    
+
+  createHeader: function () {
+    this._title = $('<div>').html(this.options.title);
+
+    return $('<div>').append(this._title);
+  },
+  createContent: function () {
+    this._content = $('<div>').addClass('gsi_threeddialog_content');
+
     var html = '<table><tbody><tr>'
       + '<td style="white-space: nowrap;">左上緯度:</td>'
       + '<td style="white-space: nowrap;"><input type="text" id="threed_input1"></td>'
@@ -6095,43 +5817,41 @@ GLOBE.DIALOG.GSI3DCUSTOM = $.extend({}, new GLOBE.CLASS.DIALOG('gsi_dialog_3dcus
       + '</tr><tr>'
       + '<td style="white-space: nowrap;">大きさ:</td>'
       + '<td style="white-space: nowrap;">'
-        + '<table style="border-collapse: collapse; border-spacing: 0px;"><tbody><tr>'
-        + '<td style="padding: 0px;"><input type="text" id="threed_input5"></td>'
-        + '<td style="white-space: nowrap; width: 1px; padding: 0px;">×</td>'
-        + '<td style="padding: 0px;"><input type="text" id="threed_input6"></td>'
-        + '</tr></tbody></table>'
+      + '<table style="border-collapse: collapse; border-spacing: 0px;"><tbody><tr>'
+      + '<td style="padding: 0px;"><input type="text" id="threed_input5"></td>'
+      + '<td style="white-space: nowrap; width: 1px; padding: 0px;">×</td>'
+      + '<td style="padding: 0px;"><input type="text" id="threed_input6"></td>'
+      + '</tr></tbody></table>'
       + '</td></tr></tbody></table>'
       + '<div class="button_frame" style="text-align: center;">'
-        + '<div class="errormessage" style="display: none;">大きさを256×256～2048×2048の範囲で指定して下さい。</div>'
-        + '<a class="normalbutton threedareadialog_button" id="threed_ok" href="javascript:void(0);" style="display: inline-block;">O　K</a>'
+      + '<div class="errormessage" style="display: none;">大きさを256×256～2048×2048の範囲で指定して下さい。</div>'
+      + '<a class="normalbutton threedareadialog_button" id="threed_ok" href="javascript:void(0);" style="display: inline-block;">O　K</a>'
       + '</div>';
-    
+
     this._content.html(html);
-    
-    setTimeout(function(){
+
+    setTimeout(function () {
       $('#threed_input1').on('change keyup', this.updateSampleRect.bind(this));
       $('#threed_input2').on('change keyup', this.updateSampleRect.bind(this));
       $('#threed_input3').on('change keyup', this.updateSampleRect.bind(this));
       $('#threed_input4').on('change keyup', this.updateSampleRect.bind(this));
       $('#threed_input5').on('change keyup', this.updateSampleRect.bind(this, true));
       $('#threed_input6').on('change keyup', this.updateSampleRect.bind(this, true));
-      $('#threed_ok').on('click', function(){
+      $('#threed_ok').on('click', function () {
         var centerLatLng = [
-          ( $('#threed_input1').val()*1 + $('#threed_input3').val()*1 ) / 2,
-          ( $('#threed_input2').val()*1 + $('#threed_input4').val()*1 ) / 2
+          ($('#threed_input1').val() * 1 + $('#threed_input3').val() * 1) / 2,
+          ($('#threed_input2').val() * 1 + $('#threed_input4').val() * 1) / 2
         ];
         var currents = GLOBE.MAP.currents;
         var layers = currents.layers.split('|');
-        var show   = currents.layersShow;
+        var show = currents.layersShow;
         var showlayers = [];
-        for ( var i=0; i<layers.length; i++ )
-        {
-          if ( show.length > i && show.charAt(i) == '1' )
-          {
-            showlayers.push( layers[i] );
+        for (var i = 0; i < layers.length; i++) {
+          if (show.length > i && show.charAt(i) == '1') {
+            showlayers.push(layers[i]);
           }
         }
-        var u  = 'https://maps.gsi.go.jp/index_3d.html'
+        var u = 'https://maps.gsi.go.jp/index_3d.html'
           + '?z=' + this.sampleZoomlevel
           + '&lat=' + centerLatLng[0]
           + '&lon=' + centerLatLng[1]
@@ -6140,50 +5860,46 @@ GLOBE.DIALOG.GSI3DCUSTOM = $.extend({}, new GLOBE.CLASS.DIALOG('gsi_dialog_3dcus
           + (currents.baseGray ? '&base_grayscale=1' : '')
           + '&ls=' + encodeURIComponent(showlayers.join('|'))
           + '#&a=' + currents.heightPower;
-        window.open( u, 'GSIMAPS' );
+        window.open(u, 'GSIMAPS');
       }.bind(this));
     }.bind(this), 1);
-    
+
     return this._content;
   },
-  
-  onAfterShow: function()
-  {
+
+  onAfterShow: function () {
     GLOBE.MAP.viewer.scene.screenSpaceCameraController.enableTilt = false;
     GLOBE.MAP.viewer.scene.screenSpaceCameraController.enableZoom = false;
     GLOBE.MAP.viewer.scene.screenSpaceCameraController.enableRotate = false;
-    
+
     GLOBE.MAP.currents.zoomlevel = GLOBE.MAP.getCurrentZoom();
     var currents = GLOBE.MAP.currents;
     var centerLatLng = GLOBE.MAP.getCenterPosition(true);
-    
+
     height = currents.height;
-    if ( currents.zoomlevel > 0 && currents.zoomlevel <= 18 )
-    {
-      height = CONFIG.Z2HEIGHT[ currents.zoomlevel ];
+    if (currents.zoomlevel > 0 && currents.zoomlevel <= 18) {
+      height = CONFIG.Z2HEIGHT[currents.zoomlevel];
     }
-    
+
     GLOBE.MAP.viewer.camera.flyTo({
       destination: Cesium.Cartesian3.fromDegrees(centerLatLng[1], centerLatLng[0], height),
       orientation: {
-        heading : Cesium.Math.toRadians(0),
-        pitch : Cesium.Math.toRadians(-90),
-        roll : Cesium.Math.toRadians(0)
+        heading: Cesium.Math.toRadians(0),
+        pitch: Cesium.Math.toRadians(-90),
+        roll: Cesium.Math.toRadians(0)
       },
       duration: 1,
       complete: this.setDefaultContent.bind(this)
     });
   },
-  
-  onAfterClose: function()
-  {
-    if ( this._sampleRect )
-    {
+
+  onAfterClose: function () {
+    if (this._sampleRect) {
       GLOBE.MAP.viewer.scene.screenSpaceCameraController.enableTilt = true;
       GLOBE.MAP.viewer.scene.screenSpaceCameraController.enableZoom = true;
       GLOBE.MAP.viewer.scene.screenSpaceCameraController.enableRotate = true;
       GLOBE.MAP.viewer.camera.moveEnd.removeEventListener(this._cameraMoveHandler);
-      
+
       var collection = GLOBE.MAP.viewer.entities;
       collection.remove(this._sampleRect);
       collection.remove(this._sampleBorder);
@@ -6192,7 +5908,7 @@ GLOBE.DIALOG.GSI3DCUSTOM = $.extend({}, new GLOBE.CLASS.DIALOG('gsi_dialog_3dcus
       collection.remove(this._sampleLbHandle);
       collection.remove(this._sampleRbHandle);
       collection.remove(this._sampleCenterHandle);
-      
+
       this._sampleRect = undefined;
       this._sampleBorder = undefined;
       this._sampleLtHandle = undefined;
@@ -6202,93 +5918,86 @@ GLOBE.DIALOG.GSI3DCUSTOM = $.extend({}, new GLOBE.CLASS.DIALOG('gsi_dialog_3dcus
       this._sampleCenterHandle = undefined;
     }
   },
-  
-  setDefaultContent : function()
-  {
-    var rect = this.getCenterRectFromPixelsize( this.defaultPixelsize );
+
+  setDefaultContent: function () {
+    var rect = this.getCenterRectFromPixelsize(this.defaultPixelsize);
     this.sampleZoomlevel = GLOBE.MAP.currents.zoomlevel;
-    
+
     $('#threed_input1').val(rect._gsidata.north);
     $('#threed_input2').val(rect._gsidata.west);
     $('#threed_input3').val(rect._gsidata.south);
     $('#threed_input4').val(rect._gsidata.east);
     $('#threed_input5').val(this.defaultPixelsize);
     $('#threed_input6').val(this.defaultPixelsize);
-    
+
     this.updateSampleRect(null, true);
   },
-  
-  updateSampleRect : function( event, fromSizeFlg )
-  {
+
+  updateSampleRect: function (event, fromSizeFlg) {
     var north = $('#threed_input1').val() * 1;
-    var west  = $('#threed_input2').val() * 1;
+    var west = $('#threed_input2').val() * 1;
     var south = $('#threed_input3').val() * 1;
-    var east  = $('#threed_input4').val() * 1;
-    var x     = $('#threed_input5').val() * 1;
-    var y     = $('#threed_input6').val() * 1;
-    
+    var east = $('#threed_input4').val() * 1;
+    var x = $('#threed_input5').val() * 1;
+    var y = $('#threed_input6').val() * 1;
+
     var err = false;
-    if ( north=='' || isNaN(north) || north>90 )  { $('#threed_input1').addClass('error'); err=true; } else { $('#threed_input1').removeClass('error'); }
-    if ( west =='' || isNaN(west ) )              { $('#threed_input2').addClass('error'); err=true; } else { $('#threed_input2').removeClass('error'); }
-    if ( south=='' || isNaN(south) || south<-90 ) { $('#threed_input3').addClass('error'); err=true; } else { $('#threed_input3').removeClass('error'); }
-    if ( east =='' || isNaN(east ) )              { $('#threed_input4').addClass('error'); err=true; } else { $('#threed_input4').removeClass('error'); }
-    if ( err ) return;
-    if ( north < south )
-    {
+    if (north == '' || isNaN(north) || north > 90) { $('#threed_input1').addClass('error'); err = true; } else { $('#threed_input1').removeClass('error'); }
+    if (west == '' || isNaN(west)) { $('#threed_input2').addClass('error'); err = true; } else { $('#threed_input2').removeClass('error'); }
+    if (south == '' || isNaN(south) || south < -90) { $('#threed_input3').addClass('error'); err = true; } else { $('#threed_input3').removeClass('error'); }
+    if (east == '' || isNaN(east)) { $('#threed_input4').addClass('error'); err = true; } else { $('#threed_input4').removeClass('error'); }
+    if (err) return;
+    if (north < south) {
       $('#threed_input1, #threed_input3').addClass('error');
       err = true;
     }
-    else
-    {
+    else {
       $('#threed_input1, #threed_input3').removeClass('error');
     }
-    if ( east < west )
-    {
+    if (east < west) {
       $('#threed_input2, #threed_input4').addClass('error');
       err = true;
     }
-    else
-    {
+    else {
       $('#threed_input2, #threed_input4').removeClass('error');
     }
-    if ( err ) return;
-    
+    if (err) return;
+
     var rect = Cesium.Rectangle.fromDegrees(west, south, east, north);
     var center = Cesium.Rectangle.center(rect);
-    
+
     rect._gsidata = {
-      north : north,
-      south : south,
-      east  : east,
-      west  : west,
+      north: north,
+      south: south,
+      east: east,
+      west: west,
       center: [
         Cesium.Math.toDegrees(center.latitude),
         Cesium.Math.toDegrees(center.longitude)
       ]
     };
-    
-    if ( !this._sampleRect )
-    {
+
+    if (!this._sampleRect) {
       var collection = GLOBE.MAP.viewer.entities;
-      
+
       this._sampleRect = this.getSampleRectEntity('sampleRect', rect);
       collection.add(this._sampleRect);
-      
+
       this._sampleBorder = this.getSampleBorderEntity('sampleBorder', rect);
       collection.add(this._sampleBorder);
-      
+
       this._sampleLtHandle = this.getSampleHandleEntity('sampleLtHandle', Cesium.Cartesian3.fromDegrees(west, north));
       collection.add(this._sampleLtHandle);
-      
+
       this._sampleRtHandle = this.getSampleHandleEntity('sampleRtHandle', Cesium.Cartesian3.fromDegrees(east, north));
       collection.add(this._sampleRtHandle);
-      
+
       this._sampleLbHandle = this.getSampleHandleEntity('sampleLbHandle', Cesium.Cartesian3.fromDegrees(west, south));
       collection.add(this._sampleLbHandle);
-      
+
       this._sampleRbHandle = this.getSampleHandleEntity('sampleRbHandle', Cesium.Cartesian3.fromDegrees(east, south));
       collection.add(this._sampleRbHandle);
-      
+
       this._sampleCenterHandle = new Cesium.Entity({
         id: 'sampleCenterHandle',
         billboard: {
@@ -6296,190 +6005,170 @@ GLOBE.DIALOG.GSI3DCUSTOM = $.extend({}, new GLOBE.CLASS.DIALOG('gsi_dialog_3dcus
           width: 24,
           height: 24,
           color: Cesium.Color.WHITE,
-          horizontalOrigin : Cesium.HorizontalOrigin.CENTER,
-          verticalOrigin : Cesium.VerticalOrigin.CENTER,
+          horizontalOrigin: Cesium.HorizontalOrigin.CENTER,
+          verticalOrigin: Cesium.VerticalOrigin.CENTER,
           heightReference: Cesium.HeightReference.CLAMP_TO_GROUND
         },
         position: Cesium.Cartesian3.fromRadians(center.longitude, center.latitude)
       });
       collection.add(this._sampleCenterHandle);
-      
-      
-      
+
+
+
       this._screenSpaceEventHandler = new Cesium.ScreenSpaceEventHandler(GLOBE.MAP.viewer.scene.canvas);
-      this._screenSpaceEventHandler.setInputAction(function(event){
+      this._screenSpaceEventHandler.setInputAction(function (event) {
         var viewer = GLOBE.MAP.viewer;
         var pickList = viewer.scene.drillPick(event.position);
-        for ( var i=0; i<pickList.length; i++ )
-        {
+        for (var i = 0; i < pickList.length; i++) {
           var obj = pickList[0].id;
-          if ( obj == this._sampleCenterHandle
+          if (obj == this._sampleCenterHandle
             || obj == this._sampleLtHandle
             || obj == this._sampleRtHandle
             || obj == this._sampleLbHandle
-            || obj == this._sampleRbHandle )
-          {
+            || obj == this._sampleRbHandle) {
             GLOBE.MAP.viewer.scene.screenSpaceCameraController.enableInputs = false;
             this._draggingItem = obj;
             break;
           }
         }
       }.bind(this), Cesium.ScreenSpaceEventType.LEFT_DOWN);
-      
-      
-      
-      this._screenSpaceEventHandler.setInputAction(function(event){
-        
+
+
+
+      this._screenSpaceEventHandler.setInputAction(function (event) {
+
         var pickList = GLOBE.MAP.viewer.scene.drillPick(event.endPosition);
-        if ( !pickList.length )
-        {
-          $('#cesiumContainer').css({'cursor':'auto'});
+        if (!pickList.length) {
+          $('#cesiumContainer').css({ 'cursor': 'auto' });
         }
-        for ( var i=0; i<pickList.length; i++ )
-        {
+        for (var i = 0; i < pickList.length; i++) {
           var obj = pickList[i].id;
-          if ( obj == this._sampleCenterHandle )
-          {
-            $('#cesiumContainer').css({'cursor':'move'});
+          if (obj == this._sampleCenterHandle) {
+            $('#cesiumContainer').css({ 'cursor': 'move' });
             break;
           }
-          else if ( obj == this._sampleLtHandle )
-          {
-            $('#cesiumContainer').css({'cursor':'nw-resize'});
+          else if (obj == this._sampleLtHandle) {
+            $('#cesiumContainer').css({ 'cursor': 'nw-resize' });
             break;
           }
-          else if ( obj == this._sampleRtHandle )
-          {
-            $('#cesiumContainer').css({'cursor':'ne-resize'});
+          else if (obj == this._sampleRtHandle) {
+            $('#cesiumContainer').css({ 'cursor': 'ne-resize' });
             break;
           }
-          else if ( obj == this._sampleLbHandle )
-          {
-            $('#cesiumContainer').css({'cursor':'sw-resize'});
+          else if (obj == this._sampleLbHandle) {
+            $('#cesiumContainer').css({ 'cursor': 'sw-resize' });
             break;
           }
-          else if ( obj == this._sampleRbHandle )
-          {
-            $('#cesiumContainer').css({'cursor':'se-resize'});
+          else if (obj == this._sampleRbHandle) {
+            $('#cesiumContainer').css({ 'cursor': 'se-resize' });
             break;
           }
-          else
-          {
-            $('#cesiumContainer').css({'cursor':'auto'});
+          else {
+            $('#cesiumContainer').css({ 'cursor': 'auto' });
           }
         }
-        
-        if ( this._sampleRect && this._draggingItem )
-        {
+
+        if (this._sampleRect && this._draggingItem) {
           var currentCartesian = GLOBE.MAP.windowPositionToCartesian(event.endPosition);
           var currentCartographic = GLOBE.MAP.viewer.scene.globe.ellipsoid.cartesianToCartographic(currentCartesian);
           var currentLat = Cesium.Math.toDegrees(currentCartographic.latitude);
           var currentLng = Cesium.Math.toDegrees(currentCartographic.longitude);
           currentLat = GSI.Utils.round(currentLat, 6);
           currentLng = GSI.Utils.round(currentLng, 6);
-          
-          if ( this._draggingItem == this._sampleCenterHandle )
-          {
+
+          if (this._draggingItem == this._sampleCenterHandle) {
             var beforeLat = this._sampleRect._gsidata.center[0];
             var beforeLng = this._sampleRect._gsidata.center[1];
-            
+
             var diffX = beforeLng - currentLng;
             var diffY = beforeLat - currentLat;
-            
-            var west  = this._sampleRect._gsidata.west - diffX;
+
+            var west = this._sampleRect._gsidata.west - diffX;
             var north = this._sampleRect._gsidata.north - diffY;
-            var east  = this._sampleRect._gsidata.east - diffX;
+            var east = this._sampleRect._gsidata.east - diffX;
             var south = this._sampleRect._gsidata.south - diffY;
-            
+
             $('#threed_input1').val(north);
             $('#threed_input2').val(west);
             $('#threed_input3').val(south);
             $('#threed_input4').val(east);
             this.updateSampleRect(null, true);
           }
-          else if ( this._draggingItem == this._sampleLtHandle )
-          {
+          else if (this._draggingItem == this._sampleLtHandle) {
             $('#threed_input1').val(currentLat);
             $('#threed_input2').val(currentLng);
             this.updateSampleRect();
           }
-          else if ( this._draggingItem == this._sampleRtHandle )
-          {
+          else if (this._draggingItem == this._sampleRtHandle) {
             $('#threed_input1').val(currentLat);
             $('#threed_input4').val(currentLng);
             this.updateSampleRect();
           }
-          else if ( this._draggingItem == this._sampleLbHandle )
-          {
+          else if (this._draggingItem == this._sampleLbHandle) {
             $('#threed_input2').val(currentLng);
             $('#threed_input3').val(currentLat);
             this.updateSampleRect();
           }
-          else if ( this._draggingItem == this._sampleRbHandle )
-          {
+          else if (this._draggingItem == this._sampleRbHandle) {
             $('#threed_input3').val(currentLat);
             $('#threed_input4').val(currentLng);
             this.updateSampleRect();
           }
         }
-        
+
       }.bind(this), Cesium.ScreenSpaceEventType.MOUSE_MOVE);
-      
-      
-      
-      this._screenSpaceEventHandler.setInputAction(function(event){
-        if ( this._draggingItem )
-        {
+
+
+
+      this._screenSpaceEventHandler.setInputAction(function (event) {
+        if (this._draggingItem) {
           this._draggingItem = null;
         }
         GLOBE.MAP.viewer.scene.screenSpaceCameraController.enableInputs = true;
       }.bind(this), Cesium.ScreenSpaceEventType.LEFT_UP);
-      
-      
-      
-      this._cameraMoveHandler = function(){
-        if ( this._sampleBorder )
-        {
+
+
+
+      this._cameraMoveHandler = function () {
+        if (this._sampleBorder) {
           this._sampleBorder.corridor.width = this.getSampleBorderWidth();
         }
       }.bind(this);
       GLOBE.MAP.viewer.camera.moveEnd.addEventListener(this._cameraMoveHandler);
     }
-    
-    if ( fromSizeFlg )
-    {
+
+    if (fromSizeFlg) {
       rect = this.getRectFromPixelsize(x, y, rect._gsidata.center);
       north = rect._gsidata.north;
-      west  = rect._gsidata.west;
+      west = rect._gsidata.west;
       south = rect._gsidata.south;
-      east  = rect._gsidata.east;
-      
+      east = rect._gsidata.east;
+
       var nw = Cesium.Cartesian3.fromDegrees(west, north);
       var ne = Cesium.Cartesian3.fromDegrees(east, north);
       var sw = Cesium.Cartesian3.fromDegrees(west, south);
       var se = Cesium.Cartesian3.fromDegrees(east, south);
-      
+
       $('#threed_input1').val(rect._gsidata.north);
       $('#threed_input2').val(rect._gsidata.west);
       $('#threed_input3').val(rect._gsidata.south);
       $('#threed_input4').val(rect._gsidata.east);
     }
-    else
-    {
+    else {
       var nw = Cesium.Cartesian3.fromDegrees(west, north);
       var ne = Cesium.Cartesian3.fromDegrees(east, north);
       var sw = Cesium.Cartesian3.fromDegrees(west, south);
       var se = Cesium.Cartesian3.fromDegrees(east, south);
-      
+
       var nw2 = GLOBE.MAP.viewer.scene.cartesianToCanvasCoordinates(nw);
       var se2 = GLOBE.MAP.viewer.scene.cartesianToCanvasCoordinates(se);
       y = Math.round((se2.y - nw2.y) / this._pixelRatio);
       x = Math.round((se2.x - nw2.x) / this._pixelRatio);
-      
+
       $('#threed_input5').val(x);
       $('#threed_input6').val(y);
     }
-    
+
     this._sampleRect.polygon.hierarchy = new Cesium.PolygonHierarchy([nw, ne, se, sw]);
     this._sampleRect._gsidata = rect._gsidata;
     this._sampleBorder.corridor.positions = [nw, ne, se, sw, nw];
@@ -6489,21 +6178,18 @@ GLOBE.DIALOG.GSI3DCUSTOM = $.extend({}, new GLOBE.CLASS.DIALOG('gsi_dialog_3dcus
     this._sampleLbHandle.position = sw;
     this._sampleRbHandle.position = se;
     this._sampleCenterHandle.position = Cesium.Cartesian3.fromRadians(center.longitude, center.latitude);
-    
-    
-    if ( x < 256 || x > 2048 || y < 256 || y > 2048  )
-    {
+
+
+    if (x < 256 || x > 2048 || y < 256 || y > 2048) {
       this._content.find('.errormessage').show();
     }
-    else
-    {
+    else {
       this._content.find('.errormessage').hide();
     }
   },
-  
+
   // 1ピクセルあたりの度数を返す（経度のみ有効）
-  getDegreesPerPixel : function( zoomlevel )
-  {
+  getDegreesPerPixel: function (zoomlevel) {
     var ts = GLOBE.MAP.viewer.terrainProvider.tilingScheme;
     var xtiles = ts.getNumberOfYTilesAtLevel(zoomlevel);
     var ytiles = ts.getNumberOfYTilesAtLevel(zoomlevel);
@@ -6511,39 +6197,37 @@ GLOBE.DIALOG.GSI3DCUSTOM = $.extend({}, new GLOBE.CLASS.DIALOG('gsi_dialog_3dcus
     var latPerTile = 360 / ytiles;
     var lngPerPixel = lngPerTile / 255; //1ピクセルあたりの度数
     var latPerPixel = latPerTile / 255;
-    
+
     return [latPerPixel, lngPerPixel];
   },
-  
+
   // 指定のピクセルサイズに合わせたRectangleを返す（中心地点は画面中央）
-  getCenterRectFromPixelsize : function( pxsize )
-  {
+  getCenterRectFromPixelsize: function (pxsize) {
     var centerLatLng = GLOBE.MAP.getCenterPosition(true);
-    
+
     return this.getRectFromPixelsize(pxsize, pxsize, centerLatLng);
   },
-  
+
   // 指定のピクセルサイズに合わせたRectangleを返す（中心地点を指定）
-  getRectFromPixelsize : function( pixelSizeX, pixelSizeY, centerLatLng )
-  {
+  getRectFromPixelsize: function (pixelSizeX, pixelSizeY, centerLatLng) {
     GLOBE.MAP.currents.zoomlevel = GLOBE.MAP.getCurrentZoom();
     var currents = GLOBE.MAP.currents;
-    
+
     var degs = this.getDegreesPerPixel(GLOBE.MAP.currents.zoomlevel);
     var lngPerPixel = degs[1];
     var latPerPixel = degs[0];
-    
+
     //var north = centerLatLng[0] + (latPerPixel * pixelSizeY / 2);
     //var south = centerLatLng[0] - (latPerPixel * pixelSizeY / 2);
-    var east  = centerLatLng[1] + (lngPerPixel * pixelSizeX / 2);
-    var west  = centerLatLng[1] - (lngPerPixel * pixelSizeX / 2);
-    
+    var east = centerLatLng[1] + (lngPerPixel * pixelSizeX / 2);
+    var west = centerLatLng[1] - (lngPerPixel * pixelSizeX / 2);
+
     var centerCartesian3 = Cesium.Cartesian3.fromDegrees(centerLatLng[1], centerLatLng[0]);
-    var westCartesian3   = Cesium.Cartesian3.fromDegrees(west, centerLatLng[0]);
-    
+    var westCartesian3 = Cesium.Cartesian3.fromDegrees(west, centerLatLng[0]);
+
     var centerCartesian2 = GLOBE.MAP.viewer.scene.cartesianToCanvasCoordinates(centerCartesian3);
-    var westCartesian2   = GLOBE.MAP.viewer.scene.cartesianToCanvasCoordinates(westCartesian3);
-    
+    var westCartesian2 = GLOBE.MAP.viewer.scene.cartesianToCanvasCoordinates(westCartesian3);
+
     var leafletPx = pixelSizeX / 2;
     var cesiumPx = centerCartesian2.x - westCartesian2.x;
     this._pixelRatio = cesiumPx / leafletPx;
@@ -6553,39 +6237,38 @@ GLOBE.DIALOG.GSI3DCUSTOM = $.extend({}, new GLOBE.CLASS.DIALOG('gsi_dialog_3dcus
     var southCartesian2 = new Cesium.Cartesian2(centerCartesian2.x, centerCartesian2.y + (pixelSizeY / 2 * this._pixelRatio));
     //console.log("northCartesian2:", northCartesian2);
     //console.log("southCartesian2:", southCartesian2);
-    if ( northCartesian2.y < 0 ) northCartesian2.y = 0;
+    if (northCartesian2.y < 0) northCartesian2.y = 0;
     //if ( southCartesian2.y > $("#cesiumContainer").innerHeight() ) southCartesian2.y = $("#cesiumContainer").innerHeight();
-    
+
     var northLatLng = GLOBE.MAP.canvasCoordinatesToLatLng(northCartesian2);
     var southLatLng = GLOBE.MAP.canvasCoordinatesToLatLng(southCartesian2);
-    
+
     var north = northLatLng[0];
     var south = southLatLng[0];
-    
-    if ( north > 90 ) north = 90;
-    if ( south < -90 ) south = -90;
-    if ( east > 180 ) east = 180;
-    
+
+    if (north > 90) north = 90;
+    if (south < -90) south = -90;
+    if (east > 180) east = 180;
+
     var rect = Cesium.Rectangle.fromDegrees(west, south, east, north);
     var center = Cesium.Rectangle.center(rect);
     rect._gsidata = {
-      north : GSI.Utils.round(north, 6),
-      south : GSI.Utils.round(south, 6),
-      east : GSI.Utils.round(east, 6),
-      west : GSI.Utils.round(west, 6),
+      north: GSI.Utils.round(north, 6),
+      south: GSI.Utils.round(south, 6),
+      east: GSI.Utils.round(east, 6),
+      west: GSI.Utils.round(west, 6),
       center: [
         Cesium.Math.toDegrees(center.latitude),
         Cesium.Math.toDegrees(center.longitude)
       ]
     };
-    
+
     return rect;
   },
-  
+
   // 選択範囲の矩形をentityとして生成して返す
-  getSampleRectEntity : function( id, rect, color )
-  {
-    if ( !color ) color = Cesium.Color.RED.withAlpha(0.2);
+  getSampleRectEntity: function (id, rect, color) {
+    if (!color) color = Cesium.Color.RED.withAlpha(0.2);
     var entity = new Cesium.Entity({
       id: id,
       selectable: false,
@@ -6610,11 +6293,10 @@ GLOBE.DIALOG.GSI3DCUSTOM = $.extend({}, new GLOBE.CLASS.DIALOG('gsi_dialog_3dcus
     entity._gsidata = rect._gsidata;
     return entity;
   },
-  
+
   // 選択範囲の枠線をentityとして生成して返す
-  getSampleBorderEntity : function( id, rect, color )
-  {
-    if ( !color ) color = Cesium.Color.RED.withAlpha(0.7);
+  getSampleBorderEntity: function (id, rect, color) {
+    if (!color) color = Cesium.Color.RED.withAlpha(0.7);
     var nw = Cesium.Rectangle.northwest(rect);
     var ne = Cesium.Rectangle.northeast(rect);
     var sw = Cesium.Rectangle.southwest(rect);
@@ -6632,18 +6314,16 @@ GLOBE.DIALOG.GSI3DCUSTOM = $.extend({}, new GLOBE.CLASS.DIALOG('gsi_dialog_3dcus
     entity._gsidata = rect._gsidata;
     return entity;
   },
-  
+
   // 選択範囲の枠線の太さを返す（メートル単位）
-  getSampleBorderWidth : function()
-  {
+  getSampleBorderWidth: function () {
     return parseInt(this.sampleBorderSize * GLOBE.MAP.viewer.camera.positionCartographic.height / 800);
   },
-  
+
   // 選択範囲４隅のハンドルをentityとして生成して返す
-  getSampleHandleEntity : function( id, position )
-  {
+  getSampleHandleEntity: function (id, position) {
     var canvas = document.createElement('canvas');
-    canvas.width  = this.sampleHandleSize;
+    canvas.width = this.sampleHandleSize;
     canvas.height = this.sampleHandleSize;
     var ctx = canvas.getContext('2d');
     ctx.globalAlpha = 1;
@@ -6652,7 +6332,7 @@ GLOBE.DIALOG.GSI3DCUSTOM = $.extend({}, new GLOBE.CLASS.DIALOG('gsi_dialog_3dcus
     ctx.beginPath();
     ctx.fillRect(0, 0, this.sampleHandleSize, this.sampleHandleSize);
     ctx.strokeRect(0, 0, this.sampleHandleSize, this.sampleHandleSize);
-    
+
     var entity = new Cesium.Entity({
       id: id,
       billboard: {
@@ -6660,8 +6340,8 @@ GLOBE.DIALOG.GSI3DCUSTOM = $.extend({}, new GLOBE.CLASS.DIALOG('gsi_dialog_3dcus
         width: this.sampleHandleSize,
         height: this.sampleHandleSize,
         color: Cesium.Color.WHITE,
-        horizontalOrigin : Cesium.HorizontalOrigin.CENTER,
-        verticalOrigin : Cesium.VerticalOrigin.CENTER,
+        horizontalOrigin: Cesium.HorizontalOrigin.CENTER,
+        verticalOrigin: Cesium.VerticalOrigin.CENTER,
         heightReference: Cesium.HeightReference.CLAMP_TO_GROUND
       },
       position: position
@@ -6676,55 +6356,51 @@ GLOBE.DIALOG.HELP = $.extend({}, new GLOBE.CLASS.DIALOG('gsi_dialog_help'), {
   options: {
     title: 'ヘルプ'
   },
-  
-  defaultTop   : '50px',
-  defaultLeft  : 'auto',
-  defaultRight : 'auto',
+
+  defaultTop: '50px',
+  defaultLeft: 'auto',
+  defaultRight: 'auto',
   defaultBottom: 'auto',
-  
+
   resizable: true,
   draggable: true,
-  
-  _slideContainerId : 'help_container',
+
+  _slideContainerId: 'help_container',
   _slideContentClass: 'help_content',
   _slideContainerWidth: '870px',
   _slideContainerHeight: '600px',
-  
+
   _slideContainer: null,
   _slides: null,
   _slideCurrentIndex: 0,
-  
-  create: function()
-  {
+
+  create: function () {
     this.createDialog();
-    
-    this.setDialogHeader( this.createHeader() );
-    this.setDialogContent( this.createContent() );
-    this.select(0);	
-    
+
+    this.setDialogHeader(this.createHeader());
+    this.setDialogContent(this.createContent());
+    this.select(0);
+
     this.setHelpDialog();
-    
-    $('#title_help').on('click', function(){
+
+    $('#title_help').on('click', function () {
       GLOBE.DIALOG.HELP.show();
     });
-    
+
     $(window).on('resize', this.onResize.bind(this));
   },
-  
-  createHeader : function()
-  {
+
+  createHeader: function () {
     this._titleFrame = this.headerFrame
-      .addClass( "help_window_content_title" )
-      .on('click', function(){
-        if ( !this._dblclickState )
-        {
+      .addClass("help_window_content_title")
+      .on('click', function () {
+        if (!this._dblclickState) {
           this._dblclickState = 1;
-          setTimeout(function(){
+          setTimeout(function () {
             this._dblclickState = 0;
           }.bind(this), 300);
         }
-        else if ( this._dblclickState == 1 )
-        {
+        else if (this._dblclickState == 1) {
           this._dblclickState = 0;
           this.setCenter();
           this.onResize();
@@ -6732,66 +6408,62 @@ GLOBE.DIALOG.HELP = $.extend({}, new GLOBE.CLASS.DIALOG('gsi_dialog_help'), {
       }.bind(this));
     return $("<span></span>");
   },
-  
-  createContent : function()
-  {
+
+  createContent: function () {
     this._contentFrame = this.contentFrame.css({
       'position': 'relative',
       'margin': '0 25px',
       'overflow': 'auto'
     });
-    
+
     this._contentList = [];
     this._selectedIndex = -1;
-    
-    $('#' + this._slideContainerId + ' .' + this._slideContentClass).each( function(index, elem) {
-      this._contentList.push( {
-        content : $( elem ).clone(),
-        title : $( elem ).attr( "title" )
+
+    $('#' + this._slideContainerId + ' .' + this._slideContentClass).each(function (index, elem) {
+      this._contentList.push({
+        content: $(elem).clone(),
+        title: $(elem).attr("title")
       });
     }.bind(this));
-    
+
     return $("<div></div>");
   },
-  
-  setHelpDialog : function()
-  {
+
+  setHelpDialog: function () {
     this._frame = this.container;
-    
-    if (GSI.Utils.Browser.isSmartMobile)
-    {
+
+    if (GSI.Utils.Browser.isSmartMobile) {
       this._frame.addClass('help_window_frame mobile');
     }
-    else
-    {
+    else {
       this._frame.addClass('help_window_frame');
     }
-    
+
     this._frame.css({
       'width': this._slideContainerWidth,
       'height': this._slideContainerHeight,
       'margin-right': 'auto',
-      'margin-left' : 'auto'
+      'margin-left': 'auto'
     });
-    
-    
+
+
     this._contentFrame.on({
       /* フリック開始時 */
-      'touchstart': MA.bind( function(e) {
+      'touchstart': MA.bind(function (e) {
         this._touchX = e.originalEvent.changedTouches[0].pageX;
         this._touchStartX = this._touchX;
         this._accel = 0;
         //this._slideX = parseFloat($(this).position().left);
         this._touchY = e.originalEvent.changedTouches[0].pageY; //←縦方向のタッチ位置も取得
-      }, this ),
+      }, this),
       /* フリック中 */
-      'touchmove': MA.bind( function(e) {
+      'touchmove': MA.bind(function (e) {
         var moveX = this.touchX - e.originalEvent.changedTouches[0].pageX,
           moveY = this.touchY - e.originalEvent.changedTouches[0].pageY, //←縦方向のタッチ位置も取得
           moveRate = moveX / moveY; //←フリックした縦横の移動量の比率を計算
 
         //↓垂直方向から15度以上の方向にフリックした場合のみ、ページのスクロールをキャンセル
-        if(moveRate > Math.tan(15 * Math.PI/180)) {
+        if (moveRate > Math.tan(15 * Math.PI / 180)) {
           e.preventDefault();
         }
 
@@ -6800,120 +6472,107 @@ GLOBE.DIALOG.HELP = $.extend({}, new GLOBE.CLASS.DIALOG('gsi_dialog_help'), {
         this._accel = (e.originalEvent.changedTouches[0].pageX - this._touchX) * 5;
         this._touchX = e.originalEvent.changedTouches[0].pageX;
         this._touchEndX = this._touchX;
-        
-      }, this ),
+
+      }, this),
       /* フリック終了 */
-      'touchend': MA.bind( function(e) {
+      'touchend': MA.bind(function (e) {
         //this._slideX += this._accel;
-        
-        if ( Math.abs( this._touchEndX - this._touchStartX ) > 50 )
-        {
-          if ( this._accel > 1 )
+
+        if (Math.abs(this._touchEndX - this._touchStartX) > 50) {
+          if (this._accel > 1)
             this.prev();
-          else if ( this._accel < -1)
+          else if (this._accel < -1)
             this.next();
         }
         //$("#query").val(this._slideX + "/" + this._accel + "/" + this._touchX );
-      }, this )
+      }, this)
     });
-    
-    
+
+
     this._nextButton = $("<a>")
       .attr({
-        "href":"javascript:void(0);"
+        "href": "javascript:void(0);"
       })
       .addClass("help_window_frame_button")
       .addClass("help_window_frame_next_button")
       .html("")
-      .click( MA.bind( function(){this._nextButton.blur();this.next();}, this ) );
-    
+      .click(MA.bind(function () { this._nextButton.blur(); this.next(); }, this));
+
     this._prevButton = $("<a>")
-      .attr( {
-        "href":"javascript:void(0);"
-      } )
-      .addClass( "help_window_frame_button")
-      .addClass( "help_window_frame_prev_button")
-      .html( "" )
-      .click( MA.bind( function(){this._prevButton.blur();this.prev();}, this ) );
-    
-    this._frame.append( this._prevButton);
-    this._frame.append( this._nextButton);
-    
+      .attr({
+        "href": "javascript:void(0);"
+      })
+      .addClass("help_window_frame_button")
+      .addClass("help_window_frame_prev_button")
+      .html("")
+      .click(MA.bind(function () { this._prevButton.blur(); this.prev(); }, this));
+
+    this._frame.append(this._prevButton);
+    this._frame.append(this._nextButton);
+
     this.setCenter();
   },
-  
-  next : function()
-  {
-    if ( this._contentList.length > this._selectedIndex+1)
-      this.select(this._selectedIndex+1);
+
+  next: function () {
+    if (this._contentList.length > this._selectedIndex + 1)
+      this.select(this._selectedIndex + 1);
     else
-      this.select(0);	
+      this.select(0);
   },
-  
-  prev : function()
-  {
-    if ( 0 <= this._selectedIndex-1)
-      this.select(this._selectedIndex-1);
+
+  prev: function () {
+    if (0 <= this._selectedIndex - 1)
+      this.select(this._selectedIndex - 1);
     else
-      this.select(this._contentList.length -1);	
-      
+      this.select(this._contentList.length - 1);
+
   },
-  
-  select : function( index )
-  {
-    if ( this._contentList && this._contentList.length > index && index >= 0 )
-    {
-      if ( this._selectedIndex >= 0 )
-      {
-        this._contentFrame.fadeOut( 100, MA.bind( function(){
-          this._titleFrame.find("span").empty().append( this._contentList[index].title ); 
-          this._contentFrame.empty().append( this._contentList[index].content );
-          this._contentFrame.fadeIn( 100 );
+
+  select: function (index) {
+    if (this._contentList && this._contentList.length > index && index >= 0) {
+      if (this._selectedIndex >= 0) {
+        this._contentFrame.fadeOut(100, MA.bind(function () {
+          this._titleFrame.find("span").empty().append(this._contentList[index].title);
+          this._contentFrame.empty().append(this._contentList[index].content);
+          this._contentFrame.fadeIn(100);
         }, this));
       }
-      else
-      {
-        this._titleFrame.find("span").empty().append( this._contentList[index].title ); 
-        this._contentFrame.empty().append( this._contentList[index].content );
+      else {
+        this._titleFrame.find("span").empty().append(this._contentList[index].title);
+        this._contentFrame.empty().append(this._contentList[index].content);
       }
       this._selectedIndex = index;
     }
   },
-  
-  setCenter: function()
-  {
+
+  setCenter: function () {
     this.container.css({
       'top': this.defaultTop,
       'left': ($(window).width() - this.container.outerWidth(true)) / 2 + 'px'
     });
   },
-  
-  onAfterShow: function()
-  {
+
+  onAfterShow: function () {
     this.onResize();
   },
-  
-  onResize: function()
-  {
+
+  onResize: function () {
     this.adjustHelp();
     this.contentFrame.css({
       'height': (this.container.height() - this.headerFrame.outerHeight(true)) + 'px'
     });
   },
-  
-  adjustHelp: function()
-  {
-    if ( this.container.outerWidth(true) >= $(window).width() )
-    {
+
+  adjustHelp: function () {
+    if (this.container.outerWidth(true) >= $(window).width()) {
       var diff = this.container.outerWidth(true) - this.container.width();
       this.container.css({
         'width': ($(window).width() - diff - 5) + 'px'
       });
       this.setCenter();
     }
-    
-    if ( this.container.offset().top + this.container.outerHeight(true) >= $(window).height() )
-    {
+
+    if (this.container.offset().top + this.container.outerHeight(true) >= $(window).height()) {
       var diff = this.container.outerHeight(true) - this.container.height();
       this.container.css({
         'height': ($(window).height() - this.container.offset().top - diff - 5) + 'px'
@@ -6927,49 +6586,45 @@ GLOBE.DIALOG.INFOBOX = $.extend({}, new GLOBE.CLASS.DIALOG('gsi_dialog_infobox')
   options: {
     title: '情報ウィンドー'
   },
-  defaultTop:   'auto',
-  defaultLeft:  'auto',
+  defaultTop: 'auto',
+  defaultLeft: 'auto',
   defaultRight: '10px',
-  defaultBottom:'10px',
-  
+  defaultBottom: '10px',
+
   resizable: false,
-  
-  create: function()
-  {
+
+  create: function () {
     this.createDialog();
     this.initPosition();
   },
-  
-  initPosition: function()
-  {
+
+  initPosition: function () {
     this.container
-        .css({
+      .css({
         'color': '#fff',
         'background': '#333',
         'opacity': '.90',
         'width': 'auto',
         'min-width': '88px'
       });
-    
+
     this.container.css('top', this.defaultTop);
     this.container.css('left', this.defaultLeft);
     this.container.css('right', this.defaultRight);
     this.container.css('bottom', this.defaultBottom);
-    
+
     this.contentFrame.css({
       'padding': '10px',
       'background-color': '#fff',
       'color': '#000'
     });
   },
-  
-  onBeforeShow: function()
-  {
+
+  onBeforeShow: function () {
     this.initPosition();
   },
-  
-  onDragStart: function()
-  {
+
+  onDragStart: function () {
     this.container.css({
       'right': 'auto',
       'bottom': 'auto'
@@ -6982,87 +6637,81 @@ GLOBE.DIALOG.FILEREAD = $.extend({}, new GLOBE.CLASS.DIALOG('gsi_dialog_fileread
   options: {
     title: 'ファイル読込'
   },
-  
-  defaultTop:   '100px',
-  defaultLeft:  'auto',
+
+  defaultTop: '100px',
+  defaultLeft: 'auto',
   defaultRight: '10px',
-  defaultBottom:'auto',
-  
+  defaultBottom: 'auto',
+
   resizable: true,
-  
+
   _list: [],
-  
-  create: function()
-  {
+
+  create: function () {
     this.createDialog();
-    this.container.css({'width':'360px'});
-    
-    this.setDialogHeader( this.createHeader() );
-    this.setDialogContent( this.createContent() );
-    
+    this.container.css({ 'width': '360px' });
+
+    this.setDialogHeader(this.createHeader());
+    this.setDialogContent(this.createContent());
+
     this.initializeDroppable();
   },
-  
-  initializeDroppable: function()
-  {
-    if(!window.FileReader) {
+
+  initializeDroppable: function () {
+    if (!window.FileReader) {
       return false;
     }
-    
+
     var elm = $('#' + GLOBE.MAP.mapElementId);
-    
-    var cancelEvent = function(event) {
+
+    var cancelEvent = function (event) {
       event.preventDefault();
       event.stopPropagation();
       return false;
     }
     elm.bind("dragenter", cancelEvent);
     elm.bind("dragover", cancelEvent);
-    
-    var handleDroppedFile = function(event) {
+
+    var handleDroppedFile = function (event) {
       this.show();
       this._createFileLoadPanel();
-      
-      this.uploadFile( event.originalEvent.dataTransfer.files );
-      
+
+      this.uploadFile(event.originalEvent.dataTransfer.files);
+
       cancelEvent(event);
       return false;
-      
+
     }.bind(this);
-    
+
     elm.bind("drop", handleDroppedFile);
   },
-  
-  createHeader : function()
-  {
-    this._title = $( '<div>' ).html( this.options.title );
 
-    return $( '<div>' ).append( this._title );
+  createHeader: function () {
+    this._title = $('<div>').html(this.options.title);
+
+    return $('<div>').append(this._title);
   },
-  createContent : function()
-  {
-    this._sakuzuFrame = $( '<div>' ).addClass( 'gsi_sakuzu_dialog_frame' );
+  createContent: function () {
+    this._sakuzuFrame = $('<div>').addClass('gsi_sakuzu_dialog_frame');
     this._createTopPanel();
     return this._sakuzuFrame;
   },
-  
-  _createTopPanel : function()
-  {
-    // 初期画面
-    if ( this._topPanel ) return;
 
-    this._topPanel = $( '<div>' );
+  _createTopPanel: function () {
+    // 初期画面
+    if (this._topPanel) return;
+
+    this._topPanel = $('<div>');
 
     this._topPanelList = this._createTopPanelList();
-    this._topPanel.append( this._topPanelList );
+    this._topPanel.append(this._topPanelList);
 
-    this._sakuzuFrame.append( this._topPanel );
+    this._sakuzuFrame.append(this._topPanel);
   },
-  
-  _createTopPanelList : function()
-  {
-    var frame = $( '<div>' ).addClass( 'gsi_sakuzu_dialog_list' );
-    
+
+  _createTopPanelList: function () {
+    var frame = $('<div>').addClass('gsi_sakuzu_dialog_list');
+
     $('<div>ファイルを選択</div>')
       .addClass('normalbutton')
       .css({
@@ -7078,70 +6727,68 @@ GLOBE.DIALOG.FILEREAD = $.extend({}, new GLOBE.CLASS.DIALOG('gsi_dialog_fileread
       })
       .on('click', this._showFileLoadPanel.bind(this))
       .appendTo(frame);
-    
-    this._listTable = $( '<table>' ).css( { 'width' : '100%'} );
-    this._listTBody = $( '<tbody>' );
+
+    this._listTable = $('<table>').css({ 'width': '100%' });
+    this._listTBody = $('<tbody>');
 
     this._refreshList(true);
-    this._listTable.append( this._listTBody );
-    frame.append( this._listTable );
+    this._listTable.append(this._listTBody);
+    frame.append(this._listTable);
 
     return frame;
   },
-  
-  _refreshList : function()
-  {
+
+  _refreshList: function () {
     this._listTBody.empty();
 
-    for ( var i=0; i<this._list.length; i++ )
-    {
+    for (var i = 0; i < this._list.length; i++) {
       var item = this._list[i];
-      
-      var tr = $( '<tr>' );
+
+      var tr = $('<tr>');
       var td = null;
       var id = 'GSI_SakuzuDialog_check' + item.id;
 
       // 表示チェック
-      var checkBox = $( '<input>' ).attr( { 'id': id, 'type' : 'checkbox', 'checked' : item.visible } ).addClass( 'normalcheck' );
-      var label = $( '<label>' ).attr( {'for': id} ).html( item.file );
-      
+      var checkBox = $('<input>').attr({ 'id': id, 'type': 'checkbox', 'checked': item.visible }).addClass('normalcheck');
+      var label = $('<label>').attr({ 'for': id }).html(item.file);
+
       // 名称
-      var title = $( '<div>' ).append( checkBox ).append( label )
-        .css( { "word-break": "break-all"} )
+      var title = $('<div>').append(checkBox).append(label)
+        .css({ "word-break": "break-all" })
         .addClass('folder');
 
       // レイヤー数
       var layerCount = item.len;
-      var num = $( '<span>' ).addClass( 'num' ).html( layerCount );
+      var num = $('<span>').addClass('num').html(layerCount);
 
-      td = $( '<td>' ).append( title ).css( { 'width' : '100%', "word-break": "break-all"} );
-      tr.append( td );
+      td = $('<td>').append(title).css({ 'width': '100%', "word-break": "break-all" });
+      tr.append(td);
 
       // ボタン類
-      td = $( '<td>' ).css({"text-align":"right"}).append( num );
-      tr.append( td );
-      
-      var buttonClassName = 'normalbutton sakuzubutton' + ( layerCount <= 0 ? ' disabled' : '' );
-      
-      var clearBtn = $( '<a>' ).attr( {"href":"javascript:void(0);"} ).html( '削除' ).addClass(buttonClassName);
-      td = $( '<td>' ).append( clearBtn );
-      tr.append( td );
-      this._listTBody.append( tr );
-      
+      td = $('<td>').css({ "text-align": "right" }).append(num);
+      tr.append(td);
+
+      var buttonClassName = 'normalbutton sakuzubutton' + (layerCount <= 0 ? ' disabled' : '');
+
+      var clearBtn = $('<a>').attr({ "href": "javascript:void(0);" }).html('削除').addClass(buttonClassName);
+      td = $('<td>').append(clearBtn);
+      tr.append(td);
+      this._listTBody.append(tr);
+
       // アイコンラベル
-      tr = $( '<tr>' );
-      id = 'GSI_SakuzuDialog_label_check' + item.id ;
-      var checkBox2 = $( '<input>' ).attr( { 'id': id, 'type' : 'checkbox', 'checked' : item.visibleOfLabel } ).addClass( 'normalcheck' );
-      
-      label = $( '<label>' ).attr( {'for': id} ).html( 'アイコンのラベルを表示' );
-      td = $( '<td>' ).attr({"colspan":4, "align":"right"}).append(checkBox2).append( label );
+      tr = $('<tr>');
+      id = 'GSI_SakuzuDialog_label_check' + item.id;
+      var checkBox2 = $('<input>').attr({ 'id': id, 'type': 'checkbox', 'checked': item.visibleOfLabel }).addClass('normalcheck');
+
+      label = $('<label>').attr({ 'for': id }).html('アイコンのラベルを表示');
+      td = $('<td>').attr({ "colspan": 4, "align": "right" }).append(checkBox2).append(label);
 
       item._itemDescriptionPairs = GLOBE.MAP.getDescriptionPairsById(item.id);
 
       id = id + 'div';
       var keyNameDiv = $('<div>').attr({ 'id': id });
       if (!checkBox2.is(':checked')) keyNameDiv.css({ "display": "none" });
-      var keyNameLabel =  $('<label>').html('ラベルとして表示する属性：');
+      var keyNameLabel = $('<label>').html('ラベルとして表示する属性：');
       id = 'GSI_SakuzuDialog_label_select' + GSI.Utils.getCurrentID();
       var keyNameSelect = $('<select>').attr({ 'id': id });
       keyNameSelect.change(MA.bind(function (selectBox, item) {
@@ -7152,8 +6799,8 @@ GLOBE.DIALOG.FILEREAD = $.extend({}, new GLOBE.CLASS.DIALOG('gsi_dialog_fileread
 
       // ラベル選択コンボボックス作成
       var keyNameList = item._itemDescriptionPairs.keys;
-      if(!keyNameList.includes("name")) keyNameList.unshift("name");
-      keyNameList.forEach(function(val,index,ar) {
+      if (!keyNameList.includes("name")) keyNameList.unshift("name");
+      keyNameList.forEach(function (val, index, ar) {
         keyNameSelect.append($('<option>').html(val).val(val));
       });
       if (keyNameList.includes(item._iconLabelSelectValue)) {
@@ -7165,25 +6812,25 @@ GLOBE.DIALOG.FILEREAD = $.extend({}, new GLOBE.CLASS.DIALOG('gsi_dialog_fileread
       keyNameDiv.append(keyNameLabel).append(keyNameSelect);
       td.append(keyNameDiv);
 
-      tr.append( td );
-      this._listTBody.append( tr );
-      
-      
+      tr.append(td);
+      this._listTBody.append(tr);
+
+
       // イベント
-      checkBox.click( MA.bind( function(checkBox, checkBox2, item){
+      checkBox.click(MA.bind(function (checkBox, checkBox2, item) {
         GLOBE.MAP.hide_showLayer("upload", "", item.id, checkBox.is(':checked'), checkBox2.is(':checked'));
         item.visible = checkBox.is(':checked');
-      }, this, checkBox, checkBox2, item ) );
-      
-      checkBox2.click( MA.bind( function(checkBox, checkBox2, item, keyNameSelect){
+      }, this, checkBox, checkBox2, item));
+
+      checkBox2.click(MA.bind(function (checkBox, checkBox2, item, keyNameSelect) {
         GLOBE.MAP.hide_showLabel("upload", "", item.id, checkBox.is(':checked'), checkBox2.is(':checked'));
         item.visibleOfLabel = checkBox2.is(':checked');
 
-        if(item.visibleOfLabel) {
+        if (item.visibleOfLabel) {
           item._itemDescriptionPairs = GLOBE.MAP.getDescriptionPairsById(item.id, item._itemDescriptionPairs);
           var keyNameList = item._itemDescriptionPairs.keys;
-          keyNameList.forEach(function(val,index,ar) {
-            if(keyNameSelect.find("option[value='" + val + "']").length == 0){
+          keyNameList.forEach(function (val, index, ar) {
+            if (keyNameSelect.find("option[value='" + val + "']").length == 0) {
               keyNameSelect.append($('<option>').html(val).val(val));
             }
           });
@@ -7195,273 +6842,234 @@ GLOBE.DIALOG.FILEREAD = $.extend({}, new GLOBE.CLASS.DIALOG('gsi_dialog_fileread
         } else {
           $('#' + checkBox2[0].id + 'div').slideUp(200);;
         }
-      }, this, checkBox, checkBox2, item, keyNameSelect) );
-      
-      clearBtn.click( MA.bind( this._clearLayer, this, item ) );
+      }, this, checkBox, checkBox2, item, keyNameSelect));
+
+      clearBtn.click(MA.bind(this._clearLayer, this, item));
     }
   },
-  
-  _createFileLoadPanel : function()
-  {
+
+  _createFileLoadPanel: function () {
     // ファイル読込パネル
-    if ( this._fileLoadPanel ) return;
-    this._fileLoadPanel = $( '<div>' ).addClass( 'gsi_sakuzu_dialog_fileloadpanel' ).hide();
+    if (this._fileLoadPanel) return;
+    this._fileLoadPanel = $('<div>').addClass('gsi_sakuzu_dialog_fileloadpanel').hide();
 
-    var frame = $( '<div>' ).addClass( 'gsi_sakuzu_dialog_fileload' );
+    var frame = $('<div>').addClass('gsi_sakuzu_dialog_fileload');
 
-    if ( !GSI.Utils.hasFileAPI )
-    {
-      frame.append( $('<div>').addClass( 'message' ).html( GSI.TEXT.SAKUZU.DIALOG_LOAD_COMMENT_IE8) );
-      var fileNameFrame = $( '<div>' );
+    if (!GSI.Utils.hasFileAPI) {
+      frame.append($('<div>').addClass('message').html(GSI.TEXT.SAKUZU.DIALOG_LOAD_COMMENT_IE8));
+      var fileNameFrame = $('<div>');
 
-      this._fileLoadNameInput = $( '<input>' ).attr( {'type':'text'} );
-      this._fileLoadTextarea = $( '<textarea>' ).attr( {'wrap':'off'} );
+      this._fileLoadNameInput = $('<input>').attr({ 'type': 'text' });
+      this._fileLoadTextarea = $('<textarea>').attr({ 'wrap': 'off' });
 
-      fileNameFrame.append( $('<span>').html( GSI.TEXT.SAKUZU.DIALOG_LOAD_FILENAMECAPTION ) );
-      fileNameFrame.append( this._fileLoadNameInput );
-      frame.append( fileNameFrame );
-      frame.append( this._fileLoadTextarea );
+      fileNameFrame.append($('<span>').html(GSI.TEXT.SAKUZU.DIALOG_LOAD_FILENAMECAPTION));
+      fileNameFrame.append(this._fileLoadNameInput);
+      frame.append(fileNameFrame);
+      frame.append(this._fileLoadTextarea);
     }
-    else
-    {
-      frame.append( $('<div>').addClass( 'message' ).html( GSI.TEXT.SAKUZU.DIALOG_LOAD_COMMENT ) );
-      this._fileLoadInput = $('<input>').attr( { type:"file"} );
+    else {
+      frame.append($('<div>').addClass('message').html(GSI.TEXT.SAKUZU.DIALOG_LOAD_COMMENT));
+      this._fileLoadInput = $('<input>').attr({ type: "file" });
 
-      frame.append( this._fileLoadInput );
+      frame.append(this._fileLoadInput);
     }
 
-    this._fileLoadPanel.append( frame );
+    this._fileLoadPanel.append(frame);
 
     // OKCancel
     this._fileLoadOkCancelFrame = this._createFileLoadOkCancel();
-    this._fileLoadPanel.append( this._fileLoadOkCancelFrame  );
+    this._fileLoadPanel.append(this._fileLoadOkCancelFrame);
 
-    this._sakuzuFrame.append( this._fileLoadPanel );
+    this._sakuzuFrame.append(this._fileLoadPanel);
   },
 
-  _createFileLoadOkCancel : function()
-  {
-    var frame = $( '<div>' ).addClass( 'gsi_sakuzu_dialog_okcancel' );
-    var okBtn = $( '<a>' ).attr( {'href':'javascript:void(0);'} ).html( GSI.TEXT.SAKUZU.DIALOG_LOAD_OKBTN ).addClass( 'normalbutton' );
-    var cancelBtn = $( '<a>' ).attr( {'href':'javascript:void(0);'} ).html( GSI.TEXT.SAKUZU.DIALOG_LOAD_CANCELBTN ).addClass( 'normalbutton' );
+  _createFileLoadOkCancel: function () {
+    var frame = $('<div>').addClass('gsi_sakuzu_dialog_okcancel');
+    var okBtn = $('<a>').attr({ 'href': 'javascript:void(0);' }).html(GSI.TEXT.SAKUZU.DIALOG_LOAD_OKBTN).addClass('normalbutton');
+    var cancelBtn = $('<a>').attr({ 'href': 'javascript:void(0);' }).html(GSI.TEXT.SAKUZU.DIALOG_LOAD_CANCELBTN).addClass('normalbutton');
 
-    okBtn.click( this._onFileLoadOkClick.bind(this) );
-    cancelBtn.click( this._onFileLoadCancelClick.bind(this) );
+    okBtn.click(this._onFileLoadOkClick.bind(this));
+    cancelBtn.click(this._onFileLoadCancelClick.bind(this));
 
-    frame.append( okBtn ).append( cancelBtn );
-    frame.append( $('<div id="uploadFilename"></div>') );
+    frame.append(okBtn).append(cancelBtn);
+    frame.append($('<div id="uploadFilename"></div>'));
 
     return frame;
   },
-  
-  _onFileLoadOkClick : function()
-  {
-    if ( this._fileLoadInput )
-    {
-      var files = this._fileLoadInput.prop( 'files' );
-      if( !files ) files = this._fileLoadInput.attr( 'files' );
 
-      if ( files && files.length > 0 )
-      {
+  _onFileLoadOkClick: function () {
+    if (this._fileLoadInput) {
+      var files = this._fileLoadInput.prop('files');
+      if (!files) files = this._fileLoadInput.attr('files');
+
+      if (files && files.length > 0) {
         this.uploadFile(this._fileLoadInput[0].files);
       }
-      else
-      {
-        alert( GSI.TEXT.SAKUZU.DIALOG_LOAD_NOFILE );
+      else {
+        alert(GSI.TEXT.SAKUZU.DIALOG_LOAD_NOFILE);
       }
     }
-    else
-    {
-      var text = $.trim( this._fileLoadTextarea.val() );
-      if ( text != '' )
-      {
-        var fileName = $.trim( this._fileLoadNameInput.val() );
-        
-        if ( this.isJSON(text) )
-        {
+    else {
+      var text = $.trim(this._fileLoadTextarea.val());
+      if (text != '') {
+        var fileName = $.trim(this._fileLoadNameInput.val());
+
+        if (this.isJSON(text)) {
           GLOBE.MAP.drawGeojson(text, fileName, null, this.onAfterDataLoad.bind(this));
         }
-        else if ( this.isXML(text) )
-        {
+        else if (this.isXML(text)) {
           GLOBE.MAP.drawKml(text, fileName, null, null, this.onAfterDataLoad.bind(this));
         }
-        else
-        {
+        else {
           alert("「JSON形式」または「KML形式」で入力してください。");
         }
       }
-      else
-      {
-        alert( GSI.TEXT.SAKUZU.DIALOG_LOAD_NOTEXT );
+      else {
+        alert(GSI.TEXT.SAKUZU.DIALOG_LOAD_NOTEXT);
       }
     }
   },
-  
-  isJSON: function( text )
-  {
-    try
-    {
-      var item = $.parseJSON( text );
+
+  isJSON: function (text) {
+    try {
+      var item = $.parseJSON(text);
       return true;
     }
-    catch( e )
-    {
+    catch (e) {
       return false;
     }
   },
-  
-  isXML: function( text )
-  {
-    try
-    {
-      var xml = $.parseXML( text );
+
+  isXML: function (text) {
+    try {
+      var xml = $.parseXML(text);
       return true;
     }
-    catch( e )
-    {
+    catch (e) {
       return false;
     }
   },
-  
-  _onFileLoad : function( event )
-  {
-    if ( event.error )
-    {
-      alert( GSI.TEXT.SAKUZU.DIALOG_LOAD_ERROR );
+
+  _onFileLoad: function (event) {
+    if (event.error) {
+      alert(GSI.TEXT.SAKUZU.DIALOG_LOAD_ERROR);
     }
-    else
-    {
-      if ( this._fileLoadTextarea )
-      {
+    else {
+      if (this._fileLoadTextarea) {
         this._fileLoadTextarea.focus();
         this._fileLoadTextarea.val('');
-        this._fileLoadNameInput.val( '' );
+        this._fileLoadNameInput.val('');
       }
-      this._showTopPanel( this._fileLoadPanel );
+      this._showTopPanel(this._fileLoadPanel);
     }
   },
-  
-  _onFileLoadCancelClick : function()
-  {
-    this._showTopPanel( this._fileLoadPanel );
+
+  _onFileLoadCancelClick: function () {
+    this._showTopPanel(this._fileLoadPanel);
   },
-  
-  _showTopPanel : function( beforePanel )
-  {
+
+  _showTopPanel: function (beforePanel) {
     this._createTopPanel();
 
-    this.container .css( { height: 'auto'} );
-    if ( beforePanel )
-    {
-      beforePanel.fadeOut( 'normal', MA.bind( function() {
+    this.container.css({ height: 'auto' });
+    if (beforePanel) {
+      beforePanel.fadeOut('normal', MA.bind(function () {
         //this.setTitle( GSI.TEXT.SAKUZU.DIALOG_TITLE );
-        this._topPanel.fadeIn( 'fast' );
-      }, this ) );
+        this._topPanel.fadeIn('fast');
+      }, this));
     }
-    else
-    {
+    else {
       //this.setTitle( GSI.TEXT.SAKUZU.DIALOG_TITLE );
       this._topPanel.show();
     }
   },
-  
-  _showFileLoadPanel : function()
-  {
+
+  _showFileLoadPanel: function () {
     this._createFileLoadPanel();
 
-    this.container .css( { height: 'auto'} );
-    this._topPanel.fadeOut( 'normal', MA.bind( function() {
+    this.container.css({ height: 'auto' });
+    this._topPanel.fadeOut('normal', MA.bind(function () {
 
-      this._fileLoadPanel.fadeIn( 'normal' );
+      this._fileLoadPanel.fadeIn('normal');
 
-    }, this ) );
+    }, this));
   },
 
-  _setUrl: function(fKey){
+  _setUrl: function (fKey) {
     var items = window.location.href.split('&');
-    items = items.filter((item)=>{
-      return !item.startsWith(fKey+"=")
+    items = items.filter((item) => {
+      return !item.startsWith(fKey + "=")
     })
     var url = items.join('&');
-    window.history.pushState({url: url, title: document.title}, document.title, url);
-    if(GSI.FILEURL[fKey]) GSI.FILEURL[fKey] = null;
+    window.history.pushState({ url: url, title: document.title }, document.title, url);
+    if (GSI.FILEURL[fKey]) GSI.FILEURL[fKey] = null;
   },
-  
-  _clearLayer: function( item )
-  {
-    if ( confirm('このレイヤーを削除します。よろしいですか？') )
-    {
-      if(item.fkey){
+
+  _clearLayer: function (item) {
+    if (confirm('このレイヤーを削除します。よろしいですか？')) {
+      if (item.fkey) {
         this._setUrl(item.fkey);
         item.fkey = null;
       }
       GLOBE.MAP.deleteLayer('upload', '', item.id);
       GLOBE.DIALOG.INFOBOX.hide();
       var newlist = [];
-      for ( var i=0; i<this._list.length; i++ )
-      {
-        if ( this._list[i].id != item.id )
-        {
-          newlist.push( this._list[i] );
+      for (var i = 0; i < this._list.length; i++) {
+        if (this._list[i].id != item.id) {
+          newlist.push(this._list[i]);
         }
       }
       this._list = newlist;
       this._refreshList();
     }
   },
-  
-  uploadFile: function( files, fkey){
+
+  uploadFile: function (files, fkey) {
     var file = files[0];
-    
+
     // geojsonかkmlかどうかチェック
-    if ( !file || !file.name ) return false;
+    if (!file || !file.name) return false;
     var ext = file.name.match(/(.*)(?:\.([^.]+$))/)[2];
-    if(ext != "geojson" && ext != "kml"){
+    if (ext != "geojson" && ext != "kml") {
       alert("geojsonまたはkmlファイルを選択して下さい。");
       return;
     }
-    
+
     var reader = new FileReader();
-    reader.onload = function(evt){
+    reader.onload = function (evt) {
       var res = evt.target.result;
-      
+
       // Geojson描画
-      if(ext == "geojson"){
+      if (ext == "geojson") {
         GLOBE.MAP.drawGeojson(res, file.name, fkey, this.onAfterDataLoad.bind(this));
-      // KML描画
-      }else if(ext == "kml"){
+        // KML描画
+      } else if (ext == "kml") {
         GLOBE.MAP.drawKml(res, file.name, null, fkey, this.onAfterDataLoad.bind(this));
       }
-      
+
     }.bind(this);
 
     reader.readAsText(file, "UTF-8");
   },
-  
-  onAfterDataLoad: function( item )
-  {
-    if ( item )
-    {
-      if ( this._fileLoadInput )     this._fileLoadInput.val('');
-      if ( this._fileLoadTextarea )  this._fileLoadTextarea.val('');
-      if ( this._fileLoadNameInput ) this._fileLoadNameInput.val('');
-      this._list.push( item );
+
+  onAfterDataLoad: function (item) {
+    if (item) {
+      if (this._fileLoadInput) this._fileLoadInput.val('');
+      if (this._fileLoadTextarea) this._fileLoadTextarea.val('');
+      if (this._fileLoadNameInput) this._fileLoadNameInput.val('');
+      this._list.push(item);
       this._refreshList();
       this._showTopPanel(this._fileLoadPanel);
     }
-    else
-    {
+    else {
       alert("読み込みに失敗しました。\n\n「JSON形式」か「KML形式」であることをご確認ください。");
     }
   },
-  
-  reloadAllKml: function()
-  {
-    for ( var i=0; i<this._list.length; i++ )
-    {
+
+  reloadAllKml: function () {
+    for (var i = 0; i < this._list.length; i++) {
       var item = this._list[i];
-      if ( item.kml )
-      {
+      if (item.kml) {
         GLOBE.MAP.drawKml(item.kml, item.file, item.id);
       }
     }
@@ -7470,33 +7078,30 @@ GLOBE.DIALOG.FILEREAD = $.extend({}, new GLOBE.CLASS.DIALOG('gsi_dialog_fileread
 
 /***** 高さ倍率ダイアログ *****/
 GLOBE.DIALOG.HEIGHTPOWER = $.extend({}, new GLOBE.CLASS.DIALOG('gsi_dialog_heightpower'), {
-  
-  defaultTop:   '140px',
-  defaultLeft:  'auto',
+
+  defaultTop: '140px',
+  defaultLeft: 'auto',
   defaultRight: '10px',
-  defaultBottom:'auto',
-  
+  defaultBottom: 'auto',
+
   sliderId: 'gsi_height_power_slider',
   tboxId: 'gsi_height_power_tbox',
-  
+
   // このオブジェクトを活性化（最初に呼ぶ）
-  create: function()
-  {
+  create: function () {
     this.createDialog();
-    
-    this.onBeforeClose = function()
-    {
+
+    this.onBeforeClose = function () {
       //this.clear();
     }
-    
+
     this.setDialogHeader('高さ倍率');
     this._initializeContent();
   },
-  
-  _initializeContent: function()
-  {
+
+  _initializeContent: function () {
     this.frame = $('<div></div>');
-      
+
     this.label = $('<div>高さ方向の倍率：</div>')
       .css({
         'margin': '20px',
@@ -7504,33 +7109,33 @@ GLOBE.DIALOG.HEIGHTPOWER = $.extend({}, new GLOBE.CLASS.DIALOG('gsi_dialog_heigh
         'text-align': 'center'
       })
       .appendTo(this.frame);
-    
+
     this.tbox = $('<input type="tel" size="3">')
       .attr('id', this.tboxId)
       .val(GLOBE.MAP.initials.heightPower)
       .css({
         'text-align': 'right'
       })
-      .on('click', function(){ this.select(); })
+      .on('click', function () { this.select(); })
       .on('keyup change', this.onTboxChange.bind(this))
-      .appendTo( this.label );
-    
+      .appendTo(this.label);
+
     this.sliderFrame = $('<div></div>')
       .css({
-        'position' : 'relative',
-        'margin' : '20px'
+        'position': 'relative',
+        'margin': '20px'
       })
       .appendTo(this.frame);
-      
+
     this.slider = $('<div></div>')
       .attr('id', this.sliderId)
       .css({
         //'margin' : '0 30px 0 20px'
       })
       .appendTo(this.sliderFrame);
-    
-    this.setDialogContent( this.frame );
-    
+
+    this.setDialogContent(this.frame);
+
     this.slider.slider({
       max: GLOBE.MAP.heightPowerMax,
       min: GLOBE.MAP.heightPowerMin,
@@ -7540,42 +7145,34 @@ GLOBE.DIALOG.HEIGHTPOWER = $.extend({}, new GLOBE.CLASS.DIALOG('gsi_dialog_heigh
       change: this.sliderValueToMap.bind(this)
     });
   },
-  
-  tboxToSlider: function( e )
-  {
+
+  tboxToSlider: function (e) {
     var v = this.tbox.val();
-    if ( !isNaN(v) && v >= 0 && v <= 9.9 )
-    {
+    if (!isNaN(v) && v >= 0 && v <= 9.9) {
       this.slider.slider('value', v);
     }
   },
-  
-  sliderToTbox: function( e, ui )
-  {
-    this.tbox.val( ui.value );
+
+  sliderToTbox: function (e, ui) {
+    this.tbox.val(ui.value);
   },
-  
-  onSliderChange: function( e, ui )
-  {
-    this.sliderToTbox( e, ui );
+
+  onSliderChange: function (e, ui) {
+    this.sliderToTbox(e, ui);
   },
-  
-  onTboxChange: function( e )
-  {
-    this.tboxToSlider( e );
+
+  onTboxChange: function (e) {
+    this.tboxToSlider(e);
   },
-  
-  sliderValueToMap: function( e, ui )
-  {
+
+  sliderValueToMap: function (e, ui) {
     GSI.GLOBALS.layerTreeDialog._userControlStarted = false;
-    GLOBE.MAP.setHeightPower( ui.value );
+    GLOBE.MAP.setHeightPower(ui.value);
     GLOBE.DIALOG.FILEREAD.reloadAllKml();
-    
+
     var list = GSI.GLOBALS.mapLayerList.getList();
-    for ( var i=0; i<list.length; i++ )
-    {
-      if ( list[i].layerType == "kml" && list[i]._visibleInfo && list[i]._visibleInfo.layer && list[i]._visibleInfo.layer._redraw )
-      {
+    for (var i = 0; i < list.length; i++) {
+      if (list[i].layerType == "kml" && list[i]._visibleInfo && list[i]._visibleInfo.layer && list[i]._visibleInfo.layer._redraw) {
         list[i]._visibleInfo.layer._redraw();
       }
     }
@@ -7584,86 +7181,78 @@ GLOBE.DIALOG.HEIGHTPOWER = $.extend({}, new GLOBE.CLASS.DIALOG('gsi_dialog_heigh
 
 /***** リンクを取得ダイアログ *****/
 GLOBE.DIALOG.GETLINK = $.extend({}, new GLOBE.CLASS.DIALOG('gsi_dialog_getlink'), {
-  
-  defaultTop:   '180px',
-  defaultLeft:  'auto',
+
+  defaultTop: '180px',
+  defaultLeft: 'auto',
   defaultRight: '10px',
-  defaultBottom:'auto',
-  
+  defaultBottom: 'auto',
+
   resizable: false,
-  
+
   // このオブジェクトを活性化（最初に呼ぶ）
-  create: function()
-  {
+  create: function () {
     this.createDialog();
-    
-    this.onBeforeClose = function()
-    {
+
+    this.onBeforeClose = function () {
       //this.clear();
     }
-    
+
     this._initializeHeader();
     this._initializeContent();
   },
-  
-  _initializeHeader: function()
-  {
+
+  _initializeHeader: function () {
     this.setDialogHeader('リンクを取得');
   },
-  
-  _initializeContent: function()
-  {
-    this.setDialogContent( this.createContent() );
+
+  _initializeContent: function () {
+    this.setDialogContent(this.createContent());
     this._createTextareaContent(true);
     this._setMessage();
   },
-  
-  createContent : function()
-  {
-    this._frame = $( '<div>' ).addClass( 'gsi_sharedialog_frame' );
 
-    this._messageFrame = $( '<div>' ).addClass( 'messageframe' );
-    this._textareaFrame = $( '<div>' ).addClass( 'textareaframe' );
+  createContent: function () {
+    this._frame = $('<div>').addClass('gsi_sharedialog_frame');
 
-    this._contentFrame = $( '<div>' );
-    this._settingFrame = $( '<div>' ).addClass( 'settingframe' );
+    this._messageFrame = $('<div>').addClass('messageframe');
+    this._textareaFrame = $('<div>').addClass('textareaframe');
 
-    this._frame.append( this._messageFrame );
-    this._frame.append( this._textareaFrame );
-    this._frame.append( this._contentFrame );
-    this._frame.append( this._settingFrame );
+    this._contentFrame = $('<div>');
+    this._settingFrame = $('<div>').addClass('settingframe');
+
+    this._frame.append(this._messageFrame);
+    this._frame.append(this._textareaFrame);
+    this._frame.append(this._contentFrame);
+    this._frame.append(this._settingFrame);
 
     return this._frame;
   },
-  
-  _createTextareaContent : function()
-  {
-    var frame = $( '<div>' ).addClass( 'textareacontent' );
-    
-    var textareaFrame = $( '<div>' );
-    this._textarea = $( '<textarea>' ).attr( {rows:4, readonly:"readonly", 'wrap':'off'} ).click( function(){ this.select();} );
+
+  _createTextareaContent: function () {
+    var frame = $('<div>').addClass('textareacontent');
+
+    var textareaFrame = $('<div>');
+    this._textarea = $('<textarea>').attr({ rows: 4, readonly: "readonly", 'wrap': 'off' }).click(function () { this.select(); });
     this._textarea.focus();
-    this._textarea.val( '' );
-    textareaFrame.append( this._textarea );
-    
-    frame.append( textareaFrame );
-    
-    this._textareaFrame.append( frame );
+    this._textarea.val('');
+    textareaFrame.append(this._textarea);
+
+    frame.append(textareaFrame);
+
+    this._textareaFrame.append(frame);
     this._textareaContent = frame;
   },
-  
-  _setMessage : function()
-  {
+
+  _setMessage: function () {
     this._messageFrame.empty();
-    
+
     var msg = "次のURLをメール等で送付することで、現在表示されている地図を共有することができます。";
-    
-    var img = $( '<img>' ).attr( {'src': 'image/system/info.png'} );
-    this._messageFrame.append(img).append( $('<div>').html(msg) );
+
+    var img = $('<img>').attr({ 'src': 'image/system/info.png' });
+    this._messageFrame.append(img).append($('<div>').html(msg));
   },
-  
-  onBeforeShow: function()
-  {
+
+  onBeforeShow: function () {
     this._textarea.val(location.href);
   }
 });
@@ -7671,32 +7260,30 @@ GLOBE.DIALOG.GETLINK = $.extend({}, new GLOBE.CLASS.DIALOG('gsi_dialog_getlink')
 
 /***** 検索ダイアログ *****/
 GLOBE.DIALOG.SEARCH = $.extend({}, new GLOBE.CLASS.DIALOG('gsi_dialog_search'), {
-  
+
   selectFrame: null,
   listFrame: null,
   listContainer: null,
-  
+
   kenSelect: null,
   shiSelect: null,
-  
+
   addressResult: [],
   chimeiResult: [],
-  
+
   markerNamePrefix: 'search_result_',
   normalMarkerUrl: 'image/system/search_result.png',
   activeMarkerUrl: 'image/system/search_result_active.png',
   markerLayer: null,
   markers: [],
-  
+
   // このオブジェクトを活性化（最初に呼ぶ）
-  create: function()
-  {
+  create: function () {
     this.createDialog();
     this._initializeHeader();
     this._initializeContent();
-    
-    this.onResize = function()
-    {
+
+    this.onResize = function () {
       var h1 = this.container.height();
       var h2 = this.headerFrame.outerHeight(true);
       var h3 = this.selectFrame.outerHeight(true);
@@ -7704,12 +7291,11 @@ GLOBE.DIALOG.SEARCH = $.extend({}, new GLOBE.CLASS.DIALOG('gsi_dialog_search'), 
         'max-height': (h1 - h2 - h3 - 2) + 'px'
       });
     }
-    
-    this.onBeforeClose = function()
-    {
+
+    this.onBeforeClose = function () {
       this.clear();
     }
-    
+
     this.createMarkerLayer();
     this.container.css({
       top: '42px',
@@ -7717,32 +7303,30 @@ GLOBE.DIALOG.SEARCH = $.extend({}, new GLOBE.CLASS.DIALOG('gsi_dialog_search'), 
     });
 
   },
-  
+
   // ダイアログのヘッダを初期化
-  _initializeHeader: function()
-  {
-    this.setTitle( '検索中' );
+  _initializeHeader: function () {
+    this.setTitle('検索中');
   },
-  
+
   // ダイアログの内容を初期化
-  _initializeContent: function()
-  {
-    this.frame = $( '<div>' );
-    
-    var selectFrame = $( '<div>' ).addClass( "searchresultdialog_select_frame" );
+  _initializeContent: function () {
+    this.frame = $('<div>');
+
+    var selectFrame = $('<div>').addClass("searchresultdialog_select_frame");
     this.selectFrame = selectFrame;
 
-    this.kenSelect = $( '<select>' ).css( {'width': '48%'} );
-    this.shiSelect = $( '<select>' ).css( {'width': '48%', 'margin-left' : '4px'} );
-    this.typeSelect = $('<select>').css({ 'width': '48%', 'margin-left': '4px','margin-top': '3px' });
-    this.typeSelectDiv = $('<div>').css({ 'width': '100%', 'text-align': 'left'});
+    this.kenSelect = $('<select>').css({ 'width': '48%' });
+    this.shiSelect = $('<select>').css({ 'width': '48%', 'margin-left': '4px' });
+    this.typeSelect = $('<select>').css({ 'width': '48%', 'margin-left': '4px', 'margin-top': '3px' });
+    this.typeSelectDiv = $('<div>').css({ 'width': '100%', 'text-align': 'left' });
 
     this.initializeKenSelect();
 
-    this.kenSelect.change( this.onKenChange.bind(this) );
+    this.kenSelect.change(this.onKenChange.bind(this));
     this.shiSelect.empty();
-    this.shiSelect.append( $('<option>').html("市区町村").val("," ) );
-    this.shiSelect.change( this.onShiChange.bind(this) );
+    this.shiSelect.append($('<option>').html("市区町村").val(","));
+    this.shiSelect.change(this.onShiChange.bind(this));
     this.typeSelect.empty();
     this.typeSelect.append($('<option>').html("すべて").val(","));
     this.typeSelect.append($('<option>').html("居住地名").val("5,居住地名"));
@@ -7750,123 +7334,107 @@ GLOBE.DIALOG.SEARCH = $.extend({}, new GLOBE.CLASS.DIALOG('gsi_dialog_search'), 
     this.typeSelect.change(this.onTypeSelectChange.bind(this));
     this.typeSelectDiv.append(this.typeSelect);
 
-    selectFrame.append( this.kenSelect ).append( this.shiSelect ).append(this.typeSelectDiv);
+    selectFrame.append(this.kenSelect).append(this.shiSelect).append(this.typeSelectDiv);
 
-    this.frame.append( selectFrame );
+    this.frame.append(selectFrame);
 
-    this.listFrame = $( '<div>' ).addClass( 'searchresultdialog_ul_frame' );
-    
+    this.listFrame = $('<div>').addClass('searchresultdialog_ul_frame');
+
     var w = $(window).width();
     var h = $(window).height();
-    if (h > w ){
-        maxHeight=Math.floor( h * 0.4 );
-      }else{
-        maxHeight=Math.floor( h * 0.65 );
-      }
-    this.listFrame.css( { 'max-height' : maxHeight + 'px'} );
-    this.listContainer = $( '<ul>' ).addClass( 'searchresultdialog_ul' );
+    if (h > w) {
+      maxHeight = Math.floor(h * 0.4);
+    } else {
+      maxHeight = Math.floor(h * 0.65);
+    }
+    this.listFrame.css({ 'max-height': maxHeight + 'px' });
+    this.listContainer = $('<ul>').addClass('searchresultdialog_ul');
 
-    var li = $( '<li>' ).addClass( 'nodata' ).html( '中' );
-    this.listContainer.append( li );
-    this.listFrame.append( this.listContainer );
+    var li = $('<li>').addClass('nodata').html('中');
+    this.listContainer.append(li);
+    this.listFrame.append(this.listContainer);
 
-    this.frame.append( this.listFrame );
+    this.frame.append(this.listFrame);
 
     //return this.frame;
     this.setDialogContent(this.frame);
   },
-  
+
 
   // 都道府県選択エレメントを初期化
-  initializeKenSelect : function()
-  {
+  initializeKenSelect: function () {
     var $select = this.kenSelect;
     $select.empty();
-    $select.append( $('<option>').html("都道府県").val("," ) );
+    $select.append($('<option>').html("都道府県").val(","));
 
     var kenCode = '';
-    for( var key in GSI.MUNI_ARRAY )
-    {
-      var muni = GSI.MUNI_ARRAY[ key ].split( ',' );
+    for (var key in GSI.MUNI_ARRAY) {
+      var muni = GSI.MUNI_ARRAY[key].split(',');
 
-      if ( muni.length == 4 )
-      {
-        if ( kenCode != muni[0] )
-        {
+      if (muni.length == 4) {
+        if (kenCode != muni[0]) {
           var $option = $('<option>').html(muni[1]).val(muni[0] + ',' + muni[1]);
-          $select.append( $option );
+          $select.append($option);
           kenCode = muni[0];
         }
       }
     }
   },
-  
+
   // イベント：都道府県を選択した時
-  onKenChange : function()
-  {
+  onKenChange: function () {
     this.clearMarkers();
-    
-    var selectedKen = this.kenSelect.val().split( ',');
+
+    var selectedKen = this.kenSelect.val().split(',');
     var selectedKenCode = selectedKen[0];
     var selectedKenName = selectedKen[1];
-    
+
     var $select = this.shiSelect;
     $select.empty();
-    $select.append( $('<option>').html("市区町村").val("," ) );
-    
-    for( var key in GSI.MUNI_ARRAY )
-    {
-      var muni = GSI.MUNI_ARRAY[ key ].split( ',' );
-      
-      if ( muni.length == 4 )
-      {
-        if ( selectedKenCode == muni[0] )
-        {
+    $select.append($('<option>').html("市区町村").val(","));
+
+    for (var key in GSI.MUNI_ARRAY) {
+      var muni = GSI.MUNI_ARRAY[key].split(',');
+
+      if (muni.length == 4) {
+        if (selectedKenCode == muni[0]) {
           var $option = $('<option>').html(muni[3]).val(muni[2] + ',' + muni[3]);
-          $select.append( $option );
+          $select.append($option);
         }
       }
     }
     this.showResult();
   },
-  
+
   // イベント：市町村を選択した時
-  onShiChange : function()
-  {
+  onShiChange: function () {
     this.clearMarkers();
     this.showResult();
   },
 
-  onTypeSelectChange: function (){
+  onTypeSelectChange: function () {
     this.clearMarkers();
     this.showResult();
   },
-  
+
   // ダイアログのタイトルを表示
-  setTitle : function( title )
-  {
-    var subTitle = $( '<a>' ).html( "協力:東大CSIS" ).addClass( 'searchresultdialog_subtitle' )
-      .css( {'font-size':'7pt'} ).attr('href', 'https://geocode.csis.u-tokyo.ac.jp/home/simple-geocoding/')
+  setTitle: function (title) {
+    var subTitle = $('<a>').html("協力:東大CSIS").addClass('searchresultdialog_subtitle')
+      .css({ 'font-size': '7pt' }).attr('href', 'https://geocode.csis.u-tokyo.ac.jp/home/simple-geocoding/')
       .attr('target', '_blank');
-    
-    this.headerTitle.html( title ).append( subTitle );
+
+    this.headerTitle.html(title).append(subTitle);
   },
-  
+
   // Jsonから検索結果一覧を作成
-  setChimeiResult : function( result )
-  {
-    if (result)
-    {
-      if ( result.length > 0 )
-      {
+  setChimeiResult: function (result) {
+    if (result) {
+      if (result.length > 0) {
         this.clear();
       }
-      for(var i = result.length - 1; i >= 0; i--)
-      {
-        if (result[i].geometry.coordinates[0] <= 0)
-        {
-          if (result[i].geometry.coordinates[1] <= 0)
-          {
+      for (var i = result.length - 1; i >= 0; i--) {
+        if (result[i].geometry.coordinates[0] <= 0) {
+          if (result[i].geometry.coordinates[1] <= 0) {
             result.splice(i, 1);
           }
         }
@@ -7875,16 +7443,15 @@ GLOBE.DIALOG.SEARCH = $.extend({}, new GLOBE.CLASS.DIALOG('gsi_dialog_search'), 
     this.chimeiResult = result;
     this.showResult();
   },
-  
-  // 検索結果一覧を作成
-  showResult : function()
-  {
-    if ( this.markerList ) this.map.removeLayer( this.markerList );
 
-    var selectedKen = this.kenSelect.val().split( ',');
+  // 検索結果一覧を作成
+  showResult: function () {
+    if (this.markerList) this.map.removeLayer(this.markerList);
+
+    var selectedKen = this.kenSelect.val().split(',');
     var selectedKenCode = selectedKen[0];
-    
-    var selectedSi = this.shiSelect.val().split( ',');
+
+    var selectedSi = this.shiSelect.val().split(',');
     var selectedSiCode = selectedSi[0];
 
     var selectedType = this.typeSelect.val();
@@ -7893,63 +7460,63 @@ GLOBE.DIALOG.SEARCH = $.extend({}, new GLOBE.CLASS.DIALOG('gsi_dialog_search'), 
     var ul = this.listContainer;
     ul.empty();
     var viewNum = 0;
-    
-    var results = [this.addressResult,this.chimeiResult];
+
+    var results = [this.addressResult, this.chimeiResult];
     var that = this;
     var num = 0;
-    $.each(results,function() {
+    $.each(results, function () {
       num += this.length;
-      $.each(this,function() {
+      $.each(this, function () {
         var record = this;
-        
+
         var addressCode = "";
         if (record.properties.addressCode) {
-          addressCode = parseInt(record.properties.addressCode,10)+"";
+          addressCode = parseInt(record.properties.addressCode, 10) + "";
         }
-        if (selectedKenCode != '' && addressCode.substring(0,addressCode.length-3) != selectedKenCode) return;
+        if (selectedKenCode != '' && addressCode.substring(0, addressCode.length - 3) != selectedKenCode) return;
         if (selectedSiCode != '' && selectedSiCode != addressCode) return;
 
-        if (selectedTypeCode != ''){
+        if (selectedTypeCode != '') {
           var dataSource = record.properties.dataSource;
           if (selectedTypeCode == '5') {
-            if (dataSource != 5 && dataSource != null && dataSource != undefined)  return;
+            if (dataSource != 5 && dataSource != null && dataSource != undefined) return;
           } else if (selectedTypeCode == '3') {
-            if (dataSource == 5 || dataSource == null || dataSource == undefined)  return;
+            if (dataSource == 5 || dataSource == null || dataSource == undefined) return;
           }
         }
-        
-        var li = $( '<li>' );
+
+        var li = $('<li>');
         var muniNm = "";
         if (addressCode) {
           var addressData = GSI.MUNI_ARRAY[addressCode];
           if (addressData) {
             addressData = addressData.split(",");
-            muniNm = (addressData[1]+addressData[3]).replace("　","");
+            muniNm = (addressData[1] + addressData[3]).replace("　", "");
           }
-          var a = that.makeItem( record, viewNum, muniNm );
-          li.append( a );
-          ul.append( li );
+          var a = that.makeItem(record, viewNum, muniNm);
+          li.append(a);
+          ul.append(li);
         } else {
-          var a = that.makeItem( record, viewNum, "    " );
-          li.append( a );
-          ul.append( li );
+          var a = that.makeItem(record, viewNum, "    ");
+          li.append(a);
+          ul.append(li);
           // 緯度経度からリバースジオコーダ機能を呼び出して地名を取得
           $.ajax({
-            url : CONFIG.SERVERAPI.GETADDR,
-            dataType : "json",
-            data : {
-              lon : record.geometry.coordinates[0],
-              lat : record.geometry.coordinates[1]
+            url: CONFIG.SERVERAPI.GETADDR,
+            dataType: "json",
+            data: {
+              lon: record.geometry.coordinates[0],
+              lat: record.geometry.coordinates[1]
             },
-            success : function(data2){
+            success: function (data2) {
               // リバースジオコーダの結果を画面に表示
-              if (data2.results){
+              if (data2.results) {
                 var addressCode = parseInt(data2.results.muniCd);
                 record.properties.addressCode = addressCode;
                 var addressData = GSI.MUNI_ARRAY[addressCode];
                 if (addressData) {
                   addressData = addressData.split(",");
-                  muniNm = (addressData[1]+addressData[3]).replace("　","");
+                  muniNm = (addressData[1] + addressData[3]).replace("　", "");
                   li.find("div.muni").html(muniNm);
                 }
               }
@@ -7959,59 +7526,55 @@ GLOBE.DIALOG.SEARCH = $.extend({}, new GLOBE.CLASS.DIALOG('gsi_dialog_search'), 
         viewNum++;
       });
     });
-    this.setTitle( '検索結果:' + num + '件中' + viewNum + '件表示' );
+    this.setTitle('検索結果:' + num + '件中' + viewNum + '件表示');
     this.show();
   },
-  
+
   // 検索結果データを初期化
-  clear : function()
-  {
-    this.setTitle( '検索中' );
+  clear: function () {
+    this.setTitle('検索中');
     this.addressResult = [];
     this.chimeiResult = [];
     var ul = this.listContainer;
     ul.empty();
-    var li = $( '<li>' ).addClass( 'nodata' ).html( '検索中' );
-    this.listContainer.append( li );
+    var li = $('<li>').addClass('nodata').html('検索中');
+    this.listContainer.append(li);
 
     this.kenSelect[0].selectedIndex = 0;
     this.shiSelect.empty();
-    this.shiSelect.append( $('<option>').html("市区町村").val("," ) );
+    this.shiSelect.append($('<option>').html("市区町村").val(","));
     this.typeSelect[0].selectedIndex = 0;
-    
+
     this.clearMarkers();
     GLOBE.DIALOG.INFOBOX.hide();
   },
-  
+
   // 地図上の検索結果マーカーを全て削除
-  clearMarkers : function()
-  {
+  clearMarkers: function () {
     this.removeMarkersByKey(this.markerNamePrefix);
   },
-  
-  // 検索結果を作成。<a>を返す。
-  makeItem : function( item, index, subTitle )
-  {
-    var a = $( '<a>' ).attr( { 'href' : 'javascript:void(0);' } );
-    var title = item.properties.title;
-    
-    var div = $( '<div>' ).html( title ).addClass('title');
-    a.append( div );
 
-    if ( subTitle && subTitle != '' )
-    {
-      div = $( '<div>' ).html( subTitle ).addClass('muni');
-      a.append( div );
+  // 検索結果を作成。<a>を返す。
+  makeItem: function (item, index, subTitle) {
+    var a = $('<a>').attr({ 'href': 'javascript:void(0);' });
+    var title = item.properties.title;
+
+    var div = $('<div>').html(title).addClass('title');
+    a.append(div);
+
+    if (subTitle && subTitle != '') {
+      div = $('<div>').html(subTitle).addClass('muni');
+      a.append(div);
     }
 
-    a.click( this.onResultClick.bind(this, index, item) );
-    a.mouseenter( this.onResultMouseover.bind(this, index, item) );
-    a.mouseleave( this.onResultMouseout.bind(this, index, item) );
+    a.click(this.onResultClick.bind(this, index, item));
+    a.mouseenter(this.onResultMouseover.bind(this, index, item));
+    a.mouseleave(this.onResultMouseout.bind(this, index, item));
     a.css({
       "padding-left": '32px',
-      "background" : "url(" + this.normalMarkerUrl + ") no-repeat 0px 50%"
+      "background": "url(" + this.normalMarkerUrl + ") no-repeat 0px 50%"
     });
-    
+
     var data = {
       type: 'SEARCH',
       title: title,
@@ -8019,127 +7582,108 @@ GLOBE.DIALOG.SEARCH = $.extend({}, new GLOBE.CLASS.DIALOG('gsi_dialog_search'), 
       lon: item.geometry.coordinates[0],
       lat: item.geometry.coordinates[1]
     };
-    
+
     this.addMarker(item.geometry.coordinates[0], item.geometry.coordinates[1], this.markerNamePrefix + index, data);
-    
+
     return a;
   },
-  
+
   // イベント：検索結果をクリックした時
-  onResultClick: function( index, item )
-  {
+  onResultClick: function (index, item) {
     var lon = item.geometry.coordinates[0];
     var lat = item.geometry.coordinates[1];
-    
+
     GLOBE.DIALOG.INFOBOX.hide();
-    GLOBE.MAP.fly( lon, lat, CONFIG.Z2HEIGHT[15] );
+    GLOBE.MAP.fly(lon, lat, CONFIG.Z2HEIGHT[15]);
   },
-  
+
   // イベント：検索結果にマウスカーソルを乗せた時
-  onResultMouseover: function( index, item )
-  {
+  onResultMouseover: function (index, item) {
     var lon = item.geometry.coordinates[0];
     var lat = item.geometry.coordinates[1];
-    
+
     this.showActiveMarker(true, lon, lat);
   },
-  
+
   // イベント：検索結果からマウスカーソルが離れた時
-  onResultMouseout: function( index, item )
-  {
+  onResultMouseout: function (index, item) {
     var lon = item.geometry.coordinates[0];
     var lat = item.geometry.coordinates[1];
-    
+
     this.showActiveMarker(false);
   },
-  
+
   // マーカーレイヤー作成
-  createMarkerLayer: function()
-  {
+  createMarkerLayer: function () {
     this.markerLayer = GLOBE.MAP.createMarkerLayer();
   },
-  
+
   // 指定のマーカーをハイライト
-  showActiveMarker: function(bool, lon, lat)
-  {
-    if ( !bool )
-    {
+  showActiveMarker: function (bool, lon, lat) {
+    if (!bool) {
       lon = 1000;
       lat = 1000;
     }
-    for ( var key in this.markers )
-    {
-      if ( this.markers[key] )
-      {
-        if ( this.markers[key].lon == lon && this.markers[key].lat == lat )
-        {
+    for (var key in this.markers) {
+      if (this.markers[key]) {
+        if (this.markers[key].lon == lon && this.markers[key].lat == lat) {
           this.markers[key].obj.image = this.activeMarkerUrl;
         }
-        else
-        {
+        else {
           this.markers[key].obj.image = this.normalMarkerUrl;
         }
       }
     }
   },
-  
+
   // マーカーを配置
-  addMarker: function(lon, lat, uniqueKey, data)
-  {
-    if ( this.markerLayer.isDestroyed() ) this.createMarkerLayer();
-    
+  addMarker: function (lon, lat, uniqueKey, data) {
+    if (this.markerLayer.isDestroyed()) this.createMarkerLayer();
+
     var key = uniqueKey || 'default';
-    
-    if ( this.markers[key] )
-    {
+
+    if (this.markers[key]) {
       this.removeMarker(key);
     }
-    
+
     var pinObj = GLOBE.MAP.addMarker(this.markerLayer, lon, lat, this.normalMarkerUrl, "LEFT", "BOTTOM", data);
-    
+
     this.markers[key] = {
-      'obj' : pinObj,
-      'lon' : lon,
-      'lat' : lat,
+      'obj': pinObj,
+      'lon': lon,
+      'lat': lat,
       'data': data
     };
-    
+
     return pinObj;
   },
-  
+
   // マーカーを削除
-  removeMarker: function( uniqueKey )
-  {
-    if ( this.markerLayer.isDestroyed() ) this.createMarkerLayer();
-    
+  removeMarker: function (uniqueKey) {
+    if (this.markerLayer.isDestroyed()) this.createMarkerLayer();
+
     var key = uniqueKey || 'default';
-    
-    if ( this.markers[key] )
-    {
-      GLOBE.MAP.removeMarker( this.markerLayer, this.markers[key].obj );
+
+    if (this.markers[key]) {
+      GLOBE.MAP.removeMarker(this.markerLayer, this.markers[key].obj);
       //this.markerLayer.remove( this.markers[key].obj );
       this.markers[key] = null;
     }
   },
-  
+
   // マーカーを削除（接頭語が一致するもの全て）
-  removeMarkersByKey: function( keyPrefix )
-  {
+  removeMarkersByKey: function (keyPrefix) {
     var re = new RegExp('^' + keyPrefix);
-    for ( var key in this.markers )
-    {
-      if ( key.match(re) )
-      {
+    for (var key in this.markers) {
+      if (key.match(re)) {
         this.removeMarker(key);
       }
     }
   },
-  
+
   // マーカーを全て削除
-  removeMarkersAll: function()
-  {
-    for ( var key in this.markers )
-    {
+  removeMarkersAll: function () {
+    for (var key in this.markers) {
       this.removeMarker(key);
     }
     this.markers = [];
@@ -8157,105 +7701,100 @@ GLOBE.DIALOG.SEARCH = $.extend({}, new GLOBE.CLASS.DIALOG('gsi_dialog_search'), 
 GLOBE.MAP = {
   viewer: null,
   mapElementId: 'cesiumContainer',
-  
+
   // 既定値
   defaults: {
     basemap: 'std',
     baseGray: false,
     layers: '',
     layersShow: '',
-    height:  3000000.0,
+    height: 3000000.0,
     //lon:     138.75,
     //lat:     35.999887,
-    lon:     140.084556,
-    lat:     36.104611,
+    lon: 140.084556,
+    lat: 36.104611,
     heading: 0,
-    pitch:   -90,
-    roll:    0,
-    zoomlevel:   5,
+    pitch: -90,
+    roll: 0,
+    zoomlevel: 5,
     heightPower: 1
   },
   initials: {},	// URLパラメータを含めた初期値
   currents: {},	// 現在の値
-  
+
   defaultFlyHeight: 4000,
-  
+
   heightPowerMin: 0,
   heightPowerMax: 9.9,
   heightPowerStep: 0.1,
-  
+
   centerMarkerUrl: 'image/system/crosshairs.png',
   centerMarkerLayer: null,
   centerMarker: null,
-  
+
   updates: {
     corridor: []
   },
-  
+
   _imagePrimitiveLayersHash: {},
-  
+
   isIE: GSI.Utils.Browser.ie,
-  
+
   _dispAddrMode: 0,
-  create: function()
-  {
+  create: function () {
     // URLまたは既定値から初期設定
     this.initSetting();
-    
+
     // 地図を作成
     this.viewer = this.initViewer();
-    
-    this.viewer.scene.terrainProviderChanged.addEventListener(function(){
+
+    this.viewer.scene.terrainProviderChanged.addEventListener(function () {
       // terrainにドレープするためtrueにする（変更）
       // 地表にオブジェクトを接着するためfalseとする
       this.viewer.scene.globe.depthTestAgainstTerrain = false;
     }.bind(this));
-    
-    this.viewer.camera.moveStart.addEventListener( this.onCameraMoveStart.bind(this) );
-    this.viewer.camera.moveEnd.addEventListener( this.onCameraMoveEnd.bind(this) );
-    
+
+    this.viewer.camera.moveStart.addEventListener(this.onCameraMoveStart.bind(this));
+    this.viewer.camera.moveEnd.addEventListener(this.onCameraMoveEnd.bind(this));
+
     this.centerMarkerLayer = this.createMarkerLayer();
-    
+
     this.setClickEvent();
-    
+
     this.setDirectionSign();
-    
-    if ( CONFIG.ISFROMGSIMAP )
-    {
+
+    if (CONFIG.ISFROMGSIMAP) {
       var height = this.initials.height - (this.initials.height * 0.02 * (18 - this.getCurrentZoom()));
       this.viewer.camera.flyTo({
         destination: Cesium.Cartesian3.fromDegrees(this.initials.lon, this.initials.lat, height),
         orientation: {
-          heading : Cesium.Math.toRadians(0),
-          pitch : Cesium.Math.toRadians(-50),
-          roll : Cesium.Math.toRadians(0)
+          heading: Cesium.Math.toRadians(0),
+          pitch: Cesium.Math.toRadians(-50),
+          roll: Cesium.Math.toRadians(0)
         },
-        complete: function(){
-          this._initFlyFunction = function(cnt){
-            if ( !cnt ) cnt = 1;
+        complete: function () {
+          this._initFlyFunction = function (cnt) {
+            if (!cnt) cnt = 1;
             var latLng1 = this.getCenterPosition(false);
-            if ( !latLng1 || latLng1[2] < 0 )
-            {
-              if ( cnt <= 50 )
-              {
-                setTimeout(function(){
+            if (!latLng1 || latLng1[2] < 0) {
+              if (cnt <= 50) {
+                setTimeout(function () {
                   this._initFlyFunction(++cnt, 100);
                 }.bind(this), 200);
                 return;
               }
-              else if ( !latLng1 )
-              {
+              else if (!latLng1) {
                 return;
               }
             }
             var latLng2 = this.getCameraPosition();
             var diff = Math.abs(latLng1[0] - this.initials.lat);
             this.viewer.camera.flyTo({
-              destination: Cesium.Cartesian3.fromDegrees(latLng2[1], latLng2[0]-diff, height),
+              destination: Cesium.Cartesian3.fromDegrees(latLng2[1], latLng2[0] - diff, height),
               orientation: {
-                heading : Cesium.Math.toRadians(0),
-                pitch : Cesium.Math.toRadians(-50),
-                roll : Cesium.Math.toRadians(0)
+                heading: Cesium.Math.toRadians(0),
+                pitch: Cesium.Math.toRadians(-50),
+                roll: Cesium.Math.toRadians(0)
               }
             });
           };
@@ -8263,25 +7802,21 @@ GLOBE.MAP = {
         }.bind(this)
       });
     }
-    else
-    {
+    else {
       this.initPosition();
     }
-    
-    $(window).on('hashchange', function(){
-      if ( this._hashChangeLock )
-      {
+
+    $(window).on('hashchange', function () {
+      if (this._hashChangeLock) {
         this._hashChangeLock = false;
       }
-      else
-      {
+      else {
         location.reload();
       }
     }.bind(this));
   },
-  
-  initSetting : function()
-  {
+
+  initSetting: function () {
     /*******************************************************************************************
     URL仕様
     -------------------------------
@@ -8313,146 +7848,131 @@ GLOBE.MAP = {
             l: 「表示できる情報」ダイアログを開く
     *******************************************************************************************/
     $.extend(this.initials, this.defaults);
-    
+
     var params = location.hash.replace(/^#/, '').split('/');
-    
-    if ( CONFIG.ISFROMGSIMAP )
-    {
-      this.initials.zoomlevel = parseInt( isNaN(params[0]) || params[0] < 1 || params[0] > 18 ? this.defaults.zoomlevel : params[0]*1 );
+
+    if (CONFIG.ISFROMGSIMAP) {
+      this.initials.zoomlevel = parseInt(isNaN(params[0]) || params[0] < 1 || params[0] > 18 ? this.defaults.zoomlevel : params[0] * 1);
       this.initials.height = CONFIG.Z2HEIGHT[this.initials.zoomlevel];
     }
-    else
-    {
-      this.initials.height = ( isNaN(params[0]) || params[0] <= 0 ? this.defaults.height : params[0]*1 );
+    else {
+      this.initials.height = (isNaN(params[0]) || params[0] <= 0 ? this.defaults.height : params[0] * 1);
     }
-    
-    this.initials.lat     = ( isNaN(params[1]) ? this.defaults.lat : params[1]*1 );
-    this.initials.lon     = ( isNaN(params[2]) ? this.defaults.lon : params[2]*1 );
-    this.initials.heightPower = ( isNaN(params[3]) ? this.defaults.heightPower : params[3]*1 );
-    this.initials.heading = ( isNaN(params[4]) || isNaN(params[5]) || isNaN(params[6]) ? this.defaults.heading : params[4]*1 );
-    this.initials.pitch   = ( isNaN(params[4]) || isNaN(params[5]) || isNaN(params[6]) ? this.defaults.pitch : params[5]*1 );
-    this.initials.roll    = ( isNaN(params[4]) || isNaN(params[5]) || isNaN(params[6]) ? this.defaults.roll  : params[6]*1 );
-    
+
+    this.initials.lat = (isNaN(params[1]) ? this.defaults.lat : params[1] * 1);
+    this.initials.lon = (isNaN(params[2]) ? this.defaults.lon : params[2] * 1);
+    this.initials.heightPower = (isNaN(params[3]) ? this.defaults.heightPower : params[3] * 1);
+    this.initials.heading = (isNaN(params[4]) || isNaN(params[5]) || isNaN(params[6]) ? this.defaults.heading : params[4] * 1);
+    this.initials.pitch = (isNaN(params[4]) || isNaN(params[5]) || isNaN(params[6]) ? this.defaults.pitch : params[5] * 1);
+    this.initials.roll = (isNaN(params[4]) || isNaN(params[5]) || isNaN(params[6]) ? this.defaults.roll : params[6] * 1);
+
     var params2 = location.hash.split('&');
-    for ( var i=1; i<params2.length; i++ )
-    {
+    for (var i = 1; i < params2.length; i++) {
       var params3 = params2[i].split('=');
-      if ( $.isArray(params3) && params3.length >= 1 )
-      {
+      if ($.isArray(params3) && params3.length >= 1) {
         var key = params3[0];
         var val = params3[1];
-        
-        switch ( key )
-        {
+
+        switch (key) {
           case 'base':
-            this.initials.basemap = ( val ? val : this.defaults.basemap ); break;
+            this.initials.basemap = (val ? val : this.defaults.basemap); break;
           case 'base_grayscale':
-            this.initials.baseGray = ( val == '1' ? true : false ); break;
+            this.initials.baseGray = (val == '1' ? true : false); break;
           case 'ls':
-            this.initials.layers = ( val ? decodeURIComponent(val) : this.defaults.layers ); break;
+            this.initials.layers = (val ? decodeURIComponent(val) : this.defaults.layers); break;
           case 'disp':
-            this.initials.layersShow = ( val.match(/^[01]*$/) ? val : this.defaults.layersShow ); break;
+            this.initials.layersShow = (val.match(/^[01]*$/) ? val : this.defaults.layersShow); break;
         }
       }
     }
-    
+
     $.extend(this.currents, this.initials);
-    
+
     this._beforeHeight = this.currents.height;
   },
-  
-  initViewer : function()
-  {
-    
+
+  initViewer: function () {
+
     // viewerのインスタンス作成-------------
     var viewer = new Cesium.Viewer(this.mapElementId, {
-      imageryProvider : Cesium.createOpenStreetMapImageryProvider({
-        url : "https://maps.gsi.go.jp/xyz/" + this.initials.basemap + "/",
-        credit : ""
+      imageryProvider: Cesium.createOpenStreetMapImageryProvider({
+        url: "https://maps.gsi.go.jp/xyz/" + this.initials.basemap + "/",
+        credit: ""
       }),
       // デフォルト画面部品を非表示
-      baseLayerPicker : false, // 右上背景地図選択部品
-      geocoder : false,        // 右上文字列検索部品
-      homeButton : false,      // 右上ホームボタン（ホーム＝USになるので）
-      animation : false,       // 左下の時間前後操作部品
-      timeline : false,        // 下の時間軸
+      baseLayerPicker: false, // 右上背景地図選択部品
+      geocoder: false,        // 右上文字列検索部品
+      homeButton: false,      // 右上ホームボタン（ホーム＝USになるので）
+      animation: false,       // 左下の時間前後操作部品
+      timeline: false,        // 下の時間軸
       sceneModePicker: false,   // シーンモード変更ボタンの非表示
-      fullscreenButton : false,       // フルスクリーンボタン
-      navigationHelpButton : false,    // ヘルプボタン
-      infoBox : false,
-      selectionIndicator : false,
+      fullscreenButton: false,       // フルスクリーンボタン
+      navigationHelpButton: false,    // ヘルプボタン
+      infoBox: false,
+      selectionIndicator: false,
       mapProjection: new Cesium.WebMercatorProjection(),
       creditContainer: "cesiumCreditContainer"
     });
-    
+
     viewer.scene.globe.baseColor = Cesium.Color.WHITE;
 
-    for ( var i=0; i<viewer.scene.imageryLayers.length; i++ )
-    {
+    for (var i = 0; i < viewer.scene.imageryLayers.length; i++) {
       viewer.scene.imageryLayers._layers[i].show = false;
     }
-    
+
     // terrain
     this.setTerrainProvider(viewer);
-    
+
     /*
     var globe = viewer.scene.globe;
       globe._surface._tileProvider._debug.wireframe = true;
     */
-    
+
     return viewer;
   },
-  
-  setTerrainProvider: function(viewer)
-  {
+
+  setTerrainProvider: function (viewer) {
     this.currents.heightPower = (this.currents.heightPower ? this.currents.heightPower : this.defaults.heightPower);
-    
-    var options = $.extend( CONFIG.TERRAINPROVIDEROPTIONS, {heightPower: this.currents.heightPower} );
+
+    var options = $.extend(CONFIG.TERRAINPROVIDEROPTIONS, { heightPower: this.currents.heightPower });
     var terrainProvider = new Cesium.JapanGSITerrainProvider(options);
-    
+
     viewer.terrainProvider = terrainProvider;
     viewer.terrainProvider.heightmapTerrainQuality = 0.1;
     viewer.terrainProvider.hasVertexNormals = false;
     viewer.terrainProvider.hasWaterMask = false;
     viewer.terrainProvider.requestVertexNormals = true;
   },
-  
+
   // カメラ操作開始時のハンドラ
-  onCameraMoveStart: function()
-  {
-    if ( !this._rotateDirectionSignTimer )
-    {
+  onCameraMoveStart: function () {
+    if (!this._rotateDirectionSignTimer) {
       this._rotateDirectionSignTimer = setInterval(this.rotateDirectionSign.bind(this), 200);
     }
   },
-  
+
   // カメラ操作終了時のハンドラ
-  onCameraMoveEnd: function()
-  {
+  onCameraMoveEnd: function () {
     clearInterval(this._rotateDirectionSignTimer);
     this._rotateDirectionSignTimer = null;
-    
+
     var latLng = this.getCameraPosition();
-    if ( Math.abs(this._beforeHeight - latLng[2]) > this._beforeHeight * 0.1 )
-    {
+    if (Math.abs(this._beforeHeight - latLng[2]) > this._beforeHeight * 0.1) {
       this.onZoomChange(latLng[2]);
     }
     this.rotateDirectionSign();
     this.setPositionHash();
     this.updateClamp();
   },
-  
-  onZoomChange: function(height)
-  {
+
+  onZoomChange: function (height) {
     // Corridorの再描画
     var removeList = [];
     var addList = [];
-    
-    for ( var i=0; i<this.viewer.scene.primitives._primitives.length; i++ )
-    {
+
+    for (var i = 0; i < this.viewer.scene.primitives._primitives.length; i++) {
       var primitive = this.viewer.scene.primitives._primitives[i];
-      if ( primitive.type == 'upload_GroundPrimitive' && primitive.gene && primitive.gene.kind == 'corridor' )
-      {
+      if (primitive.type == 'upload_GroundPrimitive' && primitive.gene && primitive.gene.kind == 'corridor') {
         var newPrimitive = this.createCorridorPrimitive(primitive.gene);
         newPrimitive.show = primitive.show;
         addList.push(newPrimitive);
@@ -8460,57 +7980,50 @@ GLOBE.MAP = {
       }
     }
     // 削除
-    for ( var i=0; i<removeList.length; i++ )
-    {
+    for (var i = 0; i < removeList.length; i++) {
       this.viewer.scene.primitives.remove(removeList[i]);
     }
     // 追加
-    for ( var i=0; i<addList.length; i++ )
-    {
+    for (var i = 0; i < addList.length; i++) {
       this.viewer.scene.primitives.add(addList[i]);
     }
-    
-    
+
+
     // SingleTileImageryLayerの再描画
-    for ( var key in this._singleImageryLayersHash )
-    {
+    for (var key in this._singleImageryLayersHash) {
       this._singleImageryLayersHash[key].reload();
     }
-    
+
     // ImagePrimitiveの再描画
-    for ( var key in this._imagePrimitiveLayersHash )
-    {
-      if ( this._imagePrimitiveLayersHash[key].reload )
-      {
+    for (var key in this._imagePrimitiveLayersHash) {
+      if (this._imagePrimitiveLayersHash[key].reload) {
         this._imagePrimitiveLayersHash[key].reload();
       }
     }
-    
-    
+
+
     this._beforeHeight = height;
   },
-  
-  initPosition: function()
-  {
+
+  initPosition: function () {
     // カメラポジション
     this.viewer.camera.setView({
-      destination : Cesium.Cartesian3.fromDegrees(this.initials.lon, this.initials.lat, this.initials.height),
+      destination: Cesium.Cartesian3.fromDegrees(this.initials.lon, this.initials.lat, this.initials.height),
       orientation: {
         heading: Cesium.Math.toRadians(this.initials.heading),
-        pitch:   Cesium.Math.toRadians(this.initials.pitch),
-        roll:    Cesium.Math.toRadians(this.initials.roll)
+        pitch: Cesium.Math.toRadians(this.initials.pitch),
+        roll: Cesium.Math.toRadians(this.initials.roll)
       }
     });
   },
-  
+
   // 現在の状態に従ってURLを更新する
-  updateHash: function()
-  {
+  updateHash: function () {
     var dlg = (GSI.GLOBALS.queryParams._viewListDialogVisible ? 'v' : '')
-          + (GSI.GLOBALS.queryParams._layerTreeDialogVisible ? 'l' : '');
-    
-    
-    
+      + (GSI.GLOBALS.queryParams._layerTreeDialogVisible ? 'l' : '');
+
+
+
     var hash = this.currents.height + '/' + this.currents.lat + '/' + this.currents.lon + '/' + this.currents.heightPower + '/'
       + this.currents.heading + '/' + this.currents.pitch + '/' + this.currents.roll + '/'
       + '&base=' + this.currents.basemap
@@ -8519,49 +8032,46 @@ GLOBE.MAP = {
       + '&disp=' + this.currents.layersShow
       + '&lcd=' + (GSI.GLOBALS.layerTreeDialog ? GSI.GLOBALS.layerTreeDialog.getCurrentPath() : '')
       + (dlg ? '&d=' + dlg : '');
-    
-    if ( this.currents.freeReliefData != undefined && this.currents.freeReliefData != "" ) {
+
+    if (this.currents.freeReliefData != undefined && this.currents.freeReliefData != "") {
       hash += "&reliefdata=" + this.currents.freeReliefData;
     }
 
-    for(var key of Object.keys(GSI.FILEURL)){
-      if(GSI.FILEURL[key]) hash += '&' + key + '=' + GSI.FILEURL[key];
+    for (var key of Object.keys(GSI.FILEURL)) {
+      if (GSI.FILEURL[key]) hash += '&' + key + '=' + GSI.FILEURL[key];
     }
-    
+
     this._hashChangeValue = '#' + hash;
-    if ( this._hashChangeTimer )
-    {
+    if (this._hashChangeTimer) {
       clearTimeout(this._hashChangeTimer);
     }
-    this._hashChangeTimer = setTimeout(function(){
-      $.cookie("GSIGLOBEHASH", this._hashChangeValue, {expires: 365});
+    this._hashChangeTimer = setTimeout(function () {
+      $.cookie("GSIGLOBEHASH", this._hashChangeValue, { expires: 365 });
       this._hashChangeLock = true;
       location.replace(this._hashChangeValue);
     }.bind(this), 300);
-    
+
   },
-  
+
   // 地図を操作した時に呼ぶ
-  setPositionHash: function()
-  {
+  setPositionHash: function () {
     var cartesian = this.viewer.camera.position;
     var latLng = this.getCameraPosition();
-    
+
     this.currents.lat = latLng[0];
     this.currents.lon = latLng[1];
     this.currents.height = latLng[2];
-    this.currents.heading = Cesium.Math.toDegrees(this.viewer.camera.heading).toFixed(2)*1;
-    this.currents.pitch   = Cesium.Math.toDegrees(this.viewer.camera.pitch).toFixed(2)*1;
-    this.currents.roll    = Cesium.Math.toDegrees(this.viewer.camera.roll).toFixed(2)*1;
+    this.currents.heading = Cesium.Math.toDegrees(this.viewer.camera.heading).toFixed(2) * 1;
+    this.currents.pitch = Cesium.Math.toDegrees(this.viewer.camera.pitch).toFixed(2) * 1;
+    this.currents.roll = Cesium.Math.toDegrees(this.viewer.camera.roll).toFixed(2) * 1;
     this.currents.zoomlevel = this.getCurrentZoom();
     this.updateHash();
   },
-  
+
   // レイヤーの状態を変更した時に呼ぶ
-  setLayersHash: function()
-  {
-        
-    
+  setLayersHash: function () {
+
+
     var list = GSI.GLOBALS.mapLayerList.getList();
     var tile = GSI.GLOBALS.mapLayerList.getTileList();
     var layers = "";
@@ -8570,81 +8080,74 @@ GLOBE.MAP = {
     var baseShow = "";
     this.currents.basemap = "";
     var hasFreeRelief = false;
-    for ( var i=tile.length-1; i>=0; i-- )
-    {
-      if ( tile[i]._isBaseLayer )
-      {
+    for (var i = tile.length - 1; i >= 0; i--) {
+      if (tile[i]._isBaseLayer) {
         this.currents.basemap = tile[i].id;
         base = '|' + tile[i].id;
-        baseShow = ( tile[i]._visibleInfo._isHidden ? '0' : '1' );
-        this.currents.baseGray = ( tile[i]._visibleInfo._grayScale ? true : false );
+        baseShow = (tile[i]._visibleInfo._isHidden ? '0' : '1');
+        this.currents.baseGray = (tile[i]._visibleInfo._grayScale ? true : false);
       }
-      else
-      {
-        if (!tile[i]._isOutside){
+      else {
+        if (!tile[i]._isOutside) {
           layers += '|' + tile[i].id;
-          layersShow += ( tile[i]._visibleInfo._isHidden ? '0' : '1' );
+          layersShow += (tile[i]._visibleInfo._isHidden ? '0' : '1');
         }
       }
-      
-      if ( tile[i].id == CONFIG.FREERELIEFID ) {
+
+      if (tile[i].id == CONFIG.FREERELIEFID) {
         hasFreeRelief = true;
       }
-      
-      layers += (tile[i]._visibleInfo.opacity < 1 ? ',' + tile[i]._visibleInfo.opacity.toFixed(2)*1 : '');
+
+      layers += (tile[i]._visibleInfo.opacity < 1 ? ',' + tile[i]._visibleInfo.opacity.toFixed(2) * 1 : '');
     }
-    
-    
-    for ( var i=list.length-1; i>=0; i-- )
-    {
+
+
+    for (var i = list.length - 1; i >= 0; i--) {
       layers += '|' + list[i].id;
-      layersShow += ( list[i]._visibleInfo._isHidden ? '0' : '1' );
+      layersShow += (list[i]._visibleInfo._isHidden ? '0' : '1');
     }
     layers = base + layers;
     layersShow = baseShow + layersShow;
-    layers = ( layers ? layers.replace(/^\|/, '') : '' );
+    layers = (layers ? layers.replace(/^\|/, '') : '');
     this.currents.layers = layers;
     this.currents.layersShow = layersShow;
-    
-    
+
+
     this.currents.freeReliefData = "";
-    if ( hasFreeRelief ) {
-      
+    if (hasFreeRelief) {
+
       var currentData = GSI.GLOBALS.mapLayerList.getElevationData();
       var text = GSI3D.ReliefTileLayer.encodeElevationData(currentData);
-      if ( text != undefined ) {
+      if (text != undefined) {
         this.currents.freeReliefData = text;
       }
     }
-    
-    
+
+
     this.updateHash();
   },
-  
+
   // マーカーレイヤー作成
-  createMarkerLayer: function()
-  {
+  createMarkerLayer: function () {
     var markerLayer = new Cesium.BillboardCollection({
-      scene : this.viewer.scene
+      scene: this.viewer.scene
     });
     markerLayer["type"] = "pin";
     this.viewer.scene.primitives.add(markerLayer);
     return markerLayer;
   },
-  
+
   // 指定のレイヤーへマーカーを追加
-  addMarker: function(markerLayer, lon, lat, imageUrl, hOrigin, vOrigin, data)
-  {
+  addMarker: function (markerLayer, lon, lat, imageUrl, hOrigin, vOrigin, data) {
     // hOrigin = [ "LEFT" || "CENTER" || "RIGHT" ]
     // vOrigin = [ "BOTTOM" || "CENTER" || "TOP" ]
-    
-    var h = ( hOrigin ? hOrigin : "LEFT" );
-    var v = ( vOrigin ? vOrigin : "BOTTOM" );
+
+    var h = (hOrigin ? hOrigin : "LEFT");
+    var v = (vOrigin ? vOrigin : "BOTTOM");
     var ho = 1;
     var vo = 1;
-    
-    switch ( h.toUpperCase() )
-    {
+
+    switch (h.toUpperCase()) {
       case "RIGHT":
         ho = Cesium.HorizontalOrigin.RIGHT;
         break;
@@ -8655,9 +8158,8 @@ GLOBE.MAP = {
         ho = Cesium.HorizontalOrigin.LEFT;
         break;
     }
-    
-    switch ( v.toUpperCase() )
-    {
+
+    switch (v.toUpperCase()) {
       case "TOP":
         vo = Cesium.VerticalOrigin.TOP;
         break;
@@ -8668,140 +8170,137 @@ GLOBE.MAP = {
         vo = Cesium.VerticalOrigin.BOTTOM;
         break;
     }
-    
+
     var pinObj = markerLayer.add({
-      image : imageUrl,
-      horizontalOrigin : ho,
-      verticalOrigin : vo,
-      position : Cesium.Cartesian3.fromDegrees(lon, lat, 0),
-      heightReference : Cesium.HeightReference.CLAMP_TO_GROUND
+      image: imageUrl,
+      horizontalOrigin: ho,
+      verticalOrigin: vo,
+      position: Cesium.Cartesian3.fromDegrees(lon, lat, 0),
+      heightReference: Cesium.HeightReference.CLAMP_TO_GROUND
     });
-    if ( data ) pinObj["data"] = data;
-    
+    if (data) pinObj["data"] = data;
+
     return pinObj;
   },
-  
+
   // 指定のレイヤーから指定のマーカーを削除
-  removeMarker: function(markerLayer, marker)
-  {
-    markerLayer.remove( marker );
+  removeMarker: function (markerLayer, marker) {
+    markerLayer.remove(marker);
   },
-  
+
   /*
   * レイヤー削除
   * layerName : レイヤー名
   */
-  deleteLayer: function(type, name, id)
-  {
+  deleteLayer: function (type, name, id) {
     // 「表示中の情報」--------------------
-    if(type == "layer"){
+    if (type == "layer") {
       // __ geojsonタイル
-      if(name == "geojson"){
+      if (name == "geojson") {
         var len = this.viewer.scene.primitives.length;
-        for(var i=len-1; i>=0; i--){
+        for (var i = len - 1; i >= 0; i--) {
           var primitiveCollection = this.viewer.scene.primitives._primitives[i];
           // QuadtreePrimitive削除
-          if(primitiveCollection.type == "GeojsonTile_QuadtreePrimitive"){
+          if (primitiveCollection.type == "GeojsonTile_QuadtreePrimitive") {
             this.viewer.scene.primitives.remove(primitiveCollection);
           }
           // LabelCollection削除
-          if(primitiveCollection.type == "GeojsonTile_labelCollection"){
+          if (primitiveCollection.type == "GeojsonTile_labelCollection") {
             this.viewer.scene.primitives.remove(primitiveCollection);
           }
         }
-      // __ その他レイヤー
-      }else{
-        var layerId = $(".contents").find("[layerName="+name+"]").attr("layerId");
+        // __ その他レイヤー
+      } else {
+        var layerId = $(".contents").find("[layerName=" + name + "]").attr("layerId");
         var targetLayer = this.getLayerById(layerId);
         this.viewer.imageryLayers.remove(targetLayer, true);
       }
-      
-    // 「ファイルから読み込み」--------------------
-    }else if(type == "upload"){
+
+      // 「ファイルから読み込み」--------------------
+    } else if (type == "upload") {
       // 【 Primitive 】
       var primitives = this.getPrimitiveCollectionById(id);
-      for(var i=0; i<primitives.length; i++){
+      for (var i = 0; i < primitives.length; i++) {
         this.viewer.scene.primitives.remove(primitives[i]);
       }
       // 【 Entity 】
       var dataSource = this.getDataSourceById(id);
-      if(dataSource){
+      if (dataSource) {
         this.viewer.dataSources.remove(dataSource);
       }
       // 【SingleTile】
       this.removeSingleImageryLayer(id);
     }
-    
-    GLOBE.MAP.removeImagePrimitive( id );
+
+    GLOBE.MAP.removeImagePrimitive(id);
   },
-  
+
   /*
   * レイヤーの表示/非表示を切り替える
   */
-  hide_showLayer: function(type, name, id, isShow, isShow2)
-  {
+  hide_showLayer: function (type, name, id, isShow, isShow2) {
     // 「表示中の情報」--------------------
-    if(type == "layer"){
+    if (type == "layer") {
       // __ geojsonタイル
-      if(name == "geojson"){
+      if (name == "geojson") {
         var len = this.viewer.scene.primitives.length;
-        for(var i=0; i<len; i++){
+        for (var i = 0; i < len; i++) {
           var primitiveCollection = this.viewer.scene.primitives._primitives[i];
           // LabelCollection
-          if(primitiveCollection.type == "GeojsonTile_labelCollection"){
+          if (primitiveCollection.type == "GeojsonTile_labelCollection") {
             /*
             for(var j=0; j<primitiveCollection._labels.length; j++){
               primitiveCollection._labels[j].show = isShow;
             }
             */
-            for(var j=0; j<primitiveCollection._billboards.length; j++){
+            for (var j = 0; j < primitiveCollection._billboards.length; j++) {
               primitiveCollection._billboards[j].show = isShow;
             }
           }
         }
-      // __ その他レイヤー
-      }else{
+        // __ その他レイヤー
+      } else {
         var targetLayer = getLayerById(id);
-          targetLayer.show = isShow;
+        targetLayer.show = isShow;
       }
-    // 「ファイルから読み込み」--------------------
-    }else if(type == "upload"){
+      // 「ファイルから読み込み」--------------------
+    } else if (type == "upload") {
       // 【 Primitive 】
       var primitives = this.getPrimitiveCollectionById(id);
-      for(var i=0; i<primitives.length; i++){
+      for (var i = 0; i < primitives.length; i++) {
         // billboards
-        if(primitives[i]._billboards){
-          for(var j=0; j<primitives[i]._billboards.length; j++){
-            if (primitives[i]._billboards[j]._index == 1){
-              if (isShow && isShow2){
+        if (primitives[i]._billboards) {
+          for (var j = 0; j < primitives[i]._billboards.length; j++) {
+            if (primitives[i]._billboards[j]._index == 1) {
+              if (isShow && isShow2) {
                 primitives[i]._billboards[j].show = true;
-              }else{
+              } else {
                 primitives[i]._billboards[j].show = false;
               }
-            }else{
+            } else {
               primitives[i]._billboards[j].show = isShow;
             }
           }
-        // polyline
-        }else if(primitives[i]._polylines){
-          for(var j=0; j<primitives[i]._polylines.length; j++){
+          // polyline
+        } else if (primitives[i]._polylines) {
+          for (var j = 0; j < primitives[i]._polylines.length; j++) {
             primitives[i]._polylines[j].show = isShow;
           }
-        // groundPrimitive
-        }else{
+          // groundPrimitive
+        } else {
           primitives[i].show = isShow;
         }
       }
 
       // 【 Entity 】
       var dataSource = this.getDataSourceById(id);
-      if(dataSource){
+      if (dataSource) {
         var entities = dataSource._entityCollection._entities._array;
-        for(var i=0; i<entities.length; i++){
+        for (var i = 0; i < entities.length; i++) {
           entities[i].show = isShow;
         }
       }
-      
+
       // 【アイコン代替】
       this.showSingleImageryLayer(id, isShow);
       this.showImagePrimitive(id, isShow);
@@ -8809,50 +8308,38 @@ GLOBE.MAP = {
   },
 
   // ラベルの表示/非表示を切り替える
-  hide_showLabel: function(type, name, id, isShow, isShow2)
-  {
+  hide_showLabel: function (type, name, id, isShow, isShow2) {
     // 「ファイルから読み込み」--------------------
-    if(type == "upload"){
+    if (type == "upload") {
       // 【 Primitive 】
       var primitives = this.getPrimitiveCollectionById(id);
-      for(var i=0; i<primitives.length; i++)
-      {
-        if(primitives[i]._billboards)
-        {
-          for (var j=0; j<primitives[i]._billboards.length; j++)
-          {
-            if(primitives[i]._billboards[j]._index == 1)
-            {
-              if (isShow && isShow2)
-              {
+      for (var i = 0; i < primitives.length; i++) {
+        if (primitives[i]._billboards) {
+          for (var j = 0; j < primitives[i]._billboards.length; j++) {
+            if (primitives[i]._billboards[j]._index == 1) {
+              if (isShow && isShow2) {
                 primitives[i]._billboards[j].show = true;
               }
-              else
-              {
+              else {
                 primitives[i]._billboards[j].show = false;
               }
             }
           }
         }
-        else if (primitives[i].primitiveType == "imagePrimitive")
-        {
-          for (var j=0; j<primitives[i].get(1).length; j++)
-          {
+        else if (primitives[i].primitiveType == "imagePrimitive") {
+          for (var j = 0; j < primitives[i].get(1).length; j++) {
             primitives[i].get(1).get(j).show = isShow2;
           }
         }
       }
-      
+
       // 【 Entity 】
       var dataSource = this.getDataSourceById(id);
-      if(dataSource)
-      {
+      if (dataSource) {
         var entities = dataSource.entities.values;
-        for(var i=0; i<entities.length; i++)
-        {
+        for (var i = 0; i < entities.length; i++) {
           var entity = entities[i];
-          if ( entity.billboard )
-          {
+          if (entity.billboard) {
             entity.label.show = isShow2;
           }
         }
@@ -8860,30 +8347,30 @@ GLOBE.MAP = {
     }
   },
 
-  updateLabelContents: function(type, id, key, pairs){
-    if(type != "upload") return;
+  updateLabelContents: function (type, id, key, pairs) {
+    if (type != "upload") return;
 
     const imageOptions = {
-      "font" : 'normal 20px "メイリオ"',
-      "fill"            : true,
-      "fillColor"       : Cesium.Color.BLACK,
-      "stroke"          : true,
-      "strokeColor"     : Cesium.Color.WHITE,
-      "strokeWidth"     : 3,
-      "backgroundColor" : Cesium.TRANSPARENT,
-      "padding"         : 0
+      "font": 'normal 20px "メイリオ"',
+      "fill": true,
+      "fillColor": Cesium.Color.BLACK,
+      "stroke": true,
+      "strokeColor": Cesium.Color.WHITE,
+      "strokeWidth": 3,
+      "backgroundColor": Cesium.TRANSPARENT,
+      "padding": 0
     }
 
     // 【 Primitive 】
     var primitives = this.getPrimitiveCollectionById(id);
-    for(var i=0; i<primitives.length; i++) {
+    for (var i = 0; i < primitives.length; i++) {
       var curPrimitive = primitives[i];
-      if(curPrimitive._billboards) {
-        for (var j=0; j<curPrimitive._billboards.length; j++) {
+      if (curPrimitive._billboards) {
+        for (var j = 0; j < curPrimitive._billboards.length; j++) {
           var curBillboard = curPrimitive._billboards[j];
-          if(curBillboard._index != 1) continue;
-          
-          if(curBillboard.gsidata && curBillboard.gsidata._markerType === "CircleMarker") continue;     //always show name for CircleMarker
+          if (curBillboard._index != 1) continue;
+
+          if (curBillboard.gsidata && curBillboard.gsidata._markerType === "CircleMarker") continue;     //always show name for CircleMarker
 
           var innerID = curBillboard.innerID;
           var strShow = innerID && pairs[innerID] && pairs[innerID][key] ? pairs[innerID][key] : "";
@@ -8891,10 +8378,10 @@ GLOBE.MAP = {
           break;
         }
       } else if (curPrimitive.primitiveType == "imagePrimitive") {
-        for (var j = 0; j < curPrimitive.get(1).length; j++){
+        for (var j = 0; j < curPrimitive.get(1).length; j++) {
           var imgPrimitive = curPrimitive._primitives[0];
-          if(!imgPrimitive) continue;
-          
+          if (!imgPrimitive) continue;
+
           var innerID = imgPrimitive._primitives[0].gsidata.layerId;
           var strShow = innerID && pairs[innerID] && pairs[innerID][key] ? pairs[innerID][key] : "";
           curPrimitive.get(1).get(j).image = Cesium.writeTextToCanvas(strShow, imageOptions);
@@ -8904,20 +8391,20 @@ GLOBE.MAP = {
 
     // 【 Entity 】
     var dataSource = this.getDataSourceById(id);
-    if(dataSource){
+    if (dataSource) {
       var entities = dataSource.entities.values;
-      for(var i=0; i<entities.length; i++) {
+      for (var i = 0; i < entities.length; i++) {
         var entity = entities[i];
         var innerID = entity.innerID;
         var strShow = innerID && pairs[innerID] && pairs[innerID][key] ? pairs[innerID][key] : "";
-        if(entity.billboard && entity.label && entity.label.text) {
+        if (entity.billboard && entity.label && entity.label.text) {
           entity.label.text.setValue(pairs[innerID][key]);
         }
       }
     }
   },
 
-  getDescriptionPairsById: function(id, oriPairs){
+  getDescriptionPairsById: function (id, oriPairs) {
     var primitives = this.getPrimitiveCollectionById(id);
 
     var pairsDict = oriPairs || {
@@ -8925,23 +8412,23 @@ GLOBE.MAP = {
       dataSet: {}        //{innerID: {}}
     };
 
-    function parsePairs(pairsDict, name, desp, innerID){
-      if(innerID == undefined) return;
+    function parsePairs(pairsDict, name, desp, innerID) {
+      if (innerID == undefined) return;
 
-      if(!pairsDict.keys.includes("name")) pairsDict.keys.push("name");
+      if (!pairsDict.keys.includes("name")) pairsDict.keys.push("name");
       pairsDict.dataSet[innerID] = {};
       pairsDict.dataSet[innerID]["name"] = name;
-      if(desp){
-        try{
+      if (desp) {
+        try {
           var $desp = $(desp);
           var trs = $desp.find("tr");
-          for(var i = 0; i < trs.length; i++){
+          for (var i = 0; i < trs.length; i++) {
             var tds = $(trs[i]).find("td");
-            if(tds.length != 2) break;
+            if (tds.length != 2) break;
             var key = $(tds[0]).html();
             var value = $(tds[1]).html();
-            if(key && value) {
-              if(!pairsDict.keys.includes(key)) pairsDict.keys.push(key);
+            if (key && value) {
+              if (!pairsDict.keys.includes(key)) pairsDict.keys.push(key);
               pairsDict.dataSet[innerID][key] = value;
             }
           }
@@ -8952,57 +8439,57 @@ GLOBE.MAP = {
     }
 
     // 【 Primitive 】
-    for(var i = 0; i < primitives.length; i++) {
+    for (var i = 0; i < primitives.length; i++) {
       var curPrimitive = primitives[i];
       var name = "";
       var desp = null;
       var innerID = null;
       var isValid = true;
-      if(curPrimitive._billboards) {
-        for (var j=0; j<curPrimitive._billboards.length; j++) {
+      if (curPrimitive._billboards) {
+        for (var j = 0; j < curPrimitive._billboards.length; j++) {
           var curBillboard = curPrimitive._billboards[j];
-          if(curBillboard._index != 1 || !curBillboard.name || curBillboard.name === "") continue;
+          if (curBillboard._index != 1 || !curBillboard.name || curBillboard.name === "") continue;
 
           name = curBillboard.name;
           innerID = curBillboard.innerID;
-          if(curBillboard.gsidata && curBillboard.gsidata._markerType !== "CircleMarker") {
+          if (curBillboard.gsidata && curBillboard.gsidata._markerType !== "CircleMarker") {
             desp = curBillboard.description;
           }
           break;
         }
-      } else if (curPrimitive.primitiveType == "imagePrimitive"){
+      } else if (curPrimitive.primitiveType == "imagePrimitive") {
         var innerPrimitives = curPrimitive._primitives;
-        do{
-          if(innerPrimitives.length <= 0) {
+        do {
+          if (innerPrimitives.length <= 0) {
             isValid = false;
             break;
           }
           var imgPrimitive = innerPrimitives[0];
-          if(imgPrimitive._primitives.length <= 0){
+          if (imgPrimitive._primitives.length <= 0) {
             isValid = false;
             break;
           }
           var gsidata = imgPrimitive._primitives[0].gsidata;
-          if(gsidata && gsidata.name && gsidata.description){
+          if (gsidata && gsidata.name && gsidata.description) {
             name = gsidata.name;
             desp = gsidata.description;
             innerID = gsidata.layerId;
           }
-        } while(0);
+        } while (0);
       }
 
-      if(!isValid) continue;
+      if (!isValid) continue;
 
       parsePairs(pairsDict, name, desp, innerID);
     }
 
     // 【 Entity 】
     var dataSource = this.getDataSourceById(id);
-    if(dataSource){
+    if (dataSource) {
       var entities = dataSource.entities.values;
-      for(var i=0; i<entities.length; i++) {
+      for (var i = 0; i < entities.length; i++) {
         var entity = entities[i];
-        if(entity.billboard == undefined || entity.description == undefined) continue;
+        if (entity.billboard == undefined || entity.description == undefined) continue;
         parsePairs(pairsDict, entity.name, entity.description.getValue(), entity.innerID);
       }
     }
@@ -9013,15 +8500,14 @@ GLOBE.MAP = {
   /*
   * レイヤーの透過率を切り替える
   */
-  layerChangeOpacity: function(layerName, layerID, value)
-  {
+  layerChangeOpacity: function (layerName, layerID, value) {
     // __ geojsonタイル
-    if(layerName == "geojson"){
+    if (layerName == "geojson") {
       var len = this.viewer.scene.primitives.length;
-      for(var i=0; i<len; i++){
+      for (var i = 0; i < len; i++) {
         var primitiveCollection = this.viewer.scene.primitives._primitives[i];
         // LabelCollection
-        if(primitiveCollection.type == "GeojsonTile_labelCollection"){
+        if (primitiveCollection.type == "GeojsonTile_labelCollection") {
           /*
           for(var j=0; j<primitiveCollection._labels.length; j++){
             // fill
@@ -9032,192 +8518,176 @@ GLOBE.MAP = {
             primitiveCollection._labels[j].outlineColor = new Cesium.Color(color.red, color.green, color.blue, value / 100);
           }
           */
-          for(var j=0; j<primitiveCollection._billboards.length; j++){
+          for (var j = 0; j < primitiveCollection._billboards.length; j++) {
             var color = primitiveCollection._billboards[j]._color;
             primitiveCollection._billboards[j].color = new Cesium.Color(color.red, color.green, color.blue, value / 100);
           }
         }
       }
-    // __ その他レイヤー
-    }else{
+      // __ その他レイヤー
+    } else {
       var targetLayer = getLayerById(layerID);
-        targetLayer.alpha = value / 100;
+      targetLayer.alpha = value / 100;
     }
   },
-  
+
   /*
   * 画像調整
   */
-  layerImageryAdjustment: function(layerName, layerID, type, value)
-  {
+  layerImageryAdjustment: function (layerName, layerID, type, value) {
     // __ geojsonタイル以外
-    if(layerName != "geojson"){
+    if (layerName != "geojson") {
       var targetLayer = getLayerById(layerID);
       targetLayer[type] = value / 1;
     }
   },
-  
+
   // 指定の位置へ移動
-  fly: function(lon, lat, z)
-  {
-    z = ( z === undefined ? this.defaultFlyHeight : z );
-    
+  fly: function (lon, lat, z) {
+    z = (z === undefined ? this.defaultFlyHeight : z);
+
     this.viewer.scene.camera.flyTo({
-      destination : Cesium.Cartesian3.fromDegrees(lon, lat, z),
-      complete: function(){
-        
+      destination: Cesium.Cartesian3.fromDegrees(lon, lat, z),
+      complete: function () {
+
       }
     });
   },
-  
+
   // 既定の位置へ移動
-  flyToDefault: function()
-  {
+  flyToDefault: function () {
     this.fly(this.defaults.lon, this.defaults.lat, this.defaults.height);
   },
-  
+
   // flyTo等の完了時に呼ぶ
-  adjustFly: function()
-  {
+  adjustFly: function () {
     var latLng = this.getCameraPosition();
-    
-    if ( latLng[2] < CONFIG.Z2HEIGHT[15] )
-    {
+
+    if (latLng[2] < CONFIG.Z2HEIGHT[15]) {
       this.fly(latLng[1], latLng[0], CONFIG.Z2HEIGHT[15]);
     }
   },
-  
+
   /*
   * レイヤーIDからレイヤーを取得
   */
-  getLayerById: function(layerID)
-  {
+  getLayerById: function (layerID) {
     var layers = this.viewer.imageryLayers._layers;
-    for(var i=0; i<layers.length; i++){
-      if(layers[i].layerId == layerID){
+    for (var i = 0; i < layers.length; i++) {
+      if (layers[i].layerId == layerID) {
         return layers[i];
       }
     }
   },
-  
+
   /*
   * primitiveIDからprimitiveCollectionを取得
   */
-  getPrimitiveCollectionById: function(id)
-  {
+  getPrimitiveCollectionById: function (id) {
     var array = [];
     var len = this.viewer.scene.primitives._primitives.length;
 
-    for(var i=0; i<len; i++){
+    for (var i = 0; i < len; i++) {
       var primitiveCollection = this.viewer.scene.primitives._primitives[i];
-      if(primitiveCollection.primitiveID == id){
+      if (primitiveCollection.primitiveID == id) {
         array.push(primitiveCollection);
       }
     }
 
     return array;
   },
-  
+
   /*
   * dataSourceIDからdataSourceを取得
   */
-  getDataSourceById: function(id)
-  {
-    for(var i=0; i<this.viewer.dataSources._dataSources.length; i++){
+  getDataSourceById: function (id) {
+    for (var i = 0; i < this.viewer.dataSources._dataSources.length; i++) {
       var dataSource = this.viewer.dataSources._dataSources[i];
-      if(dataSource.id == id){
+      if (dataSource.id == id) {
         return dataSource;
       }
     }
   },
-  
+
   /*
   * クリック/タップ/選択した地名の位置にピンをドロップ
   */
-  pindrop: function(lon, lat, type, color)
-  {
-    if(!color){
+  pindrop: function (lon, lat, type, color) {
+    if (!color) {
       color = Cesium.Color.RED;
     }
-    if(!type){
+    if (!type) {
       type = "pin";
     }
-    
+
     var billboardCollection = new Cesium.BillboardCollection({
-      scene : this.viewer.scene
+      scene: this.viewer.scene
     });
     billboardCollection["type"] = type;
     this.viewer.scene.primitives.add(billboardCollection);
 
     // Create a blank, solid colored pin.
     billboardCollection.add({
-      image : new Cesium.PinBuilder().fromColor(color, 36),
-      verticalOrigin : Cesium.VerticalOrigin.BOTTOM,
-      position : Cesium.Cartesian3.fromDegrees(lon, lat, 0),
-      alignedAxis : Cesium.Cartesian3.ZERO,
-      heightReference : Cesium.HeightReference.CLAMP_TO_GROUND
+      image: new Cesium.PinBuilder().fromColor(color, 36),
+      verticalOrigin: Cesium.VerticalOrigin.BOTTOM,
+      position: Cesium.Cartesian3.fromDegrees(lon, lat, 0),
+      alignedAxis: Cesium.Cartesian3.ZERO,
+      heightReference: Cesium.HeightReference.CLAMP_TO_GROUND
     });
   },
-  
+
   // 既存のピン(billboards)がある場合は消去
-  clearPinLayers: function(type)
-  {
+  clearPinLayers: function (type) {
     var len = this.viewer.scene.primitives.length;
-    for(var i=len-1; i>=0; i--){
+    for (var i = len - 1; i >= 0; i--) {
       var primitiveCollection = this.viewer.scene.primitives._primitives[i];
-      if(!type || primitiveCollection.type == type){
+      if (!type || primitiveCollection.type == type) {
         this.viewer.scene.primitives.remove(primitiveCollection);
       }
     }
   },
-  
+
   // 中心地点に印を表示（現在はカメラ位置を返すが、仕様を変更する予定）
-  showCenterMarker: function(lon, lat)
-  {
-    if ( this.centerMarkerLayer.isDestroyed() ) this.centerMarkerLayer = this.createMarkerLayer();
-    
+  showCenterMarker: function (lon, lat) {
+    if (this.centerMarkerLayer.isDestroyed()) this.centerMarkerLayer = this.createMarkerLayer();
+
     var pos = this.getCameraPosition();
-    
+
     this.centerMarker = this.addMarker(
       this.centerMarkerLayer,
-      ( lon ? lon : pos.lon ),
-      ( lat ? lat : pos.lat ),
+      (lon ? lon : pos.lon),
+      (lat ? lat : pos.lat),
       this.centerMarkerUrl,
       "CENTER",
       "CENTER"
     );
   },
-  
+
   // 中心地点の印を非表示
-  hideCenterMarker: function()
-  {
-    
+  hideCenterMarker: function () {
+
   },
-  
+
   // canvas上の位置からcartesian3を返す
-  canvasCoordinatesToCartesian: function(cartesian2)
-  {
+  canvasCoordinatesToCartesian: function (cartesian2) {
     //var ray = this.viewer.camera.getPickRay(cartesian2);
     //var cartesian3 = this.viewer.scene.globe.pick(ray, this.viewer.scene);
     //return cartesian3;
     return this.viewer.camera.pickEllipsoid(cartesian2);
   },
-  
+
   // canvas上の位置からcartographicを返す
-  canvasCoordinatesToCartographic: function(cartesian2)
-  {
+  canvasCoordinatesToCartographic: function (cartesian2) {
     var cartesian3 = this.canvasCoordinatesToCartesian(cartesian2);
     var cartographic = (cartesian3 ? Cesium.Cartographic.fromCartesian(cartesian3, this.viewer.scene.globe.ellipsoid) : undefined);
     return cartographic;
   },
-  
+
   // canvas上の位置からlatLngを返す
-  canvasCoordinatesToLatLng: function(cartesian2)
-  {
+  canvasCoordinatesToLatLng: function (cartesian2) {
     var cartographic = this.canvasCoordinatesToCartographic(cartesian2);
     var latLng;
-    if ( cartographic )
-    {
+    if (cartographic) {
       latLng = [
         Cesium.Math.toDegrees(cartographic.latitude),
         Cesium.Math.toDegrees(cartographic.longitude)
@@ -9225,215 +8695,192 @@ GLOBE.MAP = {
     }
     return latLng;
   },
-  
+
   // cartographicからcartesian3を返す(heightは任意）
-  cartographicToCartesian: function(cartographic, height)
-  {
-    if ( height == undefined )
-    {
+  cartographicToCartesian: function (cartographic, height) {
+    if (height == undefined) {
       return Cesium.Cartesian3.fromDegrees(cartographic.longitude, cartographic.latitude);
     }
-    else
-    {
+    else {
       return Cesium.Cartesian3.fromDegrees(cartographic.longitude, cartographic.latitude, height);
     }
   },
-  
+
   // ウィンドーの中心地点までの距離を返す（戻り値はpromise）
-  DistanceToCenter: function(useCameraFlg)
-  {
+  DistanceToCenter: function (useCameraFlg) {
     var that = this;
     var centerLatLng = this.getCenterPosition(useCameraFlg);
     return Cesium.sampleTerrain(this.viewer.terrainProvider, 11, [
       Cesium.Cartographic.fromDegrees(centerLatLng[1], centerLatLng[0])
     ])
-    .then(function(updatedPositions){
-      var centerCartesian = Cesium.Cartesian3.fromRadians(updatedPositions[0].longitude, updatedPositions[0].latitude, updatedPositions[0].height);
-      var distance = Cesium.Cartesian3.distance(that.viewer.camera.position, centerCartesian);
-      return distance;
-    });
+      .then(function (updatedPositions) {
+        var centerCartesian = Cesium.Cartesian3.fromRadians(updatedPositions[0].longitude, updatedPositions[0].latitude, updatedPositions[0].height);
+        var distance = Cesium.Cartesian3.distance(that.viewer.camera.position, centerCartesian);
+        return distance;
+      });
   },
-  
+
   // ウィンドーの中心座標を返す
-  getCenterPosition: function(useCameraFlg)
-  {
-    var center = new Cesium.Cartesian2( $('#' + this.mapElementId).width()/2, $('#' + this.mapElementId).height()/2 );
+  getCenterPosition: function (useCameraFlg) {
+    var center = new Cesium.Cartesian2($('#' + this.mapElementId).width() / 2, $('#' + this.mapElementId).height() / 2);
     var ray = this.viewer.camera.getPickRay(center);
     var intersection = this.viewer.scene.globe.pick(ray, this.viewer.scene);
-    if ( intersection )
-    {
+    if (intersection) {
       return this.degreesFromCartesian(intersection);
     }
-    else if ( useCameraFlg )
-    {
+    else if (useCameraFlg) {
       return this.getCameraPosition();
     }
-    else
-    {
+    else {
       return undefined;
     }
   },
-  
+
   // カメラ位置から latLng : [lat, lon, height] を返す
-  getCameraPosition: function()
-  {
+  getCameraPosition: function () {
     var cartesian = this.viewer.camera.position;
     return this.degreesFromCartesian(cartesian);
   },
-  
+
   // Cartesian から latLng : [lat, lon, height] を返す
-  degreesFromCartesian: function(cartesian)
-  {
+  degreesFromCartesian: function (cartesian) {
     var ellipsoid = this.viewer.scene.globe.ellipsoid;
     var cartographic = ellipsoid.cartesianToCartographic(cartesian);
     var height = cartographic.height.toFixed(0) * 1;
     var lon = Cesium.Math.toDegrees(cartographic.longitude).toFixed(8) * 1;
     var lat = Cesium.Math.toDegrees(cartographic.latitude).toFixed(8) * 1;
-    return [ lat, lon, height ];
+    return [lat, lon, height];
   },
-  
-  getCurrentZoom: function()
-  {
+
+  getCurrentZoom: function () {
     var zoom = 1;
     var tilesToRender = this.viewer.scene.globe._surface._tilesToRender;
     //this.getZoomLevel();
-    if ( Cesium.defined( tilesToRender ) )
-    {
+    if (Cesium.defined(tilesToRender)) {
       var levels = [];
       var levelTotal = 0;
-      for( var i=0; i<tilesToRender.length; i++ )
-      {
+      for (var i = 0; i < tilesToRender.length; i++) {
         levelTotal += tilesToRender[i]._level;
       }
-      if ( tilesToRender.length > 0 )
-        zoom = parseInt( Math.round( levelTotal / tilesToRender.length ) );
-      if ( zoom < 2 ) zoom = 2;
-      if ( zoom > 18 ) zoom = 18;
+      if (tilesToRender.length > 0)
+        zoom = parseInt(Math.round(levelTotal / tilesToRender.length));
+      if (zoom < 2) zoom = 2;
+      if (zoom > 18) zoom = 18;
     }
-    
+
     return zoom;
   },
-  
-  setHeightPower: function( val )
-  {
+
+  setHeightPower: function (val) {
     this.currents.heightPower = val;
     this.setTerrainProvider(this.viewer);
     this.updateHash();
   },
-  
+
   // 渡されたgeojsonデータが高さを持つかどうかの真偽値を返す
-  is3dGeojson: function(coord)
-  {
-    if ( !coord || !coord.length || coord.length < 1 ) return false;
-    
-    if ( !Array.isArray(coord[0]) )
-    {
+  is3dGeojson: function (coord) {
+    if (!coord || !coord.length || coord.length < 1) return false;
+
+    if (!Array.isArray(coord[0])) {
       //POINT
       return (coord.length >= 3 ? true : false);
     }
-    else if ( coord[0].length > 0 && !Array.isArray(coord[0][0]) )
-    {
+    else if (coord[0].length > 0 && !Array.isArray(coord[0][0])) {
       //LINESTRING
       return (coord[0].length >= 3 ? true : false);
     }
-    else if ( coord[0].length > 0 && Array.isArray(coord[0][0]) )
-    {
+    else if (coord[0].length > 0 && Array.isArray(coord[0][0])) {
       //POLYGON
       return (coord[0][0].length >= 3 ? true : false);
     }
-    
+
     return false;
   },
-  
+
   /*
   * geojson追加
   */
-  drawGeojson: function(geojson, fileName, fkey, callbackFnc)
-  {
+  drawGeojson: function (geojson, fileName, fkey, callbackFnc) {
     //try{
-      var id = this.getNewId();
+    var id = this.getNewId();
 
-      var latArray = [];
-      var lonArray = [];
+    var latArray = [];
+    var lonArray = [];
 
-      var geojson = JSON.parse(geojson);
-      var len     = geojson.features.length;
-      //console.log("features", geojson.features);
-      for(var i=0; i<len; i++){
-        var primitiveArray = [];
+    var geojson = JSON.parse(geojson);
+    var len = geojson.features.length;
+    //console.log("features", geojson.features);
+    for (var i = 0; i < len; i++) {
+      var primitiveArray = [];
 
-        var feature = geojson.features[i];
-        var coord   = feature.geometry.coordinates;
-        var name        = (feature.properties.name)? feature.properties.name : ''; //"名称なし";
-        var description = this.getEntityDescription(feature.properties);
-        var geomType    = feature.geometry.type;
-        var markerType = feature.properties._markerType;
-        
-        var html = (markerType == 'DivIcon' ? feature.properties._html : name);
-        var ellipsoid = this.viewer.scene.globe.ellipsoid;
-        
-        var depthFlag = GLOBE.MAP.is3dGeojson(coord);
-        
-        // ライン用のデータ
-        var gene = {
-          kind: "corridor",
-          type: "upload_GroundPrimitive",
-          primitiveID: id,
-          description: description,
-          name: name,
-          position: null,
-          color: null,
-          width: null,
-          isIE: this.isIE
-        };
-        
-        // ポイント(アイコン,TEXT)-------------
-        if(geomType == "Point" && (markerType == "Icon" || markerType == "DivIcon")){
-          var position    = Cesium.Cartesian3.fromDegrees(coord[0], coord[1], (coord.length>=3 ? coord[2] : 0), ellipsoid);
-          var imageURL    = "";
-          if (markerType == "DivIcon")
-          {
-            imageURL = "image/system/icon_nothing.png"; 
+      var feature = geojson.features[i];
+      var coord = feature.geometry.coordinates;
+      var name = (feature.properties.name) ? feature.properties.name : ''; //"名称なし";
+      var description = this.getEntityDescription(feature.properties);
+      var geomType = feature.geometry.type;
+      var markerType = feature.properties._markerType;
+
+      var html = (markerType == 'DivIcon' ? feature.properties._html : name);
+      var ellipsoid = this.viewer.scene.globe.ellipsoid;
+
+      var depthFlag = GLOBE.MAP.is3dGeojson(coord);
+
+      // ライン用のデータ
+      var gene = {
+        kind: "corridor",
+        type: "upload_GroundPrimitive",
+        primitiveID: id,
+        description: description,
+        name: name,
+        position: null,
+        color: null,
+        width: null,
+        isIE: this.isIE
+      };
+
+      // ポイント(アイコン,TEXT)-------------
+      if (geomType == "Point" && (markerType == "Icon" || markerType == "DivIcon")) {
+        var position = Cesium.Cartesian3.fromDegrees(coord[0], coord[1], (coord.length >= 3 ? coord[2] : 0), ellipsoid);
+        var imageURL = "";
+        if (markerType == "DivIcon") {
+          imageURL = "image/system/icon_nothing.png";
+        }
+        else {
+          if (feature.properties._iconUrl && feature.properties._iconUrl != "") {
+            imageURL = feature.properties._iconUrl;
           }
-          else{
-            if (feature.properties._iconUrl && feature.properties._iconUrl != ""){
-              imageURL = feature.properties._iconUrl;
-            }
-            else{
-              imageURL = "https://maps.gsi.go.jp/portal/sys/v4/symbols/080.png"
-            }
+          else {
+            imageURL = "https://maps.gsi.go.jp/portal/sys/v4/symbols/080.png"
           }
-          
-          if ( depthFlag )
-          {
-            if ( (coord.length>=3 ? coord[2] : 0) < 0 ) continue;
-          }
-          
-          lonArray.push(coord[0]);
-          latArray.push(coord[1]);
-          
-          this.addSingleImageryLayer(id, name, position, imageURL);
-          
-          if ( GLOBE.MAP.isDirectionIcon(imageURL) )
-          {
-            GLOBE.MAP.addImagePrimitive({
-              "layerId"      : id,
-              "name"         : name,
-              "position"     : position,
-              "imageUrl"     : imageURL,
-              "imageSize"    : feature.properties._iconSize,
-              "imageAnchor"  : feature.properties._iconAnchor,
-              "description"  : description,
-              "hasHeight"    : depthFlag,
-              "usePopup"     : true,
-              "usePopupFlag" : false
-            });
-          }
-          else
-          {
+        }
+
+        if (depthFlag) {
+          if ((coord.length >= 3 ? coord[2] : 0) < 0) continue;
+        }
+
+        lonArray.push(coord[0]);
+        latArray.push(coord[1]);
+
+        this.addSingleImageryLayer(id, name, position, imageURL);
+
+        if (GLOBE.MAP.isDirectionIcon(imageURL)) {
+          GLOBE.MAP.addImagePrimitive({
+            "layerId": id,
+            "name": name,
+            "position": position,
+            "imageUrl": imageURL,
+            "imageSize": feature.properties._iconSize,
+            "imageAnchor": feature.properties._iconAnchor,
+            "description": description,
+            "hasHeight": depthFlag,
+            "usePopup": true,
+            "usePopupFlag": false
+          });
+        }
+        else {
           // Billboardとして追加する
           var billboardCollection = new Cesium.BillboardCollection({
-            scene : this.viewer.scene
+            scene: this.viewer.scene
           });
           billboardCollection["primitiveID"] = id;
           this.viewer.scene.primitives.add(billboardCollection);
@@ -9442,231 +8889,230 @@ GLOBE.MAP = {
             this.getPrimitiveDiv_Icon(position, html, depthFlag, feature.properties._iconSize, feature.properties._iconAnchor) :
             this.getPrimitivePoint_Icon(position, imageURL, name, depthFlag, feature.properties._iconSize, feature.properties._iconAnchor)
           );
-          
-          for(var j=0; j<billboards.length; j++){
+
+          for (var j = 0; j < billboards.length; j++) {
             var billboard = billboardCollection.add(billboards[j]);
             billboard["description"] = description;
-            billboard["name"]        = name;
-            billboard["innerID"]     = this.getNewId();
-            billboard["type"]        = "upload_Billboard";
+            billboard["name"] = name;
+            billboard["innerID"] = this.getNewId();
+            billboard["type"] = "upload_Billboard";
             billboard["gsidata"] = {
-              "_markerType" : markerType,
-              "_isLabel"    : (j==1 ? true : false)
+              "_markerType": markerType,
+              "_isLabel": (j == 1 ? true : false)
             }
           }
-          }
-          
+        }
+
         // ポイント（円・ピクセル指定）
-        }else if(feature.properties._markerType == "CircleMarker"){
-          /*
-          var position    = new Cesium.Cartesian3.fromDegrees(coord[0], coord[1], (coord.length>=3 ? coord[2] : 0));
-          var fillColor   = this.hexToRgb(feature.properties._fillColor);
-            fillColor   = new Cesium.Color(fillColor[0]/255, fillColor[1]/255, fillColor[2]/255, feature.properties._fillOpacity);
-          var strokeColor = this.hexToRgb(feature.properties._color);
-            strokeColor = new Cesium.Color(strokeColor[0]/255, strokeColor[1]/255, strokeColor[2]/255, feature.properties._opacity);
-          var strokeWidth = feature.properties._weight;
-          var radius      = feature.properties._radius;
-          */
-          var position      = new Cesium.Cartesian3.fromDegrees(coord[0], coord[1], (coord.length>=3 ? coord[2] : 0));
-          var radius        = feature.properties._radius;
-          var strokeWidth   = (feature.properties._weight ? feature.properties._weight : CONFIG.DEFAULTSTYLES.weight);
-          var strokeColor   = (feature.properties._color ? feature.properties._color : CONFIG.DEFAULTSTYLES.color);
-          var strokeOpacity = (feature.properties._opacity ? feature.properties._opacity : CONFIG.DEFAULTSTYLES.opacity);
-          var fillColor     = (feature.properties._fillColor ? feature.properties._fillColor : CONFIG.DEFAULTSTYLES.fillColor);
-          var fillOpacity   = (feature.properties._fillOpacity ? feature.properties._fillOpacity : CONFIG.DEFAULTSTYLES.fillOpacity);
+      } else if (feature.properties._markerType == "CircleMarker") {
+        /*
+        var position    = new Cesium.Cartesian3.fromDegrees(coord[0], coord[1], (coord.length>=3 ? coord[2] : 0));
+        var fillColor   = this.hexToRgb(feature.properties._fillColor);
+          fillColor   = new Cesium.Color(fillColor[0]/255, fillColor[1]/255, fillColor[2]/255, feature.properties._fillOpacity);
+        var strokeColor = this.hexToRgb(feature.properties._color);
+          strokeColor = new Cesium.Color(strokeColor[0]/255, strokeColor[1]/255, strokeColor[2]/255, feature.properties._opacity);
+        var strokeWidth = feature.properties._weight;
+        var radius      = feature.properties._radius;
+        */
+        var position = new Cesium.Cartesian3.fromDegrees(coord[0], coord[1], (coord.length >= 3 ? coord[2] : 0));
+        var radius = feature.properties._radius;
+        var strokeWidth = (feature.properties._weight ? feature.properties._weight : CONFIG.DEFAULTSTYLES.weight);
+        var strokeColor = (feature.properties._color ? feature.properties._color : CONFIG.DEFAULTSTYLES.color);
+        var strokeOpacity = (feature.properties._opacity ? feature.properties._opacity : CONFIG.DEFAULTSTYLES.opacity);
+        var fillColor = (feature.properties._fillColor ? feature.properties._fillColor : CONFIG.DEFAULTSTYLES.fillColor);
+        var fillOpacity = (feature.properties._fillOpacity ? feature.properties._fillOpacity : CONFIG.DEFAULTSTYLES.fillOpacity);
 
-          lonArray.push(coord[0]);
-          latArray.push(coord[1]);
-          
-          var cmCanvas = this.getCircleCanvas(radius, strokeWidth, strokeColor, strokeOpacity, fillColor, fillOpacity);
-          
-          // Billboardとして追加する
-          var billboardCollection = new Cesium.BillboardCollection({
-            scene : this.viewer.scene
-          });
-          billboardCollection["primitiveID"] = id;
-          this.viewer.scene.primitives.add(billboardCollection);
+        lonArray.push(coord[0]);
+        latArray.push(coord[1]);
 
-          var billboards = this.getPrimitivePoint_Icon(position, cmCanvas, name, depthFlag, [cmCanvas.width, cmCanvas.height], [cmCanvas.width/2, cmCanvas.height/2]);
-          
-          for(var j=0; j<billboards.length; j++){
-            var billboard = billboardCollection.add(billboards[j]);
-            billboard["description"] = description;
-            billboard["name"]        = name;
-            billboard["innerID"]     = this.getNewId();
-            billboard["type"]        = "upload_Billboard";
-            billboard["gsidata"] = {
-              "_markerType" : feature.properties._markerType,
-              "_isLabel"    : (j==1 ? true : false)
-            }
+        var cmCanvas = this.getCircleCanvas(radius, strokeWidth, strokeColor, strokeOpacity, fillColor, fillOpacity);
+
+        // Billboardとして追加する
+        var billboardCollection = new Cesium.BillboardCollection({
+          scene: this.viewer.scene
+        });
+        billboardCollection["primitiveID"] = id;
+        this.viewer.scene.primitives.add(billboardCollection);
+
+        var billboards = this.getPrimitivePoint_Icon(position, cmCanvas, name, depthFlag, [cmCanvas.width, cmCanvas.height], [cmCanvas.width / 2, cmCanvas.height / 2]);
+
+        for (var j = 0; j < billboards.length; j++) {
+          var billboard = billboardCollection.add(billboards[j]);
+          billboard["description"] = description;
+          billboard["name"] = name;
+          billboard["innerID"] = this.getNewId();
+          billboard["type"] = "upload_Billboard";
+          billboard["gsidata"] = {
+            "_markerType": feature.properties._markerType,
+            "_isLabel": (j == 1 ? true : false)
           }
-          
-          
-          
+        }
+
+
+
         // ポイント(円)-----------------------
-        }else if(feature.geometry.type == "Point" && feature.properties._markerType == "Circle"){
-          var position    = new Cesium.Cartesian3.fromDegrees(coord[0], coord[1], (coord.length>=3 ? coord[2] : 0));
-          var fillColor   = (feature.properties._fillColor ? feature.properties._fillColor : CONFIG.DEFAULTSTYLES.fillColor);
-            fillColor   = this.hexToRgb(fillColor);
-            fillColor   = new Cesium.Color(fillColor[0]/255, fillColor[1]/255, fillColor[2]/255, feature.properties._fillOpacity);
-          var strokeColor = (feature.properties._color ? feature.properties._color : CONFIG.DEFAULTSTYLES.color);
-            strokeColor = this.hexToRgb(strokeColor);
-            strokeColor = new Cesium.Color(strokeColor[0]/255, strokeColor[1]/255, strokeColor[2]/255, feature.properties._opacity);
-          var strokeWidth = (feature.properties._weight ? feature.properties._weight : CONFIG.DEFAULTSTYLES.weight);
-          var radius      = feature.properties._radius;
+      } else if (feature.geometry.type == "Point" && feature.properties._markerType == "Circle") {
+        var position = new Cesium.Cartesian3.fromDegrees(coord[0], coord[1], (coord.length >= 3 ? coord[2] : 0));
+        var fillColor = (feature.properties._fillColor ? feature.properties._fillColor : CONFIG.DEFAULTSTYLES.fillColor);
+        fillColor = this.hexToRgb(fillColor);
+        fillColor = new Cesium.Color(fillColor[0] / 255, fillColor[1] / 255, fillColor[2] / 255, feature.properties._fillOpacity);
+        var strokeColor = (feature.properties._color ? feature.properties._color : CONFIG.DEFAULTSTYLES.color);
+        strokeColor = this.hexToRgb(strokeColor);
+        strokeColor = new Cesium.Color(strokeColor[0] / 255, strokeColor[1] / 255, strokeColor[2] / 255, feature.properties._opacity);
+        var strokeWidth = (feature.properties._weight ? feature.properties._weight : CONFIG.DEFAULTSTYLES.weight);
+        var radius = feature.properties._radius;
 
-          lonArray.push(coord[0]);
-          latArray.push(coord[1]);
+        lonArray.push(coord[0]);
+        latArray.push(coord[1]);
 
-          // 【 IE11 】
-          if ( this.isIE || depthFlag ) {
-            // 円をPrimitiveとして追加する
-            var geomInstance = this.getPrimitiveIcon_Circle(position, fillColor, radius, this.isIE);
-            var primitive = new Cesium.Primitive({
-              geometryInstances : [geomInstance],
-              appearance : new Cesium.EllipsoidSurfaceAppearance({
-                material : Cesium.Material.fromType("Color", {
-                  "color" : fillColor
-                })
+        // 【 IE11 】
+        if (this.isIE || depthFlag) {
+          // 円をPrimitiveとして追加する
+          var geomInstance = this.getPrimitiveIcon_Circle(position, fillColor, radius, this.isIE);
+          var primitive = new Cesium.Primitive({
+            geometryInstances: [geomInstance],
+            appearance: new Cesium.EllipsoidSurfaceAppearance({
+              material: Cesium.Material.fromType("Color", {
+                "color": fillColor
               })
-            });
-            primitiveArray.push(primitive);
-            
+            })
+          });
+          primitiveArray.push(primitive);
+
           // 【 IE以外 】
-          }else{
-            // 円をGroundPrimitiveとして追加する
-            var geomInstance = this.getPrimitiveIcon_Circle(position, fillColor, radius, this.isIE);
-            var primitive = new Cesium.GroundPrimitive({
-              geometryInstances : [geomInstance]
-            });
-            primitiveArray.push(primitive);
-          }
-          
-          // 枠線をGroundPrimitiveとして追加する
-          if(feature.properties._opacity > 0){
-            var positions = this.getCirclePosition(position, radius);
-            
-            gene.position = positions;
-            gene.color    = strokeColor;
-            gene.width    = strokeWidth;
-            
-            var linePrimitive = ( this.isIE || depthFlag ? this.createPolylinePrimitive(gene) : this.createCorridorPrimitive(gene) );
-            primitiveArray.push(linePrimitive);
-          }
-          
-        // ラインストリング-------------------
-        }else if(feature.geometry.type == "LineString"){
-          var position = this.getPosition(coord, depthFlag);
-          var color    = (feature.properties._color ? feature.properties._color : CONFIG.DEFAULTSTYLES.color);
-            color    = this.hexToRgb(color);
-            color    = new Cesium.Color(color[0]/255, color[1]/255, color[2]/255, feature.properties._opacity);
-          var width    = (feature.properties._weight ? feature.properties._weight : CONFIG.DEFAULTSTYLES.weight);
+        } else {
+          // 円をGroundPrimitiveとして追加する
+          var geomInstance = this.getPrimitiveIcon_Circle(position, fillColor, radius, this.isIE);
+          var primitive = new Cesium.GroundPrimitive({
+            geometryInstances: [geomInstance]
+          });
+          primitiveArray.push(primitive);
+        }
 
-          var lonlatArray = this.getLonLatArrayForGeojson(coord);
-          Array.prototype.push.apply(lonArray, lonlatArray.lon);
-          Array.prototype.push.apply(latArray, lonlatArray.lat);
+        // 枠線をGroundPrimitiveとして追加する
+        if (feature.properties._opacity > 0) {
+          var positions = this.getCirclePosition(position, radius);
 
-          gene.position = position;
-          gene.color    = color;
-          gene.width    = width;
-          
-          var linePrimitive = ( depthFlag ? this.createPolylinePrimitive(gene) : this.createCorridorPrimitive(gene) );
-          
+          gene.position = positions;
+          gene.color = strokeColor;
+          gene.width = strokeWidth;
+
+          var linePrimitive = (this.isIE || depthFlag ? this.createPolylinePrimitive(gene) : this.createCorridorPrimitive(gene));
           primitiveArray.push(linePrimitive);
+        }
+
+        // ラインストリング-------------------
+      } else if (feature.geometry.type == "LineString") {
+        var position = this.getPosition(coord, depthFlag);
+        var color = (feature.properties._color ? feature.properties._color : CONFIG.DEFAULTSTYLES.color);
+        color = this.hexToRgb(color);
+        color = new Cesium.Color(color[0] / 255, color[1] / 255, color[2] / 255, feature.properties._opacity);
+        var width = (feature.properties._weight ? feature.properties._weight : CONFIG.DEFAULTSTYLES.weight);
+
+        var lonlatArray = this.getLonLatArrayForGeojson(coord);
+        Array.prototype.push.apply(lonArray, lonlatArray.lon);
+        Array.prototype.push.apply(latArray, lonlatArray.lat);
+
+        gene.position = position;
+        gene.color = color;
+        gene.width = width;
+
+        var linePrimitive = (depthFlag ? this.createPolylinePrimitive(gene) : this.createCorridorPrimitive(gene));
+
+        primitiveArray.push(linePrimitive);
 
         // ポリゴン---------------------------
-        }else if(feature.geometry.type == "Polygon"){
+      } else if (feature.geometry.type == "Polygon") {
 
-          var hierarchy   = this.geojsonCoordinateToPolygonHierarchy(coord);
-          var color       = (feature.properties._fillColor ? feature.properties._fillColor : CONFIG.DEFAULTSTYLES.fillColor);
-            color       = this.hexToRgb(color);
-            color       = new Cesium.Color(color[0]/255, color[1]/255, color[2]/255, feature.properties._fillOpacity);
-          var strokeColor = (feature.properties._color ? feature.properties._color : CONFIG.DEFAULTSTYLES.color);
-            strokeColor = this.hexToRgb(strokeColor);
-            strokeColor = new Cesium.Color(strokeColor[0]/255, strokeColor[1]/255, strokeColor[2]/255, feature.properties._opacity);
-          var strokeWidth = (feature.properties._weight ? feature.properties._weight : CONFIG.DEFAULTSTYLES.weight);
+        var hierarchy = this.geojsonCoordinateToPolygonHierarchy(coord);
+        var color = (feature.properties._fillColor ? feature.properties._fillColor : CONFIG.DEFAULTSTYLES.fillColor);
+        color = this.hexToRgb(color);
+        color = new Cesium.Color(color[0] / 255, color[1] / 255, color[2] / 255, feature.properties._fillOpacity);
+        var strokeColor = (feature.properties._color ? feature.properties._color : CONFIG.DEFAULTSTYLES.color);
+        strokeColor = this.hexToRgb(strokeColor);
+        strokeColor = new Cesium.Color(strokeColor[0] / 255, strokeColor[1] / 255, strokeColor[2] / 255, feature.properties._opacity);
+        var strokeWidth = (feature.properties._weight ? feature.properties._weight : CONFIG.DEFAULTSTYLES.weight);
 
-          var lonlatArray = this.getLonLatArrayForGeojson(coord);
-          Array.prototype.push.apply(lonArray, lonlatArray.lon);
-          Array.prototype.push.apply(latArray, lonlatArray.lat);
-          
-          // 【 IE11 または 3d 】
-          if( this.isIE || depthFlag ){
-            // ポリゴンをPrimitiveとして追加する
-            var geomInstance = this.getPrimitivePolygon(hierarchy, color, this.isIE);
-            var primitive = new Cesium.Primitive({
-              geometryInstances : [geomInstance],
-              appearance : new Cesium.EllipsoidSurfaceAppearance({
-                material : Cesium.Material.fromType("Color", {
-                  "color" : color
-                })
+        var lonlatArray = this.getLonLatArrayForGeojson(coord);
+        Array.prototype.push.apply(lonArray, lonlatArray.lon);
+        Array.prototype.push.apply(latArray, lonlatArray.lat);
+
+        // 【 IE11 または 3d 】
+        if (this.isIE || depthFlag) {
+          // ポリゴンをPrimitiveとして追加する
+          var geomInstance = this.getPrimitivePolygon(hierarchy, color, this.isIE);
+          var primitive = new Cesium.Primitive({
+            geometryInstances: [geomInstance],
+            appearance: new Cesium.EllipsoidSurfaceAppearance({
+              material: Cesium.Material.fromType("Color", {
+                "color": color
               })
-            });
+            })
+          });
           // 【 IE11以外 】
-          }else{
-            // ポリゴンをGroundPrimitiveとして追加する
-            var geomInstance = this.getPrimitivePolygon(hierarchy, color, this.isIE);
-            var primitive = new Cesium.GroundPrimitive({
-              geometryInstances : [geomInstance]
-            });
-          }
-          primitiveArray.push(primitive);
-          
-          // 枠線をPrimitiveとして追加する
-          gene.position = hierarchy.positions;
-          gene.color    = strokeColor;
-          gene.width    = strokeWidth;
-          
-          if(feature.properties._opacity > 0){
-            var linePrimitive = ( depthFlag ? this.createPolylinePrimitive(gene) : this.createCorridorPrimitive(gene) );
-            primitiveArray.push(linePrimitive);
-          }
+        } else {
+          // ポリゴンをGroundPrimitiveとして追加する
+          var geomInstance = this.getPrimitivePolygon(hierarchy, color, this.isIE);
+          var primitive = new Cesium.GroundPrimitive({
+            geometryInstances: [geomInstance]
+          });
         }
+        primitiveArray.push(primitive);
 
-        // 円・ラインストリング・ポリゴンの場合
-        if(primitiveArray.length > 0){
-          for(var j=0; j<primitiveArray.length; j++){
-            var primitive = primitiveArray[j];
-            primitive["type"]        = "upload_GroundPrimitive";
-            primitive["primitiveID"] = id;
-            primitive["description"] = description;
-            primitive["name"]        = name;
-            primitive["innerID"]     = this.getNewId();
-            this.viewer.scene.primitives.add(primitive);
-          }
+        // 枠線をPrimitiveとして追加する
+        gene.position = hierarchy.positions;
+        gene.color = strokeColor;
+        gene.width = strokeWidth;
+
+        if (feature.properties._opacity > 0) {
+          var linePrimitive = (depthFlag ? this.createPolylinePrimitive(gene) : this.createCorridorPrimitive(gene));
+          primitiveArray.push(linePrimitive);
         }
       }
 
-      // ズーム
-      var west  = Math.min.apply(null, lonArray);
-      var east  = Math.max.apply(null, lonArray);
-      var south = Math.min.apply(null, latArray);
-      var north = Math.max.apply(null, latArray);
-      west  = west-(east-west)/3;
-      east  = east+(east-west)/3;
-      south  = south-(north-south)/3;
-      north  = north+(north-south)/3;
-      this.viewer.camera.flyTo({
-        destination : new Cesium.Rectangle.fromDegrees(west, south, east, north),
-        duration :1,
-        complete: function(){
-          GLOBE.MAP.adjustFly();
+      // 円・ラインストリング・ポリゴンの場合
+      if (primitiveArray.length > 0) {
+        for (var j = 0; j < primitiveArray.length; j++) {
+          var primitive = primitiveArray[j];
+          primitive["type"] = "upload_GroundPrimitive";
+          primitive["primitiveID"] = id;
+          primitive["description"] = description;
+          primitive["name"] = name;
+          primitive["innerID"] = this.getNewId();
+          this.viewer.scene.primitives.add(primitive);
         }
+      }
+    }
+
+    // ズーム
+    var west = Math.min.apply(null, lonArray);
+    var east = Math.max.apply(null, lonArray);
+    var south = Math.min.apply(null, latArray);
+    var north = Math.max.apply(null, latArray);
+    west = west - (east - west) / 3;
+    east = east + (east - west) / 3;
+    south = south - (north - south) / 3;
+    north = north + (north - south) / 3;
+    this.viewer.camera.flyTo({
+      destination: new Cesium.Rectangle.fromDegrees(west, south, east, north),
+      duration: 1,
+      complete: function () {
+        GLOBE.MAP.adjustFly();
+      }
+    });
+
+    // アップロード一覧に追加
+    //addUploadList(fileName, id);
+    if (callbackFnc) {
+      callbackFnc({
+        'id': id,
+        'len': len,
+        'file': fileName,
+        'visible': true,
+        'visibleOfLabel': false,
+        'fkey': fkey
       });
-
-      // アップロード一覧に追加
-      //addUploadList(fileName, id);
-      if ( callbackFnc )
-      {
-        callbackFnc({
-          'id': id,
-          'len': len,
-          'file': fileName,
-          'visible': true,
-          'visibleOfLabel': false,
-          'fkey': fkey
-        });
-      }
+    }
     /*}
     catch(e){
       alert("正常に読み込めませんでした。\n【エラー内容】\n" + e);
@@ -9676,21 +9122,19 @@ GLOBE.MAP = {
       }
     }*/
   },
-  
+
   /*
   * kml追加
-  　追加時はcurrentIdにはnullを指定。再読み込み時は自身のidを指定。
+   追加時はcurrentIdにはnullを指定。再読み込み時は自身のidを指定。
   */
-  drawKml: function(kml, fileName, currentId, fkey, callbackFnc)
-  {
-    if ( currentId )
-    {
+  drawKml: function (kml, fileName, currentId, fkey, callbackFnc) {
+    if (currentId) {
       // Reloadの場合：消しておく
       GLOBE.MAP.deleteLayer('upload', '', currentId);
     }
-    
-    try{
-      var id = ( currentId ? currentId : this.getNewId() );
+
+    try {
+      var id = (currentId ? currentId : this.getNewId());
       var latArray = [];
       var lonArray = [];
       var len = 0;
@@ -9705,84 +9149,80 @@ GLOBE.MAP = {
 
       // 高さ情報があるかどうか
       var depthFlag = true;
-      depthFlag = (kml.toLowerCase().indexOf("<altitudemode>clamptoground</altitudemode>") >=0 ? false : depthFlag);
-      
+      depthFlag = (kml.toLowerCase().indexOf("<altitudemode>clamptoground</altitudemode>") >= 0 ? false : depthFlag);
+
       var parsedKml = $.parseXML(kml);
-      
+
       // 既定のスタイル設定（存在しなければ）
       parsedKml = this.applyDefaultStyleToKML(parsedKml);
-      
-      $(parsedKml).find('Style href').each(function(index, element){
-        $(element).text( MATEST.proxyUrl( $(element).text() ) );
+
+      $(parsedKml).find('Style href').each(function (index, element) {
+        $(element).text(MATEST.proxyUrl($(element).text()));
       });
-      
+
       var result = {};
-      
+
       // 高さ情報がある場合は倍率を適用
       parsedKml = this.applyHeightPowerToKML(parsedKml, result);
       depthFlag = (!result.depthFlag ? false : depthFlag);
-      
-      dataSource.load(parsedKml).then(function(dataSource){
+
+      dataSource.load(parsedKml).then(function (dataSource) {
         // 高さ情報がある場合はそのままentityとして描画----------------
-        if(depthFlag){
+        if (depthFlag) {
           len = dataSource.entities.values.length;
           dataSource["id"] = id;
-          
+
           this.initKmlDataSource(dataSource);
-          
-          if ( !currentId )
-          {
+
+          if (!currentId) {
             this.viewer.flyTo(dataSource, {
               duration: 1,
-              complete: function(){
+              complete: function () {
                 GLOBE.MAP.adjustFly();
               }
             });
           }
-        // 高さ情報がない場合はentityをprimitiveに変換して描画---------
+          // 高さ情報がない場合はentityをprimitiveに変換して描画---------
         }
-        else
-        {
+        else {
           var entities = dataSource._entityCollection.values;
           len = entities.length;
           dataSource["id"] = id;
-          
-          for(var i=0; i<entities.length; i++)
-          {
+
+          for (var i = 0; i < entities.length; i++) {
             entities[i].show = false;  // いったん非表示にする
-            if(entities[i]._children.length > 0){
-              for(var j=0; j<entities[i]._children.length; j++){
+            if (entities[i]._children.length > 0) {
+              for (var j = 0; j < entities[i]._children.length; j++) {
                 var arrayList = this.convertEntityToPrimitive(entities[i]._children[j], id);
                 Array.prototype.push.apply(lonArray, arrayList.lon);
                 Array.prototype.push.apply(latArray, arrayList.lat);
               }
-            }else{
+            } else {
               var arrayList = this.convertEntityToPrimitive(entities[i], id);
               Array.prototype.push.apply(lonArray, arrayList.lon);
               Array.prototype.push.apply(latArray, arrayList.lat);
             }
-            
+
           }
           //this.viewer.flyTo(entities);
-          
+
           // dataSource削除
           this.viewer.dataSources.remove(dataSource);
-          
-          if ( !currentId )
-          {
+
+          if (!currentId) {
             // ズーム
-            var west  = Math.min.apply(null, lonArray);
-            var east  = Math.max.apply(null, lonArray);
+            var west = Math.min.apply(null, lonArray);
+            var east = Math.max.apply(null, lonArray);
             var south = Math.min.apply(null, latArray);
             var north = Math.max.apply(null, latArray);
-            west  = west-(east-west)/3;
-            east  = east+(east-west)/3;
-            south  = south-(north-south)/3;
-            north  = north+(north-south)/3;
+            west = west - (east - west) / 3;
+            east = east + (east - west) / 3;
+            south = south - (north - south) / 3;
+            north = north + (north - south) / 3;
             this.viewer.camera.flyTo({
-              destination : new Cesium.Rectangle.fromDegrees(west, south, east, north),
-              duration :1,
-              complete: function(){
+              destination: new Cesium.Rectangle.fromDegrees(west, south, east, north),
+              duration: 1,
+              complete: function () {
                 GLOBE.MAP.adjustFly();
               }
             });
@@ -9790,8 +9230,7 @@ GLOBE.MAP = {
         }
 
         // アップロード一覧に追加
-        if ( callbackFnc )
-        {
+        if (callbackFnc) {
           callbackFnc({
             'id': id,
             'len': len,
@@ -9804,46 +9243,40 @@ GLOBE.MAP = {
         }
       }.bind(this));
     }
-    catch(e){
+    catch (e) {
       alert("正常に読み込めませんでした。\n【エラー内容】\n" + e);
-      if ( callbackFnc )
-      {
+      if (callbackFnc) {
         callbackFnc();
       }
     }
   },
-  
-  initKmlDataSource : function( dataSource )
-  {
+
+  initKmlDataSource: function (dataSource) {
     var entities = dataSource.entities.values;
-    
-    for(var i=0; i<entities.length; i++)
-    {
+
+    for (var i = 0; i < entities.length; i++) {
       var entity = entities[i];
       entity.gsidata = {
-        isKmlEntity : true
+        isKmlEntity: true
       };
 
       entity["innerID"] = this.getNewId();
-      
-      if (entity.billboard != undefined)
-      {
+
+      if (entity.billboard != undefined) {
         // アイコンとラベルの再設定
-        entity.label.font         = 'bold 20px "メイリオ"';
+        entity.label.font = 'bold 20px "メイリオ"';
         entity.label.outlineColor = Cesium.Color.WHITE;
         entity.label.outlineWidth = 3.0;
-        entity.label.fillColor    = Cesium.Color.BLACK;
-        entity.label.pixelOffset  = new Cesium.Cartesian2(20, -20);
-        entity.label.show         = false;
-        
+        entity.label.fillColor = Cesium.Color.BLACK;
+        entity.label.pixelOffset = new Cesium.Cartesian2(20, -20);
+        entity.label.show = false;
+
         var url = entity.billboard.image._value;
-        if ( url.match(/http/) )
-        {
+        if (url.match(/http/)) {
           var imgElm = new Image();
           imgElm.data = entity;
-          imgElm.onload = function(){
-            if ( this.height && this.width && !isNaN(this.height) && !isNaN(this.width) )
-            {
+          imgElm.onload = function () {
+            if (this.height && this.width && !isNaN(this.height) && !isNaN(this.width)) {
               this.data.billboard.height = this.height;
               this.data.billboard.width = this.width;
             }
@@ -9851,134 +9284,130 @@ GLOBE.MAP = {
           imgElm.src = url;
         }
       }
-      else if (entity.polygon != undefined)
-      {
+      else if (entity.polygon != undefined) {
         // ポリゴンの枠線を描画
         entity.polygon.outline = false;
         dataSource.entities.add({
-          polyline : {
-            positions : entity.polygon.hierarchy._value.positions,
-            width     : entity.polygon.outlineWidth._value,
-            material  : entity.polygon.outlineColor._value
+          polyline: {
+            positions: entity.polygon.hierarchy._value.positions,
+            width: entity.polygon.outlineWidth._value,
+            material: entity.polygon.outlineColor._value
           }
         });
       }
     }
   },
-  
+
   /*------------------------------*
   * KMLのentityをpritimiveに変換 *
   *------------------------------*/
-  convertEntityToPrimitive: function(entity, id)
-  {
+  convertEntityToPrimitive: function (entity, id) {
     var ellipsoid = this.viewer.scene.globe.ellipsoid;
 
     var lonArray = [];
     var latArray = [];
 
-    var name        = (entity._name ? entity._name : "");
+    var name = (entity._name ? entity._name : "");
     var description = (entity._description ? entity._description._value : "");
-      description = $("<div/>").html(description).find("div").html();
-    
+    description = $("<div/>").html(description).find("div").html();
+
     var depthFlag = false;
     var primitiveArray = [];
-    
+
     // ポイント(アイコン)-----------------
-    if(entity._billboard != undefined){
-      var position    = entity._position._value;
-      var imageURL    = entity._billboard._image._value;
-      
+    if (entity._billboard != undefined) {
+      var position = entity._position._value;
+      var imageURL = entity._billboard._image._value;
+
       // 緯度経度を配列に入れる
       var cartographic = ellipsoid.cartesianToCartographic(position);
       var lon = Cesium.Math.toDegrees(cartographic.longitude);
       var lat = Cesium.Math.toDegrees(cartographic.latitude);
       lonArray.push(lon);
       latArray.push(lat);
-      
+
       this.addSingleImageryLayer(id, name, position, imageURL);
-      
-      if ( GLOBE.MAP.isDirectionIcon(imageURL) )
-      {
+
+      if (GLOBE.MAP.isDirectionIcon(imageURL)) {
         GLOBE.MAP.addImagePrimitive({
-          "layerId"     : id,
-          "name"        : name,
-          "position"    : position,
-          "imageUrl"    : imageURL,
-          "imageSize"   : null,
-          "imageAnchor" : null,
-          "description" : description,
-          "usePopup"    : true,
+          "layerId": id,
+          "name": name,
+          "position": position,
+          "imageUrl": imageURL,
+          "imageSize": null,
+          "imageAnchor": null,
+          "description": description,
+          "usePopup": true,
           "usePopupFlag": false
         });
       }
-      else
-      {
+      else {
         // Billboardとして追加する
         var billboardCollection = new Cesium.BillboardCollection({
-          scene : this.viewer.scene
+          scene: this.viewer.scene
         });
         billboardCollection["primitiveID"] = id;
         this.viewer.scene.primitives.add(billboardCollection);
 
         var billboards = this.getPrimitivePoint_Icon(position, imageURL, name, false);
-        for(var j=0; j<billboards.length; j++){
+        for (var j = 0; j < billboards.length; j++) {
           var billboard = billboardCollection.add(billboards[j]);
-            billboard["description"] = description;
-            billboard["name"]        = name;
-            billboard["innerID"]     = GLOBE.MAP.getNewId();
-            billboard["type"]        = "upload_Billboard";
-            billboard["gsidata"] = {
-              "_markerType" : "",
-              "_isLabel"    : (j==1 ? true : false)
-            }
+          billboard["description"] = description;
+          billboard["name"] = name;
+          billboard["innerID"] = GLOBE.MAP.getNewId();
+          billboard["type"] = "upload_Billboard";
+          billboard["gsidata"] = {
+            "_markerType": "",
+            "_isLabel": (j == 1 ? true : false)
+          }
         }
       }
-      
-    // ポリゴン(円含む)----------------------
-    }else if(entity._polygon != undefined){
-      var hierarchy   = entity._polygon._hierarchy._value;
-      var color       = entity._polygon._material._color._value;
+
+      // ポリゴン(円含む)----------------------
+    } else if (entity._polygon != undefined) {
+      var hierarchy = entity._polygon._hierarchy._value;
+      var color = entity._polygon._material._color._value;
       var strokeColor = entity._polygon._outlineColor._value;
       var strokeWidth = entity._polygon._outlineWidth._value;
 
       // 緯度経度を配列に入れる
       var positions = hierarchy.positions;
-      for(var i=0; i<positions.length; i++){
+      for (var i = 0; i < positions.length; i++) {
         var cartographic = ellipsoid.cartesianToCartographic(positions[i]);
         var lon = Cesium.Math.toDegrees(cartographic.longitude);
         var lat = Cesium.Math.toDegrees(cartographic.latitude);
         lonArray.push(lon);
         latArray.push(lat);
       }
-      
+
       // ポリゴン
       // 【 IE11 】
-      if(this.isIE){
+      if (this.isIE) {
         // Primitiveとして追加する
         var geomInstance = this.getPrimitivePolygon(hierarchy, color, this.isIE);
         var primitive = new Cesium.Primitive({
-          geometryInstances : [geomInstance],
-          appearance : new Cesium.EllipsoidSurfaceAppearance({
-            material : Cesium.Material.fromType("Color", {
-              "color" : color
+          geometryInstances: [geomInstance],
+          appearance: new Cesium.EllipsoidSurfaceAppearance({
+            material: Cesium.Material.fromType("Color", {
+              "color": color
             })
           })
         });
-      // 【 IE11以外 】
-      }else{
+        // 【 IE11以外 】
+      } else {
         // GroundPrimitiveとして追加する
         var geomInstance = this.getPrimitivePolygon(hierarchy, color, this.isIE);
         var primitive = new Cesium.GroundPrimitive({
-          geometryInstances : [geomInstance]
+          geometryInstances: [geomInstance]
         });
       }
       primitive["type"] = "upload_GroundPrimitive";
       primitive["primitiveID"] = id;
       primitive["description"] = description;
-      primitive["name"]        = name;
-      primitive["innerID"]     = GLOBE.MAP.getNewId();
+      primitive["name"] = name;
+      primitive["innerID"] = GLOBE.MAP.getNewId();
       this.viewer.scene.primitives.add(primitive);
-      
+
       // 枠線をPrimitiveとして追加する
       var gene = {
         kind: "corridor",
@@ -9992,27 +9421,27 @@ GLOBE.MAP = {
         isIE: this.isIE,
         innerID: GLOBE.MAP.getNewId()
       };
-      if(entity._polygon._outlineColor._value.alpha > 0){
+      if (entity._polygon._outlineColor._value.alpha > 0) {
         //var linePrimitive = this.createCorridorPrimitive(gene);
-        var linePrimitive = ( depthFlag ? this.createPolylinePrimitive(gene) : this.createCorridorPrimitive(gene) );
+        var linePrimitive = (depthFlag ? this.createPolylinePrimitive(gene) : this.createCorridorPrimitive(gene));
         this.viewer.scene.primitives.add(linePrimitive);
       }
-      
-    // ラインストリング----------------------
-    }else if(entity._polyline != undefined){
+
+      // ラインストリング----------------------
+    } else if (entity._polyline != undefined) {
       var position = entity._polyline._positions._value;
-      var color    = entity._polyline._material._color._value;
-      var width    = entity._polyline._width._value;
+      var color = entity._polyline._material._color._value;
+      var width = entity._polyline._width._value;
 
       // 緯度経度を配列に入れる
-      for(var i=0; i<position.length; i++){
+      for (var i = 0; i < position.length; i++) {
         var cartographic = ellipsoid.cartesianToCartographic(position[i]);
         var lon = Cesium.Math.toDegrees(cartographic.longitude);
         var lat = Cesium.Math.toDegrees(cartographic.latitude);
         lonArray.push(lon);
         latArray.push(lat);
       }
-      
+
       var gene = {
         kind: "corridor",
         type: "upload_GroundPrimitive",
@@ -10025,21 +9454,20 @@ GLOBE.MAP = {
         isIE: this.isIE,
         innerID: GLOBE.MAP.getNewId()
       };
-      
+
       //var linePrimitive = this.createCorridorPrimitive(gene);
-      var linePrimitive = ( depthFlag ? this.createPolylinePrimitive(gene) : this.createCorridorPrimitive(gene) );
+      var linePrimitive = (depthFlag ? this.createPolylinePrimitive(gene) : this.createCorridorPrimitive(gene));
       this.viewer.scene.primitives.add(linePrimitive);
     }
 
     return {
-      "lon" : lonArray,
-      "lat" : latArray
+      "lon": lonArray,
+      "lat": latArray
     }
   },
-  
+
   // 方位計を表示する
-  setDirectionSign: function()
-  {
+  setDirectionSign: function () {
     var div = $("<div>")
       .css({
         'z-index': 1002,
@@ -10051,8 +9479,8 @@ GLOBE.MAP = {
         'width': '1px',
         'height': '1px'
       })
-      .appendTo( $("body") );
-      
+      .appendTo($("body"));
+
     var img = $("<img>")
       .attr("src", "./image/system/directionsign.png")
       .css({
@@ -10065,64 +9493,58 @@ GLOBE.MAP = {
         'width': '90px',
         'height': '140px'
       })
-      .on("click", function(){
+      .on("click", function () {
         this._directionSignMode = (this._directionSignMode == '3d' ? '2d' : '3d');
         this.rotateDirectionSign();
       }.bind(this))
-      .appendTo( div );
-    
+      .appendTo(div);
+
     this._directionSignMode = '2d';
     this._directionSignDivElement = div;
     this._directionSignElement = img;
   },
-  
+
   // 方位計をカメラの向きに合わせて回転する
-  rotateDirectionSign: function()
-  {
+  rotateDirectionSign: function () {
     var heading = Cesium.Math.toDegrees(this.viewer.camera.heading).toFixed(2) * -1;
     var pitch = Cesium.Math.toDegrees(this.viewer.camera.pitch).toFixed(2) * 1;
     var roll = Cesium.Math.toDegrees(this.viewer.camera.roll).toFixed(2) * 1;
-    
-    if ( pitch > 0 ) pitch = 0;
+
+    if (pitch > 0) pitch = 0;
     pitch = pitch + 90;
-    if ( pitch > 60 ) pitch = 60;
-    
-    if ( this._directionSignMode == '3d' )
-    {
+    if (pitch > 60) pitch = 60;
+
+    if (this._directionSignMode == '3d') {
       this._directionSignElement.css({
         'transform': 'rotateX(' + pitch + 'deg) rotateY(' + roll + 'deg) rotateZ(' + heading + 'deg)'
       });
     }
-    else
-    {
+    else {
       this._directionSignElement.css({
         'transform': 'rotate(' + heading + 'deg)'
       });
     }
   },
-  
+
   // 方向アイコンか否かを判定
-  isDirectionIcon: function(url)
-  {
-    if ( !url ) return false;
-    
+  isDirectionIcon: function (url) {
+    if (!url) return false;
+
     var regExp = new RegExp(/^https?\:/);
     var targetUrl = url.replace(regExp, '');
     var result = false;
-    
-    for ( var i=0; i<CONFIG.DIRECTION_ICONS.length; i++ )
-    {
+
+    for (var i = 0; i < CONFIG.DIRECTION_ICONS.length; i++) {
       var directionUrl = CONFIG.DIRECTION_ICONS[i].replace(regExp, '');
-      if ( targetUrl.indexOf(directionUrl, 0) == 0 )
-      {
+      if (targetUrl.indexOf(directionUrl, 0) == 0) {
         result = true;
         break;
       }
     }
-    
+
     return result;
   },
-  
+
   // 画像をprimitiveとして配置（地図と共に回転）
   /* [gsidata]
     {
@@ -10139,151 +9561,141 @@ GLOBE.MAP = {
       "labelShow"    : (optional) bool (default:false)
     }
   */
-  addImagePrimitive: function( gsidata )
-  {
-    var id          = gsidata.layerId || "otherImagePrimitives";
-    var position    = gsidata.position;
-    var imageURL    = gsidata.imageUrl;
-    var imageSize   = (gsidata.imageSize && Array.isArray(gsidata.imageSize) ? gsidata.imageSize : null);
+  addImagePrimitive: function (gsidata) {
+    var id = gsidata.layerId || "otherImagePrimitives";
+    var position = gsidata.position;
+    var imageURL = gsidata.imageUrl;
+    var imageSize = (gsidata.imageSize && Array.isArray(gsidata.imageSize) ? gsidata.imageSize : null);
     var imageAnchor = (gsidata.imageAnchor && Array.isArray(gsidata.imageAnchor) ? gsidata.imageAnchor : [0, 0]);
-    
+
     gsidata.usePopup = gsidata.usePopup ? true : false;
     gsidata.usePositionIcon = gsidata.usePositionIcon ? true : false;
     gsidata._state = 0;
     gsidata._reloadCalled = false;
-    
+
     var cartographic = Cesium.Cartographic.fromCartesian(gsidata.position);
-    if ( gsidata.hasHeight && cartographic.height < 0 ) return;
-    
+    if (gsidata.hasHeight && cartographic.height < 0) return;
+
     // レイヤー単位データ作成
-    if ( !this._imagePrimitiveLayersHash[id] )
-    {
+    if (!this._imagePrimitiveLayersHash[id]) {
       this._imagePrimitiveLayersHash[id] = {
-        "id"      : id,
-        "gsilist" : [],
-        "collection" : undefined,
-        "scalePromise" : undefined,
-        "removed" : false,
-        "reload"  : function(){
+        "id": id,
+        "gsilist": [],
+        "collection": undefined,
+        "scalePromise": undefined,
+        "removed": false,
+        "reload": function () {
           var layerdata = this._imagePrimitiveLayersHash[id];
-          if ( !layerdata ) return;
-          
+          if (!layerdata) return;
+
           layerdata.scalePromise = undefined;
-          
-          for ( var i=0; i<layerdata.gsilist.length; i++ )
-          {
+
+          for (var i = 0; i < layerdata.gsilist.length; i++) {
             var gsidata = layerdata.gsilist[i];
             var imagePrimitive = gsidata._imagePrimitive;
             var labelPrimitive = gsidata._labelPrimitive;
-            
-            if ( imagePrimitive )
-            {
+
+            if (imagePrimitive) {
               gsidata._alpha = imagePrimitive.appearance.material.uniforms.color.alpha;
             }
-            
-            if ( labelPrimitive )
-            {
+
+            if (labelPrimitive) {
               gsidata.labelShow = labelPrimitive.show;
             }
-            
-            if ( gsidata._state < 6 )
-            {
+
+            if (gsidata._state < 6) {
               gsidata._reloadCalled = true;
             }
-            else
-            {
+            else {
               this.addImagePrimitive(gsidata);
             }
           }
-          
+
         }.bind(this)
       };
     }
-    
+
     var layerdata = this._imagePrimitiveLayersHash[id];
-    if ( layerdata.removed ) return;
-    
-    if ( !layerdata.collection || layerdata.collection.isDestroyed() )
-    {
+    if (layerdata.removed) return;
+
+    if (!layerdata.collection || layerdata.collection.isDestroyed()) {
       var collection = new Cesium.PrimitiveCollection();
       collection["primitiveID"] = id;
       collection["primitiveType"] = "imagePrimitive";
       this._imagePrimitiveLayersHash[id].collection = collection;
       this.viewer.scene.primitives.add(collection);
-      
+
       // 画像コレクションとラベルコレクションを作成
-      var imageCollection = collection.add( new Cesium.PrimitiveCollection() );
-      var labelCollection = collection.add( new Cesium.BillboardCollection({scene: this.viewer.scene}) );
+      var imageCollection = collection.add(new Cesium.PrimitiveCollection());
+      var labelCollection = collection.add(new Cesium.BillboardCollection({ scene: this.viewer.scene }));
       collection.raiseToTop(labelCollection);
     }
-    
-    
+
+
     // 最初のアクセス時のみリストへ追加
-    if ( gsidata._gsiindex == undefined )
-    {
+    if (gsidata._gsiindex == undefined) {
       layerdata.gsilist.push(gsidata);
       gsidata._gsiindex = layerdata.gsilist.length - 1;
     }
-    
-    
+
+
     var multiple = 0.000000012;
-    
+
     // <2d> 画像の倍率を一律に決定（他のprimitiveと値を共有）
-    if ( !gsidata.hasHeight && layerdata.scalePromise == undefined )
-    {
+    if (!gsidata.hasHeight && layerdata.scalePromise == undefined) {
       layerdata.scalePromise = this.DistanceToCenter(true)
-      .then(function(distance){
-        if ( gsidata._reloadCalled ) return Cesium.when.reject(3);
-        
-        gsidata._state = 3;
-        var scale = distance * multiple;
-        
-        return Cesium.when.resolve(scale);
-      });
+        .then(function (distance) {
+          if (gsidata._reloadCalled) return Cesium.when.reject(3);
+
+          gsidata._state = 3;
+          var scale = distance * multiple;
+
+          return Cesium.when.resolve(scale);
+        });
     }
-    
+
     // <3d> 画像の倍率を決定（primitive個別）
-    var scalePromise3d = function(){
+    var scalePromise3d = function () {
       var distance = Cesium.Cartesian3.distance(position, this.viewer.camera.position);
       var scale = distance * multiple;
       return Cesium.when.resolve(scale);
     }.bind(this);
-    
-    
-    
+
+
+
     var west = 0;
     var east = 0;
     var north = 0;
     var south = 0;
     var that = this;
-    
-    
-    var onloadHandler2 = function(scale){
-      if ( gsidata._reloadCalled ) return Cesium.when.reject(4);
-      
+
+
+    var onloadHandler2 = function (scale) {
+      if (gsidata._reloadCalled) return Cesium.when.reject(4);
+
       gsidata._state = 4;
-      
+
       var latLng = that.degreesFromCartesian(position);
       var tempWest = latLng[1];
-      var tempEast = latLng[1]+(gsidata.imageSize[0] * scale);
+      var tempEast = latLng[1] + (gsidata.imageSize[0] * scale);
       var tempNorth = latLng[0];
-      var tempSouth = latLng[0]-(gsidata.imageSize[1] * scale);
-      
-      var latPerWidth  = (tempEast - tempWest) / gsidata._img.width;
+      var tempSouth = latLng[0] - (gsidata.imageSize[1] * scale);
+
+      var latPerWidth = (tempEast - tempWest) / gsidata._img.width;
       var lngPerHeight = (tempNorth - tempSouth) / gsidata._img.height;
-      
+
       west = tempWest - imageAnchor[0] * latPerWidth;
       east = tempEast - imageAnchor[0] * latPerWidth;
       north = tempNorth + imageAnchor[1] * lngPerHeight;
       south = tempSouth + imageAnchor[1] * lngPerHeight;
-      
+
       return Cesium.when.resolve(1);
     };
-    
-    
-    var onloadHandler3 = function(){
-      if ( gsidata._reloadCalled ) return Cesium.when.reject(5);
-      
+
+
+    var onloadHandler3 = function () {
+      if (gsidata._reloadCalled) return Cesium.when.reject(5);
+
       return Cesium.sampleTerrain(that.viewer.terrainProvider, that.currents.zoomlevel, [
         Cesium.Cartographic.fromDegrees(west, north),
         Cesium.Cartographic.fromDegrees(west, south),
@@ -10291,133 +9703,121 @@ GLOBE.MAP = {
         Cesium.Cartographic.fromDegrees(east, south)
       ]);
     };
-    
-    
-    var onloadHandler4 = function(updatedPositions){
-      if ( gsidata._reloadCalled ) return Cesium.when.reject(6);
-      
+
+
+    var onloadHandler4 = function (updatedPositions) {
+      if (gsidata._reloadCalled) return Cesium.when.reject(6);
+
       gsidata._state = 5; //BUILDING3
-      
+
       var maxHeight = 0;
-      for( var i=0; i<updatedPositions.length; i++ )
-      {
+      for (var i = 0; i < updatedPositions.length; i++) {
         maxHeight = (updatedPositions[i].height > maxHeight ? updatedPositions[i].height : maxHeight);
       }
-      
+
       return Cesium.when.resolve(maxHeight);
     };
-    
-    
-    var onloadHandler5 = function(primitiveHeight){
-      if ( gsidata._reloadCalled ) return Cesium.when.reject(7);
-      
+
+
+    var onloadHandler5 = function (primitiveHeight) {
+      if (gsidata._reloadCalled) return Cesium.when.reject(7);
+
       var rect = Cesium.Rectangle.fromDegrees(west, south, east, north);
       var primitive = new Cesium.Primitive({
-        geometryInstances : new Cesium.GeometryInstance({
-          geometry : new Cesium.RectangleGeometry({
-            rectangle : rect,
+        geometryInstances: new Cesium.GeometryInstance({
+          geometry: new Cesium.RectangleGeometry({
+            rectangle: rect,
             height: primitiveHeight,
-            vertexFormat : Cesium.EllipsoidSurfaceAppearance.VERTEX_FORMAT
+            vertexFormat: Cesium.EllipsoidSurfaceAppearance.VERTEX_FORMAT
           })
         }),
-        appearance : new Cesium.EllipsoidSurfaceAppearance({
-          aboveGround : false,
-          translucent : true,
-          material : new Cesium.Material({
-            fabric : {
-              type : 'Image',
-              uniforms : {
-                image : MATEST.proxyUrl(imageURL)
+        appearance: new Cesium.EllipsoidSurfaceAppearance({
+          aboveGround: false,
+          translucent: true,
+          material: new Cesium.Material({
+            fabric: {
+              type: 'Image',
+              uniforms: {
+                image: MATEST.proxyUrl(imageURL)
               }
             }
           })
         })
       });
-      if ( gsidata._alpha != undefined ) primitive.appearance.material.uniforms.color.alpha = gsidata._alpha;
+      if (gsidata._alpha != undefined) primitive.appearance.material.uniforms.color.alpha = gsidata._alpha;
       primitive.gsidata = gsidata;
-      
+
       // 以前のprimitiveを破棄
-      if ( gsidata._imagePrimitive )
-      {
+      if (gsidata._imagePrimitive) {
         layerdata.collection.get(0).remove(gsidata._imagePrimitive);
       }
-      if ( gsidata._labelPrimitive )
-      {
+      if (gsidata._labelPrimitive) {
         layerdata.collection.get(1).remove(gsidata._labelPrimitive);
       }
-      
-      
+
+
       gsidata._imagePrimitive = primitive;
-      if ( !layerdata.collection.isDestroyed() )
-      {
+      if (!layerdata.collection.isDestroyed()) {
         layerdata.collection.get(0).add(primitive);
       }
-      
-      
-      if ( gsidata.name )
-      {
+
+
+      if (gsidata.name) {
         var ellipsoid = GLOBE.MAP.viewer.scene.ellipsoid;
         var cartographic = Cesium.Cartographic.fromCartesian(gsidata.position, ellipsoid);
         gsidata.position = Cesium.Cartesian3.fromRadians(cartographic.longitude, cartographic.latitude, primitiveHeight, ellipsoid);
-        
+
         var label = GLOBE.MAP.getPrimitivePoint_IconLabel(gsidata.position, gsidata.name, true);
-        
-        if ( !layerdata.collection.isDestroyed() && label )
-        {
+
+        if (!layerdata.collection.isDestroyed() && label) {
           label.show = (gsidata.labelShow ? true : false);
           gsidata._labelPrimitive = layerdata.collection.get(1).add(label);
         }
       }
-      
+
       gsidata._state = 6; //COMPLETE
-      
+
       return Cesium.when.resolve(primitive);
     };
-    
-    
-    var onloadOtherwise = function(error){
-      if ( typeof error == 'object' )
-      {
-        setTimeout(function(){
+
+
+    var onloadOtherwise = function (error) {
+      if (typeof error == 'object') {
+        setTimeout(function () {
           throw error;
         }, 1);
       }
-      else
-      {
+      else {
         that.addImagePrimitive(gsidata);
       }
     };
-    
-    
-    
+
+
+
     // 画像単位データ作成関数（戻り値はpromise）
-    var onloadHandler = function(){
+    var onloadHandler = function () {
       gsidata._state = 2; //LOADED AND WAIT
       gsidata.imageSize = [gsidata._img.width, gsidata._img.height];
-      
+
       var promise;
-      
-      if ( gsidata.hasHeight )
-      {
+
+      if (gsidata.hasHeight) {
         // 3d
         promise = scalePromise3d()
           .then(onloadHandler2)
-          .then(function(){
+          .then(function () {
             var cartesian = Cesium.Cartographic.fromCartesian(position);
             var height = cartesian.height;
-            return onloadHandler5( height );
+            return onloadHandler5(height);
           })
           .otherwise(onloadOtherwise);
       }
-      else
-      {
+      else {
         // 2d
-        if ( layerdata.scalePromise == undefined )
-        {
+        if (layerdata.scalePromise == undefined) {
           onloadOtherwise();
         }
-        else
-        {
+        else {
           promise = layerdata.scalePromise
             .then(onloadHandler2)
             .then(onloadHandler3)
@@ -10427,73 +9827,63 @@ GLOBE.MAP = {
         }
       }
     };
-    
-    
-    
+
+
+
     // 画像のプレロード
-    if ( gsidata._img )
-    {
+    if (gsidata._img) {
       setTimeout(onloadHandler, 1);
     }
-    else
-    {
+    else {
       var imgObj = new Image();
       imgObj.onload = onloadHandler;
       gsidata._img = imgObj;
-      
-      if ( imageSize && imageSize[0] && imageSize[1] )
-      {
-        imgObj.width  = imageSize[0];
+
+      if (imageSize && imageSize[0] && imageSize[1]) {
+        imgObj.width = imageSize[0];
         imgObj.height = imageSize[1];
       }
-      
+
       imgObj.src = MATEST.proxyUrl(imageURL);
     }
-    
+
     gsidata._state = 1; //LOADING
-    
+
   },
-  
+
   // addImagePrimitiveにより配置された画像の透明度を変更
-  alphaImagePrimitive: function( id, alpha )
-  {
+  alphaImagePrimitive: function (id, alpha) {
     var layerdata = this._imagePrimitiveLayersHash[id]
-    if ( !layerdata ) return false;
-    
-    for ( var i=0; i<layerdata.gsilist.length; i++ )
-    {
+    if (!layerdata) return false;
+
+    for (var i = 0; i < layerdata.gsilist.length; i++) {
       layerdata.gsilist[i]._alpha = alpha;
       var imagePrimitive = layerdata.gsilist[i]._imagePrimitive;
       var labelPrimitive = layerdata.gsilist[i]._labelPrimitive;
-      
-      if ( imagePrimitive )
-      {
+
+      if (imagePrimitive) {
         imagePrimitive.appearance.material.uniforms.color.alpha = alpha;
       }
-      
-      if ( labelPrimitive )
-      {
+
+      if (labelPrimitive) {
         labelPrimitive.outlineColor = labelPrimitive.outlineColor.withAlpha(alpha);
         labelPrimitive.fillColor = labelPrimitive.fillColor.withAlpha(alpha);
       }
     }
   },
-  
+
   // addImagePrimitiveにより配置された画像の表示・非表示を切り替え
-  showImagePrimitive: function( id, bool )
-  {
+  showImagePrimitive: function (id, bool) {
     var layerdata = this._imagePrimitiveLayersHash[id]
-    if ( !layerdata ) return false;
-    
+    if (!layerdata) return false;
+
     layerdata.collection.show = bool;
   },
-  
+
   // addImagePrimitiveにより配置された画像を削除
-  removeImagePrimitive: function( id )
-  {
+  removeImagePrimitive: function (id) {
     var layerdata = this._imagePrimitiveLayersHash[id]
-    if ( !layerdata )
-    {
+    if (!layerdata) {
       this._imagePrimitiveLayersHash[id] = {
         removed: true
       };
@@ -10502,359 +9892,336 @@ GLOBE.MAP = {
     layerdata.removed = true;
     this.viewer.scene.primitives.remove(layerdata.collection);
   },
-  
-  addSingleImageryLayer: function( id, name, position, imageURL )
-  {
-    if ( !CONFIG.TILEASICON_ENABLED ) return false;
-    
-    if ( !this._singleImageryLayersHash )
-    {
+
+  addSingleImageryLayer: function (id, name, position, imageURL) {
+    if (!CONFIG.TILEASICON_ENABLED) return false;
+
+    if (!this._singleImageryLayersHash) {
       this._singleImageryLayersHash = {};
     }
-    if ( !this._singleImageryLayersHash[id] )
-    {
+    if (!this._singleImageryLayersHash[id]) {
       this._singleImageryLayersHash[id] = {
-        "id"      : id,
-        "layers"  : [],
-        "length"  : 0,
-        "loadcnt" : 0,
-        "removed" : false,
-        "reload"  : function(){
+        "id": id,
+        "layers": [],
+        "length": 0,
+        "loadcnt": 0,
+        "removed": false,
+        "reload": function () {
           var layers = this._singleImageryLayersHash[id].layers;
           var list = [];
-          for ( var i=0; i<layers.length; i++ )
-          {
+          for (var i = 0; i < layers.length; i++) {
             list.push(layers[i].gsidata);
             this.viewer.scene.imageryLayers.remove(layers[i]);
           }
-          this._singleImageryLayersHash[id].layers  = [];
-          this._singleImageryLayersHash[id].length  = 0;
+          this._singleImageryLayersHash[id].layers = [];
+          this._singleImageryLayersHash[id].length = 0;
           this._singleImageryLayersHash[id].loadcnt = 0;
-          for ( var i=0; i<list.length; i++ )
-          {
-            this.addSingleImageryLayer( list[i].id, list[i].name, list[i].position, list[i].url );
+          for (var i = 0; i < list.length; i++) {
+            this.addSingleImageryLayer(list[i].id, list[i].name, list[i].position, list[i].url);
           }
-          
+
         }.bind(this)
       };
     }
     this._singleImageryLayersHash[id].length += 1;
-    
+
     var imgObj = new Image();
-    imgObj.onload = function(){
+    imgObj.onload = function () {
       var imgMag = this.currents.height * 0.000000009;
       var latLng = this.degreesFromCartesian(position);
       var layers = this.viewer.scene.imageryLayers;
-      
+
       var tempWest = latLng[1];
-      var tempEast = latLng[1]+(imgObj.width * imgMag);
+      var tempEast = latLng[1] + (imgObj.width * imgMag);
       var tempSouth = latLng[0];
-      var tempNorth = latLng[0]+(imgObj.height * imgMag);
-      
-      var west  = tempWest  - ((tempEast - tempWest) / 2);
-      var east  = tempEast  - ((tempEast - tempWest) / 2);
+      var tempNorth = latLng[0] + (imgObj.height * imgMag);
+
+      var west = tempWest - ((tempEast - tempWest) / 2);
+      var east = tempEast - ((tempEast - tempWest) / 2);
       var south = tempSouth - ((tempNorth - tempSouth) / 2);
       var north = tempNorth - ((tempNorth - tempSouth) / 2);
-      
+
       var rect = Cesium.Rectangle.fromDegrees(west, south, east, north);
       var provider = new Cesium.SingleTileImageryProvider({
-        url : MATEST.proxyUrl(imageURL),
-        rectangle : rect,
-        ellipsoid : this.viewer.scene.globe.ellipsoid
+        url: MATEST.proxyUrl(imageURL),
+        rectangle: rect,
+        ellipsoid: this.viewer.scene.globe.ellipsoid
       });
       var layer = new Cesium.ImageryLayer(provider, {
-        rectangle : rect
+        rectangle: rect
       });
       this.viewer.scene.imageryLayers.add(layer);
-      
+
       layer.gsidata = {
-        "id"   : id,
-        "name" : name,
-        "position" : position,
-        "url"  : imageURL
+        "id": id,
+        "name": name,
+        "position": position,
+        "url": imageURL
       };
-      
-      if ( layer.alpha == 1 )
-      {
+
+      if (layer.alpha == 1) {
         this.alphaSingleImageryLayer(id, 0.99999);
       }
-      
+
       var hash = this._singleImageryLayersHash[id];
       hash.layers.push(layer);
       hash.loadcnt += 1;
-      
-      if ( hash.length == hash.loadcnt && hash.removed )
-      {
+
+      if (hash.length == hash.loadcnt && hash.removed) {
         this.removeSingleImageryLayer(id);
       }
       imgObj = null;
-      
+
     }.bind(this);
     imgObj.src = imageURL;
-    
+
   },
-  
-  alphaSingleImageryLayer: function( id, alpha )
-  {
-    if ( !this._singleImageryLayersHash || !this._singleImageryLayersHash[id] ) return false;
-    
+
+  alphaSingleImageryLayer: function (id, alpha) {
+    if (!this._singleImageryLayersHash || !this._singleImageryLayersHash[id]) return false;
+
     layers = this._singleImageryLayersHash[id].layers;
-    for ( var i=0; i<layers.length; i++ )
-    {
+    for (var i = 0; i < layers.length; i++) {
       layers[i].alpha = alpha;
     }
   },
-  
-  showSingleImageryLayer: function( id, bool )
-  {
-    if ( !this._singleImageryLayersHash || !this._singleImageryLayersHash[id] ) return false;
-    
+
+  showSingleImageryLayer: function (id, bool) {
+    if (!this._singleImageryLayersHash || !this._singleImageryLayersHash[id]) return false;
+
     layers = this._singleImageryLayersHash[id].layers;
-    for ( var i=0; i<layers.length; i++ )
-    {
+    for (var i = 0; i < layers.length; i++) {
       layers[i].show = bool;
     }
   },
-  
-  removeSingleImageryLayer: function( id )
-  {
-    if ( !this._singleImageryLayersHash || !this._singleImageryLayersHash[id] ) return false;
-    
+
+  removeSingleImageryLayer: function (id) {
+    if (!this._singleImageryLayersHash || !this._singleImageryLayersHash[id]) return false;
+
     this._singleImageryLayersHash[id].removed = true;
     layers = this._singleImageryLayersHash[id].layers;
-    
-    for ( var i=0; i<layers.length; i++ )
-    {
+
+    for (var i = 0; i < layers.length; i++) {
       this.viewer.scene.imageryLayers.remove(layers[i]);
     }
-    
+
     this._singleImageryLayersHash[id].layers = [];
   },
-  
+
   // ラインのプリミティブを作成。（高さが必要）
-  createPolylinePrimitive: function(gene)
-  {
+  createPolylinePrimitive: function (gene) {
     gene.kind = "polyline";
     gene.type = "upload_polyline";
-    
+
     var collection = new Cesium.PolylineCollection();
     var primitive = collection.add({
-      positions : gene.position,
-      width     : gene.width,
-      material  : new Cesium.Material.fromType('Color', {
-        color : gene.color
+      positions: gene.position,
+      width: gene.width,
+      material: new Cesium.Material.fromType('Color', {
+        color: gene.color
       })
     });
     collection["type"] = gene.type;
     collection["primitiveID"] = gene.primitiveID;
     collection["description"] = gene.description;
-    collection["name"]        = gene.name;
-    collection["innerID"]     = gene.innerID;
-    collection["gene"]        = gene;
+    collection["name"] = gene.name;
+    collection["innerID"] = gene.innerID;
+    collection["gene"] = gene;
     return collection;
   },
-  
+
   // ラインのプリミティブを作成。（地面へ描画するため高さは不要）
-  createCorridorPrimitive: function(gene)
-  {
+  createCorridorPrimitive: function (gene) {
     var geomInstance = null;
     var primitive = null;
-    
+
     var latLng = this.getCameraPosition();
     var width = gene.width * latLng[2] / 600;
-    
+
     // 【 IE11 】
-    if(gene.isIE){
+    if (gene.isIE) {
       // Primitiveとして追加する
       geomInstance = this.getPrimitiveLinestring(gene.position, gene.color, width, gene.isIE);
       primitive = new Cesium.Primitive({
-        geometryInstances : [geomInstance],
-        appearance : new Cesium.EllipsoidSurfaceAppearance({
-          material : Cesium.Material.fromType("Color", {
-            "color" : gene.color
+        geometryInstances: [geomInstance],
+        appearance: new Cesium.EllipsoidSurfaceAppearance({
+          material: Cesium.Material.fromType("Color", {
+            "color": gene.color
           })
         })
       });
-    // 【 IE11以外 】
-    }else{
+      // 【 IE11以外 】
+    } else {
       // GroundPrimitiveとして追加する
       geomInstance = this.getPrimitiveLinestring(gene.position, gene.color, width, gene.isIE);
       primitive = new Cesium.GroundPrimitive({
-        geometryInstances : [geomInstance]
+        geometryInstances: [geomInstance]
       });
     }
     primitive["type"] = gene.type;
     primitive["primitiveID"] = gene.primitiveID;
     primitive["description"] = gene.description;
-    primitive["name"]        = gene.name;
-    primitive["innerID"]     = gene.innerID;
-    primitive["gene"]        = gene;
+    primitive["name"] = gene.name;
+    primitive["innerID"] = gene.innerID;
+    primitive["gene"] = gene;
     return primitive;
   },
-  
+
   // 円を描いたcanvasを返す（ピクセル指定の円描画に利用）
-  getCircleCanvas: function(radius, lineWidth, lineColor, lineOpacity, fillColor, fillOpacity)
-  {
+  getCircleCanvas: function (radius, lineWidth, lineColor, lineOpacity, fillColor, fillOpacity) {
     lineColor = (lineColor ? lineColor : CONFIG.DEFAULTSTYLES.color);
     fillColor = (fillColor ? fillColor : CONFIG.DEFAULTSTYLES.fillColor);
     var lineColorRgb = this.hexToRgb(lineColor);
     var fillColorRgb = this.hexToRgb(fillColor);
     var lineOpacity = (isNaN(lineOpacity) ? CONFIG.DEFAULTSTYLES.opacity : lineOpacity);
     var fillOpacity = (isNaN(fillOpacity) ? CONFIG.DEFAULTSTYLES.fillOpacity : fillOpacity);
-    var lineWidth   = (isNaN(lineWidth)   ? CONFIG.DEFAULTSTYLES.weight : lineWidth);
-    var x = radius*1 + lineWidth*1;
-    var y = radius*1 + lineWidth*1;
-    
+    var lineWidth = (isNaN(lineWidth) ? CONFIG.DEFAULTSTYLES.weight : lineWidth);
+    var x = radius * 1 + lineWidth * 1;
+    var y = radius * 1 + lineWidth * 1;
+
     var canvas = document.createElement('canvas');
-    canvas.width  = (radius + lineWidth) * 2;
+    canvas.width = (radius + lineWidth) * 2;
     canvas.height = (radius + lineWidth) * 2;
     var ctx = canvas.getContext('2d');
     ctx.globalAlpha = 1;
     ctx.beginPath();
     ctx.strokeStyle = 'rgba(' + lineColorRgb[0] + ',' + lineColorRgb[1] + ',' + lineColorRgb[2] + ',' + lineOpacity + ')';
-    ctx.fillStyle   = 'rgba(' + fillColorRgb[0] + ',' + fillColorRgb[1] + ',' + fillColorRgb[2] + ',' + fillOpacity + ')';
+    ctx.fillStyle = 'rgba(' + fillColorRgb[0] + ',' + fillColorRgb[1] + ',' + fillColorRgb[2] + ',' + fillOpacity + ')';
     ctx.arc(x, y, radius, 0, 360, false);
     ctx.fill();
     ctx.stroke();
     return canvas;
   },
-  
-  getPrimitiveDiv_Icon: function(position, html, hasHeight, size, anchor)
-  {
-    var height = (hasHeight ? this.degreesFromCartesian(position)[2] : 0 );
-    if ( !anchor ) anchor = [0, 0];
-    
+
+  getPrimitiveDiv_Icon: function (position, html, hasHeight, size, anchor) {
+    var height = (hasHeight ? this.degreesFromCartesian(position)[2] : 0);
+    if (!anchor) anchor = [0, 0];
+
     html = (html == '' ? '　' : html);
     var $html = $.parseHTML(html);
-    if ( $html[0].nodeType == 3 )
-    {
+    if ($html[0].nodeType == 3) {
       $html = $('<div></div>').append(html);
     }
-    else
-    {
+    else {
       $html = $(html);
     }
     html = $html.text();
-    
+
     var array = [];
-    
-    if ( html != '　' )
-    {
+
+    if (html != '　') {
       // ラベル
       var options = {
-        "font" : ($html.css('font-weight')  ? $html.css('font-weight') : 'normal') + ' '
-            + ($html.css('font-size')   ? $html.css('font-size')   : '20px') + ' '
-            + ($html.css('font-family') ? $html.css('font-family') : '"メイリオ"'),
-        "fill"            : true,
-        "fillColor"       : Cesium.Color.fromCssColorString( ($html.css('color') ? $html.css('color') : '#000') ),
-        "stroke"          : true,
-        "strokeColor"     : Cesium.Color.WHITE,
-        "strokeWidth"     : 3,
-        "backgroundColor" : ($html.css('background-color') ? Cesium.Color.fromCssColorString($html.css('background-color')) : Cesium.TRANSPARENT),
-        "padding" : ($html.css('padding') ? parseInt($html.css('padding')) : 0)
+        "font": ($html.css('font-weight') ? $html.css('font-weight') : 'normal') + ' '
+          + ($html.css('font-size') ? $html.css('font-size') : '20px') + ' '
+          + ($html.css('font-family') ? $html.css('font-family') : '"メイリオ"'),
+        "fill": true,
+        "fillColor": Cesium.Color.fromCssColorString(($html.css('color') ? $html.css('color') : '#000')),
+        "stroke": true,
+        "strokeColor": Cesium.Color.WHITE,
+        "strokeWidth": 3,
+        "backgroundColor": ($html.css('background-color') ? Cesium.Color.fromCssColorString($html.css('background-color')) : Cesium.TRANSPARENT),
+        "padding": ($html.css('padding') ? parseInt($html.css('padding')) : 0)
       };
-      
+
       var canvas = Cesium.writeTextToCanvas(html, options);
-      
+
       array.push({
-        "image"           : canvas,
-        "width"           : canvas.width,
-        "height"          : canvas.height,
+        "image": canvas,
+        "width": canvas.width,
+        "height": canvas.height,
         //"width"           : size[0],
         //"height"          : size[1],
-        "verticalOrigin"  : Cesium.VerticalOrigin.TOP,
+        "verticalOrigin": Cesium.VerticalOrigin.TOP,
         "horizontalOrigin": Cesium.HorizontalOrigin.LEFT,
-        "pixelOffset"     : new Cesium.Cartesian2(-1*anchor[0], -1*anchor[1]),
-        "position"        : position,
-        "heightReference" : ( hasHeight ? Cesium.HeightReference.NONE : Cesium.HeightReference.CLAMP_TO_GROUND )
+        "pixelOffset": new Cesium.Cartesian2(-1 * anchor[0], -1 * anchor[1]),
+        "position": position,
+        "heightReference": (hasHeight ? Cesium.HeightReference.NONE : Cesium.HeightReference.CLAMP_TO_GROUND)
         //"pixelOffset"     : new Cesium.Cartesian2(20, -20)  // 3D表示時の沈み防止
-          //"translucencyByDistance" : new Cesium.NearFarScalar(1.5e2, 1.0, 8.0e6, 0.0)
+        //"translucencyByDistance" : new Cesium.NearFarScalar(1.5e2, 1.0, 8.0e6, 0.0)
       });
     }
-    
+
     return array;
   },
-  
+
   /*
   * ポイント(アイコン)のprimitive作成
   */
-  getPrimitivePoint_Icon: function(position, imageURL, name, hasHeight, size, anchor)
-  {
-    if ( !anchor ) anchor = [0, 0];
-    if ( !size )   size   = [undefined, undefined];
-    
+  getPrimitivePoint_Icon: function (position, imageURL, name, hasHeight, size, anchor) {
+    if (!anchor) anchor = [0, 0];
+    if (!size) size = [undefined, undefined];
+
     var array = [];
-    
+
     // アイコン
     array.push({
-      "image"           : MATEST.proxyUrl(imageURL),
-      "width"           : size[0],
-      "height"          : size[1],
-      "verticalOrigin"  : Cesium.VerticalOrigin.TOP,
+      "image": MATEST.proxyUrl(imageURL),
+      "width": size[0],
+      "height": size[1],
+      "verticalOrigin": Cesium.VerticalOrigin.TOP,
       "horizontalOrigin": Cesium.HorizontalOrigin.LEFT,
-      "pixelOffset"     : new Cesium.Cartesian2(-1*anchor[0], -1*anchor[1]),
-      "position"        : position,
-      "alignedAxis"     : Cesium.Cartesian3.ZERO,
-      "heightReference" : (hasHeight ? Cesium.HeightReference.NONE : Cesium.HeightReference.CLAMP_TO_GROUND),
-      "color"           : new Cesium.Color(1, 1, 1, (CONFIG.TILEASICON_ENABLED ? CONFIG.TILEASICON_ICONALPHA : 1))
+      "pixelOffset": new Cesium.Cartesian2(-1 * anchor[0], -1 * anchor[1]),
+      "position": position,
+      "alignedAxis": Cesium.Cartesian3.ZERO,
+      "heightReference": (hasHeight ? Cesium.HeightReference.NONE : Cesium.HeightReference.CLAMP_TO_GROUND),
+      "color": new Cesium.Color(1, 1, 1, (CONFIG.TILEASICON_ENABLED ? CONFIG.TILEASICON_ICONALPHA : 1))
     });
-    
+
     var label = this.getPrimitivePoint_IconLabel(position, name, hasHeight);
-    if ( label ) array.push(label);
-    
+    if (label) array.push(label);
+
     return array;
   },
-  
+
   // アイコンラベルを作成するオプションを返す
-  getPrimitivePoint_IconLabel: function(position, name, hasHeight)
-  {
-    if ( !name ) return;
-    
+  getPrimitivePoint_IconLabel: function (position, name, hasHeight) {
+    if (!name) return;
+
     // ラベル
     var imageOptions = {
-      "font" : 'normal 20px "メイリオ"',
-      "fill"            : true,
-      "fillColor"       : Cesium.Color.BLACK,
-      "stroke"          : true,
-      "strokeColor"     : Cesium.Color.WHITE,
-      "strokeWidth"     : 3,
-      "backgroundColor" : Cesium.TRANSPARENT,
-      "padding"         : 0
+      "font": 'normal 20px "メイリオ"',
+      "fill": true,
+      "fillColor": Cesium.Color.BLACK,
+      "stroke": true,
+      "strokeColor": Cesium.Color.WHITE,
+      "strokeWidth": 3,
+      "backgroundColor": Cesium.TRANSPARENT,
+      "padding": 0
     };
-    
+
     var labelOptions = {
-      "image"           : Cesium.writeTextToCanvas(name, imageOptions),
-      "verticalOrigin"  : Cesium.VerticalOrigin.CENTER,
+      "image": Cesium.writeTextToCanvas(name, imageOptions),
+      "verticalOrigin": Cesium.VerticalOrigin.CENTER,
       "horizontalOrigin": Cesium.HorizontalOrigin.CENTER,
-      "position"        : position,
-      "heightReference" : Cesium.HeightReference.CLAMP_TO_GROUND,
-      "pixelOffset"     : new Cesium.Cartesian2(20, -20),  // 3D表示時の沈み防止
-      "alignedAxis"     : Cesium.Cartesian3.ZERO,
-      "heightReference" : (hasHeight ? Cesium.HeightReference.NONE : Cesium.HeightReference.CLAMP_TO_GROUND),
-        //"translucencyByDistance" : new Cesium.NearFarScalar(1.5e2, 1.0, 8.0e6, 0.0),
-        "show"            : false
+      "position": position,
+      "heightReference": Cesium.HeightReference.CLAMP_TO_GROUND,
+      "pixelOffset": new Cesium.Cartesian2(20, -20),  // 3D表示時の沈み防止
+      "alignedAxis": Cesium.Cartesian3.ZERO,
+      "heightReference": (hasHeight ? Cesium.HeightReference.NONE : Cesium.HeightReference.CLAMP_TO_GROUND),
+      //"translucencyByDistance" : new Cesium.NearFarScalar(1.5e2, 1.0, 8.0e6, 0.0),
+      "show": false
     };
-    if ( name == "Icon・高さ無し・回転" ) console.log("label:", labelOptions);
+    if (name == "Icon・高さ無し・回転") console.log("label:", labelOptions);
     return labelOptions;
   },
-  
+
   /*
   * ポイント(サークル)のGeometryInstanceを作成
   */
-  getPrimitiveIcon_Circle: function(position, fillColor, radius, isIE)
-  {
+  getPrimitiveIcon_Circle: function (position, fillColor, radius, isIE) {
     var height = this.degreesFromCartesian(position)[2];
-    
+
     var ellipse = new Cesium.EllipseGeometry({
-      "center" : position,
-      "height" : height,
-      "semiMajorAxis" : radius,
-      "semiMinorAxis" : radius
+      "center": position,
+      "height": height,
+      "semiMajorAxis": radius,
+      "semiMinorAxis": radius
     });
 
     var geometryInstance = new Cesium.GeometryInstance({
-      "geometry"   : ellipse,
-      "attributes" : {
+      "geometry": ellipse,
+      "attributes": {
         "color": new Cesium.ColorGeometryInstanceAttribute(fillColor.red, fillColor.green, fillColor.blue, fillColor.alpha)
       },
       id: 'color'
@@ -10866,17 +10233,16 @@ GLOBE.MAP = {
   /*
   * ポリゴンのGeometryInstanceを作成
   */
-  getPrimitivePolygon: function(hierarchy, color, isIE)
-  {
+  getPrimitivePolygon: function (hierarchy, color, isIE) {
     var polygon = new Cesium.PolygonGeometry({
-      "polygonHierarchy"  : hierarchy,
-      "perPositionHeight" : true
+      "polygonHierarchy": hierarchy,
+      "perPositionHeight": true
     });
 
     var geometryInstance = new Cesium.GeometryInstance({
-      "geometry"   : polygon,
-      "attributes" : {
-        "color" : new Cesium.ColorGeometryInstanceAttribute(color.red, color.green, color.blue, color.alpha)
+      "geometry": polygon,
+      "attributes": {
+        "color": new Cesium.ColorGeometryInstanceAttribute(color.red, color.green, color.blue, color.alpha)
       },
       id: 'color'
     });
@@ -10887,18 +10253,17 @@ GLOBE.MAP = {
   /*
   * ラインストリングのGeometryInstanceを作成（GroundPrimitive可。widthはメートル指定）
   */
-  getPrimitiveLinestring: function(positions, color, width, isIE)
-  {
+  getPrimitiveLinestring: function (positions, color, width, isIE) {
     var corridor = new Cesium.CorridorGeometry({
-      "positions"    : positions,
-      "width"        : width,
-      "vertexFormat" : Cesium.PerInstanceColorAppearance.VERTEX_FORMAT
+      "positions": positions,
+      "width": width,
+      "vertexFormat": Cesium.PerInstanceColorAppearance.VERTEX_FORMAT
     });
-    
+
     var geometryInstance = new Cesium.GeometryInstance({
-      geometry : corridor,
-      attributes : {
-        color : new Cesium.ColorGeometryInstanceAttribute(color.red, color.green, color.blue, color.alpha)
+      geometry: corridor,
+      attributes: {
+        color: new Cesium.ColorGeometryInstanceAttribute(color.red, color.green, color.blue, color.alpha)
       },
       id: 'color'
     });
@@ -10906,67 +10271,60 @@ GLOBE.MAP = {
     return geometryInstance;
 
   },
-  
+
   // ラインのGeometryInstanceを作成（GroundPrimitive不可。widthはピクセル指定）
-  getPrimitivePolyline: function(positions, color, width, isIE)
-  {
+  getPrimitivePolyline: function (positions, color, width, isIE) {
     //console.log("getPrimitivePolyline", positions, color, width);
     var polyline = new Cesium.PolylineGeometry({
-      positions : positions,
-      width     : width
+      positions: positions,
+      width: width
       //colors    : [color]
       //"vertexFormat" : Cesium.PerInstanceColorAppearance.VERTEX_FORMAT
     });
-    
+
     var geometryInstance = new Cesium.GeometryInstance({
-      geometry : Cesium.PolylineGeometry.createGeometry(polyline),
-      attributes : {
-        color : new Cesium.ColorGeometryInstanceAttribute(color.red, color.green, color.blue, color.alpha)
+      geometry: Cesium.PolylineGeometry.createGeometry(polyline),
+      attributes: {
+        color: new Cesium.ColorGeometryInstanceAttribute(color.red, color.green, color.blue, color.alpha)
       },
       id: 'color'
     });
-    
+
     return geometryInstance;
   },
-  
+
   // 高さに倍率を掛ける（JSON用）
-  applyHeightPowerToJSON: function( json )
-  {
+  applyHeightPowerToJSON: function (json) {
     //（仕様無し）
     return json;
   },
-  
+
   // 高さに倍率を掛ける（KML用）
-  applyHeightPowerToKML: function( kml, result )
-  {
+  applyHeightPowerToKML: function (kml, result) {
     var _3dCnt = 0;
     var _2dCnt = 0;
-    $(kml).find('coordinates').each(function(index, element){
+    $(kml).find('coordinates').each(function (index, element) {
       var beforeCoordArg = $(element).text().split(/[^0-9\.\+\-\,]/);
       var afterCoordArg = [];
       var _3dFlg = false;
-      for ( var i=0; i<beforeCoordArg.length; i++ )
-      {
+      for (var i = 0; i < beforeCoordArg.length; i++) {
         if (beforeCoordArg[i] == '') continue;
-        
+
         var pointArg = beforeCoordArg[i].split(',');
-        if ( pointArg.length >= 3 )
-        {
+        if (pointArg.length >= 3) {
           _3dFlg = true;
           pointArg[2] *= GLOBE.MAP.currents.heightPower;
           _3dCnt += 1;
         }
-        else if ( pointArg.length >= 2 )
-        {
+        else if (pointArg.length >= 2) {
           pointArg[2] = 0;
           _2dCnt += 1;
         }
-        afterCoordArg.push( pointArg.join(',') );
+        afterCoordArg.push(pointArg.join(','));
       }
-      $(element).text( afterCoordArg.join(' ') );
-      
-      if ( _3dFlg && !$(element).parents('Placemark').find('altitudeMode')[0] )
-      {
+      $(element).text(afterCoordArg.join(' '));
+
+      if (_3dFlg && !$(element).parents('Placemark').find('altitudeMode')[0]) {
         $(element).parents('Placemark').find('Point, LineString, Polygon').prepend('<altitudeMode>absolute</altitudeMode>');
       }
     });
@@ -10981,11 +10339,9 @@ GLOBE.MAP = {
     //console.log(kml);
     return kml;
   },
-  
-  applyDefaultStyleToKML: function(kml)
-  {
-    if ( !$(kml).find("kml > Style")[0] && !$(kml).find("kml > Document > Style")[0] )
-    {
+
+  applyDefaultStyleToKML: function (kml) {
+    if (!$(kml).find("kml > Style")[0] && !$(kml).find("kml > Document > Style")[0]) {
       // [Defaults Memo]
       // color: #3388ff → 逆 → ff8833
       // width: 3
@@ -10994,25 +10350,24 @@ GLOBE.MAP = {
       // outline: 1 (boolean)
       // icon: https://maps.gsi.go.jp/portal/sys/v4/symbols/080.png
       // icon-scale: 1
-      
+
       // ダミー生成 (Style)
       var $styleParent = $(kml).find("kml > Document");
-      if ( !$styleParent[0] )
-      {
+      if (!$styleParent[0]) {
         $styleParent = $(kml).find("kml");
       }
-      $("<dummygsiglobestyle>dummy</dummygsiglobestyle>").prependTo( $styleParent );
-      
+      $("<dummygsiglobestyle>dummy</dummygsiglobestyle>").prependTo($styleParent);
+
       // ダミー生成 (styleUrl)
-      $(kml).find("Placemark").each(function(index, element){
-        $("<dummygsiglobestyleurl>dummy</dummygsiglobestyleurl>").prependTo( $(element) );
+      $(kml).find("Placemark").each(function (index, element) {
+        $("<dummygsiglobestyleurl>dummy</dummygsiglobestyleurl>").prependTo($(element));
       });
-      
-      
+
+
       // 無効な要素を削除
       $(kml).find("Placemark > Style").remove();
-      
-      
+
+
       // 既定のスタイル
       // 線
       var lineStyle = '<LineStyle>'
@@ -11031,133 +10386,120 @@ GLOBE.MAP = {
         + '<scale>1</scale>'
         + '</IconStyle>'
 
-      var textStyle    = '<Style id="GsiDefaultStyles">' + lineStyle + polyStyle + iconStyle + '</Style>';
+      var textStyle = '<Style id="GsiDefaultStyles">' + lineStyle + polyStyle + iconStyle + '</Style>';
       var textStyleUrl = '<styleUrl>#GsiDefaultStyles</styleUrl>';
-      
+
       var textKml = new XMLSerializer().serializeToString(kml);
       textKml = textKml.replace(/<dummygsiglobestyle[ >].+?<\/dummygsiglobestyle>/, textStyle);
       textKml = textKml.replace(/<dummygsiglobestyleurl[ >].+?<\/dummygsiglobestyleurl>/g, textStyleUrl);
-      
+
       kml = $.parseXML(textKml);
     }
 
     return kml;
   },
-  
+
   /*
   * InfoBOXに表示する内容を返す
   */
-  getEntityDescription: function(prop)
-  {
+  getEntityDescription: function (prop) {
     var str = "";
 
     // テーブル記述の場合
-    if(prop.description == undefined){
-      for(var key in prop){
-        if ( key.charAt(0) == "_" || key == "name") continue;
-        
-        if ( key.match(/^(iframe|description)$/) )
-        {
+    if (prop.description == undefined) {
+      for (var key in prop) {
+        if (key.charAt(0) == "_" || key == "name") continue;
+
+        if (key.match(/^(iframe|description)$/)) {
           str += '<tr><td colspan="2">' + prop[key] + '</td></tr>';
         }
-        else
-        {
+        else {
           str += '<tr><td>' + key + '</td><td>' + prop[key] + '</td></tr>';
         }
       }
       str = "<table>" + str + "</table>";
-    // 自由記述の場合
-    }else{
+      // 自由記述の場合
+    } else {
       str = prop.description
     }
 
     // TEXTの場合はhtmlもいれる
-    if(prop._html){
+    if (prop._html) {
       //str += "<br>" + prop._html;
     }
 
     return str;
   },
-  
+
   // PolygonのcoordinatesからPolygonHierarchyオブジェクトを返す（Geojson用）
-  geojsonCoordinateToPolygonHierarchy : function(coord)
-  {
-    var getCartesian3 = function(coord, index){
+  geojsonCoordinateToPolygonHierarchy: function (coord) {
+    var getCartesian3 = function (coord, index) {
       var target = coord[index];
       var result = [];
       var hasHeight = (target[0] && target[0].length >= 3 ? true : false);
-      if ( hasHeight )
-      {
-        for ( var i=0; i<target.length; i++ )
-        {
+      if (hasHeight) {
+        for (var i = 0; i < target.length; i++) {
           result.push(target[i][0]);
           result.push(target[i][1]);
           result.push(target[i][2]);
         }
         return Cesium.Cartesian3.fromDegreesArrayHeights(result);
       }
-      else
-      {
-        for ( var i=0; i<target.length; i++ )
-        {
+      else {
+        for (var i = 0; i < target.length; i++) {
           result.push(target[i][0]);
           result.push(target[i][1]);
         }
         return Cesium.Cartesian3.fromDegreesArray(result);
       }
     };
-    
+
     var positions = null;
     var holes = [];
-    
-    if ( Array.isArray(coord) )
-    {
+
+    if (Array.isArray(coord)) {
       positions = getCartesian3(coord, 0);
-      
-      for ( var i=1; i<coord.length; i++ )
-      {
-        holes.push( new Cesium.PolygonHierarchy( getCartesian3(coord, i) ) );
+
+      for (var i = 1; i < coord.length; i++) {
+        holes.push(new Cesium.PolygonHierarchy(getCartesian3(coord, i)));
       }
     }
-    
+
     return new Cesium.PolygonHierarchy(positions, holes);
   },
-  
+
   /*
   * Cartesian3の配列を返す
   */
-  getPosition: function(coord, hasHeight)
-  {
+  getPosition: function (coord, hasHeight) {
     var arr = [];
-    
-    for(var i=0; i<coord.length; i++){
-      if(Array.isArray(coord[i][0])){
-        for(var j=0; j<coord[i].length; j++){
+
+    for (var i = 0; i < coord.length; i++) {
+      if (Array.isArray(coord[i][0])) {
+        for (var j = 0; j < coord[i].length; j++) {
           arr.push(coord[i][j][0]);
           arr.push(coord[i][j][1]);
-          if ( hasHeight ) arr.push(coord[i][j][2]);
+          if (hasHeight) arr.push(coord[i][j][2]);
         }
-      }else{
+      } else {
         arr.push(coord[i][0]);
         arr.push(coord[i][1]);
-        if ( hasHeight ) arr.push(coord[i][2]);
+        if (hasHeight) arr.push(coord[i][2]);
       }
     }
-    
-    if ( hasHeight )
-    {
+
+    if (hasHeight) {
       return Cesium.Cartesian3.fromDegreesArrayHeights(arr);
     }
-    else
-    {
+    else {
       return Cesium.Cartesian3.fromDegreesArray(arr);
     }
   },
-  
+
   /*
   * ポイント(円)のCartesian3の配列を返す
   */
-  getCirclePosition: function(position, radius){
+  getCirclePosition: function (position, radius) {
     var array = [];
 
     // 円の各ポイントの緯度経度を取得
@@ -11166,12 +10508,12 @@ GLOBE.MAP = {
       semiMinorAxis: radius,
       rotation: 0,
       center: position,
-      granularity : 0.02  // make this number larger to get fewer positions
+      granularity: 0.02  // make this number larger to get fewer positions
     }, false, true);
 
     var positions = r.outerPositions;
-    for (var i=0; i<positions.length; i+=3) {
-      var cart = new Cesium.Cartesian3(positions[i], positions[i+1], positions[i+2]);
+    for (var i = 0; i < positions.length; i += 3) {
+      var cart = new Cesium.Cartesian3(positions[i], positions[i + 1], positions[i + 2]);
       array.push(cart);
     }
 
@@ -11180,37 +10522,37 @@ GLOBE.MAP = {
 
     return array;
   },
-  
+
   /*
   * 緯度の配列・経度の配列を返す【GeoJSON用】
   */
-  getLonLatArrayForGeojson: function(coord){
+  getLonLatArrayForGeojson: function (coord) {
     var lonArray = [];
     var latArray = [];
 
-    for(var i=0; i<coord.length; i++){
-      if(Array.isArray(coord[i][0])){
-        for(var j=0; j<coord[i].length; j++){
+    for (var i = 0; i < coord.length; i++) {
+      if (Array.isArray(coord[i][0])) {
+        for (var j = 0; j < coord[i].length; j++) {
           lonArray.push(coord[i][j][0]);
           latArray.push(coord[i][j][1]);
         }
-      }else{
+      } else {
         lonArray.push(coord[i][0]);
         latArray.push(coord[i][1]);
       }
     }
 
     var res = {
-      "lon" : lonArray,
-      "lat" : latArray
+      "lon": lonArray,
+      "lat": latArray
     }
     return res;
   },
-  
+
   /*
   * カラーコードからRGBに変換
   */
-  hexToRgb: function(hex) {
+  hexToRgb: function (hex) {
     var result = /^#?([a-f\d]{2})([a-f\d]{2})([a-f\d]{2})$/i.exec(hex);
     var r = parseInt(result[1], 16);
     var g = parseInt(result[2], 16);
@@ -11218,61 +10560,50 @@ GLOBE.MAP = {
 
     return [r, g, b];
   },
-  
+
   /*
   * ランダムな12桁の文字列を返す
   */
-  getRandomStr: function()
-  {
+  getRandomStr: function () {
     return Math.random().toString(10).slice(-12);
   },
-  
-  getNewId: function()
-  {
+
+  getNewId: function () {
     this._getNewIdCallCount = (this._getNewIdCallCount ? this._getNewIdCallCount + 1 : 1);
     var id = "_" + ("000000000" + this._getNewIdCallCount.toString()).slice(-11);
     return id;
   },
-  
-  updateClamp : function()
-  {
-    if ( this.currents.height > 150000 ) return [];
+
+  updateClamp: function () {
+    if (this.currents.height > 150000) return [];
     var ellipsoid = GLOBE.MAP.viewer.scene.globe.ellipsoid;
     var rect = GLOBE.MAP.viewer.camera.computeViewRectangle(ellipsoid);
     var rectLatLng = {
-      "west"  : Cesium.Math.toDegrees(rect.west),
-      "south" : Cesium.Math.toDegrees(rect.south),
-      "east"  : Cesium.Math.toDegrees(rect.east),
-      "north" : Cesium.Math.toDegrees(rect.north)
+      "west": Cesium.Math.toDegrees(rect.west),
+      "south": Cesium.Math.toDegrees(rect.south),
+      "east": Cesium.Math.toDegrees(rect.east),
+      "north": Cesium.Math.toDegrees(rect.north)
     };
     var cnt = 0;
-    this._updateClamp( rectLatLng, this.viewer.scene.primitives, cnt );
+    this._updateClamp(rectLatLng, this.viewer.scene.primitives, cnt);
   },
-  
-  _updateClamp : function( rectLatLng, collection, cnt )
-  {
-    for ( var i=0; i<collection.length; i++ )
-    {
+
+  _updateClamp: function (rectLatLng, collection, cnt) {
+    for (var i = 0; i < collection.length; i++) {
       var primitive = collection.get(i);
-      if ( primitive._primitives )
-      {
-        this._updateClamp( rectLatLng, primitive, cnt );
+      if (primitive._primitives) {
+        this._updateClamp(rectLatLng, primitive, cnt);
       }
-      else if ( primitive._billboards )
-      {
-        for ( var j=0; j<primitive._billboards.length; j++ )
-        {
+      else if (primitive._billboards) {
+        for (var j = 0; j < primitive._billboards.length; j++) {
           var billboard = primitive._billboards[j];
-          if ( billboard && billboard._actualClampedPosition )
-          {
+          if (billboard && billboard._actualClampedPosition) {
             var latLng = this.degreesFromCartesian(billboard._actualClampedPosition);
             var cartographic = Cesium.Cartographic.fromDegrees(latLng[1], latLng[0]);
             var height = this.viewer.scene.globe.getHeight(cartographic);
-            
-            if ( rectLatLng.west <= latLng[1] && latLng[1] <= rectLatLng.east && rectLatLng.south <= latLng[0] && latLng[0] <= rectLatLng.north )
-            {
-              if ( Math.abs(height - latLng[2]) >= 50 )
-              {
+
+            if (rectLatLng.west <= latLng[1] && latLng[1] <= rectLatLng.east && rectLatLng.south <= latLng[0] && latLng[0] <= rectLatLng.north) {
+              if (Math.abs(height - latLng[2]) >= 50) {
                 billboard._updateClamping();
                 cnt++;
               }
@@ -11283,25 +10614,23 @@ GLOBE.MAP = {
     }
     //console.log("update:", cnt);
   },
-  
-  setClickEvent : function ()
-  {
+
+  setClickEvent: function () {
     // 左クリック
     this._screenSpaceEventHandler = new Cesium.ScreenSpaceEventHandler(this.viewer.scene.canvas);
-    this._screenSpaceEventHandler.setInputAction(function(event){
+    this._screenSpaceEventHandler.setInputAction(function (event) {
       var viewer = GLOBE.MAP.viewer;
       var obj = viewer.scene.pick(event.position);
-      
+
       var title = "";
       var html = "";
-      
+
       var usePositionIcon = false;
-      
-      if ( obj && obj.primitive && obj.primitive.data && obj.primitive.data.type == 'SEARCH' )
-      {
+
+      if (obj && obj.primitive && obj.primitive.data && obj.primitive.data.type == 'SEARCH') {
         // 検索アイコンクリック
         data = obj.primitive.data;
-        
+
         title = data.title;
         html = '<table>'
           + '<tr><th width="100">住所：</th><td>' + data.subTitle + '</td></tr>'
@@ -11309,111 +10638,101 @@ GLOBE.MAP = {
           + '<tr><th>経度：</th><td>' + data.lon + '</td></tr>'
           + '</table>';
       }
-      else if ( obj && obj.id && obj.id.gsidata && obj.id.gsidata.isKmlEntity )
-      {
+      else if (obj && obj.id && obj.id.gsidata && obj.id.gsidata.isKmlEntity) {
         // アップロードしたKMLエンティティをクリック
         title = obj.id.name;
-        html  = (obj.id.description ? obj.id.description._value : '');
+        html = (obj.id.description ? obj.id.description._value : '');
       }
-      else if ( obj && obj.primitive && (obj.primitive.name || obj.primitive.description) )
-      {
+      else if (obj && obj.primitive && (obj.primitive.name || obj.primitive.description)) {
         // geojsonアイコンクリック
         title = (obj.primitive.name ? obj.primitive.name : '');
-        html  = (obj.primitive.description ? obj.primitive.description : '');
-        if ( !title ) html = ''; // タイトルが無ければポップアップ無効
+        html = (obj.primitive.description ? obj.primitive.description : '');
+        if (!title) html = ''; // タイトルが無ければポップアップ無効
       }
-      else if ( obj && obj.primitive && obj.primitive.gsidata )
-      {
+      else if (obj && obj.primitive && obj.primitive.gsidata) {
         // geojson_tile & imagePrimitiveクリック
-        if ( obj.primitive.gsidata.usePopup )
-        {
+        if (obj.primitive.gsidata.usePopup) {
           title = (obj.primitive.gsidata.name ? obj.primitive.gsidata.name : '');
-          html  = (obj.primitive.gsidata.description ? obj.primitive.gsidata.description : '');
+          html = (obj.primitive.gsidata.description ? obj.primitive.gsidata.description : '');
         }
         usePositionIcon = obj.primitive.gsidata.usePositionIcon;
       }
-      
-      if ( usePositionIcon )
-      {
+
+      if (usePositionIcon) {
         GLOBE.MAP.clearPinLayers("INFO");
-        var latLng = GLOBE.MAP.windowPositionToLatLng( event.position );
-        if ( latLng )
-        {
+        var latLng = GLOBE.MAP.windowPositionToLatLng(event.position);
+        if (latLng) {
           var lat = latLng[0];
           var lng = latLng[1];
           GLOBE.MAP.pindrop(lng, lat, "INFO", Cesium.Color.BLACK);
         }
       }
-      
-      if ( title || html )
-      {
+
+      if (title || html) {
         html = $('<div>' + html + '</div>');
         var box = GLOBE.DIALOG.INFOBOX;
         box.setDialogHeader(title);
         box.setDialogContent($(html));
-        box.onBeforeClose = function(){
+        box.onBeforeClose = function () {
           GLOBE.MAP.clearPinLayers("INFO");
         };
         box.show();
       }
-      
+
     }, Cesium.ScreenSpaceEventType.LEFT_CLICK);
-    
+
     //右クリックイベント
-    this._screenSpaceEventHandler.setInputAction( GLOBE.MAP.showPointInfo, Cesium.ScreenSpaceEventType.RIGHT_CLICK );
+    this._screenSpaceEventHandler.setInputAction(GLOBE.MAP.showPointInfo, Cesium.ScreenSpaceEventType.RIGHT_CLICK);
   },
-  
+
   // 画面位置(cartesian2)から地図上の位置(cartesian3)を返す
-  windowPositionToCartesian: function( windowPosition )
-  {
+  windowPositionToCartesian: function (windowPosition) {
     var viewer = GLOBE.MAP.viewer;
     var ray = viewer.camera.getPickRay(windowPosition);
     var cartesian = viewer.scene.globe.pick(ray, viewer.scene);
     return cartesian;
   },
-  
+
   // 画面位置(cartesian2)から地図上の位置(latLng)を返す
-  windowPositionToLatLng: function( windowPosition )
-  {
+  windowPositionToLatLng: function (windowPosition) {
     var cartesian = this.windowPositionToCartesian(windowPosition);
-    if ( !cartesian ) return undefined;
-    
+    if (!cartesian) return undefined;
+
     var viewer = GLOBE.MAP.viewer;
     var cartographic = viewer.scene.globe.ellipsoid.cartesianToCartographic(cartesian);
     var lat = Cesium.Math.toDegrees(cartographic.latitude);
     var lon = Cesium.Math.toDegrees(cartographic.longitude);
-    
+
     lat = (isNaN(lat) ? lat : lat * 1);
     lon = (isNaN(lon) ? lon : lon * 1);
-    
+
     return [lat, lon];
   },
-  
+
   // 地点情報ダイアログを表示する
-  showPointInfo: function( event )
-  {
+  showPointInfo: function (event) {
     GLOBE.MENU.POINTINFO.endInfoMode();
-    
-    var latLng = GLOBE.MAP.windowPositionToLatLng( event.position );
-    if ( !latLng ) return false;
-    
+
+    var latLng = GLOBE.MAP.windowPositionToLatLng(event.position);
+    if (!latLng) return false;
+
     var lat = latLng[0];
     var lon = latLng[1];
-    
+
     var height = GLOBE.MAP.viewer.scene.camera.positionCartographic.height;
     height = (isNaN(height) ? height : height * 1);
 
-    if (!this._addrLoader){
+    if (!this._addrLoader) {
       this._addrLoader = new GSI.AddrLoader();
-      this._addrLoader.on('load', MA.bind( function(evt){
-        GLOBE.DIALOG.FOOTER._initializeContent(evt.lon,evt.lat,height,evt.title,evt.titleYomi);
+      this._addrLoader.on('load', MA.bind(function (evt) {
+        GLOBE.DIALOG.FOOTER._initializeContent(evt.lon, evt.lat, height, evt.title, evt.titleYomi);
         //GLOBE.DIALOG.FOOTER._initializeContent(lon,lat,height,evt.title,evt.titleYomi);
       }, this));
     }
-    else{
+    else {
       this._addrLoader.cancel();
     }
-    this._addrLoader.load({lat:lat, lng:lon});
+    this._addrLoader.load({ lat: lat, lng: lon });
     // $.ajax({
     // 	url : CONFIG.SERVERAPI.GETADDR,
     // 	dataType : "json",
@@ -11439,9 +10758,9 @@ GLOBE.MAP = {
 
     GLOBE.MAP.clearPinLayers("FOOTER");
     GLOBE.MAP.pindrop(lon, lat, "FOOTER");
-    
-    GLOBE.MAP.vDemAlt      = "---";
-    GLOBE.MAP.vDemAltSRC   = "---";
+
+    GLOBE.MAP.vDemAlt = "---";
+    GLOBE.MAP.vDemAltSRC = "---";
     /*
     GLOBE.MAP.vDemAltTypeN = 0;
     GLOBE.MAP.vDemAltReq   = new Array();
@@ -11455,54 +10774,54 @@ GLOBE.MAP = {
     GLOBE.MAP.execRefreshAlt(GLOBE.MAP.vDemAltTypeN,GLOBE.MAP.vDemAltTileX,GLOBE.MAP.vDemAltTileY);
     */
     // edit310
-    if ( !this._elevationLoader ) {
+    if (!this._elevationLoader) {
       this._elevationLoader = new GSI.FooterElevationLoader();
       //this._elevationLoader = new GSI.ElevationLoader();
-      this._elevationLoader.on("load",MA.bind( function(evt) {
-        if ( evt.h || evt.h == 0 ) {
-          
-          GLOBE.MAP.vDemAlt    = evt.h.toFixed(evt.fixed != undefined ? evt.fixed : 0) + "m";
+      this._elevationLoader.on("load", MA.bind(function (evt) {
+        if (evt.h || evt.h == 0) {
+
+          GLOBE.MAP.vDemAlt = evt.h.toFixed(evt.fixed != undefined ? evt.fixed : 0) + "m";
           GLOBE.MAP.vDemAltSRC = evt.title;
           var outPutHeightSrc = "（" + "データソース：" + GLOBE.MAP.vDemAltSRC + "）";
-          GLOBE.MAP.outPutHeight= GLOBE.MAP.vDemAlt + '<span style="font-size:9px">' +outPutHeightSrc + '</span>';
-          
+          GLOBE.MAP.outPutHeight = GLOBE.MAP.vDemAlt + '<span style="font-size:9px">' + outPutHeightSrc + '</span>';
+
           GLOBE.DIALOG.FOOTER.refreshDEMHeight();
-          
+
         }
-      },this));
+      }, this));
     } else {
       this._elevationLoader.cancel();
     }
     GLOBE.MAP.outPutHeight = undefined;
     GLOBE.DIALOG.FOOTER.refreshDEMHeight();
-    this._elevationLoader.load({lat:lat,lng:lon});
+    this._elevationLoader.load({ lat: lat, lng: lon });
 
-    if ( !this._lakedepthLoader ) {
+    if (!this._lakedepthLoader) {
       this._lakedepthLoader = new GSI.LakeDepthLoader();
-      this._lakedepthLoader.on("load",MA.bind( function(evt) {
-        if ( evt.h || evt.h == 0 ) {
+      this._lakedepthLoader.on("load", MA.bind(function (evt) {
+        if (evt.h || evt.h == 0) {
           GLOBE.MAP.vLakeDepthFix = evt.fixed != undefined ? evt.fixed : 0;
-          GLOBE.MAP.vLakeDepth    = evt.h.toFixed(GLOBE.MAP.vLakeDepthFix);
+          GLOBE.MAP.vLakeDepth = evt.h.toFixed(GLOBE.MAP.vLakeDepthFix);
           GLOBE.MAP.vLakeDepthTitle = evt.title;
           GLOBE.MAP.outPutLakeDepth = GLOBE.MAP.vLakeDepth + "m";
           GLOBE.DIALOG.FOOTER.refreshLakeDepth(GLOBE.MAP.lakedataEnabled);
         }
-      },this));
+      }, this));
     } else {
       this._lakedepthLoader.cancel();
     }
-    
-    if ( !this._lakeStdHeightLoader ) {
+
+    if (!this._lakeStdHeightLoader) {
       this._lakeStdHeightLoader = new GSI.LakeStdHeightLoader();
-      this._lakeStdHeightLoader.on("load",MA.bind( function(evt) {
-        if ( evt.h || evt.h == 0 ) {
+      this._lakeStdHeightLoader.on("load", MA.bind(function (evt) {
+        if (evt.h || evt.h == 0) {
           GLOBE.MAP.vLakeStdHeightFix = evt.fixed != undefined ? evt.fixed : 0;
-          GLOBE.MAP.vLakeStdHeight    = evt.h.toFixed(GLOBE.MAP.vLakeStdHeightFix);
+          GLOBE.MAP.vLakeStdHeight = evt.h.toFixed(GLOBE.MAP.vLakeStdHeightFix);
           GLOBE.MAP.vLakeStdHeightTitle = evt.title;
           GLOBE.MAP.outPutLakeStdHeight = GLOBE.MAP.vLakeStdHeight + "m";
           GLOBE.DIALOG.FOOTER.refreshLakeDepth(GLOBE.MAP.lakedataEnabled);
         }
-      },this));
+      }, this));
     } else {
       this._lakeStdHeightLoader.cancel();
     }
@@ -11511,73 +10830,71 @@ GLOBE.MAP = {
     GLOBE.MAP.outPutLakeStdHeight = undefined;
     GLOBE.DIALOG.FOOTER.refreshLakeDepth(GLOBE.MAP.lakedataEnabled);
 
-    if(GLOBE.MAP.lakedataEnabled)
-    {
-      this._lakedepthLoader.load({lat:lat,lng:lon});
-      this._lakeStdHeightLoader.load({lat:lat,lng:lon});
+    if (GLOBE.MAP.lakedataEnabled) {
+      this._lakedepthLoader.load({ lat: lat, lng: lon });
+      this._lakeStdHeightLoader.load({ lat: lat, lng: lon });
     }
 
     GLOBE.DIALOG.FOOTER.show();
   },
-  GetAddr: function (center, mode){
+  GetAddr: function (center, mode) {
     $.ajax({
-      url : CONFIG.SERVERAPI.GETADDR,
-      dataType : "json",
+      url: CONFIG.SERVERAPI.GETADDR,
+      dataType: "json",
       data: {
-        "lon" : center.x,
-        "lat" : center.y
+        "lon": center.x,
+        "lat": center.y
       },
-      success : function(data){
-        if (data.results){
+      success: function (data) {
+        if (data.results) {
           var address = "";
           var addObj = data.results;
-          var addressData = GSI.MUNI_ARRAY[parseInt(addObj.muniCd,10)+""];
+          var addressData = GSI.MUNI_ARRAY[parseInt(addObj.muniCd, 10) + ""];
           if (addressData) {
             addressData = addressData.split(",");
-            var muniNm = (addressData[1]+addressData[3]).replace("　","");
-              address += muniNm;
+            var muniNm = (addressData[1] + addressData[3]).replace("　", "");
+            address += muniNm;
           }
           if (addObj.lv01Nm) address += addObj.lv01Nm;
         }
-        GLOBE.DIALOG.FOOTER._initializeContent(lon,lat,height,address);
+        GLOBE.DIALOG.FOOTER._initializeContent(lon, lat, height, address);
       }
     });
-  }, 
+  },
 
   // 202303 時系列表示ダイアログを取得
-  getComparePhotoControl: function() {
-    if ( !this._comparePhotoControl ) {
+  getComparePhotoControl: function () {
+    if (!this._comparePhotoControl) {
       this._comparePhotoControl = new GLOBE.ComparePhotoControl(this);
     }
     return this._comparePhotoControl;
   },
-    // 時系列表示ダイアログを表示
-  showComparePhotoControl: function() {
+  // 時系列表示ダイアログを表示
+  showComparePhotoControl: function () {
     var control = this.getComparePhotoControl();
     control.show();
 
-//    this.setTopMargin();
+    //    this.setTopMargin();
     return control;
   },
   // 時系列表示ダイアログを非表示
-  hideComparePhotoControl: function() {
-    if ( !this._comparePhotoControl ) return;
+  hideComparePhotoControl: function () {
+    if (!this._comparePhotoControl) return;
 
     this._comparePhotoControl.hide();
 
-//    this._mapMenu.removeTopMargin();
+    //    this._mapMenu.removeTopMargin();
 
-    return  this._comparePhotoControl;
+    return this._comparePhotoControl;
   },
 
   // heightからズームレベルを取得
-  getZoomFromHeight: function()
-  {
+  getZoomFromHeight: function () {
 
     var zoom = this.getCurrentZoom();
 
     //this.getZoomLevel();
-    if ( this.currents.height ){
+    if (this.currents.height) {
       var height = this.currents.height;
       var zooms = CONFIG.Z2HEIGHT;
 
@@ -11587,17 +10904,17 @@ GLOBE.MAP = {
         var low = false; // 低倍率チェック
         var high = false; // 高倍率チェック
 
-        for (var i=0; i < length; i++) {
+        for (var i = 0; i < length; i++) {
           if (height < zooms[i]) {
             low = true;
             zoom = i;
-          } else if ( zooms[i] < height) {
+          } else if (zooms[i] < height) {
             high = true;
           } else {
             low = true;
             high = true;
           }
-          if (low && (high || i == length-1)) {
+          if (low && (high || i == length - 1)) {
             break;
           }
         }
@@ -11605,11 +10922,11 @@ GLOBE.MAP = {
       }
 
     }
-    
+
     return zoom;
   },
 
-  
+
   /*
   edit310 ↓delete
   execRefreshAlt : function (vDemAltTypeN,vDemAltTileX,vDemAltTileY)
@@ -11751,7 +11068,7 @@ GSI.ElevationLoader = MA.Class.extend({
     this._initUtils();
   },
 
-  _initUrlList(){
+  _initUrlList() {
     this._demUrlList = [
       {
         "title": "DEM1A",
@@ -11798,7 +11115,7 @@ GSI.ElevationLoader = MA.Class.extend({
     ];
   },
 
-  _initUtils(){
+  _initUtils() {
     this.pow2_8 = Math.pow(2, 8);
     this.pow2_16 = Math.pow(2, 16);
     this.pow2_23 = Math.pow(2, 23);
@@ -11817,8 +11134,8 @@ GSI.ElevationLoader = MA.Class.extend({
 
   _makeUrlList: function (pos) {
     var list = [];
-    var buffList =[];
-    for( var i=0; i<=20; i++) {
+    var buffList = [];
+    for (var i = 0; i <= 20; i++) {
       buffList.push([]);
     }
     for (var i = 0; i < this._demUrlList.length; i++) {
@@ -11839,13 +11156,13 @@ GSI.ElevationLoader = MA.Class.extend({
       }
     }
 
-    for( var i=buffList.length-1; i>=0; i-- ) {
-      for( var j = 0; j<buffList[i].length; j++) {
+    for (var i = buffList.length - 1; i >= 0; i--) {
+      for (var j = 0; j < buffList[i].length; j++) {
         list.push(buffList[i][j]);
       }
     }
     return list;
-    
+
     /*
     var zoomList = [];
     for( var i=0; i<20; i++ ) {
@@ -11917,12 +11234,12 @@ GSI.ElevationLoader = MA.Class.extend({
     this._destroyImage();
   },
 
-  _parseValidUrl: function(valueError){
+  _parseValidUrl: function (valueError) {
     if (!this._current.urlList || this._current.urlList.length <= 0) return null;   //not found
-    
+
     var url = this._current.urlList.shift();
-    if ( valueError && url.title=="DEMGM") return null;
-    
+    if (valueError && url.title == "DEMGM") return null;
+
     return url;
   },
 
@@ -11932,7 +11249,7 @@ GSI.ElevationLoader = MA.Class.extend({
     if (this._current != current) return;
 
     var url = this._parseValidUrl(valueError);
-    if(!url) {
+    if (!url) {
       this.fire("load", {
         h: undefined,
         pos: current.pos
@@ -11953,7 +11270,7 @@ GSI.ElevationLoader = MA.Class.extend({
       this._canvas.height = 256;
     }
     var ctx = this._canvas.getContext("2d");
-    ctx.clearRect(0,0,256,256);
+    ctx.clearRect(0, 0, 256, 256);
     ctx.beginPath();
 
     ctx.drawImage(img, 0, 0);
@@ -12010,21 +11327,21 @@ GSI.ElevationLoader = MA.Class.extend({
 
   },
 
-  _initImgInfo: function(url){
-    if(!url) return;
+  _initImgInfo: function (url) {
+    if (!url) return;
     var tileInfo = this._getTileInfo(this._current.pos.lat, this._current.pos.lng, url.zoom);
     this._img = document.createElement("img");
     this._img.setAttribute("crossorigin", "anonymous");
-  
+
     this._imgLoadHandler = MA.bind(this._onImgLoad, this, url, this._current, tileInfo, this._img);
     this._imgLoadErrorHandler = MA.bind(this._onImgLoadError, this, url, this._current, tileInfo, this._img);
-  
+
     this._img.addEventListener("load", this._imgLoadHandler);
     this._img.addEventListener("error", this._imgLoadErrorHandler);
     this._img.src = this._makeUrlFromTile(url, tileInfo);
   },
 
-  _makeUrlFromTile: function(url, tileInfo) {
+  _makeUrlFromTile: function (url, tileInfo) {
     var result = url.url.replace("{x}", tileInfo.x);
     result = result.replace("{y}", tileInfo.y);
     result = result.replace("{z}", url.zoom);
@@ -12038,7 +11355,7 @@ GSI.ElevationLoader = MA.Class.extend({
   - GSI.FooterElevationLoader (フッター用標高画像ローダー)
 ************************************************************************/
 GSI.FooterElevationLoader = GSI.ElevationLoader.extend({
-  _initUrlList: function(){
+  _initUrlList: function () {
     this._demUrlList = [
       {
         "title": "DEM1A",
@@ -12085,11 +11402,11 @@ GSI.FooterElevationLoader = GSI.ElevationLoader.extend({
     ];
   },
 
-  _parseValidUrl: function(valueError){
+  _parseValidUrl: function (valueError) {
     if (!this._current.urlList || this._current.urlList.length <= 0) return null;   //not found
-    
+
     var url = this._current.urlList.shift();
-    if ( valueError && url.title=="DEMGM") return null;
+    if (valueError && url.title == "DEMGM") return null;
     if ((GLOBE.MAP.getCurrentZoom() > url.zoom) && (url.title == "DEMGM")) return null;
 
     return url;
@@ -12107,9 +11424,9 @@ GSI.LakeDataLoader = GSI.ElevationLoader.extend({
     this._demUrlList = [];
   },
 
-  _parseValidUrl: function(valueError){
+  _parseValidUrl: function (valueError) {
     if (!this._current.urlList || this._current.urlList.length <= 0) return null;   //not found
-    
+
     var url = this._current.urlList.shift();
     if (valueError) return null;
     if (GLOBE.MAP.getCurrentZoom() > url.zoom) return null;
@@ -12117,7 +11434,7 @@ GSI.LakeDataLoader = GSI.ElevationLoader.extend({
     return url;
   },
 
-  _makeUrlFromTile: function(url, tileInfo) {
+  _makeUrlFromTile: function (url, tileInfo) {
     var result = url.url.replace("{x}", tileInfo.x);
     result = result.replace("{y}", tileInfo.y);
     result = result.replace("{z}", '14');
@@ -12186,105 +11503,92 @@ GSI.LakeStdHeightLoader = GSI.LakeDataLoader.extend({
     ];
   }
 });
-  
 
-GSI.LayerTreeSearcher = MA.Class.extend( {
+
+GSI.LayerTreeSearcher = MA.Class.extend({
   includes: MA.Mixin.Events,
-  
-  options : {
-    serchNum : 200
+
+  options: {
+    serchNum: 200
   },
-  
-  initialize : function( input, layersJSON )
-  {
+
+  initialize: function (input, layersJSON) {
     //L.setOptions( this, {} );
-    
+
     this._targetInput = input;
     this._layersJSON = layersJSON;
     this._queryString = "";
-    
+
   },
-  
-  
-  start : function()
-  {
-    if ( !this._state )
+
+
+  start: function () {
+    if (!this._state)
       this._state = {};
-    
+
     this._firstCheck = true;
     this._check();
   },
-  
-  _parseQuery : function(q)
-  {
+
+  _parseQuery: function (q) {
     var result = $.trim(q).split(/\s+/);
-    
+
     var noData = true;
-    for( var i=0; i<result.length; i++ )
-    {
-      if ( result[i] != "" )
-      {
+    for (var i = 0; i < result.length; i++) {
+      if (result[i] != "") {
         noData = false;
         break;
       }
     }
-    
-    return ( noData ? [] : result );
+
+    return (noData ? [] : result);
   },
-  
-  _queryEquals :function( q1, q2 )
-  {
-    if ( !q1 && q2 ) return false;
-    if ( q1.length != q2.length ) return false;
-    
-    for( var i=0; i<q1.length; i++ )
-    {
-      if ( q1[i] != q2[i] ) return false;
+
+  _queryEquals: function (q1, q2) {
+    if (!q1 && q2) return false;
+    if (q1.length != q2.length) return false;
+
+    for (var i = 0; i < q1.length; i++) {
+      if (q1[i] != q2[i]) return false;
     }
-    
+
     return true;
-    
-    
+
+
   },
-  
-  _check : function()
-  {
-    if ( this._checkTimerId ) clearTimeout( this._checkTimerId );
+
+  _check: function () {
+    if (this._checkTimerId) clearTimeout(this._checkTimerId);
     this._checkTimerId = null;
-    
-    var q  =this._targetInput.val();
-    var queryList = this._parseQuery( this._targetInput.val() );
-    
-    if ( !this._queryEquals( this._state.queryList, queryList) )
-    {
-      this._state.queryList=queryList;
+
+    var q = this._targetInput.val();
+    var queryList = this._parseQuery(this._targetInput.val());
+
+    if (!this._queryEquals(this._state.queryList, queryList)) {
+      this._state.queryList = queryList;
       this._search();
     }
-    else if ( this._firstCheck && this._state.result )
-    {
-      this.fire( "focus" );
+    else if (this._firstCheck && this._state.result) {
+      this.fire("focus");
       this._firstCheck = false;
     }
-    
-    
-    this._checkTimerId = setTimeout( MA.bind( function(){
-      
+
+
+    this._checkTimerId = setTimeout(MA.bind(function () {
+
       this._check();
-    }, this ),500 );
+    }, this), 500);
   },
-  
-  stop : function()
-  {
-    if ( this._checkTimerId ) clearTimeout( this._checkTimerId );
+
+  stop: function () {
+    if (this._checkTimerId) clearTimeout(this._checkTimerId);
     this._checkTimerId = null;
   },
-  
-  
-  _search : function()
-  {
+
+
+  _search: function () {
     this._stopSearch();
-    if ( this._state.queryList.length <= 0 )
-    {
+    if (this._state.queryList.length <= 0) {
       // 検索クリア
       delete this._state["result"];
       this.fire("clear");
@@ -12292,70 +11596,63 @@ GSI.LayerTreeSearcher = MA.Class.extend( {
     }
     this._state.result = [];
     this._state.resultHash = {};
-    
+
     this._state.convertedQueryList = [];
-    for( var i =0; i<this._state.queryList.length; i++ )
-    {
-      this._state.convertedQueryList.push( this._convertSearchString( this._state.queryList[i]) );
+    for (var i = 0; i < this._state.queryList.length; i++) {
+      this._state.convertedQueryList.push(this._convertSearchString(this._state.queryList[i]));
     }
-    
-    if ( !this._layerList )
-    {
+
+    if (!this._layerList) {
       this._layerList = [];
-      this._createLayerList( this._layerList, this._layersJSON.tree );
+      this._createLayerList(this._layerList, this._layersJSON.tree);
     }
-    
+
     this._searching = true;
-    this.fire( "start" );
+    this.fire("start");
     this._searchIndex = -1;
     this._searchNext();
-      //if ( item.src && item.src != "" )
-      //console.log( item );
+    //if ( item.src && item.src != "" )
+    //console.log( item );
   },
-  
-  _stopSearch : function()
-  {
-    
-    if ( this._loadEntriesRequest )
+
+  _stopSearch: function () {
+
+    if (this._loadEntriesRequest)
       this._loadEntriesRequest.abort();
     this._loadEntriesRequest = null;
-    
-    if ( this._searchTimerId ) clearTimeout( this._searchTimerId );
+
+    if (this._searchTimerId) clearTimeout(this._searchTimerId);
     this._searchTimerId = null;
     delete this._state["result"];
-    
-    
-    if( this._searching )
-      this.fire( "finish", {} );
-    
+
+
+    if (this._searching)
+      this.fire("finish", {});
+
     this._searching = false;
   },
-  
-  _convertSearchItem : function(item)
-  {
-    
-    if ( !item._forSearch )
+
+  _convertSearchItem: function (item) {
+
+    if (!item._forSearch)
       item._forSearch = {};
-      
-    if ( !item._forSearch.title )
+
+    if (!item._forSearch.title)
       item._forSearch.title = this._convertSearchString(item.title);
-    
-    if ( !item.tag || item.tag == "" ) return;
+
+    if (!item.tag || item.tag == "") return;
     var tags = $.trim(item.tag).split(/\s+/);
-    if ( !item._forSearch.tags )
-    {
+    if (!item._forSearch.tags) {
       item._forSearch.tags = [];
-      for( var i=0; i<tags.length; i++ )
-      {
-        item._forSearch.tags.push( this._convertSearchString(tags[i]) );
+      for (var i = 0; i < tags.length; i++) {
+        item._forSearch.tags.push(this._convertSearchString(tags[i]));
       }
     }
-    
-    
+
+
   },
-  _convertSearchString : function(src)
-  {
-    
+  _convertSearchString: function (src) {
+
     src = src.replace(/[Ａ-Ｚａ-ｚ０-９]/g, function (s) {
       return String.fromCharCode(s.charCodeAt(0) - 65248);
     });
@@ -12364,148 +11661,127 @@ GSI.LayerTreeSearcher = MA.Class.extend( {
     src = src.replace(reg, function (s) {
       return String.fromCharCode(s.charCodeAt(0) - 65248);
     }).replace(/[‐－―]/g, '-');
-    
+
     src = src.replace(/[～?]/g, '~');
     src = src.replace(/　/g, ' ');
-    
+
     reg = new RegExp('(' + Object.keys(GSI.LayerTreeSearcher.hanKanaMap).join('|') + ')', 'g');
-    src= src
+    src = src
       .replace(reg, function (match) {
         return GSI.LayerTreeSearcher.hanKanaMa[match];
       })
       .replace(/ﾞ/g, '゛')
       .replace(/ﾟ/g, '゜');
-      
+
     return src.toLowerCase();
   },
-  
-  
-  _hitCheck : function(item )
-  {
+
+
+  _hitCheck: function (item) {
     var queryList = [];
-    
-    
-    for( var i=0; i<this._state.convertedQueryList.length; i++ )
-    {
-      queryList.push( {
-        q :this._state.convertedQueryList[i],
-        hit : false
-      } );
+
+
+    for (var i = 0; i < this._state.convertedQueryList.length; i++) {
+      queryList.push({
+        q: this._state.convertedQueryList[i],
+        hit: false
+      });
     }
-    
-    
-    
+
+
+
     // 親のチェック
-    if ( item.type!="LayerGroup"  && item.parent )
-    {
-      
-      for( var i=0; i<queryList.length; i++ )
-      {
+    if (item.type != "LayerGroup" && item.parent) {
+
+      for (var i = 0; i < queryList.length; i++) {
         var q = queryList[i]
-        if( !item.parent._forSearch.title || !q.q ) continue;
-        if ( item.parent._forSearch.title.indexOf( q.q ) >= 0 )
-        {
+        if (!item.parent._forSearch.title || !q.q) continue;
+        if (item.parent._forSearch.title.indexOf(q.q) >= 0) {
           q.hit = true;
           continue;
         }
-        if ( item.parent._forSearch.tags )
-        {
-          for( var j=0; j<item.parent._forSearch.tags.length; j++ )
-          {
-            if ( item.parent._forSearch.tags[j].indexOf( q.q ) >= 0 )
-            {
+        if (item.parent._forSearch.tags) {
+          for (var j = 0; j < item.parent._forSearch.tags.length; j++) {
+            if (item.parent._forSearch.tags[j].indexOf(q.q) >= 0) {
               q.hit = true;
               break;
             }
           }
         }
-        
+
       }
     }
     // チェック
-    for( var i=0; i<queryList.length; i++ )
-    {
+    for (var i = 0; i < queryList.length; i++) {
       var q = queryList[i]
-      if( !item._forSearch.title || !q.q ) continue;
-      if ( item._forSearch.title.indexOf( q.q ) >= 0 )
-      {
+      if (!item._forSearch.title || !q.q) continue;
+      if (item._forSearch.title.indexOf(q.q) >= 0) {
         q.hit = true;
         continue;
       }
-      if ( item._forSearch.tags )
-      {
-        for( var j=0; j<item._forSearch.tags.length; j++ )
-        {
-          if ( item._forSearch.tags[j].indexOf( q.q ) >= 0 )
-          {
+      if (item._forSearch.tags) {
+        for (var j = 0; j < item._forSearch.tags.length; j++) {
+          if (item._forSearch.tags[j].indexOf(q.q) >= 0) {
             q.hit = true;
             break;
           }
         }
       }
-      
+
     }
-    
+
     var hit = true;
-    for( var i=0; i<queryList.length; i++ )
-    {
-      if ( !queryList[i].hit )
-      {
+    for (var i = 0; i < queryList.length; i++) {
+      if (!queryList[i].hit) {
         hit = false;
       }
-      
+
     }
-    
-    
-    
-    if ( !hit && item.layerType == "multiLayer" && item.entries )
-    {
-      for( var i=0; i<item.entries.length; i++ )
-      {
-        
-        this._convertSearchItem( item.entries[i] );
-        if ( this._hitCheck( item.entries[i] ) )
-        {
-          
+
+
+
+    if (!hit && item.layerType == "multiLayer" && item.entries) {
+      for (var i = 0; i < item.entries.length; i++) {
+
+        this._convertSearchItem(item.entries[i]);
+        if (this._hitCheck(item.entries[i])) {
+
           hit = true;
           break;
         }
       }
     }
-    
-    
-    
+
+
+
     return hit;
   },
-  
-  
-  _searchNext : function()
-  {
-    if ( this._searchTimerId ) clearTimeout( this._searchTimerId );
+
+
+  _searchNext: function () {
+    if (this._searchTimerId) clearTimeout(this._searchTimerId);
     this._searchTimerId = null;
-    
-    
-    this._searchIndex ++ ;
-    
-    if ( this._searchIndex >= this._layerList.length )
-    {
+
+
+    this._searchIndex++;
+
+    if (this._searchIndex >= this._layerList.length) {
       // 終了
-      if( this._searching )
-        this.fire( "finish", {result:this._state.result} );
-      
+      if (this._searching)
+        this.fire("finish", { result: this._state.result });
+
       this._searching = false;
       return;
     }
-    
+
     var len = this._layerList.length;
-    var end = this._searchIndex+this.options.serchNum;
+    var end = this._searchIndex + this.options.serchNum;
     var hitList = [];
-    
-    for( var i=this._searchIndex; i<end && i<this._layerList.length; i++ )
-    {
-      
+
+    for (var i = this._searchIndex; i < end && i < this._layerList.length; i++) {
+
       var item = this._layerList[i];
-      this._convertSearchItem( item );
+      this._convertSearchItem(item);
       item._forSearch.hit = false;
       /*
       if ( item.parent && item.parent._forSearch && item.parent._forSearch.hit )
@@ -12529,21 +11805,18 @@ GSI.LayerTreeSearcher = MA.Class.extend( {
       }
       
       */
-      
-      if ( item.src && item.src!="" && !item.entries )
-      {
-        
-        if ( !this._loadEntries(item) ) 
-        {
-          this.fire( "hit", {list:hitList, result: this._state.result} );
+
+      if (item.src && item.src != "" && !item.entries) {
+
+        if (!this._loadEntries(item)) {
+          this.fire("hit", { list: hitList, result: this._state.result });
           return;
         }
-        
+
       }
-      
-      
-      if ( this._hitCheck( item ) )
-      {
+
+
+      if (this._hitCheck(item)) {
         /*
         if (item["type"] == "LayerGroup" )
         {
@@ -12551,157 +11824,144 @@ GSI.LayerTreeSearcher = MA.Class.extend( {
         }
         else
         */
-        
-        if ( !this._state.result )
-        {
+
+        if (!this._state.result) {
           this._state.result = [];
           this._state.resultHash = {};
         }
-        
-          
-        if ( !item.id || item.id == "" || !this._state.resultHash[ item.id ] )
-        {
-          this._state.resultHash[ item.id ] = item;
-          if ( item.type=="LayerGroup"  || !item.parent || !this._state.resultHash[item.parent.id] )
-          {
-            this._state.result.push( item );
-            hitList.push( item );
+
+
+        if (!item.id || item.id == "" || !this._state.resultHash[item.id]) {
+          this._state.resultHash[item.id] = item;
+          if (item.type == "LayerGroup" || !item.parent || !this._state.resultHash[item.parent.id]) {
+            this._state.result.push(item);
+            hitList.push(item);
           }
-          
+
         }
         else
-          this._state.resultHash[ item.id ] = item;
+          this._state.resultHash[item.id] = item;
       }
       else
         item._forSearch.hit = false;
-      
+
       this._searchIndex++;
     }
-    
+
     this._searchIndex--;
-    
-    this.fire( "hit", {list:hitList, result: this._state.result} );
-    
-    
-    this._searchTimerId = setTimeout( MA.bind( this._searchNext, this ),100 );
-    
+
+    this.fire("hit", { list: hitList, result: this._state.result });
+
+
+    this._searchTimerId = setTimeout(MA.bind(this._searchNext, this), 100);
+
   },
-  
-  
-  _parseLayers : function(data, item)
-  {
+
+
+  _parseLayers: function (data, item) {
     var json = JSON.parse(data);
-    if(json.layers)
-    {
-      for(var i = 0; i < json.layers.length; i++)
-      {
-        json.layers[i].parent  = item;
+    if (json.layers) {
+      for (var i = 0; i < json.layers.length; i++) {
+        json.layers[i].parent = item;
         json.layers[i].src_url = item.src_url;
       }
-      
+
       item.entries = json.layers;
       this._layersJSON._initializeTree(item.entries, item);
     }
-    
+
     var list = [];
-    this._createLayerList( list, item.entries );
-    
-    for( var i = list.length-1; i>=0; i-- )
-    {
-      this._layerList.splice( this._searchIndex+1, 0, list[i]);
+    this._createLayerList(list, item.entries);
+
+    for (var i = list.length - 1; i >= 0; i--) {
+      this._layerList.splice(this._searchIndex + 1, 0, list[i]);
     }
   },
-  
-  _loadEntries : function(item)
-  {
-    
-    if( !item.src_ && item.src.indexOf('./') == 0 )
-    {
+
+  _loadEntries: function (item) {
+
+    if (!item.src_ && item.src.indexOf('./') == 0) {
       var path = item.src_url.substring(0, item.src_url.lastIndexOf('/'));
       item.src_ = true;
-      item.src  = path + "/" + item.src.substr(2);
+      item.src = path + "/" + item.src.substr(2);
     }
-    
-    
-    if ( GSI.LayerTreeDialog.layersJSONCache &&
-      GSI.LayerTreeDialog.layersJSONCache[item.src] )
-    {
-      this._parseLayers( 	GSI.LayerTreeDialog.layersJSONCache[item.src], item );
-      
+
+
+    if (GSI.LayerTreeDialog.layersJSONCache &&
+      GSI.LayerTreeDialog.layersJSONCache[item.src]) {
+      this._parseLayers(GSI.LayerTreeDialog.layersJSONCache[item.src], item);
+
       return true;
     }
-    
-    
+
+
     this._loadEntriesRequest = $.ajax({
-      type     : "GET",
-      url      : item.src,
-      dataType : "text",
-      cache    : true
+      type: "GET",
+      url: item.src,
+      dataType: "text",
+      cache: true
     })
-    .done( MA.bind(function(item,data ) {
-      
-      if ( !GSI.LayerTreeDialog.layersJSONCache ) GSI.LayerTreeDialog.layersJSONCache = {};
-      GSI.LayerTreeDialog.layersJSONCache[item.src] = data;
-      this._parseLayers( data, item );
-      
+      .done(MA.bind(function (item, data) {
+
+        if (!GSI.LayerTreeDialog.layersJSONCache) GSI.LayerTreeDialog.layersJSONCache = {};
+        GSI.LayerTreeDialog.layersJSONCache[item.src] = data;
+        this._parseLayers(data, item);
+
         this._searchIndex--;
-    }, this, item) )
-    .fail( MA.bind(function(item,data ) {
-      // スキップ
-    }, this, item) )
-    .always( MA.bind(function() {
-      
-      this._searchNext();
-      
-    }, this) );
-    
+      }, this, item))
+      .fail(MA.bind(function (item, data) {
+        // スキップ
+      }, this, item))
+      .always(MA.bind(function () {
+
+        this._searchNext();
+
+      }, this));
+
     return false;
   },
-  
-  _createLayerList : function( result, list )
-  {
-    if ( !list ) return;
-    
-    for ( var i=0; i<list.length; i++ )
-    {
+
+  _createLayerList: function (result, list) {
+    if (!list) return;
+
+    for (var i = 0; i < list.length; i++) {
       var item = list[i];
-      
-      result.push( item );
-      if ( item["type"] == "LayerGroup" && item.layerType != "multiLayer" )
-      {
-        this._createLayerList( result, item.entries );
+
+      result.push(item);
+      if (item["type"] == "LayerGroup" && item.layerType != "multiLayer") {
+        this._createLayerList(result, item.entries);
       }
-      
+
     }
-    
+
   }
-  
-  
 
 
-} );
 
 
-GSI.LayerTreeSearcher.hanKanaMap ={
-'ｶﾞ': 'ガ', 'ｷﾞ': 'ギ', 'ｸﾞ': 'グ', 'ｹﾞ': 'ゲ', 'ｺﾞ': 'ゴ',
-'ｻﾞ': 'ザ', 'ｼﾞ': 'ジ', 'ｽﾞ': 'ズ', 'ｾﾞ': 'ゼ', 'ｿﾞ': 'ゾ',
-'ﾀﾞ': 'ダ', 'ﾁﾞ': 'ヂ', 'ﾂﾞ': 'ヅ', 'ﾃﾞ': 'デ', 'ﾄﾞ': 'ド',
-'ﾊﾞ': 'バ', 'ﾋﾞ': 'ビ', 'ﾌﾞ': 'ブ', 'ﾍﾞ': 'ベ', 'ﾎﾞ': 'ボ',
-'ﾊﾟ': 'パ', 'ﾋﾟ': 'ピ', 'ﾌﾟ': 'プ', 'ﾍﾟ': 'ペ', 'ﾎﾟ': 'ポ',
-'ｳﾞ': 'ヴ', 'ﾜﾞ': '?', 'ｦﾞ': '?',
-'ｱ': 'ア', 'ｲ': 'イ', 'ｳ': 'ウ', 'ｴ': 'エ', 'ｵ': 'オ',
-'ｶ': 'カ', 'ｷ': 'キ', 'ｸ': 'ク', 'ｹ': 'ケ', 'ｺ': 'コ',
-'ｻ': 'サ', 'ｼ': 'シ', 'ｽ': 'ス', 'ｾ': 'セ', 'ｿ': 'ソ',
-'ﾀ': 'タ', 'ﾁ': 'チ', 'ﾂ': 'ツ', 'ﾃ': 'テ', 'ﾄ': 'ト',
-'ﾅ': 'ナ', 'ﾆ': 'ニ', 'ﾇ': 'ヌ', 'ﾈ': 'ネ', 'ﾉ': 'ノ',
-'ﾊ': 'ハ', 'ﾋ': 'ヒ', 'ﾌ': 'フ', 'ﾍ': 'ヘ', 'ﾎ': 'ホ',
-'ﾏ': 'マ', 'ﾐ': 'ミ', 'ﾑ': 'ム', 'ﾒ': 'メ', 'ﾓ': 'モ',
-'ﾔ': 'ヤ', 'ﾕ': 'ユ', 'ﾖ': 'ヨ',
-'ﾗ': 'ラ', 'ﾘ': 'リ', 'ﾙ': 'ル', 'ﾚ': 'レ', 'ﾛ': 'ロ',
-'ﾜ': 'ワ', 'ｦ': 'ヲ', 'ﾝ': 'ン',
-'ｧ': 'ァ', 'ｨ': 'ィ', 'ｩ': 'ゥ', 'ｪ': 'ェ', 'ｫ': 'ォ',
-'ｯ': 'ッ', 'ｬ': 'ャ', 'ｭ': 'ュ', 'ｮ': 'ョ',
-'｡': '。', '､': '、', 'ｰ': 'ー', '｢': '「', '｣': '」', '･': '・'
+});
+
+
+GSI.LayerTreeSearcher.hanKanaMap = {
+  'ｶﾞ': 'ガ', 'ｷﾞ': 'ギ', 'ｸﾞ': 'グ', 'ｹﾞ': 'ゲ', 'ｺﾞ': 'ゴ',
+  'ｻﾞ': 'ザ', 'ｼﾞ': 'ジ', 'ｽﾞ': 'ズ', 'ｾﾞ': 'ゼ', 'ｿﾞ': 'ゾ',
+  'ﾀﾞ': 'ダ', 'ﾁﾞ': 'ヂ', 'ﾂﾞ': 'ヅ', 'ﾃﾞ': 'デ', 'ﾄﾞ': 'ド',
+  'ﾊﾞ': 'バ', 'ﾋﾞ': 'ビ', 'ﾌﾞ': 'ブ', 'ﾍﾞ': 'ベ', 'ﾎﾞ': 'ボ',
+  'ﾊﾟ': 'パ', 'ﾋﾟ': 'ピ', 'ﾌﾟ': 'プ', 'ﾍﾟ': 'ペ', 'ﾎﾟ': 'ポ',
+  'ｳﾞ': 'ヴ', 'ﾜﾞ': '?', 'ｦﾞ': '?',
+  'ｱ': 'ア', 'ｲ': 'イ', 'ｳ': 'ウ', 'ｴ': 'エ', 'ｵ': 'オ',
+  'ｶ': 'カ', 'ｷ': 'キ', 'ｸ': 'ク', 'ｹ': 'ケ', 'ｺ': 'コ',
+  'ｻ': 'サ', 'ｼ': 'シ', 'ｽ': 'ス', 'ｾ': 'セ', 'ｿ': 'ソ',
+  'ﾀ': 'タ', 'ﾁ': 'チ', 'ﾂ': 'ツ', 'ﾃ': 'テ', 'ﾄ': 'ト',
+  'ﾅ': 'ナ', 'ﾆ': 'ニ', 'ﾇ': 'ヌ', 'ﾈ': 'ネ', 'ﾉ': 'ノ',
+  'ﾊ': 'ハ', 'ﾋ': 'ヒ', 'ﾌ': 'フ', 'ﾍ': 'ヘ', 'ﾎ': 'ホ',
+  'ﾏ': 'マ', 'ﾐ': 'ミ', 'ﾑ': 'ム', 'ﾒ': 'メ', 'ﾓ': 'モ',
+  'ﾔ': 'ヤ', 'ﾕ': 'ユ', 'ﾖ': 'ヨ',
+  'ﾗ': 'ラ', 'ﾘ': 'リ', 'ﾙ': 'ル', 'ﾚ': 'レ', 'ﾛ': 'ロ',
+  'ﾜ': 'ワ', 'ｦ': 'ヲ', 'ﾝ': 'ン',
+  'ｧ': 'ァ', 'ｨ': 'ィ', 'ｩ': 'ゥ', 'ｪ': 'ェ', 'ｫ': 'ォ',
+  'ｯ': 'ッ', 'ｬ': 'ャ', 'ｭ': 'ュ', 'ｮ': 'ョ',
+  '｡': '。', '､': '、', 'ｰ': 'ー', '｢': '「', '｣': '」', '･': '・'
 };
 
 
@@ -12709,38 +11969,35 @@ GSI.LayerTreeSearcher.hanKanaMap ={
 /************************************************************************
     - GSI.LayerTreeDialog
 ************************************************************************/
-GSI.LayerTreeDialog = GSI.Dialog.extend( {
+GSI.LayerTreeDialog = GSI.Dialog.extend({
 
-  options : {
-    title : '情報リスト'
+  options: {
+    title: '情報リスト'
   },
-  _activeTabIndex : -1,
-  
-  initialize : function(mapLayerList,cocoTileLayer, layersTab, options)
-  {
+  _activeTabIndex: -1,
+
+  initialize: function (mapLayerList, cocoTileLayer, layersTab, options) {
     this.mapLayerList = mapLayerList;
     this.cocoTileLayer = cocoTileLayer;
     this.layersTab = layersTab;
-    this.mapLayerList.on( 'change', MA.bind( this.onMapLayerListChange, this ) );
+    this.mapLayerList.on('change', MA.bind(this.onMapLayerListChange, this));
     GSI.Dialog.prototype.initialize.call(this, options);
 
-        this._current_id = this.path = this.options.currentPath;
-        this.container.attr('id', 'dialog_layertree');
-    this.container.css( { top: '50px'} );
+    this._current_id = this.path = this.options.currentPath;
+    this.container.attr('id', 'dialog_layertree');
+    this.container.css({ top: '50px' });
   },
-  
-  _clearSearch : function()
-  {
+
+  _clearSearch: function () {
     this._searchResult.find("ul").empty().hide();
     this._hideSearchResult();
   },
-  
-  _startSearch : function()
-  {
-    this._searchResult.find("ul").empty().scrollTop( 0 ).hide();
-    
+
+  _startSearch: function () {
+    this._searchResult.find("ul").empty().scrollTop(0).hide();
+
     this._searchResultTextFrame.find("span").html("検索中");
-    this._searchResultTextFrame.css( {"background-image":"url(./image/system/loading003.gif)"} );
+    this._searchResultTextFrame.css({ "background-image": "url(./image/system/loading003.gif)" });
     /*
     this._searchResult.find(".layertreedialog_searchresult_header")
       .css( {"background-image":"url(./image/system/loading003.gif)"} )
@@ -12748,308 +12005,276 @@ GSI.LayerTreeDialog = GSI.Dialog.extend( {
     */
     this._showSearchResult();
   },
-  _makePankzu : function( target )
-  {
-    
-    if ( target._appendInfo ) target = target._appendInfo;
-    
+  _makePankzu: function (target) {
+
+    if (target._appendInfo) target = target._appendInfo;
+
     target = target.parent;
     var result = '';
-    while( target )
-    {
-      result = target.title + (result == '' ?'': '&gt;') + result;
+    while (target) {
+      result = target.title + (result == '' ? '' : '&gt;') + result;
       target = target.parent;
     }
 
     return result;
   },
-  _makeSearchResultItem : function( item )
-  {
-    
+  _makeSearchResultItem: function (item) {
+
     var cocoVisible = this.cocoTileLayer.getVisible();
-    var li = $( "<li>" );
-    
-    if ( item.type == "LayerGroup" )
+    var li = $("<li>");
+
+    if (item.type == "LayerGroup")
       li.addClass("folder");
-    
-    li.data({"item":item});
-    
-    if ( !cocoVisible || !item.cocotile || item.hasTile )
+
+    li.data({ "item": item });
+
+    if (!cocoVisible || !item.cocotile || item.hasTile)
       li.removeClass("nococotile");
     else
       li.addClass("nococotile");
-      
-    var a = $( "<a>" ).attr({"href":"javascript:void(0);"});
-    
-    var div = $( "<div>" ).addClass("pankuzu").html(this._makePankzu( item ));
-    
-    a.append( div );
-    
-    div = $( "<div>" ).addClass("title").html(item.title);
-    
-    a.append( div );
-    
-    li.append( a );
-    
-    a.click( MA.bind( function(item){
-      if ( item.type=="LayerGroup" )
-      {
+
+    var a = $("<a>").attr({ "href": "javascript:void(0);" });
+
+    var div = $("<div>").addClass("pankuzu").html(this._makePankzu(item));
+
+    a.append(div);
+
+    div = $("<div>").addClass("title").html(item.title);
+
+    a.append(div);
+
+    li.append(a);
+
+    a.click(MA.bind(function (item) {
+      if (item.type == "LayerGroup") {
         this._hideSearchResult();
-        this.onFolderClick( null, item );
+        this.onFolderClick(null, item);
       }
-      else
-      {
-        this.onItemClick( null,item )
+      else {
+        this.onItemClick(null, item)
       }
       //this._hideSearchResult();
-    }, this,item ) );
-    
+    }, this, item));
+
     return li;
   },
-  
-  _showSearchResult : function()
-  {
-  
+
+  _showSearchResult: function () {
+
     this.listFrame.stop().hide();
     this._searchResult.stop().show();
     this._titleTextFrame.hide();
     this._searchResultTextFrame.show();
-    
-    if ( !this._searchResultWindowMouseDown )
-    {
-      this._searchResultWindowMouseDown = MA.bind( function(e){
-        if ( this._searchResult[0] != e.target 
-          && this._searchResult.find( e.target ).length <=0
+
+    if (!this._searchResultWindowMouseDown) {
+      this._searchResultWindowMouseDown = MA.bind(function (e) {
+        if (this._searchResult[0] != e.target
+          && this._searchResult.find(e.target).length <= 0
           && this._queryInput[0] != e.target
-          )
-        {
+        ) {
           this._queryInput[0].blur();
           this._hideSearchResult();
         }
-      }, this );
+      }, this);
     }
-    
-    
+
+
   },
-  
-  _onClearSearchClick : function()
-  {
+
+  _onClearSearchClick: function () {
     this._hideSearchResult();
   },
-  
-  _hideSearchResult : function()
-  {
+
+  _hideSearchResult: function () {
     this._searchResult.stop().hide();
     this.listFrame.stop().show();
     this._searchResultTextFrame.hide();
     this._titleTextFrame.show();
-    
+
   },
-  
-  
-  _appendSearchResult : function(list, all)
-  {
+
+
+  _appendSearchResult: function (list, all) {
     var cocoVisible = this.cocoTileLayer.getVisible();
-    var ul = this._searchResult.find( "ul" );
-    if ( all.length > 0 )ul.show();
-    
-    for( var i=0; i<list.length; i++ )
-    {
-      ul.append( this._makeSearchResultItem(list[i]) );
+    var ul = this._searchResult.find("ul");
+    if (all.length > 0) ul.show();
+
+    for (var i = 0; i < list.length; i++) {
+      ul.append(this._makeSearchResultItem(list[i]));
     }
-    
-    
-    
-    if ( all )
-    {
+
+
+
+    if (all) {
       var num = this._getSearchResultNum();
       this._searchResultTextFrame.find("span")
-        .html("検索中" + ( cocoVisible ? "(表示範囲) " : "" ) + ":"  + num + "件" );
+        .html("検索中" + (cocoVisible ? "(表示範囲) " : "") + ":" + num + "件");
     }
-    else
-    {
+    else {
       this._searchResultTextFrame.find("span")
-        .html("検索中" + ( cocoVisible ? "(表示範囲) " : "" ) + ":" );
+        .html("検索中" + (cocoVisible ? "(表示範囲) " : "") + ":");
     }
   },
-  
-  _getSearchResultNum : function()
-  {
+
+  _getSearchResultNum: function () {
     var result = 0;
-    
-    var ul = this._searchResult.find( "ul" );
+
+    var ul = this._searchResult.find("ul");
     var list = ul.find("li").not(".nococotile");
-    
-    for( var i=0; i<list.length; i++ )
-    {
-      var item = $( list[i] ).data("item");
-      
-      if ( item.type == "LayerGroup" && item.entries )
-      {
-        for ( var j=0; j<item.entries.length; j++ )
-        {
-          if ( item.entries[j].type != "LayerGroup" ) result ++;
+
+    for (var i = 0; i < list.length; i++) {
+      var item = $(list[i]).data("item");
+
+      if (item.type == "LayerGroup" && item.entries) {
+        for (var j = 0; j < item.entries.length; j++) {
+          if (item.entries[j].type != "LayerGroup") result++;
         }
       }
       else
         result++;
     }
-    
+
     return result;
   },
-  _refreshSearchResult : function()
-  {
-    if ( !this._searchResult ) return;
-    
+  _refreshSearchResult: function () {
+    if (!this._searchResult) return;
+
     var cocoVisible = this.cocoTileLayer.getVisible();
-    var ul = this._searchResult.find( "ul" );
-    
+    var ul = this._searchResult.find("ul");
+
     var liList = ul.find("li");
-    
-    for( var i=0;i<liList.length; i++ )
-    {
-      var li = $(liList[i] );
+
+    for (var i = 0; i < liList.length; i++) {
+      var li = $(liList[i]);
       var item = li.data("item");
-      if ( !cocoVisible || !item.cocotile || item.hasTile )
+      if (!cocoVisible || !item.cocotile || item.hasTile)
         li.removeClass("nococotile");
       else
         li.addClass("nococotile");
     }
-    
+
     this._finishSearch();
   },
-  
-  _finishSearch : function(list)
-  {
-    
+
+  _finishSearch: function (list) {
+
     var cocoVisible = this.cocoTileLayer.getVisible();
-    var ul = this._searchResult.find( "ul" );
+    var ul = this._searchResult.find("ul");
     var num = this._getSearchResultNum();
-    this._searchResultTextFrame.css( {"background-image":"url(./image/system/info.png)"} )
+    this._searchResultTextFrame.css({ "background-image": "url(./image/system/info.png)" })
       .find("span")
-      .html("検索結果" + ( cocoVisible ? "(表示範囲) " : "" ) + ":" + num + "件");
+      .html("検索結果" + (cocoVisible ? "(表示範囲) " : "") + ":" + num + "件");
   },
-  
-  createHeader : function()
-  {
-    this.headerFrame.addClass( "tab");
-    this._titleFrame = $( '<div>' );
+
+  createHeader: function () {
+    this.headerFrame.addClass("tab");
+    this._titleFrame = $('<div>');
     this._titleFrame.append($("<div>").html("情報リスト"));
-    
-    this._tabFrame = $( '<div>' ).addClass("layertreedialog_tab_frame");
-    
-    for( var i=0; i<this.layersTab.length; i++ )
-    {
-      var  tabInfo = this.layersTab[i];
-      
-      var a = $("<a>").css({"font-size":"90%"})
-      .attr( {"href":"javascript:void(0);"} )
-      .data ({"tabInfo":tabInfo, "idx" : i})
-      .click(MA.bind(this._onTabClick, this ) )
-      .css( {"z-index": this.layersTab.length - i} );
-      
+
+    this._tabFrame = $('<div>').addClass("layertreedialog_tab_frame");
+
+    for (var i = 0; i < this.layersTab.length; i++) {
+      var tabInfo = this.layersTab[i];
+
+      var a = $("<a>").css({ "font-size": "90%" })
+        .attr({ "href": "javascript:void(0);" })
+        .data({ "tabInfo": tabInfo, "idx": i })
+        .click(MA.bind(this._onTabClick, this))
+        .css({ "z-index": this.layersTab.length - i });
+
       var leftTriangle = $("<div>").html("").addClass("left_triangle").append("<div>");
       var centerTitle = $("<div>").html(tabInfo.caption).addClass("center_text");
       var rightTriangle = $("<div>").html("").addClass("right_triangle").append("<div>");
-      
-      a.append( leftTriangle ).append( centerTitle ).append( rightTriangle );
-      
-      this._tabFrame.append( a );
+
+      a.append(leftTriangle).append(centerTitle).append(rightTriangle);
+
+      this._tabFrame.append(a);
     }
-    
+
     //this._tabFrame.append( $("<div>").css({"clear":"both"}) );
     //this._titleTextFrame = $( '<div>' ).append( $('<span>').html(this.options.title ) ).addClass("title_frame");
     //this._titleFrame.append(this._tabFrame).append( this._titleTextFrame);//.append(this._titleControlFrame);
-    
-    
-    this._tabFrame.append( $("<div>").css({"clear":"both"}) );
+
+
+    this._tabFrame.append($("<div>").css({ "clear": "both" }));
     this._titleFrame.append(this._tabFrame); //.append( this._titleTextFrame);//.append(this._titleControlFrame);
-    
-    
-    
-    
-    this._tabScrollLeftBtn = $( "<a>" )
+
+
+
+
+    this._tabScrollLeftBtn = $("<a>")
       .addClass("tab_scroll_btn")
       .addClass("tab_scroll_left")
-      .attr({"href":"javascript:void(0);"})
-      .on( "mousedown", MA.bind(this._onTabScrollLeftMouseDown, this) )
-      .on( "mouseup", MA.bind(this._onTabScrollLeftMouseUp, this) );
-      
-    this._tabScrollRightBtn = $( "<a>" )
+      .attr({ "href": "javascript:void(0);" })
+      .on("mousedown", MA.bind(this._onTabScrollLeftMouseDown, this))
+      .on("mouseup", MA.bind(this._onTabScrollLeftMouseUp, this));
+
+    this._tabScrollRightBtn = $("<a>")
       .addClass("tab_scroll_btn")
       .addClass("tab_scroll_right")
-      .on( "mousedown", MA.bind(this._onTabScrollRightMouseDown, this) )
-      .on( "mouseup", MA.bind(this._onTabScrollRightMouseUp, this) );
-      
+      .on("mousedown", MA.bind(this._onTabScrollRightMouseDown, this))
+      .on("mouseup", MA.bind(this._onTabScrollRightMouseUp, this));
+
     this._titleFrame.append(this._tabScrollLeftBtn).append(this._tabScrollRightBtn);
-    
-    if ( this.layersTab.length <= 1 )
-    {
-      this.headerFrame.removeClass( "tab");
+
+    if (this.layersTab.length <= 1) {
+      this.headerFrame.removeClass("tab");
       this._tabScrollLeftBtn.hide();
       this._tabScrollRightBtn.hide();
       this._tabFrame.hide();
     }
     this.activateTab(0);
-    
-    
+
+
     return this._titleFrame;
-    
+
   },
-  
-  _onTabClick : function(event)
-  {
-    var a = $(event.currentTarget );
+
+  _onTabClick: function (event) {
+    var a = $(event.currentTarget);
     var newidx = a.data("idx");
 
-    if (this._activeTabIndex != newidx)
-    {
-      if (this._checkEvacuationLayer() == false)
-      {
+    if (this._activeTabIndex != newidx) {
+      if (this._checkEvacuationLayer() == false) {
         CONFIG.layerEvacuationIsConfirmOK = false;
         GSI.GLOBALS.evacDialog.hide();
       }
     }
-    
+
 
     this.activateTab(newidx);
   },
-  
-  activateTab : function(idx)
-  {
-    
-    
+
+  activateTab: function (idx) {
+
+
     this._tabFrame.find("a").removeClass("active");
     this._tabFrame.find("a").eq(idx).addClass("active");
-    
-    
+
+
     var tabArr = this._tabFrame.find("a");
-    for( var i=0; i<tabArr.length; i++ )
-    {
-      var zIndex = tabArr.length -i;
-      if ( idx == i ) zIndex = 99;
-      
-      $( tabArr[i]).css( {"z-index":zIndex} );
+    for (var i = 0; i < tabArr.length; i++) {
+      var zIndex = tabArr.length - i;
+      if (idx == i) zIndex = 99;
+
+      $(tabArr[i]).css({ "z-index": zIndex });
     }
-    
-    
-    
-    if ( this._activeTabIndex != idx )
-    {
+
+
+
+    if (this._activeTabIndex != idx) {
       this._activeTabIndex = idx;
 
-      if ( this.tree )
-      {
+      if (this.tree) {
         this.onFolderClick_Proc(this.tree[this._activeTabIndex]);
       }
     }
-    
-    
+
+
     this._initializeTabScrollBtns();
   },
 
-  _onResize : function()
-  {
+  _onResize: function () {
     /*
     GSI.Dialog.prototype._onResize.call(this);
 
@@ -13059,556 +12284,496 @@ GSI.LayerTreeDialog = GSI.Dialog.extend( {
 
     this.listFrame.css( { "max-height": 'none', height: height + 'px'} );
     */
-    
-    
+
+
     GSI.Dialog.prototype._onResize.call(this);
-    var height = this.container.outerHeight( false )
-      - this.headerFrame.outerHeight( true )
-      - this._searchFrame.outerHeight( true )
-      - ( this._titleTextFrame.is(":visible") ? this._titleTextFrame.outerHeight( true ) : 0 )
-      - ( this._searchResultTextFrame.is(":visible") ? this._searchResultTextFrame.outerHeight( true ) : 0 )
-      - this._controlFrame.outerHeight( true ) - 11;
+    var height = this.container.outerHeight(false)
+      - this.headerFrame.outerHeight(true)
+      - this._searchFrame.outerHeight(true)
+      - (this._titleTextFrame.is(":visible") ? this._titleTextFrame.outerHeight(true) : 0)
+      - (this._searchResultTextFrame.is(":visible") ? this._searchResultTextFrame.outerHeight(true) : 0)
+      - this._controlFrame.outerHeight(true) - 11;
 
-    this.listFrame.css( { "max-height": 'none', height: height + 'px'} );
+    this.listFrame.css({ "max-height": 'none', height: height + 'px' });
 
-    this._searchResult.css( { "max-height": 'none', height: height + 'px'} );
-    
-    
+    this._searchResult.css({ "max-height": 'none', height: height + 'px' });
+
+
     this._initializeTabScrollBtns();
-    
+
   },
-  
-  
-  _initializeTabScrollBtns : function()
-  {
+
+
+  _initializeTabScrollBtns: function () {
     var scrollLeft = this._tabFrame.scrollLeft();
-    
+
     var scrollContainerWidth = this._tabFrame.outerWidth();
-    var scrollInnerWidth = this._tabFrame.find("a").last().position().left-10 +
+    var scrollInnerWidth = this._tabFrame.find("a").last().position().left - 10 +
       this._tabFrame.find("a").last().outerWidth(true) + scrollLeft;
-    
-    
-    if ( scrollContainerWidth < scrollInnerWidth )
-    {
+
+
+    if (scrollContainerWidth < scrollInnerWidth) {
       var scrollMax = scrollInnerWidth - scrollContainerWidth;
-      if ( scrollMax <= scrollLeft )
-      {
+      if (scrollMax <= scrollLeft) {
         this._tabFrame.scrollLeft(scrollMax);
         this._tabScrollRightBtn.addClass("deactive");
       }
       else
         this._tabScrollRightBtn.removeClass("deactive");
-        
-      if ( scrollLeft > 0 )
+
+      if (scrollLeft > 0)
         this._tabScrollLeftBtn.removeClass("deactive");
       else
         this._tabScrollLeftBtn.addClass("deactive");
     }
-    else
-    {
+    else {
       this._tabScrollLeftBtn.addClass("deactive");
       this._tabScrollRightBtn.addClass("deactive");
       this._tabFrame.scrollLeft(0);
     }
-    
-    if ( scrollContainerWidth >= scrollInnerWidth)
-    {
+
+    if (scrollContainerWidth >= scrollInnerWidth) {
       this._tabScrollLeftBtn.hide();
       this._tabScrollRightBtn.hide();
     }
-    else
-    {
+    else {
       this._tabScrollLeftBtn.show();
       this._tabScrollRightBtn.show();
     }
-    
+
   },
-  
-  _onTabScrollLeftMouseDown : function()
-  {
-    if ( this._tabScrollLeftTimer )
-      clearTimeout(  this._tabScrollLeftTimer );
-    this._tabScrollLeftTimer = setTimeout( MA.bind( function(){
+
+  _onTabScrollLeftMouseDown: function () {
+    if (this._tabScrollLeftTimer)
+      clearTimeout(this._tabScrollLeftTimer);
+    this._tabScrollLeftTimer = setTimeout(MA.bind(function () {
       this._tabScrollLeft();
-    }, this ), 10 );
+    }, this), 10);
   },
-  
-  _onTabScrollLeftMouseUp : function()
-  {
-    if ( this._tabScrollLeftTimer )
-      clearTimeout(  this._tabScrollLeftTimer );
+
+  _onTabScrollLeftMouseUp: function () {
+    if (this._tabScrollLeftTimer)
+      clearTimeout(this._tabScrollLeftTimer);
     this._tabScrollLeftTimer = null;
   },
-  
-  
-  _tabScrollLeft : function()
-  {
+
+
+  _tabScrollLeft: function () {
     var scrollLeft = this._tabFrame.scrollLeft();
     var scrollContainerWidth = this._tabFrame.outerWidth();
-    var scrollInnerWidth = this._tabFrame.find("a").last().position().left-10 +
+    var scrollInnerWidth = this._tabFrame.find("a").last().position().left - 10 +
       this._tabFrame.find("a").last().outerWidth(true) + scrollLeft;
-    
+
     var scrollMax = scrollInnerWidth - scrollContainerWidth;
-    scrollLeft-=2;
-    if ( scrollLeft < 0 ) scrollLeft = 0;
+    scrollLeft -= 2;
+    if (scrollLeft < 0) scrollLeft = 0;
     this._tabFrame.scrollLeft(scrollLeft);
-    
-    
-    if ( scrollLeft > 0 )
-    {
+
+
+    if (scrollLeft > 0) {
       this._tabScrollLeftBtn.removeClass("deactive");
     }
     else
       this._tabScrollLeftBtn.addClass("deactive");
-    
-    
-    if ( scrollMax <= scrollLeft )
+
+
+    if (scrollMax <= scrollLeft)
       this._tabScrollRightBtn.addClass("deactive");
     else
       this._tabScrollRightBtn.removeClass("deactive");
-      
-    if ( scrollContainerWidth >= scrollInnerWidth)
-    {
+
+    if (scrollContainerWidth >= scrollInnerWidth) {
       this._tabScrollLeftBtn.hide();
       this._tabScrollRightBtn.hide();
     }
-    else
-    {
+    else {
       this._tabScrollLeftBtn.show();
       this._tabScrollRightBtn.show();
     }
-    
-    if ( !this._tabScrollLeftBtn.hasClass("deactive") )
-    {
-      this._tabScrollLeftTimer = setTimeout( MA.bind( function(){
+
+    if (!this._tabScrollLeftBtn.hasClass("deactive")) {
+      this._tabScrollLeftTimer = setTimeout(MA.bind(function () {
         this._tabScrollLeft();
-      }, this ), 10 );
+      }, this), 10);
     }
   },
-  
-  
-  _onTabScrollRightMouseDown : function()
-  {
-    if ( this._tabScrollRightTimer )
-      clearTimeout(  this._tabScrollRightTimer );
-    this._tabScrollRightTimer = setTimeout( MA.bind( function(){
+
+
+  _onTabScrollRightMouseDown: function () {
+    if (this._tabScrollRightTimer)
+      clearTimeout(this._tabScrollRightTimer);
+    this._tabScrollRightTimer = setTimeout(MA.bind(function () {
       this._tabScrollRight();
-    }, this ), 10 );
+    }, this), 10);
   },
-  
-  _onTabScrollRightMouseUp : function()
-  {
-    if ( this._tabScrollRightTimer )
-      clearTimeout(  this._tabScrollRightTimer );
+
+  _onTabScrollRightMouseUp: function () {
+    if (this._tabScrollRightTimer)
+      clearTimeout(this._tabScrollRightTimer);
     this._tabScrollRightTimer = null;
   },
-  
-  _tabScrollRight : function()
-  {
+
+  _tabScrollRight: function () {
     var scrollLeft = this._tabFrame.scrollLeft();
     var scrollContainerWidth = this._tabFrame.outerWidth();
-    var scrollInnerWidth = this._tabFrame.find("a").last().position().left-10 +
+    var scrollInnerWidth = this._tabFrame.find("a").last().position().left - 10 +
       this._tabFrame.find("a").last().outerWidth(true) + scrollLeft;
-    
+
     var scrollMax = scrollInnerWidth - scrollContainerWidth;
-    scrollLeft+=2;
-    if ( scrollLeft> scrollMax ) scrollLeft = scrollMax;
+    scrollLeft += 2;
+    if (scrollLeft > scrollMax) scrollLeft = scrollMax;
     this._tabFrame.scrollLeft(scrollLeft);
-    
-    
-    
-    if ( scrollLeft > 0 )
+
+
+
+    if (scrollLeft > 0)
       this._tabScrollLeftBtn.removeClass("deactive");
     else
       this._tabScrollLeftBtn.addClass("deactive");
-    
-    
-    if ( scrollMax <= scrollLeft )
+
+
+    if (scrollMax <= scrollLeft)
       this._tabScrollRightBtn.addClass("deactive");
     else
       this._tabScrollRightBtn.removeClass("deactive");
-      
-    if ( scrollContainerWidth >= scrollInnerWidth)
-    {
+
+    if (scrollContainerWidth >= scrollInnerWidth) {
       this._tabScrollLeftBtn.hide();
       this._tabScrollRightBtn.hide();
     }
-    else
-    {
+    else {
       this._tabScrollLeftBtn.show();
       this._tabScrollRightBtn.show();
     }
-    
-    
-    if ( !this._tabScrollRightBtn.hasClass("deactive") )
-    {
-      this._tabScrollRightTimer = setTimeout( MA.bind( function(){
+
+
+    if (!this._tabScrollRightBtn.hasClass("deactive")) {
+      this._tabScrollRightTimer = setTimeout(MA.bind(function () {
         this._tabScrollRight();
-      }, this ), 10 );
+      }, this), 10);
     }
   },
-  
-  
-  createContent : function()
-  {
+
+
+  createContent: function () {
     this._contentFrame = $('<div>');
     this._searchFrame = this.createSearchFrame();
-    this._contentFrame.append( this._searchFrame  );
-    
+    this._contentFrame.append(this._searchFrame);
+
     this._controlFrame = this._createControl();
-    this.listFrame = $( '<div>' ).addClass( 'layertreedialog_ul_frame' );
+    this.listFrame = $('<div>').addClass('layertreedialog_ul_frame');
 
-    this.listContainer = $( '<ul>' ).addClass( 'layertreedialog_ul' );
+    this.listContainer = $('<ul>').addClass('layertreedialog_ul');
 
-    var li = $( '<li>' ).addClass( 'nodata' ).html( '読み込み中' );
-    this.listContainer.append( li );
-    this.listFrame.append( this.listContainer );
-    this._contentFrame.append( this._controlFrame );
-    
-    
-    this._titleTextFrame = $( '<div>' ).append( $('<span>').html("" ) ).addClass("layertreedialog_pankz_frame");
-    this._contentFrame.append( this._titleTextFrame  );
-    
-    this._searchResultTextFrame = $( '<div>' ).append( $('<span>').html(this.options.title ) ).addClass("layertreedialog_searchresult_text_frame").hide()
-    
-    this._clearSearchButton = $( "<a>" ).attr({"href":"javascript:void(0);"}).html("×検索解除");
-    this._clearSearchButton.on("click", MA.bind(this._onClearSearchClick,this));
-    
-    this._searchResultTextFrame.append( this._clearSearchButton );
-    this._contentFrame.append( this._searchResultTextFrame  );
-    
-    this._contentFrame.append( this.listFrame );
-    
-    
-    
+    var li = $('<li>').addClass('nodata').html('読み込み中');
+    this.listContainer.append(li);
+    this.listFrame.append(this.listContainer);
+    this._contentFrame.append(this._controlFrame);
+
+
+    this._titleTextFrame = $('<div>').append($('<span>').html("")).addClass("layertreedialog_pankz_frame");
+    this._contentFrame.append(this._titleTextFrame);
+
+    this._searchResultTextFrame = $('<div>').append($('<span>').html(this.options.title)).addClass("layertreedialog_searchresult_text_frame").hide()
+
+    this._clearSearchButton = $("<a>").attr({ "href": "javascript:void(0);" }).html("×検索解除");
+    this._clearSearchButton.on("click", MA.bind(this._onClearSearchClick, this));
+
+    this._searchResultTextFrame.append(this._clearSearchButton);
+    this._contentFrame.append(this._searchResultTextFrame);
+
+    this._contentFrame.append(this.listFrame);
+
+
+
     //this._closeSearchResultButton= $("<a>").addClass("closebtn").attr({"href":"javascript:void(0);"}).html("×");
-    this._searchResult = $( "<div>" ).addClass("layertreedialog_searchresult_frame").hide();
-    this._searchResult.append( $("<ul>") );
-    
-    
-    this._contentFrame.append( this._searchResult );
+    this._searchResult = $("<div>").addClass("layertreedialog_searchresult_frame").hide();
+    this._searchResult.append($("<ul>"));
+
+
+    this._contentFrame.append(this._searchResult);
 
     return this._contentFrame;
   },
-  _createControl : function()
-  {
-    var frame = $( '<div>' ).addClass( 'layertreedialog_control_frame' );
+  _createControl: function () {
+    var frame = $('<div>').addClass('layertreedialog_control_frame');
 
-    this._showAllButton = $( '<a>' ).attr( { href:'javascript:void(0);'} ).html( '全選択'   ).addClass( 'normalbutton showallbutton' );
-    this._hideAllButton = $( '<a>' ).attr( { href:'javascript:void(0);'} ).html( '全非選択' ).addClass( 'normalbutton showallbutton' );
+    this._showAllButton = $('<a>').attr({ href: 'javascript:void(0);' }).html('全選択').addClass('normalbutton showallbutton');
+    this._hideAllButton = $('<a>').attr({ href: 'javascript:void(0);' }).html('全非選択').addClass('normalbutton showallbutton');
 
-    frame.append( this._hideAllButton );
-    frame.append( this._showAllButton );
+    frame.append(this._hideAllButton);
+    frame.append(this._showAllButton);
 
-    this._showAllButton.click( MA.bind( this._onShowAllClick, this ) );
-    this._hideAllButton.click( MA.bind( this._onHideAllClick, this ) );
+    this._showAllButton.click(MA.bind(this._onShowAllClick, this));
+    this._hideAllButton.click(MA.bind(this._onHideAllClick, this));
 
     return frame;
   },
-  
-  createSearchFrame : function()
-  {
+
+  createSearchFrame: function () {
     // 検索
-    this._searchFrame = $( "<div>" ).addClass("layertreedialog_search_frame");
-    this._queryInput = $( "<input>" ).attr({"type":"search", "placeholder":"例：写真 / 標高 / 災害"});
-    this._layerTreeSearcher = new GSI.LayerTreeSearcher( this._queryInput, GSI.GLOBALS.layersJSON );
+    this._searchFrame = $("<div>").addClass("layertreedialog_search_frame");
+    this._queryInput = $("<input>").attr({ "type": "search", "placeholder": "例：写真 / 標高 / 災害" });
+    this._layerTreeSearcher = new GSI.LayerTreeSearcher(this._queryInput, GSI.GLOBALS.layersJSON);
     this._layerTreeSearcher
-      .on( "start", MA.bind(function(e){this._startSearch();},this) )
-      .on( "focus", MA.bind(function(e){this._showSearchResult();},this) )
-      .on( "clear", MA.bind(function(e){this._clearSearch();},this) )
-      .on( "hit", MA.bind(function(e){this._appendSearchResult(e.list, e.result);},this) )
-      .on( "finish", MA.bind(function(e){this._finishSearch(e.result);},this) );
+      .on("start", MA.bind(function (e) { this._startSearch(); }, this))
+      .on("focus", MA.bind(function (e) { this._showSearchResult(); }, this))
+      .on("clear", MA.bind(function (e) { this._clearSearch(); }, this))
+      .on("hit", MA.bind(function (e) { this._appendSearchResult(e.list, e.result); }, this))
+      .on("finish", MA.bind(function (e) { this._finishSearch(e.result); }, this));
     this._queryInput
-      .on("click",function(){this.focus();} )
-      .on("focus",MA.bind( function(){
+      .on("click", function () { this.focus(); })
+      .on("focus", MA.bind(function () {
         this._layerTreeSearcher.start();
-      }, this ) )
-      .on("blur",MA.bind( function(){
+      }, this))
+      .on("blur", MA.bind(function () {
         this._layerTreeSearcher.stop();
-      }, this ) );
-    this._searchFrame.append( this._queryInput );
-    
-    
+      }, this));
+    this._searchFrame.append(this._queryInput);
+
+
     return this._searchFrame;
-    
+
   },
-  
-  setMaxScrollHeight : function( maxHeight )
-  {
-    if ( this.listFrame )
-    {
-      this.listFrame.css( { 'max-height' : maxHeight + 'px'} );
+
+  setMaxScrollHeight: function (maxHeight) {
+    if (this.listFrame) {
+      this.listFrame.css({ 'max-height': maxHeight + 'px' });
     }
 
-    if ( this._searchResult )
-    {
-      this._searchResult.css( { 'max-height' : maxHeight + 'px'} );
+    if (this._searchResult) {
+      this._searchResult.css({ 'max-height': maxHeight + 'px' });
     }
-    
-    if ( this._contentFrame )
-    {
-      this._contentFrame.css( { 'height' : 'auto'} );
-      this.contentFrame.css( { 'height' : 'auto'} );
-      this.container.css( { 'height' : 'auto'} );
+
+    if (this._contentFrame) {
+      this._contentFrame.css({ 'height': 'auto' });
+      this.contentFrame.css({ 'height': 'auto' });
+      this.container.css({ 'height': 'auto' });
     }
   },
-  setTree : function( tree )
-  {
+  setTree: function (tree) {
     this.tree = tree;
     this.current = null;
     this.initializeList();
   },
-  setTree_Init : function( tree, visibleLayers, visibleLayersHash)
-  {
-        this.visibleLayers     = visibleLayers;
-        this.visibleLayersHash = visibleLayersHash;
+  setTree_Init: function (tree, visibleLayers, visibleLayersHash) {
+    this.visibleLayers = visibleLayers;
+    this.visibleLayersHash = visibleLayersHash;
 
-        if(this.getVisible()){
-            this.options.currentPath = this.path;
-        }
-        else{
-            this.options.currentPath = null;
-        }
+    if (this.getVisible()) {
+      this.options.currentPath = this.path;
+    }
+    else {
+      this.options.currentPath = null;
+    }
 
-        this.setTree(tree);
-    },
-  show : function()
-  {
+    this.setTree(tree);
+  },
+  show: function () {
     GSI.GLOBALS.queryParams._layerTreeDialogVisible = true;
     GLOBE.MAP.updateHash();
-    
+
     GSI.Dialog.prototype.show.call(this);
   },
-  hide : function()
-  {
+  hide: function () {
     GSI.GLOBALS.queryParams._layerTreeDialogVisible = false;
     GLOBE.MAP.updateHash();
-    
+
     this._hideItemTooltip();
-    if ( !CONFIG.LAYERTREEDIALOGKEEPCURRENT )
-    {
+    if (!CONFIG.LAYERTREEDIALOGKEEPCURRENT) {
       this.current = null;
       this.initializeList();
     }
-    if ( this._checkEvacuationLayer() == false )
-    {
+    if (this._checkEvacuationLayer() == false) {
       GSI.GLOBALS.evacDialog.hide();
     }
 
     GSI.Dialog.prototype.hide.call(this);
   },
-  onCOCOTileLoad : function(e)
-  {
-    if ( !this.tree ) return;
-    this._initializeList( this.current ? this.current.entries : this.tree[this._activeTabIndex].entries );
+  onCOCOTileLoad: function (e) {
+    if (!this.tree) return;
+    this._initializeList(this.current ? this.current.entries : this.tree[this._activeTabIndex].entries);
   },
-  onCOCOTileHide : function(e )
-  {
-    if ( !this.tree ) return;
-    this._initializeList( this.current ? this.current.entries : this.tree[this._activeTabIndex].entries );
+  onCOCOTileHide: function (e) {
+    if (!this.tree) return;
+    this._initializeList(this.current ? this.current.entries : this.tree[this._activeTabIndex].entries);
   },
-  initializeList : function()
-  {
-    if ( !this.contentFrame ) return;
+  initializeList: function () {
+    if (!this.contentFrame) return;
 
     this._hideItemTooltip();
 
-    if ( !this.listContainer )
-    {
-      this.listContainer = $( '<ul>' ).addClass( 'layertreedialog_ul' );
-      this.listFrame.empty().append( this.listContainer );
+    if (!this.listContainer) {
+      this.listContainer = $('<ul>').addClass('layertreedialog_ul');
+      this.listFrame.empty().append(this.listContainer);
     }
-    this.contentFrame.scrollTop( 0 );
+    this.contentFrame.scrollTop(0);
     this.listContainer.empty();
-    
-    if ( this.options.currentPath )
-    {
-      this._initializeList_CurrentPath( this.options.currentPath );
-      this.activateTab( this._activeTabIndex );
+
+    if (this.options.currentPath) {
+      this._initializeList_CurrentPath(this.options.currentPath);
+      this.activateTab(this._activeTabIndex);
     }
-    else{
+    else {
       this._initializeListProc();
     }
-    
-    if ( this.current && this.current.toggleall )
-    {
-      
+
+    if (this.current && this.current.toggleall) {
+
     }
-    else
-    {
+    else {
       this._showAllButton.hide();
       this._hideAllButton.hide();
     }
   },
-  _initializeList : function( list, liRefresh )
-  {
+  _initializeList: function (list, liRefresh) {
     this._hideItemTooltip();
 
-    if ( !list || list.length <= 0  )
-    {
+    if (!list || list.length <= 0) {
       this.listContainer.empty();
-      var li = $( '<li>' ).addClass( 'nodata' ).html( 'データがありません' );
-      this.listContainer.append( li );
+      var li = $('<li>').addClass('nodata').html('データがありません');
+      this.listContainer.append(li);
       return;
     }
 
-    var liList = ( liRefresh ? this.listContainer.children( 'li' ) : null );
+    var liList = (liRefresh ? this.listContainer.children('li') : null);
 
     var showAllButtonEnable = false;
     var hideAllButtonEnable = false;
 
-    for ( var i= 0; i<list.length; i++ )
-    {
+    for (var i = 0; i < list.length; i++) {
       var item = list[i];
-      var li = ( liRefresh ? $( liList[i] ).empty() : $( '<li>' )  );
-      var a = $( '<a>' ).attr( { 'href':'javascript:void(0);' } );
-      a.data( { 'data' : item } );
+      var li = (liRefresh ? $(liList[i]).empty() : $('<li>'));
+      var a = $('<a>').attr({ 'href': 'javascript:void(0);' });
+      a.data({ 'data': item });
 
-      if ( ( item.entries && !item.isMultiLayer ) || item.src)
-      {
-        this._makeFolder(li, a, item );
+      if ((item.entries && !item.isMultiLayer) || item.src) {
+        this._makeFolder(li, a, item);
       }
-      else
-      {
-        this._makeLayer(li, a, item );
+      else {
+        this._makeLayer(li, a, item);
       }
 
-      li.append( a );
-      this.listContainer.append( li );
+      li.append(a);
+      this.listContainer.append(li);
 
-      if ( (item.entries) || (this.cocoTileLayer.getVisible() && item.cocotile && !item.hasTile ) ) continue;
+      if ((item.entries) || (this.cocoTileLayer.getVisible() && item.cocotile && !item.hasTile)) continue;
 
-      if ( item._visibleInfo ) hideAllButtonEnable = true;
+      if (item._visibleInfo) hideAllButtonEnable = true;
       else showAllButtonEnable = true;
     }
 
-    if ( showAllButtonEnable )
-    {
-      this._showAllButton.removeClass( 'disabled' );
+    if (showAllButtonEnable) {
+      this._showAllButton.removeClass('disabled');
     }
-    else
-    {
-      this._showAllButton.addClass( 'disabled' );
+    else {
+      this._showAllButton.addClass('disabled');
     }
 
-    if ( hideAllButtonEnable )
-    {
-      this._hideAllButton.removeClass( 'disabled' );
+    if (hideAllButtonEnable) {
+      this._hideAllButton.removeClass('disabled');
     }
-    else
-    {
-      this._hideAllButton.addClass( 'disabled' );
+    else {
+      this._hideAllButton.addClass('disabled');
     }
   },
-  _initializeListProc : function()
-  {
-        if(this.visibleLayers && this.visibleLayers.length > 0){
-            var fAppend = true;
-        for(var i = 0; i < this.visibleLayers.length; i++){
+  _initializeListProc: function () {
+    if (this.visibleLayers && this.visibleLayers.length > 0) {
+      var fAppend = true;
+      for (var i = 0; i < this.visibleLayers.length; i++) {
+        var l = this.visibleLayers[i];
+        if (!l.info) {
+          fAppend = false;
+          this._initializeList_VisibleLayers(l.id);
+        }
+      }
+
+      if (fAppend) {
+        for (var i = 0; i < this.visibleLayers.length; i++) {
           var l = this.visibleLayers[i];
-                if(!l.info){
-                    fAppend = false;
-                    this._initializeList_VisibleLayers(l.id);
-                }
+          if (l.info != null) {
+            if (l.info._isBaseLayer) {
+              l.info.initialGrayScale = GLOBE.MAP.initials.baseGray;
+              this.mapLayerList.setBaseLayer(l.info);
             }
-
-            if(fAppend){
-              for(var i = 0; i < this.visibleLayers.length; i++){
-                var l = this.visibleLayers[i];
-                  if(l.info != null){
-                    if ( l.info._isBaseLayer )
-                    {
-                        l.info.initialGrayScale = GLOBE.MAP.initials.baseGray;
-                        this.mapLayerList.setBaseLayer(l.info);
-                    }
-                    else
-                    {
-                      this.mapLayerList.append(l.info, true, l.hidden);
-                    }
-                  }
-              }
-                this.visibleLayers.length = 0;
-
-                this._initializeListProc();
+            else {
+              this.mapLayerList.append(l.info, true, l.hidden);
             }
+          }
         }
-        else{
-        this.refreshTitle();
-        this._initializeList( this.current ? this.current.entries : this.tree[this._activeTabIndex].entries );
-        if ( this._userResized ) this._onResize();
-        }
-    },
-    _initializeList_VisibleLayers : function(id){
-        this._initializeList_ID_Mode    = "visible";
-        this._initializeList_ID_Mode_ID = id;
-        this._initializeList_ID(id);
-    },
+        this.visibleLayers.length = 0;
 
-  _initializeList_CurrentPath : function(id)
-  {
-        this._initializeList_ID_Mode    = "current";
-        this._initializeList_ID_Mode_ID = id;
-        this._initializeList_ID(id);
-    },
-  _initializeList_ID : function(path)
-  {
+        this._initializeListProc();
+      }
+    }
+    else {
+      this.refreshTitle();
+      this._initializeList(this.current ? this.current.entries : this.tree[this._activeTabIndex].entries);
+      if (this._userResized) this._onResize();
+    }
+  },
+  _initializeList_VisibleLayers: function (id) {
+    this._initializeList_ID_Mode = "visible";
+    this._initializeList_ID_Mode_ID = id;
+    this._initializeList_ID(id);
+  },
+
+  _initializeList_CurrentPath: function (id) {
+    this._initializeList_ID_Mode = "current";
+    this._initializeList_ID_Mode_ID = id;
+    this._initializeList_ID(id);
+  },
+  _initializeList_ID: function (path) {
     var current = null;
-    if ( !path || path == '' ) return null;
-    
-        this._CurrentData_SRC    = new Array();
-        this._CurrentData_SRC_ID = "";
+    if (!path || path == '') return null;
 
-        current = this._initializeList_IDProc_Data(this.tree, path);
-        if(current == null && this._CurrentData_SRC.length > 0){
-            this._CurrentData_SRC_ID  = path;
-            this._initializeList_IDProc_DataSrc();
-        }
-        else{
-            this._initializeList_IDProc(current);
-        }
+    this._CurrentData_SRC = new Array();
+    this._CurrentData_SRC_ID = "";
+
+    current = this._initializeList_IDProc_Data(this.tree, path);
+    if (current == null && this._CurrentData_SRC.length > 0) {
+      this._CurrentData_SRC_ID = path;
+      this._initializeList_IDProc_DataSrc();
+    }
+    else {
+      this._initializeList_IDProc(current);
+    }
 
     return current;
   },
-  _initializeList_IDProc : function(current)
-  {
-        var fInit = true;
-        if(this._initializeList_ID_Mode == "visible"){
-            if(current == null){            
-            for(var i = 0; i < this.visibleLayers.length; i++){
-              var l = this.visibleLayers[i];
-                    if(l.id == this._initializeList_ID_Mode_ID){
-                        this.visibleLayers.splice(i, 1);
-                        break;
-                    }
-                }
-            }
+  _initializeList_IDProc: function (current) {
+    var fInit = true;
+    if (this._initializeList_ID_Mode == "visible") {
+      if (current == null) {
+        for (var i = 0; i < this.visibleLayers.length; i++) {
+          var l = this.visibleLayers[i];
+          if (l.id == this._initializeList_ID_Mode_ID) {
+            this.visibleLayers.splice(i, 1);
+            break;
+          }
         }
-        if(this._initializeList_ID_Mode == "current"){
-        this.current             = current;
-      var target = this.current ;
-      if ( target )
-      {
+      }
+    }
+    if (this._initializeList_ID_Mode == "current") {
+      this.current = current;
+      var target = this.current;
+      if (target) {
 
-        while( target.parent )
-        {
+        while (target.parent) {
           target = target.parent;
         }
-        if ( this.tree )
-        {
-          for( var i=0; i<this.tree.length; i++)
-          {
-            if ( target == this.tree[i])
-            {
+        if (this.tree) {
+          for (var i = 0; i < this.tree.length; i++) {
+            if (target == this.tree[i]) {
               this._tabFrame.find("a").removeClass("active");
               this._tabFrame.find("a").eq(i).addClass("active");
-              
+
               var tabArr = this._tabFrame.find("a");
-              for( var j=0; j<tabArr.length; j++ )
-              {
-                var zIndex = tabArr.length -j;
-                if ( i == j ) zIndex = 99;
-                
-                $( tabArr[j]).css( {"z-index":zIndex} );
+              for (var j = 0; j < tabArr.length; j++) {
+                var zIndex = tabArr.length - j;
+                if (i == j) zIndex = 99;
+
+                $(tabArr[j]).css({ "z-index": zIndex });
               }
               this._activeTabIndex = i;
               break;
@@ -13616,343 +12781,303 @@ GSI.LayerTreeDialog = GSI.Dialog.extend( {
           }
         }
       }
-        this.options.currentPath = null;
-        }
-        if(this._initializeList_ID_Mode == "cocoTileLayer"){
-            this.cocoTileLayer.setVisible( true );
-            fInit = false;
-        }
+      this.options.currentPath = null;
+    }
+    if (this._initializeList_ID_Mode == "cocoTileLayer") {
+      this.cocoTileLayer.setVisible(true);
+      fInit = false;
+    }
 
-        this._initializeList_ID_Mode = "";
+    this._initializeList_ID_Mode = "";
 
-        if(fInit){
-            this._initializeListProc();
-        }
-    },
-    _initializeList_IDProc_Data : function(tree, id)
-    {
-        var current = null;
-        _DEV_DBG_HashLsPath = true;
-        for(var i = 0; i < tree.length; i++){
-            if(tree[i].src    && !tree[i].entries){
-                if(!tree[i].src_ && tree[i].src.indexOf('./') == 0){
-                    var path = tree[i].src_url.substring(0, tree[i].src_url.lastIndexOf('/'));
-                    tree[i].src_ = true;
-                    tree[i].src  = path + "/" + tree[i].src.substr(2);
-                }
-                this._CurrentData_SRC.push(tree[i]);
-            }
-            else if(tree[i].entries && !tree[i].isMultiLayer){
-                current = this._initializeList_IDProc_Data(tree[i].entries, id);
-                if(current != null){
-                    break;
-                }
-            }
-            else{
-                if(tree[i].id == id){
-                    if(tree[i].parent){
-                        current = tree[i].parent;
-
-                        this._CurrentData_SRC.length = 0;
-                    }
-                    else{
-                        current = null;
-                    }
-                    break;
-                }
-            }
-            
-        }
-
-        return current;
-    },
-    _initializeList_IDProc_DataSrc : function()
-    {
-        if(this._CurrentData_SRC.length > 0){
-        this.ajax      = $.ajax({
-          type     : "GET",
-          url      : this._CurrentData_SRC[0].src,
-          dataType : "text",
-          cache    : true,
-          success  : MA.bind(this._initializeList_IDProc_DataSrc_Success, this),
-          error    : MA.bind(this._initializeList_IDProc_DataSrc_Error  , this)
-        });
-        }
-        else{
-            this._initializeList_IDProc(null);
-        }
-    },
-  _initializeList_IDProc_DataSrc_Success : function(data)
-  {
-        if(this._CurrentData_SRC.length > 0){
-        var json = JSON.parse(data);
-            if(json.layers){
-                for(var i = 0; i < json.layers.length; i++){
-                    json.layers[i].parent  = this._CurrentData_SRC[0];
-                    json.layers[i].src_url = this._CurrentData_SRC[0].src_url;
-                }
-            }
-            this._CurrentData_SRC[0].entries = json.layers;
-
-            GSI.GLOBALS.layersJSON._initializeTree(this._CurrentData_SRC[0].entries, this._CurrentData_SRC[0]);
-
-            current = this._initializeList_IDProc_Data(this._CurrentData_SRC[0].entries, this._CurrentData_SRC_ID);
-            if(current == null){
-                this._initializeList_IDProc_DataSrc_Error();
-            }
-            else{
-                this._initializeList_IDProc(current);
-            }
-        }
-    },
-  _initializeList_IDProc_DataSrc_Error : function()
-  {
-        this._CurrentData_SRC.shift();
-        this._initializeList_IDProc_DataSrc();
+    if (fInit) {
+      this._initializeListProc();
+    }
   },
-  getCurrentPath : function()
-  {
-        var id = "";
-        if(this._current_id){
-            id = this._current_id;
+  _initializeList_IDProc_Data: function (tree, id) {
+    var current = null;
+    _DEV_DBG_HashLsPath = true;
+    for (var i = 0; i < tree.length; i++) {
+      if (tree[i].src && !tree[i].entries) {
+        if (!tree[i].src_ && tree[i].src.indexOf('./') == 0) {
+          var path = tree[i].src_url.substring(0, tree[i].src_url.lastIndexOf('/'));
+          tree[i].src_ = true;
+          tree[i].src = path + "/" + tree[i].src.substr(2);
         }
+        this._CurrentData_SRC.push(tree[i]);
+      }
+      else if (tree[i].entries && !tree[i].isMultiLayer) {
+        current = this._initializeList_IDProc_Data(tree[i].entries, id);
+        if (current != null) {
+          break;
+        }
+      }
+      else {
+        if (tree[i].id == id) {
+          if (tree[i].parent) {
+            current = tree[i].parent;
 
-        return id;
+            this._CurrentData_SRC.length = 0;
+          }
+          else {
+            current = null;
+          }
+          break;
+        }
+      }
+
+    }
+
+    return current;
   },
-  setCurrentPath : function(path){
-        this.options.currentPath = path;
+  _initializeList_IDProc_DataSrc: function () {
+    if (this._CurrentData_SRC.length > 0) {
+      this.ajax = $.ajax({
+        type: "GET",
+        url: this._CurrentData_SRC[0].src,
+        dataType: "text",
+        cache: true,
+        success: MA.bind(this._initializeList_IDProc_DataSrc_Success, this),
+        error: MA.bind(this._initializeList_IDProc_DataSrc_Error, this)
+      });
+    }
+    else {
+      this._initializeList_IDProc(null);
+    }
+  },
+  _initializeList_IDProc_DataSrc_Success: function (data) {
+    if (this._CurrentData_SRC.length > 0) {
+      var json = JSON.parse(data);
+      if (json.layers) {
+        for (var i = 0; i < json.layers.length; i++) {
+          json.layers[i].parent = this._CurrentData_SRC[0];
+          json.layers[i].src_url = this._CurrentData_SRC[0].src_url;
+        }
+      }
+      this._CurrentData_SRC[0].entries = json.layers;
 
-      this.setTree(this.tree);
-    },
-  refreshTitle : function()
-  {
+      GSI.GLOBALS.layersJSON._initializeTree(this._CurrentData_SRC[0].entries, this._CurrentData_SRC[0]);
+
+      current = this._initializeList_IDProc_Data(this._CurrentData_SRC[0].entries, this._CurrentData_SRC_ID);
+      if (current == null) {
+        this._initializeList_IDProc_DataSrc_Error();
+      }
+      else {
+        this._initializeList_IDProc(current);
+      }
+    }
+  },
+  _initializeList_IDProc_DataSrc_Error: function () {
+    this._CurrentData_SRC.shift();
+    this._initializeList_IDProc_DataSrc();
+  },
+  getCurrentPath: function () {
+    var id = "";
+    if (this._current_id) {
+      id = this._current_id;
+    }
+
+    return id;
+  },
+  setCurrentPath: function (path) {
+    this.options.currentPath = path;
+
+    this.setTree(this.tree);
+  },
+  refreshTitle: function () {
     this._titleTextFrame.empty();
 
     var num = 0;
     var target = this.current;
-    while ( target )
-    {
-      if ( num > 0 )
-      {
-        var a = $( '<a>' ).html( target.title ).attr( { 'href' : 'javascript:void(0);' } );
-        var span = $( '<span>' ).html( "&nbsp;&gt;&nbsp;" );
-        this._titleTextFrame.prepend( span );
+    while (target) {
+      if (num > 0) {
+        var a = $('<a>').html(target.title).attr({ 'href': 'javascript:void(0);' });
+        var span = $('<span>').html("&nbsp;&gt;&nbsp;");
+        this._titleTextFrame.prepend(span);
         a.click(
-          MA.bind( this.onFolderClick, this, a )
-        ).data( { 'data' : target } );
-        this._titleTextFrame.prepend( a );
+          MA.bind(this.onFolderClick, this, a)
+        ).data({ 'data': target });
+        this._titleTextFrame.prepend(a);
       }
-      else
-      {
-        var span= $( '<span>' ).html( target.title );
-        this._titleTextFrame.prepend(span );
+      else {
+        var span = $('<span>').html(target.title);
+        this._titleTextFrame.prepend(span);
       }
 
       num++;
       target = target.parent;
     }
-    if ( num > 0 )
-    {
-      
+    if (num > 0) {
+
     }
-    else
-    
-    {
-      var title = ( !this.tree || this.tree.length <= this._activeTabIndex ? this.options.title : this.tree[this._activeTabIndex ].title );
-      var span = $( '<span>' ).html( title ); //.attr( { 'href' : 'javascript:void(0);' } );
-      this._titleTextFrame.prepend( span );
+    else {
+      var title = (!this.tree || this.tree.length <= this._activeTabIndex ? this.options.title : this.tree[this._activeTabIndex].title);
+      var span = $('<span>').html(title); //.attr( { 'href' : 'javascript:void(0);' } );
+      this._titleTextFrame.prepend(span);
     }
   },
-  _makeFolder : function(li, a, item)
-  {
+  _makeFolder: function (li, a, item) {
     var cocoVisible = false;
-    
+
     var entriesCount = -1;
-        if ( item.entries ){
-            entriesCount = item.entries.length;
-        }
+    if (item.entries) {
+      entriesCount = item.entries.length;
+    }
     var isVisible = true;
-    if ( cocoVisible )
-    {
-      var getCOCOTileVisibleCount = function(entries, isTop)
-      {
+    if (cocoVisible) {
+      var getCOCOTileVisibleCount = function (entries, isTop) {
         var counter = 0;
         var currentCounter = 0;
 
-                if(entries){
-            for ( var i=0; i<entries.length; i++ )
-            {
-              var entry = entries[i];
-              if ( entry.entries )
-              {
-                var entriesCount = getCOCOTileVisibleCount( entry.entries, false );
-                counter += entriesCount.total;
+        if (entries) {
+          for (var i = 0; i < entries.length; i++) {
+            var entry = entries[i];
+            if (entry.entries) {
+              var entriesCount = getCOCOTileVisibleCount(entry.entries, false);
+              counter += entriesCount.total;
 
-                if ( isTop && entriesCount.total > 0 )
-                {
-                  currentCounter++;
-                }
-              }
-              else
-              {
-                if ( !entry.cocotile || entry.hasTile  )
-                {
-                  currentCounter++;
-                  counter++;
-                }
+              if (isTop && entriesCount.total > 0) {
+                currentCounter++;
               }
             }
-                }
+            else {
+              if (!entry.cocotile || entry.hasTile) {
+                currentCounter++;
+                counter++;
+              }
+            }
+          }
+        }
 
         return { current: currentCounter, total: counter };
       };
 
-      var count = getCOCOTileVisibleCount( item.entries, true );
+      var count = getCOCOTileVisibleCount(item.entries, true);
       entriesCount = count.current;
-      if ( count.total <= 0 ) isVisible = false;
+      if (count.total <= 0) isVisible = false;
     }
 
     // 子要素あり
-    var title = $( '<div>' ).addClass( 'title' ).html( item.title);
-    var num = $( '<div>' ).addClass( 'num' ).append( $('<span>').html(entriesCount));
-        if(entriesCount >= 0){
-            a.addClass( 'folder' ).append( title ).click( MA.bind( this.onFolderClick, this, a) );
-        }
-        else{
-            a.addClass( 'folder' ).append( title ).click( MA.bind( this.onFolderClick, this, a) );
-        }
-    
-    
-    if ( item.iconUrl && item.iconUrl  != "" )
-      title.css({"background-image":"url(" + item.iconUrl +")"});
-    
-    
-    if ( !isVisible )
-    {
-      a.addClass( 'nococotile' );
-      li.addClass( 'nococotile' );
+    var title = $('<div>').addClass('title').html(item.title);
+    var num = $('<div>').addClass('num').append($('<span>').html(entriesCount));
+    if (entriesCount >= 0) {
+      a.addClass('folder').append(title).click(MA.bind(this.onFolderClick, this, a));
     }
-    else
-    {
-      a.removeClass( 'nococotile' );
-      li.removeClass( 'nococotile' );
+    else {
+      a.addClass('folder').append(title).click(MA.bind(this.onFolderClick, this, a));
     }
-    if (item.html)
-    {
-      var flddescriptionBtn = $( '<a>' ).attr( { 'href':'javascript:void(0);'} ).addClass( 'flddescription_btn' ).html("解説");
-      li.append( flddescriptionBtn );
-      flddescriptionBtn.unbind( 'click' ).bind( 'click', MA.bind( this._onLayerMouseEnter, this, a, item ) );
+
+
+    if (item.iconUrl && item.iconUrl != "")
+      title.css({ "background-image": "url(" + item.iconUrl + ")" });
+
+
+    if (!isVisible) {
+      a.addClass('nococotile');
+      li.addClass('nococotile');
+    }
+    else {
+      a.removeClass('nococotile');
+      li.removeClass('nococotile');
+    }
+    if (item.html) {
+      var flddescriptionBtn = $('<a>').attr({ 'href': 'javascript:void(0);' }).addClass('flddescription_btn').html("解説");
+      li.append(flddescriptionBtn);
+      flddescriptionBtn.unbind('click').bind('click', MA.bind(this._onLayerMouseEnter, this, a, item));
     }
   },
-  _onLayerMouseEnter : function( a, item )
-  {
-    if ( !this._toolTipViewCounter )
-    {
+  _onLayerMouseEnter: function (a, item) {
+    if (!this._toolTipViewCounter) {
       this._toolTipViewCounter = 0;
     }
     this._toolTipViewCounter++;
 
-    this._showItemTooltip( a, item );
+    this._showItemTooltip(a, item);
   },
-  _onLayerMouseLeave : function( a, item )
-  {
-    this._hideItemTooltip( a, item );
+  _onLayerMouseLeave: function (a, item) {
+    this._hideItemTooltip(a, item);
   },
-  _makeToolTip : function( item )
-  {
-    var infoFrame = $( '<div>' ).addClass( 'layerinfo' ).css({"max-width":"350px"} ).attr({"id":"layerInfoDivLt"});
+  _makeToolTip: function (item) {
+    var infoFrame = $('<div>').addClass('layerinfo').css({ "max-width": "350px" }).attr({ "id": "layerInfoDivLt" });
 
     var legend = null;
     var description = null;
 
-    if (item.title){
-      infoFrame.append( $( '<div>' ).css( {"font-weight":"bold"} ).html( item.title ).attr({"id":"toolTipTitle"}) );
+    if (item.title) {
+      infoFrame.append($('<div>').css({ "font-weight": "bold" }).html(item.title).attr({ "id": "toolTipTitle" }));
     }
-    if ( item.legendUrl && item.legendUrl != '')
-    {
-      legend =$( '<a>' ).html( '凡例を表示' ).addClass( 'legend' ).attr( { 'href' : item.legendUrl, 'target' : '_blank' } );
+    if (item.legendUrl && item.legendUrl != '') {
+      legend = $('<a>').html('凡例を表示').addClass('legend').attr({ 'href': item.legendUrl, 'target': '_blank' });
     }
-    if ( legend )
-      infoFrame.append( legend );        
+    if (legend)
+      infoFrame.append(legend);
 
-    if ( item.html )
-    {
-      description =$( '<div>' ).addClass( 'description' ).html( item.html );
+    if (item.html) {
+      description = $('<div>').addClass('description').html(item.html);
     }
-    if ( description )
-      infoFrame.append( description );
-    
+    if (description)
+      infoFrame.append(description);
+
     return infoFrame;
   },
-  
-  _onReliefStyleEidtClick :function(a, item)
-  {
+
+  _onReliefStyleEidtClick: function (a, item) {
     this._curItem = undefined;
     this._hideItemTooltip();
     windowSize = GSI.Utils.getScreenSize();
-    
-    if ( !GSI.GLOBALS.mapLayerList._editReliefDialog )
-    {
-      GSI.GLOBALS.mapLayerList._editReliefDialog = new GSI.EditReliefDialog( this._map, GSI.GLOBALS.mapLayerList, {
-        width:280, left :parseInt(windowSize.w /2 - 160 ), top :windowSize.h- 500,
-        effect : CONFIG.EFFECTS.DIALOG,
+
+    if (!GSI.GLOBALS.mapLayerList._editReliefDialog) {
+      GSI.GLOBALS.mapLayerList._editReliefDialog = new GSI.EditReliefDialog(this._map, GSI.GLOBALS.mapLayerList, {
+        width: 280, left: parseInt(windowSize.w / 2 - 160), top: windowSize.h - 500,
+        effect: CONFIG.EFFECTS.DIALOG,
         listItem: a, listObj: item
-        }
+      }
       );
     }
     GSI.GLOBALS.mapLayerList._editReliefDialog.show();
   },
-  
-  _showItemTooltip : function( a, item )
-  {
-    if ( item  )
-    {
-      if ( !this._curItem )
-      {
+
+  _showItemTooltip: function (a, item) {
+    if (item) {
+      if (!this._curItem) {
         this._curItem = item;
       }
-      else
-      {
-        if ( ( this._toolTipViewCounter % 2) == 0)
-        {
-          if ( this._curItem == item )
-          {
+      else {
+        if ((this._toolTipViewCounter % 2) == 0) {
+          if (this._curItem == item) {
             this._curItem = undefined;
             this._toolTipViewCounter = 0;
             return;
           }
-          else
-          {
+          else {
             this._toolTipViewCounter--;
           }
         }
         this._curItem = item;
       }
-    
-      if ( !this._itemTooltip )
-      {
-        this._itemTooltip = $( '<div>' ).addClass( 'gsi_layertreedialog_itemtooltip' ).hide();
-        $( document.body ).append( this._itemTooltip );
+
+      if (!this._itemTooltip) {
+        this._itemTooltip = $('<div>').addClass('gsi_layertreedialog_itemtooltip').hide();
+        $(document.body).append(this._itemTooltip);
       }
 
       var offset = a.offset();
 
       var screenSize = GSI.Utils.getScreenSize();
-      var left = offset.left + parseInt( a.outerWidth(true) );
+      var left = offset.left + parseInt(a.outerWidth(true));
       var top = offset.top;
 
-      if ( left > screenSize.w * 0.6 )
-      {
-        left = offset.left + parseInt( a.outerWidth(true) * 0.3 );
+      if (left > screenSize.w * 0.6) {
+        left = offset.left + parseInt(a.outerWidth(true) * 0.3);
         top = offset.top + a.outerHeight(true);
       }
 
       this._itemTooltip.css({
-        left : left + 'px',
-        top  : top + 'px'
-      }).empty().append( this._makeToolTip( item ) );
+        left: left + 'px',
+        top: top + 'px'
+      }).empty().append(this._makeToolTip(item));
 
-      this._itemTooltip.stop().hide().fadeIn( 'normal' , function(){
+      this._itemTooltip.stop().hide().fadeIn('normal', function () {
         var ss = GSI.Utils.getScreenSize();
         var hh = this.clientHeight;
         var ww = this.clientWidth;
@@ -13964,147 +13089,131 @@ GSI.LayerTreeDialog = GSI.Dialog.extend( {
         var th = $("#layerInfoDivLt > #toolTipTitle")[0];
         var em = 5;
 
-        if (ss.w < (lf + ww)){
+        if (ss.w < (lf + ww)) {
           newlf = lf + (ss.w - (lf + ww)) - em;
-          if (newlf < 0){
+          if (newlf < 0) {
             newlf = em;
-            $(descel).css({"overflow-x":"scroll"});
+            $(descel).css({ "overflow-x": "scroll" });
           }
         }
-        if (ss.h < (tp + hh)){
+        if (ss.h < (tp + hh)) {
           newtp = tp + (ss.h - (tp + hh)) - em;
-          if (newtp < 0){
+          if (newtp < 0) {
             newtp = em;
-            $(descel).css({"height":(ss.h - th.clientHeight - 25) + "px","overflow-y":"scroll"});
+            $(descel).css({ "height": (ss.h - th.clientHeight - 25) + "px", "overflow-y": "scroll" });
           }
         }
         $(this).animate({
-          left:newlf + "px",
-          top:newtp + "px"
+          left: newlf + "px",
+          top: newtp + "px"
         }, "normal");
       });
 
-      if ( this._hideToolTipHandler )
-      {
-        $( document.body ).unbind( 'mousedown', this._hideToolTipHandler );
-        $( document.body ).unbind( 'touchstart', this._hideToolTipHandler );
-        this.listFrame.unbind( 'scroll', this._hideToolTipHandler );
-        this._hideToolTipHandler  = null;
+      if (this._hideToolTipHandler) {
+        $(document.body).unbind('mousedown', this._hideToolTipHandler);
+        $(document.body).unbind('touchstart', this._hideToolTipHandler);
+        this.listFrame.unbind('scroll', this._hideToolTipHandler);
+        this._hideToolTipHandler = null;
       }
 
-      this._hideToolTipHandler  = MA.bind( function(event)
-      {
-        if ( !this._itemTooltip || event.target == this._itemTooltip[0] ) return;
+      this._hideToolTipHandler = MA.bind(function (event) {
+        if (!this._itemTooltip || event.target == this._itemTooltip[0]) return;
 
-        var parents = $( event.target ).parents();
+        var parents = $(event.target).parents();
 
-        for (var i=0; i<parents.length; i++ )
-        {
-          if ( parents[i] == this._itemTooltip[0] ) return;
+        for (var i = 0; i < parents.length; i++) {
+          if (parents[i] == this._itemTooltip[0]) return;
         }
 
         this._hideItemTooltip();
-        
-        if ( event.type == "scroll" )
-        {
+
+        if (event.type == "scroll") {
           this._toolTipViewCounter = 0;
         }
-      }, this );
+      }, this);
 
-      $( document.body ).bind( 'mousedown', this._hideToolTipHandler );
-      $( document.body ).bind( 'touchstart', this._hideToolTipHandler );
-      this.listFrame.bind( 'scroll', this._hideToolTipHandler );
+      $(document.body).bind('mousedown', this._hideToolTipHandler);
+      $(document.body).bind('touchstart', this._hideToolTipHandler);
+      this.listFrame.bind('scroll', this._hideToolTipHandler);
 
     }
-    else
-    {
+    else {
       this._hideItemTooltip();
     }
   },
-  _hideItemTooltip : function( a, item )
-  {
-    if ( this._hideToolTipHandler )
-    {
-      $( document.body ).unbind( 'mousedown', this._hideToolTipHandler );
-      $( document.body ).unbind( 'touchstart', this._hideToolTipHandler );
-      this.listFrame.unbind( 'scroll', this._hideToolTipHandler );
-      this._hideToolTipHandler  = null;
+  _hideItemTooltip: function (a, item) {
+    if (this._hideToolTipHandler) {
+      $(document.body).unbind('mousedown', this._hideToolTipHandler);
+      $(document.body).unbind('touchstart', this._hideToolTipHandler);
+      this.listFrame.unbind('scroll', this._hideToolTipHandler);
+      this._hideToolTipHandler = null;
     }
-    if ( this._itemTooltip )
-    {
+    if (this._itemTooltip) {
       this._itemTooltip.stop().hide();
     }
   },
-  _makeLayer : function( li, a, item )
-  {
+  _makeLayer: function (li, a, item) {
     var cocoVisible = false;
 
     var target = this.current;
-    
+
     //種類の表示
     var title;
-    if ( CONFIG.LAYERTYPEDISPLAY )
-    {
-      title = $( '<div>' ).addClass( 'title' ).html( item.title + '<span style="font-size:8px;color:red;">' + item.layerType + '</span>');
+    if (CONFIG.LAYERTYPEDISPLAY) {
+      title = $('<div>').addClass('title').html(item.title + '<span style="font-size:8px;color:red;">' + item.layerType + '</span>');
     }
-    else
-    {
-      title = $( '<div>' ).addClass( 'title' ).html( item.title );
+    else {
+      title = $('<div>').addClass('title').html(item.title);
     }
-    
+
     var icon = item.iconUrl;
-    if(icon){
+    if (icon) {
       title.css(
         {
-          "background" : "url(" + icon + ") no-repeat 8px 50%",
-          "background-size" : "16px 16px"
+          "background": "url(" + icon + ") no-repeat 8px 50%",
+          "background-size": "16px 16px"
         }
       );
     }
-        
-    if ( GSI.GLOBALS.isBaseLayer( item ) )
-    {
-      if ( this.mapLayerList.exists( item ) )
-      {
-        a.addClass( 'view' );
-      }
-      else
-      {
-        a.removeClass( 'view' );
-      }
-    }
-    else
-    {
-      if ( item._visibleInfo || this.mapLayerList.exists( item ) ){
-        a.addClass( 'view' );
-      } else {
-        a.removeClass( 'view' );
-      }
-    }
-    a.addClass( 'item' ).append( title);
 
-    if ( item.id == CONFIG.FREERELIEFID ) {
-      var settingBtn =  $('<a>').attr({ 
+    if (GSI.GLOBALS.isBaseLayer(item)) {
+      if (this.mapLayerList.exists(item)) {
+        a.addClass('view');
+      }
+      else {
+        a.removeClass('view');
+      }
+    }
+    else {
+      if (item._visibleInfo || this.mapLayerList.exists(item)) {
+        a.addClass('view');
+      } else {
+        a.removeClass('view');
+      }
+    }
+    a.addClass('item').append(title);
+
+    if (item.id == CONFIG.FREERELIEFID) {
+      var settingBtn = $('<a>').attr({
         'href': 'javascript:void(0);',
-        'title' : 'スタイル変更'}).addClass('setting_btn').html("");
+        'title': 'スタイル変更'
+      }).addClass('setting_btn').html("");
       li.append(settingBtn);
-      settingBtn.unbind('click').bind('click', MA.bind( function(a, item){
-        this._onReliefStyleEidtClick( a, item );
-      },this, a, item ));
+      settingBtn.unbind('click').bind('click', MA.bind(function (a, item) {
+        this._onReliefStyleEidtClick(a, item);
+      }, this, a, item));
     }
 
     // 詳細
-    var descriptionBtn = $( '<a>' ).attr( { 'href':'javascript:void(0);'} ).addClass( 'description_btn' ).html("解説");
-    li.append( descriptionBtn );
-    descriptionBtn.unbind( 'click' ).bind( 'click', MA.bind( this._onLayerMouseEnter, this, a, item ) );
+    var descriptionBtn = $('<a>').attr({ 'href': 'javascript:void(0);' }).addClass('description_btn').html("解説");
+    li.append(descriptionBtn);
+    descriptionBtn.unbind('click').bind('click', MA.bind(this._onLayerMouseEnter, this, a, item));
 
-    if ( CONFIG.VISIBLELAYERTYPE )
-    {
-      var info = $( '<div>' ).addClass( 'info' );
-      if ( item.cocotile )
-      {
-        var span = $( '<span>' ).addClass( 'cocotile' ).html('ココタイル' );
-        info.append( span );
+    if (CONFIG.VISIBLELAYERTYPE) {
+      var info = $('<div>').addClass('info');
+      if (item.cocotile) {
+        var span = $('<span>').addClass('cocotile').html('ココタイル');
+        info.append(span);
       }
       /*
       var typeTitle = CONFIG.LAYERTYPELIST[ item.layerType ];
@@ -14112,310 +13221,273 @@ GSI.LayerTreeDialog = GSI.Dialog.extend( {
       var span = $( '<span>' ).html(typeTitle.caption ).addClass( 'layertype' );
       info.append( span );
       */
-      li.append( info );
+      li.append(info);
     }
-    if (cocoVisible && item.cocotile && !item.hasTile )
-    {
-      a.removeClass( 'view' );
-      a.addClass( 'nococotile' );
-      li.addClass( 'nococotile' );
+    if (cocoVisible && item.cocotile && !item.hasTile) {
+      a.removeClass('view');
+      a.addClass('nococotile');
+      li.addClass('nococotile');
     }
-    else
-    {
-      a.removeClass( 'nococotile' );
-      li.removeClass( 'nococotile' );
+    else {
+      a.removeClass('nococotile');
+      li.removeClass('nococotile');
     }
 
-    a.click( MA.bind( this.onItemClick, this, a) );
+    a.click(MA.bind(this.onItemClick, this, a));
   },
-  _onShowAllClick : function()
-  {
+  _onShowAllClick: function () {
     var cocoVisible = this.cocoTileLayer.getVisible();
-    var list = ( this.current ? this.current.entries : this.tree );
-    if ( !list || list.length <= 0  ) return;
+    var list = (this.current ? this.current.entries : this.tree);
+    if (!list || list.length <= 0) return;
 
     var showList = [];
 
-    for ( var i= 0; i<list.length; i++ )
-    {
+    for (var i = 0; i < list.length; i++) {
       var item = list[i];
-      if ( item.entries ) continue;
-      if (cocoVisible && item.cocotile && !item.hasTile ) continue;
+      if (item.entries) continue;
+      if (cocoVisible && item.cocotile && !item.hasTile) continue;
 
-      showList.push( item );
+      showList.push(item);
     }
 
-    if ( showList.length > 0 )
-      this.mapLayerList.appendList( showList );
+    if (showList.length > 0)
+      this.mapLayerList.appendList(showList);
   },
-  _onHideAllClick : function()
-  {
-    var list = ( this.current ? this.current.entries : this.tree );
-    if ( !list || list.length <= 0  ) return;
+  _onHideAllClick: function () {
+    var list = (this.current ? this.current.entries : this.tree);
+    if (!list || list.length <= 0) return;
 
-    for ( var i= 0; i<list.length; i++ )
-    {
+    for (var i = 0; i < list.length; i++) {
       var item = list[i];
-      if ( item.entries ) continue;
-      if ( this.mapLayerList.exists( item ) )
-      {
-        this.mapLayerList.remove( item );
+      if (item.entries) continue;
+      if (this.mapLayerList.exists(item)) {
+        this.mapLayerList.remove(item);
       }
     }
   },
-  _expandFolder : function( item )
-  {
-        var f = true;
-        if(item){
-            if(item.src){
-                if(!item.entries){
-                    //item.parent = this.current;
-                    if ( !item.parent ) item.parent = this.current;
-                    if(!item.src_ && item.src.indexOf('./') == 0){
-                        var path = item.src_url.substring(0, item.src_url.lastIndexOf('/'));
-                        item.src_ = true;
-                        item.src  = path + "/" + item.src.substr(2);
-                    }
-                    this.ajax_item = item;
-            this.ajax      = $.ajax({
-              type     : "GET",
-              url      : item.src,
-              dataType : "text",
-              //cache    : true,
-              cache    : CONFIG.LOADLAYERSTXTCACHE,
-              success  : MA.Util.bind(this._onFolderClickLoad     , this),
-              error    : MA.Util.bind(this._onFolderClickLoadError, this)
-            });
+  _expandFolder: function (item) {
+    var f = true;
+    if (item) {
+      if (item.src) {
+        if (!item.entries) {
+          //item.parent = this.current;
+          if (!item.parent) item.parent = this.current;
+          if (!item.src_ && item.src.indexOf('./') == 0) {
+            var path = item.src_url.substring(0, item.src_url.lastIndexOf('/'));
+            item.src_ = true;
+            item.src = path + "/" + item.src.substr(2);
+          }
+          this.ajax_item = item;
+          this.ajax = $.ajax({
+            type: "GET",
+            url: item.src,
+            dataType: "text",
+            //cache    : true,
+            cache: CONFIG.LOADLAYERSTXTCACHE,
+            success: MA.Util.bind(this._onFolderClickLoad, this),
+            error: MA.Util.bind(this._onFolderClickLoadError, this)
+          });
 
-                    f = false;
-                }
-            }
+          f = false;
         }
+      }
+    }
 
-        if(f){
-            this.onFolderClick_Proc(item);
-        }
+    if (f) {
+      this.onFolderClick_Proc(item);
+    }
   },
-  onConfirmOkClick : function ( item )
-  {
+  onConfirmOkClick: function (item) {
     GSI.GLOBALS.confirmDlg.hide();
     GSI.GLOBALS.evacDialog.show();
 
     CONFIG.layerEvacuationIsConfirmOK = true;
-    this._expandFolder( item );
+    this._expandFolder(item);
   },
-  onFolderClick : function( a,item )
-  {
+  onFolderClick: function (a, item) {
     //var item = a.data( 'data' );
-    if ( a) item = a.data( 'data' );
+    if (a) item = a.data('data');
 
-    if (( item ) && ( item.title_evac && item.title_evac == CONFIG.layerEvacuationFolderSYS ))
-    {
-      if ( this._checkEvacuationLayer() == false )
-      {
+    if ((item) && (item.title_evac && item.title_evac == CONFIG.layerEvacuationFolderSYS)) {
+      if (this._checkEvacuationLayer() == false) {
         GSI.GLOBALS.confirmDlg.onPositiveButtonClick = MA.bind(this.onConfirmOkClick, this, item);
-        GSI.GLOBALS.confirmDlg.show();			
+        GSI.GLOBALS.confirmDlg.show();
       }
-      else
-      {
-        this._expandFolder( item );
+      else {
+        this._expandFolder(item);
       }
     }
-    else
-    {
-      this._expandFolder( item );
-      if (this._checkEvacuationLayer() == false)
-      {
+    else {
+      this._expandFolder(item);
+      if (this._checkEvacuationLayer() == false) {
         CONFIG.layerEvacuationIsConfirmOK = false;
         GSI.GLOBALS.evacDialog.hide();
       }
-        }
+    }
   },
-  onFolderClick_Proc : function( item )
-  {
-        this.current = item;
-        this.listContainer.fadeOut( 'fast',
-      MA.bind( function() {
-            this.listContainer.fadeIn('fast');
-            this.initializeList();
-          }, this )
-        );
-    },
-  _onFolderClickLoad : function(data)
-  {
-        var item = this.ajax_item;
-        if(item){
-        var json = JSON.parse(data);
-            if (json.layers){
-                for(var i = 0; i < json.layers.length; i++){
-                    json.layers[i].src_url = item.src_url;
-                }
-            }
-
-            item.entries = json.layers;
-
-            GSI.GLOBALS.layersJSON._initializeTree(item.entries, item);
-
-            this.onFolderClick_Proc(item);
-        }
-    },
-  _onFolderClickLoadError : function()
-  {
-    alert( 'レイヤー設定ファイルが読み込めませんでした。' );
+  onFolderClick_Proc: function (item) {
+    this.current = item;
+    this.listContainer.fadeOut('fast',
+      MA.bind(function () {
+        this.listContainer.fadeIn('fast');
+        this.initializeList();
+      }, this)
+    );
   },
-  onItemClick : function( a, item )
-  {
+  _onFolderClickLoad: function (data) {
+    var item = this.ajax_item;
+    if (item) {
+      var json = JSON.parse(data);
+      if (json.layers) {
+        for (var i = 0; i < json.layers.length; i++) {
+          json.layers[i].src_url = item.src_url;
+        }
+      }
+
+      item.entries = json.layers;
+
+      GSI.GLOBALS.layersJSON._initializeTree(item.entries, item);
+
+      this.onFolderClick_Proc(item);
+    }
+  },
+  _onFolderClickLoadError: function () {
+    alert('レイヤー設定ファイルが読み込めませんでした。');
+  },
+  onItemClick: function (a, item) {
     this._userControlStarted = true;
-    
+
     var target = this.current;
     //var item = a.data( 'data' );
-    if ( a ) item = a.data( 'data' );
+    if (a) item = a.data('data');
 
     this._current_id = item.id;
-    
-    if ( GSI.GLOBALS.isBaseLayer( item ) )
-    {
-      if ( $(a).hasClass('view') )
-      {
+
+    if (GSI.GLOBALS.isBaseLayer(item)) {
+      if ($(a).hasClass('view')) {
         $(a).removeClass('view');
         this.mapLayerList.remove(item);
       }
-      else
-      {
-        this.mapLayerList.setBaseLayer( item );
+      else {
+        this.mapLayerList.setBaseLayer(item);
       }
       return;
     }
-    if ( item._isBaseLayer ) {
-      this.mapLayerList.setBaseLayer( item );
-    } else if ( target && target.title_evac && target.title_evac == CONFIG.layerEvacuationFolderSYS ) {		
+    if (item._isBaseLayer) {
+      this.mapLayerList.setBaseLayer(item);
+    } else if (target && target.title_evac && target.title_evac == CONFIG.layerEvacuationFolderSYS) {
       var f = false;
-      if(this.mapLayerList.exists(item)){
-          f = true;
+      if (this.mapLayerList.exists(item)) {
+        f = true;
       }
 
       this._onHideAllClick();
-      if(f == false){
+      if (f == false) {
         this.mapLayerList.append(item);
-        if (GSI.Dialog._dialogManager.isVisibleDialog(GSI.GLOBALS.evacDialog) == false)
-        {
+        if (GSI.Dialog._dialogManager.isVisibleDialog(GSI.GLOBALS.evacDialog) == false) {
           GSI.GLOBALS.evacDialog.show();
         }
       }
     } else if (target && target.title_disasterlore && target.title_disasterlore == CONFIG.DisasterLoreFolderSYS) {
       var f = false;
-    
-      if (item.id == CONFIG.DisasterLoreAll){
+
+      if (item.id == CONFIG.DisasterLoreAll) {
         if (this.mapLayerList.exists(item)) {
           f = true;
           added = false;
-          }
-          else{
+        }
+        else {
           this._onHideAllClick();
-          }
+        }
       }
-      else{
-          if (this.mapLayerList.exists(item)){
+      else {
+        if (this.mapLayerList.exists(item)) {
           f = true;
           added = false;
-          }
-          else{
-          for(var x = 0; x < this.mapLayerList.list.length; x++){
-              if (this.mapLayerList.list[x].id == CONFIG.DisasterLoreAll){
+        }
+        else {
+          for (var x = 0; x < this.mapLayerList.list.length; x++) {
+            if (this.mapLayerList.list[x].id == CONFIG.DisasterLoreAll) {
               this.mapLayerList.remove(this.mapLayerList.list[x]);
               break;
-              }
-          }
-          }
-      }
-      if (f == false) {
-          this.mapLayerList.append(item);
-          GSI.Utils.sendSelectedLayer(this._current_id);
-      }
-      else{
-          this.mapLayerList.remove(item);
-      }
-    }
-    else
-    {
-        if(!this.mapLayerList.exists(item))
-        { 
-          this.mapLayerList.append(item);
-            GSI.Utils.sendSelectedLayer(this._current_id);
-        }
-        else 
-          { 
-            this.mapLayerList.remove(item);
-            // 202303
-            if (item.id == CONFIG.COMPAREPHOTO_ID) {
-              this.mapLayerList.map.hideComparePhotoControl();
             }
           }
         }
-    
-    if ( item && item.id == CONFIG.FREERELIEFID )
-    {
-      if ( item._visibleInfo) this._onReliefStyleEidtClick( a, item );
-      else if ( GSI.GLOBALS.mapLayerList && GSI.GLOBALS.mapLayerList._editReliefDialog ) GSI.GLOBALS.mapLayerList._editReliefDialog.hide();
+      }
+      if (f == false) {
+        this.mapLayerList.append(item);
+        GSI.Utils.sendSelectedLayer(this._current_id);
+      }
+      else {
+        this.mapLayerList.remove(item);
+      }
     }
-  },
-  onMapLayerListChange : function()
-  {
-    //this._initializeList( this.current ? this.current.entries : this.tree, true );
-    this._initializeList( this.current ? this.current.entries : ( this.tree ? this.tree[this._activeTabIndex].entries : true), true );
-    this._toolTipViewCounter = 0;
-  },
-  _checkEvacuationLayer : function()
-  {
-      if ( this.mapLayerList )
-      {
-        var l = this.mapLayerList.getList();
-        for(i = 0 ; i < l.length; i++ )
-        {
-          if ( l[i].id.indexOf(CONFIG.layerEvacuationHeader) >= 0 )
-          {
-            return true;
-          }
-        }
-        var tl = this.mapLayerList.getTileList();
-
-        for(i = 0 ; i < tl.length; i++ )
-        {
-          if ( tl[i].id.indexOf(CONFIG.layerEvacuationHeader) >= 0 )
-          {
-            return true;
-          }
+    else {
+      if (!this.mapLayerList.exists(item)) {
+        this.mapLayerList.append(item);
+        GSI.Utils.sendSelectedLayer(this._current_id);
+      }
+      else {
+        this.mapLayerList.remove(item);
+        // 202303
+        if (item.id == CONFIG.COMPAREPHOTO_ID) {
+          this.mapLayerList.map.hideComparePhotoControl();
         }
       }
-      return false;
+    }
+
+    if (item && item.id == CONFIG.FREERELIEFID) {
+      if (item._visibleInfo) this._onReliefStyleEidtClick(a, item);
+      else if (GSI.GLOBALS.mapLayerList && GSI.GLOBALS.mapLayerList._editReliefDialog) GSI.GLOBALS.mapLayerList._editReliefDialog.hide();
+    }
   },
-  selectReliefFree : function( a, item )
-  {
-   
-    if(!this.mapLayerList.exists(item))
-    { 
+  onMapLayerListChange: function () {
+    //this._initializeList( this.current ? this.current.entries : this.tree, true );
+    this._initializeList(this.current ? this.current.entries : (this.tree ? this.tree[this._activeTabIndex].entries : true), true);
+    this._toolTipViewCounter = 0;
+  },
+  _checkEvacuationLayer: function () {
+    if (this.mapLayerList) {
+      var l = this.mapLayerList.getList();
+      for (i = 0; i < l.length; i++) {
+        if (l[i].id.indexOf(CONFIG.layerEvacuationHeader) >= 0) {
+          return true;
+        }
+      }
+      var tl = this.mapLayerList.getTileList();
+
+      for (i = 0; i < tl.length; i++) {
+        if (tl[i].id.indexOf(CONFIG.layerEvacuationHeader) >= 0) {
+          return true;
+        }
+      }
+    }
+    return false;
+  },
+  selectReliefFree: function (a, item) {
+
+    if (!this.mapLayerList.exists(item)) {
 
       this._userControlStarted = true;
-    
+
       //var target = this.current;
       //var item = a.data( 'data' );
       //if ( a ) item = a.data( 'data' );
-  
+
       this._current_id = item.id;
 
       this.mapLayerList.append(item);
       GSI.Utils.sendSelectedLayer(this._current_id);
-      if ( item && item.id == CONFIG.FREERELIEFID )
-      {
-        if ( item._visibleInfo){
-          this._onReliefStyleEidtClick( a, item );
+      if (item && item.id == CONFIG.FREERELIEFID) {
+        if (item._visibleInfo) {
+          this._onReliefStyleEidtClick(a, item);
         }
-        else if ( GSI.GLOBALS.mapLayerList && GSI.GLOBALS.mapLayerList._editReliefDialog ) {
+        else if (GSI.GLOBALS.mapLayerList && GSI.GLOBALS.mapLayerList._editReliefDialog) {
           GSI.GLOBALS.mapLayerList._editReliefDialog.hide();
         }
-      } 
+      }
     }
-    
+
   }
 
 });
@@ -14425,78 +13497,73 @@ GSI.LayerTreeDialog = GSI.Dialog.extend( {
   - GSI.Dialog
   - GSI.ViewListDialog（表示中ダイアログ管理）
 ************************************************************************/
-GSI.ViewListDialog = GSI.Dialog.extend( {
+GSI.ViewListDialog = GSI.Dialog.extend({
 
-  options : {
-    title : '選択中の情報'
+  options: {
+    title: '選択中の情報'
   },
-  initialize : function(map, mapLayerList, cocoTileLayer, options)
-  {
+  initialize: function (map, mapLayerList, cocoTileLayer, options) {
     this.map = map;
     this.mapLayerList = mapLayerList;
     this.cocoTileLayer = cocoTileLayer;
-    this.mapLayerList.on( 'change', MA.bind( this.onMapLayerListChange, this ) );
-    this.mapLayerList.on( 'tilechange', MA.bind( this.updateCombineLayer, this, 'tilechange' ) );
+    this.mapLayerList.on('change', MA.bind(this.onMapLayerListChange, this));
+    this.mapLayerList.on('tilechange', MA.bind(this.updateCombineLayer, this, 'tilechange'));
     GSI.Dialog.prototype.initialize.call(this, options);
 
-    this.container.css({top: '250px'} );
+    this.container.css({ top: '250px' });
   },
-  _onResize : function()
-  {
+  _onResize: function () {
     GSI.Dialog.prototype._onResize.call(this);
 
-    var height = this.container.outerHeight( false )
-      - this.headerFrame.outerHeight( true )
-      - this._controlFrame.outerHeight( true ) - 10;
+    var height = this.container.outerHeight(false)
+      - this.headerFrame.outerHeight(true)
+      - this._controlFrame.outerHeight(true) - 10;
 
-    this.listFrame.css( { "max-height": 'none', height: height + 'px'} );
+    this.listFrame.css({ "max-height": 'none', height: height + 'px' });
   },
-  createHeader : function()
-  {
-    return $('<span>').html(this.options.title );
+  createHeader: function () {
+    return $('<span>').html(this.options.title);
   },
-  createContent : function()
-  {
+  createContent: function () {
     this._contentFrame = $('<div>');
     this._controlFrame = this._createControl();
 
-    this.listFrame = $( '<div>' ).addClass( 'viewlistdialog_ul_frame' );
-    this.listContainer = $( '<ul>' ).addClass( 'viewlistdialog_ul' );
+    this.listFrame = $('<div>').addClass('viewlistdialog_ul_frame');
+    this.listContainer = $('<ul>').addClass('viewlistdialog_ul');
 
-    var li = $( '<li>' ).addClass( 'nodata' ).html( '選択中の情報はありません' );
-    this.listContainer.append( li );
+    var li = $('<li>').addClass('nodata').html('選択中の情報はありません');
+    this.listContainer.append(li);
 
-    this.listFrame.append( this.listContainer );
+    this.listFrame.append(this.listContainer);
 
-    this._contentFrame.append( this._controlFrame );
-    this._contentFrame.append( this.listFrame );
+    this._contentFrame.append(this._controlFrame);
+    this._contentFrame.append(this.listFrame);
 
     return this._contentFrame;
   },
-  _createControl : function()
-  {
-    var frame = $( '<div>' ).css( { 'height': '25px' } ).addClass( 'viewlistdialog_control_frame' );
+  _createControl: function () {
+    var frame = $('<div>').css({ 'height': '25px' }).addClass('viewlistdialog_control_frame');
 
-        this._RbtnTxtAdd = $("<a>").css({"position":"absolute",'left':'4px','bottom':'5px','cursor':'pointer'}).addClass('view_list_dialog_button').html("リセット");
+    this._RbtnTxtAdd = $("<a>").css({ "position": "absolute", 'left': '4px', 'bottom': '5px', 'cursor': 'pointer' }).addClass('view_list_dialog_button').html("リセット");
 
     this._saveOutsideTileBtn = $("<a>").css({ "font-size": "9px", "line-height": "20px", "position": "absolute", 'right': '4px', 'bottom': '5px', 'cursor': 'pointer' }).addClass('view_list_dialog_button').html("外部タイル設定保存").hide();
 
-    var frameRange = $( '<div>' ).css({ 'position':'absolute','right':'5px','bottom':'5px','opacity':'1'});
+    var frameRange = $('<div>').css({ 'position': 'absolute', 'right': '5px', 'bottom': '5px', 'opacity': '1' });
 
     frame.append(this._saveOutsideTileBtn);
-    frame.append( this._RbtnTxtAdd );
+    frame.append(this._RbtnTxtAdd);
 
-    frame.append( frameRange );
-    
-    var dummy = $('<div>').html( '&nbsp;' ).css( { "font-size": '9.5pt' } );
-    frame.append(dummy );
+    frame.append(frameRange);
 
-    this._RbtnTxtAdd.click( MA.bind( this._onResetClick, this ) );
+    var dummy = $('<div>').html('&nbsp;').css({ "font-size": '9.5pt' });
+    frame.append(dummy);
+
+    this._RbtnTxtAdd.click(MA.bind(this._onResetClick, this));
     this._saveOutsideTileBtn.click(MA.bind(this._saveOutsideTileBtnClick, this));
 
     return frame;
   },
-  
+
   // (_sasveOutsideTileBtnClick)
   _saveOutsideTileBtnClick: function () {
     var layersJSON = {
@@ -14553,389 +13620,342 @@ GSI.ViewListDialog = GSI.Dialog.extend( {
 
   },
 
-  _enableLakeDepthForItem: function(item, enabled){
-    if(item.id == "lakedata") {
+  _enableLakeDepthForItem: function (item, enabled) {
+    if (item.id == "lakedata") {
       this._enableLakeDepth(enabled);
     }
   },
 
-  _enableLakeDepth: function(enabled){
+  _enableLakeDepth: function (enabled) {
     GLOBE.MAP.lakedataEnabled = enabled;
     GLOBE.DIALOG.FOOTER.refreshLakeDepth(enabled);
   },
-  
-  _onAddClick : function()
-  {
-        GSI.GLOBALS.layerTreeDialog.show();
-    },
-    _onResetClick : function()
-    {
+
+  _onAddClick: function () {
+    GSI.GLOBALS.layerTreeDialog.show();
+  },
+  _onResetClick: function () {
     this._resetTiles();
-    },
-    onCocoTileCheckChange  : function(onOffSwitch)
-  {
-        if(this._ButtonRangeSwitch){
-            this._ButtonRangeSwitch.checked(onOffSwitch.checked());
-        }
-    },
-  _onCocoTileCheckChange : function(onOffSwitch)
-  {
-        GSI.GLOBALS.layerTreeDialog.onCocoTileCheckChange(onOffSwitch);
-    },
-  _onShowAllClick : function()
-  {
-    this._showAll( this.mapLayerList.getList() );
-    this._showAll( this.mapLayerList.getTileList() );
   },
-  _onHideAllClick : function()
-  {
-    this._hideAll( this.mapLayerList.getList() );
-    this._hideAll( this.mapLayerList.getTileList() );
+  onCocoTileCheckChange: function (onOffSwitch) {
+    if (this._ButtonRangeSwitch) {
+      this._ButtonRangeSwitch.checked(onOffSwitch.checked());
+    }
   },
-  _onRemoveAllClick : function()
-  {
+  _onCocoTileCheckChange: function (onOffSwitch) {
+    GSI.GLOBALS.layerTreeDialog.onCocoTileCheckChange(onOffSwitch);
+  },
+  _onShowAllClick: function () {
+    this._showAll(this.mapLayerList.getList());
+    this._showAll(this.mapLayerList.getTileList());
+  },
+  _onHideAllClick: function () {
+    this._hideAll(this.mapLayerList.getList());
+    this._hideAll(this.mapLayerList.getTileList());
+  },
+  _onRemoveAllClick: function () {
     this._removeAll();
   },
-  _resetTiles : function( id )
-  {
+  _resetTiles: function (id) {
     //タイルクリア
     var std = CONFIG.BASETILES[0];
-    
-    if ( id )
-    {
-      for ( var i=0; i<CONFIG.BASETILES.length; i++ )
-      {
-        if ( CONFIG.BASETILES[i].id == id )
-        {
+
+    if (id) {
+      for (var i = 0; i < CONFIG.BASETILES.length; i++) {
+        if (CONFIG.BASETILES[i].id == id) {
           std = CONFIG.BASETILES[i];
           break;
         }
       }
     }
-    
+
     this._removeAll();
-    this.mapLayerList.setBaseLayer( std );
-    
+    this.mapLayerList.setBaseLayer(std);
+
   },
-  _showAll : function( list )
-  {
-    for ( var i=0;i<list.length; i++ )
-    {
+  _showAll: function (list) {
+    for (var i = 0; i < list.length; i++) {
       var item = list[i];
-      if ( item._visibleInfo._isHidden  )
-      {
-        item._onOffSwitch.checked( true );
+      if (item._visibleInfo._isHidden) {
+        item._onOffSwitch.checked(true);
         item._visibleInfo._isHidden = false;
-        this.map.addLayer( item._visibleInfo.layer );
+        this.map.addLayer(item._visibleInfo.layer);
       }
     }
   },
-  _hideAll : function(list)
-  {
-    for ( var i=0;i<list.length; i++ )
-    {
+  _hideAll: function (list) {
+    for (var i = 0; i < list.length; i++) {
       var item = list[i];
-      if ( !item._visibleInfo._isHidden  )
-      {
-        item._onOffSwitch.checked( false );
-        
+      if (!item._visibleInfo._isHidden) {
+        item._onOffSwitch.checked(false);
+
         item._visibleInfo._isHidden = true;
-        this.map.removeLayer( item._visibleInfo.layer );
+        this.map.removeLayer(item._visibleInfo.layer);
       }
     }
   },
-  _removeAll : function()
-  {
+  _removeAll: function () {
     this.mapLayerList.clear();
   },
-  setMaxScrollHeight : function( maxHeight )
-  {
-    if ( this.listFrame )
-    {
-      this.listFrame.css( { 'max-height' : maxHeight + 'px'} );
+  setMaxScrollHeight: function (maxHeight) {
+    if (this.listFrame) {
+      this.listFrame.css({ 'max-height': maxHeight + 'px' });
     }
-    if ( this._contentFrame )
-    {
-      this._contentFrame.css( { 'height' : 'auto'} );
+    if (this._contentFrame) {
+      this._contentFrame.css({ 'height': 'auto' });
     }
-    if ( this.contentFrame )
-    {
-      this.contentFrame.css( { 'height' : 'auto'} );
+    if (this.contentFrame) {
+      this.contentFrame.css({ 'height': 'auto' });
     }
-    if ( this.container )
-    {
-      this.container.css( { 'height' : 'auto'} );
+    if (this.container) {
+      this.container.css({ 'height': 'auto' });
     }
   },
-  show : function(noActivate)
-  {
+  show: function (noActivate) {
     GSI.GLOBALS.queryParams._viewListDialogVisible = true;
     GLOBE.MAP.updateHash();
-    
-    GSI.Dialog.prototype.show.call(this,noActivate);
+
+    GSI.Dialog.prototype.show.call(this, noActivate);
   },
-  hide : function()
-  {
+  hide: function () {
     GSI.GLOBALS.queryParams._viewListDialogVisible = false;
     GLOBE.MAP.updateHash();
-    
+
     GSI.Dialog.prototype.hide.call(this);
   },
-  initializeList : function()
-  {
-    if ( !this.contentFrame ) return;
+  initializeList: function () {
+    if (!this.contentFrame) return;
 
-    if ( !this.listContainer )
-    {
-      this.listContainer = $( '<ul>' ).addClass( 'viewlistdialog_ul' );
-      this.listFrame.empty().append( this.listContainer );
+    if (!this.listContainer) {
+      this.listContainer = $('<ul>').addClass('viewlistdialog_ul');
+      this.listFrame.empty().append(this.listContainer);
     }
 
-    if ( !this.tileListContainer )
-    {
-      this.tileListContainer = $( '<ul>' ).addClass( 'viewlistdialog_ul' );
-      this.listFrame.append( this.tileListContainer );
-      this.tileListContainer .sortable( {
-        cursor : 'move',
-        update : MA.bind( this.onSortChange, this ),
-        handle : ".item_frame",
-        cancel : ".item_frame_fixed",
-        scroll : false
+    if (!this.tileListContainer) {
+      this.tileListContainer = $('<ul>').addClass('viewlistdialog_ul');
+      this.listFrame.append(this.tileListContainer);
+      this.tileListContainer.sortable({
+        cursor: 'move',
+        update: MA.bind(this.onSortChange, this),
+        handle: ".item_frame",
+        cancel: ".item_frame_fixed",
+        scroll: false
       });
-        this.tileListContainer .disableSelection();
+      this.tileListContainer.disableSelection();
     }
 
-    this.contentFrame.scrollTop( 0 );
+    this.contentFrame.scrollTop(0);
     this.listContainer.empty();
     this.tileListContainer.empty();
 
     this._initializeList();
-    if ( this._userResized ) this._onResize();
+    if (this._userResized) this._onResize();
   },
-  onSortChange : function( event, ui )
-  {
-    var liList = this.tileListContainer.find( 'li' );
+  onSortChange: function (event, ui) {
+    var liList = this.tileListContainer.find('li');
     var list = [];
-        var f = true;
-        
-        var baseLayerIndex = -1;
-        for  ( var i=0; i<liList.length; i++ )
-        {
-      var item = $(liList[i]).data( 'data' );
-      if ( item._isBaseLayer ) baseLayerIndex = i;
+    var f = true;
+
+    var baseLayerIndex = -1;
+    for (var i = 0; i < liList.length; i++) {
+      var item = $(liList[i]).data('data');
+      if (item._isBaseLayer) baseLayerIndex = i;
     }
-        if ( baseLayerIndex != -1 && baseLayerIndex != liList.length - 1 )
-        {
+    if (baseLayerIndex != -1 && baseLayerIndex != liList.length - 1) {
       this.tileListContainer.sortable("cancel");
       return;
     }
-        
-    for  ( var i=0; i<liList.length; i++ )
-    {
-      var item = $(liList[i]).data( 'data' );
-            
-        if ( item ) list.push( item );
+
+    for (var i = 0; i < liList.length; i++) {
+      var item = $(liList[i]).data('data');
+
+      if (item) list.push(item);
     }
-    
-    var lastTileExtra = ( this.getBaseLayerExists() ? 2 : 1 );
-    
-        if(f){
-      for ( var i=0; i<liList.length; i++ )
-      {
-        var li = $( liList[i] );
-        var isFirstTile = ( i==0 );
-        var isLastTile = ( i >= list.length - lastTileExtra );
-        
-        if ( isFirstTile )
+
+    var lastTileExtra = (this.getBaseLayerExists() ? 2 : 1);
+
+    if (f) {
+      for (var i = 0; i < liList.length; i++) {
+        var li = $(liList[i]);
+        var isFirstTile = (i == 0);
+        var isLastTile = (i >= list.length - lastTileExtra);
+
+        if (isFirstTile)
           li.find(".updown_frame a.up").hide();
         else
           li.find(".updown_frame a.up").show();
-          
 
-        if ( isLastTile ) 
+
+        if (isLastTile)
           li.find(".updown_frame a.down").hide();
         else
           li.find(".updown_frame a.down").show();
       }
-      
-        this.mapLayerList.refreshTileList(list);
+
+      this.mapLayerList.refreshTileList(list);
     }
-    
+
     this.updateCombineLayer('onSortChange');
     GLOBE.MAP.setLayersHash();
   },
-  getBaseLayerCount : function()
-  {
+  getBaseLayerCount: function () {
     var tileList = this.mapLayerList.getTileList();
     var cnt = 0;
-    for  ( var i=0; i<tileList.length; i++ )
-    {
-      if ( tileList[i]._isBaseLayer ) cnt++;
+    for (var i = 0; i < tileList.length; i++) {
+      if (tileList[i]._isBaseLayer) cnt++;
     }
     return cnt;
   },
-  getBaseLayerExists : function()
-  {
-    return ( this.getBaseLayerCount() > 0 );
+  getBaseLayerExists: function () {
+    return (this.getBaseLayerCount() > 0);
   },
-  onCOCOTileLoad : function(e)
-  {
-    this._initializeList( true );
+  onCOCOTileLoad: function (e) {
+    this._initializeList(true);
   },
-  onCOCOTileHide : function(e )
-  {
-    this._initializeList( true );
+  onCOCOTileHide: function (e) {
+    this._initializeList(true);
   },
-  makePankzu : function( target )
-  {
+  makePankzu: function (target) {
     if (target._isOutside) {
       return "外部タイル";
     }
     if (target._appendInfo) target = target._appendInfo;
-    
+
     target = target.parent;
     var result = '';
-    while( target )
-    {
-      result = target.title + (result == '' ?'': '&gt;') + result;
+    while (target) {
+      result = target.title + (result == '' ? '' : '&gt;') + result;
       target = target.parent;
     }
 
     return result;
   },
-  _updateLayer : function( li, item, isTile, isFirstTile, isLastTile  )
-  {
+  _updateLayer: function (li, item, isTile, isFirstTile, isLastTile) {
     var cocoVisible = this.cocoTileLayer.getVisible();
-    if (cocoVisible && item.cocotile && !item.hasTile )
-    {
-            li.find("a").removeClass("view");
-            li.find("a").addClass("nococotile");
+    if (cocoVisible && item.cocotile && !item.hasTile) {
+      li.find("a").removeClass("view");
+      li.find("a").addClass("nococotile");
     }
-    else
-    {
-            if(item._visibleInfo._isHidden){
-                li.find("a").removeClass("view");
-            }
-            else{
-                li.find("a").addClass("view");
-            }
-            li.find("a").removeClass("nococotile");
+    else {
+      if (item._visibleInfo._isHidden) {
+        li.find("a").removeClass("view");
+      }
+      else {
+        li.find("a").addClass("view");
+      }
+      li.find("a").removeClass("nococotile");
     }
-    
-    
-    if ( isFirstTile )
+
+
+    if (isFirstTile)
       li.find(".updown_frame a.up").hide();
     else
       li.find(".updown_frame a.up").show();
-      
 
-    if ( isLastTile ) 
+
+    if (isLastTile)
       li.find(".updown_frame a.down").hide();
     else
       li.find(".updown_frame a.down").show();
-    
+
   },
-  _makeLayer : function( li, a, item, isTile, isFirstTile, isLastTile )
-  {
+  _makeLayer: function (li, a, item, isTile, isFirstTile, isLastTile) {
     var cocoVisible = this.cocoTileLayer.getVisible();
-    
+
     if (item._isOutside)
       li.addClass("outside");
-    
-        var vClass = 'item_frame';
-        var vClassTitle = 'title';
-        if(item._isBaseLayer){
-            vClass   = 'item_frame_fixed';
-            vClassTitle = 'title_base';
-        }
-        a.addClass( vClass );
 
-    var frame = $( '<div>' );
-    if ( isTile ) frame.addClass( 'tille' );
-    li.data( { 'data' : item } );
+    var vClass = 'item_frame';
+    var vClassTitle = 'title';
+    if (item._isBaseLayer) {
+      vClass = 'item_frame_fixed';
+      vClassTitle = 'title_base';
+    }
+    a.addClass(vClass);
 
-        a.append( frame );
-        
+    var frame = $('<div>');
+    if (isTile) frame.addClass('tille');
+    li.data({ 'data': item });
+
+    a.append(frame);
+
     // タイトル
-    var title = $( '<div>' ).addClass( vClassTitle );
+    var title = $('<div>').addClass(vClassTitle);
     var icon = item.iconUrl;
-        if(icon){
-        title.css(
-          {
-            "background" : "url(" + icon + ") no-repeat 4px 50%",
-            "background-size" : "16px 16px"
-          }
-        );
+    if (icon) {
+      title.css(
+        {
+          "background": "url(" + icon + ") no-repeat 4px 50%",
+          "background-size": "16px 16px"
         }
+      );
+    }
 
     // パンくず
-    var pankuzu = $( '<div>' ).addClass( 'pankuzu' ).html( this.makePankzu( item ) );
-    title.html( item.title );
+    var pankuzu = $('<div>').addClass('pankuzu').html(this.makePankzu(item));
+    title.html(item.title);
 
-        var viewMark = $( '<span>' );
-    if (! item._visibleInfo._isHidden )
-    {
-      viewMark.addClass( 'viewmark' ).html( '表示' );
-      a.addClass( 'view' );
+    var viewMark = $('<span>');
+    if (!item._visibleInfo._isHidden) {
+      viewMark.addClass('viewmark').html('表示');
+      a.addClass('view');
       this._enableLakeDepthForItem(item, true);
     } else {
-      a.removeClass( 'view' );
+      a.removeClass('view');
       this._enableLakeDepthForItem(item, false);
     }
-    frame.append( viewMark ).append( pankuzu ).append( title );
-    a.addClass( 'item' ).append( title );
+    frame.append(viewMark).append(pankuzu).append(title);
+    a.addClass('item').append(title);
 
-    if (cocoVisible && item.cocotile && !item.hasTile )
-    {
-            a.removeClass( 'view' );
-      a.addClass( 'nococotile' );
+    if (cocoVisible && item.cocotile && !item.hasTile) {
+      a.removeClass('view');
+      a.addClass('nococotile');
     }
 
     // 合成
-    if ( isTile && !item._isBaseLayer )
-    {
-            var mp = new GSI.ToggleSwitch( {className:'toggle', checked:(item._visibleInfo._isCombine)} );
-            //var mp = new GSI.OnOffSwitch( {className:'filetext', checked:(item._visibleInfo.blend)} );
-            var mpElement = mp.getElement();
-            mpElement.addClass("multiplytile");
-            mpElement.on( 'change', MA.bind(this._onBlendSwitchChange, this, a, mp ) );
+    if (isTile && !item._isBaseLayer) {
+      var mp = new GSI.ToggleSwitch({ className: 'toggle', checked: (item._visibleInfo._isCombine) });
+      //var mp = new GSI.OnOffSwitch( {className:'filetext', checked:(item._visibleInfo.blend)} );
+      var mpElement = mp.getElement();
+      mpElement.addClass("multiplytile");
+      mpElement.on('change', MA.bind(this._onBlendSwitchChange, this, a, mp));
 
-            li.append( mpElement );
+      li.append(mpElement);
     }
-    
-        // グレースケール
-        if(item._isBaseLayer)
-        {
-            var grayScale_Label = $( '<span>' ).addClass( 'grayscale_label' ).html( 'グレースケール' );
-          li.append( grayScale_Label );
+
+    // グレースケール
+    if (item._isBaseLayer) {
+      var grayScale_Label = $('<span>').addClass('grayscale_label').html('グレースケール');
+      li.append(grayScale_Label);
       //310- グレースケールかどうかを
-            var grayScale = new GSI.OnOffSwitch( {className:'onoff', checked:(item._visibleInfo._grayScale)} );
-          var grayScaleElement = grayScale.getElement();
-            grayScaleElement.addClass("grayscale");
-          grayScale.on( 'change', MA.bind( this._gray_scale, this, a, grayScale ) );
+      var grayScale = new GSI.OnOffSwitch({ className: 'onoff', checked: (item._visibleInfo._grayScale) });
+      var grayScaleElement = grayScale.getElement();
+      grayScaleElement.addClass("grayscale");
+      grayScale.on('change', MA.bind(this._gray_scale, this, a, grayScale));
 
-          li.append( grayScaleElement);
-          
+      li.append(grayScaleElement);
+
       grayScale.fire('change');
-        }
-        
-    // 透過
-    var opacityBtn =$("<a>").addClass("opacity_btn").attr( {"href":"javascript:void(0);"} ).html('透過率');
-    opacityBtn.click( MA.bind(function(){ this._onOpacityBtnClick(li); }, this ));
-    li.append( opacityBtn );
+    }
 
-    if ( item.id == CONFIG.FREERELIEFID ) {
-      var settingBtn =  $('<a>').attr({ 
+    // 透過
+    var opacityBtn = $("<a>").addClass("opacity_btn").attr({ "href": "javascript:void(0);" }).html('透過率');
+    opacityBtn.click(MA.bind(function () { this._onOpacityBtnClick(li); }, this));
+    li.append(opacityBtn);
+
+    if (item.id == CONFIG.FREERELIEFID) {
+      var settingBtn = $('<a>').attr({
         'href': 'javascript:void(0);',
-        'title' : 'スタイル変更'}).addClass('setting_btn').html("");
+        'title': 'スタイル変更'
+      }).addClass('setting_btn').html("");
       li.append(settingBtn);
-      settingBtn.unbind('click').bind('click', MA.bind( function(a, item){
-        this._onReliefStyleEidtClick( a, item );
-      },this, a, item ));
+      settingBtn.unbind('click').bind('click', MA.bind(function (a, item) {
+        this._onReliefStyleEidtClick(a, item);
+      }, this, a, item));
 
       li.addClass('free_relief_id');
     }
-    
+
     // 詳細
     if (item._isOutside) {
       var outsideEditBtn = $('<span>').addClass('outside_edit_btn').html("編集");
@@ -14944,41 +13964,38 @@ GSI.ViewListDialog = GSI.Dialog.extend( {
     }
     else {
       var descriptionBtn = $('<span>').addClass('description_btn').html("解説");
-      li.append( descriptionBtn );
+      li.append(descriptionBtn);
       descriptionBtn.unbind('click').bind('click', MA.bind(this._onLayerMouseEnter, this, a, item));
     }
-    
+
     // 閉じる
-    var closeBtn = $( '<div>' ).addClass( 'closebtn' );
-    li.append(closeBtn );
-      closeBtn.unbind( 'click' ).bind( 'click', MA.bind( this.onRemoveClick, this, li ) );
-    
+    var closeBtn = $('<div>').addClass('closebtn');
+    li.append(closeBtn);
+    closeBtn.unbind('click').bind('click', MA.bind(this.onRemoveClick, this, li));
+
     // ソート
-    if ( isTile &&  !item._isBaseLayer && ( !isFirstTile || !isLastTile ) )
-    {
-      var updownFrame = $( "<div>").addClass( 'updown_frame' );
-      var upButton = $( "<a>" ).attr( {"href":"javascript:void(0);"} ).addClass( "up" )
-        .click( MA.bind( function(){this._up(li);}, this ) );
-      var downButton = $ ( "<a>" ).attr( {"href":"javascript:void(0);"} ).addClass( "down" )
-        .click( MA.bind( function(){this._down(li);}, this ) );
-      
-      if ( isFirstTile )
-      {
+    if (isTile && !item._isBaseLayer && (!isFirstTile || !isLastTile)) {
+      var updownFrame = $("<div>").addClass('updown_frame');
+      var upButton = $("<a>").attr({ "href": "javascript:void(0);" }).addClass("up")
+        .click(MA.bind(function () { this._up(li); }, this));
+      var downButton = $("<a>").attr({ "href": "javascript:void(0);" }).addClass("down")
+        .click(MA.bind(function () { this._down(li); }, this));
+
+      if (isFirstTile) {
         upButton.hide();
       }
-      if ( isLastTile ) 
-      {
+      if (isLastTile) {
         downButton.hide();
       }
-      
-      updownFrame.append( upButton ).append( downButton );
-      li.append(updownFrame );
+
+      updownFrame.append(upButton).append(downButton);
+      li.append(updownFrame);
     }
-    
-    a.click( MA.bind( this.onItemClick, this, li, a, viewMark) );
-    
+
+    a.click(MA.bind(this.onItemClick, this, li, a, viewMark));
+
   },
-  
+
   // (_onOutsideEidtEnter)
   _onOutsideEditEnter: function (a, item) {
     if (!this._editOutsideDialog) {
@@ -14988,18 +14005,17 @@ GSI.ViewListDialog = GSI.Dialog.extend( {
       //	effect: CONFIG.EFFECTS.DIALOG
       //});
       this._editOutsideDialog = GLOBE.DIALOG.EDITOUTSIDETILE;
-      
-      this._editOutsideDialog.onChange = MA.bind(function(target){
+
+      this._editOutsideDialog.onChange = MA.bind(function (target) {
         this.mapLayerList.updateTileLayer(target);
       }, this);
     }
-    
+
     this._editOutsideDialog.showEditDialog(item);
   },
-  
+
   // 合成スイッチ切り替え時の処理
-  _onBlendSwitchChange : function( a, mp )
-  {
+  _onBlendSwitchChange: function (a, mp) {
     /*
         if (GSI.Utils.Browser.ie)
         {
@@ -15007,44 +14023,38 @@ GSI.ViewListDialog = GSI.Dialog.extend( {
           return;
         }
         */
-        var item = a.data( 'data' );
-        item._visibleInfo._isCombine = mp.checked();
-        //this._blendTile( a, mp.checked() );
-        this.updateCombineLayer('_onBlendSwitchChange');
+    var item = a.data('data');
+    item._visibleInfo._isCombine = mp.checked();
+    //this._blendTile( a, mp.checked() );
+    this.updateCombineLayer('_onBlendSwitchChange');
   },
-  
+
   // 必要に応じて合成レイヤーを構成あるいは廃棄する
-  updateCombineLayer : function(callfrom)
-  {
+  updateCombineLayer: function (callfrom) {
     var tileList = this.mapLayerList.getTileList();
 
     var anyCombineEnabled = false;
-    for ( var i=0; i<tileList.length; i++ )
-    {
-      if ( tileList[i]._visibleInfo._isCombine )
-      {
+    for (var i = 0; i < tileList.length; i++) {
+      if (tileList[i]._visibleInfo._isCombine) {
         anyCombineEnabled = true;
         break;
       }
     }
-    
+
     var layers = this.map.viewer.imageryLayers;
     var combineLayerIndex = tileList.length;
-    
-    var openCombineLayerFnc = function(){
 
-      if ( this._beforeCombineLayer )
-      {
+    var openCombineLayerFnc = function () {
+
+      if (this._beforeCombineLayer) {
         layers.remove(this._beforeCombineLayer);
       }
-      
+
       this._beforeCombineLayer = this._currentCombineLayer;
-      
-      if ( this._beforeCombineLayer )
-      {
+
+      if (this._beforeCombineLayer) {
         layers.lowerToBottom(this._beforeCombineLayer);
-        for ( var i=1; i<=combineLayerIndex; i++ )
-        {
+        for (var i = 1; i <= combineLayerIndex; i++) {
           layers.raise(this._beforeCombineLayer);
         }
         combineLayerIndex++;
@@ -15052,268 +14062,235 @@ GSI.ViewListDialog = GSI.Dialog.extend( {
 
       this._currentCombineLayer = layers.addImageryProvider(
         new Cesium.JapanGSICombineImageryProvider({
-          tileList : tileList
+          tileList: tileList
         })
-      , combineLayerIndex);
-      
+        , combineLayerIndex);
+
     }.bind(this);
-    
-    var closeCombineLayerFnc = function(){
-      
-      if ( this._beforeCombineLayer )
-      {
+
+    var closeCombineLayerFnc = function () {
+
+      if (this._beforeCombineLayer) {
         layers.remove(this._beforeCombineLayer);
       }
       layers.remove(this._currentCombineLayer);
-      this._beforeCombineLayer  = undefined;
+      this._beforeCombineLayer = undefined;
       this._currentCombineLayer = undefined;
-      
+
     }.bind(this);
 
-    if ( anyCombineEnabled )
-    {
+    if (anyCombineEnabled) {
       openCombineLayerFnc();
     }
-    else
-    {
+    else {
       closeCombineLayerFnc();
     }
   },
-  
-  _onOpacityBtnClick : function(li)
-  {
-    
-    
+
+  _onOpacityBtnClick: function (li) {
+
+
     var item = li.data('data');
-    var opacity = ( item._visibleInfo ? item._visibleInfo.opacity : 1 );
-    if ( !this._opacityWindow )
-    {
-      this._opacityWindow = $( '<div>' ).addClass( 'viewlistdialog_opacity_window' );
-      this._opacityValue = $( '<div>' ).addClass( 'value' ).html( '透過率:' );
-      this._opacitySlider = $( '<div>' ).addClass( 'slider' ).html( '&nbsp;' );
-      this._opacityWindow.append(this._opacityValue ).append( this._opacitySlider );
-      $( "body" ) .append( this._opacityWindow );
+    var opacity = (item._visibleInfo ? item._visibleInfo.opacity : 1);
+    if (!this._opacityWindow) {
+      this._opacityWindow = $('<div>').addClass('viewlistdialog_opacity_window');
+      this._opacityValue = $('<div>').addClass('value').html('透過率:');
+      this._opacitySlider = $('<div>').addClass('slider').html('&nbsp;');
+      this._opacityWindow.append(this._opacityValue).append(this._opacitySlider);
+      $("body").append(this._opacityWindow);
       this._opacitySlider.slider({
         min: 0,
-        max : 100
+        max: 100
       });
     }
-    else if ( this._opacityWindow && this._opacityWindow.is(":visible") && this._opacityWindow.data("item") == item )
-    {
+    else if (this._opacityWindow && this._opacityWindow.is(":visible") && this._opacityWindow.data("item") == item) {
       this._opacityWindow.slideUp(200);
       return;
     }
     var offset = li.find("a.opacity_btn").offset();
     this._opacityWindow.css({
-      top: offset.top + li.find("a.opacity_btn").outerHeight() -4,
-      left :offset.left - 200 + 'px'
-    }).data( { "item" : item } );
-    
-    var opacityPercentage = Math.round( 100 - ( opacity * 100 ) );
+      top: offset.top + li.find("a.opacity_btn").outerHeight() - 4,
+      left: offset.left - 200 + 'px'
+    }).data({ "item": item });
+
+    var opacityPercentage = Math.round(100 - (opacity * 100));
     this._opacityValue.html('透過率:' + opacityPercentage + '%');
-    this._opacitySlider.data({"__target_item":item}).slider( "option", "value", opacityPercentage );
-    this._opacitySlider.off("slide").on( "slide", MA.bind(function( event, ui ) {
+    this._opacitySlider.data({ "__target_item": item }).slider("option", "value", opacityPercentage);
+    this._opacitySlider.off("slide").on("slide", MA.bind(function (event, ui) {
       var item = this._opacitySlider.data('__target_item');
       var value = ui.value;// this._opacitySlider.slider( "option", "value" );
       this._opacityValue.html('透過率:' + value + '%');
-      var opacity = value/ 100.0;
-      if ( opacity < 0 ) opacity = 0;
-      if ( opacity > 1 ) opacity = 1;
-      opacity = 1- opacity;
-      
+      var opacity = value / 100.0;
+      if (opacity < 0) opacity = 0;
+      if (opacity > 1) opacity = 1;
+      opacity = 1 - opacity;
+
       //310-指定レイヤの透過率を設定
-      if (item._visibleInfo.layer.type == "GeojsonTile_QuadtreePrimitive" )
-      {
-        this.mapLayerList._setTileGeoJSONAlpha(item._visibleInfo.layer,opacity);
+      if (item._visibleInfo.layer.type == "GeojsonTile_QuadtreePrimitive") {
+        this.mapLayerList._setTileGeoJSONAlpha(item._visibleInfo.layer, opacity);
       }
-      else
-      {
-        if ( item._visibleInfo.layer.setAlpha )
+      else {
+        if (item._visibleInfo.layer.setAlpha)
           item._visibleInfo.layer.setAlpha(opacity);
         else
           item._visibleInfo.layer.alpha = opacity;
       }
       item._visibleInfo.opacity = opacity;
-      
+
       this.updateCombineLayer('_opacitySlider');
       GLOBE.MAP.setLayersHash();
-    }, this ) );
-    
-    if ( this._hideOpacityWindowHandler )
-    {
-      $( document.body ).unbind( 'mousedown', this._hideOpacityWindowHandler );
-      $( document.body ).unbind( 'touchstart', this._hideOpacityWindowHandler );
-    
-    }
-    this._hideOpacityWindowHandler  = MA.bind( function(event)
-    {
-      if ( !this._opacityWindow 
-        || event.target == this._opacityWindow[0]
-          || $(event.target).is(".opacity_btn")) return;
+    }, this));
 
-      var parents = $( event.target ).parents();
-      
+    if (this._hideOpacityWindowHandler) {
+      $(document.body).unbind('mousedown', this._hideOpacityWindowHandler);
+      $(document.body).unbind('touchstart', this._hideOpacityWindowHandler);
+
+    }
+    this._hideOpacityWindowHandler = MA.bind(function (event) {
+      if (!this._opacityWindow
+        || event.target == this._opacityWindow[0]
+        || $(event.target).is(".opacity_btn")) return;
+
+      var parents = $(event.target).parents();
+
       var hit = false;
-      for( var i=0; i<parents.length; i++ )
-      {
-        if ( $(parents[i]).is(".viewlistdialog_opacity_window"))
-        {
+      for (var i = 0; i < parents.length; i++) {
+        if ($(parents[i]).is(".viewlistdialog_opacity_window")) {
           hit = true;
           break;
         }
       }
-      if ( !hit )
-      {
+      if (!hit) {
         this._opacityWindow.slideUp(200);
-        $( document.body ).unbind( 'mousedown', this._hideOpacityWindowHandler );
-        $( document.body ).unbind( 'touchstart', this._hideOpacityWindowHandler );
+        $(document.body).unbind('mousedown', this._hideOpacityWindowHandler);
+        $(document.body).unbind('touchstart', this._hideOpacityWindowHandler);
       }
-    }, this );
+    }, this);
 
-    $( document.body ).bind( 'mousedown', this._hideOpacityWindowHandler );
-    $( document.body ).bind( 'touchstart', this._hideOpacityWindowHandler );
-    
+    $(document.body).bind('mousedown', this._hideOpacityWindowHandler);
+    $(document.body).bind('touchstart', this._hideOpacityWindowHandler);
+
     this._opacityWindow.hide().slideDown(200);
-    
+
   },
-  _up : function(li)
-  {
+  _up: function (li) {
     var item = li.data('data');
     var tileList = this.mapLayerList.getTileList();
     var hit = false;
-    for( var i=1; i<tileList.length; i++ )
-    {
-      if ( item == tileList[i])
-      {
+    for (var i = 1; i < tileList.length; i++) {
+      if (item == tileList[i]) {
         hit = true;
         break;
       }
-      
+
     }
-    if ( hit ) li.prev().before( li.detach() ); 
-    
+    if (hit) li.prev().before(li.detach());
+
     this.onSortChange();
-    this._initializeList( true );
+    this._initializeList(true);
   },
-  
-  _down : function(li)
-  {
+
+  _down: function (li) {
     var item = li.data('data');
     var tileList = this.mapLayerList.getTileList();
     var hit = false;
-    for( var i=0; i<tileList.length; i++ )
-    {
-      if ( item == tileList[i])
-      {
-        if ( i < tileList.length-1)
-        {
-          var nextItem = tileList[i+1];
+    for (var i = 0; i < tileList.length; i++) {
+      if (item == tileList[i]) {
+        if (i < tileList.length - 1) {
+          var nextItem = tileList[i + 1];
           hit = true;
         }
         break;
       }
-      
-    }
-    if ( hit ) li.next().after( li.detach() ); 
-    
-    this.onSortChange();
-    this._initializeList( true );
-  },
-  
-  
 
-  Refresh : function(visibleLayers)
-  {
+    }
+    if (hit) li.next().after(li.detach());
+
+    this.onSortChange();
+    this._initializeList(true);
+  },
+
+
+
+  Refresh: function (visibleLayers) {
     this._removeAll();
 
-    for ( var i=0; i<visibleLayers.length; i++ )
-    {
+    for (var i = 0; i < visibleLayers.length; i++) {
       var l = visibleLayers[i];
-      if(l && l.info){
-        GSI.GLOBALS.mapLayerList.append(l.info, true,l.hidden);
+      if (l && l.info) {
+        GSI.GLOBALS.mapLayerList.append(l.info, true, l.hidden);
       }
     }
 
     this._initializeList(true);
   },
 
-  _initializeList : function( liRefresh )
-  {
-        this._hideItemTooltip();
+  _initializeList: function (liRefresh) {
+    this._hideItemTooltip();
 
-    var list     = this.mapLayerList.getList();
+    var list = this.mapLayerList.getList();
     var tileList = this.mapLayerList.getTileList();
-    
-    if ( list.length <= 0 && tileList.length <= 0 )
-    {
+
+    if (list.length <= 0 && tileList.length <= 0) {
       this.listContainer.empty();
-      var li = $( '<li>' ).addClass( 'nodata' ).html( '選択中の情報はありません' );
-      this.listContainer.append( li );
+      var li = $('<li>').addClass('nodata').html('選択中の情報はありません');
+      this.listContainer.append(li);
     }
 
-    var liList = ( liRefresh ? this.listContainer.children( 'li' ) : null );
+    var liList = (liRefresh ? this.listContainer.children('li') : null);
     var ul = this.listContainer;
-    this._initializeListOne( list, liList, ul, liRefresh );
+    this._initializeListOne(list, liList, ul, liRefresh);
 
-    if ( this.tileListContainer )
-    {
-      liList = ( liRefresh ? this.tileListContainer.children( 'li' ) : null );
+    if (this.tileListContainer) {
+      liList = (liRefresh ? this.tileListContainer.children('li') : null);
       ul = this.tileListContainer;
-      this._initializeListOne( tileList, liList, ul, liRefresh, true );
+      this._initializeListOne(tileList, liList, ul, liRefresh, true);
       this.tileListContainer.sortable("refresh");
     }
   },
-  _initializeListOne : function( list,liList, ul, liRefresh, isTile )
-  {
-    var lastTileExtra = ( this.getBaseLayerExists() ? 2 : 1 );
-    
-    for ( var i= 0; i<list.length; i++ )
-    {
+  _initializeListOne: function (list, liList, ul, liRefresh, isTile) {
+    var lastTileExtra = (this.getBaseLayerExists() ? 2 : 1);
+
+    for (var i = 0; i < list.length; i++) {
       var item = list[i];
-      var li = ( liRefresh ? $( liList[i] ) : $( '<li>' ) );
+      var li = (liRefresh ? $(liList[i]) : $('<li>'));
 
-      if ( liRefresh )
-      {
-        this._updateLayer( li, item, isTile, 
-            i==0,
-            i >= list.length - lastTileExtra );
+      if (liRefresh) {
+        this._updateLayer(li, item, isTile,
+          i == 0,
+          i >= list.length - lastTileExtra);
       }
-      else
-      {
-          var a = $( '<a>' ).attr( { 'href':'javascript:void(0);' } );
-          a.data( { 'data' : item } );
-        this._makeLayer(li, a, item, isTile, 
-          i==0,
-          i >= list.length - lastTileExtra );
+      else {
+        var a = $('<a>').attr({ 'href': 'javascript:void(0);' });
+        a.data({ 'data': item });
+        this._makeLayer(li, a, item, isTile,
+          i == 0,
+          i >= list.length - lastTileExtra);
 
-          li.append( a );
+        li.append(a);
       }
 
-      if ( !liRefresh ) ul.append( li );
+      if (!liRefresh) ul.append(li);
     }
   },
-  onItemClick : function(li, a, viewMark)
-  {
-    var item = a.data( 'data' );
+  onItemClick: function (li, a, viewMark) {
+    var item = a.data('data');
     var item_layer = item._visibleInfo.layer;
 
-    if(item._visibleInfo._isHidden)
-    {
+    if (item._visibleInfo._isHidden) {
       item._visibleInfo._isHidden = false;
       //310-非表示にされていたレイヤを戻す
-      if(item._isBaseLayer){
+      if (item._isBaseLayer) {
         item._visibleInfo.layer.alpha = 1;
       } else {
         item._visibleInfo.layer._setVisible(this.map.viewer, true);//show = true;
       }
 
-      viewMark.addClass( 'viewmark' ).html( '表示' );
-      a.addClass( 'view' );
+      viewMark.addClass('viewmark').html('表示');
+      a.addClass('view');
 
-      if (item.id.indexOf(CONFIG.layerEvacuationHeader)>=0)
-      {
-        if ( GSI.Dialog._dialogManager.isVisibleDialog(GSI.GLOBALS.evacDialog) == false )
-        {
+      if (item.id.indexOf(CONFIG.layerEvacuationHeader) >= 0) {
+        if (GSI.Dialog._dialogManager.isVisibleDialog(GSI.GLOBALS.evacDialog) == false) {
           GSI.GLOBALS.evacDialog.show();
         }
       }
@@ -15322,24 +14299,22 @@ GSI.ViewListDialog = GSI.Dialog.extend( {
       if (item.id == CONFIG.COMPAREPHOTO_ID) {
         this.mapLayerList.map.showComparePhotoControl();
       }
-      
+
     }
-    else
-    {
+    else {
       item._visibleInfo._isHidden = true;
       //310-選択中の情報に残したまま非表示（地図からレイヤ削除）
-      
-      if(item._isBaseLayer){
+
+      if (item._isBaseLayer) {
         item._visibleInfo.layer.alpha = 0;
-      } else{
+      } else {
         item._visibleInfo.layer._setVisible(this.map.viewer, false);//show = false;
       }
 
-      viewMark.removeClass( 'viewmark' ).html( ' ' );
-      a.removeClass( 'view' );
+      viewMark.removeClass('viewmark').html(' ');
+      a.removeClass('view');
 
-      if (item.id.indexOf(CONFIG.layerEvacuationHeader)>=0 )
-      {
+      if (item.id.indexOf(CONFIG.layerEvacuationHeader) >= 0) {
         GSI.GLOBALS.evacDialog.hide();
       }
 
@@ -15351,14 +14326,13 @@ GSI.ViewListDialog = GSI.Dialog.extend( {
     }
 
     var cocoVisible = this.cocoTileLayer.getVisible();
-    if (cocoVisible && item.cocotile && !item.hasTile )
-    {
-            a.removeClass("view");
-            a.addClass("nococotile");
-        }
-        
-        this.updateCombineLayer('onItemClick');
-        GLOBE.MAP.setLayersHash();
+    if (cocoVisible && item.cocotile && !item.hasTile) {
+      a.removeClass("view");
+      a.addClass("nococotile");
+    }
+
+    this.updateCombineLayer('onItemClick');
+    GLOBE.MAP.setLayersHash();
   },
   showReliefFree: function (item) {
     if (item._visibleInfo._isHidden) {
@@ -15369,8 +14343,7 @@ GSI.ViewListDialog = GSI.Dialog.extend( {
     this.updateCombineLayer('showReliefFree');
     GLOBE.MAP.setLayersHash();
   },
-  onMapLayerListChange : function()
-  {
+  onMapLayerListChange: function () {
     var tileList = this.mapLayerList.getTileList();
     var hasOutsideTile = false;
     for (var i = 0; i < tileList.length; i++) {
@@ -15383,143 +14356,126 @@ GSI.ViewListDialog = GSI.Dialog.extend( {
       this._saveOutsideTileBtn.show();
     else
       this._saveOutsideTileBtn.hide();
-    
+
     this._enableLakeDepth(false);
     this.initializeList();
     this.updateCombineLayer('onMapLayerListChange');
     GLOBE.MAP.setLayersHash();
   },
-  onRemoveClick : function(li)
-  {
-    var item = li.data( 'data' );
-    
-    
-    if ( item && item.id == CONFIG.FREERELIEFID && GSI.GLOBALS.mapLayerList._editReliefDialog )
-      GSI.GLOBALS.mapLayerList._editReliefDialog.hide();
-    
-    
-        if(item.parent && item.parent.title_sys && item.parent.title_sys == CONFIG.layerBaseFolderSYS){
-            //310-ベースマップの場合の削除
-            item._visibleInfo.layer.alpha = 0;
+  onRemoveClick: function (li) {
+    var item = li.data('data');
 
-        }
-    li.fadeOut( 'fast', MA.bind( function(li) {
-      this.mapLayerList.remove( item );
+
+    if (item && item.id == CONFIG.FREERELIEFID && GSI.GLOBALS.mapLayerList._editReliefDialog)
+      GSI.GLOBALS.mapLayerList._editReliefDialog.hide();
+
+
+    if (item.parent && item.parent.title_sys && item.parent.title_sys == CONFIG.layerBaseFolderSYS) {
+      //310-ベースマップの場合の削除
+      item._visibleInfo.layer.alpha = 0;
+
+    }
+    li.fadeOut('fast', MA.bind(function (li) {
+      this.mapLayerList.remove(item);
       li.remove();
-      if ( this._userResized ) this._onResize();
-    }, this, li ) );
-    
+      if (this._userResized) this._onResize();
+    }, this, li));
+
     GLOBE.MAP.setLayersHash();
   },
-  _onLayerMouseEnter : function( a, item )
-  {
-    if ( !this._toolTipViewCounter )
-    {
+  _onLayerMouseEnter: function (a, item) {
+    if (!this._toolTipViewCounter) {
       this._toolTipViewCounter = 0;
     }
     this._toolTipViewCounter++;
 
-    this._showItemTooltip( a, item );
+    this._showItemTooltip(a, item);
   },
-  _onLayerMouseLeave : function( a, item )
-  {
-    this._hideItemTooltip( a, item );
+  _onLayerMouseLeave: function (a, item) {
+    this._hideItemTooltip(a, item);
   },
-  _makeToolTip : function( item )
-  {
-    var infoFrame = $( '<div>' ).addClass( 'layerinfo' ).css({"max-width":"350px"} ).attr({"id":"layerInfoDivVl"});
+  _makeToolTip: function (item) {
+    var infoFrame = $('<div>').addClass('layerinfo').css({ "max-width": "350px" }).attr({ "id": "layerInfoDivVl" });
 
     var legend = null;
     var description = null;
 
-    if (item.title){
-      infoFrame.append( $( '<div>' ).css( {"font-weight":"bold"} ).html( item.title ).attr({"id":"toolTipTitle"}) );
+    if (item.title) {
+      infoFrame.append($('<div>').css({ "font-weight": "bold" }).html(item.title).attr({ "id": "toolTipTitle" }));
     }
-    if ( item.legendUrl && item.legendUrl != '')
-    {
-      legend =$( '<a>' ).html( '凡例を表示' ).addClass( 'legend' ).attr( { 'href' : item.legendUrl, 'target' : '_blank' } );
+    if (item.legendUrl && item.legendUrl != '') {
+      legend = $('<a>').html('凡例を表示').addClass('legend').attr({ 'href': item.legendUrl, 'target': '_blank' });
     }
-    if ( legend )
-      infoFrame.append( legend );
+    if (legend)
+      infoFrame.append(legend);
 
-    if ( item.html )
-    {
-      description =$( '<div>' ).addClass( 'description' ).html( item.html );
+    if (item.html) {
+      description = $('<div>').addClass('description').html(item.html);
     }
-    if ( description ) infoFrame.append( description );
-    
+    if (description) infoFrame.append(description);
+
     return infoFrame;
   },
-  
-  
-  _onReliefStyleEidtClick :function(a, item)
-  {
+
+
+  _onReliefStyleEidtClick: function (a, item) {
     this._curItem = undefined;
-        this._hideItemTooltip();
+    this._hideItemTooltip();
     windowSize = GSI.Utils.getScreenSize();
-    
-    if ( !GSI.GLOBALS.mapLayerList._editReliefDialog )
-    {
-      GSI.GLOBALS.mapLayerList._editReliefDialog = new GSI.EditReliefDialog( this._map, GSI.GLOBALS.mapLayerList, {
-        width:280, left :parseInt(windowSize.w /2 - 160 ), top :windowSize.h- 500,
-        effect : CONFIG.EFFECTS.DIALOG,
+
+    if (!GSI.GLOBALS.mapLayerList._editReliefDialog) {
+      GSI.GLOBALS.mapLayerList._editReliefDialog = new GSI.EditReliefDialog(this._map, GSI.GLOBALS.mapLayerList, {
+        width: 280, left: parseInt(windowSize.w / 2 - 160), top: windowSize.h - 500,
+        effect: CONFIG.EFFECTS.DIALOG,
         listItem: a, listObj: item
-        }
+      }
       );
     }
     GSI.GLOBALS.mapLayerList._editReliefDialog.show();
   },
-  
-  
-  _showItemTooltip : function( a, item )
-  {
-    if ( item  )
-    {
-      if ( !this._curItem )
-      {
+
+
+  _showItemTooltip: function (a, item) {
+    if (item) {
+      if (!this._curItem) {
         this._curItem = item;
       }
-      else
-      {
+      else {
         {
-          if ( this._curItem == item )
-          {
+          if (this._curItem == item) {
             this._curItem = undefined;
             this._toolTipViewCounter = 0;
             return;
           }
-          else
-          {
+          else {
             this._toolTipViewCounter--;
           }
         }
         this._curItem = item;
       }
-    
-      if ( !this._itemTooltip )
-      {
-        this._itemTooltip = $( '<div>' ).addClass( 'gsi_layertreedialog_itemtooltip' ).hide();
-        $( document.body ).append( this._itemTooltip );
+
+      if (!this._itemTooltip) {
+        this._itemTooltip = $('<div>').addClass('gsi_layertreedialog_itemtooltip').hide();
+        $(document.body).append(this._itemTooltip);
       }
 
       var offset = a.offset();
 
       var screenSize = GSI.Utils.getScreenSize();
-      var left = offset.left + parseInt( a.outerWidth(true) );
+      var left = offset.left + parseInt(a.outerWidth(true));
       var top = offset.top;
 
-      if ( left > screenSize.w * 0.6 )
-      {
-        left = offset.left + parseInt( a.outerWidth(true) * 0.3 );
+      if (left > screenSize.w * 0.6) {
+        left = offset.left + parseInt(a.outerWidth(true) * 0.3);
         top = offset.top + a.outerHeight(true);
       }
 
       this._itemTooltip.css({
-        left : left + 'px',
-        top  : top + 'px'
-      }).empty().append( this._makeToolTip( item ) );
+        left: left + 'px',
+        top: top + 'px'
+      }).empty().append(this._makeToolTip(item));
 
-      this._itemTooltip.stop().hide().fadeIn( 'normal' , function(){
+      this._itemTooltip.stop().hide().fadeIn('normal', function () {
         var ss = GSI.Utils.getScreenSize();
         var hh = this.clientHeight;
         var ww = this.clientWidth;
@@ -15531,250 +14487,226 @@ GSI.ViewListDialog = GSI.Dialog.extend( {
         var th = $("#layerInfoDivVl > #toolTipTitle")[0];
         var em = 5;
 
-        if (ss.w < (lf + ww)){
+        if (ss.w < (lf + ww)) {
           newlf = lf + (ss.w - (lf + ww)) - em;
-          if (newlf < 0){
+          if (newlf < 0) {
             newlf = em;
-            $(descel).css({"overflow-x":"scroll"});
+            $(descel).css({ "overflow-x": "scroll" });
           }
         }
-        if (ss.h < (tp + hh)){
+        if (ss.h < (tp + hh)) {
           newtp = tp + (ss.h - (tp + hh)) - em;
-          if (newtp < 0){
+          if (newtp < 0) {
             newtp = em;
-            $(descel).css({"height":(ss.h - th.clientHeight - 25) + "px","overflow-y":"scroll"});
+            $(descel).css({ "height": (ss.h - th.clientHeight - 25) + "px", "overflow-y": "scroll" });
           }
         }
         $(this).animate({
-          left:newlf + "px",
-          top:newtp + "px"
+          left: newlf + "px",
+          top: newtp + "px"
         }, "normal");
       });
 
-      if ( this._hideToolTipHandler )
-      {
-        $( document.body ).unbind( 'mousedown', this._hideToolTipHandler );
-        $( document.body ).unbind( 'touchstart', this._hideToolTipHandler );
-        this.listFrame.unbind( 'scroll', this._hideToolTipHandler );
-        this._hideToolTipHandler  = null;
+      if (this._hideToolTipHandler) {
+        $(document.body).unbind('mousedown', this._hideToolTipHandler);
+        $(document.body).unbind('touchstart', this._hideToolTipHandler);
+        this.listFrame.unbind('scroll', this._hideToolTipHandler);
+        this._hideToolTipHandler = null;
       }
 
-      this._hideToolTipHandler  = MA.bind( function(event)
-      {
-        if ( !this._itemTooltip || event.target == this._itemTooltip[0] ) return;
+      this._hideToolTipHandler = MA.bind(function (event) {
+        if (!this._itemTooltip || event.target == this._itemTooltip[0]) return;
 
-        var parents = $( event.target ).parents();
+        var parents = $(event.target).parents();
 
-        for (var i=0; i<parents.length; i++ )
-        {
-          if ( parents[i] == this._itemTooltip[0] ) return;
+        for (var i = 0; i < parents.length; i++) {
+          if (parents[i] == this._itemTooltip[0]) return;
         }
 
-                var fToopTop = false;
-                if($(event.target).is(".switch") || $(event.target).is(".inner") || $(event.target).is(".btn")){
-                    fToopTop = true;
-                }
+        var fToopTop = false;
+        if ($(event.target).is(".switch") || $(event.target).is(".inner") || $(event.target).is(".btn")) {
+          fToopTop = true;
+        }
 
-                if(!fToopTop){
-                    if(!$(event.target).is(".description_btn")){
-                        this._curItem = undefined;
-                    }
-            this._hideItemTooltip();
-                }
-        
-        if ( event.type == "scroll" )
-        {
+        if (!fToopTop) {
+          if (!$(event.target).is(".description_btn")) {
+            this._curItem = undefined;
+          }
+          this._hideItemTooltip();
+        }
+
+        if (event.type == "scroll") {
           this._toolTipViewCounter = 0;
         }
-      }, this );
+      }, this);
 
-      $( document.body ).bind( 'mousedown', this._hideToolTipHandler );
-      $( document.body ).bind( 'touchstart', this._hideToolTipHandler );
-      this.listFrame.bind( 'scroll', this._hideToolTipHandler );
+      $(document.body).bind('mousedown', this._hideToolTipHandler);
+      $(document.body).bind('touchstart', this._hideToolTipHandler);
+      this.listFrame.bind('scroll', this._hideToolTipHandler);
 
     }
-    else
-    {
+    else {
       this._hideItemTooltip();
     }
   },
-  _hideItemTooltip : function( a, item )
-  {
-    if ( this._hideToolTipHandler )
-    {
-      $( document.body ).unbind( 'mousedown', this._hideToolTipHandler );
-      $( document.body ).unbind( 'touchstart', this._hideToolTipHandler );
-      this.listFrame.unbind( 'scroll', this._hideToolTipHandler );
-      this._hideToolTipHandler  = null;
+  _hideItemTooltip: function (a, item) {
+    if (this._hideToolTipHandler) {
+      $(document.body).unbind('mousedown', this._hideToolTipHandler);
+      $(document.body).unbind('touchstart', this._hideToolTipHandler);
+      this.listFrame.unbind('scroll', this._hideToolTipHandler);
+      this._hideToolTipHandler = null;
     }
-    if ( this._itemTooltip )
-    {
+    if (this._itemTooltip) {
       this._itemTooltip.stop().hide();
-            this._toolTipViewCounter = 0;
+      this._toolTipViewCounter = 0;
     }
   },
-    _opacity : function(a, opacity, c)
-    {
-        var v = parseInt(opacity.text().replace("透過", "").replace("%", ""), 10);
-        if(c == "++"){
-            v++;
-        }
-        else if(c == "+"){
-            var v2 = Math.floor(v * 0.1);
-            var v1 = v - (v2 * 5);
-            v = (v2 + 1) * 5 + v1;
-        }
-        else if(c == "--"){
-            v--;
-        }
-        else if(c == "-"){
-            var v2 = Math.floor(v * 0.1);
-            var v1 = v - (v2 * 5);
-            v = (v2 - 1) * 5 + v1;
-        }
-        
-        else{
-            v++;
-        }
-        if     (v <   0){ v =   0; }
-        else if(v > 100){ v = 100; }
+  _opacity: function (a, opacity, c) {
+    var v = parseInt(opacity.text().replace("透過", "").replace("%", ""), 10);
+    if (c == "++") {
+      v++;
+    }
+    else if (c == "+") {
+      var v2 = Math.floor(v * 0.1);
+      var v1 = v - (v2 * 5);
+      v = (v2 + 1) * 5 + v1;
+    }
+    else if (c == "--") {
+      v--;
+    }
+    else if (c == "-") {
+      var v2 = Math.floor(v * 0.1);
+      var v1 = v - (v2 * 5);
+      v = (v2 - 1) * 5 + v1;
+    }
+
+    else {
+      v++;
+    }
+    if (v < 0) { v = 0; }
+    else if (v > 100) { v = 100; }
 
     var vPercentage = Math.floor(v);
-    opacity.text('透過'+vPercentage+'%');
+    opacity.text('透過' + vPercentage + '%');
     v = (100 - v) / 100;
 
-    var item = a.data( 'data' );
-    
-    item._visibleInfo.layer.setOpacity( v );
-      item._visibleInfo.opacity = v;
-    },
-    _opacity_start : function(a, opacity, c)
-    {
-        this.eDownMS   = 250;
-        this.eDownTime = new Date().getTime()
+    var item = a.data('data');
 
-        if(this._opacity_tm ){ clearTimeout (this._opacity_tm ); }
-        if(this._opacity_tmi){ clearInterval(this._opacity_tmi); }
+    item._visibleInfo.layer.setOpacity(v);
+    item._visibleInfo.opacity = v;
+  },
+  _opacity_start: function (a, opacity, c) {
+    this.eDownMS = 250;
+    this.eDownTime = new Date().getTime()
 
-        this._opacity_tm  = null;
-        this._opacity_tmi = null;
+    if (this._opacity_tm) { clearTimeout(this._opacity_tm); }
+    if (this._opacity_tmi) { clearInterval(this._opacity_tmi); }
 
-        var func = this;
-        this._opacity_tm = setTimeout(
-            function(){
-                func._opacity_tmi = setInterval(
-                    function(){
-                        func._opacity(a, opacity, c + c);
-                    }
-                , 20
-                );
-            }
-        , this.eDownMS);
-    },
-    _opacity_stop : function(a, opacity, c)
-    {
-        if(this._opacity_tm  != null){ clearTimeout (this._opacity_tm ); }
-        if(this._opacity_tmi != null){ clearInterval(this._opacity_tmi); }
+    this._opacity_tm = null;
+    this._opacity_tmi = null;
 
-        var eUpTime = new Date().getTime();
-        if (eUpTime - this.eDownTime < this.eDownMS) {
-            this._opacity(a, opacity, c);
-        }
+    var func = this;
+    this._opacity_tm = setTimeout(
+      function () {
+        func._opacity_tmi = setInterval(
+          function () {
+            func._opacity(a, opacity, c + c);
+          }
+          , 20
+        );
+      }
+      , this.eDownMS);
+  },
+  _opacity_stop: function (a, opacity, c) {
+    if (this._opacity_tm != null) { clearTimeout(this._opacity_tm); }
+    if (this._opacity_tmi != null) { clearInterval(this._opacity_tmi); }
 
-        this.eDownTime = null;
-    },
-  _gray_scale : function(a, sw )
-  {
-    var item = a.data( 'data' );
+    var eUpTime = new Date().getTime();
+    if (eUpTime - this.eDownTime < this.eDownMS) {
+      this._opacity(a, opacity, c);
+    }
+
+    this.eDownTime = null;
+  },
+  _gray_scale: function (a, sw) {
+    var item = a.data('data');
     item._visibleInfo._grayScale = sw.checked();
-    
+
     var beforeSaturation = item._visibleInfo.layer.saturation;
-    item._visibleInfo.layer.saturation = ( item._visibleInfo._grayScale ? 0 : 1 );
-    
-    if ( beforeSaturation != item._visibleInfo.layer.saturation )
-    {
+    item._visibleInfo.layer.saturation = (item._visibleInfo._grayScale ? 0 : 1);
+
+    if (beforeSaturation != item._visibleInfo.layer.saturation) {
       this.updateCombineLayer('_gray_scale');
     }
-    
+
     GLOBE.MAP.setLayersHash();
   },
-  _checkEvacuationLayer : function()
-  {
-      if ( this.mapLayerList )
-      {
-        var l = this.mapLayerList.getList();
-        for(i = 0 ; i < l.length; i++ )
-        {				
-          if ( l[i].id.indexOf(CONFIG.layerEvacuationHeader) >= 0 )
-          {
-            return true;
-          }				
-        }
-        var tl = this.mapLayerList.getTileList();
-
-        for(i = 0 ; i < tl.length; i++ )
-        {				
-          if ( tl[i].id.indexOf(CONFIG.layerEvacuationHeader) >= 0 )
-          {
-            return true;
-          }			
+  _checkEvacuationLayer: function () {
+    if (this.mapLayerList) {
+      var l = this.mapLayerList.getList();
+      for (i = 0; i < l.length; i++) {
+        if (l[i].id.indexOf(CONFIG.layerEvacuationHeader) >= 0) {
+          return true;
         }
       }
-    if( GSI.GLOBALS.layerTreeDialog.current )
-    {
-      if ( GSI.GLOBALS.layerTreeDialog.current.title_evac )
-      {
+      var tl = this.mapLayerList.getTileList();
+
+      for (i = 0; i < tl.length; i++) {
+        if (tl[i].id.indexOf(CONFIG.layerEvacuationHeader) >= 0) {
+          return true;
+        }
+      }
+    }
+    if (GSI.GLOBALS.layerTreeDialog.current) {
+      if (GSI.GLOBALS.layerTreeDialog.current.title_evac) {
         return true;
       }
     }
-    
 
-      GSI.GLOBALS.evacDialog.hide();
+
+    GSI.GLOBALS.evacDialog.hide();
     CONFIG.layerEvacuationIsConfirmOK = false;
-      return false;
+    return false;
   },
 
 });
 
-GSI.OpacitySlider = MA.Class.extend( {
+GSI.OpacitySlider = MA.Class.extend({
 
   includes: MA.Mixin.Events,
-  options : { value : 1 },
-  element : null,
-  initialize : function (options)
-  {
+  options: { value: 1 },
+  element: null,
+  initialize: function (options) {
     options = MA.setOptions(this, options);
     this.opacity = options.value;
-    this.element = $( '<div>' ).addClass( 'gsi_opacity_slider' );
+    this.element = $('<div>').addClass('gsi_opacity_slider');
 
-    this.bg = $( '<div>' ).addClass( 'gsi_opacity_slider_bg' );
-    this.element.append( this.bg );
+    this.bg = $('<div>').addClass('gsi_opacity_slider_bg');
+    this.element.append(this.bg);
 
-    this.btn = $( '<div>' ).addClass( 'gsi_opacity_slider_btn' ) . draggable( {
+    this.btn = $('<div>').addClass('gsi_opacity_slider_btn').draggable({
       containment: this.element,
       scroll: false,
-      drag : MA.bind( function(  event, ui)
-      {
+      drag: MA.bind(function (event, ui) {
         var w = this.element.outerWidth(false) - 24;
         this.opacity = 1 - ui.position.left / w;
 
-        this.fire( 'change', this.opacity );
-      }, this )
-    } );
-    this.element.append( this.btn );
+        this.fire('change', this.opacity);
+      }, this)
+    });
+    this.element.append(this.btn);
   },
-  refresh : function( opacity )
-  {
+  refresh: function (opacity) {
     this.opacity = opacity;
     var w = this.element.outerWidth(false) - 24;
-    var left  = Math.floor( w * (1-this.opacity) );
-    this.btn.css( {left:left} );
+    var left = Math.floor(w * (1 - this.opacity));
+    this.btn.css({ left: left });
   },
-  getElement : function(){ return this.element; },
-  getOpacity : function() {
+  getElement: function () { return this.element; },
+  getOpacity: function () {
     return this.opacity;
   }
-} );
+});
 
 
 
@@ -15783,91 +14715,82 @@ GSI.OpacitySlider = MA.Class.extend( {
 ************************************************************************/
 
 
-GSI.MapLayerList = MA.Class.extend( {
+GSI.MapLayerList = MA.Class.extend({
   includes: MA.Mixin.Events,
-  tileList : [],
-  list : [],
-  initialize : function (map,options)
-  {
+  tileList: [],
+  list: [],
+  initialize: function (map, options) {
     this.map = map;
     options = MA.setOptions(this, options);
     this._elevationData = GSI.ReliefTileLayer.getElevationSampleData();
   },
-  
-  getElevationData : function()
-  {
-    return ( this._elevationData  ? $.extend(true, {}, this._elevationData ) : null );
+
+  getElevationData: function () {
+    return (this._elevationData ? $.extend(true, {}, this._elevationData) : null);
   },
-  
-  
-  setElevationData : function(data)
-  {
-    if ( !data )
+
+
+  setElevationData: function (data) {
+    if (!data)
       this._elevationData = data;
     else
-      this._elevationData = $.extend(true, {}, data );
-      
-    for( var i=0; i<this.tileList.length; i++ )
-    {
+      this._elevationData = $.extend(true, {}, data);
+
+    for (var i = 0; i < this.tileList.length; i++) {
       var info = this.tileList[i];
-      
-      if ( info.id == CONFIG.FREERELIEFID && info._visibleInfo && info._visibleInfo.layer)
-      {
+
+      if (info.id == CONFIG.FREERELIEFID && info._visibleInfo && info._visibleInfo.layer) {
         //info._visibleInfo.layer.setElevationData( this._elevationData );
-        
+
         //310-タイル表示
         //this.map.addLayer(info._visibleInfo.layer,true);
-        
+
         var layers = this.map.viewer.imageryLayers;
         info._visibleInfo.layer._remove(this.map.viewer);
         //this.map.viewer.imageryLayers.remove(info._visibleInfo.layer );
-        
+
         //info._visibleInfo.layer .destroy();
         info._visibleInfo.layer = null;
-        
+
         info._freeReliefData = this._elevationData;
         info._visibleInfo.layer = layers.addImageryProvider(
           new Cesium.JapanGSIImageryProvider(info)
         );
         info._visibleInfo.layer.alpha = info._visibleInfo.opacity;
-        info._visibleInfo.layer._remove = function(viewer) {
+        info._visibleInfo.layer._remove = function (viewer) {
           viewer.imageryLayers.remove(this, true);
         };
-        info._visibleInfo.layer._setVisible = function(viewer,visible) {
+        info._visibleInfo.layer._setVisible = function (viewer, visible) {
           this.show = visible;
         };
         info._visibleInfo.layer.alpha = info._visibleInfo.opacity;
         info._visibleInfo.layer._setVisible(this.map.viewer, true);
-        
+
       }
     }
-    this._initZIndex( this.tileList );
+    this._initZIndex(this.tileList);
     this.fire('tilechange');
-    
-    
+
+
     GLOBE.MAP.setLayersHash();
   },
-  
-  
-  appendKML : function( info )
-  {
-    if ( this.exists( info ) ) return;
-    this.map.addLayer(info._visibleInfo.layer,true);
-    this.list.unshift( info );
-    this._initZIndex( this.list );
+
+
+  appendKML: function (info) {
+    if (this.exists(info)) return;
+    this.map.addLayer(info._visibleInfo.layer, true);
+    this.list.unshift(info);
+    this._initZIndex(this.list);
   },
-  appendList : function( infoList, isHide )
-  {
-    for ( var i=0; i<infoList.length; i++ )
-    {
-      this.append( infoList[i], true, isHide );
+  appendList: function (infoList, isHide) {
+    for (var i = 0; i < infoList.length; i++) {
+      this.append(infoList[i], true, isHide);
     }
   },
-  
-  
+
+
   // 外部タイルのimageryLayerを新しく作成し地図へ反映する
-  appendOutSideTile: function (url, caption, layerOptions)
-  {
+  appendOutSideTile: function (url, caption, layerOptions) {
     if (!layerOptions) layerOptions = {};
     var info = $.extend({
       id: "o_u_t_s_i_d_e_" + GSI.Utils.getNextOutsideTileNo(),
@@ -15894,8 +14817,8 @@ GSI.MapLayerList = MA.Class.extend( {
 
     //options.tms = true;
     //info._visibleInfo.layer = new GSI.TileLayer(info.url, options);
-    
-    
+
+
     this._setOutsideTileLayer(info);
 
     //this.map.addLayer(info._visibleInfo.layer, true, info._visibleInfo.blend);
@@ -15905,151 +14828,140 @@ GSI.MapLayerList = MA.Class.extend( {
 
     this.fire('change');
   },
-  
-  
+
+
   // 外部タイルのimageryLayerを設定する
-  _setOutsideTileLayer: function(info)
-  {
+  _setOutsideTileLayer: function (info) {
     //console.log("_setOutsideTileLayer", info);
     var layers = this.map.viewer.imageryLayers;
     var layerIndex = layers.indexOf(info._visibleInfo.layer);
-    
-    if ( layerIndex == -1 )
-    {
+
+    if (layerIndex == -1) {
       layerIndex = null;
     }
-    else
-    {
-      this.map.viewer.imageryLayers.remove(info._visibleInfo.layer );
+    else {
+      this.map.viewer.imageryLayers.remove(info._visibleInfo.layer);
       info._visibleInfo.layer = null;
     }
-    
+
     info._visibleInfo.layer = layers.addImageryProvider(
       new Cesium.JapanGSIImageryProvider(info), layerIndex
     );
     info._visibleInfo.layer.alpha = info._visibleInfo.opacity;
-    info._visibleInfo.layer._remove = function(viewer) {
+    info._visibleInfo.layer._remove = function (viewer) {
       viewer.imageryLayers.remove(this, true);
     };
-    info._visibleInfo.layer._setVisible = function(viewer,visible) {
+    info._visibleInfo.layer._setVisible = function (viewer, visible) {
       this.show = visible;
     };
     info._visibleInfo.layer.alpha = info._visibleInfo.opacity;
     info._visibleInfo.layer._setVisible(this.map.viewer, !info._visibleInfo._isHidden);
   },
-  
-  
+
+
   // 既存の外部タイルimageryLayerを更新し地図へ反映する
-  updateTileLayer: function (info)
-  {
+  updateTileLayer: function (info) {
     this._setOutsideTileLayer(info);
     this.fire('change');
   },
-  
-  
-  setBaseLayer : function( info )
-  {
+
+
+  setBaseLayer: function (info) {
     var hit = false;
-    for( var i=this.tileList.length-1; i>= 0; i-- )
-    {
-      if ( this.tileList[i]._isBaseLayer || GSI.GLOBALS.isBaseLayer(this.tileList[i]) )
-      {
+    for (var i = this.tileList.length - 1; i >= 0; i--) {
+      if (this.tileList[i]._isBaseLayer || GSI.GLOBALS.isBaseLayer(this.tileList[i])) {
         this.map.viewer.imageryLayers.remove(this.tileList[i]._visibleInfo.layer, true);
         this.tileList[i]._visibleInfo = null;
         this.tileList[i] = info;
-        
+
         hit = true;
         break;
       }
     }
-    
-    
+
+
     info._isBaseLayer = true;
     info._visibleInfo = {};
-    info._visibleInfo.opacity = ( info.initialOpacity ? info.initialOpacity : 1.0 );
+    info._visibleInfo.opacity = (info.initialOpacity ? info.initialOpacity : 1.0);
     info._visibleInfo._grayScale = info.initialGrayScale;
     info.initialOpacity = null;
     info.initialGrayScale = null;
-    
+
     //190529 ext ここから
     var no_para_url = info.url.split("?")[0];
-    var info_url_ext = info.url.substr(no_para_url.length-3,3)
-    if(info.url.split("?")[1]){
+    var info_url_ext = info.url.substr(no_para_url.length - 3, 3)
+    if (info.url.split("?")[1]) {
       var url_para = info.url.split("?")[1];
       var info_url_ext = info_url_ext + "?" + url_para;
-    }		
+    }
     //190529 ext ここまで
 
     var baseMapImageryProvider = Cesium.createOpenStreetMapImageryProvider({
-        url : "https://maps.gsi.go.jp/xyz/" + info.id.replace("_","") + "/",
-        credit : "",
-//190529		fileExtension : info.url.substr(info.url.length-3,3),
-        fileExtension : info_url_ext,// 190529
-        maximumTerrainLevel : 18,
-        maximumLevel : 18
-      });
+      url: "https://maps.gsi.go.jp/xyz/" + info.id.replace("_", "") + "/",
+      credit: "",
+      //190529		fileExtension : info.url.substr(info.url.length-3,3),
+      fileExtension: info_url_ext,// 190529
+      maximumTerrainLevel: 18,
+      maximumLevel: 18
+    });
     baseMapImageryProvider.options = info;
     info._visibleInfo.layer = this.map.viewer.imageryLayers.addImageryProvider(
       baseMapImageryProvider,
       0
     );
     info._visibleInfo.layer.alpha = info._visibleInfo.opacity;
-    info._visibleInfo.layer._remove = function(viewer) {
+    info._visibleInfo.layer._remove = function (viewer) {
       viewer.imageryLayers.remove(this, true);
     };
-    
-    if ( !hit )
-    {
-      this.tileList.push( info );
+
+    if (!hit) {
+      this.tileList.push(info);
     }
-    
+
     this.fire('change');
   },
-  
-  append : function( info, noFinishMove, isHide ,Confirm_FLAG)
-  {
-    if ( this.exists( info ) ) return;
-    if ( info.id=="kokuarea" )
-    {
-      if(Confirm_FLAG == null){
-        var KARI=this;
-        var mes ="航空法第132条で規定する無人航空機の飛行禁止空域のうち、航空法施行規則第236条第1号から第3号までに掲げる空域（空港等の周辺空域）を表示します。緑色の面は、上空での飛行が禁止される制限表面を表します。紫色の面は、上空及びその下の空域での飛行が禁止される進入表面及び転移表面並びに上空の空域で飛行が禁止される空港等の敷地を表します。<br>" +
-                "なお、この情報には誤差が含まれている場合があります。また空港等の敷地については工事等により変更がある場合がありますので、境界付近等正確な空域については空港等の管理者に確認願います。<br>" +
-                "詳細については、<a target='_blank' href='http://www.mlit.go.jp/koku/koku_tk10_000003.html'>国土交通省ホームページ</a>で確認してください。" 
-        jConfirm2(mes, '留意事項', 480, function(r) {
-          if(r) {
-            KARI.append(info, noFinishMove, isHide ,1);
+
+  append: function (info, noFinishMove, isHide, Confirm_FLAG) {
+    if (this.exists(info)) return;
+    if (info.id == "kokuarea") {
+      if (Confirm_FLAG == null) {
+        var KARI = this;
+        var mes = "航空法第132条で規定する無人航空機の飛行禁止空域のうち、航空法施行規則第236条第1号から第3号までに掲げる空域（空港等の周辺空域）を表示します。緑色の面は、上空での飛行が禁止される制限表面を表します。紫色の面は、上空及びその下の空域での飛行が禁止される進入表面及び転移表面並びに上空の空域で飛行が禁止される空港等の敷地を表します。<br>" +
+          "なお、この情報には誤差が含まれている場合があります。また空港等の敷地については工事等により変更がある場合がありますので、境界付近等正確な空域については空港等の管理者に確認願います。<br>" +
+          "詳細については、<a target='_blank' href='http://www.mlit.go.jp/koku/koku_tk10_000003.html'>国土交通省ホームページ</a>で確認してください。"
+        jConfirm2(mes, '留意事項', 480, function (r) {
+          if (r) {
+            KARI.append(info, noFinishMove, isHide, 1);
           }
         });
         return;
       }
     }
-    if (( info.id=="red" ) ||
-      ( info.id=="20180906hokkaido_atsuma_sekishoku" ) || 
-      ( info.id=="tarumaered" ) || 
-      ( info.id=="20180130_kusatsushiranesan_sekishokurittai" ) || 
-      ( info.id=="20180309_sekisyokurittai_kirishima" ) || 
-      ( info.id=="kuchinoerabured" ) || 
-      ( info.id=="2018_sekisyokurittai_azumayama" ) || 
-      ( info.id=="20190121_sekisyokurittai_kusatsushiranesan") ||
-      ( info.id=="20190121_olsorittai_kusatsushiranesan") ||
-          ( info.id=="miyakejimared") ||
-      ( info.id=="20190807asama_sekisyoku") ||
-      ( info.id=="oosimared")
-    )
-    {
-      if(Confirm_FLAG == null){
-        var KARI=this;
-        jConfirm2("赤色立体地図はアジア航測株式会社の特許（第3670274号等）を使用して作成したものです。赤色立体地図を利用される場合は、<a target='_blank' href='http://www.gsi.go.jp/kikakuchousei/kikakuchousei40182.html'>国土地理院コンテンツ利用規約</a>に記載のとおり、<a target='_blank' href='https://www.rrim.jp/researcher/'>アジア航測株式会社の許諾条件</a>を確認してご利用下さい。", 'ご利用上の注意', 480, function(r) {
-          if(r) {
-            KARI.append(info, noFinishMove, isHide ,1);
+    if ((info.id == "red") ||
+      (info.id == "20180906hokkaido_atsuma_sekishoku") ||
+      (info.id == "tarumaered") ||
+      (info.id == "20180130_kusatsushiranesan_sekishokurittai") ||
+      (info.id == "20180309_sekisyokurittai_kirishima") ||
+      (info.id == "kuchinoerabured") ||
+      (info.id == "2018_sekisyokurittai_azumayama") ||
+      (info.id == "20190121_sekisyokurittai_kusatsushiranesan") ||
+      (info.id == "20190121_olsorittai_kusatsushiranesan") ||
+      (info.id == "miyakejimared") ||
+      (info.id == "20190807asama_sekisyoku") ||
+      (info.id == "oosimared")
+    ) {
+      if (Confirm_FLAG == null) {
+        var KARI = this;
+        jConfirm2("赤色立体地図はアジア航測株式会社の特許（第3670274号等）を使用して作成したものです。赤色立体地図を利用される場合は、<a target='_blank' href='http://www.gsi.go.jp/kikakuchousei/kikakuchousei40182.html'>国土地理院コンテンツ利用規約</a>に記載のとおり、<a target='_blank' href='https://www.rrim.jp/researcher/'>アジア航測株式会社の許諾条件</a>を確認してご利用下さい。", 'ご利用上の注意', 480, function (r) {
+          if (r) {
+            KARI.append(info, noFinishMove, isHide, 1);
           }
         });
         return;
       }
     }
     // 202303 時系列表示を選択時
-    if (info.id==CONFIG.COMPAREPHOTO_ID) {
+    if (info.id == CONFIG.COMPAREPHOTO_ID) {
       this.appendComparePhoto(info, isHide);
       this.fire('tilechange');
       this.fire('change');
@@ -16057,24 +14969,23 @@ GSI.MapLayerList = MA.Class.extend( {
     }
 
     var tileChanged = false;
-    
+
     info._visibleInfo = {};
-    info._visibleInfo.opacity = ( info.initialOpacity ? info.initialOpacity : 1.0 );
+    info._visibleInfo.opacity = (info.initialOpacity ? info.initialOpacity : 1.0);
     //if ( isHide ) info._visibleInfo._isHidden = true;
-    info._visibleInfo._isHidden = ( isHide ? true : false );
+    info._visibleInfo._isHidden = (isHide ? true : false);
     info.initialOpacity = null;
-    
-    
+
+
     info._visibleInfo.layer = null; //GSI.Utils.infoToLayer(info, noFinishMove );
-    
+
     //310-とりあえずコメントアウト
     //if ( info._visibleInfo.layer)
     {
-      if ( info.layerType=="tile" )
-      {
-        if ( info._visibleInfo._isCombine == undefined )
+      if (info.layerType == "tile") {
+        if (info._visibleInfo._isCombine == undefined)
           info._visibleInfo._isCombine = true;
-        
+
         /*
         var fBaseMap = false;
         if(info.parent && info.parent != null && info.parent.title_sys == CONFIG.layerBaseFolderSYS){
@@ -16097,12 +15008,10 @@ GSI.MapLayerList = MA.Class.extend( {
         
         else this.tileList.unshift( info );
         */
-        if ( info._isBaseLayer )
-        {
-        
+        if (info._isBaseLayer) {
+
         }
-        else
-        {
+        else {
           // okw?
           /*
           if ( !info._visibleInfo._isHidden)
@@ -16122,26 +15031,24 @@ GSI.MapLayerList = MA.Class.extend( {
             };
           }
           */
-          if ( !info._visibleInfo.layer)
-          {
+          if (!info._visibleInfo.layer) {
             //310-タイル表示
             //this.map.addLayer(info._visibleInfo.layer,true);
             var layers = this.map.viewer.imageryLayers;
-            
-            
-            if ( info.id == CONFIG.FREERELIEFID )
-            {
+
+
+            if (info.id == CONFIG.FREERELIEFID) {
               info._freeReliefData = GSI.GLOBALS.mapLayerList.getElevationData();
             }
-            
+
             info._visibleInfo.layer = layers.addImageryProvider(
               new Cesium.JapanGSIImageryProvider(info)
             );
             info._visibleInfo.layer.alpha = info._visibleInfo.opacity;
-            info._visibleInfo.layer._remove = function(viewer) {
+            info._visibleInfo.layer._remove = function (viewer) {
               viewer.imageryLayers.remove(this, true);
             };
-            info._visibleInfo.layer._setVisible = function(viewer,visible) {
+            info._visibleInfo.layer._setVisible = function (viewer, visible) {
               this.show = visible;
             };
           }
@@ -16149,19 +15056,18 @@ GSI.MapLayerList = MA.Class.extend( {
           info._visibleInfo.layer._setVisible(this.map.viewer, !info._visibleInfo._isHidden);
           // okw
         }
-        this.tileList.unshift( info );
-        
-        this._initZIndex( this.tileList );
-        
+        this.tileList.unshift(info);
+
+        this._initZIndex(this.tileList);
+
         tileChanged = true;
       }
-      else if ( info.layerType=="kml" )
-      {
-      // KML
+      else if (info.layerType == "kml") {
+        // KML
         //info._visibleInfo .layer.on("loadstart", MA.bind( this.onLayerLoadStart, this, info._visibleInfo.layer, "KML"  ) );
         //info._visibleInfo .layer.on("loaded", MA.bind( this.onLayerLoad, this, info._visibleInfo.layer  ) );
         //info._visibleInfo .layer .load();
-        info._visibleInfo.layer = new GLOBE.KMLLayer(this.map,info);
+        info._visibleInfo.layer = new GLOBE.KMLLayer(this.map, info);
         info._visibleInfo.layer._setVisible(null, !info._visibleInfo._isHidden);
         /*
         if ( !info._visibleInfo._isHidden ) 
@@ -16171,16 +15077,15 @@ GSI.MapLayerList = MA.Class.extend( {
           //this.map.addLayer(info._visibleInfo.layer,true);
         }
         */
-        this.list.unshift( info );
-        this._initZIndexOffset( this.list, 10000 );
+        this.list.unshift(info);
+        this._initZIndexOffset(this.list, 10000);
       }
-      else if ( info.layerType=="geojson" )
-      {
-      // GeoJSON
+      else if (info.layerType == "geojson") {
+        // GeoJSON
         //info._visibleInfo .layer.on("loadstart", MA.bind( this.onLayerLoadStart, this, info._visibleInfo.layer, "GeoJSON"  ) );
         //info._visibleInfo .layer.on( "load", MA.bind( function(e){ this.onLayerLoad(e.src) },this));
         //info._visibleInfo .layer .load();
-        info._visibleInfo.layer = new GLOBE.GeoJSONLayer(this.map,info);
+        info._visibleInfo.layer = new GLOBE.GeoJSONLayer(this.map, info);
         info._visibleInfo.layer._setVisible(null, !info._visibleInfo._isHidden);
         /*
         if ( !info._visibleInfo._isHidden ) 
@@ -16190,17 +15095,16 @@ GSI.MapLayerList = MA.Class.extend( {
           //this.map.addLayer(info._visibleInfo.layer,true);
         }
         */
-        this.list.unshift( info );
-        this._initZIndexOffset( this.list, 10000 );
+        this.list.unshift(info);
+        this._initZIndexOffset(this.list, 10000);
 
       }
-      else if ( info.layerType=="geojson_tile" )
-      {
-      // タイルGeoJSON
+      else if (info.layerType == "geojson_tile") {
+        // タイルGeoJSON
         //if (info.id != "experimental_anno" &&!info._visibleInfo._isHidden)
         if (true)//info.id != "experimental_anno")
         {
-          info._visibleInfo.layer = new GLOBE.VectorTileLayer(this.map,info);
+          info._visibleInfo.layer = new GLOBE.VectorTileLayer(this.map, info);
           info._visibleInfo.layer._setVisible(this.map.viewer, !info._visibleInfo._isHidden);
           /*
           if ( !info._visibleInfo._isHidden ) 
@@ -16211,29 +15115,26 @@ GSI.MapLayerList = MA.Class.extend( {
           }
           */
         }
-        else if ( info.id == "experimental_anno" )
-        {
-          if ( info._visibleInfo.layer )
-          {
+        else if (info.id == "experimental_anno") {
+          if (info._visibleInfo.layer) {
             info._visibleInfo.layer._setVisible(viewer, true);
           }
-          else
-          {
+          else {
             //310-タイルGeoJSON表示
             //this.map.addLayer(info._visibleInfo.layer,true);
             info._visibleInfo.layer = new Cesium.QuadtreePrimitive({
-              tileProvider : new JapanGSIGeojsonProvider({
-                "url"      : "https://cyberjapandata.gsi.go.jp/xyz/experimental_anno/{z}/{x}/{y}.geojson",
-                "viewer"   : this.map.viewer
+              tileProvider: new JapanGSIGeojsonProvider({
+                "url": "https://cyberjapandata.gsi.go.jp/xyz/experimental_anno/{z}/{x}/{y}.geojson",
+                "viewer": this.map.viewer
               })
             });
-            info._visibleInfo.layer.type    = "GeojsonTile_QuadtreePrimitive";
+            info._visibleInfo.layer.type = "GeojsonTile_QuadtreePrimitive";
             this.map.viewer.scene.primitives.add(info._visibleInfo.layer);
-            
-            info._visibleInfo.layer._remove = function(viewer) {
+
+            info._visibleInfo.layer._remove = function (viewer) {
               info._visibleInfo.layer._setVisible(viewer, false);
               var len = GLOBE.MAP.viewer.scene.primitives.length;
-              for(var i=len-1; i>=0; i--){
+              for (var i = len - 1; i >= 0; i--) {
                 var primitiveCollection = GLOBE.MAP.viewer.scene.primitives._primitives[i];
                 // QuadtreePrimitive削除
                 /*
@@ -16247,21 +15148,21 @@ GSI.MapLayerList = MA.Class.extend( {
                 */
               }
             };
-            
-            info._visibleInfo.layer._setVisible = function(viewer,visible) {
+
+            info._visibleInfo.layer._setVisible = function (viewer, visible) {
               info._visibleInfo.layer.tileProvider.show(visible);
               var len = GLOBE.MAP.viewer.scene.primitives.length;
-              for(var i=0; i<len; i++){
+              for (var i = 0; i < len; i++) {
                 var primitiveCollection = GLOBE.MAP.viewer.scene.primitives._primitives[i];
                 // LabelCollection
-                if(primitiveCollection.type == "GeojsonTile_labelCollection"){
-                  for(var j=0; j<primitiveCollection._billboards.length; j++){
+                if (primitiveCollection.type == "GeojsonTile_labelCollection") {
+                  for (var j = 0; j < primitiveCollection._billboards.length; j++) {
                     primitiveCollection._billboards[j].show = visible;
                   }
                 }
               }
             };
-            
+
             info._visibleInfo.layer._setVisible(null, !info._visibleInfo._isHidden);
             /*
             if ( info._visibleInfo._isHidden )
@@ -16269,147 +15170,123 @@ GSI.MapLayerList = MA.Class.extend( {
               info._visibleInfo.layer._setVisible(this.map.viewer, false);
             }
             */
-            this._setTileGeoJSONAlpha(info._visibleInfo.layer,info._visibleInfo.opacity);
+            this._setTileGeoJSONAlpha(info._visibleInfo.layer, info._visibleInfo.opacity);
           }
         }
-        this.list.unshift( info );
-        this._initZIndexOffset( this.list, 10000 );
+        this.list.unshift(info);
+        this._initZIndexOffset(this.list, 10000);
       }
-      else if ( info.layerType=="topojson_tile" )
-      {
-      // タイルTopoJSON
-        if ( !info._visibleInfo._isHidden ) 
-        {
-          
+      else if (info.layerType == "topojson_tile") {
+        // タイルTopoJSON
+        if (!info._visibleInfo._isHidden) {
+
         }
-        this.list.unshift( info );
-        this._initZIndexOffset( this.list, 10000 );
+        this.list.unshift(info);
+        this._initZIndexOffset(this.list, 10000);
       }
-      else if ( info.layerType=="topojson" )
-      {
-      // TopoJSON
-        info._visibleInfo .layer.on("loadstart", MA.bind( this.onLayerLoadStart, this, info._visibleInfo.layer, "TopoJSON"  ) );
-        info._visibleInfo .layer.on( "load", MA.bind( function(e){ this.onLayerLoad(e.src) },this));
-        info._visibleInfo .layer .load();
-        
-        if ( !info._visibleInfo._isHidden )
-        {
-          
+      else if (info.layerType == "topojson") {
+        // TopoJSON
+        info._visibleInfo.layer.on("loadstart", MA.bind(this.onLayerLoadStart, this, info._visibleInfo.layer, "TopoJSON"));
+        info._visibleInfo.layer.on("load", MA.bind(function (e) { this.onLayerLoad(e.src) }, this));
+        info._visibleInfo.layer.load();
+
+        if (!info._visibleInfo._isHidden) {
+
         }
-        this.list.unshift( info );
-        this._initZIndexOffset( this.list, 10000 );
+        this.list.unshift(info);
+        this._initZIndexOffset(this.list, 10000);
       }
-      else if ( info.layerType=="tms" )
-      {
-      // TMS
-        
-        if ( !info._visibleInfo._isHidden ) 
-        {
-          
+      else if (info.layerType == "tms") {
+        // TMS
+
+        if (!info._visibleInfo._isHidden) {
+
         }
-        this.tileList.unshift( info );
-        this._initZIndex( this.tileList );
+        this.tileList.unshift(info);
+        this._initZIndex(this.tileList);
       }
-      else if ( info.layerType=="multiLayer" )
-      {
-      // 複数レイヤ
-        info._visibleInfo.layer = new GLOBE.MultiLayer(this.map,info);
+      else if (info.layerType == "multiLayer") {
+        // 複数レイヤ
+        info._visibleInfo.layer = new GLOBE.MultiLayer(this.map, info);
         info._visibleInfo.layer._setVisible(this.map.viewer, !info._visibleInfo._isHidden);
-        this.list.unshift( info );
-        this._initZIndexOffset( this.list, 10000 );
+        this.list.unshift(info);
+        this._initZIndexOffset(this.list, 10000);
       }
-      
-      
+
+
     }
-    
-    if ( tileChanged ) this.fire('tilechange');
+
+    if (tileChanged) this.fire('tilechange');
     this.fire('change');
   },
-  
-  
-  
-  _setTileGeoJSONAlpha : function(layer, alpha)
-  {
-    
+
+
+
+  _setTileGeoJSONAlpha: function (layer, alpha) {
+
     var len = this.map.viewer.scene.primitives.length;
-    for(var i=0; i<len; i++){
+    for (var i = 0; i < len; i++) {
       var primitiveCollection = this.map.viewer.scene.primitives._primitives[i];
-      if(primitiveCollection.type == "GeojsonTile_labelCollection"){
-        for(var j=0; j<primitiveCollection._billboards.length; j++){
+      if (primitiveCollection.type == "GeojsonTile_labelCollection") {
+        for (var j = 0; j < primitiveCollection._billboards.length; j++) {
           var color = primitiveCollection._billboards[j]._color;
           primitiveCollection._billboards[j].color = new Cesium.Color(color.red, color.green, color.blue, alpha);
         }
       }
     }
   },
-  _showLoading : function(title)
-  {
-    if ( !this._showLoadingInc || this._showLoadingInc == 0 )
-    {
+  _showLoading: function (title) {
+    if (!this._showLoadingInc || this._showLoadingInc == 0) {
       this._showLoadingInc = 0;
-      GSI.Modal.LoadingMessage.show( 'ファイルを読み込んでいます...' );
+      GSI.Modal.LoadingMessage.show('ファイルを読み込んでいます...');
     }
     this._showLoadingInc++;
   },
-  _hideLoading : function()
-  {
+  _hideLoading: function () {
     this._showLoadingInc--;
-    if ( this._showLoadingInc <= 0 )
+    if (this._showLoadingInc <= 0)
       GSI.Modal.LoadingMessage.hide();
   },
-  onLayerLoadStart : function(layer, title)
-  {
+  onLayerLoadStart: function (layer, title) {
     this._showLoading(title);
   },
-  onLayerLoad : function(layer)
-  {
-    if ( !layer._noFinishMove && layer.getBounds )
-    {
-      try
-      {
-        this.map.fitBounds( layer.getBounds() );
+  onLayerLoad: function (layer) {
+    if (!layer._noFinishMove && layer.getBounds) {
+      try {
+        this.map.fitBounds(layer.getBounds());
       }
-      catch( e ){}
+      catch (e) { }
     }
     this._hideLoading();
   },
-  _initZIndexOffset : function( list, offset )
-  {
+  _initZIndexOffset: function (list, offset) {
     var zIndex = 0;
-    
-    for ( var i=list.length-1; i>= 0; i-- )
-    {
+
+    for (var i = list.length - 1; i >= 0; i--) {
       var info = list[i];
-      if ( info._visibleInfo.layer )
-      {
-        if ( info._visibleInfo.layer.setMarkerZIndex )
-        {
-          info._visibleInfo.layer.setMarkerZIndex( zIndex );
-          zIndex+= offset;
+      if (info._visibleInfo.layer) {
+        if (info._visibleInfo.layer.setMarkerZIndex) {
+          info._visibleInfo.layer.setMarkerZIndex(zIndex);
+          zIndex += offset;
         }
       }
     }
   },
-  _initZIndex : function( list )
-  {
+  _initZIndex: function (list) {
     var zIndex = 100;
     var baseLayer = null;
     // ベースレイヤー取得
-    for( var i=0; i<this.map.viewer.imageryLayers.length; i++ )
-    {
+    for (var i = 0; i < this.map.viewer.imageryLayers.length; i++) {
       baseLayer = this.map.viewer.imageryLayers.get(0);
-      if ( baseLayer._isBaseLayer )
-      {
+      if (baseLayer._isBaseLayer) {
         break;
       }
       else baseLayer = null;
     }
-    
-    for ( var i=0; i< list.length; i++ )
-    {
+
+    for (var i = 0; i < list.length; i++) {
       var info = list[i];
-      if ( info._visibleInfo.layer )
-      {
+      if (info._visibleInfo.layer) {
         // 202303
         if (info._isComparePhoto) {
           this.map.viewer.imageryLayers.lowerToBottom(info._visibleInfo.layer._layer);
@@ -16418,74 +15295,57 @@ GSI.MapLayerList = MA.Class.extend( {
         }
       }
     }
-    
+
     // ベースレイヤーを一番下
-    if ( baseLayer ) this.map.viewer.imageryLayers.lowerToBottom(baseLayer);
+    if (baseLayer) this.map.viewer.imageryLayers.lowerToBottom(baseLayer);
   },
-  refreshTileList : function( list )
-  {
+  refreshTileList: function (list) {
     this.tileList = list;
     this._initZIndex(this.tileList);
   },
-  exists : function( info )
-  {
-    if ( CONFIG.LAYERTYPELIST[info.layerType].isTileImage )
-    {
-      for ( var i=0; i<this.tileList.length; i++ )
-      {
-        if ( this.tileList[i] == info )
-        {
+  exists: function (info) {
+    if (CONFIG.LAYERTYPELIST[info.layerType].isTileImage) {
+      for (var i = 0; i < this.tileList.length; i++) {
+        if (this.tileList[i] == info) {
           return true;
         }
       }
-      
-      for ( var i=0; i<this.tileList.length; i++ )
-      {
-        if ( this.tileList[i].id == info.id )return true;
-        
+
+      for (var i = 0; i < this.tileList.length; i++) {
+        if (this.tileList[i].id == info.id) return true;
+
       }
-      
+
     }
-    else
-    {
-      for ( var i=0; i<this.list.length; i++ )
-      {
-        if ( this.list[i] == info )
-        {
+    else {
+      for (var i = 0; i < this.list.length; i++) {
+        if (this.list[i] == info) {
           return true;
         }
       }
-      
-      for ( var i=0; i<this.list.length; i++ )
-      {
-        if ( this.list[i].id == info.id ) return true;
+
+      for (var i = 0; i < this.list.length; i++) {
+        if (this.list[i].id == info.id) return true;
       }
     }
 
     return false;
   },
-  remove : function( info )
-  {
+  remove: function (info) {
     var tileChanged = false;
     var targetInfo = null;
-    if ( CONFIG.LAYERTYPELIST[info.layerType].isTileImage )
-    {
+    if (CONFIG.LAYERTYPELIST[info.layerType].isTileImage) {
       tileChanged = true;
-      for ( var i=0; i<this.tileList.length; i++ )
-      {
-        if ( this.tileList[i] == info )
-        {
+      for (var i = 0; i < this.tileList.length; i++) {
+        if (this.tileList[i] == info) {
           targetInfo = info;
           this.tileList.splice(i, 1);
           break;
         }
       }
-      if (!targetInfo)
-      {
-        for ( var i=0; i<this.tileList.length; i++ )
-        {
-          if ( this.tileList[i].id == info.id )
-          {
+      if (!targetInfo) {
+        for (var i = 0; i < this.tileList.length; i++) {
+          if (this.tileList[i].id == info.id) {
             targetInfo = this.tileList[i];
             this.tileList.splice(i, 1);
             break;
@@ -16493,25 +15353,19 @@ GSI.MapLayerList = MA.Class.extend( {
         }
       }
     }
-    else
-    {
-      for ( var i=0; i<this.list.length; i++ )
-      {
-        if ( this.list[i] == info )
-        {
+    else {
+      for (var i = 0; i < this.list.length; i++) {
+        if (this.list[i] == info) {
           targetInfo = info;
           this.list.splice(i, 1);
           break;
         }
       }
-      
-      
-      if ( !targetInfo )
-      {
-        for ( var i=0; i<this.list.length; i++ )
-        {
-          if ( this.list[i].id == info.id )
-          {
+
+
+      if (!targetInfo) {
+        for (var i = 0; i < this.list.length; i++) {
+          if (this.list[i].id == info.id) {
             targetInfo = this.list[i];
             this.list.splice(i, 1);
             break;
@@ -16519,86 +15373,79 @@ GSI.MapLayerList = MA.Class.extend( {
         }
       }
     }
-    
-    if (targetInfo)
-    {
+
+    if (targetInfo) {
       //310-指定レイヤを削除
-      if (targetInfo._visibleInfo.layer && targetInfo._visibleInfo.layer._remove) 
-        targetInfo._visibleInfo.layer._remove( this.map.viewer );
+      if (targetInfo._visibleInfo.layer && targetInfo._visibleInfo.layer._remove)
+        targetInfo._visibleInfo.layer._remove(this.map.viewer);
 
       // 202303
       if (targetInfo.id == CONFIG.COMPAREPHOTO_ID) {
         targetInfo._visibleInfo.layer.onRemove();
       }
-      
+
       targetInfo._visibleInfo = null;
-      
-      if ( tileChanged ) this.fire('tilechange');
+
+      if (tileChanged) this.fire('tilechange');
     }
     this.fire('change');
   },
-  clear : function()
-  {
-    for ( var i=0; i<this.list.length; i++ )
-    {
+  clear: function () {
+    for (var i = 0; i < this.list.length; i++) {
       var info = this.list[i];
-    //310-指定レイヤを削除
-      
-      if (info._visibleInfo.layer && info._visibleInfo.layer._remove) 
-        info._visibleInfo.layer._remove( this.map.viewer );
+      //310-指定レイヤを削除
+
+      if (info._visibleInfo.layer && info._visibleInfo.layer._remove)
+        info._visibleInfo.layer._remove(this.map.viewer);
       info._visibleInfo = null;
     }
-    this.list =[];
+    this.list = [];
 
-    for ( var i=0; i<this.tileList.length; i++ )
-    {
+    for (var i = 0; i < this.tileList.length; i++) {
       var info = this.tileList[i];
       //310-指定レイヤを削除
-      
+
       if (info._visibleInfo.layer && info._visibleInfo.layer._remove) {
         // 202303
         if (info.id == CONFIG.COMPAREPHOTO_ID) {
           info._visibleInfo.layer.onRemove();
         } else {
-          info._visibleInfo.layer._remove( this.map.viewer );
+          info._visibleInfo.layer._remove(this.map.viewer);
         }
 
       }
       info._visibleInfo = null;
     }
-    this.tileList =[];
+    this.tileList = [];
 
     this.fire('change');
   },
-  getTileList : function()
-  {
+  getTileList: function () {
     return this.tileList;
   },
-  getList : function()
-  {
+  getList: function () {
     return this.list;
   },
-  getTotalCount : function()
-  {
-    return ( this.tileList ? this.tileList.length : 0 )
-      + ( this.list ? this.list.length : 0 );
+  getTotalCount: function () {
+    return (this.tileList ? this.tileList.length : 0)
+      + (this.list ? this.list.length : 0);
   },
 
   // 202303 時系列表示追加
-  appendComparePhoto : function(info, isHide) { 
+  appendComparePhoto: function (info, isHide) {
 
-    if ( this.hasComparePhotoTile() ) return;
+    if (this.hasComparePhotoTile()) return;
 
-    if ( !info._visibleInfo) {
+    if (!info._visibleInfo) {
       var info = $.extend({}, info);
       info.id = CONFIG.COMPAREPHOTO_ID;
       info.title = "時系列表示";
       info._visibleInfo = {};
-      info._visibleInfo._isHidden = ( isHide ? true : false );
+      info._visibleInfo._isHidden = (isHide ? true : false);
       info.initialOpacity = null;
       info._visibleInfo.opacity = 1.0;
       info._isComparePhoto = true;
-      if ( info._visibleInfo._isCombine == undefined ) info._visibleInfo._isCombine = true;
+      if (info._visibleInfo._isCombine == undefined) info._visibleInfo._isCombine = true;
 
       info._visibleInfo.layer = new GLOBE.ComparePhotoLayer(this.map, this, false, info);
 
@@ -16606,23 +15453,23 @@ GSI.MapLayerList = MA.Class.extend( {
 
     info._visibleInfo.layer.alpha = info._visibleInfo.opacity;
     info._visibleInfo.layer._setVisible(this.map.viewer, !info._visibleInfo._isHidden);
-    
+
     // info._visibleInfo.layerの変更時のイベントを追加
-    info._visibleInfo.layer.on("change", MA.bind(function(info) {
+    info._visibleInfo.layer.on("change", MA.bind(function (info) {
       var title = info._visibleInfo.layer.getActiveTitle();
       var layerInfo = info._visibleInfo.layer.getLayerInfo();
-      if ( layerInfo.minZoom && layerInfo.minZoom > this.map.getCurrentZoom() ) {
+      if (layerInfo.minZoom && layerInfo.minZoom > this.map.getCurrentZoom()) {
         title = null;
       }
-      info.title = (title ? "時系列表示("+ title + ")" : "時系列表示" );
-      
+      info.title = (title ? "時系列表示(" + title + ")" : "時系列表示");
+
       this.fire("tilechange");
       this.fire("change");
     }, this, info));
 
     this.tileList.unshift(info);
     this._initZIndex(this.tileList);
-    
+
     // 時系列選択レイヤを表示
     if (!info._visibleInfo._isHidden) {
       this.map.showComparePhotoControl();
@@ -16631,7 +15478,7 @@ GSI.MapLayerList = MA.Class.extend( {
   },
 
   // 202303 時系列表示が含まれるかチェック
-  hasComparePhotoTile : function() {
+  hasComparePhotoTile: function () {
 
     var result = false;
     for (var i = 0; i < this.tileList.length; i++) {
@@ -16644,171 +15491,147 @@ GSI.MapLayerList = MA.Class.extend( {
 
   },
 
-} );
+});
 
-GSI.Utils.infoToLayer = function( info, noFinishMove )
-{
+GSI.Utils.infoToLayer = function (info, noFinishMove) {
   var layer = null;
-  if ( info.layerType=="tile" )
-  {
+  if (info.layerType == "tile") {
     var options = {
-      errorTileUrl : '',
+      errorTileUrl: '',
     };
-    if ( info.subdomains &&info.subdomains!="" )
-    {
-      options.subdomains= info.subdomains;
+    if (info.subdomains && info.subdomains != "") {
+      options.subdomains = info.subdomains;
     }
-    if ( ( info.minZoom == 0 || info.minZoom ) && info.minZoom != "" ) options.minZoom= info.minZoom;
-    if ( ( info.maxZoom == 0 || info.maxZoom ) && info.maxZoom != "" ) options.maxZoom =info.maxZoom;
-    if ( info.maxNativeZoom && info.maxNativeZoom!="" ) options.maxNativeZoom =info.maxNativeZoom;
-    if ( info.attribution ) options.attribution =info.attribution;
-    if ( info.bounds && info.bounds!="" ) options.bounds =info.bounds;
+    if ((info.minZoom == 0 || info.minZoom) && info.minZoom != "") options.minZoom = info.minZoom;
+    if ((info.maxZoom == 0 || info.maxZoom) && info.maxZoom != "") options.maxZoom = info.maxZoom;
+    if (info.maxNativeZoom && info.maxNativeZoom != "") options.maxNativeZoom = info.maxNativeZoom;
+    if (info.attribution) options.attribution = info.attribution;
+    if (info.bounds && info.bounds != "") options.bounds = info.bounds;
 
   }
-  else if ( info.layerType=="kml" )
-  {
-    var options = {async: true, "_map": this.map};
+  else if (info.layerType == "kml") {
+    var options = { async: true, "_map": this.map };
 
-    if ( ( info.minZoom == 0 || info.minZoom ) && info.minZoom != "" ) options.minZoom= info.minZoom;
-    if ( ( info.maxZoom == 0 || info.maxZoom ) && info.maxZoom != "" ) options.maxZoom =info.maxZoom;
-    if ( info.attribution ) options.attribution =info.attribution;
-    if ( info.errorTileUrl ) options.errorTileUrl =info.errorTileUrl;
-    if ( info.bounds && info.bounds!="" ) options.bounds =info.bounds;
+    if ((info.minZoom == 0 || info.minZoom) && info.minZoom != "") options.minZoom = info.minZoom;
+    if ((info.maxZoom == 0 || info.maxZoom) && info.maxZoom != "") options.maxZoom = info.maxZoom;
+    if (info.attribution) options.attribution = info.attribution;
+    if (info.errorTileUrl) options.errorTileUrl = info.errorTileUrl;
+    if (info.bounds && info.bounds != "") options.bounds = info.bounds;
     layer = new GSI.KML(info.url, options);
     layer._noFinishMove = noFinishMove;
 
   }
-  else if ( info.layerType=="geojson" )
-  {
-  // GeoJSON
+  else if (info.layerType == "geojson") {
+    // GeoJSON
     var options = {};
 
-    if ( ( info.minZoom == 0 || info.minZoom ) && info.minZoom != "" ) options.minZoom= info.minZoom;
-    if ( ( info.maxZoom == 0 || info.maxZoom ) && info.maxZoom != "" ) options.maxZoom =info.maxZoom;
-    if ( info.attribution ) options.attribution =info.attribution;
-    if ( info.bounds && info.bounds!="" ) options.bounds =info.bounds;
+    if ((info.minZoom == 0 || info.minZoom) && info.minZoom != "") options.minZoom = info.minZoom;
+    if ((info.maxZoom == 0 || info.maxZoom) && info.maxZoom != "") options.maxZoom = info.maxZoom;
+    if (info.attribution) options.attribution = info.attribution;
+    if (info.bounds && info.bounds != "") options.bounds = info.bounds;
 
-    layer = new GSI.GeoJSON(info.url,options);
+    layer = new GSI.GeoJSON(info.url, options);
     layer._noFinishMove = noFinishMove;
 
   }
-  else if ( info.layerType=="geojson_tile" )
-  {
-  // タイルGeoJSON
-    var options = { clipTiles : true};
+  else if (info.layerType == "geojson_tile") {
+    // タイルGeoJSON
+    var options = { clipTiles: true };
     var options2 = {};
 
-    if ( info.subdomains &&info.subdomains!="" )
-    {
-      options.subdomains= info.subdomains;
+    if (info.subdomains && info.subdomains != "") {
+      options.subdomains = info.subdomains;
     }
-    if ( ( info.minZoom == 0 || info.minZoom) && info.minZoom!="" )
-    {
-      options.minZoom= info.minZoom;
-      options._minZoom= info.minZoom;
+    if ((info.minZoom == 0 || info.minZoom) && info.minZoom != "") {
+      options.minZoom = info.minZoom;
+      options._minZoom = info.minZoom;
     }
-    if ( ( info.maxZoom == 0 || info.maxZoom ) && info.maxZoom!="" )
-    {
-      options.maxZoom =info.maxZoom;
-      options._maxZoom =info.maxZoom;
+    if ((info.maxZoom == 0 || info.maxZoom) && info.maxZoom != "") {
+      options.maxZoom = info.maxZoom;
+      options._maxZoom = info.maxZoom;
     }
 
-    if ( info.maxNativeZoom  && info.maxNativeZoom!="" )
-    {
-      options.maxNativeZoom =info.maxNativeZoom;
-      options._maxNativeZoom =info.maxNativeZoom;
-    }
-    
-    if ( info.maxCanvasZoom  && info.maxCanvasZoom!="" )
-    {
-      options.maxCanvasZoom =info.maxCanvasZoom;
-      options._maxCanvasZoom =info.maxCanvasZoom;
-    }
-    
-    if ( info.attribution )
-    {
-      options.attribution =info.attribution;
-      options._attribution =info.attribution;
-    }
-    if ( info.bounds && info.bounds!="" )
-    {
-      options.bounds =info.bounds;
-      options._bounds =info.bounds;
-    }
-    if ( info.styleurl && info.styleurl!="" )
-    {
-      options.styleurl =info.styleurl;
-      options._styleurl =info.styleurl;
-    }
-    
-  }
-  else if ( info.layerType=="topojson_tile" )
-  {
-  // タイルTopoJSON
-    var options = { clipTiles : true, isTopoJSON: true};
-    var options2 = {};
-
-    if ( info.subdomains &&info.subdomains!="" )
-    {
-      options.subdomains= info.subdomains;
-    }
-    if ( ( info.minZoom == 0 || info.minZoom) && info.minZoom!="" )
-    {
-      options.minZoom= info.minZoom;
-      options._minZoom= info.minZoom;
-    }
-    if ( ( info.maxZoom == 0 || info.maxZoom ) && info.maxZoom!="" )
-    {
-      options.maxZoom =info.maxZoom;
-      options._maxZoom =info.maxZoom;
+    if (info.maxNativeZoom && info.maxNativeZoom != "") {
+      options.maxNativeZoom = info.maxNativeZoom;
+      options._maxNativeZoom = info.maxNativeZoom;
     }
 
-    if ( ( info.maxNativeZoom ) && info.maxNativeZoom!="" )
-    {
-      options.maxNativeZoom =info.maxNativeZoom;
-      options._maxNativeZoom =info.maxNativeZoom;
+    if (info.maxCanvasZoom && info.maxCanvasZoom != "") {
+      options.maxCanvasZoom = info.maxCanvasZoom;
+      options._maxCanvasZoom = info.maxCanvasZoom;
     }
 
-    if ( info.attribution )
-    {
-      options.attribution =info.attribution;
-      options._attribution =info.attribution;
+    if (info.attribution) {
+      options.attribution = info.attribution;
+      options._attribution = info.attribution;
     }
-    if ( info.bounds && info.bounds!="" )
-    {
-      options.bounds =info.bounds;
-      options._bounds =info.bounds;
+    if (info.bounds && info.bounds != "") {
+      options.bounds = info.bounds;
+      options._bounds = info.bounds;
+    }
+    if (info.styleurl && info.styleurl != "") {
+      options.styleurl = info.styleurl;
+      options._styleurl = info.styleurl;
     }
 
   }
-  else if ( info.layerType=="topojson" )
-  {
-  // TopoJSON
-    var options = {layerType:'topojson'};
+  else if (info.layerType == "topojson_tile") {
+    // タイルTopoJSON
+    var options = { clipTiles: true, isTopoJSON: true };
+    var options2 = {};
 
-    if ( ( info.minZoom == 0 || info.minZoom ) && info.minZoom != "" ) options.minZoom= info.minZoom;
-    if ( ( info.maxZoom == 0 || info.maxZoom ) && info.maxZoom != "" ) options.maxZoom =info.maxZoom;
-    if ( info.attribution ) options.attribution =info.attribution;
-    if ( info.bounds && info.bounds!="" ) ptions.bounds =info.bounds;
+    if (info.subdomains && info.subdomains != "") {
+      options.subdomains = info.subdomains;
+    }
+    if ((info.minZoom == 0 || info.minZoom) && info.minZoom != "") {
+      options.minZoom = info.minZoom;
+      options._minZoom = info.minZoom;
+    }
+    if ((info.maxZoom == 0 || info.maxZoom) && info.maxZoom != "") {
+      options.maxZoom = info.maxZoom;
+      options._maxZoom = info.maxZoom;
+    }
 
-    layer = new GSI.GeoJSON(info.url,options);
+    if ((info.maxNativeZoom) && info.maxNativeZoom != "") {
+      options.maxNativeZoom = info.maxNativeZoom;
+      options._maxNativeZoom = info.maxNativeZoom;
+    }
+
+    if (info.attribution) {
+      options.attribution = info.attribution;
+      options._attribution = info.attribution;
+    }
+    if (info.bounds && info.bounds != "") {
+      options.bounds = info.bounds;
+      options._bounds = info.bounds;
+    }
+
+  }
+  else if (info.layerType == "topojson") {
+    // TopoJSON
+    var options = { layerType: 'topojson' };
+
+    if ((info.minZoom == 0 || info.minZoom) && info.minZoom != "") options.minZoom = info.minZoom;
+    if ((info.maxZoom == 0 || info.maxZoom) && info.maxZoom != "") options.maxZoom = info.maxZoom;
+    if (info.attribution) options.attribution = info.attribution;
+    if (info.bounds && info.bounds != "") ptions.bounds = info.bounds;
+
+    layer = new GSI.GeoJSON(info.url, options);
     layer._noFinishMove = noFinishMove;
   }
-  else if ( info.layerType=="tms" )
-  {
-  // TMS
+  else if (info.layerType == "tms") {
+    // TMS
     var options = {};
 
-    if ( ( info.minZoom == 0 || info.minZoom ) && info.minZoom != "" ) options.minZoom= info.minZoom;
-    if ( ( info.maxZoom == 0 || info.maxZoom ) && info.maxZoom != "" ) options.maxZoom =info.maxZoom;
-    if ( info.maxNativeZoom && info.maxNativeZoom!="" ) options.maxNativeZoom =info.maxNativeZoom;
-    if ( info.attribution ) options.attribution =info.attribution;
-    if ( info.bounds && info.bounds!="" ) ptions.bounds =info.bounds;
+    if ((info.minZoom == 0 || info.minZoom) && info.minZoom != "") options.minZoom = info.minZoom;
+    if ((info.maxZoom == 0 || info.maxZoom) && info.maxZoom != "") options.maxZoom = info.maxZoom;
+    if (info.maxNativeZoom && info.maxNativeZoom != "") options.maxNativeZoom = info.maxNativeZoom;
+    if (info.attribution) options.attribution = info.attribution;
+    if (info.bounds && info.bounds != "") ptions.bounds = info.bounds;
 
-    layer = new GSI.GSITMSLayer(info.url,options);
+    layer = new GSI.GSITMSLayer(info.url, options);
   }
-  else if ( info.layerType=="multiLayer" )
-  {
+  else if (info.layerType == "multiLayer") {
     // 複数レイヤ
     layer = new GSI.MultiLayer(info.entries);
 
@@ -16822,233 +15645,209 @@ GSI.Utils.infoToLayer = function( info, noFinishMove )
 /************************************************************************
   - GSI.QueryParams
 ************************************************************************/
-GSI.QueryParams = MA.Class.extend( {
+GSI.QueryParams = MA.Class.extend({
 
-  _controlSetting : {
-    infoMenu:{visible:true},
-    funcMenu:{visible:true},
-    header:{visible:true},
-    contextMenu:{visible:true},
-    baseMapSelector:{visible:true}
+  _controlSetting: {
+    infoMenu: { visible: true },
+    funcMenu: { visible: true },
+    header: { visible: true },
+    contextMenu: { visible: true },
+    baseMapSelector: { visible: true }
   },
-  _viewSetting : {
-    centerCross : true,
-    latLngGrid : false,
-    utmGrid : false,
-    tileGrid : false,
-    t25000Grid : false,
-    chiikiMesh : false,
+  _viewSetting: {
+    centerCross: true,
+    latLngGrid: false,
+    utmGrid: false,
+    tileGrid: false,
+    t25000Grid: false,
+    chiikiMesh: false,
 
-    jihokuLine : false,
-    miniMap : false
+    jihokuLine: false,
+    miniMap: false
   },
-  _layers : [],
-  _viewListDialogVisible : false,
-  _layerTreeDialogVisible : false,
-  initialize : function(options)
-  {
-        var queryStrings = ( options && options.queryString ? options.queryString : window.location.search );
-        var vHashLocation = location.hash;
-        var vHashOptions  = "";
-        var vHash         = vHashLocation.split("/&");
-        if(vHash.length == 2){
-            vHashLocation = vHash[0];
-            vHashOptions  = vHash[1];
-        }
-        queryStrings += vHashOptions;
-
-        this._f_queryLocation = queryStrings;
-        this._f_queryOptions  = vHashOptions;
-        this._f_queryStrings  = queryStrings + vHashLocation;
-
-        this.initialize_proc(queryStrings);
+  _layers: [],
+  _viewListDialogVisible: false,
+  _layerTreeDialogVisible: false,
+  initialize: function (options) {
+    var queryStrings = (options && options.queryString ? options.queryString : window.location.search);
+    var vHashLocation = location.hash;
+    var vHashOptions = "";
+    var vHash = vHashLocation.split("/&");
+    if (vHash.length == 2) {
+      vHashLocation = vHash[0];
+      vHashOptions = vHash[1];
     }
-  ,initialize_proc : function(queryStrings)
-  {
-        this._baseMap     = "";
-        this._baseMapDisp = true;
+    queryStrings += vHashOptions;
+
+    this._f_queryLocation = queryStrings;
+    this._f_queryOptions = vHashOptions;
+    this._f_queryStrings = queryStrings + vHashLocation;
+
+    this.initialize_proc(queryStrings);
+  }
+  , initialize_proc: function (queryStrings) {
+    this._baseMap = "";
+    this._baseMapDisp = true;
 
     this.params = this._parse(queryStrings);
-    try{ this._initPosition(); }catch(e){}
-    try{ this._initBaseMap(); }catch(e){}
-    try{ this._initControlSetting(); }catch(e){}
-    try{ this._initViewSetting(); }catch(e){}
-    try{ this._initLayerList(); }catch(e){}
-    try{ this._initDialogSettings(); }catch(e){}
-    try{ this._initReliefData(); }catch(e){}
+    try { this._initPosition(); } catch (e) { }
+    try { this._initBaseMap(); } catch (e) { }
+    try { this._initControlSetting(); } catch (e) { }
+    try { this._initViewSetting(); } catch (e) { }
+    try { this._initLayerList(); } catch (e) { }
+    try { this._initDialogSettings(); } catch (e) { }
+    try { this._initReliefData(); } catch (e) { }
   },
-    getInit : function(){
-        var args = this._parse(window.location.search);
+  getInit: function () {
+    var args = this._parse(window.location.search);
 
-        var ret = true;
-        if ( args["postmessage"] && args["postmessage"] == "1"){
-            ret = false;
-        }
+    var ret = true;
+    if (args["postmessage"] && args["postmessage"] == "1") {
+      ret = false;
+    }
 
-        return ret;
-    },
-  getPosition : function( defaultPosition )
-  {
-    return ( this._position ? this._position  : defaultPosition );
-  },
-  
-  getReliefData : function()
-  {
-    return this._reliefData;
-  },
-  
-  getZoom : function( defaultZoom )
-  {
-    return ( this._zoom ? this._zoom  : defaultZoom );
-  },
-  getBaseMap : function()
-  {
-        this._initBaseMapExist();
-        var ret = "";
-        if(this._baseMap){
-            ret = this._baseMap;
-        }
     return ret;
   },
-  getBaseMapDisp : function()
-  {
-        var ret = this._baseMapDisp;
+  getPosition: function (defaultPosition) {
+    return (this._position ? this._position : defaultPosition);
+  },
 
-        return ret;
-    },
-  getBaseMapGrayScale : function()
-  {
+  getReliefData: function () {
+    return this._reliefData;
+  },
+
+  getZoom: function (defaultZoom) {
+    return (this._zoom ? this._zoom : defaultZoom);
+  },
+  getBaseMap: function () {
+    this._initBaseMapExist();
+    var ret = "";
+    if (this._baseMap) {
+      ret = this._baseMap;
+    }
+    return ret;
+  },
+  getBaseMapDisp: function () {
+    var ret = this._baseMapDisp;
+
+    return ret;
+  },
+  getBaseMapGrayScale: function () {
     return this._baseMapGrayScale;
-  },        
-  getLayers : function()
-  {
+  },
+  getLayers: function () {
     return this._layers;
   },
-  getViewListDialogVisible : function()
-  {
+  getViewListDialogVisible: function () {
     return this._viewListDialogVisible;
   },
-  getLayerTreeDialogVisible : function()
-  {
+  getLayerTreeDialogVisible: function () {
     return this._layerTreeDialogVisible;
   },
-  getCurrentPath : function()
-  {
-        var cd = "";
-        if(this.params["lcd"]){
-            cd = this.params["lcd"];
-        }
+  getCurrentPath: function () {
+    var cd = "";
+    if (this.params["lcd"]) {
+      cd = this.params["lcd"];
+    }
 
-        return cd;
+    return cd;
   },
-  getControlSetting : function( )
-  {
+  getControlSetting: function () {
     return this._controlSetting;
   },
-  getViewSetting : function( )
-  {
+  getViewSetting: function () {
     return this._viewSetting;
   },
-  _initPosition : function()
-  {
-    if ( this.params["ll"] )
-    {
-      var latLng = this.params["ll"].split( ',' );
+  _initPosition: function () {
+    if (this.params["ll"]) {
+      var latLng = this.params["ll"].split(',');
 
-      if ( latLng.length == 2 )
-      {
+      if (latLng.length == 2) {
         if (
-          ( latLng[0].match(/^-?[0-9]+\.[0-9]+$/) || latLng[0].match(/^-?[0-9]+$/) )
+          (latLng[0].match(/^-?[0-9]+\.[0-9]+$/) || latLng[0].match(/^-?[0-9]+$/))
           &&
-          ( latLng[1].match(/^-?[0-9]+\.[0-9]+$/) || latLng[1].match(/^-?[0-9]+$/) )
-        )
-        {
+          (latLng[1].match(/^-?[0-9]+\.[0-9]+$/) || latLng[1].match(/^-?[0-9]+$/))
+        ) {
           this._position = [
-            parseFloat( latLng[0] ),
-            parseFloat( latLng[1] )
+            parseFloat(latLng[0]),
+            parseFloat(latLng[1])
           ];
         }
       }
     }
 
     // ズーム
-    if ( this.params["z"] && this.params["z"].match(/^[0-9]+$/) )
-      this._zoom = parseInt( this.params["z"] );
-    if ( this._zoom && ( this._zoom < 1 || this._zoom > 18 ) )
-    {
+    if (this.params["z"] && this.params["z"].match(/^[0-9]+$/))
+      this._zoom = parseInt(this.params["z"]);
+    if (this._zoom && (this._zoom < 1 || this._zoom > 18)) {
       this._zoom = null;
     }
   },
-  _initBaseMap : function()
-  {
-        if(this._baseMap){
-            this._baseMap = "";
-        }
-
-        var fBaseMap = true;
-        if(this._f_queryStrings == "" || (this._f_queryOptions.lastIndexOf("base") == -1 && this._f_queryOptions.lastIndexOf("=") == -1)){
-            fBaseMap = false;
-        }
-
-        this._baseMapGrayScale = false;
-
-    if ( this.params["base"] )
-    {
-      this._baseMap = this.params["base"];
-            if(this._baseMap != ""){
-                fBaseMap = true;
-            }
+  _initBaseMap: function () {
+    if (this._baseMap) {
+      this._baseMap = "";
     }
-    
-        if(!fBaseMap){
-            this.params["base"] = CONFIG.layerBaseDefaultID;
-            this._initBaseMap();
-        }
-        if(this.params["base_grayscale"]){
-            if(this.params["base_grayscale"] == "1"){
-                this._baseMapGrayScale = true;
-            }
-        }
 
-        this._initBaseMapExist();
-  },
-  _initBaseMapExist : function()
-  {
-        if(this._baseMap != ""){
-            var fBaseMapExists = true;
-            if(this._f_queryStrings != ""){
-                if(CONFIG.BASETILES.length > 0){
-                    fBaseMapExists = false;
-                    for(n = 0; n < CONFIG.BASETILES.length; n++){
-                        if(CONFIG.BASETILES[n].id == this._baseMap){
-                            fBaseMapExists = true;
-                            break;
-                        }
-                    }
-                }
-            }
-            if(!fBaseMapExists){
-                this._baseMap = "";
-            }
-        }
-    },
-  _initLayerList : function()
-  {
     var fBaseMap = true;
-    var vParams  = "";
+    if (this._f_queryStrings == "" || (this._f_queryOptions.lastIndexOf("base") == -1 && this._f_queryOptions.lastIndexOf("=") == -1)) {
+      fBaseMap = false;
+    }
 
-    if(!this._baseMap){
-        fBaseMap = false;
+    this._baseMapGrayScale = false;
+
+    if (this.params["base"]) {
+      this._baseMap = this.params["base"];
+      if (this._baseMap != "") {
+        fBaseMap = true;
+      }
+    }
+
+    if (!fBaseMap) {
+      this.params["base"] = CONFIG.layerBaseDefaultID;
+      this._initBaseMap();
+    }
+    if (this.params["base_grayscale"]) {
+      if (this.params["base_grayscale"] == "1") {
+        this._baseMapGrayScale = true;
+      }
+    }
+
+    this._initBaseMapExist();
+  },
+  _initBaseMapExist: function () {
+    if (this._baseMap != "") {
+      var fBaseMapExists = true;
+      if (this._f_queryStrings != "") {
+        if (CONFIG.BASETILES.length > 0) {
+          fBaseMapExists = false;
+          for (n = 0; n < CONFIG.BASETILES.length; n++) {
+            if (CONFIG.BASETILES[n].id == this._baseMap) {
+              fBaseMapExists = true;
+              break;
+            }
+          }
+        }
+      }
+      if (!fBaseMapExists) {
+        this._baseMap = "";
+      }
+    }
+  },
+  _initLayerList: function () {
+    var fBaseMap = true;
+    var vParams = "";
+
+    if (!this._baseMap) {
+      fBaseMap = false;
     }
 
     this._layers = [];
-    if ( this.params["ls"] )
-    {
+    if (this.params["ls"]) {
       vParams = this.params["ls"];
 
       var disp = this.params["disp"];
-      
-      var layers = this.params["ls"].split( '|' );
+
+      var layers = this.params["ls"].split('|');
 
       // urlのgeojsonとkmlの読み込み
       for (var i = 0; i <= 5; i++) {
@@ -17060,104 +15859,91 @@ GSI.QueryParams = MA.Class.extend( {
           }
         }
       }
-            
-      for ( var i=0; i<layers.length; i++ )
-      {
-        if ( $.trim( layers[i] ) == '' ) continue;
-        var parts  = layers[i].split( ',' );
+
+      for (var i = 0; i < layers.length; i++) {
+        if ($.trim(layers[i]) == '') continue;
+        var parts = layers[i].split(',');
         var $hdn = false;
 
-        if ( disp && disp.length > i)
-        {
-          if ( disp.charAt(i) == '0' )
-          {
+        if (disp && disp.length > i) {
+          if (disp.charAt(i) == '0') {
             $hdn = true;
           }
-          else
-          {
+          else {
             $hdn = false;
           }
         }
-        else
-        {
+        else {
           $hdn = false;
         }
 
-        var vID = parts[ 0 ];
-        if(CONFIG.BASETILES.length == 0){
+        var vID = parts[0];
+        if (CONFIG.BASETILES.length == 0) {
         }
-        else{
-            for(n = 0; n < CONFIG.BASETILES.length; n++){
-                if(CONFIG.BASETILES[n].id == parts[ 0 ]){
-                    vID = this._baseMap;
-                    break;
-                }
+        else {
+          for (n = 0; n < CONFIG.BASETILES.length; n++) {
+            if (CONFIG.BASETILES[n].id == parts[0]) {
+              vID = this._baseMap;
+              break;
             }
+          }
         }
 
-        if(!this._baseMap){
-            if(i == 0){
-                this._baseMap = vID;
-            }
-        }
-
-        if(vID == this._baseMap){
-            fBaseMap = false;
+        if (!this._baseMap) {
+          if (i == 0) {
             this._baseMap = vID;
-            this._baseMapDisp = !$hdn;
+          }
+        }
+
+        if (vID == this._baseMap) {
+          fBaseMap = false;
+          this._baseMap = vID;
+          this._baseMapDisp = !$hdn;
         }
 
         var layerData = {
-          id      :vID,
-          opacity : 1,
-          hidden  : $hdn
+          id: vID,
+          opacity: 1,
+          hidden: $hdn
         };
 
-        if ( parts.length >= 2 )
-        {
+        if (parts.length >= 2) {
           var opacity = parts[1];
-          if (!isNaN(opacity))
-          {
-            opacity = parseFloat( opacity );
-            if ( opacity >= 0.0 && opacity <= 1.0 )
+          if (!isNaN(opacity)) {
+            opacity = parseFloat(opacity);
+            if (opacity >= 0.0 && opacity <= 1.0)
               layerData.opacity = opacity;
           }
         }
-        this._layers.push( layerData );
+        this._layers.push(layerData);
       }
     }
 
-    if(fBaseMap && this._baseMap != ""){
-        this.params["ls"] = this._baseMap;
-        if(vParams != ""){
-            this.params["ls"] += '|' + vParams;
-        }
-        this._initLayerList();
+    if (fBaseMap && this._baseMap != "") {
+      this.params["ls"] = this._baseMap;
+      if (vParams != "") {
+        this.params["ls"] += '|' + vParams;
+      }
+      this._initLayerList();
     }
 
     this._initBaseMapExist();
   },
-  _initControlSetting : function()
-  {
-    if ( this.params["hc"] )
-    {
+  _initControlSetting: function () {
+    if (this.params["hc"]) {
       var ctrl = this.params["hc"];
-      if ( ctrl.toLowerCase() == CONFIG.HIDDENCONTROLPARAMETER.ALL )
-      {
+      if (ctrl.toLowerCase() == CONFIG.HIDDENCONTROLPARAMETER.ALL) {
         this._controlSetting = {
-          infoMenu:{visible:false},
-          funcMenu:{visible:false},
-          header:{visible:false},
-          contextMenu:{visible:false},
-          baseMapSelector:{visible:false}
+          infoMenu: { visible: false },
+          funcMenu: { visible: false },
+          header: { visible: false },
+          contextMenu: { visible: false },
+          baseMapSelector: { visible: false }
         };
       }
-      else
-      {
-        for( var i=0; i<ctrl.length; i++ )
-        {
-          switch( ctrl.charAt( i ).toLowerCase() )
-          {
+      else {
+        for (var i = 0; i < ctrl.length; i++) {
+          switch (ctrl.charAt(i).toLowerCase()) {
             case CONFIG.HIDDENCONTROLPARAMETER.INFOMENU:
               // 情報メニュー
               this._controlSetting.infoMenu.visible = false;
@@ -17186,43 +15972,34 @@ GSI.QueryParams = MA.Class.extend( {
       }
     }
   },
-  _initViewSetting : function()
-  {
-    if ( this.params["vs"] )
-    {
+  _initViewSetting: function () {
+    if (this.params["vs"]) {
       var vs = this.params["vs"];
 
-      for ( var i=0; i<vs.length; i+=2 )
-      {
-        if ( vs.length -1 == i ) break;
+      for (var i = 0; i < vs.length; i += 2) {
+        if (vs.length - 1 == i) break;
         var key = vs.charAt(i);
-        var value = vs.charAt(i+1);
+        var value = vs.charAt(i + 1);
 
-        for( var qpKey in CONFIG.QUERYPARAMETER )
-        {
-          if (CONFIG.QUERYPARAMETER[ qpKey ].prefix == key )
-          {
-            this._viewSetting[CONFIG.QUERYPARAMETER[ qpKey ].settingName]  = ( value == "1" );
+        for (var qpKey in CONFIG.QUERYPARAMETER) {
+          if (CONFIG.QUERYPARAMETER[qpKey].prefix == key) {
+            this._viewSetting[CONFIG.QUERYPARAMETER[qpKey].settingName] = (value == "1");
             break;
           }
         }
       }
     }
   },
-  _initDialogSettings : function()
-  {
-        this._viewListDialogVisible  = false;
-        this._layerTreeDialogVisible = false;
+  _initDialogSettings: function () {
+    this._viewListDialogVisible = false;
+    this._layerTreeDialogVisible = false;
 
-    if ( this.params["d"] )
-    {
+    if (this.params["d"]) {
       var d = this.params["d"];
 
-      for ( var i=0; i<d.length; i++ )
-      {
+      for (var i = 0; i < d.length; i++) {
         var id = d.charAt(i);
-        switch( id )
-        {
+        switch (id) {
           case "v":
             this._viewListDialogVisible = true;
             break;
@@ -17235,39 +16012,35 @@ GSI.QueryParams = MA.Class.extend( {
       }
     }
   },
-  _initReliefData : function()
-  {
+  _initReliefData: function () {
     var reliefData = this.params["reliefdata"];
-    if ( reliefData )
+    if (reliefData)
       this._reliefData = GSI3D.ReliefTileLayer.decodeElevationDataText(reliefData);
-      
+
   },
-  _parse : function( queryString, separator )
-  {
+  _parse: function (queryString, separator) {
     var result = {};
-    if( 1 < queryString.length )
-    {
-      var query = ( queryString.charAt(0) == '?' ? queryString.substring( 1 ) : queryString );
+    if (1 < queryString.length) {
+      var query = (queryString.charAt(0) == '?' ? queryString.substring(1) : queryString);
 
-      var parameters = query.split( '&' );
+      var parameters = query.split('&');
 
-      for( var i = 0; i < parameters.length; i++ )
-      {
-                try{
-            var element = parameters[ i ].split( '=' );
+      for (var i = 0; i < parameters.length; i++) {
+        try {
+          var element = parameters[i].split('=');
 
-            var paramName = decodeURIComponent( element[ 0 ] );
-            var paramValue = decodeURIComponent( element[ 1 ] );
-            result[ paramName ] = paramValue;
-                }
-                catch(e){
+          var paramName = decodeURIComponent(element[0]);
+          var paramValue = decodeURIComponent(element[1]);
+          result[paramName] = paramValue;
+        }
+        catch (e) {
 
-                }
+        }
       }
     }
     return result;
   }
-} );
+});
 
 
 /************************************************************************
@@ -17277,15 +16050,14 @@ GLOBE.DIALOG.FOOTER = $.extend({}, new GLOBE.CLASS.DIALOG('gsi_dialog_footer'), 
   options: {
     title: '位置情報'
   },
-  defaultTop:   'auto',
-  defaultLeft:  'auto',
+  defaultTop: 'auto',
+  defaultLeft: 'auto',
   defaultRight: '10px',
-  defaultBottom:'10px',
+  defaultBottom: '10px',
   resizable: false,
-  addrKanji:'',
-  addrYomi:'',
-  create: function()
-  {
+  addrKanji: '',
+  addrYomi: '',
+  create: function () {
     this.createDialog();
     this.setDialogHeader('位置情報');
     var h = $(window).height();
@@ -17296,99 +16068,98 @@ GLOBE.DIALOG.FOOTER = $.extend({}, new GLOBE.CLASS.DIALOG('gsi_dialog_footer'), 
     });
     this._dispAddrMode = GLOBE.MAP._dispAddrMode;
   },
-  
-  _initializeContent: function(lon,lat,height,addressK,addressY)
-  {
+
+  _initializeContent: function (lon, lat, height, addressK, addressY) {
     lon = (isNaN(lon) ? lon : lon * 1);
     lat = (isNaN(lat) ? lat : lat * 1);
     height = (isNaN(height) ? height : height * 1);
-    
-      var ellipsoid = GLOBE.MAP.viewer.scene.globe.ellipsoid;
-          
-      this.frame = $('<div></div>');
-      this.addrKanji = '---';
-      this.addrYomi = '---';
 
-      if (addressK){
-        this.addrKanji = addressK;
-      }
-      if (addressY){
-        this.addrYomi = addressY;
-      }
+    var ellipsoid = GLOBE.MAP.viewer.scene.globe.ellipsoid;
+
+    this.frame = $('<div></div>');
+    this.addrKanji = '---';
+    this.addrYomi = '---';
+
+    if (addressK) {
+      this.addrKanji = addressK;
+    }
+    if (addressY) {
+      this.addrYomi = addressY;
+    }
 
 
-      if (this._dispAddrMode == CONFIG.DISP_ADDR_KANJI){
-        this._addr = $('<span style="color:#ccc;">' + this.addrKanji + '</span>');
-        this._addrChangeReading = $("<span>").addClass("addr-ToActive").html("あ");
-      }
-      else{
-        this._addr = $('<span style="color:#ccc;">' + this.addrYomi + '</span>');
-        this._addrChangeReading = $("<span>").addClass("addr-ToActive").html("漢");
-      }
-      this._addrChangeReading.appendTo(this.frame);
-      this._addrChangeReading.on('click', MA.bind(this._onAddrChangeClick, this));
+    if (this._dispAddrMode == CONFIG.DISP_ADDR_KANJI) {
+      this._addr = $('<span style="color:#ccc;">' + this.addrKanji + '</span>');
+      this._addrChangeReading = $("<span>").addClass("addr-ToActive").html("あ");
+    }
+    else {
+      this._addr = $('<span style="color:#ccc;">' + this.addrYomi + '</span>');
+      this._addrChangeReading = $("<span>").addClass("addr-ToActive").html("漢");
+    }
+    this._addrChangeReading.appendTo(this.frame);
+    this._addrChangeReading.on('click', MA.bind(this._onAddrChangeClick, this));
 
-      //this._addr = $('<div><span style="color:#ccc;">住所：</span>　'+address+'</div>');
-      this._addr.appendTo(this.frame);
-      this._addr.on('click', MA.bind(this._onAddrChangeClick, this));
+    //this._addr = $('<div><span style="color:#ccc;">住所：</span>　'+address+'</div>');
+    this._addr.appendTo(this.frame);
+    this._addr.on('click', MA.bind(this._onAddrChangeClick, this));
 
-      this._miniComm = $('<div>　　　　(付近の住所。正確な所属を示すとは限らない)</div>')
-        .css({
+    this._miniComm = $('<div>　　　　(付近の住所。正確な所属を示すとは限らない)</div>')
+      .css({
         'color': '#ccc',
         'font-size': '7.5pt'
       });
 
-      this._miniComm.appendTo(this.frame);
+    this._miniComm.appendTo(this.frame);
 
-    var center = { lat : lat, lng : lon};
+    var center = { lat: lat, lng: lon };
 
-    var dms = GSI.Utils.latLngToDMS( center );
-    var lats = ( Math.round( dms.lat.s * 100 ) / 100 ).toFixed(2);
-    var lngs = ( Math.round( dms.lng.s * 100 ) / 100 ).toFixed(2);
-    if ('' + lats == "60.00"){
+    var dms = GSI.Utils.latLngToDMS(center);
+    var lats = (Math.round(dms.lat.s * 100) / 100).toFixed(2);
+    var lngs = (Math.round(dms.lng.s * 100) / 100).toFixed(2);
+    if ('' + lats == "60.00") {
       lats = "0.00";
       dms.lat.m += 1;
     }
-    if ('' + lngs == "60.00"){
+    if ('' + lngs == "60.00") {
       lngs = "0.00";
       dms.lng.m += 1;
     }
-    if (dms.lat.m == 60){
+    if (dms.lat.m == 60) {
       dms.lat.m = 0;
       dms.lat.d += 1;
     }
-    if (dms.lng.m == 60){
+    if (dms.lng.m == 60) {
       dms.lng.m = 0;
       dms.lng.d += 1;
     }
-    var lon2=(center.lat < 0 ? '-' : '') + dms.lat.d + '度' + dms.lat.m + '分' + lats  + '秒';
-    var lat2=(center.lng < 0 ? '-' : '') + dms.lng.d + '度' + dms.lng.m + '分' + lngs  + '秒';
-      if ((isNaN(lat) == true) && (isNaN(lon) == true)){
+    var lon2 = (center.lat < 0 ? '-' : '') + dms.lat.d + '度' + dms.lat.m + '分' + lats + '秒';
+    var lat2 = (center.lng < 0 ? '-' : '') + dms.lng.d + '度' + dms.lng.m + '分' + lngs + '秒';
+    if ((isNaN(lat) == true) && (isNaN(lon) == true)) {
       lat = "---";
       lon = "---";
       lat2 = "---";
       lon2 = "---";
     }
-    var utmPoint = GSI.UTM.Utils.latlng2PointName( center.lat, center.lng );
-    utmPoint=(utmPoint == '' ? '---' : utmPoint);
-    this.lonlat2 = $('<div>' + lon2 + ' ' + lat2+'</div>')
+    var utmPoint = GSI.UTM.Utils.latlng2PointName(center.lat, center.lng);
+    utmPoint = (utmPoint == '' ? '---' : utmPoint);
+    this.lonlat2 = $('<div>' + lon2 + ' ' + lat2 + '</div>')
       .appendTo(this.frame);
-    this.lonlat = $('<div>' + lat + ',' + lon+'</div>')
+    this.lonlat = $('<div>' + lat + ',' + lon + '</div>')
       .appendTo(this.frame);
-    this.UTM = $('<div><span style="color:#ccc;">UTMポイント：</span>'+utmPoint+'</div>')
+    this.UTM = $('<div><span style="color:#ccc;">UTMポイント：</span>' + utmPoint + '</div>')
       .appendTo(this.frame);
     this.a = $('<a href="https://maps.gsi.go.jp/help/howtouse.html" target="_blank"> 表示値の説明</a>')
-        .css({
+      .css({
         'color': '#333',
         'background': 'linear-gradient(#f5f5f5, #f0f0f0)',
         'position': 'absolute',
         'bottom': '6px',
         'right': '4px',
-        'padding':' 1px 5px 1px 5px',
-        'font-size':' 9pt'
+        'padding': ' 1px 5px 1px 5px',
+        'font-size': ' 9pt'
       })
       .appendTo(this.frame);
-    
+
     this.outPutHeight = $('<div><span class="footer_label">標高：</span><span id="DemHeight">---</span></div>')
       .appendTo(this.frame);
 
@@ -17399,65 +16170,62 @@ GLOBE.DIALOG.FOOTER = $.extend({}, new GLOBE.CLASS.DIALOG('gsi_dialog_footer'), 
       .appendTo(this.frame);
 
     $('<div style="height: 22pt;"></div>').appendTo(this.frame);  //empty
-    
-    this.setDialogContent( this.frame );
-    
+
+    this.setDialogContent(this.frame);
+
     this.refreshDEMHeight();
     this.refreshLakeDepth(GLOBE.MAP.lakedataEnabled);
   },
 
-  refreshDEMHeight : function(){
-    
-    if ( GLOBE.MAP.outPutHeight && this.outPutHeight )
-    {
+  refreshDEMHeight: function () {
+
+    if (GLOBE.MAP.outPutHeight && this.outPutHeight) {
       this.outPutHeight.find("#DemHeight").html(GLOBE.MAP.outPutHeight);
       this._getDemHeightCouter = 0;
     } else {
       //console.log("reset");
-      if ( this.outPutHeight) this.outPutHeight.find("#DemHeight").html("---");
+      if (this.outPutHeight) this.outPutHeight.find("#DemHeight").html("---");
     }
   },
 
-  refreshLakeDepth : function(enabled){
+  refreshLakeDepth: function (enabled) {
     const strNoData = "---";
 
-    if(!this.outPutLakeDepth) return;
-    this.outPutLakeDepth.css("display", enabled?"block":"none");
+    if (!this.outPutLakeDepth) return;
+    this.outPutLakeDepth.css("display", enabled ? "block" : "none");
 
     this.outPutLakeDepth.find("#LakeDepth").html(GLOBE.MAP.outPutLakeDepth || strNoData);
     this.outPutLakeDepth.find("#LakeStdHeight").html(GLOBE.MAP.outPutLakeStdHeight || strNoData);
 
     let outPutLakeBottomHeight = strNoData;
-    if(GLOBE.MAP.outPutLakeDepth && GLOBE.MAP.outPutLakeStdHeight){
-      try{
+    if (GLOBE.MAP.outPutLakeDepth && GLOBE.MAP.outPutLakeStdHeight) {
+      try {
         let fix = Math.max(GLOBE.MAP.vLakeDepthFix, GLOBE.MAP.vLakeStdHeightFix);
         let vLakeBottomHeight = (parseFloat(GLOBE.MAP.vLakeStdHeight) - parseFloat(GLOBE.MAP.vLakeDepth)).toFixed(fix);
         outPutLakeBottomHeight = vLakeBottomHeight + "m";
-      } catch {}
+      } catch { }
     }
     this.outPutLakeDepth.find("#LakeBottomHeight").html(outPutLakeBottomHeight);
   },
-  
-  onDragStart: function()
-  {
+
+  onDragStart: function () {
     this.container.css({
       'right': 'auto',
       'bottom': 'auto'
     });
   },
-  
-  onBeforeClose: function()
-  {
+
+  onBeforeClose: function () {
     GLOBE.MAP.clearPinLayers("FOOTER");
   },
 
-  _onAddrChangeClick: function(){
-    if (this._dispAddrMode == CONFIG.DISP_ADDR_KANJI){
+  _onAddrChangeClick: function () {
+    if (this._dispAddrMode == CONFIG.DISP_ADDR_KANJI) {
       this._dispAddrMode = CONFIG.DISP_ADDR_YOMI;
       this._addrChangeReading.html("漢");
       this._addr.html(this.addrYomi);
     }
-    else{
+    else {
       this._dispAddrMode = CONFIG.DISP_ADDR_KANJI;
       this._addrChangeReading.html("あ");
       this._addr.html(this.addrKanji);
@@ -17481,25 +16249,24 @@ GSI.map = function (id, options) {
 /************************************************************************
   - GLOBE.VectorLayer
 ************************************************************************/
-GLOBE.VectorLayer = MA.Class.extend( {
-  
-  options : {
-    
+GLOBE.VectorLayer = MA.Class.extend({
+
+  options: {
+
   },
-  _IEHeight : 3500,
+  _IEHeight: 3500,
 
-  _visible : true,
-  _map : null,
-  _loaded : false,
-  _primitives : [],
+  _visible: true,
+  _map: null,
+  _loaded: false,
+  _primitives: [],
   //_billboards : [],
-  _beforeHeight : null,
-  _moveEndHandler : function(){},
-  _uniqueId : null,
-  _layerId : null,
+  _beforeHeight: null,
+  _moveEndHandler: function () { },
+  _uniqueId: null,
+  _layerId: null,
 
-  initialize : function(map,options)
-  {
+  initialize: function (map, options) {
     this._uniqueId = GLOBE.MAP.getNewId();
     this._visible = true;
     this._primitives = [];
@@ -17507,38 +16274,31 @@ GLOBE.VectorLayer = MA.Class.extend( {
     this._map = map;
     options = MA.setOptions(this, options);
     this._load();
-    
+
     this._moveEndHandler = this._onCameraMoveEnd.bind(this);
     this._map.viewer.camera.moveEnd.addEventListener(this._moveEndHandler);
     this._beforeHeight = GLOBE.MAP.currents.height;
   },
-  
-  setAlpha : function(alpha)
-  {
-    if ( this._dataSource )
-    {
+
+  setAlpha: function (alpha) {
+    if (this._dataSource) {
       var entities = this._dataSource.entities.values;
-      for ( var i=0; i<entities.length; i++ )
-      {
+      for (var i = 0; i < entities.length; i++) {
         var entity = entities[i];
         var material = null;
-        
-        if ( entity.billboard )
-        {
+
+        if (entity.billboard) {
           var color = (entity.billboard.color ? entity.billboard.color : new Cesium.Color(1, 1, 1, 1));
           entity.billboard.color = new Cesium.Color(color.red, color.green, color.blue, alpha);
         }
-        else if ( entity.polyline )
-        {
+        else if (entity.polyline) {
           material = entity.polyline.material;
         }
-        else if ( entity.polygon )
-        {
+        else if (entity.polygon) {
           material = entity.polygon.material;
         }
-        
-        if ( material )
-        {
+
+        if (material) {
           var color = (material.color ? material.color._value : new Cesium.Color(0, 0, 0, 1));
           color = (material.defaultColor ? material.defaultColor : color);
           material.defaultColor = color;
@@ -17546,193 +16306,158 @@ GLOBE.VectorLayer = MA.Class.extend( {
         }
       }
     }
-    
-    if ( this._primitives )
-    {
-      for( var i=0; i<this._primitives.length; i++ )
-      {
+
+    if (this._primitives) {
+      for (var i = 0; i < this._primitives.length; i++) {
         var attr = this._primitives[i].getGeometryInstanceAttributes("color");
-        if ( attr )
-        {
+        if (attr) {
           var color = this._primitives[i]._defaultColor;
-          attr.color =Cesium.ColorGeometryInstanceAttribute.toValue(
-              new Cesium.Color( color.red, color.green, color.blue, color.alpha * alpha )
-            );
+          attr.color = Cesium.ColorGeometryInstanceAttribute.toValue(
+            new Cesium.Color(color.red, color.green, color.blue, color.alpha * alpha)
+          );
         }
       }
     }
-    
-    if ( this._billboardCollection )
-    {
-      for( var i=0; i<this._billboardCollection.length; i++ )
-      {
+
+    if (this._billboardCollection) {
+      for (var i = 0; i < this._billboardCollection.length; i++) {
         var billboardCollection = this._billboardCollection.get(i);
-        for ( var j=0; j<billboardCollection.length; j++ )
-        {
+        for (var j = 0; j < billboardCollection.length; j++) {
           var billboard = billboardCollection.get(j);
           var color = billboard._color;
-          if ( CONFIG.TILEASICON_ENABLED && billboard.gsidata._markerType != 'DivIcon' && alpha != 0 )
-          {
+          if (CONFIG.TILEASICON_ENABLED && billboard.gsidata._markerType != 'DivIcon' && alpha != 0) {
             billboard.color = new Cesium.Color(color.red, color.green, color.blue, CONFIG.TILEASICON_ICONALPHA);
           }
-          else
-          {
+          else {
             billboard.color = new Cesium.Color(color.red, color.green, color.blue, alpha);
           }
         }
       }
     }
-    
-    if ( this._layerId )
-    {
+
+    if (this._layerId) {
       GLOBE.MAP.alphaSingleImageryLayer(this._layerId, alpha);
       GLOBE.MAP.alphaImagePrimitive(this._layerId, alpha);
     }
   },
-  _setVisible : function( viewer, visible )
-  {
+  _setVisible: function (viewer, visible) {
     //if( this._visible == visible ) return;
     this._visible = visible;
-    
-    if ( this._dataSource )
-    {
+
+    if (this._dataSource) {
       this._dataSource.show = visible;
     }
-    
-    if ( this._primitives )
-    {
-      for( var i=0; i<this._primitives.length; i++ )
-      {
+
+    if (this._primitives) {
+      for (var i = 0; i < this._primitives.length; i++) {
         this._primitives[i].show = this._visible;
       }
     }
-    
-    if ( this._billboardCollection )
-    {
+
+    if (this._billboardCollection) {
       this._billboardCollection.show = this._visible;
     }
-    
-    if ( this._layerId )
-    {
+
+    if (this._layerId) {
       GLOBE.MAP.showSingleImageryLayer(this._layerId, this._visible);
       GLOBE.MAP.showImagePrimitive(this._layerId, this._visible);
     }
   },
-  
-  _remove : function() 
-  {
-    if ( this._ajax )
-    {
-      try
-      {
+
+  _remove: function () {
+    if (this._ajax) {
+      try {
         this._ajax.abort();
-        
+
       }
-      catch(e){}
+      catch (e) { }
       this._ajax = null;
     }
-    
-    if ( this._dataSource )
-    {
+
+    if (this._dataSource) {
       this._map.viewer.dataSources.remove(this._dataSource, true);
     }
-    
-    if ( this._primitives )
-    {
-      for( var i=0; i<this._primitives.length; i++ )
-      {
+
+    if (this._primitives) {
+      for (var i = 0; i < this._primitives.length; i++) {
         this._map.viewer.scene.primitives.remove(this._primitives[i]);
       }
     }
-    
-    if ( this._billboardCollection )
-    {
+
+    if (this._billboardCollection) {
       this._map.viewer.scene.primitives.remove(this._billboardCollection);
     }
-    
-    if ( this._layerId )
-    {
+
+    if (this._layerId) {
       GLOBE.MAP.removeSingleImageryLayer(this._layerId);
       GLOBE.MAP.removeImagePrimitive(this._layerId);
     }
-    
+
     this._primitives = null;
     this._billboardCollection = null;
     this._layerId = null;
     this._map.viewer.camera.moveEnd.removeEventListener(this._moveEndHandler);
-    
+
     GLOBE.DIALOG.INFOBOX.hide();
   },
-  
-  _redraw : function() 
-  {
-    if ( this._dataSource )
-    {
+
+  _redraw: function () {
+    if (this._dataSource) {
       this._map.viewer.dataSources.remove(this._dataSource, true);
     }
-    
-    if ( this._primitives )
-    {
-      for( var i=0; i<this._primitives.length; i++ )
-      {
+
+    if (this._primitives) {
+      for (var i = 0; i < this._primitives.length; i++) {
         this._map.viewer.scene.primitives.remove(this._primitives[i]);
       }
     }
-    
-    if ( this._billboardCollection )
-    {
+
+    if (this._billboardCollection) {
       this._map.viewer.scene.primitives.remove(this._billboardCollection);
     }
-    
-    if ( this._layerId )
-    {
+
+    if (this._layerId) {
       GLOBE.MAP.removeSingleImageryLayer(this._layerId);
       GLOBE.MAP.removeImagePrimitive(this._layerId);
     }
-    
+
     this._primitives = [];
     this._billboardCollection = null;
-    
+
     this._onLoad();
   },
-  
-  _load : function()
-  {
+
+  _load: function () {
     this._remove();
     this._primitives = [];
-    
+
     this._ajax = $.ajax({
       type: "GET",
       url: MATEST.proxyUrl(this.options.url),
       dataType: "text",
       cache: true,
-      success : MA.bind(this._onLoad, this),
-      error : MA.bind(this._onLoadError, this)
+      success: MA.bind(this._onLoad, this),
+      error: MA.bind(this._onLoadError, this)
     });
   },
-  
-  _onLoad : function(){},
-  _onLoadError : function(){},
-  
-  _onCameraMoveEnd: function()
-  {
+
+  _onLoad: function () { },
+  _onLoadError: function () { },
+
+  _onCameraMoveEnd: function () {
     var latLng = GLOBE.MAP.getCameraPosition();
-    if ( Math.abs(this._beforeHeight - latLng[2]) > this._beforeHeight * 0.1 )
-    {
+    if (Math.abs(this._beforeHeight - latLng[2]) > this._beforeHeight * 0.1) {
       this._onZoomChange(latLng[2]);
     }
   },
-  
-  _onZoomChange: function(height)
-  {
+
+  _onZoomChange: function (height) {
     var removeList = [];
     var addList = [];
-    
-    for ( var i=0; i<this._map.viewer.scene.primitives._primitives.length; i++ )
-    {
+
+    for (var i = 0; i < this._map.viewer.scene.primitives._primitives.length; i++) {
       var primitive = this._map.viewer.scene.primitives._primitives[i];
-      if ( primitive.gene && primitive.gene.kind == 'corridor' )
-      {
+      if (primitive.gene && primitive.gene.kind == 'corridor') {
         var newPrimitive = this.createCorridorPrimitive(primitive.gene);
         newPrimitive.show = primitive.show;
         newPrimitive._defaultColor = primitive._defaultColor;
@@ -17741,58 +16466,52 @@ GLOBE.VectorLayer = MA.Class.extend( {
       }
     }
     // 削除
-    for ( var i=0; i<removeList.length; i++ )
-    {
+    for (var i = 0; i < removeList.length; i++) {
       this._map.viewer.scene.primitives.remove(removeList[i]);
     }
     // 追加
-    for ( var i=0; i<addList.length; i++ )
-    {
+    for (var i = 0; i < addList.length; i++) {
       this._map.viewer.scene.primitives.add(addList[i]);
       this._primitives.push(addList[i]);
     }
     // 整理
     var newList = [];
-    for ( var i=0; i<this._primitives.length; i++ )
-    {
-      if ( !this._primitives[i].isDestroyed() )
-      {
+    for (var i = 0; i < this._primitives.length; i++) {
+      if (!this._primitives[i].isDestroyed()) {
         newList.push(this._primitives[i]);
       }
     }
     this._primitives = newList;
     this._beforeHeight = height;
   },
-  
-  _getPrimitivePointIcon : function(position, imageURL, name)
-  {
+
+  _getPrimitivePointIcon: function (position, imageURL, name) {
     return GLOBE.MAP.getPrimitivePoint_Icon(position, imageURL, name);
   },
-  
-  _getPrimitiveIconCircle : function(position, fillColor, radius, isIE)
-  {
+
+  _getPrimitiveIconCircle: function (position, fillColor, radius, isIE) {
     var height = GLOBE.MAP.degreesFromCartesian(position)[2];
-    
+
     // IEの場合は高さを調整する
-    if(isIE){
+    if (isIE) {
       var ellipse = new Cesium.EllipseGeometry({
-        "center" : position,
-        "semiMajorAxis" : radius,
-        "semiMinorAxis" : radius,
-        "height"        : this._IEHeight
+        "center": position,
+        "semiMajorAxis": radius,
+        "semiMinorAxis": radius,
+        "height": this._IEHeight
       });
-    }else{
+    } else {
       var ellipse = new Cesium.EllipseGeometry({
-        "center" : position,
-        "semiMajorAxis" : radius,
-        "semiMinorAxis" : radius,
-        "height"        : height
+        "center": position,
+        "semiMajorAxis": radius,
+        "semiMinorAxis": radius,
+        "height": height
       });
     }
 
     var geometryInstance = new Cesium.GeometryInstance({
-      "geometry"   : ellipse,
-      "attributes" : {
+      "geometry": ellipse,
+      "attributes": {
         "color": new Cesium.ColorGeometryInstanceAttribute(fillColor.red, fillColor.green, fillColor.blue, fillColor.alpha)
       },
       id: 'color'
@@ -17800,28 +16519,27 @@ GLOBE.VectorLayer = MA.Class.extend( {
 
     return geometryInstance;
   },
-  
-  
-  _getPrimitivePolygon : function(hierarchy, color, isIE)
-  {
+
+
+  _getPrimitivePolygon: function (hierarchy, color, isIE) {
 
     // IEの場合は高さを調整する
-    if(isIE){
+    if (isIE) {
       var polygon = new Cesium.PolygonGeometry({
-        "polygonHierarchy" : hierarchy,
-        "height"           : this._IEHeight,
+        "polygonHierarchy": hierarchy,
+        "height": this._IEHeight,
         "perPositionHeight": true
       });
-    }else{
+    } else {
       var polygon = new Cesium.PolygonGeometry({
-        "polygonHierarchy" : hierarchy
+        "polygonHierarchy": hierarchy
       });
     }
 
     var geometryInstance = new Cesium.GeometryInstance({
-      "geometry"   : polygon,
-      "attributes" : {
-        "color" : new Cesium.ColorGeometryInstanceAttribute(color.red, color.green, color.blue, color.alpha)
+      "geometry": polygon,
+      "attributes": {
+        "color": new Cesium.ColorGeometryInstanceAttribute(color.red, color.green, color.blue, color.alpha)
       },
       id: 'color'
     });
@@ -17829,273 +16547,256 @@ GLOBE.VectorLayer = MA.Class.extend( {
     return geometryInstance;
   },
 
-  _getPrimitiveLinestring : function(positions, color, width, isIE)
-  {
+  _getPrimitiveLinestring: function (positions, color, width, isIE) {
     // IEの場合は高さを調整する
-    if(isIE){
+    if (isIE) {
       var myGeometry = new Cesium.CorridorGeometry({
-        "positions"    : positions,
-        "width"        : width,
-        "height"       : this._IEHeight,
-        "vertexFormat" : Cesium.PerInstanceColorAppearance.VERTEX_FORMAT
+        "positions": positions,
+        "width": width,
+        "height": this._IEHeight,
+        "vertexFormat": Cesium.PerInstanceColorAppearance.VERTEX_FORMAT
       });
-    }else{
+    } else {
       var myGeometry = new Cesium.CorridorGeometry({
-        "positions"    : positions,
-        "width"        : width,
-        "vertexFormat" : Cesium.PerInstanceColorAppearance.VERTEX_FORMAT
+        "positions": positions,
+        "width": width,
+        "vertexFormat": Cesium.PerInstanceColorAppearance.VERTEX_FORMAT
       });
     }
-    
+
     var geometryInstance = new Cesium.GeometryInstance({
-      geometry : myGeometry,
-      attributes : {
-        color : new Cesium.ColorGeometryInstanceAttribute(color.red, color.green, color.blue, color.alpha)
+      geometry: myGeometry,
+      attributes: {
+        color: new Cesium.ColorGeometryInstanceAttribute(color.red, color.green, color.blue, color.alpha)
       },
       id: 'color'
     });
 
     return geometryInstance;
   },
-  
-  
+
+
   // ラインのプリミティブを作成。（高さが必要）
-  createPolylinePrimitive: function(gene)
-  {
+  createPolylinePrimitive: function (gene) {
     gene.kind = "polyline";
     gene.type = "upload_polyline";
-    
+
     var collection = new Cesium.PolylineCollection();
     var primitive = collection.add({
-      positions : gene.position,
-      width     : gene.width,
-      material  : new Cesium.Material.fromType('Color', {
-        color : gene.color
+      positions: gene.position,
+      width: gene.width,
+      material: new Cesium.Material.fromType('Color', {
+        color: gene.color
       })
     });
     primitive["type"] = gene.type;
     primitive["primitiveID"] = gene.primitiveID;
     primitive["description"] = gene.description;
-    primitive["name"]        = gene.name;
-    primitive["gene"]        = gene;
+    primitive["name"] = gene.name;
+    primitive["gene"] = gene;
     return collection;
   },
-  
+
   // ラインのプリミティブを作成。（地面へ描画するため高さは不要）
-  createCorridorPrimitive: function(gene)
-  {
+  createCorridorPrimitive: function (gene) {
     var geomInstance = null;
     var primitive = null;
-    
+
     var latLng = GLOBE.MAP.getCameraPosition();
     var width = gene.width * latLng[2] / 600;
-    
+
     // 【 IE11 】
-    if(gene.isIE){
+    if (gene.isIE) {
       // Primitiveとして追加する
       geomInstance = this._getPrimitiveLinestring(gene.position, gene.color, width, gene.isIE);
       primitive = new Cesium.Primitive({
-        geometryInstances : [geomInstance],
-        appearance : new Cesium.EllipsoidSurfaceAppearance({
-          material : Cesium.Material.fromType("Color", {
-            "color" : gene.color
+        geometryInstances: [geomInstance],
+        appearance: new Cesium.EllipsoidSurfaceAppearance({
+          material: Cesium.Material.fromType("Color", {
+            "color": gene.color
           })
         })
       });
-    // 【 IE11以外 】
-    }else{
+      // 【 IE11以外 】
+    } else {
       // GroundPrimitiveとして追加する
       geomInstance = this._getPrimitiveLinestring(gene.position, gene.color, width, gene.isIE);
       primitive = new Cesium.GroundPrimitive({
-        geometryInstances : [geomInstance]
+        geometryInstances: [geomInstance]
       });
     }
     primitive["type"] = gene.type;
     primitive["primitiveID"] = gene.primitiveID;
     primitive["description"] = gene.description;
-    primitive["name"]        = gene.name;
-    primitive["gene"]        = gene;
+    primitive["name"] = gene.name;
+    primitive["gene"] = gene;
     return primitive;
   }
-} );
+});
 
 
 /************************************************************************
   - GLOBE.KMLLayer
 ************************************************************************/
-GLOBE.KMLLayer = GLOBE.VectorLayer.extend( {
+GLOBE.KMLLayer = GLOBE.VectorLayer.extend({
 
-  initialize : function(map,options)
-  {
-    GLOBE.VectorLayer.prototype.initialize.call(this, map,options);
+  initialize: function (map, options) {
+    GLOBE.VectorLayer.prototype.initialize.call(this, map, options);
   },
-  
-  _onLoad : function(kml)
-  {
-    if ( kml )
-    {
+
+  _onLoad: function (kml) {
+    if (kml) {
       this._originalData = kml;
     }
-    else
-    {
+    else {
       kml = this._originalData;
     }
-    
+
     //try{
-      //var id = getRandomStr();
-      var latArray = [];
-      var lonArray = [];
-      
-      // いったんdataSource追加
-      this._dataSource = new Cesium.KmlDataSource({
-        camera: this._map.viewer.scene.camera,
-        canvas: this._map.viewer.scene.canvas
-      });
-      this._map.viewer.dataSources.add(this._dataSource);
-      // 高さ情報があるかどうか
-      this._depthFlag = (kml.indexOf("<altitudeMode>") >=0 )? true : false;
-      this._kml = $.parseXML(kml);
-      
-      // 高さ情報がある場合は倍率を適用
-      var result = {};
-      this._kml = ( this._depthFlag ? GLOBE.MAP.applyHeightPowerToKML(this._kml, result) : this._kml );
-      this._depthFlag = (!result.depthFlag ? false : this._depthFlag);
-      
-      this._dataSource.load(this._kml).then( MA.bind( this._onKMLParse, this ) );
-      
-      
+    //var id = getRandomStr();
+    var latArray = [];
+    var lonArray = [];
+
+    // いったんdataSource追加
+    this._dataSource = new Cesium.KmlDataSource({
+      camera: this._map.viewer.scene.camera,
+      canvas: this._map.viewer.scene.canvas
+    });
+    this._map.viewer.dataSources.add(this._dataSource);
+    // 高さ情報があるかどうか
+    this._depthFlag = (kml.indexOf("<altitudeMode>") >= 0) ? true : false;
+    this._kml = $.parseXML(kml);
+
+    // 高さ情報がある場合は倍率を適用
+    var result = {};
+    this._kml = (this._depthFlag ? GLOBE.MAP.applyHeightPowerToKML(this._kml, result) : this._kml);
+    this._depthFlag = (!result.depthFlag ? false : this._depthFlag);
+
+    this._dataSource.load(this._kml).then(MA.bind(this._onKMLParse, this));
+
+
     //}
     //catch(e){
     //}
-    
-    
+
+
   },
-  
-  _onKMLParse : function(dataSource)
-  {
+
+  _onKMLParse: function (dataSource) {
     this._dataSource = dataSource;
-    this._draw( this._dataSource );
+    this._draw(this._dataSource);
   },
-  
-  _draw : function(dataSource)
-  {
+
+  _draw: function (dataSource) {
     var id = this._uniqueId;
     var latArray = [];
     var lonArray = [];
-    
+
     //try{
-      // 高さ情報がある場合はそのままentityとして描画----------------
-      if(this._depthFlag)
-      {
-        GLOBE.MAP.initKmlDataSource(dataSource);
-        
-        if ( GSI.GLOBALS.layerTreeDialog._userControlStarted )
-        {
-          this._map.viewer.flyTo(dataSource, {
-            duration: 1,
-            complete: GLOBE.MAP.adjustFly
-          });
-        }
+    // 高さ情報がある場合はそのままentityとして描画----------------
+    if (this._depthFlag) {
+      GLOBE.MAP.initKmlDataSource(dataSource);
+
+      if (GSI.GLOBALS.layerTreeDialog._userControlStarted) {
+        this._map.viewer.flyTo(dataSource, {
+          duration: 1,
+          complete: GLOBE.MAP.adjustFly
+        });
       }
-      else
-      {
+    }
+    else {
       // 高さ情報がない場合はentityをprimitiveに変換して描画---------
-        var entities = dataSource._entityCollection.values;
-        
-        for(var i=0; i<entities.length; i++){
-          entities[i].show = false;  // いったん非表示にする
-          
-          if(entities[i]._children.length > 0){
-            for(var j=0; j<entities[i]._children.length; j++){
-              var arrayList = this._convertEntityToPrimitive(entities[i]._children[j], id);
-              Array.prototype.push.apply(lonArray, arrayList.lon);
-              Array.prototype.push.apply(latArray, arrayList.lat);
-            }
-          }else{
-            var arrayList = this._convertEntityToPrimitive(entities[i], id);
+      var entities = dataSource._entityCollection.values;
+
+      for (var i = 0; i < entities.length; i++) {
+        entities[i].show = false;  // いったん非表示にする
+
+        if (entities[i]._children.length > 0) {
+          for (var j = 0; j < entities[i]._children.length; j++) {
+            var arrayList = this._convertEntityToPrimitive(entities[i]._children[j], id);
             Array.prototype.push.apply(lonArray, arrayList.lon);
             Array.prototype.push.apply(latArray, arrayList.lat);
           }
-        }
-        // dataSource削除
-        this._map.viewer.dataSources.remove(dataSource);
-        
-        if ( GSI.GLOBALS.layerTreeDialog._userControlStarted )
-        {
-          // ズーム
-          var west  = Math.min.apply(null, lonArray);
-          var east  = Math.max.apply(null, lonArray);
-          var south = Math.min.apply(null, latArray);
-          var north = Math.max.apply(null, latArray);
-          west  = west-(east-west)/3;
-          east  = east+(east-west)/3;
-          south  = south-(north-south)/3;
-          north  = north+(north-south)/3;
-          this._map.viewer.camera.flyTo({
-            destination : new Cesium.Rectangle.fromDegrees(west, south, east, north),
-            duration :1,
-            complete: function(){
-              GLOBE.MAP.adjustFly();
-            }
-          });
+        } else {
+          var arrayList = this._convertEntityToPrimitive(entities[i], id);
+          Array.prototype.push.apply(lonArray, arrayList.lon);
+          Array.prototype.push.apply(latArray, arrayList.lat);
         }
       }
+      // dataSource削除
+      this._map.viewer.dataSources.remove(dataSource);
 
-      this._loaded = true;
-      this._layerId = id;
+      if (GSI.GLOBALS.layerTreeDialog._userControlStarted) {
+        // ズーム
+        var west = Math.min.apply(null, lonArray);
+        var east = Math.max.apply(null, lonArray);
+        var south = Math.min.apply(null, latArray);
+        var north = Math.max.apply(null, latArray);
+        west = west - (east - west) / 3;
+        east = east + (east - west) / 3;
+        south = south - (north - south) / 3;
+        north = north + (north - south) / 3;
+        this._map.viewer.camera.flyTo({
+          destination: new Cesium.Rectangle.fromDegrees(west, south, east, north),
+          duration: 1,
+          complete: function () {
+            GLOBE.MAP.adjustFly();
+          }
+        });
+      }
+    }
+
+    this._loaded = true;
+    this._layerId = id;
     //}
     //catch(e){
     //}
-    
+
   },
-  
-  _convertEntityToPrimitive :function(entity, id)
-  {
+
+  _convertEntityToPrimitive: function (entity, id) {
     var isIE = GSI.Utils.Browser.ie;
     var ellipsoid = this._map.viewer.scene.globe.ellipsoid;
 
     var lonArray = [];
     var latArray = [];
 
-    var name        = (entity._name)? entity._name : "名称なし";
-    var description = (entity._description)? entity._description._value : "";
-      description = $("<div/>").html(description).find("div").html();
-    
+    var name = (entity._name) ? entity._name : "名称なし";
+    var description = (entity._description) ? entity._description._value : "";
+    description = $("<div/>").html(description).find("div").html();
+
     var label = "";
-    
+
     // ポイント(アイコン)-----------------
-    if(entity._billboard != undefined){
-      var position    = entity._position._value;
-      var imageURL    = entity._billboard._image._value;
-      
+    if (entity._billboard != undefined) {
+      var position = entity._position._value;
+      var imageURL = entity._billboard._image._value;
+
       // 緯度経度を配列に入れる
       var cartographic = ellipsoid.cartesianToCartographic(position);
       var lon = Cesium.Math.toDegrees(cartographic.longitude);
       var lat = Cesium.Math.toDegrees(cartographic.latitude);
       lonArray.push(lon);
       latArray.push(lat);
-      
+
       GLOBE.MAP.addSingleImageryLayer(id, name, position, imageURL);
-      
-      if ( GLOBE.MAP.isDirectionIcon(imageURL) )
-      {
+
+      if (GLOBE.MAP.isDirectionIcon(imageURL)) {
         GLOBE.MAP.addImagePrimitive({
-          "layerId"     : id,
-          "name"        : name,
-          "position"    : position,
-          "imageUrl"    : imageURL,
-          "imageSize"   : null,
-          "imageAnchor" : null,
-          "description" : description,
-          "usePopup"    : true,
+          "layerId": id,
+          "name": name,
+          "position": position,
+          "imageUrl": imageURL,
+          "imageSize": null,
+          "imageAnchor": null,
+          "description": description,
+          "usePopup": true,
           "usePopupFlag": false
         });
       }
-      else
-      {
+      else {
         // scene.primitives -> PrimitiveCollection -> BillboardCollection -> billboard （エラー回避のため）
-        if( !this._billboardCollection )
-        {
+        if (!this._billboardCollection) {
           this._billboardCollection = new Cesium.PrimitiveCollection();
           this._map.viewer.scene.primitives.add(this._billboardCollection);
         }
@@ -18103,63 +16804,63 @@ GLOBE.KMLLayer = GLOBE.VectorLayer.extend( {
           scene: this._map.viewer.scene
         });
         this._billboardCollection.add(billboardCollection);
-        
+
         var billboards = this._getPrimitivePointIcon(position, imageURL, label);
-        for(var j=0; j<billboards.length; j++){
+        for (var j = 0; j < billboards.length; j++) {
           var billboard = billboardCollection.add(billboards[j]);
-            billboard.show = this._visible;
-            billboard["description"] = description;
-            billboard["name"]        = name;
-              billboard["gsidata"] = {
-                "_markerType" : "",
-                "_isLabel"    : (j==1 ? true : false)
-              }
+          billboard.show = this._visible;
+          billboard["description"] = description;
+          billboard["name"] = name;
+          billboard["gsidata"] = {
+            "_markerType": "",
+            "_isLabel": (j == 1 ? true : false)
+          }
         }
       }
-      
-    // ポリゴン(円含む)----------------------
-    }else if(entity._polygon != undefined){
+
+      // ポリゴン(円含む)----------------------
+    } else if (entity._polygon != undefined) {
       var primitiveArray = [];
-      var hierarchy   = entity._polygon._hierarchy._value;
-      var color       = entity._polygon._material._color._value;
+      var hierarchy = entity._polygon._hierarchy._value;
+      var color = entity._polygon._material._color._value;
       var strokeColor = entity._polygon._outlineColor._value;
       var strokeWidth = entity._polygon._outlineWidth._value;
 
       // 緯度経度を配列に入れる
       var positions = hierarchy.positions;
-      for(var i=0; i<positions.length; i++){
+      for (var i = 0; i < positions.length; i++) {
         var cartographic = ellipsoid.cartesianToCartographic(positions[i]);
         var lon = Cesium.Math.toDegrees(cartographic.longitude);
         var lat = Cesium.Math.toDegrees(cartographic.latitude);
         lonArray.push(lon);
         latArray.push(lat);
       }
-      
+
       // ポリゴン
       // 【 IE11 】
-      if(isIE){
+      if (isIE) {
         // Primitiveとして追加する
         var geomInstance = GLOBE.MAP.getPrimitivePolygon(hierarchy, color, isIE);
         var primitive = new Cesium.Primitive({
-          geometryInstances : [geomInstance],
-          appearance : new Cesium.EllipsoidSurfaceAppearance({
-            material : Cesium.Material.fromType("Color", {
-              "color" : color
+          geometryInstances: [geomInstance],
+          appearance: new Cesium.EllipsoidSurfaceAppearance({
+            material: Cesium.Material.fromType("Color", {
+              "color": color
             })
           })
         });
         primitiveArray.push(primitive);
-        
-      // 【 IE11以外 】
-      }else{
+
+        // 【 IE11以外 】
+      } else {
         // ポリゴンをGroundPrimitiveとして追加する
         var geomInstance = GLOBE.MAP.getPrimitivePolygon(hierarchy, color, isIE);
         var groundPrimitive = new Cesium.GroundPrimitive({
-          geometryInstances : [geomInstance]
+          geometryInstances: [geomInstance]
         });
         primitiveArray.push(groundPrimitive);
       }
-      
+
       // 枠線をPrimitiveとして追加する
       var gene = {
         kind: "corridor",
@@ -18171,37 +16872,37 @@ GLOBE.KMLLayer = GLOBE.VectorLayer.extend( {
         width: strokeWidth,
         isIE: isIE
       };
-      if(entity._polygon._outlineColor._value.alpha > 0){
+      if (entity._polygon._outlineColor._value.alpha > 0) {
         var linePrimitive = this.createCorridorPrimitive(gene);
         primitiveArray.push(linePrimitive);
       }
-      
-      for(var j=0; j<primitiveArray.length; j++){
+
+      for (var j = 0; j < primitiveArray.length; j++) {
         var primitive = primitiveArray[j];
-          primitive["description"] = description;
-          primitive["name"]        = name;
-          primitive._defaultColor = color;
+        primitive["description"] = description;
+        primitive["name"] = name;
+        primitive._defaultColor = color;
         this._map.viewer.scene.primitives.add(primitive);
-        primitive.show =this._visible;
-        
-        this._primitives.push( primitive );
+        primitive.show = this._visible;
+
+        this._primitives.push(primitive);
       }
 
-    // ラインストリング----------------------
-    }else if(entity._polyline != undefined){
+      // ラインストリング----------------------
+    } else if (entity._polyline != undefined) {
       var position = entity._polyline._positions._value;
-      var color    = entity._polyline._material._color._value;
-      var width    = entity._polyline._width._value;
+      var color = entity._polyline._material._color._value;
+      var width = entity._polyline._width._value;
 
       // 緯度経度を配列に入れる
-      for(var i=0; i<position.length; i++){
+      for (var i = 0; i < position.length; i++) {
         var cartographic = ellipsoid.cartesianToCartographic(position[i]);
         var lon = Cesium.Math.toDegrees(cartographic.longitude);
         var lat = Cesium.Math.toDegrees(cartographic.latitude);
         lonArray.push(lon);
         latArray.push(lat);
       }
-      
+
       var gene = {
         kind: "corridor",
         type: "KmlLayer",
@@ -18213,98 +16914,91 @@ GLOBE.KMLLayer = GLOBE.VectorLayer.extend( {
         isIE: isIE
       };
       var primitive = this.createCorridorPrimitive(gene);
-      
+
       primitive._defaultColor = color;
       primitive["description"] = description;
-      primitive["name"]        = name;
+      primitive["name"] = name;
       this._map.viewer.scene.primitives.add(primitive);
-      primitive.show =this._visible;
-      this._primitives.push( primitive );
-      
+      primitive.show = this._visible;
+      this._primitives.push(primitive);
+
     }
-    
+
     return {
-      "lon" : lonArray,
-      "lat" : latArray
+      "lon": lonArray,
+      "lat": latArray
     }
   },
-  
-  
-  _onLoadError : function(text)
-  {
-    
+
+
+  _onLoadError: function (text) {
+
   }
-  
-  
-} );
+
+
+});
 
 
 /************************************************************************
   - GLOBE.GeoJSONLayer
 ************************************************************************/
-GLOBE.GeoJSONLayer = GLOBE.VectorLayer.extend( {
+GLOBE.GeoJSONLayer = GLOBE.VectorLayer.extend({
 
-  initialize : function(map,options)
-  {
-    GLOBE.VectorLayer.prototype.initialize.call(this, map,options);
+  initialize: function (map, options) {
+    GLOBE.VectorLayer.prototype.initialize.call(this, map, options);
   },
-  
-  _onLoad : function(geojson)
-  {
-    if ( geojson )
-    {
+
+  _onLoad: function (geojson) {
+    if (geojson) {
       this._originalData = geojson;
     }
-    else
-    {
+    else {
       geojson = this._originalData;
     }
-    
-    //try{
-      var latArray = [];
-      var lonArray = [];
 
-      this._geoJSON = JSON.parse(geojson);
-      this._draw(this._geoJSON);
+    //try{
+    var latArray = [];
+    var lonArray = [];
+
+    this._geoJSON = JSON.parse(geojson);
+    this._draw(this._geoJSON);
     //}
     //catch(e){
     //}
-    
-    
+
+
   },
-  
-  
-  _draw : function(geojson)
-  {
+
+
+  _draw: function (geojson) {
     var latArray = [];
     var lonArray = [];
-    
-    if ( !geojson )
-    {
+
+    if (!geojson) {
       geojson = this._geoJSON;
     }
-    
-    var id     = this._uniqueId;
-    var len    = geojson.features.length;
+
+    var id = this._uniqueId;
+    var len = geojson.features.length;
     var viewer = this._map.viewer;
     var isIE = GSI.Utils.Browser.ie;
-    
-    for(var i=0; i<len; i++){
+
+    for (var i = 0; i < len; i++) {
       var primitiveArray = [];
 
       var feature = geojson.features[i];
-      var coord   = feature.geometry.coordinates;
-      var name        = (feature.properties.name)? feature.properties.name : "名称なし";
+      var coord = feature.geometry.coordinates;
+      var name = (feature.properties.name) ? feature.properties.name : "名称なし";
       var description = this._getEntityDescription(feature.properties);
-      var geomType    = feature.geometry.type;
+      var geomType = feature.geometry.type;
       var markerType = feature.properties._markerType;
-      
+
       var html = (markerType == 'DivIcon' ? feature.properties._html : name);
       var ellipsoid = viewer.scene.globe.ellipsoid;
-      
+
       var depthFlag = GLOBE.MAP.is3dGeojson(coord);
-      
-      
+
+
       // ライン用のデータ
       var gene = {
         kind: "corridor",
@@ -18317,100 +17011,97 @@ GLOBE.GeoJSONLayer = GLOBE.VectorLayer.extend( {
         width: null,
         isIE: isIE
       };
-      
+
       // ポイント(アイコン,TEXT)-------------
-      if(geomType == "Point" && (markerType == "Icon" || markerType == "DivIcon")){
-        var position    = new Cesium.Cartesian3.fromDegrees(coord[0], coord[1], (coord.length>=3 ? coord[2] : 0), ellipsoid);
-        var imageURL    = "";
-        
-        if (markerType == "DivIcon"){
+      if (geomType == "Point" && (markerType == "Icon" || markerType == "DivIcon")) {
+        var position = new Cesium.Cartesian3.fromDegrees(coord[0], coord[1], (coord.length >= 3 ? coord[2] : 0), ellipsoid);
+        var imageURL = "";
+
+        if (markerType == "DivIcon") {
           "image/system/icon_nothing.png";
         }
-        else{
-          if (feature.properties._iconUrl && feature.properties._iconUrl != ""){
+        else {
+          if (feature.properties._iconUrl && feature.properties._iconUrl != "") {
             imageURL = feature.properties._iconUrl;
           }
-          else{
+          else {
             imageURL = "https://maps.gsi.go.jp/portal/sys/v4/symbols/080.png";
           }
         }
 
         lonArray.push(coord[0]);
         latArray.push(coord[1]);
-        
+
         GLOBE.MAP.addSingleImageryLayer(id, name, position, imageURL);
-        
-        if ( GLOBE.MAP.isDirectionIcon(imageURL) )
-        {
+
+        if (GLOBE.MAP.isDirectionIcon(imageURL)) {
           GLOBE.MAP.addImagePrimitive({
-            "layerId"     : id,
-            "name"        : name,
-            "position"    : position,
-            "imageUrl"    : imageURL,
-            "imageSize"   : feature.properties._iconSize,
-            "imageAnchor" : feature.properties._iconAnchor,
-            "description" : description,
-            "hasHeight"   : depthFlag,
-            "usePopup"    : true,
+            "layerId": id,
+            "name": name,
+            "position": position,
+            "imageUrl": imageURL,
+            "imageSize": feature.properties._iconSize,
+            "imageAnchor": feature.properties._iconAnchor,
+            "description": description,
+            "hasHeight": depthFlag,
+            "usePopup": true,
             "usePopupFlag": false
           });
         }
-        else
-        {
+        else {
           // scene.primitives -> PrimitiveCollection -> BillboardCollection -> billboard （エラー回避のため）
-          if ( !this._billboardCollection )
-          {
+          if (!this._billboardCollection) {
             this._billboardCollection = new Cesium.PrimitiveCollection();
             viewer.scene.primitives.add(this._billboardCollection);
-          
+
           }
           var billboardCollection = new Cesium.BillboardCollection({
             scene: viewer.scene
           });
           this._billboardCollection.add(billboardCollection);
-          
+
           var billboards = (markerType == "DivIcon" ?
             GLOBE.MAP.getPrimitiveDiv_Icon(position, html, depthFlag, feature.properties._iconSize, feature.properties._iconAnchor) :
             GLOBE.MAP.getPrimitivePoint_Icon(position, imageURL, name, depthFlag, feature.properties._iconSize, feature.properties._iconAnchor)
           );
-          
-          for(var j=0; j<billboards.length; j++){
+
+          for (var j = 0; j < billboards.length; j++) {
             var billboard = billboardCollection.add(billboards[j]);
-              billboard.show = this._visible;
-              billboard["description"] = description;
-              billboard["name"]        = name;
-              billboard["gsidata"] = {
-                "_markerType" : markerType,
-                "_isLabel"    : (j==1 ? true : false)
-              }
+            billboard.show = this._visible;
+            billboard["description"] = description;
+            billboard["name"] = name;
+            billboard["gsidata"] = {
+              "_markerType": markerType,
+              "_isLabel": (j == 1 ? true : false)
+            }
           }
         }
 
-      // ポイント(円)-----------------------
-      }else if(feature.geometry.type == "Point" && feature.properties._markerType == "Circle"){
-        var position    = new Cesium.Cartesian3.fromDegrees(coord[0], coord[1], (coord.length>=3 ? coord[2] : 0));
-        var fillColor   = (feature.properties._fillColor ? feature.properties._fillColor : CONFIG.DEFAULTSTYLES.fillColor);
-          fillColor   = this._hexToRgb(fillColor);
-          fillColor   = new Cesium.Color(fillColor[0]/255, fillColor[1]/255, fillColor[2]/255, feature.properties._fillOpacity);
+        // ポイント(円)-----------------------
+      } else if (feature.geometry.type == "Point" && feature.properties._markerType == "Circle") {
+        var position = new Cesium.Cartesian3.fromDegrees(coord[0], coord[1], (coord.length >= 3 ? coord[2] : 0));
+        var fillColor = (feature.properties._fillColor ? feature.properties._fillColor : CONFIG.DEFAULTSTYLES.fillColor);
+        fillColor = this._hexToRgb(fillColor);
+        fillColor = new Cesium.Color(fillColor[0] / 255, fillColor[1] / 255, fillColor[2] / 255, feature.properties._fillOpacity);
         var strokeColor = (feature.properties._color ? feature.properties._color : CONFIG.DEFAULTSTYLES.color);
-          strokeColor = this._hexToRgb(strokeColor);
-          strokeColor = new Cesium.Color(strokeColor[0]/255, strokeColor[1]/255, strokeColor[2]/255, feature.properties._opacity);
-        var color       = new Cesium.Color(strokeColor[0]/255, strokeColor[1]/255, strokeColor[2]/255, feature.properties._opacity);;
+        strokeColor = this._hexToRgb(strokeColor);
+        strokeColor = new Cesium.Color(strokeColor[0] / 255, strokeColor[1] / 255, strokeColor[2] / 255, feature.properties._opacity);
+        var color = new Cesium.Color(strokeColor[0] / 255, strokeColor[1] / 255, strokeColor[2] / 255, feature.properties._opacity);;
         var strokeWidth = (feature.properties._weight ? feature.properties._weight : CONFIG.DEFAULTSTYLES.weight);
-        var radius      = feature.properties._radius;
+        var radius = feature.properties._radius;
 
         lonArray.push(coord[0]);
         latArray.push(coord[1]);
 
         // 【 IE11 】
-        if(isIE || depthFlag){
+        if (isIE || depthFlag) {
           // 円をPrimitiveとして追加する
           var geomInstance = this._getPrimitiveIconCircle(position, fillColor, radius, isIE);
           var primitive = new Cesium.Primitive({
-            geometryInstances : [geomInstance],
-            appearance : new Cesium.EllipsoidSurfaceAppearance({
-              material : Cesium.Material.fromType("Color", {
-                "color" : fillColor
+            geometryInstances: [geomInstance],
+            appearance: new Cesium.EllipsoidSurfaceAppearance({
+              material: Cesium.Material.fromType("Color", {
+                "color": fillColor
               })
             })
           });
@@ -18418,69 +17109,69 @@ GLOBE.GeoJSONLayer = GLOBE.VectorLayer.extend( {
           primitiveArray.push(primitive);
 
           // アウトラインをPrimitiveとして追加する
-          if(feature.properties._opacity > 0){
+          if (feature.properties._opacity > 0) {
             var positions = this._getCirclePosition(position, radius);
-            
+
             gene.position = positions;
-            gene.color    = strokeColor;
-            gene.width    = strokeWidth;
-            
-            var linePrimitive = ( depthFlag ? this.createPolylinePrimitive(gene) : this.createCorridorPrimitive(gene) );
+            gene.color = strokeColor;
+            gene.width = strokeWidth;
+
+            var linePrimitive = (depthFlag ? this.createPolylinePrimitive(gene) : this.createCorridorPrimitive(gene));
           }
-        // 【 IE以外 】
-        }else{
+          // 【 IE以外 】
+        } else {
           // 円をGroundPrimitiveとして追加する
           var geomInstance = this._getPrimitiveIconCircle(position, fillColor, radius, isIE);
           var primitive = new Cesium.GroundPrimitive({
-            geometryInstances : [geomInstance]
+            geometryInstances: [geomInstance]
           });
           primitive._defaultColor = fillColor;
           primitiveArray.push(primitive);
         }
-        
+
         // 枠線をPrimitiveとして追加する
-        if(feature.properties._opacity > 0){
+        if (feature.properties._opacity > 0) {
           var positions = this._getCirclePosition(position, radius);
-          
+
           gene.position = positions;
-          gene.color    = strokeColor;
-          gene.width    = strokeWidth;
-          
-          var linePrimitive = ( isIE || depthFlag ? this.createPolylinePrimitive(gene) : this.createCorridorPrimitive(gene) );
+          gene.color = strokeColor;
+          gene.width = strokeWidth;
+
+          var linePrimitive = (isIE || depthFlag ? this.createPolylinePrimitive(gene) : this.createCorridorPrimitive(gene));
           linePrimitive._defaultColor = strokeColor;
           primitiveArray.push(linePrimitive);
         }
-        
-      // ラインストリング-------------------
-      }else if(feature.geometry.type == "LineString"){
+
+        // ラインストリング-------------------
+      } else if (feature.geometry.type == "LineString") {
         var position = this._getPosition(coord, depthFlag);
-        var color    = (feature.properties._color ? feature.properties._color : CONFIG.DEFAULTSTYLES.color);
-          color    = this._hexToRgb(color);
-          color    = new Cesium.Color(color[0]/255, color[1]/255, color[2]/255, feature.properties._opacity);
-        var width    = (feature.properties._weight ? feature.properties._weight : CONFIG.DEFAULTSTYLES.weight);
+        var color = (feature.properties._color ? feature.properties._color : CONFIG.DEFAULTSTYLES.color);
+        color = this._hexToRgb(color);
+        color = new Cesium.Color(color[0] / 255, color[1] / 255, color[2] / 255, feature.properties._opacity);
+        var width = (feature.properties._weight ? feature.properties._weight : CONFIG.DEFAULTSTYLES.weight);
 
         var lonlatArray = this._getLonLatArrayForGeojson(coord);
         Array.prototype.push.apply(lonArray, lonlatArray.lon);
         Array.prototype.push.apply(latArray, lonlatArray.lat);
 
         gene.position = position;
-        gene.color    = color;
-        gene.width    = width;
-        
-        var linePrimitive = ( depthFlag ? this.createPolylinePrimitive(gene) : this.createCorridorPrimitive(gene) );
+        gene.color = color;
+        gene.width = width;
+
+        var linePrimitive = (depthFlag ? this.createPolylinePrimitive(gene) : this.createCorridorPrimitive(gene));
         linePrimitive._defaultColor = color;
         primitiveArray.push(linePrimitive);
 
-      // ポリゴン---------------------------
-      }else if(feature.geometry.type == "Polygon"){
+        // ポリゴン---------------------------
+      } else if (feature.geometry.type == "Polygon") {
 
-        var hierarchy   = GLOBE.MAP.geojsonCoordinateToPolygonHierarchy(coord);
-        var color       = (feature.properties._fillColor ? feature.properties._fillColor : CONFIG.DEFAULTSTYLES.fillColor);
-          color       = this._hexToRgb(color);
-          color       = new Cesium.Color(color[0]/255, color[1]/255, color[2]/255, feature.properties._fillOpacity);
+        var hierarchy = GLOBE.MAP.geojsonCoordinateToPolygonHierarchy(coord);
+        var color = (feature.properties._fillColor ? feature.properties._fillColor : CONFIG.DEFAULTSTYLES.fillColor);
+        color = this._hexToRgb(color);
+        color = new Cesium.Color(color[0] / 255, color[1] / 255, color[2] / 255, feature.properties._fillOpacity);
         var strokeColor = (feature.properties._color ? feature.properties._color : CONFIG.DEFAULTSTYLES.color);
-          strokeColor = this._hexToRgb(strokeColor);
-          strokeColor = new Cesium.Color(strokeColor[0]/255, strokeColor[1]/255, strokeColor[2]/255, feature.properties._opacity);
+        strokeColor = this._hexToRgb(strokeColor);
+        strokeColor = new Cesium.Color(strokeColor[0] / 255, strokeColor[1] / 255, strokeColor[2] / 255, feature.properties._opacity);
         var strokeWidth = (feature.properties._weight ? feature.properties._weight : CONFIG.DEFAULTSTYLES.weight);
 
         var lonlatArray = this._getLonLatArrayForGeojson(coord);
@@ -18489,54 +17180,53 @@ GLOBE.GeoJSONLayer = GLOBE.VectorLayer.extend( {
 
         // 【 IE11 または 3d 】
         var primitive = null;
-        if( isIE || depthFlag ){
+        if (isIE || depthFlag) {
           // ポリゴンをPrimitiveとして追加する
           var geomInstance = GLOBE.MAP.getPrimitivePolygon(hierarchy, color, isIE);
           primitive = new Cesium.Primitive({
-            geometryInstances : [geomInstance],
-            appearance : new Cesium.EllipsoidSurfaceAppearance({
-              material : Cesium.Material.fromType("Color", {
-                "color" : color
+            geometryInstances: [geomInstance],
+            appearance: new Cesium.EllipsoidSurfaceAppearance({
+              material: Cesium.Material.fromType("Color", {
+                "color": color
               })
             })
           });
-        // 【 IE11以外 】
-        }else{
+          // 【 IE11以外 】
+        } else {
           // ポリゴンをGroundPrimitiveとして追加する
           var geomInstance = GLOBE.MAP.getPrimitivePolygon(hierarchy, color, isIE);
           primitive = new Cesium.GroundPrimitive({
-            geometryInstances : [geomInstance]
+            geometryInstances: [geomInstance]
           });
         }
         primitive._defaultColor = color;
         primitiveArray.push(primitive);
-        
+
         // 枠線をPrimitiveとして追加する
         gene.position = hierarchy.positions;
-        gene.color    = strokeColor;
-        gene.width    = strokeWidth;
-        
-        var linePrimitive = ( depthFlag ? GLOBE.MAP.createPolylinePrimitive(gene) : GLOBE.MAP.createCorridorPrimitive(gene) );
+        gene.color = strokeColor;
+        gene.width = strokeWidth;
+
+        var linePrimitive = (depthFlag ? GLOBE.MAP.createPolylinePrimitive(gene) : GLOBE.MAP.createCorridorPrimitive(gene));
         linePrimitive._defaultColor = strokeColor;
         primitiveArray.push(linePrimitive);
       }
 
       // 円・ラインストリング・ポリゴンの場合
-      if(primitiveArray.length > 0){
-        for(var j=0; j<primitiveArray.length; j++){
+      if (primitiveArray.length > 0) {
+        for (var j = 0; j < primitiveArray.length; j++) {
           var primitive = primitiveArray[j];
           primitive["description"] = description;
-          primitive["name"]        = name;
+          primitive["name"] = name;
           viewer.scene.primitives.add(primitive);
-          primitive.show =this._visible;
-          this._primitives.push( primitive );
+          primitive.show = this._visible;
+          this._primitives.push(primitive);
         }
       }
-      
+
     }
-    
-    if ( GSI.GLOBALS.layerTreeDialog._userControlStarted )
-    {
+
+    if (GSI.GLOBALS.layerTreeDialog._userControlStarted) {
       /*
       // ズーム
       var west  = Math.min.apply(null, lonArray);
@@ -18556,35 +17246,33 @@ GLOBE.GeoJSONLayer = GLOBE.VectorLayer.extend( {
       });
       */
     }
-    
+
     this._layerId = id;
   },
-  
-  _getEntityDescription : function (prop){
+
+  _getEntityDescription: function (prop) {
     var str = "";
-    
+
     // テーブル記述の場合
-    if(prop.description == undefined){
-      for(var key in prop){
-        if ( key.charAt(0) == "_" ) continue;
-        if ( key == "name" ) continue;
-        if ( key.match(/^(iframe|description)$/) )
-        {
+    if (prop.description == undefined) {
+      for (var key in prop) {
+        if (key.charAt(0) == "_") continue;
+        if (key == "name") continue;
+        if (key.match(/^(iframe|description)$/)) {
           str += '<tr><td colspan="2">' + prop[key] + '</td></tr>';
         }
-        else
-        {
+        else {
           str += '<tr><td>' + key + '</td><td>' + prop[key] + '</td></tr>';
         }
       }
       str = "<table>" + str + "</table>";
-    // 自由記述の場合
-    }else{
+      // 自由記述の場合
+    } else {
       str = prop.description
     }
 
     // TEXTの場合はhtmlもいれる
-    if(prop._html){
+    if (prop._html) {
       //str += "<br>" + prop._html;
     }
 
@@ -18594,29 +17282,27 @@ GLOBE.GeoJSONLayer = GLOBE.VectorLayer.extend( {
   /*
   * Cartesian3の配列を返す
   */
-  _getPosition : function(coord, hasHeight){
+  _getPosition: function (coord, hasHeight) {
     var arr = [];
 
-    for(var i=0; i<coord.length; i++){
-      if(Array.isArray(coord[i][0])){
-        for(var j=0; j<coord[i].length; j++){
+    for (var i = 0; i < coord.length; i++) {
+      if (Array.isArray(coord[i][0])) {
+        for (var j = 0; j < coord[i].length; j++) {
           arr.push(coord[i][j][0]);
           arr.push(coord[i][j][1]);
-          if ( hasHeight ) arr.push(coord[i][j][2]);
+          if (hasHeight) arr.push(coord[i][j][2]);
         }
-      }else{
+      } else {
         arr.push(coord[i][0]);
         arr.push(coord[i][1]);
-        if ( hasHeight ) arr.push(coord[i][2]);
+        if (hasHeight) arr.push(coord[i][2]);
       }
     }
 
-    if ( hasHeight )
-    {
+    if (hasHeight) {
       return Cesium.Cartesian3.fromDegreesArrayHeights(arr);
     }
-    else
-    {
+    else {
       return Cesium.Cartesian3.fromDegreesArray(arr);
     }
   },
@@ -18624,7 +17310,7 @@ GLOBE.GeoJSONLayer = GLOBE.VectorLayer.extend( {
   /*
   * ポイント(円)のCartesian3の配列を返す
   */
-  _getCirclePosition : function (position, radius){
+  _getCirclePosition: function (position, radius) {
     var array = [];
 
     // 円の各ポイントの緯度経度を取得
@@ -18633,12 +17319,12 @@ GLOBE.GeoJSONLayer = GLOBE.VectorLayer.extend( {
       semiMinorAxis: radius,
       rotation: 0,
       center: position,
-      granularity : 0.02  // make this number larger to get fewer positions
+      granularity: 0.02  // make this number larger to get fewer positions
     }, false, true);
 
     var positions = r.outerPositions;
-    for (var i=0; i<positions.length; i+=3) {
-      var cart = new Cesium.Cartesian3(positions[i], positions[i+1], positions[i+2]);
+    for (var i = 0; i < positions.length; i += 3) {
+      var cart = new Cesium.Cartesian3(positions[i], positions[i + 1], positions[i + 2]);
       array.push(cart);
     }
 
@@ -18651,25 +17337,25 @@ GLOBE.GeoJSONLayer = GLOBE.VectorLayer.extend( {
   /*
   * 緯度の配列・経度の配列を返す【GeoJSON用】
   */
-  _getLonLatArrayForGeojson : function (coord){
+  _getLonLatArrayForGeojson: function (coord) {
     var lonArray = [];
     var latArray = [];
 
-    for(var i=0; i<coord.length; i++){
-      if(Array.isArray(coord[i][0])){
-        for(var j=0; j<coord[i].length; j++){
+    for (var i = 0; i < coord.length; i++) {
+      if (Array.isArray(coord[i][0])) {
+        for (var j = 0; j < coord[i].length; j++) {
           lonArray.push(coord[i][j][0]);
           latArray.push(coord[i][j][1]);
         }
-      }else{
+      } else {
         lonArray.push(coord[i][0]);
         latArray.push(coord[i][1]);
       }
     }
 
     var res = {
-      "lon" : lonArray,
-      "lat" : latArray
+      "lon": lonArray,
+      "lat": latArray
     }
     return res;
   },
@@ -18679,7 +17365,7 @@ GLOBE.GeoJSONLayer = GLOBE.VectorLayer.extend( {
   /*
   * カラーコードからRGBに変換
   */
-  _hexToRgb : function (hex) {
+  _hexToRgb: function (hex) {
     var result = /^#?([a-f\d]{2})([a-f\d]{2})([a-f\d]{2})$/i.exec(hex);
     var r = parseInt(result[1], 16);
     var g = parseInt(result[2], 16);
@@ -18687,125 +17373,108 @@ GLOBE.GeoJSONLayer = GLOBE.VectorLayer.extend( {
 
     return [r, g, b];
   },
-  _onLoadError : function(text)
-  {
-    
+  _onLoadError: function (text) {
+
   }
-  
-} );
+
+});
 
 /************************************************************************
   L.Class
 - GSI.OnOffSwitch
 ************************************************************************/
-GSI.OnOffSwitch = MA.Class.extend( {
+GSI.OnOffSwitch = MA.Class.extend({
   includes: MA.Mixin.Events,
-  options : {
-    className : "filetext",
-    checked:true
+  options: {
+    className: "filetext",
+    checked: true
   },
-  classNames : {
-    "onoff":"gsi_onoffswitch",
-    "filetext":"gsi_onoffswitch_file_text",
-    "visible":"gsi_onoffswitch_visible",
-    "visibleall":"gsi_onoffswitch_visible_all",
-    "usecocotile":"gsi_onoffswitch_usecocotile"
+  classNames: {
+    "onoff": "gsi_onoffswitch",
+    "filetext": "gsi_onoffswitch_file_text",
+    "visible": "gsi_onoffswitch_visible",
+    "visibleall": "gsi_onoffswitch_visible_all",
+    "usecocotile": "gsi_onoffswitch_usecocotile"
 
   },
-  initialize : function (options)
-  {
+  initialize: function (options) {
     options = MA.setOptions(this, options);
 
     this._create();
   },
-  getElement : function()
-  {
+  getElement: function () {
     return this.frame;
   },
-  getCheckBox : function()
-  {
+  getCheckBox: function () {
     return this.input;
   },
-  getId : function()
-  {
+  getId: function () {
     return this.id;
   },
-  _create : function()
-  {
+  _create: function () {
     var id = 'GSI_OnOffSwitch_' + GSI.Utils.getCurrentID();
     this.id = id;
 
-    this.frame = $("<span>").addClass( this.classNames[ this.options.className ] );
-    this.input = $( '<input>' ).attr( {
-        'type' : 'checkbox',
-        'id' : id
-      } ).addClass( 'checkbox' );
+    this.frame = $("<span>").addClass(this.classNames[this.options.className]);
+    this.input = $('<input>').attr({
+      'type': 'checkbox',
+      'id': id
+    }).addClass('checkbox');
     this.frame.append(this.input);
-    if ( this.options.checked )
-    {
-      this.input.attr({"checked": true} );
+    if (this.options.checked) {
+      this.input.attr({ "checked": true });
     }
 
-    var label = $( '<label>' ).addClass( 'label' ).attr( {
-        'for' : id
-      } );
+    var label = $('<label>').addClass('label').attr({
+      'for': id
+    });
 
-    var span = $( '<span>' ).addClass( 'inner' );
-    label.append( span );
+    var span = $('<span>').addClass('inner');
+    label.append(span);
 
-    span = $( '<span>' ).addClass( 'switch' );
-    label.append( span );
+    span = $('<span>').addClass('switch');
+    label.append(span);
 
-    this.frame.append( label );
+    this.frame.append(label);
 
-    if ( GSI.Utils.Browser.ie && GSI.Utils.Browser.version <= 8 )
-    {
+    if (GSI.Utils.Browser.ie && GSI.Utils.Browser.version <= 8) {
       this._initCheckBoxIE8();
-      this.frame.click( MA.bind( this.onFrameClick, this  ) );
+      this.frame.click(MA.bind(this.onFrameClick, this));
     }
-    else
-    {
-      this.input.click( MA.bind( function(){this.fire( 'change' );}, this  ) );
-    }
-  },
-  _initCheckBoxIE8 : function()
-  {
-    if ( this.input.is( ":checked" ) )
-    {
-      this.frame.find( '.label,.inner' ).addClass("on_label_inner");
-      this.frame.find( '.label,.switch' ).addClass("on_label_switch");
-    }
-    else
-    {
-      this.frame.find( '.label,.inner' ).removeClass("on_label_inner");
-      this.frame.find( '.label,.switch' ).removeClass("on_label_switch");
+    else {
+      this.input.click(MA.bind(function () { this.fire('change'); }, this));
     }
   },
-  onFrameClick : function()
-  {
-    this.input.attr({"checked": !this.input.is( ":checked" )} );
+  _initCheckBoxIE8: function () {
+    if (this.input.is(":checked")) {
+      this.frame.find('.label,.inner').addClass("on_label_inner");
+      this.frame.find('.label,.switch').addClass("on_label_switch");
+    }
+    else {
+      this.frame.find('.label,.inner').removeClass("on_label_inner");
+      this.frame.find('.label,.switch').removeClass("on_label_switch");
+    }
+  },
+  onFrameClick: function () {
+    this.input.attr({ "checked": !this.input.is(":checked") });
     this._initCheckBoxIE8();
-    this.fire( 'change' );
+    this.fire('change');
   },
-  checked : function( value)
-  {
-    if ( value == true )
-    {
-      this.input.attr( {"checked": true} );
-      this.input.prop( {"checked": true} );
+  checked: function (value) {
+    if (value == true) {
+      this.input.attr({ "checked": true });
+      this.input.prop({ "checked": true });
     }
-    else if ( value == false )
-    {
-      this.input.attr( {"checked": false} );
-      this.input.prop( {"checked": false} );
+    else if (value == false) {
+      this.input.attr({ "checked": false });
+      this.input.prop({ "checked": false });
     }
-    
-    if ( GSI.Utils.Browser.ie && GSI.Utils.Browser.version <= 8 )
-    {
+
+    if (GSI.Utils.Browser.ie && GSI.Utils.Browser.version <= 8) {
       this._initCheckBoxIE8();
     }
-    
-    return this.input.is( ':checked' );
+
+    return this.input.is(':checked');
   }
 });
 
@@ -18813,111 +17482,95 @@ GSI.OnOffSwitch = MA.Class.extend( {
   L.Class
 - GSI.ToggleSwitch
 ************************************************************************/
-GSI.ToggleSwitch = MA.Class.extend( {
+GSI.ToggleSwitch = MA.Class.extend({
   includes: MA.Mixin.Events,
-  options : {
-    className : "toggle",
-    checked:true,
-    onText:"ON",
-    offText:"OFF"
+  options: {
+    className: "toggle",
+    checked: true,
+    onText: "ON",
+    offText: "OFF"
   },
-  classNames : {
-    "toggle":"gsi_onoffswitch_toggle",
+  classNames: {
+    "toggle": "gsi_onoffswitch_toggle",
   },
-  initialize : function (options)
-  {
+  initialize: function (options) {
     options = MA.setOptions(this, options);
 
     this._create();
   },
-  getElement : function()
-  {
+  getElement: function () {
     return this.frame;
   },
-  getCheckBox : function()
-  {
+  getCheckBox: function () {
     return this.input;
   },
-  getId : function()
-  {
+  getId: function () {
     return this.id;
   },
-  _create : function()
-  {
+  _create: function () {
     var id = 'GSI_ToggleSwitch_' + GSI.Utils.getCurrentID();
     this.id = id;
 
-    this.frame = $("<span>").addClass( this.classNames[ this.options.className ] );
-    this.input = $( '<input>' ).attr( {
-        'type' : 'checkbox',
-        'id' : id
-      } ).addClass( 'checkbox' );
+    this.frame = $("<span>").addClass(this.classNames[this.options.className]);
+    this.input = $('<input>').attr({
+      'type': 'checkbox',
+      'id': id
+    }).addClass('checkbox');
     this.frame.append(this.input);
-    if ( this.options.checked )
-    {
-      this.input.attr({"checked": true} );
+    if (this.options.checked) {
+      this.input.attr({ "checked": true });
     }
 
-    var label = $( '<label>' ).addClass( 'label' ).attr( {
-        'for' : id
-      } );
+    var label = $('<label>').addClass('label').attr({
+      'for': id
+    });
 
-    var span = $( '<span>' ).addClass( 'inner' );
-    label.append( span );
+    var span = $('<span>').addClass('inner');
+    label.append(span);
 
-    span = $( '<span>' ).addClass( 'switch' );
-    label.append( span );
+    span = $('<span>').addClass('switch');
+    label.append(span);
 
-    this.frame.append( label );
+    this.frame.append(label);
 
-    if ( GSI.Utils.Browser.ie && GSI.Utils.Browser.version <= 8 )
-    {
+    if (GSI.Utils.Browser.ie && GSI.Utils.Browser.version <= 8) {
       this._initCheckBoxIE8();
-      this.frame.click( MA.bind( this.onFrameClick, this  ) );
+      this.frame.click(MA.bind(this.onFrameClick, this));
     }
-    else
-    {
-      this.input.click( MA.bind( function(){this.fire( 'change' );}, this  ) );
-    }
-  },
-  _initCheckBoxIE8 : function()
-  {
-    if ( this.input.is( ":checked" ) )
-    {
-      this.frame.find( '.label,.inner' ).addClass("on_label_inner");
-      this.frame.find( '.label,.switch' ).addClass("on_label_switch");
-    }
-    else
-    {
-      this.frame.find( '.label,.inner' ).removeClass("on_label_inner");
-      this.frame.find( '.label,.switch' ).removeClass("on_label_switch");
+    else {
+      this.input.click(MA.bind(function () { this.fire('change'); }, this));
     }
   },
-  onFrameClick : function()
-  {
-    this.input.attr({"checked": !this.input.is( ":checked" )} );
+  _initCheckBoxIE8: function () {
+    if (this.input.is(":checked")) {
+      this.frame.find('.label,.inner').addClass("on_label_inner");
+      this.frame.find('.label,.switch').addClass("on_label_switch");
+    }
+    else {
+      this.frame.find('.label,.inner').removeClass("on_label_inner");
+      this.frame.find('.label,.switch').removeClass("on_label_switch");
+    }
+  },
+  onFrameClick: function () {
+    this.input.attr({ "checked": !this.input.is(":checked") });
     this._initCheckBoxIE8();
-    this.fire( 'change' );
+    this.fire('change');
   },
-  checked : function( value)
-  {
-    if ( value == true )
-    {
-      this.input.attr( {"checked": true} );
-      this.input.prop( {"checked": true} );
+  checked: function (value) {
+    if (value == true) {
+      this.input.attr({ "checked": true });
+      this.input.prop({ "checked": true });
     }
-    else if ( value == false )
-    {
-      this.input.attr( {"checked": false} );
-      this.input.prop( {"checked": false} );
+    else if (value == false) {
+      this.input.attr({ "checked": false });
+      this.input.prop({ "checked": false });
     }
-    
-    if ( GSI.Utils.Browser.ie && GSI.Utils.Browser.version <= 8 )
-    {
+
+    if (GSI.Utils.Browser.ie && GSI.Utils.Browser.version <= 8) {
       this._initCheckBoxIE8();
     }
-    
-    return this.input.is( ':checked' );
+
+    return this.input.is(':checked');
   }
 });
 
@@ -18935,421 +17588,373 @@ GSI.ToggleSwitch = MA.Class.extend( {
 /************************************************************************
   - GLOBE.VectorTileLayer
 ************************************************************************/
-GLOBE.VectorTileLayer = MA.Class.extend( {
+GLOBE.VectorTileLayer = MA.Class.extend({
 
-  options : {
-    
+  options: {
+
   },
-  _visible : true,
-  _map : null,
-  _styleLoaded : false,
-  _layerId : null,
-  
-  initialize : function(map,options)
-  {
+  _visible: true,
+  _map: null,
+  _styleLoaded: false,
+  _layerId: null,
+
+  initialize: function (map, options) {
     this._visible = true;
     this._map = map;
     options = MA.setOptions(this, options);
     this._styleLoad();
-    GLOBE.VectorTileLayer._add( map, this );
+    GLOBE.VectorTileLayer._add(map, this);
   },
-  
-  _styleLoad : function()
-  {
-    var styleUrl =this.options.styleurl;
-    
-    if ( styleUrl && styleUrl != '' )
+
+  _styleLoad: function () {
+    var styleUrl = this.options.styleurl;
+
+    if (styleUrl && styleUrl != '')
       styleUrl = styleUrl;
     else
-      styleUrl = this.options.url.replace(/\/\{z\}.*/,"") + '/style.js';
-    
+      styleUrl = this.options.url.replace(/\/\{z\}.*/, "") + '/style.js';
+
     var data = null;
-    
+
     this._styleLoading = true;
     this._styleAjax = $.ajax({
       type: "GET",
       dataType: "text",
       url: MATEST.proxyUrl(styleUrl),
-      data :data,
-      success:  MA.Util.bind( this._onStyleLoad, this ),
-      error :  MA.Util.bind( this._defaultLoadStyle, this ),
-      async : true
+      data: data,
+      success: MA.Util.bind(this._onStyleLoad, this),
+      error: MA.Util.bind(this._defaultLoadStyle, this),
+      async: true
 
     });
   },
-  
-  _defaultLoadStyle : function()
-  {
+
+  _defaultLoadStyle: function () {
     var styleUrl = './js/style.js';
 
     this._styleAjax = $.ajax({
       type: "GET",
       dataType: "text",
       url: styleUrl,
-      success:  MA.Util.bind( this._onStyleLoad, this ),
-      error :  MA.Util.bind( function(){
+      success: MA.Util.bind(this._onStyleLoad, this),
+      error: MA.Util.bind(function () {
         this._styleLoading = false;
         this._styleLoaded = true;
         this._load();
-      }, this ),
-      async : true
+      }, this),
+      async: true
     });
   },
-  
-  _onStyleLoad : function(result)
-  {
-    try
-    {
+
+  _onStyleLoad: function (result) {
+    try {
       var data = null;
-      if ( !result) return;
-      if ( result.data )
-      {
+      if (!result) return;
+      if (result.data) {
         data = result.data;
       }
       else data = result;
-      if ( !GSI.GLOBALS.map ) GSI.GLOBALS.map = {};
-      GSI.GLOBALS.map.getZoom = function() {
+      if (!GSI.GLOBALS.map) GSI.GLOBALS.map = {};
+      GSI.GLOBALS.map.getZoom = function () {
         return 15;
       };
-      data = eval( "(" + data + ")" );
-      
-      this.options = $.extend( {}, data.options, this.options );
+      data = eval("(" + data + ")");
+
+      this.options = $.extend({}, data.options, this.options);
       //this.options = $.extend( {}, this.options, data.options );
-      
-      if ( data.geojsonOptions ) this.geojsonOptions =  data.geojsonOptions;
-      for ( var i=0; i<this._tiles.length; i++ ) 
-      {
+
+      if (data.geojsonOptions) this.geojsonOptions = data.geojsonOptions;
+      for (var i = 0; i < this._tiles.length; i++) {
         var tile = this._tiles[i];
-        if ( !tile.geoJSON ) continue;
-        for( var j=0; j<tile.geoJSON.length; j++ )
-        {
+        if (!tile.geoJSON) continue;
+        for (var j = 0; j < tile.geoJSON.length; j++) {
           tile.geoJSON[i].options = this.geojsonOptions;
         }
       }
-      
+
     }
-    catch( e ){}
-    
-    
+    catch (e) { }
+
+
     this._styleLoading = false;
     this._styleLoaded = true;
     this._load();
   },
-  
-  getZoomLevel : function()
-  {
-        var tilesToRender = this._map.viewer.scene.globe._surface._tilesToRender;
+
+  getZoomLevel: function () {
+    var tilesToRender = this._map.viewer.scene.globe._surface._tilesToRender;
   },
-  
-  _load : function()
-  {
+
+  _load: function () {
     this.options.proxy = {
-                        getURL : function(url) {
-                            return MATEST.proxyUrl(url);
-                        }
-                    };
+      getURL: function (url) {
+        return MATEST.proxyUrl(url);
+      }
+    };
     this.options.viewer = this._map.viewer;
     this.options.geojsonOptions = this.geojsonOptions;
-    this.options.drawPoint = MA.bind( this._onDrawPoint, this  );
+    this.options.drawPoint = MA.bind(this._onDrawPoint, this);
     this._provider = new Cesium.JapanGSIVectorTileProvider(this.options);
-    
+
     this._layer = this._map.viewer.imageryLayers.addImageryProvider(
       this._provider
     );
     this._layer.show = this._visible;
-    
+
   },
-  
-  _featureToDescription : function( feature )
-  {
-    if ( this.geojsonOptions  )
-    {
-      try
-      {
+
+  _featureToDescription: function (feature) {
+    if (this.geojsonOptions) {
+      try {
         var layer = {
-          bindPopup : function(s)
-          {
+          bindPopup: function (s) {
             this.description = s;
           },
-          setIcon : function(ic)
-          {
-            if (!this.options)
-            {
+          setIcon: function (ic) {
+            if (!this.options) {
               this.options = {};
             }
             this.options.icon = ic;
           }
         };
-        this.geojsonOptions.onEachFeature( feature, layer );
+        this.geojsonOptions.onEachFeature(feature, layer);
         return layer.description;
       }
-      catch( e){
+      catch (e) {
         return "";
       }
     }
-    if ( !feature.properties ) return null;
+    if (!feature.properties) return null;
     var result = "";
     var trArr = [];
-    for( var key in feature.properties )
-    {
-      if ( key.charAt( 0 ) == "_" || key == "name" ) continue;
-      
+    for (var key in feature.properties) {
+      if (key.charAt(0) == "_" || key == "name") continue;
+
       var tr = $("<tr>");
-      
-      if ( key.match(/^(name|description|iframe)$/) )
-      {
+
+      if (key.match(/^(name|description|iframe)$/)) {
         $("<td>").attr("colspan", 2).html(feature.properties[key]).appendTo(tr);
       }
-      else
-      {
+      else {
         $("<td>").html(key).appendTo(tr);
         $("<td>").html(feature.properties[key]).appendTo(tr);
       }
-      trArr.push( tr );
+      trArr.push(tr);
     }
-    
-    if ( trArr.length > 0 )
-    {
+
+    if (trArr.length > 0) {
       var table = $("<table>");
       var tbody = $("<tbody>");
-      
-      for( var i=0; i<trArr.length; i++ )
-      {
-        tbody.append( trArr[i] );
+
+      for (var i = 0; i < trArr.length; i++) {
+        tbody.append(trArr[i]);
       }
-      
+
       table.append(tbody);
       var div = $("<div>").append(table);
-      
-      result =div.html();
+
+      result = div.html();
     }
-    
+
     return result;
   },
-  _remove : function()
-  {
-    GLOBE.VectorTileLayer._remove( this );
-    if ( !this._layer ) return;
+  _remove: function () {
+    GLOBE.VectorTileLayer._remove(this);
+    if (!this._layer) return;
     this._map.viewer.imageryLayers.remove(this._layer, true);
-    this._map.viewer.scene.primitives.remove( this._bollboardCollection );
-    this._map.viewer.scene.primitives.remove( this._polylineCollection );
-    this._map.viewer.scene.primitives.remove( this._corridorCollection );
-    
-    if ( this._layerId )
-    {
+    this._map.viewer.scene.primitives.remove(this._bollboardCollection);
+    this._map.viewer.scene.primitives.remove(this._polylineCollection);
+    this._map.viewer.scene.primitives.remove(this._corridorCollection);
+
+    if (this._layerId) {
       GLOBE.MAP.removeSingleImageryLayer(this._layerId);
       GLOBE.MAP.removeImagePrimitive(this._layerId);
     }
-    
+
     this._provider = null;
     this._layer = null;
     this._bollboardCollection = null;
-    this._polylineCollection  = null;
-    this._corridorCollection  = null;
+    this._polylineCollection = null;
+    this._corridorCollection = null;
     this._layerId = null;
   },
-  setAlpha : function(alpha)
-  {
-    if ( !this._layer ) return;
-    
-    if ( this._bollboardCollection )
-    {
-      for(var j=0; j<this._bollboardCollection.length; j++){
+  setAlpha: function (alpha) {
+    if (!this._layer) return;
+
+    if (this._bollboardCollection) {
+      for (var j = 0; j < this._bollboardCollection.length; j++) {
         var billboard = this._bollboardCollection.get(j);
         var color = billboard._color;
-        if ( CONFIG.TILEASICON_ENABLED && billboard._tileAsIcon && alpha != 0)
-        {
+        if (CONFIG.TILEASICON_ENABLED && billboard._tileAsIcon && alpha != 0) {
           billboard.color = new Cesium.Color(color.red, color.green, color.blue, CONFIG.TILEASICON_ICONALPHA);
         }
-        else
-        {
+        else {
           billboard.color = new Cesium.Color(color.red, color.green, color.blue, alpha);
         }
       }
     }
-    
-    if ( this._polylineCollection )
-    {
-      for(var j=0; j<this._polylineCollection.length; j++){
+
+    if (this._polylineCollection) {
+      for (var j = 0; j < this._polylineCollection.length; j++) {
         //var color = this._polylineCollection.get(j)._color;
         //this._polylineCollection.get(j).color = new Cesium.Color(color.red, color.green, color.blue, alpha);
       }
     }
-    
-    if ( this._corridorCollection )
-    {
-      for(var j=0; j<this._corridorCollection.length; j++){
+
+    if (this._corridorCollection) {
+      for (var j = 0; j < this._corridorCollection.length; j++) {
         var attr = this._corridorCollection.get(j).getGeometryInstanceAttributes("color");
-        if ( attr )
-        {
+        if (attr) {
           var color = this._corridorCollection.get(j)._color;
           color.alpha = alpha;
           attr.color = Cesium.ColorGeometryInstanceAttribute.toValue(
-            new Cesium.Color( color.red, color.green, color.blue, alpha )
+            new Cesium.Color(color.red, color.green, color.blue, alpha)
           );
         }
       }
     }
-    
-    if ( this._layerId )
-    {
+
+    if (this._layerId) {
       GLOBE.MAP.alphaSingleImageryLayer(this._layerId, alpha);
       GLOBE.MAP.alphaImagePrimitive(this._layerId, alpha);
     }
-    
+
     this._layer.alpha = alpha;
   },
-  _setVisible : function( viewer, visible )
-  {
+  _setVisible: function (viewer, visible) {
     this._visible = visible;
-    
+
     var zoom = this._map.getCurrentZoom();
-    var isVisible = (( this.options.minZoom ? this.options.minZoom : 0 ) <= zoom );
-    
-    if ( !this._visible ) isVisible= false;
-    if ( !this._layer ) return;
-    
-    if ( this._bollboardCollection )
-    {
-      for(var j=0; j<this._bollboardCollection.length; j++){
+    var isVisible = ((this.options.minZoom ? this.options.minZoom : 0) <= zoom);
+
+    if (!this._visible) isVisible = false;
+    if (!this._layer) return;
+
+    if (this._bollboardCollection) {
+      for (var j = 0; j < this._bollboardCollection.length; j++) {
         var color = this._bollboardCollection.get(j)._color;
         this._bollboardCollection.get(j).show = isVisible;
       }
     }
-    
-    if ( this._polylineCollection )
-    {
-      for(var j=0; j<this._polylineCollection.length; j++){
+
+    if (this._polylineCollection) {
+      for (var j = 0; j < this._polylineCollection.length; j++) {
         this._polylineCollection.get(j).show = isVisible;
       }
     }
-    
-    if ( this._corridorCollection )
-    {
-      for(var j=0; j<this._corridorCollection.length; j++){
+
+    if (this._corridorCollection) {
+      for (var j = 0; j < this._corridorCollection.length; j++) {
         this._corridorCollection.get(j).show = isVisible;
       }
     }
-    
-    if ( this._layerId )
-    {
+
+    if (this._layerId) {
       GLOBE.MAP.showSingleImageryLayer(this._layerId, visible);
       GLOBE.MAP.showImagePrimitive(this._layerId, visible);
     }
-    
+
     this._layer.show = this._visible;
   },
-  
-  
-  _onDrawPoint : function(feature, info, tileBounds)
-  {
-    if( !this._bollboardCollection )
-    {
+
+
+  _onDrawPoint: function (feature, info, tileBounds) {
+    if (!this._bollboardCollection) {
       this._bollboardCollection = new Cesium.BillboardCollection({
-        scene : this._map.viewer.scene
+        scene: this._map.viewer.scene
       });
-        //this._viewer.scene.primitives.add(LabelCollection);
+      //this._viewer.scene.primitives.add(LabelCollection);
       this._map.viewer.scene.primitives.add(this._bollboardCollection);
     }
-    
-    if ( !this._polylineCollection )
-    {
+
+    if (!this._polylineCollection) {
       this._polylineCollection = new Cesium.PolylineCollection();
       this._map.viewer.scene.primitives.add(this._polylineCollection);
     }
-    
-    if ( !this._corridorCollection )
-    {
+
+    if (!this._corridorCollection) {
       this._corridorCollection = new Cesium.PrimitiveCollection();
       this._map.viewer.scene.primitives.add(this._corridorCollection);
     }
-    
-    if( feature.geometry && feature.geometry.coordinates && feature.geometry.coordinates.length >=2 )
-    {
+
+    if (feature.geometry && feature.geometry.coordinates && feature.geometry.coordinates.length >= 2) {
       var latLng = {
-        lat:feature.geometry.coordinates[1],
-        lng:feature.geometry.coordinates[0]
+        lat: feature.geometry.coordinates[1],
+        lng: feature.geometry.coordinates[0]
       };
-      var layer= null;
-      
-      if ( !GSI.GLOBALS.map ) GSI.GLOBALS.map = {};
+      var layer = null;
+
+      if (!GSI.GLOBALS.map) GSI.GLOBALS.map = {};
       GSI.GLOBALS.map._z = info.z;
-      GSI.GLOBALS.map.getZoom = function() {
+      GSI.GLOBALS.map.getZoom = function () {
         return this._z;
       };
-      
-      if ( info.geojsonOptions && info.geojsonOptions.pointToLayer )
-        layer = info.geojsonOptions.pointToLayer( feature, latLng );
-      
-      if ( layer && layer._layers )
-      {
-        for( var i=0; i<layer._layers.length; i++ )
-          this._drawPoint( feature, info, tileBounds, layer._layers[i], latLng );
-      }else
-        this._drawPoint( feature, info, tileBounds, layer, latLng );
+
+      if (info.geojsonOptions && info.geojsonOptions.pointToLayer)
+        layer = info.geojsonOptions.pointToLayer(feature, latLng);
+
+      if (layer && layer._layers) {
+        for (var i = 0; i < layer._layers.length; i++)
+          this._drawPoint(feature, info, tileBounds, layer._layers[i], latLng);
+      } else
+        this._drawPoint(feature, info, tileBounds, layer, latLng);
     }
-    
+
   },
-  
-  _drawPoint : function( feature, info, tileBounds, layer, latLng )
-  {
-  
+
+  _drawPoint: function (feature, info, tileBounds, layer, latLng) {
+
     var size = {
-      w : 12,
-      h : 12
+      w: 12,
+      h: 12
     };
-    
+
     var style = {
-      stroke : true,
-      weight : 2,
-      opacity : 0.5,
+      stroke: true,
+      weight: 2,
+      opacity: 0.5,
       color: '#0033ff',
-      fill : true,
-      fillColor:'#0033ff',
-      fillOpacity : 0.1
+      fill: true,
+      fillColor: '#0033ff',
+      fillOpacity: 0.1
     };
-    
-    for( var key in feature.properties )
-    {
-      if ( key.charAt(0) == "_" )
-      {
+
+    for (var key in feature.properties) {
+      if (key.charAt(0) == "_") {
         style[key.substr(1)] = feature.properties[key];
       }
     }
-    
-    
+
+
     var description = "test";
-    
+
     var zoom = this._map.getCurrentZoom();
-    var isVisible = (( this.options.minZoom ? this.options.minZoom : 0 ) <= zoom );
-    
-    if ( !this._visible ) isVisible= false;
+    var isVisible = ((this.options.minZoom ? this.options.minZoom : 0) <= zoom);
+
+    if (!this._visible) isVisible = false;
     var canLoadMarker = false;
-    
-    if ( layer )
-    {
-      if ( ( layer instanceof L.CircleMarker ) )
-      {
-        size.h = ( layer._radius ? layer._radius : 3 );
+
+    if (layer) {
+      if ((layer instanceof L.CircleMarker)) {
+        size.h = (layer._radius ? layer._radius : 3);
         size.w = size.h;
-        this._defaultIconToBillboardCollection( isVisible, latLng, size, style,feature );
+        this._defaultIconToBillboardCollection(isVisible, latLng, size, style, feature);
         canLoadMarker = true;
       }
-      else if ( layer instanceof L.Rectangle  )
-      {
+      else if (layer instanceof L.Rectangle) {
         var rect = Cesium.Rectangle.fromDegrees(
-          layer._bounds._latlngs[0][1], layer._bounds._latlngs[0][0], 
+          layer._bounds._latlngs[0][1], layer._bounds._latlngs[0][0],
           layer._bounds._latlngs[1][1], layer._bounds._latlngs[1][0]);
         var material = Cesium.Material.fromType('Color');
         var color = Cesium.Color.fromCssColorString(layer.options.color);
         color.alpha = layer.options.opacity;
         material.uniforms.color = color;//new Cesium.Color(1.0, 1.0, 0.0, style.opacity);
-        
+
         // Corridorで実装
         var primitive = this.createCorridorPrimitive(layer, color, isVisible);
         this._corridorCollection.add(primitive);
-        
-        
+
+
         /*
         // Polylineで実装
         this._polylineCollection.add({
@@ -19364,9 +17969,9 @@ GLOBE.VectorTileLayer = MA.Class.extend( {
           _color : color
         });
         */
-        
-        
-        
+
+
+
         //this._divtIconToBillboardCollection( isVisible, latLng, layer, style,feature );
         /*
         this._map.viewer.scene.groundPrimitives.add(new Cesium.GroundPrimitive({
@@ -19384,32 +17989,28 @@ GLOBE.VectorTileLayer = MA.Class.extend( {
         }));
         */
         canLoadMarker = true;
-        
+
       }
-      
-      else if ( ( layer instanceof L.Marker ) && ( layer.options.icon instanceof L.DivIcon ) )
-      {
-        this._divtIconToBillboardCollection( isVisible, latLng, layer, style,feature );
+
+      else if ((layer instanceof L.Marker) && (layer.options.icon instanceof L.DivIcon)) {
+        this._divtIconToBillboardCollection(isVisible, latLng, layer, style, feature);
         canLoadMarker = true;
       }
-      else if ( ( layer instanceof L.Marker ) && ( layer.options.icon instanceof L.Icon ) )
+      else if ((layer instanceof L.Marker) && (layer.options.icon instanceof L.Icon))
       //else if ( layer.options && layer.options.icon)
       {
-        var iconOptions =  layer.options.icon.options;
-          
-        if ( iconOptions.iconUrl && iconOptions.iconUrl != "")
-        {
-          if ( iconOptions.iconSize )
-          {
+        var iconOptions = layer.options.icon.options;
+
+        if (iconOptions.iconUrl && iconOptions.iconUrl != "") {
+          if (iconOptions.iconSize) {
             size.w = iconOptions.iconSize[0];
             size.h = iconOptions.iconSize[1];
             style.radius = size.w / 2;
           }
-          
-          if ( !feature.__firstLoaded )
-          {
+
+          if (!feature.__firstLoaded) {
             feature.__firstLoaded = true;
-            
+
             var img = new Image();
             img.crossOrigin = "anonymous";
             img.width = size.w;
@@ -19418,62 +18019,55 @@ GLOBE.VectorTileLayer = MA.Class.extend( {
             img._size = size;
             img._style = style;
             img._latLng = latLng;
-            img.onload = function() {
-              this._this._imageToBillboardCollection( isVisible, this._latLng, this, this._size, feature );
+            img.onload = function () {
+              this._this._imageToBillboardCollection(isVisible, this._latLng, this, this._size, feature);
             };
-            
-            img.onerror= function() {
-              this._this._defaultIconToBillboardCollection( isVisible, this._latLng, this._size, feature );
+
+            img.onerror = function () {
+              this._this._defaultIconToBillboardCollection(isVisible, this._latLng, this._size, feature);
             };
             img.src = GSI.Utils.convertIconURL(iconOptions.iconUrl);
           }
-          
+
           canLoadMarker = true;
         }
-        else if ( iconOptions.html && iconOptions.html != '' )
-        {
-          var div = $( iconOptions.html ).css( {"position":"absolute", "visibility":"hidden"} );
-          $( "body" ).append( div);
-          if ( $.trim( div.text() ) == "" )
-          {
+        else if (iconOptions.html && iconOptions.html != '') {
+          var div = $(iconOptions.html).css({ "position": "absolute", "visibility": "hidden" });
+          $("body").append(div);
+          if ($.trim(div.text()) == "") {
             // 図形
             size.w = div.outerWidth();
             size.h = div.outerHeight();
-            
+
             var fillColor = div.css("background-color");
-            
-            if ( !fillColor )
-            {
+
+            if (!fillColor) {
               fillColor = div.css("background");
             }
-            var canvasColor = this._styleColor2CanvasColor( fillColor, style.color );
+            var canvasColor = this._styleColor2CanvasColor(fillColor, style.color);
             style.color = canvasColor.color;
             style.opacity = canvasColor.opacity;
-            
+
             var radius = div.css("border-radius");
           }
-          else
-          {
-            
+          else {
+
           }
           div.remove();
         }
-        
+
       }
-      
+
     }
-    else
-    {
-      if ( feature.properties && feature.properties._iconUrl )
-      {
-        if ( feature.properties._iconSize )
-        {
+    else {
+      if (feature.properties && feature.properties._iconUrl) {
+        if (feature.properties._iconSize) {
           size.w = feature.properties._iconSize[0];
           size.h = feature.properties._iconSize[1];
           style.radius = size.w / 2;
         }
-        
-        
+
+
         var img = new Image();
         img.crossOrigin = "anonymous";
         img.width = size.w;
@@ -19482,49 +18076,47 @@ GLOBE.VectorTileLayer = MA.Class.extend( {
         img._size = size;
         img._style = style;
         img._latLng = latLng;
-        img.onload = function() {
-          this._this._imageToBillboardCollection( isVisible, this._latLng, this, this._size, feature );
+        img.onload = function () {
+          this._this._imageToBillboardCollection(isVisible, this._latLng, this, this._size, feature);
         };
-        
-        img.onerror= function() {
-          this._this._defaultIconToBillboardCollection( isVisible, this._latLng, this._size, this._style, feature );
+
+        img.onerror = function () {
+          this._this._defaultIconToBillboardCollection(isVisible, this._latLng, this._size, this._style, feature);
         };
         img.src = GSI.Utils.convertIconURL(feature.properties._iconUrl);
-        
+
         canLoadMarker = true;
       }
-      
+
     }
-    
-    if ( !canLoadMarker )
-    {
-      this._defaultIconToBillboardCollection( isVisible, latLng, size, style,feature );
-      
+
+    if (!canLoadMarker) {
+      this._defaultIconToBillboardCollection(isVisible, latLng, size, style, feature);
+
     }
-    
+
   },
-  
-  createCorridorPrimitive : function( data, color, show )
-  {
+
+  createCorridorPrimitive: function (data, color, show) {
     //_corridorCollection
     var visible = (show ? true : false);
     var latLng = GLOBE.MAP.getCameraPosition();
     var width = (data.options.weight ? data.options.weight * latLng[2] / 600 : 0);
-    
+
     var primitive = new Cesium.GroundPrimitive({
-      geometryInstances : [
+      geometryInstances: [
         new Cesium.GeometryInstance({
-          geometry : new Cesium.CorridorGeometry({
-            positions : Cesium.Cartesian3.fromDegreesArray([
+          geometry: new Cesium.CorridorGeometry({
+            positions: Cesium.Cartesian3.fromDegreesArray([
               data._bounds._latlngs[0][1], data._bounds._latlngs[0][0],
               data._bounds._latlngs[1][1], data._bounds._latlngs[0][0],
               data._bounds._latlngs[1][1], data._bounds._latlngs[1][0],
               data._bounds._latlngs[0][1], data._bounds._latlngs[1][0],
-              data._bounds._latlngs[0][1], data._bounds._latlngs[0][0]] ),
-            width : width
+              data._bounds._latlngs[0][1], data._bounds._latlngs[0][0]]),
+            width: width
           }),
-          attributes : {
-            color : Cesium.ColorGeometryInstanceAttribute.fromColor(color)
+          attributes: {
+            color: Cesium.ColorGeometryInstanceAttribute.fromColor(color)
           },
           id: "color"
         })
@@ -19535,82 +18127,75 @@ GLOBE.VectorTileLayer = MA.Class.extend( {
     primitive.show = visible;
     return primitive;
   },
-  
-  _styleColor2CanvasColor : function( src, defaultColor )
-  {
+
+  _styleColor2CanvasColor: function (src, defaultColor) {
     var reg = /rgba.*\((.+?)\)/g;
     var match = reg.exec(src);
     var opacity = 1;
     var color = defaultColor;
-    if ( !src ) return {
-      color :color,
-      opacity : opacity
+    if (!src) return {
+      color: color,
+      opacity: opacity
     };
-    if ( match )
-    {
+    if (match) {
       var s = RegExp.$1;
-      
-      var parts = s.split( "," );
-      
-      if ( parts.length >3 )
-      {
-        var r = parseInt( $.trim(parts[0]) );
-        var g = parseInt( $.trim(parts[1]) );
-        var b = parseInt( $.trim(parts[2]) );
-        if ( parts.length >=4 )
-          opacity = parseFloat( $.trim(parts[3]) );
-        color = "#" + ( '00'  + r.toString(16) ).slice( -2 ) +
-            ( '00'  + g.toString(16) ).slice( -2 ) +
-            ( '00'  + b.toString(16) ).slice( -2 );
+
+      var parts = s.split(",");
+
+      if (parts.length > 3) {
+        var r = parseInt($.trim(parts[0]));
+        var g = parseInt($.trim(parts[1]));
+        var b = parseInt($.trim(parts[2]));
+        if (parts.length >= 4)
+          opacity = parseFloat($.trim(parts[3]));
+        color = "#" + ('00' + r.toString(16)).slice(-2) +
+          ('00' + g.toString(16)).slice(-2) +
+          ('00' + b.toString(16)).slice(-2);
       }
     }
-    else
-    {
+    else {
       color = src;
     }
     return {
-      color :color,
-      opacity : opacity
+      color: color,
+      opacity: opacity
     };
   },
-  
-  _defaultIconToBillboardCollection : function( isVisible, latLng, size, style,feature )
-  {
-    if ( !this._bollboardCollection ) return;
-    
+
+  _defaultIconToBillboardCollection: function (isVisible, latLng, size, style, feature) {
+    if (!this._bollboardCollection) return;
+
     size.w += (style.weight ? style.weight * 2 : 0);
     size.h += (style.weight ? style.weight * 2 : 0);
-    
+
     var canvas = document.createElement("canvas");
     canvas.width = size.w + (style.weight ? style.weight : 0);
     canvas.height = size.h + (style.weight ? style.weight : 0);
     var radius = 0;
     var ctx = canvas.getContext('2d');
     ctx.beginPath();
-    ctx.arc(canvas.width/2, canvas.height/2, size.w/2, 0, Math.PI*2, false);
+    ctx.arc(canvas.width / 2, canvas.height / 2, size.w / 2, 0, Math.PI * 2, false);
     //ctx.arc(radius, radius, radius, - Math.PI, - 0.5 * Math.PI, false);
     //ctx.arc(size.w - radius, radius, radius, - 0.5 * Math.PI, 0, false);
     //ctx.arc(size.w - radius, size.h - radius, radius, 0, 0.5 * Math.PI, false);
     //ctx.arc(radius, size.h - radius, radius, 0.5 * Math.PI, Math.PI, false);
 
     ctx.save();
-    if ( style.stroke )
-    {
-      if ( style.weight )
+    if (style.stroke) {
+      if (style.weight)
         ctx.lineWidth = style.weight;
-      if ( style.color )
+      if (style.color)
         ctx.strokeStyle = style.color;
-      if ( style.opacity || style.opacity == 0.0 )
+      if (style.opacity || style.opacity == 0.0)
         ctx.globalAlpha = style.opacity;
       else
         ctx.globalAlpha = 1;
       ctx.stroke();
     }
-    if ( style.fill )
-    {
-      if ( style.fillColor )
-        ctx.fillStyle=style.fillColor;
-      if ( style.fillOpacity || style.fillOpacity == 0.0 )
+    if (style.fill) {
+      if (style.fillColor)
+        ctx.fillStyle = style.fillColor;
+      if (style.fillOpacity || style.fillOpacity == 0.0)
         ctx.globalAlpha = style.fillOpacity;
       else
         ctx.globalAlpha = 1;
@@ -19618,52 +18203,49 @@ GLOBE.VectorTileLayer = MA.Class.extend( {
     }
     ctx.restore();
     var icon = this._bollboardCollection.add({
-      position : Cesium.Cartesian3.fromDegrees(latLng.lng, latLng.lat, 0),
-        image : canvas.toDataURL(),
-      heightReference : Cesium.HeightReference.CLAMP_TO_GROUND,
-      horizontalOrigin : Cesium.HorizontalOrigin.CENTER,
-        //scaleByDistance : new Cesium.NearFarScalar(1.0e2, 1.5, 1.0e5, 0.0),
-        translucencyByDistance : new Cesium.NearFarScalar(1.5e2, 1.0, 8.0e6, 0.0),
-      verticalOrigin : Cesium.VerticalOrigin.CENTER
-      
+      position: Cesium.Cartesian3.fromDegrees(latLng.lng, latLng.lat, 0),
+      image: canvas.toDataURL(),
+      heightReference: Cesium.HeightReference.CLAMP_TO_GROUND,
+      horizontalOrigin: Cesium.HorizontalOrigin.CENTER,
+      //scaleByDistance : new Cesium.NearFarScalar(1.0e2, 1.5, 1.0e5, 0.0),
+      translucencyByDistance: new Cesium.NearFarScalar(1.5e2, 1.0, 8.0e6, 0.0),
+      verticalOrigin: Cesium.VerticalOrigin.CENTER
+
     });
     icon._feature = feature;
     icon._ownerLayer = this;
     icon.show = isVisible;
   },
-  
-  _measureText : function( text, font )
-  {
+
+  _measureText: function (text, font) {
     var ctx = null;
-    if ( !this._textMeasureCanvas )
-    {
+    if (!this._textMeasureCanvas) {
       this._textMeasureCanvas = document.createElement("canvas");
       this._textMeasureCanvas.width = 100;
       this._textMeasureCanvas.height = 100;
       ctx = this._textMeasureCanvas.getContext('2d');
     }
-    else
-    {
+    else {
       ctx = this._textMeasureCanvas.getContext('2d');
       //this._textMeasureCanvas
       ctx.clearRect(0, 0, 100, 100);
     }
-    
+
     ctx.font = font;
-    ctx.fillStyle  = "rgb(0, 0, 0)";
+    ctx.fillStyle = "rgb(0, 0, 0)";
     var result = {
-      w:ctx.measureText( text).width, h:0
+      w: ctx.measureText(text).width, h: 0
     };
-    
-    ctx.textAligin  = 'left';
-    ctx.textBaseline  = 'top';
-    ctx.fillText( text, 0, 0);
-    
+
+    ctx.textAligin = 'left';
+    ctx.textBaseline = 'top';
+    ctx.fillText(text, 0, 0);
+
     var pixels = ctx.getImageData(0, 0, 100, 100);
     var data = pixels.data;
     var currentRow = -1;
     for (var i = 0, len = data.length; i < len; i += 4) {
-      var r = data[i], g = data[i+1], b = data[i+2], alpha = data[i+3];
+      var r = data[i], g = data[i + 1], b = data[i + 2], alpha = data[i + 3];
       if (alpha > 0) {
         var row = Math.floor((i / 4) / 100);
         if (row > currentRow) {
@@ -19676,94 +18258,88 @@ GLOBE.VectorTileLayer = MA.Class.extend( {
     result.h += 2;
     return result;
   },
-  
-  _divtIconToBillboardCollection : function( isVisible, latLng, layer, style,feature )
-  {
-    if ( !this._bollboardCollection ) return;
+
+  _divtIconToBillboardCollection: function (isVisible, latLng, layer, style, feature) {
+    if (!this._bollboardCollection) return;
     var canvas = document.createElement("canvas");
-    
-    
-    
+
+
+
     var html = layer.options.icon.options.html;
     var radius = 0;
-    var element = $( "<div>" ).html( html );
-    element = ( element.children().length > 0 ? $(element.children()[0]) : element );
-    
+    var element = $("<div>").html(html);
+    element = (element.children().length > 0 ? $(element.children()[0]) : element);
+
     var text = $.trim(element.text());
     var background = null;
     var color = 'rgb(0, 0, 0)';
     var fontSize = "9.5pt";
     var fontFamily = 'メイリオ';
-    var size = {w : 5, h : 5};
+    var size = { w: 5, h: 5 };
     var opacity = 1.0;
     var fontWeight = "";
     var margin = {
-      left:0,
-      top:0
+      left: 0,
+      top: 0
     };
-    var horizontalOrigin = Cesium.HorizontalOrigin.CENTER  ;
-    var verticalOrigin = Cesium.VerticalOrigin.CENTER ;
-    
-    
-    if ( element.css( "width" ) || element.css( "width" ) == 0 )
-      size.w = parseInt(element.css( "width" ));
-    if ( element.css( "height" ) || element.css( "height" ) == 0 )
-      size.h = parseInt( element.css( "height" ) );
-    if ( element.css( "border-radius" ) )
-      radius = parseInt( element.css( "border-radius" ) );
-    
-    if ( element.css( "background-color" ) )
-      background = element.css( "background-color" ) ;
-    
-    if ( !background && element.css( "background" ) )
-      background =  element.css( "background" );
-    
-    if ( background )
-      background = this._styleColor2CanvasColor( background );
-    
-    if ( element.css( "opacity" ) || element.css( "opacity" ) == 0 )
-      opacity = parseInt(element.css( "opacity" ) );
-    
-    if ( element.css( "color" ) )
-      color = this._styleColor2CanvasColor( element.css( "color" ), color );
-    if ( element.css( "font-size" ) )
-      fontSize = element.css( "font-size" );
-    
-    if ( element.css( "font-weight" ) )
-      fontWeight = element.css( "font-weight" );
-    fontSize = ( parseInt( fontSize ) * 1.5 ) + "px"
-    
-    
+    var horizontalOrigin = Cesium.HorizontalOrigin.CENTER;
+    var verticalOrigin = Cesium.VerticalOrigin.CENTER;
+
+
+    if (element.css("width") || element.css("width") == 0)
+      size.w = parseInt(element.css("width"));
+    if (element.css("height") || element.css("height") == 0)
+      size.h = parseInt(element.css("height"));
+    if (element.css("border-radius"))
+      radius = parseInt(element.css("border-radius"));
+
+    if (element.css("background-color"))
+      background = element.css("background-color");
+
+    if (!background && element.css("background"))
+      background = element.css("background");
+
+    if (background)
+      background = this._styleColor2CanvasColor(background);
+
+    if (element.css("opacity") || element.css("opacity") == 0)
+      opacity = parseInt(element.css("opacity"));
+
+    if (element.css("color"))
+      color = this._styleColor2CanvasColor(element.css("color"), color);
+    if (element.css("font-size"))
+      fontSize = element.css("font-size");
+
+    if (element.css("font-weight"))
+      fontWeight = element.css("font-weight");
+    fontSize = (parseInt(fontSize) * 1.5) + "px"
+
+
     var textShadow = element.css("text-shadow") || element.css("-ms-text-shadow") || '';
-    if ( textShadow )
-    {
+    if (textShadow) {
       var matches = textShadow.match(/(rgb\([\d\s,]+\))/);
-      if ( matches )textShadow = matches[1];
+      if (matches) textShadow = matches[1];
       else {
         matches = textShadow.match(/(#[a-f|A-F|\d]+)/);
-        if ( matches )textShadow = matches[1];
+        if (matches) textShadow = matches[1];
         else textShadow = '';
       };
     }
     else textShadow = '';
-    
-    if ( size.w <= 0 ) size.w = 3;
-    if ( size.h <= 0 ) size.h = 3;
-    if ( text == "" )
-    {
+
+    if (size.w <= 0) size.w = 3;
+    if (size.h <= 0) size.h = 3;
+    if (text == "") {
       canvas.width = size.w;
       canvas.height = size.h;
       var ctx = canvas.getContext('2d');
       ctx.beginPath();
-      
-      if ( radius > 0 )
-      {
-        if ( radius >= size.w /2 )
-        {
-          ctx.arc(size.w/2, size.h/2, size.w/2, 0, Math.PI*2, false);
+
+      if (radius > 0) {
+        if (radius >= size.w / 2) {
+          ctx.arc(size.w / 2, size.h / 2, size.w / 2, 0, Math.PI * 2, false);
         }
-        else
-        {
+        else {
           ctx.arc(radius, radius, radius, - Math.PI, - 0.5 * Math.PI, false);
           ctx.arc(size.w - radius, radius, radius, - 0.5 * Math.PI, 0, false);
           ctx.arc(size.w - radius, size.h - radius, radius, 0, 0.5 * Math.PI, false);
@@ -19771,20 +18347,16 @@ GLOBE.VectorTileLayer = MA.Class.extend( {
         }
       }
       ctx.save();
-      if ( background )
-      {
-        ctx.fillStyle=background.color;
-        if ( background.opacity|| background.opacity == 0.0 )
-        {
-          ctx.globalAlpha = background.opacity * ( opacity|| opacity == 0.0 ? opacity : 1) ;
+      if (background) {
+        ctx.fillStyle = background.color;
+        if (background.opacity || background.opacity == 0.0) {
+          ctx.globalAlpha = background.opacity * (opacity || opacity == 0.0 ? opacity : 1);
         }
         else
-          ctx.globalAlpha = ( opacity|| opacity == 0.0 ? opacity : 1) ;
+          ctx.globalAlpha = (opacity || opacity == 0.0 ? opacity : 1);
       }
-      else
-      {
-        if ( opacity|| opacity == 0.0 )
-        {
+      else {
+        if (opacity || opacity == 0.0) {
           ctx.globalAlpha = opacity;
         }
         else
@@ -19792,139 +18364,132 @@ GLOBE.VectorTileLayer = MA.Class.extend( {
       }
       ctx.fill();
       ctx.restore();
-      ctx.fillStyle="blue";
-      
+      ctx.fillStyle = "blue";
+
     }
-    else
-    {
-      
+    else {
+
       //ctx.fillStyle = "red";
       //ctx.fillText("赤色でfillText", 10, 75);
-      
-      var font = ( fontWeight != "" ? fontWeight +" " : "") +fontSize +" '" + fontFamily +"'";
-      
+
+      var font = (fontWeight != "" ? fontWeight + " " : "") + fontSize + " '" + fontFamily + "'";
+
       var textSize = this._measureText(text, font);
-      
+
       var ctx = canvas.getContext('2d');
-      ctx.clearRect(0,0, canvas.width, canvas.height );
+      ctx.clearRect(0, 0, canvas.width, canvas.height);
       ctx.beginPath();
-      
-      size.w = textSize.w+(radius ? radius : 2 );
-      size.h = textSize.h+(radius ? radius : 4 );
+
+      size.w = textSize.w + (radius ? radius : 2);
+      size.h = textSize.h + (radius ? radius : 4);
       canvas.width = size.w;
-      canvas.height = size.h ;
-      
+      canvas.height = size.h;
+
       ctx.font = font;
-      
-      if ( background )
-      {
+
+      if (background) {
         ctx.save();
-        if ( background )
-          ctx.fillStyle=background;
-        if ( opacity|| opacity == 0.0 )
+        if (background)
+          ctx.fillStyle = background;
+        if (opacity || opacity == 0.0)
           ctx.globalAlpha = opacity;
         else
           ctx.globalAlpha = 1;
         ctx.fill();
         ctx.restore();
       }
-      
+
       //ctx.fillStyle="red";
       //ctx.fillRect( 0, 0, size.w, size.h );
-      
-      ctx.textAlign  = 'center';
-      ctx.textBaseline  = 'middle';
-      if ( textShadow && textShadow != '' )
-      {
-        ctx.lineWidth  = 4;
+
+      ctx.textAlign = 'center';
+      ctx.textBaseline = 'middle';
+      if (textShadow && textShadow != '') {
+        ctx.lineWidth = 4;
         ctx.strokeStyle = textShadow;
-        ctx.strokeText(text, size.w/2, size.h/2 );
+        ctx.strokeText(text, size.w / 2, size.h / 2);
       }
-      
-      ctx.fillStyle= ( color.color ? color.color : color );
-      ctx.fillText( text, size.w/2, size.h/2 );
-      
-      
-      
-      
-      if ( layer.options.icon.options.iconAnchor && layer.options.icon.options.iconAnchor.length >= 2 )
-      {
+
+      ctx.fillStyle = (color.color ? color.color : color);
+      ctx.fillText(text, size.w / 2, size.h / 2);
+
+
+
+
+      if (layer.options.icon.options.iconAnchor && layer.options.icon.options.iconAnchor.length >= 2) {
         var anchor = {
-          left : size.w/2,
-          top : size.h/2
+          left: size.w / 2,
+          top: size.h / 2
         };
-        
+
         margin.left = anchor.left - parseInt(layer.options.icon.options.iconAnchor[0]);
         margin.top = anchor.top - parseInt(layer.options.icon.options.iconAnchor[1]);
       }
     }
-    
-    
-    
+
+
+
     var icon = this._bollboardCollection.add({
-      position : Cesium.Cartesian3.fromDegrees(latLng.lng, latLng.lat, 0),
-        image : canvas.toDataURL(),
-      heightReference : Cesium.HeightReference.CLAMP_TO_GROUND,
-      horizontalOrigin : horizontalOrigin,
-      verticalOrigin : verticalOrigin,
-      pixelOffset  : new Cesium.Cartesian2( margin.left, margin.top ),
-        //scaleByDistance : new Cesium.NearFarScalar(1.0e2, 1.5, 1.0e5, 0.0),
-        translucencyByDistance : new Cesium.NearFarScalar(1.5e2, 1.0, 8.0e6, 0.0)
-      
+      position: Cesium.Cartesian3.fromDegrees(latLng.lng, latLng.lat, 0),
+      image: canvas.toDataURL(),
+      heightReference: Cesium.HeightReference.CLAMP_TO_GROUND,
+      horizontalOrigin: horizontalOrigin,
+      verticalOrigin: verticalOrigin,
+      pixelOffset: new Cesium.Cartesian2(margin.left, margin.top),
+      //scaleByDistance : new Cesium.NearFarScalar(1.0e2, 1.5, 1.0e5, 0.0),
+      translucencyByDistance: new Cesium.NearFarScalar(1.5e2, 1.0, 8.0e6, 0.0)
+
     });
     icon.horizontalOrigin = horizontalOrigin;
     icon.verticalOrigin = verticalOrigin;
     icon._feature = feature;
     icon._ownerLayer = this;
     icon._originalLayer = layer;
-    
+
     icon.show = isVisible;
   },
-  
-  _imageToBillboardCollection : function( isVisible, latLng, img,size, feature )
-  {
-    if ( !this._bollboardCollection ) return;
+
+  _imageToBillboardCollection: function (isVisible, latLng, img, size, feature) {
+    if (!this._bollboardCollection) return;
     var canvas = document.createElement("canvas");
     canvas.width = size.w;
     canvas.height = size.h;
-    
-    
+
+
     var ctx = canvas.getContext('2d');
-    ctx.drawImage(img, 0,0, size.w, size.h );
-    
-    
+    ctx.drawImage(img, 0, 0, size.w, size.h);
+
+
     var position = Cesium.Cartesian3.fromDegrees(latLng.lng, latLng.lat, 0);
     var imageURL = canvas.toDataURL();
-    
-    
-    this._layerId = ( this._layerId ? this._layerId : GLOBE.MAP.getNewId() );
+
+
+    this._layerId = (this._layerId ? this._layerId : GLOBE.MAP.getNewId());
     GLOBE.MAP.addSingleImageryLayer(this._layerId, feature.name, position, imageURL);
-    
-    if ( GLOBE.MAP.isDirectionIcon(feature.properties._iconUrl) )
-    {
+
+    if (GLOBE.MAP.isDirectionIcon(feature.properties._iconUrl)) {
       GLOBE.MAP.addImagePrimitive({
-        "layerId"      : this._layerId,
-        "name"         : feature.name,
-        "position"     : position,
-        "imageUrl"     : imageURL,
-        "imageSize"    : feature.properties._iconSize,
-        "imageAnchor"  : feature.properties._iconAnchor,
-        "description"  : GLOBE.MAP.getEntityDescription(feature.properties),
-        "usePopup"     : true,
-        "usePopupFlag" : true
+        "layerId": this._layerId,
+        "name": feature.name,
+        "position": position,
+        "imageUrl": imageURL,
+        "imageSize": feature.properties._iconSize,
+        "imageAnchor": feature.properties._iconAnchor,
+        "description": GLOBE.MAP.getEntityDescription(feature.properties),
+        "usePopup": true,
+        "usePopupFlag": true
       });
     }
-    else
-    {
+    else {
       var image = this._bollboardCollection.add({
-        position : position,
-          image : imageURL,
-        heightReference : Cesium.HeightReference.CLAMP_TO_GROUND,
-        horizontalOrigin : Cesium.HorizontalOrigin.CENTER,
-          //scaleByDistance : new Cesium.NearFarScalar(1.0e2, 1.5, 1.0e5, 0.0),
-          translucencyByDistance : new Cesium.NearFarScalar(1.5e2, 1.0, 8.0e6, 0.0),
-        verticalOrigin : Cesium.VerticalOrigin.CENTER,
-        color : new Cesium.Color(1.0, 1.0, 1.0, CONFIG.TILEASICON_ENABLED ? CONFIG.TILEASICON_ICONALPHA : 1)
+        position: position,
+        image: imageURL,
+        heightReference: Cesium.HeightReference.CLAMP_TO_GROUND,
+        horizontalOrigin: Cesium.HorizontalOrigin.CENTER,
+        //scaleByDistance : new Cesium.NearFarScalar(1.0e2, 1.5, 1.0e5, 0.0),
+        translucencyByDistance: new Cesium.NearFarScalar(1.5e2, 1.0, 8.0e6, 0.0),
+        verticalOrigin: Cesium.VerticalOrigin.CENTER,
+        color: new Cesium.Color(1.0, 1.0, 1.0, CONFIG.TILEASICON_ENABLED ? CONFIG.TILEASICON_ICONALPHA : 1)
       });
       image._tileAsIcon = true;
       image._feature = feature;
@@ -19932,111 +18497,92 @@ GLOBE.VectorTileLayer = MA.Class.extend( {
       image.show = isVisible;
     }
   }
-  
-} );
+
+});
 
 
 
 
 
-GLOBE.VectorTileLayer._remove = function(layer)
-{
+GLOBE.VectorTileLayer._remove = function (layer) {
   clearTimeout(layer._clearTimeout);
-  
-  if ( !GLOBE.VectorTileLayer._layers  )
+
+  if (!GLOBE.VectorTileLayer._layers)
     GLOBE.VectorTileLayer._layers = [];
-  
-  for( var i=0; i<GLOBE.VectorTileLayer._layers.length; i++ )
-  {
-    if ( GLOBE.VectorTileLayer._layers[i] == layer )
-    {
-      GLOBE.VectorTileLayer._layers.splice(i,1);
+
+  for (var i = 0; i < GLOBE.VectorTileLayer._layers.length; i++) {
+    if (GLOBE.VectorTileLayer._layers[i] == layer) {
+      GLOBE.VectorTileLayer._layers.splice(i, 1);
       break;
     }
   }
-  
-  
-  if ( GLOBE.VectorTileLayer._layers.length <= 0 && GLOBE.VectorTileLayer._mouseEventHandler )
-  {
+
+
+  if (GLOBE.VectorTileLayer._layers.length <= 0 && GLOBE.VectorTileLayer._mouseEventHandler) {
     GLOBE.VectorTileLayer._mouseEventHandler.destroy();
     GLOBE.VectorTileLayer._mouseEventHandler = null;
   }
-  
-  if ( GLOBE.VectorTileLayer._layers.length <= 0 && GLOBE.VectorTileLayer._moveEventHandler )
-  {
+
+  if (GLOBE.VectorTileLayer._layers.length <= 0 && GLOBE.VectorTileLayer._moveEventHandler) {
     this._map.viewer.camera.moveEnd.removeEventListener(GLOBE.VectorTileLayer._moveEventHandler);
     GLOBE.VectorTileLayer._moveEventHandler = null;
   }
-  
+
   GLOBE.DIALOG.INFOBOX.hide();
 };
 
-GLOBE.VectorTileLayer._add = function(map, layer)
-{
+GLOBE.VectorTileLayer._add = function (map, layer) {
   GLOBE.VectorTileLayer._map = map;
-  if ( !GLOBE.VectorTileLayer._layers ) 
+  if (!GLOBE.VectorTileLayer._layers)
     GLOBE.VectorTileLayer._layers = [];
-  GLOBE.VectorTileLayer._layers.push( layer );
-  
-  if ( !GLOBE.VectorTileLayer._moveEventHandler )
-  {
-    GLOBE.VectorTileLayer._moveEventHandler = function() {
+  GLOBE.VectorTileLayer._layers.push(layer);
+
+  if (!GLOBE.VectorTileLayer._moveEventHandler) {
+    GLOBE.VectorTileLayer._moveEventHandler = function () {
       var zoom = GLOBE.VectorTileLayer._map.getCurrentZoom();
       var beforeHeight = (layer._beforeHeight ? layer._beforeHeight : 0);
       var latLng = GLOBE.MAP.getCameraPosition();
-      
-      for ( var layerNo = GLOBE.VectorTileLayer._layers.length-1; layerNo>=0; layerNo-- )
-      {
+
+      for (var layerNo = GLOBE.VectorTileLayer._layers.length - 1; layerNo >= 0; layerNo--) {
         layer = GLOBE.VectorTileLayer._layers[layerNo];
-        if ( !layer || !layer._visible ) continue;
-        var minZoom = ( layer.options.minZoom ? layer.options.minZoom : 0 );
-        
-        if ( layer._bollboardCollection )
-        {
-          for( var i=0; i<layer._bollboardCollection.length; i++ )
-          {
-            layer._bollboardCollection.get(i).show = ( zoom >= minZoom );
+        if (!layer || !layer._visible) continue;
+        var minZoom = (layer.options.minZoom ? layer.options.minZoom : 0);
+
+        if (layer._bollboardCollection) {
+          for (var i = 0; i < layer._bollboardCollection.length; i++) {
+            layer._bollboardCollection.get(i).show = (zoom >= minZoom);
           }
         }
-        if ( layer._polylineCollection )
-        {
-          for( var i=0; i<layer._polylineCollection.length; i++ )
-          {
-            layer._polylineCollection.get(i).show = ( zoom >= minZoom );
+        if (layer._polylineCollection) {
+          for (var i = 0; i < layer._polylineCollection.length; i++) {
+            layer._polylineCollection.get(i).show = (zoom >= minZoom);
           }
         }
-        if ( layer._corridorCollection )
-        {
-          for( var i=0; i<layer._corridorCollection.length; i++ )
-          {
-            layer._corridorCollection.get(i).show = ( zoom >= minZoom );
+        if (layer._corridorCollection) {
+          for (var i = 0; i < layer._corridorCollection.length; i++) {
+            layer._corridorCollection.get(i).show = (zoom >= minZoom);
           }
-          
+
           // corridor再描画
-          if ( Math.abs(beforeHeight - latLng[2]) > beforeHeight * 0.1 )
-          {
+          if (Math.abs(beforeHeight - latLng[2]) > beforeHeight * 0.1) {
             var removeList = [];
             var addList = [];
-            
-            for( var i=0; i<layer._corridorCollection.length; i++ )
-            {
+
+            for (var i = 0; i < layer._corridorCollection.length; i++) {
               var primitive = layer._corridorCollection.get(i);
-              if ( primitive._data )
-              {
+              if (primitive._data) {
                 var newPrimitive = layer.createCorridorPrimitive(primitive._data, primitive._color, primitive.show);
                 addList.push(newPrimitive);
                 removeList.push(primitive);
               }
             }
-            
+
             // 削除
-            for ( var i=0; i<removeList.length; i++ )
-            {
+            for (var i = 0; i < removeList.length; i++) {
               layer._corridorCollection.remove(removeList[i]);
             }
             // 追加
-            for ( var i=0; i<addList.length; i++ )
-            {
+            for (var i = 0; i < addList.length; i++) {
               layer._corridorCollection.add(addList[i]);
             }
             layer._beforeHeight = GLOBE.MAP.currents.height;
@@ -20047,115 +18593,104 @@ GLOBE.VectorTileLayer._add = function(map, layer)
     map.viewer.camera.moveEnd.addEventListener(GLOBE.VectorTileLayer._moveEventHandler);
     layer._clearTimeout = setInterval(GLOBE.VectorTileLayer._moveEventHandler, 1000);
   }
-  if ( GLOBE.VectorTileLayer._mouseEventHandler ) return;
-  
-  
+  if (GLOBE.VectorTileLayer._mouseEventHandler) return;
+
+
   GLOBE.VectorTileLayer._mouseEventHandler = new Cesium.ScreenSpaceEventHandler(map.viewer.scene.canvas);
-  GLOBE.VectorTileLayer._mouseEventHandler.setInputAction(function(click) {
-    
+  GLOBE.VectorTileLayer._mouseEventHandler.setInputAction(function (click) {
+
     var layer = null;
     var originalLayer = null;
     var map = GLOBE.VectorTileLayer._map;
     var pickedObject = map.viewer.scene.pick(click.position);
     var feature = null;
-    
-    if ( pickedObject && pickedObject.primitive._feature )
-    {
-      if ( pickedObject.primitive && pickedObject.primitive._feature )
-      {
+
+    if (pickedObject && pickedObject.primitive._feature) {
+      if (pickedObject.primitive && pickedObject.primitive._feature) {
         feature = pickedObject.primitive._feature;
         layer = pickedObject.primitive._ownerLayer;
         originalLayer = pickedObject.primitive._originalLayer;
       }
     }
-    
-    if ( !feature )
-    {
-      if ( !GLOBE.VectorTileLayer._layers ) return;
-      
+
+    if (!feature) {
+      if (!GLOBE.VectorTileLayer._layers) return;
+
       var ellipsoid = map.viewer.scene.globe.ellipsoid;
-      var cartesian = map.viewer.scene.camera.pickEllipsoid(click.position,ellipsoid );
-      
-      if (cartesian)
-      {
+      var cartesian = map.viewer.scene.camera.pickEllipsoid(click.position, ellipsoid);
+
+      if (cartesian) {
         var cartographic = ellipsoid.cartesianToCartographic(cartesian);
         var lng = Cesium.Math.toDegrees(cartographic.longitude);
         var lat = Cesium.Math.toDegrees(cartographic.latitude);
-        for ( var layerNo = GLOBE.VectorTileLayer._layers.length-1; layerNo>=0; layerNo-- )
-        {
+        for (var layerNo = GLOBE.VectorTileLayer._layers.length - 1; layerNo >= 0; layerNo--) {
           layer = GLOBE.VectorTileLayer._layers[layerNo];
-          if ( !layer || !layer._visible ) continue;
-          
+          if (!layer || !layer._visible) continue;
+
           var tilesToRender = map.viewer.scene.globe._surface._tilesToRender;
           //this.getZoomLevel();
-          if ( Cesium.defined( tilesToRender ) )
-          {
+          if (Cesium.defined(tilesToRender)) {
             var levels = {};
-            
-            for( var i=0; i<tilesToRender.length; i++ )
-            {
-              
-              if ( tilesToRender[i]._level < 18 )
-                levels[ tilesToRender[i]._level + '' ] = true;
+
+            for (var i = 0; i < tilesToRender.length; i++) {
+
+              if (tilesToRender[i]._level < 18)
+                levels[tilesToRender[i]._level + ''] = true;
               else
-                levels[ '18' ] = true;
+                levels['18'] = true;
             }
-            
-            for( var level in levels )
-            {
-              feature = layer._provider.pick( { 
-                lat:lat,
-                lng :lng ,
-                level : parseInt(level ) //tilesToRender[i]._level
-              } );
-              if ( feature ) break;
+
+            for (var level in levels) {
+              feature = layer._provider.pick({
+                lat: lat,
+                lng: lng,
+                level: parseInt(level) //tilesToRender[i]._level
+              });
+              if (feature) break;
             }
           }
-          
-          if ( feature ) break;
+
+          if (feature) break;
         }
-        
+
       }
-    
+
     }
-    
+
     // featureからdescription生成
     var len = map.viewer.dataSources.length;
-    for(var i=len-1; i>=0; i--){
-      var dataSourceCollection =  map.viewer.dataSources._dataSources[i];
-      if(dataSourceCollection.type == "JapnGSIVectorTile"){
+    for (var i = len - 1; i >= 0; i--) {
+      var dataSourceCollection = map.viewer.dataSources._dataSources[i];
+      if (dataSourceCollection.type == "JapnGSIVectorTile") {
         map.viewer.dataSources.remove(dataSourceCollection, true);
       }
     }
-    if ( layer && feature )
-    {
-      var description = ( originalLayer && originalLayer._popupText ? originalLayer._popupText :
-        layer._featureToDescription(feature) );
-      
-      if ( description && description != "")
-      {
+    if (layer && feature) {
+      var description = (originalLayer && originalLayer._popupText ? originalLayer._popupText :
+        layer._featureToDescription(feature));
+
+      if (description && description != "") {
         GLOBE.MAP.clearPinLayers("INFO");
-        var latLng = GLOBE.MAP.windowPositionToLatLng( click.position );
-        if ( latLng )
-        {
+        var latLng = GLOBE.MAP.windowPositionToLatLng(click.position);
+        if (latLng) {
           var lat = latLng[0];
           var lng = latLng[1];
           GLOBE.MAP.pindrop(lng, lat, "INFO", Cesium.Color.BLACK);
         }
-        
+
         var box = GLOBE.DIALOG.INFOBOX;
         //box.setDialogHeader(layer.options.title);
         box.setDialogHeader(feature.properties.name);
         box.setDialogContent($(description));
-        box.onBeforeClose = function(){
+        box.onBeforeClose = function () {
           GLOBE.MAP.clearPinLayers("INFO");
         };
         box.show();
       }
     }
-    
-  }, Cesium.ScreenSpaceEventType.LEFT_CLICK );
-} ;
+
+  }, Cesium.ScreenSpaceEventType.LEFT_CLICK);
+};
 
 // Leaflet
 var L = {};
@@ -20168,7 +18703,7 @@ L.LatLng = function (lat, lng) {
   this.lng = lng;
 
 };
-L.latLng = function (a, b) { 
+L.latLng = function (a, b) {
   if (a instanceof L.LatLng) {
     return a;
   }
@@ -20191,30 +18726,29 @@ L.latLng = function (a, b) {
   return new L.LatLng(a, b);
 };
 
-L.Marker = MA.Class.extend( {
-  
-  options : {},
-  _latlng : null,
-  _popupText : "",
+L.Marker = MA.Class.extend({
+
+  options: {},
+  _latlng: null,
+  _popupText: "",
   initialize: function (latlng, options) {
     MA.setOptions(this, options);
     this._latlng = L.latLng(latlng);
   },
-  
-  bindPopup  : function(s)
-  {
-    this._popupText= s;
+
+  bindPopup: function (s) {
+    this._popupText = s;
     return this;
   }
-} );
+});
 
 L.marker = function (latlng, options) {
   return new L.Marker(latlng, options);
 };
 
 
-L.Icon = MA.Class.extend( {
-  
+L.Icon = MA.Class.extend({
+
   options: {
     className: ''
   },
@@ -20222,16 +18756,16 @@ L.Icon = MA.Class.extend( {
   initialize: function (options) {
     MA.setOptions(this, options);
   }
-} );
+});
 
 L.icon = function (options) {
   return new L.Icon(options);
 };
 
 
-L.DivIcon = L.Icon.extend( {
-  
-} );
+L.DivIcon = L.Icon.extend({
+
+});
 
 L.divIcon = function (options) {
   return new L.DivIcon(options);
@@ -20247,65 +18781,65 @@ L.latLngBounds = function (southWest, northEast) {
   return new L.LatLngBounds(southWest, northEast);
 };
 
-L.Rectangle = MA.Class.extend( {
-  
-  options : {},
-  _bounds : null,
+L.Rectangle = MA.Class.extend({
+
+  options: {},
+  _bounds: null,
   initialize: function (bounds, options) {
     MA.setOptions(this, options);
     this._bounds = L.latLngBounds(bounds);
   }
-} );
+});
 
 L.rectangle = function (bounds, options) {
   return new L.Rectangle(bounds, options);
 };
 
 
-L.Circle = MA.Class.extend( {
-  
-  options : {},
-  _latlng : null,
-  _radius : 5,
+L.Circle = MA.Class.extend({
+
+  options: {},
+  _latlng: null,
+  _radius: 5,
   initialize: function (latlng, options) {
     MA.setOptions(this, options);
     this._latlng = L.latLng(latlng);
   },
-  setLatLng : function( lagLng ) {
+  setLatLng: function (lagLng) {
     this._latlng = L.latLng(latlng);
   },
-  setRadius : function( raidus ) {
+  setRadius: function (raidus) {
     this._radius = radius;
   }
-} );
+});
 
 L.circle = function (latlng, options) {
   return new L.Circle(latlng, options);
 };
 
-L.CircleMarker = MA.Class.extend( {
-  
-  options : {},
-  _latlng : null,
-  _radius : 5,
+L.CircleMarker = MA.Class.extend({
+
+  options: {},
+  _latlng: null,
+  _radius: 5,
   initialize: function (latlng, options) {
     MA.setOptions(this, options);
     this._latlng = L.latLng(latlng);
   },
-  setLatLng : function( lagLng ) {
+  setLatLng: function (lagLng) {
     this._latlng = L.latLng(latlng);
   },
-  setRadius : function( raidus ) {
+  setRadius: function (raidus) {
     this._radius = radius;
   }
-} );
+});
 
 L.circleMarker = function (latlng, options) {
   return new L.CircleMarker(latlng, options);
 };
 
-L.FeatureGroup = MA.Class.extend( {
-  
+L.FeatureGroup = MA.Class.extend({
+
   initialize: function (layers) {
     this._layers = [];
 
@@ -20318,7 +18852,7 @@ L.FeatureGroup = MA.Class.extend( {
     }
   },
   addLayer: function (layer) {
-    this._layers.push( layer );
+    this._layers.push(layer);
   },
 
   removeLayer: function (layer) {
@@ -20344,7 +18878,7 @@ L.FeatureGroup = MA.Class.extend( {
 
   bringToBack: function () {
   }
-} );
+});
 
 L.icon = function (options) {
   return new L.Icon(options);
@@ -20359,223 +18893,201 @@ L.featureGroup = function (layers) {
   L.Class
 - GSI.Modal.BaseClass
 ************************************************************************/
-GSI.Modal.instance=null;
-GSI.Modal.instanceList=[];
+GSI.Modal.instance = null;
+GSI.Modal.instanceList = [];
 GSI.Modal.blind = null;
 GSI.Modal.zIndexOffset = 50000;
 
-GSI.Modal.BaseClass = MA.Class.extend( {
+GSI.Modal.BaseClass = MA.Class.extend({
   includes: MA.Mixin.Events,
-  options : {
-    closeBtnVisible : true,
-    blindClose : true
+  options: {
+    closeBtnVisible: true,
+    blindClose: true
   },
-  container : null,
-  initialize : function (options)
-  {
+  container: null,
+  initialize: function (options) {
     options = MA.setOptions(this, options);
   },
-  show : function(options)
-  {
+  show: function (options) {
 
-    GSI.Modal.instanceList.push( this );
+    GSI.Modal.instanceList.push(this);
 
     options = MA.setOptions(this, options);
     this.createBlind();
 
-    if ( !this.container )
-    {
+    if (!this.container) {
       this.container = this.createContainer();
-      $(document.body).append( this.container );
+      $(document.body).append(this.container);
     }
     else this.contentFrame.empty();
 
-    if ( options && options.width )
-    {
-      this.contentFrame.css( { width:options.width + 'px' } );
+    if (options && options.width) {
+      this.contentFrame.css({ width: options.width + 'px' });
     }
-    else
-    {
-      this.contentFrame.css( { width:'auto' } );
+    else {
+      this.contentFrame.css({ width: 'auto' });
     }
 
-    if ( this.getContent )
-      this.contentFrame.append( this.getContent() );
+    if (this.getContent)
+      this.contentFrame.append(this.getContent());
 
     this.adjustWindow();
 
-    if ( !GSI.Modal.blind.is( ':visible' ))
-      GSI.Modal.blind.show( "fade", {"direction": "both","easing": "linear"}, "fast" );
+    if (!GSI.Modal.blind.is(':visible'))
+      GSI.Modal.blind.show("fade", { "direction": "both", "easing": "linear" }, "fast");
 
-    this.container.show("fade", {"direction": "both","easing": "linear"}, "fast" );
+    this.container.show("fade", { "direction": "both", "easing": "linear" }, "fast");
 
-    if ( !this._onWindowResize )
-    {
-      this._onWindowResize = MA.bind( this.onWindowResize, this );
-      $( window ).on( "resize", this._onWindowResize );
+    if (!this._onWindowResize) {
+      this._onWindowResize = MA.bind(this.onWindowResize, this);
+      $(window).on("resize", this._onWindowResize);
     }
   },
-  onWindowResize : function()
-  {
+  onWindowResize: function () {
     this.adjustWindow();
   },
-  adjustWindow : function()
-  {
+  adjustWindow: function () {
     var windowSize = GSI.Utils.getScreenSize();
-    var isVisible = this.container.is( ':visible' );
+    var isVisible = this.container.is(':visible');
 
-    if ( !isVisible )
-    {
-      this.container.css( { "visibility": "hidden" } ).show();
+    if (!isVisible) {
+      this.container.css({ "visibility": "hidden" }).show();
     }
-    this.contentFrame.css( {
-      "max-width" : windowSize.w - 50 + 'px',
-      "max-height" : windowSize.h - 50 + 'px'
-    } );
+    this.contentFrame.css({
+      "max-width": windowSize.w - 50 + 'px',
+      "max-height": windowSize.h - 50 + 'px'
+    });
 
     var w = this.container.outerWidth(true);
     var h = this.container.outerHeight(true);
-    this.container.css( {
-      left : Math.floor( (windowSize.w/2) - (w/2) ) + 'px',
-      top : Math.floor( (windowSize.h/2) - (h/2) ) + 'px'
-    } );
+    this.container.css({
+      left: Math.floor((windowSize.w / 2) - (w / 2)) + 'px',
+      top: Math.floor((windowSize.h / 2) - (h / 2)) + 'px'
+    });
 
-    if ( !isVisible )
-    {
-      this.container.hide().css( { "visibility": "visible" } );
+    if (!isVisible) {
+      this.container.hide().css({ "visibility": "visible" });
     }
   },
-  createContainer : function()
-  {
-    var container = $( '<div>' ).hide().addClass( this.options.className ? this.options.className : 'gsi_modal_base' ).css( {"z-index":GSI.Modal.zIndexOffset+1+GSI.Modal.instanceList.length, position: "absolute"} );
+  createContainer: function () {
+    var container = $('<div>').hide().addClass(this.options.className ? this.options.className : 'gsi_modal_base').css({ "z-index": GSI.Modal.zIndexOffset + 1 + GSI.Modal.instanceList.length, position: "absolute" });
 
-    this.contentFrame = $('<div>').addClass( 'gsi_modal_base_content' );
-    container.append( this.contentFrame );
+    this.contentFrame = $('<div>').addClass('gsi_modal_base_content');
+    container.append(this.contentFrame);
 
-    if ( this.options.closeBtnVisible )
-    {
-      this.closeButton = $( '<a>' )
-        .addClass( 'gsi_modal_base_closebtn' )
-        .attr( { 'href' : 'javascript:void(0);'} ).html( '×' ).click(
-          MA.bind( function() {
+    if (this.options.closeBtnVisible) {
+      this.closeButton = $('<a>')
+        .addClass('gsi_modal_base_closebtn')
+        .attr({ 'href': 'javascript:void(0);' }).html('×').click(
+          MA.bind(function () {
             this.hide();
-          },this )
+          }, this)
         );
-      container.append( this.closeButton );
+      container.append(this.closeButton);
     }
 
     return container;
   },
-  hide : function( noRemoveBlind )
-  {
-    if ( this._onWindowResize )
-    {
-      $( window ).off( "resize", this._onWindowResize );
+  hide: function (noRemoveBlind) {
+    if (this._onWindowResize) {
+      $(window).off("resize", this._onWindowResize);
       delete this._onWindowResize;
       this._onWindowResize = null;
     }
 
-    for ( var i=0; i<GSI.Modal.instanceList.length; i++ )
-    {
-      if ( GSI.Modal.instanceList[i] == this )
-      {
-        GSI.Modal.instanceList.splice( i, 1 );
+    for (var i = 0; i < GSI.Modal.instanceList.length; i++) {
+      if (GSI.Modal.instanceList[i] == this) {
+        GSI.Modal.instanceList.splice(i, 1);
         break;
       }
     }
 
-    if ( this.container ) this.container.remove();
-    if ( this.closeButton ) this.closeButton.remove();
+    if (this.container) this.container.remove();
+    if (this.closeButton) this.closeButton.remove();
 
     delete this.closeButton;
     delete this.container;
     this.closeButton = null;
     this.container = null;
 
-    if ( GSI.Modal.instanceList.length <= 0 )
+    if (GSI.Modal.instanceList.length <= 0)
       this.removeBlind();
   },
-  getBlindClose:function() {
+  getBlindClose: function () {
     return this.options.blindClose;
 
   },
-  createBlind : function()
-  {
-    if ( GSI.Modal.blind ) return;
+  createBlind: function () {
+    if (GSI.Modal.blind) return;
 
-    GSI.Modal.blind = $( '<div>' )
-      .css( {
-        opacity : 0.3,
-        background:"#666",
-        position:"absolute",
-        left:'0px',
-        top:'0px',
-        width:'100%',
-        height:'100%',
-        "z-index" : GSI.Modal.zIndexOffset,
-        display:"none",
-        cursor:"pointer"
-      } )
-      .click( function() {
-      } );
+    GSI.Modal.blind = $('<div>')
+      .css({
+        opacity: 0.3,
+        background: "#666",
+        position: "absolute",
+        left: '0px',
+        top: '0px',
+        width: '100%',
+        height: '100%',
+        "z-index": GSI.Modal.zIndexOffset,
+        display: "none",
+        cursor: "pointer"
+      })
+      .click(function () {
+      });
 
-    $( document.body ).append( GSI.Modal.blind );
+    $(document.body).append(GSI.Modal.blind);
   },
-  removeBlind : function()
-  {
-    if ( GSI.Modal.blind ) GSI.Modal.blind.remove();
+  removeBlind: function () {
+    if (GSI.Modal.blind) GSI.Modal.blind.remove();
     delete GSI.Modal.blind;
     GSI.Modal.blind = null;
   }
 
-} );
+});
 
 /************************************************************************
   L.Class
 - GSI.Modal.BaseClass
   - GSI.Modal.Dialog
 ************************************************************************/
-GSI.Modal.Dialog = GSI.Modal.BaseClass.extend( {
-  options : {
-    positiveButtonText : '決定',
-    nagativeButtonText : '中止',
-    blindClose : false,
-    closeBtnVisible : false,
-    className : 'gsi_modal_dialog'
+GSI.Modal.Dialog = GSI.Modal.BaseClass.extend({
+  options: {
+    positiveButtonText: '決定',
+    nagativeButtonText: '中止',
+    blindClose: false,
+    closeBtnVisible: false,
+    className: 'gsi_modal_dialog'
   },
-  show : function( options )
-  {
-    GSI.Modal.BaseClass.prototype.show.call( this, options );
+  show: function (options) {
+    GSI.Modal.BaseClass.prototype.show.call(this, options);
   },
-  getContent : function()
-  {
-    this.dialogFrame = $( '<div>' ).addClass( 'gsi_modal_dialog_frame' );
-    this.dialogContent = $( '<div>' ).addClass('gsi_modal_dialog_content');
-    this.buttonFrame = $( '<div>' ).addClass('gsi_modal_dialog_btn_frame');
+  getContent: function () {
+    this.dialogFrame = $('<div>').addClass('gsi_modal_dialog_frame');
+    this.dialogContent = $('<div>').addClass('gsi_modal_dialog_content');
+    this.buttonFrame = $('<div>').addClass('gsi_modal_dialog_btn_frame');
 
-    this.positiveButton = $( '<a>' ).attr( { "href":"javascript:void(0);"} )
-      .html( this.options.positiveButtonText ).click( MA.bind( this.onPositiveButtonClick, this ) );
-    this.negativeButton = $( '<a>' ).attr( { "href":"javascript:void(0);"} )
-      .html( this.options.nagativeButtonText ).click( MA.bind( this.onNegativeButtonClick, this ) );
+    this.positiveButton = $('<a>').attr({ "href": "javascript:void(0);" })
+      .html(this.options.positiveButtonText).click(MA.bind(this.onPositiveButtonClick, this));
+    this.negativeButton = $('<a>').attr({ "href": "javascript:void(0);" })
+      .html(this.options.nagativeButtonText).click(MA.bind(this.onNegativeButtonClick, this));
 
-    this.buttonFrame.append( this.positiveButton).append( this.negativeButton );
+    this.buttonFrame.append(this.positiveButton).append(this.negativeButton);
 
-    this.dialogFrame .append( this.dialogContent );
-    this.dialogFrame .append( this.buttonFrame );
+    this.dialogFrame.append(this.dialogContent);
+    this.dialogFrame.append(this.buttonFrame);
 
-    return this.dialogFrame ;
+    return this.dialogFrame;
   },
-  onPositiveButtonClick : function()
-  {
+  onPositiveButtonClick: function () {
     this.hide();
-    this.fire( 'positive' );
+    this.fire('positive');
   },
-  onNegativeButtonClick : function()
-  {
+  onNegativeButtonClick: function () {
     this.hide();
-    this.fire( 'negative' );
+    this.fire('negative');
   }
-} );
+});
 
 /************************************************************************
   L.Class
@@ -20583,33 +19095,32 @@ GSI.Modal.Dialog = GSI.Modal.BaseClass.extend( {
   - GSI.Modal.Dialog
     - GSI.Modal.confirmDialog（免責事項選択ダイアログ）
 ************************************************************************/
-GSI.Modal.confirmDialog = GSI.Modal.Dialog.extend( {
-  options : {
-    positiveButtonText : 'ＯＫ',
-    nagativeButtonText : 'キャンセル',
-    title : "免責事項・ご利用上の注意"
-    ,message : ""
-    ,width : 460
+GSI.Modal.confirmDialog = GSI.Modal.Dialog.extend({
+  options: {
+    positiveButtonText: 'ＯＫ',
+    nagativeButtonText: 'キャンセル',
+    title: "免責事項・ご利用上の注意"
+    , message: ""
+    , width: 460
   },
-  getContent : function()
-  {
-    var frame = $( '<div>' ).css({'height':'280px','overflow':'auto'}).addClass( 'gsi_modal_dialog_content' );
-    var inframe = $('<div>').css({'margin':'10px'});
-    var liframe1 = $('<div>').css({'margin':'5px 18px 0px 0px'});
-    var liframe2 = $('<div>').css({'margin':'0px 18px 0px 0px'});
-    var frmct = $( '<div>' ).html(GSI.TEXT.EVAC.CONFIRMTOP);
+  getContent: function () {
+    var frame = $('<div>').css({ 'height': '280px', 'overflow': 'auto' }).addClass('gsi_modal_dialog_content');
+    var inframe = $('<div>').css({ 'margin': '10px' });
+    var liframe1 = $('<div>').css({ 'margin': '5px 18px 0px 0px' });
+    var liframe2 = $('<div>').css({ 'margin': '0px 18px 0px 0px' });
+    var frmct = $('<div>').html(GSI.TEXT.EVAC.CONFIRMTOP);
     var uol = $('<ol>');
-    var li1 = $('<li>').attr({"value":"1"}).html(GSI.TEXT.EVAC.CONFIRMITEM1);
-    var li2 = $('<li>').attr({"value":"2"}).html(GSI.TEXT.EVAC.CONFIRMITEM2);
-    var li3 = $('<li>').attr({"value":"3"}).html(GSI.TEXT.EVAC.CONFIRMITEM3);
-    var atten = $( '<div>' ).html(GSI.TEXT.EVAC.ATTENTION);
+    var li1 = $('<li>').attr({ "value": "1" }).html(GSI.TEXT.EVAC.CONFIRMITEM1);
+    var li2 = $('<li>').attr({ "value": "2" }).html(GSI.TEXT.EVAC.CONFIRMITEM2);
+    var li3 = $('<li>').attr({ "value": "3" }).html(GSI.TEXT.EVAC.CONFIRMITEM3);
+    var atten = $('<div>').html(GSI.TEXT.EVAC.ATTENTION);
 
     var dol = $('<ol>');
-    var dli1 = $('<li>').attr({"value":"1"}).html(GSI.TEXT.EVAC.DATAITEM1);
-    var dli2 = $('<li>').attr({"value":"2"}).html(GSI.TEXT.EVAC.DATAITEM2);
-    var dli3 = $('<li>').attr({"value":"3"}).html(GSI.TEXT.EVAC.DATAITEM3);
-    var dli4 = $('<li>').attr({"value":"4"}).html(GSI.TEXT.EVAC.DATAITEM5);
-    var datten = $( '<div>' ).html(GSI.TEXT.EVAC.ATTENTIONDATA);
+    var dli1 = $('<li>').attr({ "value": "1" }).html(GSI.TEXT.EVAC.DATAITEM1);
+    var dli2 = $('<li>').attr({ "value": "2" }).html(GSI.TEXT.EVAC.DATAITEM2);
+    var dli3 = $('<li>').attr({ "value": "3" }).html(GSI.TEXT.EVAC.DATAITEM3);
+    var dli4 = $('<li>').attr({ "value": "4" }).html(GSI.TEXT.EVAC.DATAITEM5);
+    var datten = $('<div>').html(GSI.TEXT.EVAC.ATTENTIONDATA);
 
     uol.append(li1);
     uol.append(li2);
@@ -20629,26 +19140,24 @@ GSI.Modal.confirmDialog = GSI.Modal.Dialog.extend( {
     inframe.append(liframe2);
 
     frame.append(inframe);
-    var titleFrame = $( '<div>' ).addClass('gsi_modal_dialog_header').html( this.options.title );
+    var titleFrame = $('<div>').addClass('gsi_modal_dialog_header').html(this.options.title);
 
-    var dialogFrame = GSI.Modal.Dialog.prototype.getContent.call( this );
+    var dialogFrame = GSI.Modal.Dialog.prototype.getContent.call(this);
 
-    this.dialogContent.append( titleFrame );
-    this.dialogContent.append( frame );
+    this.dialogContent.append(titleFrame);
+    this.dialogContent.append(frame);
 
-    return dialogFrame ;
+    return dialogFrame;
   },
-  onPositiveButtonClick : function()
-  {
+  onPositiveButtonClick: function () {
     this.hide();
     this.fire('positive');
   },
-  onNegativeButtonClick : function()
-  {
+  onNegativeButtonClick: function () {
     this.hide();
-    this.fire( 'negative' );
+    this.fire('negative');
   }
-} );
+});
 
 
 /************************************************************************
@@ -20656,68 +19165,52 @@ GSI.Modal.confirmDialog = GSI.Modal.Dialog.extend( {
 - GSI.EvacuationManager
 ************************************************************************/
 GSI.EvacuationManager = MA.Class.extend({
-  initialize : function( queryParams )
-  {
+  initialize: function (queryParams) {
     this._isVisibleDialog = false;
-    if (queryParams)
-    {
+    if (queryParams) {
       this._queryparams = null;
       this._queryParams = queryParams;
     }
   },
-  Reset : function( qp )
-  {
-    this.initialize( qp );
+  Reset: function (qp) {
+    this.initialize(qp);
   },
-  Out : function()
-  {
+  Out: function () {
     return this._queryParams;
   },
-  accept : function()
-  {
+  accept: function () {
     var d;
-    
-    if (this._queryParams.params["disp"])
-    {
+
+    if (this._queryParams.params["disp"]) {
       d = this._queryParams.params["disp"];
     }
 
     var ls, ly, lcd;
-    if(this._queryParams.params["ls"])
-    {
+    if (this._queryParams.params["ls"]) {
       ls = this._queryParams.params["ls"].split("|");
       GSI.Utils.rpad(d, "0", ls.length);
     }
     ly = this._queryParams._layers;
     lcd = this._queryParams.params["lcd"];
-    if (ls)
-    {
-      if (d.charAt(ls.length-1) == "1")
-      {
+    if (ls) {
+      if (d.charAt(ls.length - 1) == "1") {
         this._isVisibleDialog = true;
       }
 
-      if ( lcd && lcd.indexOf(CONFIG.layerEvacuationHeader) >= 0 )
-      {
-        for(var i = ls.length - 1; i >= 0; i--)
-        {
-          if ( (lcd != ls[i]) && ls[i].indexOf(CONFIG.layerEvacuationHeader) >= 0 )
-          {
-            ls.splice(i,1);
-            this._isVisibleDialog = (this._isVisibleDialog || (d.charAt(i) == "1") )
+      if (lcd && lcd.indexOf(CONFIG.layerEvacuationHeader) >= 0) {
+        for (var i = ls.length - 1; i >= 0; i--) {
+          if ((lcd != ls[i]) && ls[i].indexOf(CONFIG.layerEvacuationHeader) >= 0) {
+            ls.splice(i, 1);
+            this._isVisibleDialog = (this._isVisibleDialog || (d.charAt(i) == "1"))
           }
         }
       }
-      else
-      {
+      else {
         var lsct = 0;
-        for(var i = ls.length - 1; i >= 0; i--)
-        {
-          if (ls[i].indexOf(CONFIG.layerEvacuationHeader)>=0)
-          {
-            if (lsct > 0)
-            {
-              ls.splice(i,1);
+        for (var i = ls.length - 1; i >= 0; i--) {
+          if (ls[i].indexOf(CONFIG.layerEvacuationHeader) >= 0) {
+            if (lsct > 0) {
+              ls.splice(i, 1);
             }
             lsct++;
           }
@@ -20727,75 +19220,57 @@ GSI.EvacuationManager = MA.Class.extend({
     }
 
     var dct = 0;
-    if (ly)
-    {
-      for(var i = ly.length - 1; i >= 0; i--)
-      {
-        if ( lcd && lcd.indexOf(CONFIG.layerEvacuationHeader) >= 0 )
-        {
-          if ((lcd != ly[i].id) && ly[i].id.indexOf(CONFIG.layerEvacuationHeader) >= 0 )
-          {
-            ly.splice(i,1);
+    if (ly) {
+      for (var i = ly.length - 1; i >= 0; i--) {
+        if (lcd && lcd.indexOf(CONFIG.layerEvacuationHeader) >= 0) {
+          if ((lcd != ly[i].id) && ly[i].id.indexOf(CONFIG.layerEvacuationHeader) >= 0) {
+            ly.splice(i, 1);
           }
         }
-        else
-        {
-          if ( ly[i].id.indexOf(CONFIG.layerEvacuationHeader) >= 0 )
-          {
-            if (dct > 0)
-            {
-              ly.splice(i,1);
+        else {
+          if (ly[i].id.indexOf(CONFIG.layerEvacuationHeader) >= 0) {
+            if (dct > 0) {
+              ly.splice(i, 1);
             }
             dct++;
           }
-        }			
+        }
       }
     }
   },
-  cancel : function()
-  {
+  cancel: function () {
     var ls, ly, lcd;
-    if(this._queryParams.params["ls"])
-    {
+    if (this._queryParams.params["ls"]) {
       ls = this._queryParams.params["ls"].split("|");
     }
     ly = this._queryParams._layers;
     lcd = this._queryParams.params["lcd"];
 
-    if (ls)
-    {
-      for(var i = ls.length - 1; i >= 0; i--)
-      {
-        if (ls[i].indexOf(CONFIG.layerEvacuationHeader)>=0)
-        {
-          ls.splice(i,1);
+    if (ls) {
+      for (var i = ls.length - 1; i >= 0; i--) {
+        if (ls[i].indexOf(CONFIG.layerEvacuationHeader) >= 0) {
+          ls.splice(i, 1);
         }
       }
       this._queryParams.params["ls"] = ls.join('|');
     }
 
-    if (lcd)
-    {
-      if (lcd.indexOf(CONFIG.layerEvacuationHeader)>=0)
-      {
-        this._queryParams.params["lcd"]=null;
+    if (lcd) {
+      if (lcd.indexOf(CONFIG.layerEvacuationHeader) >= 0) {
+        this._queryParams.params["lcd"] = null;
       }
     }
 
-    if (ly)
-    {
-      for(var i = ly.length - 1; i >= 0; i--)
-      {
-        if (ly[i].id.indexOf(CONFIG.layerEvacuationHeader)>=0)
-        {
-          ly.splice(i,1);
+    if (ly) {
+      for (var i = ly.length - 1; i >= 0; i--) {
+        if (ly[i].id.indexOf(CONFIG.layerEvacuationHeader) >= 0) {
+          ly.splice(i, 1);
         }
       }
     }
     this._isVisibleDialog = false;
   },
-  isVisibleDialog : function()
-  {
+  isVisibleDialog: function () {
     return this._isVisibleDialog;
   }
 });
@@ -20806,77 +19281,64 @@ GSI.EvacuationManager = MA.Class.extend({
   L.Class
 - GSI.EvacDialog
 ************************************************************************/
-GSI.EvacDialog = MA.Control.extend( {
-  options : {
+GSI.EvacDialog = MA.Control.extend({
+  options: {
     width: '310px',
-    position:'bottomright',
+    position: 'bottomright',
   },
-  initialize : function()
-  {
+  initialize: function () {
     this._map = GSI.GLOBALS.map;
     MA.Util.setOptions(this, this.options);
     this._isShow = false;
-    if (!this._container)
-    {
-      $(document.body).append( this.onAdd(GSI.GLOBALS.map) );
+    if (!this._container) {
+      $(document.body).append(this.onAdd(GSI.GLOBALS.map));
     }
   },
-  show : function ()
-  {
-    if (this._isShow == false)
-    {
-      if (!this._map)
-      {
+  show: function () {
+    if (this._isShow == false) {
+      if (!this._map) {
         this._map = GSI.GLOBALS.map;
       }
       this._isShow = true;
     }
-    $(this._container).css({'display':'block'});
+    $(this._container).css({ 'display': 'block' });
   },
-  hide : function ()
-  {
-    if (this._isShow == true)
-    {
-      $(this._container).css({'display':'none'});
+  hide: function () {
+    if (this._isShow == true) {
+      $(this._container).css({ 'display': 'none' });
     }
     this._isShow = false;
   },
-  onAdd: function (map)
-  {
+  onAdd: function (map) {
     this._map = map;
     this._container = MA.DomUtil.create('div', 'evac_dialog');
     //content
-    var frame =$('<div>').addClass('evac_dialog_content').html(this.createContent());
-    
-    $(this._container).css({'opacity':'0.7','right':'10px','bottom':'10px','position':'absolute','display':'none'}).append(frame);
+    var frame = $('<div>').addClass('evac_dialog_content').html(this.createContent());
+
+    $(this._container).css({ 'opacity': '0.7', 'right': '10px', 'bottom': '10px', 'position': 'absolute', 'display': 'none' }).append(frame);
 
     return this._container
   },
-  createContent : function()
-  {
+  createContent: function () {
     return GSI.TEXT.EVAC.KIYAKU + "<br>" + GSI.TEXT.EVAC.KIYAKULINK;
-    }
-} );
+  }
+});
 
 
-GSI.Utils.rpad = function(src, letter, num)
-{
+GSI.Utils.rpad = function (src, letter, num) {
   var dst = src;
   var len = num - src.length;
-  if (dst) dst="";
-  for(var i=0; i < len; i++)
-  {
-    dst+=letter;
+  if (dst) dst = "";
+  for (var i = 0; i < len; i++) {
+    dst += letter;
   }
   return dst;
 };
-GSI.Utils.lpad = function(src, letter, num)
-{
+GSI.Utils.lpad = function (src, letter, num) {
   var dst = "";
   var len = num - src.length;
-  for(var i=0; i<len; i++)
-  {
-    dst+=letter;
+  for (var i = 0; i < len; i++) {
+    dst += letter;
   }
   return dst + src;
 };
@@ -20896,81 +19358,73 @@ GSI.Utils.lpad = function(src, letter, num)
 *******************************************************/
 
 
-GSI.EditReliefDialog = GSI.Dialog.extend( {
-  
-  options : {
-    title : "自分で作る色別標高図",
-    width : "300px",
-    transparentGradate : false
+GSI.EditReliefDialog = GSI.Dialog.extend({
+
+  options: {
+    title: "自分で作る色別標高図",
+    width: "300px",
+    transparentGradate: false
   },
-  
-  initialize : function( map, mapLayerList, options)
-  {
+
+  initialize: function (map, mapLayerList, options) {
     this._map = map;
     this._mapLayerList = mapLayerList;
-    GSI.Dialog.prototype.initialize.call(this,  options);
+    GSI.Dialog.prototype.initialize.call(this, options);
   },
-  
-  
-  
-  show : function ()
-  {
-    if ( !this.getVisible() )
-    {
-      if ( this._newDataView ) this._newDataView.hide();
-      if ( this._loadDataView ) this._loadDataView.hide();
-      
+
+
+
+  show: function () {
+    if (!this.getVisible()) {
+      if (this._newDataView) this._newDataView.hide();
+      if (this._loadDataView) this._loadDataView.hide();
+
       var data = this._mapLayerList.getElevationData();
-      if (data && !data["default"] )
-      {
+      if (data && !data["default"]) {
         this._refreshReriefEdit(data, true);
       }
       else
         this._showNewDataView();
     }
-    
+
     GSI.Dialog.prototype.show.call(this);
-    
+
   },
-  afterShow : function()
-  {
+  afterShow: function () {
     this._refreshGradationBar();
   },
-  
-  hide : function ()
-  {
+
+  hide: function () {
     GSI.Dialog.prototype.hide.call(this);
   },
-  createHeader : function()
-  {
-    this.title = $( '<div>' ).html( this.options.title );
+  createHeader: function () {
+    this.title = $('<div>').html(this.options.title);
 
-    return $( '<div>' ).append( this.title );
+    return $('<div>').append(this.title);
   },
-  createContent : function()
-  {
-    this.frame = $( '<div>' ).addClass("gsi_editreliefdialog_content");
-    
-    
+  createContent: function () {
+    this.frame = $('<div>').addClass("gsi_editreliefdialog_content");
+
+
     var controlFrame = this._createControl();
-    this.frame.append( controlFrame );
-    
-    
-    
-    var editFrame = $( "<div>" ).css({"margin":"4px"});
-    
+    this.frame.append(controlFrame);
+
+
+
+    var editFrame = $("<div>").css({ "margin": "4px" });
+
 
     var orderFrame = $("<div>"); //.css({ "padding": "4px" });
-    
-    if ( !GSI.EditReliefDialog._labelIdInc ) GSI.EditReliefDialog._labelIdInc = 0;
-    
-    
-    
+
+    if (!GSI.EditReliefDialog._labelIdInc) GSI.EditReliefDialog._labelIdInc = 0;
+
+
+
     // 降順チェック
-    
+
     GSI.EditReliefDialog._labelIdInc++;
     var id = "gsi_editreliefdialog_ordercheck" + GSI.EditReliefDialog._labelIdInc;
-    
+
     this._orderDescCheck = $("<input>").attr({ "id": id, "type": "checkbox" }).addClass("normalcheck");
 
     this._orderDescCheck.click(MA.bind(function () {
@@ -20982,67 +19436,67 @@ GSI.EditReliefDialog = GSI.Dialog.extend( {
     var orderLabel = $("<label>").attr({ "for": id }).html("降順に並べる");
     orderFrame.append(this._orderDescCheck).append(orderLabel);
 
-    
+
     // カラーパターン選択
 
-    this._colorPatternSelect = $("<a>").attr({"href":"javascript:void(0);"})
+    this._colorPatternSelect = $("<a>").attr({ "href": "javascript:void(0);" })
       .html("カラーパターン選択").addClass("gsi_editreliefdialog_patternselect");
-    this._colorPatternSelect.on( "click", MA.bind(this._onColorPatternSelectClick, this));
-    orderFrame.append( this._colorPatternSelect);
+    this._colorPatternSelect.on("click", MA.bind(this._onColorPatternSelectClick, this));
+    orderFrame.append(this._colorPatternSelect);
 
     editFrame.append(orderFrame);
 
 
 
     // リスト
-    this._scrollFrame = $( "<div>" ).addClass("scroll_frame");
-    editFrame.append( this._scrollFrame );
-    
-    this.frame.append( editFrame );
-    
-    
-    // 単位
-    this.frame.append( $("<div>").css({"padding-left":"30px","font-size": "9.5pt"}).html("(単位:m)") );
-    
+    this._scrollFrame = $("<div>").addClass("scroll_frame");
+    editFrame.append(this._scrollFrame);
 
-    var optionFrame = $( "<div>" ).css({"text-align":"left","margin":"4px"});
-    
+    this.frame.append(editFrame);
+
+
+    // 単位
+    this.frame.append($("<div>").css({ "padding-left": "30px", "font-size": "9.5pt" }).html("(単位:m)"));
+
+
+    var optionFrame = $("<div>").css({ "text-align": "left", "margin": "4px" });
+
     var label = null;
     var div = null;
-    
-    div = $( "<div>" ).addClass("gsi_editreliefdialog_options");
-    this._gradateInput = $( "<input>" )
-      .click( MA.bind( function(){
+
+    div = $("<div>").addClass("gsi_editreliefdialog_options");
+    this._gradateInput = $("<input>")
+      .click(MA.bind(function () {
         this._refreshGradationBar();
-      },this ) )
-      .addClass("normalcheck").attr({"id":"gsi_editreliefdialog_gradate","type":"checkbox"});
-    
-    label = $("<label>").attr({"for":"gsi_editreliefdialog_gradate"}).html("グラデーション").css({"font-size":"9pt"});
-    div.append( this._gradateInput).append( label );
-    optionFrame.append( div );
-    
-    this._useHillshademapInput = $( "<input>" ).addClass("normalcheck").attr({"id":"gsi_editreliefdialog_usehillshademap","type":"checkbox"});
-    label = $("<label>").attr({"for":"gsi_editreliefdialog_usehillshademap"}).html("陰影(日本周辺)").css({"font-size":"9pt"});
-    div.append( this._useHillshademapInput).append( label );
-    optionFrame.append( div );
-    
-    
-    this.frame.append( optionFrame );
-    
-    
-      // 地図に反映
-    var reflectionFrame = $( "<div>" ).css({"padding":"4px", "width":"100%"});
-    a = $( "<a>" ).addClass("normalbutton").css({"text-align":"center","width":"100%","padding-left":"7px","padding-right":"7px"}).attr( {"href":"javascript:void(0);"} ).html( "上記の内容で地図に反映" );
-    
-    a.click( MA.bind( function() {
+      }, this))
+      .addClass("normalcheck").attr({ "id": "gsi_editreliefdialog_gradate", "type": "checkbox" });
+
+    label = $("<label>").attr({ "for": "gsi_editreliefdialog_gradate" }).html("グラデーション").css({ "font-size": "9pt" });
+    div.append(this._gradateInput).append(label);
+    optionFrame.append(div);
+
+    this._useHillshademapInput = $("<input>").addClass("normalcheck").attr({ "id": "gsi_editreliefdialog_usehillshademap", "type": "checkbox" });
+    label = $("<label>").attr({ "for": "gsi_editreliefdialog_usehillshademap" }).html("陰影(日本周辺)").css({ "font-size": "9pt" });
+    div.append(this._useHillshademapInput).append(label);
+    optionFrame.append(div);
+
+
+    this.frame.append(optionFrame);
+
+
+    // 地図に反映
+    var reflectionFrame = $("<div>").css({ "padding": "4px", "width": "100%" });
+    a = $("<a>").addClass("normalbutton").css({ "text-align": "center", "width": "100%", "padding-left": "7px", "padding-right": "7px" }).attr({ "href": "javascript:void(0);" }).html("上記の内容で地図に反映");
+
+    a.click(MA.bind(function () {
       this._reflection();
       var isshow = false;
-      for(var i=0; i < this._mapLayerList.tileList.length; i++){
+      for (var i = 0; i < this._mapLayerList.tileList.length; i++) {
         var t = this._mapLayerList.tileList[i];
-        if (t.id == "relief_free"){
+        if (t.id == "relief_free") {
           //自分で作る色別標高図が非表示の時だけ起動
-          if (t._visibleInfo && t._visibleInfo._isHidden){
-            if (t._visibleInfo._isHidden == true){
+          if (t._visibleInfo && t._visibleInfo._isHidden) {
+            if (t._visibleInfo._isHidden == true) {
               GSI.GLOBALS.viewListDialog.showReliefFree(t);
               GSI.GLOBALS.viewListDialog.onMapLayerListChange();
               isshow = true;
@@ -21052,113 +19506,113 @@ GSI.EditReliefDialog = GSI.Dialog.extend( {
         }
       }
 
-      if (isshow == false){
-        if (this.options.listItem && this.options.listObj){
-          if (!this.options.listObj._visibleinfo){
+      if (isshow == false) {
+        if (this.options.listItem && this.options.listObj) {
+          if (!this.options.listObj._visibleinfo) {
             GSI.GLOBALS.layerTreeDialog.selectReliefFree(this.options.listItem, this.options.listObj);
           }
         }
       }
 
-    },this ) );
-    
-    reflectionFrame.append( a );
-    
-    this.frame.append( reflectionFrame );
-    
+    }, this));
+
+    reflectionFrame.append(a);
+
+    this.frame.append(reflectionFrame);
+
     return this.frame;
   },
-  
-  
-  _onColorPatternSelectClick : function() {
-    if ( !this._colorPatternSelectPanel ) {
-      this._colorPatternSelectPanel = $( "<div>").addClass("gsi_editreliefdialog_patternselectpanel").hide();
-      
+
+
+  _onColorPatternSelectClick: function () {
+    if (!this._colorPatternSelectPanel) {
+      this._colorPatternSelectPanel = $("<div>").addClass("gsi_editreliefdialog_patternselectpanel").hide();
+
       var ul = $("<ul>");
-      
-      for( var i=0; i<CONFIG.FREERELIEF_COLORPATTERNS.length; i++ ) {
+
+      for (var i = 0; i < CONFIG.FREERELIEF_COLORPATTERNS.length; i++) {
         var pattern = CONFIG.FREERELIEF_COLORPATTERNS[i];
-        
-        var li = $( "<li>");
-        var a = $( "<a>").attr({"href":"javascript:void(0);"}).on("click",MA.bind(function(pattern){
+
+        var li = $("<li>");
+        var a = $("<a>").attr({ "href": "javascript:void(0);" }).on("click", MA.bind(function (pattern) {
           this._hideColorPatternSelectPanel();
           this._setColorPattern(pattern);
-        },this, pattern));
+        }, this, pattern));
         var canvas = $("<canvas>");
         canvas[0].width = 200;
         canvas[0].height = 10;
         this._drawPatternSample(canvas[0], pattern, 200, 10);
 
-        a.append( canvas );
+        a.append(canvas);
         li.append(a);
         ul.append(li);
       }
-      this._colorPatternSelectPanel.append( ul );
-      
-    }
-    $("body").append( this._colorPatternSelectPanel );
+      this._colorPatternSelectPanel.append(ul);
 
-    if ( !this._colorPatternSelectPanelHideCheckHandler) {
-      this._colorPatternSelectPanelHideCheckHandler = MA.bind( function(evt){
+    }
+    $("body").append(this._colorPatternSelectPanel);
+
+    if (!this._colorPatternSelectPanelHideCheckHandler) {
+      this._colorPatternSelectPanelHideCheckHandler = MA.bind(function (evt) {
         var target = evt.target;
-        while( target ) {
-          if ( target == this._colorPatternSelectPanel[0]) {
+        while (target) {
+          if (target == this._colorPatternSelectPanel[0]) {
             return;
           }
           target = target.parentNode;
         }
         this._hideColorPatternSelectPanel();
-      }, this );
-      $("body").on("mousedown", this._colorPatternSelectPanelHideCheckHandler );
+      }, this);
+      $("body").on("mousedown", this._colorPatternSelectPanelHideCheckHandler);
     }
 
     var pos = this._colorPatternSelect.offset();
 
     this._colorPatternSelectPanel.css({
-      "left" : ( pos.left   ) + "px",
-      "top" : ( pos.top + this._colorPatternSelect.outerHeight() ) + "px"
+      "left": (pos.left) + "px",
+      "top": (pos.top + this._colorPatternSelect.outerHeight()) + "px"
     }).slideDown(200);
   },
-  _hideColorPatternSelectPanel : function() {
-    
-    if ( this._colorPatternSelectPanelHideCheckHandler) {
-      $("body").off("mousedown", this._colorPatternSelectPanelHideCheckHandler );
+  _hideColorPatternSelectPanel: function () {
+
+    if (this._colorPatternSelectPanelHideCheckHandler) {
+      $("body").off("mousedown", this._colorPatternSelectPanelHideCheckHandler);
       this._colorPatternSelectPanelHideCheckHandler = null;
     }
-    if ( this._colorPatternSelectPanel ) {
+    if (this._colorPatternSelectPanel) {
       this._colorPatternSelectPanel.hide();
       this._colorPatternSelectPanel.remove();
       this._colorPatternSelectPanel = null;
-    
+
     }
   },
-  _drawPatternSample : function(canvas, pattern, w,h) {
+  _drawPatternSample: function (canvas, pattern, w, h) {
     var ctx = canvas.getContext("2d");
-    ctx.clearRect(0,0,w,h);
+    ctx.clearRect(0, 0, w, h);
     ctx.beginPath();
     var imageData = ctx.createImageData(w, h);
 
     var colors = pattern.colors;
 
-    var blockWidth = Math.ceil( w / (colors.length-1) ); 
-    
-    for( var i=0; i<colors.length-1; i++ ) {
-      
+    var blockWidth = Math.ceil(w / (colors.length - 1));
+
+    for (var i = 0; i < colors.length - 1; i++) {
+
       var color1 = colors[i];
-      var color2 = colors[i+1];
-      var startX = i*blockWidth;
-      for( var x = startX ; x<startX+blockWidth && x<w; x++ ) {
-        var p = (x-startX)/blockWidth;
-        var r = Math.round( color1.r + ( color2.r - color1.r) * p );
-        var g = Math.round( color1.g + ( color2.g - color1.g) * p );
-        var b = Math.round( color1.b + ( color2.b - color1.b) * p );
-        for( var y=0; y<h; y++ ) {
+      var color2 = colors[i + 1];
+      var startX = i * blockWidth;
+      for (var x = startX; x < startX + blockWidth && x < w; x++) {
+        var p = (x - startX) / blockWidth;
+        var r = Math.round(color1.r + (color2.r - color1.r) * p);
+        var g = Math.round(color1.g + (color2.g - color1.g) * p);
+        var b = Math.round(color1.b + (color2.b - color1.b) * p);
+        for (var y = 0; y < h; y++) {
           var idx = (y * w * 4) + (x * 4);
           imageData.data[idx] = r;
-          imageData.data[idx+1] = g
-          imageData.data[idx+2] = b;
-          imageData.data[idx+3] = 255; 
-          
+          imageData.data[idx + 1] = g
+          imageData.data[idx + 2] = b;
+          imageData.data[idx + 3] = 255;
+
         }
       }
     }
@@ -21179,21 +19633,21 @@ GSI.EditReliefDialog = GSI.Dialog.extend( {
       }
     }
     */
-    ctx.putImageData( imageData,0,0 );
+    ctx.putImageData(imageData, 0, 0);
   },
 
-  _setColorPattern : function(pattern) {
+  _setColorPattern: function (pattern) {
     var colorSelects = this._scrollFrame.find("a.color");
-    var desc = this._orderDescCheck.is(":checked" );
-    console.log( colorSelects.length, pattern );
+    var desc = this._orderDescCheck.is(":checked");
+    console.log(colorSelects.length, pattern);
     var colors = this._makeColorsFromColorPattern(colorSelects.length, pattern);
-    console.log( colors );
+    console.log(colors);
 
-    for( var i=0; i<colorSelects.length; i++ ) {
-      var idx = ( desc ? colorSelects.length -i - 1 : i );
-      var a = $( colorSelects[idx] );
+    for (var i = 0; i < colorSelects.length; i++) {
+      var idx = (desc ? colorSelects.length - i - 1 : i);
+      var a = $(colorSelects[idx]);
 
-    //  var color =;
+      //  var color =;
 
 
       /*
@@ -21203,26 +19657,26 @@ GSI.EditReliefDialog = GSI.Dialog.extend( {
       var b = Math.round( pattern.begin.b + ( pattern.end.b - pattern.begin.b) * p );
       var color = this._rgbToColor({r:r,g:g,b:b});
       */
-    var color = this._rgbToColor(colors[idx]);
+      var color = this._rgbToColor(colors[idx]);
 
-      a.data({"color": color}).css({"background":color});
+      a.data({ "color": color }).css({ "background": color });
 
     }
     this._refreshGradationBar();
   },
 
-  _makeColorsFromColorPattern : function(len, pattern) {
+  _makeColorsFromColorPattern: function (len, pattern) {
 
-    var colors = $.extend(true,[], pattern.colors );
+    var colors = $.extend(true, [], pattern.colors);
 
-    if ( len <= colors.length ) {
-    // 少ない場合
+    if (len <= colors.length) {
+      // 少ない場合
       var colorsLength = colors.length;
-      for( var i=0; i<colorsLength - len; i++ ) {
-        if ( i % 2 == 0 ) {
-          colors.splice( colors.length - 2,1 );
+      for (var i = 0; i < colorsLength - len; i++) {
+        if (i % 2 == 0) {
+          colors.splice(colors.length - 2, 1);
         } else {
-          colors.splice( 1,1 );
+          colors.splice(1, 1);
         }
       }
       return colors;
@@ -21230,61 +19684,60 @@ GSI.EditReliefDialog = GSI.Dialog.extend( {
 
     // 多い場合は補完
 
-    var colorLength = colors.length-1;
-    var splitNum = Math.floor(len / colorLength );
-    var lastIndex = (colorLength) - ( len % colorLength );
+    var colorLength = colors.length - 1;
+    var splitNum = Math.floor(len / colorLength);
+    var lastIndex = (colorLength) - (len % colorLength);
 
-    console.log( colorLength, splitNum, lastIndex);
+    console.log(colorLength, splitNum, lastIndex);
 
 
-    var splitColor = function ( c1, c2, num) {
+    var splitColor = function (c1, c2, num) {
       var result = [];
       // 
-      for( var i=0; i<num; i++) {
+      for (var i = 0; i < num; i++) {
 
-        var p = (i+1) / (num+1);
+        var p = (i + 1) / (num + 1);
         var color = {
-          r : Math.round( c1.r + ( c2.r - c1.r) * p ),
-          g : Math.round( c1.g + ( c2.g - c1.g) * p ),
-          b : Math.round( c1.b + ( c2.b - c1.b) * p ),
+          r: Math.round(c1.r + (c2.r - c1.r) * p),
+          g: Math.round(c1.g + (c2.g - c1.g) * p),
+          b: Math.round(c1.b + (c2.b - c1.b) * p),
         };
 
-        result.push( color );
+        result.push(color);
       }
       return result;
     };
-    
+
     var result = [];
 
-    for( var i=colorLength-1; i>=0; i-- ) {
+    for (var i = colorLength - 1; i >= 0; i--) {
       var sNum = splitNum;
-      if ( lastIndex == colorLength) {
+      if (lastIndex == colorLength) {
         sNum--;
-        if ( i < 1 ) sNum --;
+        if (i < 1) sNum--;
       } else {
-        if ( i < lastIndex+1) {
-          sNum --;
+        if (i < lastIndex + 1) {
+          sNum--;
         }
       }
-      
-      result.unshift( colors[i+1]);
-      if ( sNum <= 0 ) continue;
-      console.log( "分割位置", (i+1) + "~" + (i), "分割数", sNum);
-      var splittedColors = splitColor(colors[i], colors[i+1], sNum);
-      for( var j=splittedColors.length-1; j>=0; j-- ) {
-        result.unshift( splittedColors[j]);
+
+      result.unshift(colors[i + 1]);
+      if (sNum <= 0) continue;
+      console.log("分割位置", (i + 1) + "~" + (i), "分割数", sNum);
+      var splittedColors = splitColor(colors[i], colors[i + 1], sNum);
+      for (var j = splittedColors.length - 1; j >= 0; j--) {
+        result.unshift(splittedColors[j]);
       }
     }
-    result.unshift( colors[0]);
+    result.unshift(colors[0]);
 
-    console.log( result );
+    console.log(result);
     return result;
   },
-  
-  _createControl : function()
-  {
-    var frame = $( '<div>' ).addClass("gsi_editreliefdialog_control_frame");
-    
+
+  _createControl: function () {
+    var frame = $('<div>').addClass("gsi_editreliefdialog_control_frame");
+
     var a = null;
     var img = null;
     /*
@@ -21300,93 +19753,92 @@ GSI.EditReliefDialog = GSI.Dialog.extend( {
     a.append( img );
     frame.append( a );
     */
-    
-    
+
+
     // 読込ボタン
-    a = $( "<a>" ).attr( {"href":"javascript:void(0);"} );
-    img = $( "<img>" ).css({"width":"24px","height":"24px"})
-      .attr( {
-        "src":"image/elevation/icon-open.png",
-        "title":"スタイルをファイルから読み込み"
-      } );
-    
-    a.click( MA.bind( this._showLoadView, this ) );
-    a.append( img );
-    frame.append( a );
-    
+    a = $("<a>").attr({ "href": "javascript:void(0);" });
+    img = $("<img>").css({ "width": "24px", "height": "24px" })
+      .attr({
+        "src": "image/elevation/icon-open.png",
+        "title": "スタイルをファイルから読み込み"
+      });
+
+    a.click(MA.bind(this._showLoadView, this));
+    a.append(img);
+    frame.append(a);
+
     // 保存ボタン
-    a = $( "<a>" ).attr( {"href":"javascript:void(0);"} );
-    img = $( "<img>" )
-      .attr( {
-        "src":"image/elevation/icon-save.png",
-        "title":"スタイルをファイルに保存"
-      } );
-    
-    a.click( MA.bind( this._save, this ) );
-    a.append( img );
-    frame.append( a );
-    
-    
+    a = $("<a>").attr({ "href": "javascript:void(0);" });
+    img = $("<img>")
+      .attr({
+        "src": "image/elevation/icon-save.png",
+        "title": "スタイルをファイルに保存"
+      });
+
+    a.click(MA.bind(this._save, this));
+    a.append(img);
+    frame.append(a);
+
+
     // 新しく作成
-    a = $( "<a>" ).attr( {"href":"javascript:void(0);"} );
-    
+    a = $("<a>").attr({ "href": "javascript:void(0);" });
+
     img = $("<img>").css({ "width": "24px", "height": "24px" })
       .attr({
         "src": "image/elevation/icon-auto.png",
-        "title":"表示範囲の最低標高と最高標高から自動で色分けします"
+        "title": "表示範囲の最低標高と最高標高から自動で色分けします"
       });
     a.append(img);
-    a.click( MA.bind( function() {
+    a.click(MA.bind(function () {
       //this._showNewDataView();
       this._createAutoNewData();
-    },this ) );
-    frame.append( a );
-    
+    }, this));
+    frame.append(a);
+
     // 低い位置
-    a = $( "<a>" ).attr( {"href":"javascript:void(0);"} );
+    a = $("<a>").attr({ "href": "javascript:void(0);" });
     img = $("<img>").css({ "width": "24px", "height": "24px" })
       .attr({
         "src": "image/elevation/icon-paint-below.png",
-        "title":"画面中央の標高より低い範囲を自動で着色します"
+        "title": "画面中央の標高より低い範囲を自動で着色します"
       });
     a.append(img);
-    a.click( MA.bind( function() {
+    a.click(MA.bind(function () {
       //this._showNewDataView();
       this._createLowNewData();
-    },this ) );
-    frame.append( a );
-    
-    
+    }, this));
+    frame.append(a);
+
+
     // 初期状態に戻す
-    a = $( "<a>" ).attr( {"href":"javascript:void(0);"} );
-    
+    a = $("<a>").attr({ "href": "javascript:void(0);" });
+
     img = $("<img>").css({ "width": "24px", "height": "24px" })
       .attr({
         "src": "image/elevation/icon-reset.png",
-        "title":"初期状態に戻します"
+        "title": "初期状態に戻します"
       });
     a.append(img);
-    a.click( MA.bind( function() {
-      if ( window.confirm("編集中の色情報は削除されます。\n初期状態に戻してもよろしいですか？") )
-      {
+    a.click(MA.bind(function () {
+      if (window.confirm("編集中の色情報は削除されます。\n初期状態に戻してもよろしいですか？")) {
         var data = GSI.ReliefTileLayer.getElevationSampleData();
         this._refreshReriefEdit(data);
         this._reflection(data);
-        if ( this._newDataView ) this._newDataView.hide();
-        if ( this._loadDataView ) this._loadDataView.hide();
+        if (this._newDataView) this._newDataView.hide();
+        if (this._loadDataView) this._loadDataView.hide();
       }
-    },this ) );
-    frame.append( a );
-    
-    
-    
-    
-    
-    
-    
+    }, this));
+    frame.append(a);
+
+
+
+
+
+
+
     return frame;
   },
-  
+
   // 新規データ作成ビュー作成
   _showNewDataView: function () {
     if (!this._newDataView) {
@@ -21398,7 +19850,7 @@ GSI.EditReliefDialog = GSI.Dialog.extend( {
       var div = null;
       var label = null;
 
-      
+
       // 表示範囲の標高値から作成
 
       dt = $("<dt>");
@@ -21411,7 +19863,7 @@ GSI.EditReliefDialog = GSI.Dialog.extend( {
 
       dd = $("<dd>");
 
-      dd.append( $("<div>").html( "※表示している範囲の最高標高・最低標高から、自動で色分けします"));
+      dd.append($("<div>").html("※表示している範囲の最高標高・最低標高から、自動で色分けします"));
 
       dl.append(dd);
 
@@ -21573,10 +20025,10 @@ GSI.EditReliefDialog = GSI.Dialog.extend( {
 
       var btn = $("<a>").addClass("normalbutton").attr({ "href": "javascript:void(0);" }).html("上記の内容で作成");
       btn.click(MA.bind(function () {
-        if( this._newSplitRadio.is(":checked")) 
+        if (this._newSplitRadio.is(":checked"))
           this._createNewData();
         else
-        this._createAutoNewData();
+          this._createAutoNewData();
       }, this));
 
       buttonFrame.append(btn);
@@ -21609,13 +20061,13 @@ GSI.EditReliefDialog = GSI.Dialog.extend( {
   _createAutoNewData: function () {
 
     // loading
-    if ( !this._loadingPanel ) {
-      this._loadingPanel = $( "<div>").addClass("loadingpanel");
-      this._loadingMessage = $( "<div>").addClass("loadingmessage")
-        .append($("<img>").attr({"src":"./image/system/loading003.gif"}) )
+    if (!this._loadingPanel) {
+      this._loadingPanel = $("<div>").addClass("loadingpanel");
+      this._loadingMessage = $("<div>").addClass("loadingmessage")
+        .append($("<img>").attr({ "src": "./image/system/loading003.gif" }))
         .append("標高値を取得しています");
-      this.frame.append( this._loadingPanel);
-      this.frame.append( this._loadingMessage);
+      this.frame.append(this._loadingPanel);
+      this.frame.append(this._loadingMessage);
     }
 
 
@@ -21623,114 +20075,116 @@ GSI.EditReliefDialog = GSI.Dialog.extend( {
     var tileList = [];
 
 
-    
-    
+
+
     var mapContainerSize = {
-      width:$("#"+GLOBE.MAP.mapElementId ).outerWidth(),
-      height:$("#"+GLOBE.MAP.mapElementId ).outerHeight()
+      width: $("#" + GLOBE.MAP.mapElementId).outerWidth(),
+      height: $("#" + GLOBE.MAP.mapElementId).outerHeight()
     };
 
 
-    var latLng1 = GLOBE.MAP.windowPositionToLatLng( {x:0,y:0} );
-    var latLng2 = GLOBE.MAP.windowPositionToLatLng( {x:mapContainerSize.width,y:mapContainerSize.height} );
-    
+    var latLng1 = GLOBE.MAP.windowPositionToLatLng({ x: 0, y: 0 });
+    var latLng2 = GLOBE.MAP.windowPositionToLatLng({ x: mapContainerSize.width, y: mapContainerSize.height });
+
     var _getTileInfo = function (lat, lng, z) {
       var lng_rad = lng * Math.PI / 180;
       var R = 128 / Math.PI;
       var worldCoordX = R * (lng_rad + Math.PI);
       var pixelCoordX = worldCoordX * Math.pow(2, z);
       var tileCoordX = Math.floor(pixelCoordX / 256);
-  
+
       var lat_rad = lat * Math.PI / 180;
       var worldCoordY = - R / 2 * Math.log((1 + Math.sin(lat_rad)) / (1 - Math.sin(lat_rad))) + 128;
       var pixelCoordY = worldCoordY * Math.pow(2, z);
       var tileCoordY = Math.floor(pixelCoordY / 256);
-  
+
       return {
         x: tileCoordX,
         y: tileCoordY,
         pX: Math.floor(pixelCoordX - tileCoordX * 256),
         pY: Math.floor(pixelCoordY - tileCoordY * 256)
       };
-  
+
     };
 
     var zoom = GLOBE.MAP.getCurrentZoom();
     var p1 = _getTileInfo(latLng1[0], latLng1[1], zoom);
-    var p2 = _getTileInfo(latLng2[0], latLng2[1], zoom );
+    var p2 = _getTileInfo(latLng2[0], latLng2[1], zoom);
 
-    var minX = Math.min(p1.x,p2.x);
-    var minY = Math.min(p1.y,p2.y);
-    var maxX = Math.max(p1.x,p2.x);
-    var maxY = Math.max(p1.y,p2.y);
+    var minX = Math.min(p1.x, p2.x);
+    var minY = Math.min(p1.y, p2.y);
+    var maxX = Math.max(p1.x, p2.x);
+    var maxY = Math.max(p1.y, p2.y);
 
-    
-    for (var x=minX; x<=maxX; x++) {
-      for (var y=minY; y<=maxY; y++) {
-        
-        tileList.push( {coords:{
-          x: x,
-          y:y,
-          z:zoom
-        }})
+
+    for (var x = minX; x <= maxX; x++) {
+      for (var y = minY; y <= maxY; y++) {
+
+        tileList.push({
+          coords: {
+            x: x,
+            y: y,
+            z: zoom
+          }
+        })
       }
     }
-    
-    if ( tileList.length <= 0 ) {
+
+    if (tileList.length <= 0) {
       // エラー
       return;
     }
 
-    
+
     this._loadingPanel.show();
     this._loadingMessage.show();
 
 
     var minMax = {};
 
-    for( var i=0; i<tileList.length; i++ ) {
+    for (var i = 0; i < tileList.length; i++) {
       var tile = tileList[i];
       var coords = tile.coords;
       // 読み込み開始
-      var loader = new GSI3D.DEMLoader( coords.x, coords.y, coords.z, this._demUrlList, {
+      var loader = new GSI3D.DEMLoader(coords.x, coords.y, coords.z, this._demUrlList, {
         overZooming: true,
         useHillshademap: false
       });
-      loader.on("load", MA.bind(function (loader, tileList, tile,minMax, e) {
-        for( var i=0; i<tileList.length; i++ ) {
-          if( tileList[i] == tile ) {
-            tileList.splice(i,1);
+      loader.on("load", MA.bind(function (loader, tileList, tile, minMax, e) {
+        for (var i = 0; i < tileList.length; i++) {
+          if (tileList[i] == tile) {
+            tileList.splice(i, 1);
             break;
           }
         }
-        
+
         var dem = e.target.getData();
-        if ( dem ) {
-          for( var i=0; i<dem.length; i++ ) {
+        if (dem) {
+          for (var i = 0; i < dem.length; i++) {
             var h = dem[i];
-            if ( !h && h != 0 ) continue;
-            if ( ( !minMax.min && minMax.min != 0) || minMax.min > h ) {
+            if (!h && h != 0) continue;
+            if ((!minMax.min && minMax.min != 0) || minMax.min > h) {
               minMax.min = h;
             }
-            
-            if ( ( !minMax.max && minMax.max != 0) || minMax.max < h ) {
+
+            if ((!minMax.max && minMax.max != 0) || minMax.max < h) {
               minMax.max = h;
             }
           }
         }
 
-        if ( tileList.length <= 0 ) {
-          var colors = $.extend(true, [], GSI.ReliefTileLayer.getElevationSampleData().colors );
-          var low = Math.floor( minMax.min );
-          if ( low < 0 ) low = 0;
-          var hi = Math.floor( minMax.max );
-          colors[ 0].h = low;
+        if (tileList.length <= 0) {
+          var colors = $.extend(true, [], GSI.ReliefTileLayer.getElevationSampleData().colors);
+          var low = Math.floor(minMax.min);
+          if (low < 0) low = 0;
+          var hi = Math.floor(minMax.max);
+          colors[0].h = low;
           for (var i = 1; i < colors.length - 2; i++) {
             var p = (1 / (colors.length - 1)) * (i);
             colors[i].h = Math.round(low + (hi - low) * p);
           }
-          colors[ colors.length-2].h = hi;
-          
+          colors[colors.length - 2].h = hi;
+
 
           var data = {
             gradate: false,
@@ -21741,15 +20195,15 @@ GSI.EditReliefDialog = GSI.Dialog.extend( {
               Math.floor(minMax.min), Math.floor( minMax.max ), "#2db4b4", "#b43d09")
               */
           };
-          
+
           this._refreshReriefEdit(data);
           if (!this._createAfterReflectionInput || this._createAfterReflectionInput.is(":checked")) {
             this._reflection();
           }
-          
+
           this._loadingMessage.hide();
           this._loadingPanel.hide();
-          if( this._newDataView ) this._newDataView.fadeOut(200);
+          if (this._newDataView) this._newDataView.fadeOut(200);
         }
 
       }, this, loader, tileList, tile, minMax));
@@ -21760,50 +20214,50 @@ GSI.EditReliefDialog = GSI.Dialog.extend( {
 
 
   // 低い範囲を表示
-  _createLowNewData: function() {
-    
+  _createLowNewData: function () {
+
     // loading
-    if ( !this._loadingPanel ) {
-      this._loadingPanel = $( "<div>").addClass("loadingpanel");
-      this._loadingMessage = $( "<div>").addClass("loadingmessage")
-        .append($("<img>").attr({"src":"./image/system/loading003.gif"}) )
+    if (!this._loadingPanel) {
+      this._loadingPanel = $("<div>").addClass("loadingpanel");
+      this._loadingMessage = $("<div>").addClass("loadingmessage")
+        .append($("<img>").attr({ "src": "./image/system/loading003.gif" }))
         .append("標高値を取得しています");
-      this.frame.append( this._loadingPanel);
-      this.frame.append( this._loadingMessage);
+      this.frame.append(this._loadingPanel);
+      this.frame.append(this._loadingMessage);
     }
 
     var mapContainerSize = {
-      width:$("#"+GLOBE.MAP.mapElementId ).outerWidth(),
-      height:$("#"+GLOBE.MAP.mapElementId ).outerHeight()
+      width: $("#" + GLOBE.MAP.mapElementId).outerWidth(),
+      height: $("#" + GLOBE.MAP.mapElementId).outerHeight()
     };
 
-    
-    var latLng = GLOBE.MAP.windowPositionToLatLng( {x:mapContainerSize.width/2, y:mapContainerSize.height/2} );
-    if ( !latLng ) return false;
-    
 
-    
+    var latLng = GLOBE.MAP.windowPositionToLatLng({ x: mapContainerSize.width / 2, y: mapContainerSize.height / 2 });
+    if (!latLng) return false;
+
+
+
     this._loadingPanel.show();
     this._loadingMessage.show();
 
-    
-    if ( this._elevationLoader ) this._elevationLoader.cancel();
+
+    if (this._elevationLoader) this._elevationLoader.cancel();
     this._elevationLoader = new GSI.ElevationLoader();
     this._elevationLoader.on("load", MA.bind(function (e) {
-      if ( e.h == undefined ) {
+      if (e.h == undefined) {
         this._loadingMessage.hide();
         this._loadingPanel.hide();
-        if( this._newDataView ) this._newDataView.fadeOut(200);
+        if (this._newDataView) this._newDataView.fadeOut(200);
         return;
       };
 
       var centerHeight = e.h;
 
-      var colors =  [{
-        h: this._reliefRound( centerHeight ), color:CONFIG.FREERELIEF_AUTOLOWCOLOR,
+      var colors = [{
+        h: this._reliefRound(centerHeight), color: CONFIG.FREERELIEF_AUTOLOWCOLOR,
       },
       {
-        h:null, color:null
+        h: null, color: null
       }];
 
       var data = {
@@ -21811,8 +20265,8 @@ GSI.EditReliefDialog = GSI.Dialog.extend( {
         useHillshademap: false,
         colors: colors
       };
-      
-      
+
+
       this._refreshReriefEdit(data);
       if (!this._createAfterReflectionInput || this._createAfterReflectionInput.is(":checked")) {
         this._reflection();
@@ -21820,23 +20274,22 @@ GSI.EditReliefDialog = GSI.Dialog.extend( {
           this._reflection();
         }, 10);
       }
-      
+
       this._loadingMessage.hide();
       this._loadingPanel.hide();
-      if( this._newDataView ) this._newDataView.fadeOut(200);
+      if (this._newDataView) this._newDataView.fadeOut(200);
 
 
-    },this) );
+    }, this));
 
-    this._elevationLoader.load({lat:latLng[0],lng:latLng[1]});
+    this._elevationLoader.load({ lat: latLng[0], lng: latLng[1] });
 
 
   },
 
 
-  _createNewData : function()
-  {
-    
+  _createNewData: function () {
+
     if (this._newDefaultRadio && this._newDefaultRadio.is(":checked")) {
       var data = GSI.ReliefTileLayer.getElevationSampleData();
       data["default"] = false;
@@ -21879,7 +20332,7 @@ GSI.EditReliefDialog = GSI.Dialog.extend( {
 
     var low = getNumber(this._lowElevationInput.val());
     var hi = getNumber(this._hiElevationInput.val());
-    
+
 
     //var low = getInt(this._lowElevationInput.val());
     //var hi = getInt(this._hiElevationInput.val());
@@ -21902,23 +20355,23 @@ GSI.EditReliefDialog = GSI.Dialog.extend( {
       alert(msg);
       return;
     }
-    console.log( loColor, hiColor);
+    console.log(loColor, hiColor);
     var data = {
       gradate: false,
       useHillshademap: false,
-      colors: this._makeColors( num, low, hi, loColor, hiColor)
+      colors: this._makeColors(num, low, hi, loColor, hiColor)
     };
 
     this._refreshReriefEdit(data);
     if (this._createAfterReflectionInput.is(":checked")) {
       this._reflection();
     }
-    if( this._newDataView ) this._newDataView.fadeOut(200);
-    
+    if (this._newDataView) this._newDataView.fadeOut(200);
+
   },
-  
-  _makeColors : function(num, low, hi, loColor, hiColor) {
-    
+
+  _makeColors: function (num, low, hi, loColor, hiColor) {
+
     var loRgb = GSI3D.ReliefTileLayer.colorStringToRGBA(loColor);
     var hiRgb = GSI3D.ReliefTileLayer.colorStringToRGBA(hiColor);
 
@@ -21960,187 +20413,171 @@ GSI.EditReliefDialog = GSI.Dialog.extend( {
     return colors;
   },
 
-  _showLoadView : function() 
-  {
-    if ( !this._loadDataView )
-    {
-      this._loadDataView = $( "<div>" ).addClass("loaddataview").hide();
-      
-      
-      var fileFrame = $( "<div>" ).addClass("file_frame");
-      
-      
-      var messageFrame = $("<div>").addClass("message_frame");
-      
-      messageFrame
-        .append( $("<img>").attr({"src":"image/system/info.png"}))
-        .append( $("<div>").html("読み込むファイルを指定して下さい。") );
-      this._loadDataView.append( messageFrame );
-      
-      
-      this._loadFileInput = $( "<input>" ).attr({"type":"file"});
-      fileFrame.append( this._loadFileInput );
-      
-      this._loadDataView.append( fileFrame );
-      
-      
-      
-      
-      
-      
-      var optionFrame = $("<div>").addClass("option_frame");
-      
-      
-      this._loadFileAfterReflectionInput = $( "<input>" ).addClass("normalcheck")
-        .attr({"id":"gsi_editreliefdialog_file_afterreclection", "type":"checkbox"}).prop({"checked":"checked"});
-      
-      var label = $( "<label>" ).html("読み込み後地図に反映")
-        .attr({"for":"gsi_editreliefdialog_file_afterreclection"} );
-      
-      optionFrame.append( this._loadFileAfterReflectionInput ).append( label );
-      
-      this._loadDataView.append( optionFrame );
-      
-      
-      
-      
-      
-      
-      var buttonFrame = $("<div>").addClass("button_frame");
-      
-      var btn = $( "<a>" ).addClass("normalbutton").attr({"href":"javascript:void(0);"}).html("ファイルを読み込む");
-      btn.click( MA.bind(function(){
-        this._loadData(this._loadFileInput);
-      },this ) );
-      
-      buttonFrame.append( btn );
-      
-      
-      btn = $( "<a>" ).addClass("normalbutton").attr({"href":"javascript:void(0);"}).html("キャンセル");
-      btn.click( MA.bind(function(){
-        this._loadDataView.fadeOut(200);
-      },this ) );
-      
-      buttonFrame.append( btn );
-      
-      this._loadDataView.append( buttonFrame );
-      
-      
-      
-      
-      
-      this.frame.append( this._loadDataView );
-    }
-    
-    this._loadDataView.fadeIn(300);
-    
-  },
-  
-  _loadData : function(input, isNew)
-  {
-    var file = null;
-    var files = input.prop( 'files' );
-    if( !files ) files = input.attr( 'files' );
+  _showLoadView: function () {
+    if (!this._loadDataView) {
+      this._loadDataView = $("<div>").addClass("loaddataview").hide();
 
-    if ( files && files.length > 0 )
+
+      var fileFrame = $("<div>").addClass("file_frame");
+
+
+      var messageFrame = $("<div>").addClass("message_frame");
+
+      messageFrame
+        .append($("<img>").attr({ "src": "image/system/info.png" }))
+        .append($("<div>").html("読み込むファイルを指定して下さい。"));
+      this._loadDataView.append(messageFrame);
+
+
+      this._loadFileInput = $("<input>").attr({ "type": "file" });
+      fileFrame.append(this._loadFileInput);
+
+      this._loadDataView.append(fileFrame);
+
+
+
+
+
+
+      var optionFrame = $("<div>").addClass("option_frame");
+
+
+      this._loadFileAfterReflectionInput = $("<input>").addClass("normalcheck")
+        .attr({ "id": "gsi_editreliefdialog_file_afterreclection", "type": "checkbox" }).prop({ "checked": "checked" });
+
+      var label = $("<label>").html("読み込み後地図に反映")
+        .attr({ "for": "gsi_editreliefdialog_file_afterreclection" });
+
+      optionFrame.append(this._loadFileAfterReflectionInput).append(label);
+
+      this._loadDataView.append(optionFrame);
+
+
+
+
+
+
+      var buttonFrame = $("<div>").addClass("button_frame");
+
+      var btn = $("<a>").addClass("normalbutton").attr({ "href": "javascript:void(0);" }).html("ファイルを読み込む");
+      btn.click(MA.bind(function () {
+        this._loadData(this._loadFileInput);
+      }, this));
+
+      buttonFrame.append(btn);
+
+
+      btn = $("<a>").addClass("normalbutton").attr({ "href": "javascript:void(0);" }).html("キャンセル");
+      btn.click(MA.bind(function () {
+        this._loadDataView.fadeOut(200);
+      }, this));
+
+      buttonFrame.append(btn);
+
+      this._loadDataView.append(buttonFrame);
+
+
+
+
+
+      this.frame.append(this._loadDataView);
+    }
+
+    this._loadDataView.fadeIn(300);
+
+  },
+
+  _loadData: function (input, isNew) {
+    var file = null;
+    var files = input.prop('files');
+    if (!files) files = input.attr('files');
+
+    if (files && files.length > 0)
       file = files[0];
-    else
-    {
-      alert( "自分で作る色別標高図形式のファイルを指定して下さい。" );
+    else {
+      alert("自分で作る色別標高図形式のファイルを指定して下さい。");
       return;
     }
     var reader = new FileReader();
-    reader.onload = MA.bind(function() {
+    reader.onload = MA.bind(function () {
       var text = reader.result;
-      try
-      {
+      try {
         var data = JSON.parse(text);
-        data.gradate =  ( data.gradate ?true : false );
-        data.useHillshademap =  ( data.useHillshademap ? true : false );
-        
-        if ( data.colors.length < 2 )
-        {
-          alert( "自分で作る色別標高図形式のファイルを指定して下さい" );
+        data.gradate = (data.gradate ? true : false);
+        data.useHillshademap = (data.useHillshademap ? true : false);
+
+        if (data.colors.length < 2) {
+          alert("自分で作る色別標高図形式のファイルを指定して下さい");
           return;
         }
-        for( var i=0; i<data.colors.length; i++ )
-        {
-          if ( data.colors[i].h )
+        for (var i = 0; i < data.colors.length; i++) {
+          if (data.colors[i].h)
             data.colors[i].h = this._reliefRound(Number(data.colors[i].h));
           //data.colors[i].h = parseInt( data.colors[i].h );
         }
-        
+
         this._refreshReriefEdit(data);
-        
-        if ( isNew )
-        {
-          if ( this._createAfterReflectionInput.is(":checked") )
-          {
+
+        if (isNew) {
+          if (this._createAfterReflectionInput.is(":checked")) {
             this._reflection();
           }
           this._newDataView.fadeOut(200);
         }
-        else
-        {
-          if ( this._loadFileAfterReflectionInput.is(":checked") )
-          {
+        else {
+          if (this._loadFileAfterReflectionInput.is(":checked")) {
             this._reflection();
           }
           this._loadDataView.fadeOut(200);
         }
         input.val("");
       }
-      catch(e)
-      {
-        console.log( e );
-        alert( "自分で作る色別標高図形式のファイルを指定して下さい。" );
+      catch (e) {
+        console.log(e);
+        alert("自分で作る色別標高図形式のファイルを指定して下さい。");
       }
-      
-    }, this );
-    
+
+    }, this);
+
     reader.readAsText(file);
   },
-  
-  _save : function()
-  {
+
+  _save: function () {
     var data = this._makeElevationData();
-    
-    var text = JSON.stringify(data,null, "  ");
-    
-    var blob = new Blob([text], { "type" : "text/plain"})
-    
+
+    var text = JSON.stringify(data, null, "  ");
+
+    var blob = new Blob([text], { "type": "text/plain" })
+
     var fileName = 'relief' + GSI.Utils.getTimeStampString();
-    
-    if(window.navigator.msSaveBlob)
-    {
-      window.navigator.msSaveOrOpenBlob( blob, fileName + ".txt" );
+
+    if (window.navigator.msSaveBlob) {
+      window.navigator.msSaveOrOpenBlob(blob, fileName + ".txt");
     }
-    else
-    {
-      
+    else {
+
       var url = window.URL || window.webkitURL;
-      var dummy =$("<a>").attr( {
-        "download" : fileName + ".txt",
-        "href" : url.createObjectURL(blob)
-      } );
-      
+      var dummy = $("<a>").attr({
+        "download": fileName + ".txt",
+        "href": url.createObjectURL(blob)
+      });
+
       $("body").append(dummy);
       dummy[0].click();
       dummy.remove();
     }
-    
+
   },
-  
-  _makeElevationData : function(desc)
-  {
+
+  _makeElevationData: function (desc) {
     var data = {
-      gradate : this._gradateInput.is(":checked"),
-      useHillshademap : this._useHillshademapInput.is(":checked"),
+      gradate: this._gradateInput.is(":checked"),
+      useHillshademap: this._useHillshademapInput.is(":checked"),
       desc: (desc != undefined ? desc : this._orderDescCheck.is(":checked")),
-      colors : []
+      colors: []
     };
-    
-    
+
+
     var inputs = this._scrollFrame.find("input.elevation");
     var colorSelects = this._scrollFrame.find("a.color");
     if (data.desc) {
@@ -22195,192 +20632,174 @@ GSI.EditReliefDialog = GSI.Dialog.extend( {
     }
     */
     return data;
-    
+
   },
-  _reflection : function(data)
-  {
-    if (!data) data  = this._makeElevationData();
-    this._mapLayerList.setElevationData( data );
-    
+  _reflection: function (data) {
+    if (!data) data = this._makeElevationData();
+    this._mapLayerList.setElevationData(data);
+
   },
-  
-  _rgbToColor : function(rgb)
-  {
+
+  _rgbToColor: function (rgb) {
     return "#"
-      +("00" + rgb.r.toString(16).toUpperCase()).substr(-2)
-      +("00" + rgb.g.toString(16).toUpperCase()).substr(-2)
-      +("00" + rgb.b.toString(16).toUpperCase()).substr(-2);
+      + ("00" + rgb.r.toString(16).toUpperCase()).substr(-2)
+      + ("00" + rgb.g.toString(16).toUpperCase()).substr(-2)
+      + ("00" + rgb.b.toString(16).toUpperCase()).substr(-2);
   },
-  
-  _refreshGradationBar : function()
-  {
+
+  _refreshGradationBar: function () {
     var tr = this._scrollFrame.find("table.colors").find("tr");
-    var td = $(tr[0]).find( "td.gradationbar" );
-    
-    td.prop({"rowspan":tr.length} );
-    
-    if ( !this._gradateInput.is(":checked") )
-    {
+    var td = $(tr[0]).find("td.gradationbar");
+
+    td.prop({ "rowspan": tr.length });
+
+    if (!this._gradateInput.is(":checked")) {
       td.hide();
       return;
     }
-    
+
     td.show();
-    var w = td.find( "div" ).innerWidth();
-    var h = td.find( "div" ).innerHeight();
-    var canvas = td.find( "canvas" )[0];
-    
-    
+    var w = td.find("div").innerWidth();
+    var h = td.find("div").innerHeight();
+    var canvas = td.find("canvas")[0];
+
+
     canvas.width = w
-    canvas.height = h; 
-    var ctx = canvas.getContext( '2d' );
-    
+    canvas.height = h;
+    var ctx = canvas.getContext('2d');
+
     ctx.fillStyle = "rgb(255, 255, 255)";
     ctx.clearRect(0, 0, w, h);
     ctx.beginPath();
-    
-    
-    
-    var lineHeight = Math.round( h / tr.length );
-    
+
+
+
+    var lineHeight = Math.round(h / tr.length);
+
     var prev = null;
-    
-    for ( var idx=0; idx<tr.length; idx++ )
-    {
-      var color=$(tr[idx]).find( "a.color" ).data("color");
-      if ( color ) color =GSI3D.ReliefTileLayer.colorStringToRGBA(color );
-      
-      var startY = idx*lineHeight;// - Math.round( lineHeight/ 2 )-1;
-      
-      for( var y=startY; y< startY+lineHeight; y++ )
-      {
-        var yP = (y-startY) / lineHeight;
-        
-        if ( color  )
-        { 
+
+    for (var idx = 0; idx < tr.length; idx++) {
+      var color = $(tr[idx]).find("a.color").data("color");
+      if (color) color = GSI3D.ReliefTileLayer.colorStringToRGBA(color);
+
+      var startY = idx * lineHeight;// - Math.round( lineHeight/ 2 )-1;
+
+      for (var y = startY; y < startY + lineHeight; y++) {
+        var yP = (y - startY) / lineHeight;
+
+        if (color) {
           var c = {
-            r:color.r,
-            g:color.g,
-            b:color.b,
-            a:255
+            r: color.r,
+            g: color.g,
+            b: color.b,
+            a: 255
           };
           ctx.globalAlpha = 1;
-          if ( prev )
-          {
-            c.r = prev.r + Math.round( ( color.r - prev.r  ) * yP );
-            c.g = prev.g + Math.round( ( color.g - prev.g  ) * yP );
-            c.b = prev.b + Math.round( ( color.b - prev.b  ) * yP );
+          if (prev) {
+            c.r = prev.r + Math.round((color.r - prev.r) * yP);
+            c.g = prev.g + Math.round((color.g - prev.g) * yP);
+            c.b = prev.b + Math.round((color.b - prev.b) * yP);
           }
-          else if ( idx > 0 )
-          {
-            if ( this.options.transparentGradate )
-            {
-              c.a = Math.round( 255 * yP );
-              ctx.globalAlpha = c.a  / 255;
+          else if (idx > 0) {
+            if (this.options.transparentGradate) {
+              c.a = Math.round(255 * yP);
+              ctx.globalAlpha = c.a / 255;
             }
-            else
-            {
+            else {
               //if ( yP < 0.5 ) 
               ctx.globalAlpha = 1;
             }
           }
-          
-          if( c.r > 255 ) c.r = 255;
-          if( c.g > 255 ) c.g = 255;
-          if( c.b > 255 ) c.b = 255;
-          if( c.a > 255 ) c.a = 255;
-          
-          ctx.fillStyle = "rgb(" + c.r + "," + c.g + "," + c.b +")";
-          
+
+          if (c.r > 255) c.r = 255;
+          if (c.g > 255) c.g = 255;
+          if (c.b > 255) c.b = 255;
+          if (c.a > 255) c.a = 255;
+
+          ctx.fillStyle = "rgb(" + c.r + "," + c.g + "," + c.b + ")";
+
         }
-        else
-        {
-          if ( prev )
-          {
+        else {
+          if (prev) {
             var c = {
-              r:prev.r,
-              g:prev.g,
-              b:prev.b,
-              a:255
+              r: prev.r,
+              g: prev.g,
+              b: prev.b,
+              a: 255
             };
-            
-            if ( this.options.transparentGradate )
-            {
-              c.a = prev.a + Math.round( ( - prev.a  ) * yP );
+
+            if (this.options.transparentGradate) {
+              c.a = prev.a + Math.round((- prev.a) * yP);
             }
-            else
-            {
-              
+            else {
+
               //if ( yP > 0.5 ) 
-                c.a = 0;
+              c.a = 0;
             }
-            
-            if( c.r > 255 ) c.r = 255;
-            if( c.g > 255 ) c.g = 255;
-            if( c.b > 255 ) c.b = 255;
-            if( c.a > 255 ) c.a = 255;
-            
-            ctx.fillStyle = "rgb(" + c.r + "," + c.g + "," + c.b +")";
-            ctx.globalAlpha = c.a  / 255;
+
+            if (c.r > 255) c.r = 255;
+            if (c.g > 255) c.g = 255;
+            if (c.b > 255) c.b = 255;
+            if (c.a > 255) c.a = 255;
+
+            ctx.fillStyle = "rgb(" + c.r + "," + c.g + "," + c.b + ")";
+            ctx.globalAlpha = c.a / 255;
           }
-          else
-          {
+          else {
             ctx.fillStyle = "rgb(255,255,255)";
             ctx.globalAlpha = 0;
           }
-          
-          
+
+
         }
         ctx.fillRect(0, y, w, 1);
       }
-      
+
       prev = color;
     }
-    
-    var y = tr.length*lineHeight - Math.round( lineHeight/ 2 )-1;
+
+    var y = tr.length * lineHeight - Math.round(lineHeight / 2) - 1;
     ctx.fillRect(0, y, w, lineHeight);
-    
+
   },
-  
-  _refreshReriefEdit : function(data, skipRefreshGradationBar)
-  {
+
+  _refreshReriefEdit: function (data, skipRefreshGradationBar) {
     this._scrollFrame.empty();
-    $( "body" ).children( "div.colorpicker" ).remove();
-    if ( this._newDataView )
+    $("body").children("div.colorpicker").remove();
+    if (this._newDataView)
       this._newDataView.remove();
     this._newDataView = null;
-    
-    var frame = $( "<div>" );
-    
-    if ( !data )
-    {
+
+    var frame = $("<div>");
+
+    if (!data) {
       data = GSI.ReliefTileLayer.getElevationSampleData();
       //data["default"] = true;
     }
-    
-    if ( data.gradate )
-      this._gradateInput.prop({"checked":"checked"} );
+
+    if (data.gradate)
+      this._gradateInput.prop({ "checked": "checked" });
     else
       this._gradateInput.removeProp("checked");
-      
-      
-    if ( data.useHillshademap )
-      this._useHillshademapInput.prop({"checked":"checked"} );
+
+
+    if (data.useHillshademap)
+      this._useHillshademapInput.prop({ "checked": "checked" });
     else
       this._useHillshademapInput.removeProp("checked");
-      
-    
+
+
     if (data.desc)
       this._orderDescCheck.prop({ "checked": "checked" });
     else
       this._orderDescCheck.removeProp("checked");
 
 
-    
-    var table = $( "<table>" ).addClass("colors");
-    
+
+    var table = $("<table>").addClass("colors");
+
     var colors = data.colors;
-    
+
     if (data.desc) {
       for (var i = colors.length - 1; i >= 0; i--) {
         var next = (i < colors.length - 1 ? colors[i + 1] : null);
@@ -22402,137 +20821,130 @@ GSI.EditReliefDialog = GSI.Dialog.extend( {
 
       }
     }
-    
+
     //グラデーション
-    
+
     var td = $("<td>")
-      .addClass( "gradationbar" )
-      .css({"position":"relative","width":"16px"}).attr({"rowspan":table.find("tr").length} );
-    var div = $( "<div>" ).css({
-      "position":"absolute",
-      "background" :'url("./image/system/transparent_bg.png")',
-      "border":"1px solid #aaa","left":"1px","top":"1px","right":"4px", "bottom":"1px"});
+      .addClass("gradationbar")
+      .css({ "position": "relative", "width": "16px" }).attr({ "rowspan": table.find("tr").length });
+    var div = $("<div>").css({
+      "position": "absolute",
+      "background": 'url("./image/system/transparent_bg.png")',
+      "border": "1px solid #aaa", "left": "1px", "top": "1px", "right": "4px", "bottom": "1px"
+    });
     var canvas = document.createElement('canvas');
-    div.append( canvas );
-    td.append( div );
-    $( table.find("tr")[0] ).prepend(td);
-    
-    
+    div.append(canvas);
+    td.append(div);
+    $(table.find("tr")[0]).prepend(td);
+
+
     var removeButtons = frame.find("a.remove_btn");
-    if ( removeButtons.length <= 2 ){
-      if (removeButtons.length > 0){
+    if (removeButtons.length <= 2) {
+      if (removeButtons.length > 0) {
         removeButtons.hide();
       }
-      else{
+      else {
         //createLowDataを通った場合はframeが空でtableにしかデータが無い
         removeButtons = table.find("a.remove_btn");
-        if (removeButtons.length <= 2){
+        if (removeButtons.length <= 2) {
           removeButtons.hide();
         }
       }
     }
     else
       removeButtons.show();
-    frame.append( table );
+    frame.append(table);
     this._scrollFrame.append(frame);
     this._scrollFrame.scrollTop(0);
-    if ( !skipRefreshGradationBar ) this._refreshGradationBar();
+    if (!skipRefreshGradationBar) this._refreshGradationBar();
   },
-  
-  _createLine : function( prev, current, next, desc )
-  {
-    var tr = $( "<tr>" ).addClass("line");
+
+  _createLine: function (prev, current, next, desc) {
+    var tr = $("<tr>").addClass("line");
     var td = null;
-    
-    if ( !prev )
-    {
-      td = $( "<td>" ).html("&nbsp;").addClass("from");
-      tr.append( td );
+
+    if (!prev) {
+      td = $("<td>").html("&nbsp;").addClass("from");
+      tr.append(td);
     }
-    else
-    {
-      td = $( "<td>" ).html(prev.h).addClass("from");
-      tr.append( td );
+    else {
+      td = $("<td>").html(prev.h).addClass("from");
+      tr.append(td);
     }
-    
-    td = $( "<td>" ).html("-");
-    tr.append( td );
-    
-    if ( next )
-    {
-      var input = $( "<input>" )
+
+    td = $("<td>").html("-");
+    tr.append(td);
+
+    if (next) {
+      var input = $("<input>")
         .addClass("elevation")
-        .attr({"type":"number", "step": "0.5"})
-        .css({"ime-mode": "disabled"})
-        .val( current.h );
-      td = $( "<td>" ).append( input );
-      tr.append( td );
+        .attr({ "type": "number", "step": "0.5" })
+        .css({ "ime-mode": "disabled" })
+        .val(current.h);
+      td = $("<td>").append(input);
+      tr.append(td);
       input
-        .focus(MA.bind(function(elem){
+        .focus(MA.bind(function (elem) {
           elem.select();
-        },this,input ))
-        .blur( MA.bind(function(tr) {
-          
-          this._checkInputElevation( tr );
-        },this,tr ) )
-        .on("keydown", MA.bind(function(e){
+        }, this, input))
+        .blur(MA.bind(function (tr) {
+
+          this._checkInputElevation(tr);
+        }, this, tr))
+        .on("keydown", MA.bind(function (e) {
           var keyCode = e.keyCode;
 
-          var str = ( e.key ? e.key : String.fromCharCode(keyCode) );
+          var str = (e.key ? e.key : String.fromCharCode(keyCode));
 
-          if ( e.ctrlKey || e.metaKey) return;
+          if (e.ctrlKey || e.metaKey) return;
 
-          if( ( !str.match(/[0-9.-]/) ) 
-            && (keyCode != 8 && keyCode != 46 && keyCode != 189 && keyCode != 190 ) 
-            && (keyCode != 37 && keyCode != 38 && keyCode != 39 && keyCode != 40 )){
+          if ((!str.match(/[0-9.-]/))
+            && (keyCode != 8 && keyCode != 46 && keyCode != 189 && keyCode != 190)
+            && (keyCode != 37 && keyCode != 38 && keyCode != 39 && keyCode != 40)) {
             e.preventDefault();
             e.stopPropagation();
             return false;
           }
         }))
-        .on("beforeinput", MA.bind(function(e){
+        .on("beforeinput", MA.bind(function (e) {
           var str = e.originalEvent.data;
-          if ( !str ) return;
-          if(!str.match(/[0-9.-]/) ){
+          if (!str) return;
+          if (!str.match(/[0-9.-]/)) {
             e.preventDefault();
             e.stopPropagation();
             return false;
           }
         }))
-        .click(function(){
+        .click(function () {
           $(this).select();
           return false;
         });
-  
+
     }
-    else
-    {
-      td = $( "<td>" ).html("&nbsp;").addClass("to");
-      tr.append( td );
+    else {
+      td = $("<td>").html("&nbsp;").addClass("to");
+      tr.append(td);
     }
-    
-    td = $( "<td>" );
-    
-    var color = current.color ;
-    if ( color )
-    {
-      if ( color.r ) color = this._rgbToColor( color );
+
+    td = $("<td>");
+
+    var color = current.color;
+    if (color) {
+      if (color.r) color = this._rgbToColor(color);
     }
-    else
-    {
+    else {
       color = null;
     }
-    
-    var a = $( "<a>" ).attr({"href":"javascript:void(0);"}).addClass("color");
-    a.css( {
-      "background" : ( color  ? color : 'url("./image/system/transparent_bg.png")' )
-    } )
-    .data( {"color":color, "colorpicker":a} );
-    
+
+    var a = $("<a>").attr({ "href": "javascript:void(0);" }).addClass("color");
+    a.css({
+      "background": (color ? color : 'url("./image/system/transparent_bg.png")')
+    })
+      .data({ "color": color, "colorpicker": a });
+
     var this$ = this;
     a.ColorPicker({
-      onSubmit : function(hsb, hex, rgb, el)
-      {
+      onSubmit: function (hsb, hex, rgb, el) {
         $(el).val("#" + hex.toUpperCase());
         $(el).ColorPickerHide();
         this$._refreshGradationBar();
@@ -22542,75 +20954,70 @@ GSI.EditReliefDialog = GSI.Dialog.extend( {
         if (color)
           $(this).ColorPickerSetColor(color);
       },
-      onShow : function(colpkr) {
+      onShow: function (colpkr) {
         $(colpkr).fadeIn(200);
       },
       onHide: MA.bind(function (colpkr) {
         $(colpkr).fadeOut(200);
         this$._refreshGradationBar();
-      },this ),
-      onChange : function(hsb, hex, rgb)
-      {
+      }, this),
+      onChange: function (hsb, hex, rgb) {
         var el = this.data('colorpicker').el;
         var color = "#" + hex.toUpperCase();
-        $(el).css({"background":color}).data({"color":color} );
+        $(el).css({ "background": color }).data({ "color": color });
       },
-      onClear : function()
-      {
+      onClear: function () {
         var el = this.data('colorpicker').el;
-        $(el).css({"background":'url("./image/system/transparent_bg.png")'}).data({"color":null} );
+        $(el).css({ "background": 'url("./image/system/transparent_bg.png")' }).data({ "color": null });
         this$._refreshGradationBar();
       }
     });
-    td.append( a );
-    tr.append( td );
-    
-    
+    td.append(a);
+    tr.append(td);
+
+
     //
-    
-    if ( next )
-    {
+
+    if (next) {
       td = $("<td>");
-      a = $("<a>").attr({"title":"この行を削除","href":"javascript:void(0);"} ).addClass("btn").addClass("remove_btn");
-      a.click( MA.bind(function(prev,current,next, tr) {
-        this._removeLine( tr );
-        
-      },this, prev, current, next, tr ) );
-      td.append( a);
-      tr.append( td );
-      
+      a = $("<a>").attr({ "title": "この行を削除", "href": "javascript:void(0);" }).addClass("btn").addClass("remove_btn");
+      a.click(MA.bind(function (prev, current, next, tr) {
+        this._removeLine(tr);
+
+      }, this, prev, current, next, tr));
+      td.append(a);
+      tr.append(td);
+
       //
       td = $("<td>");
-      
+
       a = $("<a>").attr({ "title": "ここに追加", "href": "javascript:void(0);" }).addClass("btn")
         .addClass((desc ? "append_prev_btn" : "append_next_btn")).html("+");
-      a.click( MA.bind(function(prev,current,next, tr) {
-        this._appendLine( tr );
-      },this, prev, current, next, tr ) );
-      
-      td.append( a);
-      tr.append( td );
+      a.click(MA.bind(function (prev, current, next, tr) {
+        this._appendLine(tr);
+      }, this, prev, current, next, tr));
+
+      td.append(a);
+      tr.append(td);
     }
-    else
-    {
-      td = $( "<td>" ).html("&nbsp;");
-      tr.append( td );
-      td = $( "<td>" ).html("&nbsp;");
-      tr.append( td );
+    else {
+      td = $("<td>").html("&nbsp;");
+      tr.append(td);
+      td = $("<td>").html("&nbsp;");
+      tr.append(td);
     }
     return tr;
   },
-  
-  _checkInputElevation : function(tr)
-  {
+
+  _checkInputElevation: function (tr) {
     var desc = this._orderDescCheck.is(":checked");
-    var h = tr.find( "input.elevation" ).val();
-    h = h.replace(/[Ａ-Ｚａ-ｚ０-９]/g, function(s) {
+    var h = tr.find("input.elevation").val();
+    h = h.replace(/[Ａ-Ｚａ-ｚ０-９]/g, function (s) {
       return String.fromCharCode(s.charCodeAt(0) - 65248);
     });
-    h = h.replace(/[ー－‐]/g,"-" );
-    
-    
+    h = h.replace(/[ー－‐]/g, "-");
+
+
     //if(h.match(/^-?[0-9]+$/) )
     //	h = parseInt(h);
     var x = Number(h);
@@ -22618,94 +21025,85 @@ GSI.EditReliefDialog = GSI.Dialog.extend( {
       h = this._reliefRound(x);
     else
       h = null;
-    
-    
+
+
     var nextH = (desc ? tr.prev() : tr.next()).find("input.elevation").val();
-    if ( h!= null && nextH )
-    {
-      nextH = nextH.replace(/[Ａ-Ｚａ-ｚ０-９]/g, function(s) {
+    if (h != null && nextH) {
+      nextH = nextH.replace(/[Ａ-Ｚａ-ｚ０-９]/g, function (s) {
         return String.fromCharCode(s.charCodeAt(0) - 65248);
       });
-      nextH = nextH.replace(/[ー－‐]/g,"-" );
-        
+      nextH = nextH.replace(/[ー－‐]/g, "-");
+
       //if(nextH.match(/^-?[0-9]+$/) )
       //	nextH = parseInt(nextH);
       if (nextH.match(/^[-]?([1-9]\d*|0)(\.\d+)?$/))
         nextH = this._reliefRound(Number(nextH));
       else
         nextH = null;
-      
-      if ( nextH != null && h >= nextH )
-      {
-        h = nextH -1;
-        tr.find( "input.elevation" ).val(h)
+
+      if (nextH != null && h >= nextH) {
+        h = nextH - 1;
+        tr.find("input.elevation").val(h)
       }
-      else if (x != h){
+      else if (x != h) {
         tr.find("input.elevation").val(h)
       }
     }
-    
-    
+
+
     var prevH = (desc ? tr.next() : tr.prev()).find("input.elevation").val();
-    if ( h!= null && prevH )
-    {
-      prevH = prevH.replace(/[Ａ-Ｚａ-ｚ０-９]/g, function(s) {
+    if (h != null && prevH) {
+      prevH = prevH.replace(/[Ａ-Ｚａ-ｚ０-９]/g, function (s) {
         return String.fromCharCode(s.charCodeAt(0) - 65248);
       });
-      prevH = prevH.replace(/[ー－‐]/g,"-" );
-        
+      prevH = prevH.replace(/[ー－‐]/g, "-");
+
       //if(prevH.match(/^-?[0-9]+$/) )
       //	prevH = parseInt(prevH);
       if (prevH.match(/^[-]?([1-9]\d*|0)(\.\d+)?$/))
         prevH = this._reliefRound(Number(prevH));
       else
         prevH = null;
-      
-      if ( prevH != null && h <= prevH )
-      {
-        h = prevH +1;
-        tr.find( "input.elevation" ).val(h)
+
+      if (prevH != null && h <= prevH) {
+        h = prevH + 1;
+        tr.find("input.elevation").val(h)
       }
-      else if (x != h){
+      else if (x != h) {
         tr.find("input.elevation").val(h)
       }
     }
-    
-    if ( h!= null )
-    {
+
+    if (h != null) {
       var nextTr = (desc ? tr.prev() : tr.next());
-      if ( nextTr.length > 0 )
-      {
-        nextTr.find( ".from" ).html( h );
+      if (nextTr.length > 0) {
+        nextTr.find(".from").html(h);
       }
     }
   },
-  _removeLine : function( tr )
-  {
+  _removeLine: function (tr) {
     var inputs = this._scrollFrame.find("input.elevation");
-    if ( inputs.length <= 2 ) return;
-    
+    if (inputs.length <= 2) return;
+
     tr.remove();
-    
+
     var removeButtons = this._scrollFrame.find("a.remove_btn");
-    if ( removeButtons.length <= 2 )
+    if (removeButtons.length <= 2)
       removeButtons.hide();
     else
       removeButtons.show();
-    
+
     this._refreshElevationFrom();
     this._refreshGradationBar();
   },
-  
-  _trToData : function( tr )
-  {
-    var h = tr.find( "input.elevation" ).val();
-    if ( h )
-    {
-      h = h.replace(/[Ａ-Ｚａ-ｚ０-９]/g, function(s) {
+
+  _trToData: function (tr) {
+    var h = tr.find("input.elevation").val();
+    if (h) {
+      h = h.replace(/[Ａ-Ｚａ-ｚ０-９]/g, function (s) {
         return String.fromCharCode(s.charCodeAt(0) - 65248);
       });
-      h = h.replace(/[ー－‐]/g,"-" );
+      h = h.replace(/[ー－‐]/g, "-");
       //if(h.match(/^-?[0-9]+$/) )
       //	h = parseInt(h);
       if (h.match(/^[-]?([1-9]\d*|0)(\.\d+)?$/))
@@ -22715,20 +21113,19 @@ GSI.EditReliefDialog = GSI.Dialog.extend( {
     }
     else
       h = null;
-    
-    
-    color = tr.find( "a.color" ).data("color");
-    
+
+
+    color = tr.find("a.color").data("color");
+
     return {
-      h : h,
-      color : color
+      h: h,
+      color: color
     };
   },
-  
-  _appendLine : function( tr )
-  {
+
+  _appendLine: function (tr) {
     var appendNext = !this._orderDescCheck.is(":checked");
-    var current = this._trToData ( tr );
+    var current = this._trToData(tr);
     var prev = null;
     //(tr.prev("tr.line").length > 0 ? this._trToData(tr.prev("tr.line")) : null);
     var next = null;
@@ -22799,10 +21196,9 @@ GSI.EditReliefDialog = GSI.Dialog.extend( {
       removeButtons.show();
 
   },
-  
-  _refreshElevationFrom : function()
-  {
-    
+
+  _refreshElevationFrom: function () {
+
     var orderDesc = this._orderDescCheck.is(":checked");
 
     var trArr = this._scrollFrame.find("tr.line");
@@ -22817,32 +21213,32 @@ GSI.EditReliefDialog = GSI.Dialog.extend( {
 
       prev = current;
     }
-    
+
   },
 
-  _reliefRound: function(val){
+  _reliefRound: function (val) {
     var nsign = val < 0 ? -1 : 1;
 
     var iv = Math.floor(val);
-    if (val < 0){
+    if (val < 0) {
       iv = Math.ceil(val);
     }
 
-    var sv = Math.round( (Math.abs(val) - Math.abs(iv)) * 10) / 10;
+    var sv = Math.round((Math.abs(val) - Math.abs(iv)) * 10) / 10;
     var res = 0;
-    if (sv < 0.3){
+    if (sv < 0.3) {
       res = iv;
     }
-    else if (sv < 0.8){
-      res = iv + ( 0.5 * nsign );
-    }else{
-      res =  iv + ( 1 * nsign );
+    else if (sv < 0.8) {
+      res = iv + (0.5 * nsign);
+    } else {
+      res = iv + (1 * nsign);
     }
 
     return res;
   }
-  
-} );
+
+});
 
 /*******************************************************
 
@@ -22853,13 +21249,13 @@ GSI.ReliefTileLayer
 
 
 GSI.ReliefTileLayer = MA.Class.extend({
-} );
+});
 
 
 GSI.ReliefTileLayer._sampleData =
 {
-  gradate : false,
-  useHillshademap : false,
+  gradate: false,
+  useHillshademap: false,
   colors: [
     {
       "h": 5,
@@ -22904,9 +21300,8 @@ GSI.ReliefTileLayer._sampleData =
 };
 
 
-GSI.ReliefTileLayer.getElevationSampleData = function()
-{
-  return $.extend( true, {}, GSI.ReliefTileLayer._sampleData );
+GSI.ReliefTileLayer.getElevationSampleData = function () {
+  return $.extend(true, {}, GSI.ReliefTileLayer._sampleData);
 };
 
 /************************************************************************
@@ -22917,185 +21312,185 @@ GSI.ReliefTileLayer.getElevationSampleData = function()
 ************************************************************************/
 GSI.Modal.dsloreDialog = GSI.Modal.Dialog.extend({
   options: {
-    title:'自然災害伝承碑',
+    title: '自然災害伝承碑',
     blindClose: false,
     closeBtnVisible: true
   },
-  initialize: function(uri){
+  initialize: function (uri) {
     this.options.uri = uri;
     GSI.Modal.BaseClass.prototype.initialize.call(this.options);
   },
   getContent: function () {
     var frame = $('<div>').addClass('gsi_modal_dialog_content');
     var content = this._createContent(this.options.uri);
-  
+
     frame.append(content);
-  
+
     return frame;
   },
-  show: function(){
+  show: function () {
     GSI.Modal.BaseClass.prototype.show.call(this, this.options);
-  
+
     GSI.Modal.blind.on('mousedown', MA.bind(function () { this.hide(); }, this));
     $(GSI.Modal.blind).on('touchstart', MA.bind(function () { this.hide(); }, this));
-  
+
     $(window).resize(MA.bind(function () { this.hide(true); }, this));
-  //   GSI.Modal.blind.on('mousedown', L.bind(function () { this.hide(); }, this));
-  //   $(GSI.Modal.blind).on('touchstart', L.bind(function () { this.hide(); }, this));
-  
-  //   $(window).resize(L.bind(function () { this.hide(true); }, this));
-  
-    this.closeButton.css({"color":"#fff","padding-top":"0.3em","padding-right":"0.3em"});
+    //   GSI.Modal.blind.on('mousedown', L.bind(function () { this.hide(); }, this));
+    //   $(GSI.Modal.blind).on('touchstart', L.bind(function () { this.hide(); }, this));
+
+    //   $(window).resize(L.bind(function () { this.hide(true); }, this));
+
+    this.closeButton.css({ "color": "#fff", "padding-top": "0.3em", "padding-right": "0.3em" });
   },
   createBlind: function () {
     if (GSI.Modal.blind) return;
-  
+
     GSI.Modal.blind = $('<div>')
-    .css({
-      opacity: 0.4,
-      background: "#111",
-      position: "absolute",
-      left: '0px',
-      top: '0px',
-      width: '100%',
-      height: '100%',
-      "z-index": GSI.Modal.zIndexOffset,
-      display: "none",
-      cursor: "pointer"
-    })
-    .click(function () {
-    });
-  
+      .css({
+        opacity: 0.4,
+        background: "#111",
+        position: "absolute",
+        left: '0px',
+        top: '0px',
+        width: '100%',
+        height: '100%',
+        "z-index": GSI.Modal.zIndexOffset,
+        display: "none",
+        cursor: "pointer"
+      })
+      .click(function () {
+      });
+
     $(document.body).append(GSI.Modal.blind);
   },
-  _createContent: function(){
+  _createContent: function () {
     var ws = GSI.Utils.getScreenSize();
-    var ary = this.options.uri.split("\\");   
+    var ary = this.options.uri.split("\\");
     var imgy = ws.h * 0.6;//0.7は極端に横長にすると縦が不足する
     var imgx = ws.w * 0.7;
-  
-    var names={};
+
+    var names = {};
     names["LoreName"] = "碑名";
-    names["DisasterName"]="災害名";
+    names["DisasterName"] = "災害名";
     names["DisasterKind"] = "災害種別";
     names["LoreYear"] = "建立年";
-    names["Address"]="所在地";
+    names["Address"] = "所在地";
     names["DisasterInfo"] = "伝承内容";
-    names["Image"]="概要";
-  
+    names["Image"] = "概要";
+
     var title = "";
     var id = "";
-    for(var e = 0; e < ary.length; e+=2){
-    if (ary[e] == "LoreName"){
-      title = ary[e + 1];
+    for (var e = 0; e < ary.length; e += 2) {
+      if (ary[e] == "LoreName") {
+        title = ary[e + 1];
+      }
+      if (ary[e] == "ID") {
+        id = ary[e + 1];
+      }
     }
-    if (ary[e] == "ID"){
-      id = ary[e + 1];
-    }
-    }
-  
-    var tbl = $("<table>").css({"min-width":"240px","max-width":"280px"});
-    var outertbl = $("<table>").css({"border": "none"});
-  
+
+    var tbl = $("<table>").css({ "min-width": "240px", "max-width": "280px" });
+    var outertbl = $("<table>").css({ "border": "none" });
+
     var tr;
-    var outertr = $("<tr>").css({"vertical-align":"top"});
+    var outertr = $("<tr>").css({ "vertical-align": "top" });
     var titletr = $("<tr>");
-    var lefttd = $("<td>").attr({"align":"center"});
-    var righttd = $("<td>").attr({"align":"center"});
+    var lefttd = $("<td>").attr({ "align": "center" });
+    var righttd = $("<td>").attr({ "align": "center" });
     var titleth = $("<th>").addClass("gsi_dsloreinfodialog_div_table_th");
-  
+
     var ldiv = $("<div>").addClass('gsi_dsloreinfodialog_inner_div');
     var rdiv = $("<div>").addClass('gsi_dsloreinfodialog_inner_div');
-    var titletbl = $("<table>").attr({"id": "dsloredialog_title"}).css({"border":"none","width":"100%"});
-    var contdiv = $("<div>").addClass('gsi_dsloreinfodialog_div').css({"overflow-y":"auto"});
+    var titletbl = $("<table>").attr({ "id": "dsloredialog_title" }).css({ "border": "none", "width": "100%" });
+    var contdiv = $("<div>").addClass('gsi_dsloreinfodialog_div').css({ "overflow-y": "auto" });
     var iddiv = $("<div>").addClass('gsi_dsloreinfodialog_div');
     var outerdiv = $("<div>").addClass('gsi_dsloreinfodialog_div');
-  
+
     titletbl.append(titletr.append(titleth.html(title)));
     outerdiv.append(titletbl);
-  
-    tr=$("<tr>").append($("<th>").html("概要").attr({"colspan":2}));
+
+    tr = $("<tr>").append($("<th>").html("概要").attr({ "colspan": 2 }));
     tbl.append(tr);
-  
-    for(h in names){
-    for(var j = 0; j < ary.length; j+=2){
-      if (h == ary[j]){
-      if (ary[j] == "Image"){
-  
-        var img = $("<img>");
-  
-        
-        img.on("load", MA.bind(function(){
-        if (img[0].clientHeight > imgy){
-          img.css({"width":"auto","height":imgy + "px"})
-          var limith = document.getElementById("dsloredialog_title").clientHeight;
-          contdiv.css({"max-height":(ws.h - 50 - limith) + "px"})
+
+    for (h in names) {
+      for (var j = 0; j < ary.length; j += 2) {
+        if (h == ary[j]) {
+          if (ary[j] == "Image") {
+
+            var img = $("<img>");
+
+
+            img.on("load", MA.bind(function () {
+              if (img[0].clientHeight > imgy) {
+                img.css({ "width": "auto", "height": imgy + "px" })
+                var limith = document.getElementById("dsloredialog_title").clientHeight;
+                contdiv.css({ "max-height": (ws.h - 50 - limith) + "px" })
+              }
+              this.adjustWindow();
+            }, this));
+
+            $(rdiv).append(img.attr({ "src": ary[j + 1] }).css({ "width": imgx, "height": "auto" }));
+
           }
-        this.adjustWindow();
-        },this));
-  
-        $(rdiv).append(img.attr({"src" : ary[j + 1]}).css({"width": imgx, "height": "auto"}));
-  
-      }
-      else{
-        if ( (ary[j] != "") && (ary[j + 1] != "") ){
-        var c1w, c2w;
-        c1w = "80px";
-        c2w = "180px";
-        //name
-        tr=$("<tr>").append($("<td>").css({"width":c1w}).html(names[ary[j]]));
-        //value
-        if (ary[j] == "DisasterInfo"){
-          var ms = /\[(.*?)\]\((.*?)\)/;
-          var mt = ms.exec(ary[j + 1]);
-          while(mt != null){
-            var hit = mt[0];
-            var atag = "<a href='" + mt[2] + "' target=_blank>" + mt[1] + "</a>";
-            ary[j + 1] = ary[j + 1].replace(hit, atag);
-            mt = ms.exec(ary[j + 1]);
+          else {
+            if ((ary[j] != "") && (ary[j + 1] != "")) {
+              var c1w, c2w;
+              c1w = "80px";
+              c2w = "180px";
+              //name
+              tr = $("<tr>").append($("<td>").css({ "width": c1w }).html(names[ary[j]]));
+              //value
+              if (ary[j] == "DisasterInfo") {
+                var ms = /\[(.*?)\]\((.*?)\)/;
+                var mt = ms.exec(ary[j + 1]);
+                while (mt != null) {
+                  var hit = mt[0];
+                  var atag = "<a href='" + mt[2] + "' target=_blank>" + mt[1] + "</a>";
+                  ary[j + 1] = ary[j + 1].replace(hit, atag);
+                  mt = ms.exec(ary[j + 1]);
+                }
+              }
+              $(tr).append($("<td>").css({ "width": c2w }).html(ary[j + 1]));
+
+              $(tbl).append(tr);
+            }
           }
-        }  
-        $(tr).append( $("<td>").css({"width": c2w}).html(ary[j + 1]) );
-  
-        $(tbl).append(tr);
+
         }
       }
-    
-      }
     }
-    }
-  
+
     ldiv.append(tbl);
     lefttd.append(ldiv);
-  
+
     iddiv.html("ID:" + id);
-  
-    if (ws.h < ws.w){
-    righttd.append(rdiv);
-    outertr.append(lefttd);
-    outertr.append(righttd);
-    outertbl.append(outertr);
-    iddiv.css({"text-align":"left","bottom":"0.4em","left":"0.4em"})
-    ldiv.css({"height":(imgy - 30) + "px"});
-    ldiv.append(iddiv);
+
+    if (ws.h < ws.w) {
+      righttd.append(rdiv);
+      outertr.append(lefttd);
+      outertr.append(righttd);
+      outertbl.append(outertr);
+      iddiv.css({ "text-align": "left", "bottom": "0.4em", "left": "0.4em" })
+      ldiv.css({ "height": (imgy - 30) + "px" });
+      ldiv.append(iddiv);
     }
-    else{
-    iddiv.css({"text-align":"left"});
-    ldiv.append(iddiv);
-  
-    $(ldiv).css({"height":"100px"});
-    righttd.append(rdiv);
-    outertr.append(righttd);
-    outertbl.append(outertr);
-    outertr = $("<tr>").append(lefttd);
-    outertbl.append(outertr);
+    else {
+      iddiv.css({ "text-align": "left" });
+      ldiv.append(iddiv);
+
+      $(ldiv).css({ "height": "100px" });
+      righttd.append(rdiv);
+      outertr.append(righttd);
+      outertbl.append(outertr);
+      outertr = $("<tr>").append(lefttd);
+      outertbl.append(outertr);
     }
-  
+
     contdiv.append(outertbl);
     outerdiv.append(contdiv);
-  
+
     return outerdiv;
-  
+
   },
   onPositiveButtonClick: function () {
     this.hide();
@@ -23103,8 +21498,8 @@ GSI.Modal.dsloreDialog = GSI.Modal.Dialog.extend({
   onNegativeButtonClick: function () {
     this.hide();
   }
-  });
-  
+});
+
 
 
 
@@ -23124,8 +21519,7 @@ GSI.Modal.dsloreDialog = GSI.Modal.Dialog.extend({
 var GSI3D = {};
 
 
-GSI3D.bind = function (fn, obj)
-{
+GSI3D.bind = function (fn, obj) {
   var args = arguments.length > 2 ? Array.prototype.slice.call(arguments, 2) : null;
   return function () {
     return fn.apply(obj, args || arguments);
@@ -23141,68 +21535,58 @@ GSI3D.bind = function (fn, obj)
     イベント
 
 *************************************************************/
-GSI3D.Event = function()
-{
-  
-  this.on = function(key,fnc)
-  {
-    if ( !this._events ) this._events = {};
-    if ( !this._events[key] )
+GSI3D.Event = function () {
+
+  this.on = function (key, fnc) {
+    if (!this._events) this._events = {};
+    if (!this._events[key])
       this._events[key] = [];
-    
-    this._events[key].push( fnc );
-    
+
+    this._events[key].push(fnc);
+
     return this;
   };
-  
-  
-  this.off = function(key,fnc)
-  {
-    if ( !this._events ) this._events = {};
-    if ( !this._events[key] ) return;
-    
-    if ( !fnc )
-    {
+
+
+  this.off = function (key, fnc) {
+    if (!this._events) this._events = {};
+    if (!this._events[key]) return;
+
+    if (!fnc) {
       this._events[key] = [];
     }
-    else
-    {
-      for( var i=0; i<this._events[key].length; i++ )
-      {
-        if ( this._events[key][i] == fnc )
-        {
+    else {
+      for (var i = 0; i < this._events[key].length; i++) {
+        if (this._events[key][i] == fnc) {
           this._events[key].splice(i, 1);
           break;
         }
       }
-      
+
     }
-    
-    
+
+
     return this;
   };
-  
-  this.fire = function(key,params)
-  {
-    if ( !this._events ) this._events = {};
-    if ( !this._events[key] ) return;
-    
+
+  this.fire = function (key, params) {
+    if (!this._events) this._events = {};
+    if (!this._events[key]) return;
+
     var arr = this._events[key];
-    
-    var p = $.extend( false, {target:this}, params );
-    
-    var p = {target:this};
-    
-    for( var paramKey in params )
-    {
-      p[ paramKey ] = params[ paramKey ];
+
+    var p = $.extend(false, { target: this }, params);
+
+    var p = { target: this };
+
+    for (var paramKey in params) {
+      p[paramKey] = params[paramKey];
     }
-    
-    for( var i=0; i<arr.length; i++ )
-    {
-      arr[i]( p );
+
+    for (var i = 0; i < arr.length; i++) {
+      arr[i](p);
     }
-    
+
   }
 };
 
@@ -23216,15 +21600,13 @@ GSI3D.Event = function()
     point管理
 
 *************************************************************/
-GSI3D.Point = function(x,y)
-{
+GSI3D.Point = function (x, y) {
   this.x = x;
   this.y = y;
 };
 
 
-GSI3D.Point.prototype.divideBy = function( num )
-{
+GSI3D.Point.prototype.divideBy = function (num) {
   this.x /= num;
   this.y /= num;
   return this;
@@ -23238,9 +21620,8 @@ GSI3D.Point.prototype.floor = function () {
 };
 
 
-GSI3D.point = function( x, y )
-{
-  return new GSI3D.Point(x,y );
+GSI3D.point = function (x, y) {
+  return new GSI3D.Point(x, y);
 };
 
 
@@ -23251,127 +21632,113 @@ GSI3D.point = function( x, y )
     標高データ管理
 
 *************************************************************/
-GSI3D.DEMManager = function( options) {
-  
+GSI3D.DEMManager = function (options) {
+
   this._loaders = {};
-  
-  
-  this.options = $.extend( true,
+
+
+  this.options = $.extend(true,
     {
-      useHillshademap : false
-    }, 
-    options );
-    
-  
+      useHillshademap: false
+    },
+    options);
+
+
 };
 
 
 GSI3D.DEMManager.prototype = new GSI3D.Event();
 
 
-GSI3D.DEMManager.prototype.xyzToKey = function(x,y,z)
-{
+GSI3D.DEMManager.prototype.xyzToKey = function (x, y, z) {
   return x + ":" + y + ":" + z;
 };
 
 
-GSI3D.DEMManager.prototype.append = function(x,y,z)
-{
+GSI3D.DEMManager.prototype.append = function (x, y, z) {
   x = parseInt(x);
   y = parseInt(y);
   z = parseInt(z);
-  var key = this.xyzToKey( x,y,z );
-  
+  var key = this.xyzToKey(x, y, z);
+
   this._loaders[key] = {
-    coords : {x:x,y:y,z:z},
-    loader : null
+    coords: { x: x, y: y, z: z },
+    loader: null
   };
 };
 
 
-GSI3D.DEMManager.prototype.getDEM = function(x,y,z)
-{
-  var key = this.xyzToKey( x,y,z );
+GSI3D.DEMManager.prototype.getDEM = function (x, y, z) {
+  var key = this.xyzToKey(x, y, z);
   var result = null;
-  if ( this._loaders[key] )
-  {
+  if (this._loaders[key]) {
     result = this._loaders[key].loader.getData();
   }
-  
+
   return result;
 };
 
 
-GSI3D.DEMManager.prototype.getHillshademapImage = function(x,y,z)
-{
-  var key = this.xyzToKey( x,y,z );
+GSI3D.DEMManager.prototype.getHillshademapImage = function (x, y, z) {
+  var key = this.xyzToKey(x, y, z);
   var result = null;
-  if ( this._loaders[key] )
-  {
+  if (this._loaders[key]) {
     result = this._loaders[key].loader.getHillshademapImage();
   }
-  
+
   return result;
 };
 
 
-GSI3D.DEMManager.prototype.load = function()
-{
-  for( var key in this._loaders )
-  {
+GSI3D.DEMManager.prototype.load = function () {
+  for (var key in this._loaders) {
     var loader = this._loaders[key];
     loader.loader
-      = new GSI3D.DEMLoader( 
+      = new GSI3D.DEMLoader(
         loader.coords.x, loader.coords.y, loader.coords.z,
-        $.extend( true, [], this._demUrlList), {
-          overZooming : true,
-          useHillshademap : this.options.useHillshademap
-        } ); 
-    
+        $.extend(true, [], this._demUrlList), {
+        overZooming: true,
+        useHillshademap: this.options.useHillshademap
+      });
+
     loader.loader._key = key;
-    loader.loader.on( "load", GSI3D.bind( function(e){
+    loader.loader.on("load", GSI3D.bind(function (e) {
       this._loaders[e.target._key]._loaded = true;
       this._checkLoaded();
-      
-    }, this ) );
+
+    }, this));
   }
-  
-  for( var key in this._loaders )
-  {
+
+  for (var key in this._loaders) {
     this._loaders[key].loader.load();
   }
 };
 
 
-GSI3D.DEMManager.prototype.loaded = function()
-{
+GSI3D.DEMManager.prototype.loaded = function () {
   return this._loaded;
 };
 
 
-GSI3D.DEMManager.prototype._checkLoaded = function()
-{
+GSI3D.DEMManager.prototype._checkLoaded = function () {
   var loaded = true;
   var max = 0;
   var current = 0;
-  for( var key in this._loaders )
-  {
-    if ( !this._loaders[key]._loaded )
-    {
+  for (var key in this._loaders) {
+    if (!this._loaders[key]._loaded) {
       loaded = false;
     }
     else current++;
-    
+
     max++;
   }
-  this.fire( "progress", {max:max,current:current} );
-  
-  if( loaded )
-  {
+  this.fire("progress", { max: max, current: current });
+
+  if (loaded) {
     this._loaded = true;
-    this.fire( "load" );
+    this.fire("load");
   }
-  
+
 };
 
 
@@ -23383,82 +21750,75 @@ GSI3D.DEMManager.prototype._checkLoaded = function()
     標高データ読み込み
 
 *************************************************************/
-GSI3D.DEMLoader = function( x,y,z, urlList, options) {
-  
-  
+GSI3D.DEMLoader = function (x, y, z, urlList, options) {
+
+
   this._hillshademapUrl = 'https://cyberjapandata.gsi.go.jp/xyz/hillshademap/{z}/{x}/{y}.png';
-  
+
   this._coords = {
-    x : x,
-    y : y,
-    z : z
+    x: x,
+    y: y,
+    z: z
   };
-  
-  this.options = $.extend( true,
+
+  this.options = $.extend(true,
     {
-      minZoom : 8,
-      overZooming : true,
-      useHillshademap : false,
-      tms : false
-    }, 
-    options );
-  
-  
+      minZoom: 8,
+      overZooming: true,
+      useHillshademap: false,
+      tms: false
+    },
+    options);
+
+
   this._urlList = urlList;
 };
 GSI3D.DEMLoader.prototype = new GSI3D.Event();
-GSI3D.DEMLoader.pow2_8  =  Math.pow( 2, 8 );
-GSI3D.DEMLoader.pow2_16  =  Math.pow( 2, 16 );
-GSI3D.DEMLoader.pow2_23  =  Math.pow( 2, 23 );
-GSI3D.DEMLoader.pow2_24  =  Math.pow( 2, 24 );
+GSI3D.DEMLoader.pow2_8 = Math.pow(2, 8);
+GSI3D.DEMLoader.pow2_16 = Math.pow(2, 16);
+GSI3D.DEMLoader.pow2_23 = Math.pow(2, 23);
+GSI3D.DEMLoader.pow2_24 = Math.pow(2, 24);
 
 
-GSI3D.DEMLoader.prototype.destroy = function()
-{
-  if ( this._demImage )
-  {
+GSI3D.DEMLoader.prototype.destroy = function () {
+  if (this._demImage) {
     this._demImage.onload = null;
     this._demImage.onerror = null;
-    $(this._demImage ).off("load").off("error");
+    $(this._demImage).off("load").off("error");
     delete this._demImage;
     this._demImage = null;
   }
-  
-  if ( this._hillshademapImage )
-  {
+
+  if (this._hillshademapImage) {
     this._hillshademapImage.onload = null;
     this._hillshademapImage.onerror = null;
-    $(this._hillshademapImage ).off("load").off("error");
+    $(this._hillshademapImage).off("load").off("error");
     delete this._hillshademapImage;
     this._hillshademapImage = null;
   }
-  
-  if ( this._demData )
-  {
+
+  if (this._demData) {
     delete this._demData;
     this._demData = null;
   }
 };
 
 
-GSI3D.DEMLoader.prototype.getData = function()
-{
+GSI3D.DEMLoader.prototype.getData = function () {
   return this._demData;
 };
 
 
-GSI3D.DEMLoader.prototype.getHillshademapImage = function()
-{
-  return( this._hillshademapLoaded && !this._hillshademapError ? this._hillshademapImage : null );
+GSI3D.DEMLoader.prototype.getHillshademapImage = function () {
+  return (this._hillshademapLoaded && !this._hillshademapError ? this._hillshademapImage : null);
 };
 
 
-GSI3D.DEMLoader.prototype.load = function()
-{
-  
+GSI3D.DEMLoader.prototype.load = function () {
+
   this._demData = null;
   this._demLoaded = false;
-  this._currentCoords = $.extend( true, {}, this._coords );
+  this._currentCoords = $.extend(true, {}, this._coords);
   /*
   this._urlList =  GSI3D.DEMLoader.getURLList( this._coords.x, this._coords.y, this._coords.z );
   this._startLoadDEM( this._currentCoords );
@@ -23467,67 +21827,67 @@ GSI3D.DEMLoader.prototype.load = function()
     this._loadHillshademap( this._currentCoords );
   }
   */
-  if ( !this._urlList || this._urlList.length <= 0 ) {
+  if (!this._urlList || this._urlList.length <= 0) {
     this._urlList = GSI3D.DEMLoader.getURLList(this._coords.x, this._coords.y, this._coords.z);
   }
 
-  this._urlList = this._makeUrlList( this._urlList );
+  this._urlList = this._makeUrlList(this._urlList);
 
 
   this._startLoadDEM(this._currentCoords);
   if (this.options.useHillshademap) {
     this._loadHillshademap(this._currentCoords);
   }
-  
+
 };
 
 
 
-GSI3D.DEMLoader.prototype._makeUrlList = function(list) {
+GSI3D.DEMLoader.prototype._makeUrlList = function (list) {
 
   var zoomList = [];
-  for( var i=0; i<20; i++ ) {
+  for (var i = 0; i < 20; i++) {
     zoomList.push([]);
   }
-  for( var i=0; i<list.length; i++ ) {
-    for( var z=list[i].maxZoom; z>= list[i].minZoom; z-- ) {
-      var item = $.extend(true,{}, list[i]);
+  for (var i = 0; i < list.length; i++) {
+    for (var z = list[i].maxZoom; z >= list[i].minZoom; z--) {
+      var item = $.extend(true, {}, list[i]);
       item.minZoom = z;
       item.maxZoom = z;
       zoomList[z].push(item);
     }
   }
-  
-  if ( !this.options.useTileList) {
-    this.options.useTileList = ["DEM1A","DEM5A","DEM5B","DEM5C","DEM10B","DEMGM"];
+
+  if (!this.options.useTileList) {
+    this.options.useTileList = ["DEM1A", "DEM5A", "DEM5B", "DEM5C", "DEM10B", "DEMGM"];
   }
 
   var useTileList = this.options.useTileList;
 
   var result = [];
-  for( var z=zoomList.length-1; z>=0; z--) {
-    for( var i=0; i<zoomList[z].length; i++ ) {
+  for (var z = zoomList.length - 1; z >= 0; z--) {
+    for (var i = 0; i < zoomList[z].length; i++) {
       var item = zoomList[z][i];
-      if ( useTileList.indexOf( item.id ) >= 0 ) {
-        if ( item.complementList ) {
+      if (useTileList.indexOf(item.id) >= 0) {
+        if (item.complementList) {
           var complementList = [];
-          for( var j=0; j<item.complementList.length; j++ ) {
+          for (var j = 0; j < item.complementList.length; j++) {
 
             var complement = item.complementList[j];
-            if ( useTileList.indexOf( complement.id) >= 0)
+            if (useTileList.indexOf(complement.id) >= 0)
               complementList.push(complement);
 
           }
           item.complementList = complementList;
         }
-        result.push( zoomList[z][i]); 
+        result.push(zoomList[z][i]);
       }
     }
   }
 
-  if ( result.length <= 0 && useTileList.indexOf("DEMGM")==0) {
-    
-    result.push( {
+  if (result.length <= 0 && useTileList.indexOf("DEMGM") == 0) {
+
+    result.push({
       id: "DEMGM",
       url: "https://cyberjapandata.gsi.go.jp/xyz/demgm_png/{z}/{x}/{y}.png",
       minZoom: 0,
@@ -23538,291 +21898,263 @@ GSI3D.DEMLoader.prototype._makeUrlList = function(list) {
 };
 
 
-GSI3D.DEMLoader.prototype._loadHillshademap = function( coords )
-{
-  
+GSI3D.DEMLoader.prototype._loadHillshademap = function (coords) {
+
   var url = this.getDEMTileUrl(this._hillshademapUrl, coords);
   this._hillshademapImage = document.createElement('img');
   $(this._hillshademapImage)
-  .on( 'load', GSI3D.bind(
-    function() {
-      this._hillshademapLoadSuccess();
-    }, this )
-  )
-  .on('error', GSI3D.bind(
-    function(e) {
-      this._hillshademapLoadError();
-    }, this)
-  );
-  
+    .on('load', GSI3D.bind(
+      function () {
+        this._hillshademapLoadSuccess();
+      }, this)
+    )
+    .on('error', GSI3D.bind(
+      function (e) {
+        this._hillshademapLoadError();
+      }, this)
+    );
+
   this._hillshademapImage.setAttribute('crossOrigin', 'anonymous');
   this._hillshademapImage.setAttribute('role', 'presentation');
-  
+
   this._hillshademapImage.src = url;
 };
 
 
-GSI3D.DEMLoader.prototype._nextZoom = function()
-{
-  
+GSI3D.DEMLoader.prototype._nextZoom = function () {
+
   var nextZoom = this._currentCoords.z - 1;
-  
-  if ( nextZoom < this.options.minZoom )
-  {
+
+  if (nextZoom < this.options.minZoom) {
     this._demLoadError();
     return;
   }
-  
-  var scale = Math.pow( 2, this._coords.z- nextZoom );
-  var point = GSI3D.point( this._coords.x*256/scale, this._coords.y*256/scale)
+
+  var scale = Math.pow(2, this._coords.z - nextZoom);
+  var point = GSI3D.point(this._coords.x * 256 / scale, this._coords.y * 256 / scale)
     .divideBy(256).floor();
-  
+
   this._currentCoords = {
-    x : point.x,
-    y : point.y,
-    z : nextZoom
+    x: point.x,
+    y: point.y,
+    z: nextZoom
   };
-  
-  this._startLoadDEM( this._currentCoords );
-  
-  
+
+  this._startLoadDEM(this._currentCoords);
+
+
 };
 
 
-GSI3D.DEMLoader.prototype._startLoadDEM  = function( coords )
-{
-  var urlList = $.extend( true,[], this._urlList );
-  this._loadDEM( urlList, coords );
+GSI3D.DEMLoader.prototype._startLoadDEM = function (coords) {
+  var urlList = $.extend(true, [], this._urlList);
+  this._loadDEM(urlList, coords);
 };
 
 
-GSI3D.DEMLoader.prototype.getDEMTileUrl = function (url, coords)
-{
-  
-  return url.replace("{x}",coords.x ).replace("{y}",coords.y ).replace("{z}",coords.z );
+GSI3D.DEMLoader.prototype.getDEMTileUrl = function (url, coords) {
+
+  return url.replace("{x}", coords.x).replace("{y}", coords.y).replace("{z}", coords.z);
 };
 
 
-GSI3D.DEMLoader.prototype._loadDEM = function(urlList,  coords)
-{
+GSI3D.DEMLoader.prototype._loadDEM = function (urlList, coords) {
   var targetUrl = null;
   var z = coords.z;
-  
-  while(urlList.length > 0){
+
+  while (urlList.length > 0) {
     var urlInfo = urlList.shift();
-    if ( urlInfo.minZoom <= z && z <= urlInfo.maxZoom )
-    {
-      targetUrl = $.extend( true, {}, urlInfo );
+    if (urlInfo.minZoom <= z && z <= urlInfo.maxZoom) {
+      targetUrl = $.extend(true, {}, urlInfo);
       break;
     }
   }
-  
-  if ( !targetUrl )
-  {
+
+  if (!targetUrl) {
     //err
-    if ( this.options.overZooming )
+    if (this.options.overZooming)
       this._nextZoom();
-    else
-    {
+    else {
       this._demLoadError();
     }
     return;
   }
 
-  var url =  this.getDEMTileUrl( targetUrl.url, coords );
-  
+  var url = this.getDEMTileUrl(targetUrl.url, coords);
+
   this._demImage = document.createElement('img');
-  
+
   $(this._demImage)
-  .on( 'load', GSI3D.bind(
-    function(urlList,coords,targetUrl) {
-      this._demLoadSuccess( urlList, coords, targetUrl );
-    }, this, urlList,coords, targetUrl)
-  )
-  .on('error', GSI3D.bind(
-    function(urlList,coords, e) {
-      this._loadDEM( urlList,  coords );
-    }, this, urlList,coords)
-  );
-  
+    .on('load', GSI3D.bind(
+      function (urlList, coords, targetUrl) {
+        this._demLoadSuccess(urlList, coords, targetUrl);
+      }, this, urlList, coords, targetUrl)
+    )
+    .on('error', GSI3D.bind(
+      function (urlList, coords, e) {
+        this._loadDEM(urlList, coords);
+      }, this, urlList, coords)
+    );
+
   this._demImage.setAttribute('crossOrigin', 'anonymous');
   this._demImage.setAttribute('role', 'presentation');
-  
+
   this._demImage.src = url;
-  
+
 };
 
 
-GSI3D.DEMLoader.prototype._demLoadSuccess = function(urlList,coords,targetUrl )
-{
-  var scale=1,lt,rb,point, idx = 0, destIdx = 0;
-  
-  if ( this._coords.z != coords.z )
-  {
-    scale = Math.pow( 2, this._coords.z- coords.z );
-    
-    lt = GSI3D.point( coords.x*256*scale, coords.y*256*scale );
-    rb = GSI3D.point( (coords.x+1)*256*scale, (coords.y+1)*256*scale );
-    
-    point = GSI3D.point( this._coords.x*256, this._coords.y*256 );
-    
+GSI3D.DEMLoader.prototype._demLoadSuccess = function (urlList, coords, targetUrl) {
+  var scale = 1, lt, rb, point, idx = 0, destIdx = 0;
+
+  if (this._coords.z != coords.z) {
+    scale = Math.pow(2, this._coords.z - coords.z);
+
+    lt = GSI3D.point(coords.x * 256 * scale, coords.y * 256 * scale);
+    rb = GSI3D.point((coords.x + 1) * 256 * scale, (coords.y + 1) * 256 * scale);
+
+    point = GSI3D.point(this._coords.x * 256, this._coords.y * 256);
+
     point.x -= lt.x;
     point.y -= lt.y;
   }
-  else
-  {
-    point = GSI3D.point(0,0);
+  else {
+    point = GSI3D.point(0, 0);
   }
   var pow2_16 = GSI3D.DEMLoader.pow2_16;
   var pow2_8 = GSI3D.DEMLoader.pow2_8;
   var pow2_23 = GSI3D.DEMLoader.pow2_23;
   var pow2_24 = GSI3D.DEMLoader.pow2_24;
-  
-  var demData = ( this._demData ? this._demData : [] );
-  
+
+  var demData = (this._demData ? this._demData : []);
+
   var canvas = GSI3D.DEMLoader.getCanvas();
   var ctx = canvas.getContext("2d");
-  ctx.drawImage( this._demImage, 0,0, 256, 256 );
-  var data = ctx.getImageData( 0, 0, 256, 256 ).data;
+  ctx.drawImage(this._demImage, 0, 0, 256, 256);
+  var data = ctx.getImageData(0, 0, 256, 256).data;
   var hasErrorPixel = false;
-  
-  
-  for(var y = 0; y < 256; ++y)
-  {
-    for(var x = 0; x < 256; ++x)
-    {
-      if ( !this._demData || this._demData[destIdx] == null )
-      {
-        if ( scale != 1 )
-        {
-          var x2 = Math.floor( ( point.x + x ) / scale );
-          var y2 = Math.floor( ( point.y + y ) / scale );
-          idx = (y2*256*4) + (x2 *4) ;
+
+
+  for (var y = 0; y < 256; ++y) {
+    for (var x = 0; x < 256; ++x) {
+      if (!this._demData || this._demData[destIdx] == null) {
+        if (scale != 1) {
+          var x2 = Math.floor((point.x + x) / scale);
+          var y2 = Math.floor((point.y + y) / scale);
+          idx = (y2 * 256 * 4) + (x2 * 4);
         }
         else
-          idx = (y*256*4) + (x *4);
-          
-          
-        var r = data[ idx+0 ];
-        var g = data[ idx+1 ];
-        var b = data[ idx+2 ];
+          idx = (y * 256 * 4) + (x * 4);
+
+
+        var r = data[idx + 0];
+        var g = data[idx + 1];
+        var b = data[idx + 2];
         var h = 0;
-        if ( r != 128 || g!=0 || b!= 0 )
-        {
-          
+        if (r != 128 || g != 0 || b != 0) {
+
           var d = r * pow2_16 + g * pow2_8 + b;
-          h = ( d < pow2_23  ) ? d : d - pow2_24;
-          if ( h == -pow2_23 )h = 0;
+          h = (d < pow2_23) ? d : d - pow2_24;
+          if (h == -pow2_23) h = 0;
           else h *= 0.01;
-          
-          if ( isNaN( h ) )
-          {
-            console.log( r,g,b,h);
+
+          if (isNaN(h)) {
+            console.log(r, g, b, h);
           }
-          
+
           demData[destIdx] = h;
         }
-        else
-        {
+        else {
           hasErrorPixel = true;
           demData[destIdx] = null;
         }
       }
       destIdx++;
     }
-    
+
   }
-  
-  if ( this._demData ) {
+
+  if (this._demData) {
     hasErrorPixel = false;
-    
-    for( var i=0; i<demData.length; i++ ) {
-      if ( demData[i] == null ) {
+
+    for (var i = 0; i < demData.length; i++) {
+      if (demData[i] == null) {
         hasErrorPixel = true;
         break;
       }
     }
-    if ( hasErrorPixel ) {
+    if (hasErrorPixel) {
       hasErrorPixel = false;
-      var complementList = $.extend( true,[], this._urlList );
-      
-      for ( var i=0; i<complementList.length; i++ ) {
-        if ( complementList[i].url == targetUrl.url &&
-            complementList[i].minZoom == targetUrl.minZoom &&
-            complementList[i].maxZoom == targetUrl.maxZoom ) {
-          complementList.splice( i, 1 );
-          if ( complementList.length > 0 ) {
+      var complementList = $.extend(true, [], this._urlList);
+
+      for (var i = 0; i < complementList.length; i++) {
+        if (complementList[i].url == targetUrl.url &&
+          complementList[i].minZoom == targetUrl.minZoom &&
+          complementList[i].maxZoom == targetUrl.maxZoom) {
+          complementList.splice(i, 1);
+          if (complementList.length > 0) {
             targetUrl.complementList = complementList;
             hasErrorPixel = true;
           }
           break;
         }
-          
+
       }
     }
-  }	
+  }
   this._demData = demData;
-  
-  
-  if ( hasErrorPixel && targetUrl.complementList )
-  {
+
+
+  if (hasErrorPixel && targetUrl.complementList) {
     // DEM5aなどの境目補完
     // urlリストを補完用に変更
-    this._urlList = $.extend( true,[], targetUrl.complementList );
-    this._startLoadDEM( this._currentCoords );
-  
+    this._urlList = $.extend(true, [], targetUrl.complementList);
+    this._startLoadDEM(this._currentCoords);
+
   }
-  else
-  {
-    
+  else {
+
     this._demLoaded = true;
     this._checkLoaded();
   }
-  
+
 };
 
 
-GSI3D.DEMLoader.prototype._demLoadError = function()
-{
+GSI3D.DEMLoader.prototype._demLoadError = function () {
   this._demLoaded = true;
   this._checkLoaded();
 };
 
 
-GSI3D.DEMLoader.prototype._hillshademapLoadSuccess = function()
-{
+GSI3D.DEMLoader.prototype._hillshademapLoadSuccess = function () {
   this._hillshademapLoaded = true;
   this._hillshademapError = false;
   this._checkLoaded();
 };
 
 
-GSI3D.DEMLoader.prototype._hillshademapLoadError = function()
-{
-  
+GSI3D.DEMLoader.prototype._hillshademapLoadError = function () {
+
   this._hillshademapLoaded = true;
   this._hillshademapError = true;
   this._checkLoaded();
 };
 
 
-GSI3D.DEMLoader.prototype._checkLoaded = function()
-{
-  if ( this._demLoaded && 
-    (!this.options.useHillshademap || this._hillshademapLoaded ) )
-  {
+GSI3D.DEMLoader.prototype._checkLoaded = function () {
+  if (this._demLoaded &&
+    (!this.options.useHillshademap || this._hillshademapLoaded)) {
     this.fire("load");
   }
 };
 
 
-GSI3D.DEMLoader.getCanvas = function()
-{
-  if ( !GSI3D.DEMLoader._canvas  )
-  {
+GSI3D.DEMLoader.getCanvas = function () {
+  if (!GSI3D.DEMLoader._canvas) {
     GSI3D.DEMLoader._canvas = document.createElement('canvas');
-    GSI3D.DEMLoader._canvas.width =256;
-    GSI3D.DEMLoader._canvas.height =256;
+    GSI3D.DEMLoader._canvas.width = 256;
+    GSI3D.DEMLoader._canvas.height = 256;
   }
   return GSI3D.DEMLoader._canvas;
 };
@@ -23838,14 +22170,13 @@ GSI3D.DEMLoader.getURLList
 *******************************************************/
 
 GSI3D.DEMLoader.getURLList = function (x, y, z) {
-  if ( !GSI3D.DEMLoader.DEMAREA )
-  {
-    GSI3D.DEMLoader.DEMAREA={};
-    GSI3D.DEMLoader.DEMAREA2={};
-    GSI3D.DEMLoader.DEMAREA3={};
-    for( var i=0; i<CONFIG.DEMAREA.length; i++ ) GSI3D.DEMLoader.DEMAREA[CONFIG.DEMAREA[i]] = 1;
-    for( var i=0; i<CONFIG.DEMAREA2.length; i++ ) GSI3D.DEMLoader.DEMAREA2[CONFIG.DEMAREA2[i]] = 1;
-    for( var i=0; i<CONFIG.DEMAREA3.length; i++ ) GSI3D.DEMLoader.DEMAREA3[CONFIG.DEMAREA3[i]] = 1;
+  if (!GSI3D.DEMLoader.DEMAREA) {
+    GSI3D.DEMLoader.DEMAREA = {};
+    GSI3D.DEMLoader.DEMAREA2 = {};
+    GSI3D.DEMLoader.DEMAREA3 = {};
+    for (var i = 0; i < CONFIG.DEMAREA.length; i++) GSI3D.DEMLoader.DEMAREA[CONFIG.DEMAREA[i]] = 1;
+    for (var i = 0; i < CONFIG.DEMAREA2.length; i++) GSI3D.DEMLoader.DEMAREA2[CONFIG.DEMAREA2[i]] = 1;
+    for (var i = 0; i < CONFIG.DEMAREA3.length; i++) GSI3D.DEMLoader.DEMAREA3[CONFIG.DEMAREA3[i]] = 1;
     delete CONFIG.DEMAREA; CONFIG.DEMAREA = null;
     delete CONFIG.DEMAREA2; CONFIG.DEMAREA2 = null;
     delete CONFIG.DEMAREA3; CONFIG.DEMAREA3 = null;
@@ -24042,62 +22373,57 @@ GSI3D.ReliefTileLayer = {};
 
 GSI3D.ReliefTileLayer._sampleData =
 {
-  gradate : false,
-  useHillshademap : false,
-  colors : [
-    { h:   0, color: "#2db4b4" },
+  gradate: false,
+  useHillshademap: false,
+  colors: [
+    { h: 0, color: "#2db4b4" },
     { h: 100, color: "#71b42d" },
     { h: 300, color: "#b4a72d" },
-    { h:1000, color: "#b4562d" },
-    { h:2000, color: "#b4491b" },
-    { h:4000, color: "#b43d09" },
-    { h:null, color: "#b43d09" }
+    { h: 1000, color: "#b4562d" },
+    { h: 2000, color: "#b4491b" },
+    { h: 4000, color: "#b43d09" },
+    { h: null, color: "#b43d09" }
   ]
 };
 
 
-GSI3D.ReliefTileLayer.colorStringToRGBA = function (c)
-{
-  var toHex = function(v) {
+GSI3D.ReliefTileLayer.colorStringToRGBA = function (c) {
+  var toHex = function (v) {
     return '0x' + (('0000' + v.toString(16).toUpperCase()).substr(-4));
   };
-  if ( jQuery.type(c) == "string" )
-  {
+  if (jQuery.type(c) == "string") {
     var color = {
-      r:0,g:0,b:0,a:0
+      r: 0, g: 0, b: 0, a: 0
     };
-    
-    try
-    {
-      if ( c.substring(0, 1) == "#" && c.length == 7 )
-      {
-        color.r = parseInt(toHex(c.substring(1,3)) );
-        color.g = parseInt(toHex(c.substring(3,5)) );
-        color.b = parseInt(toHex(c.substring(5,7)) );
+
+    try {
+      if (c.substring(0, 1) == "#" && c.length == 7) {
+        color.r = parseInt(toHex(c.substring(1, 3)));
+        color.g = parseInt(toHex(c.substring(3, 5)));
+        color.b = parseInt(toHex(c.substring(5, 7)));
         color.a = 255;
       }
-      else if ( c.substring(0, 1) != "#" && c.length == 6 )
-      {
-        color.r = parseInt(toHex(c.substring(0,2)) );
-        color.g = parseInt(toHex(c.substring(2,4)) );
-        color.b = parseInt(toHex(c.substring(4,6)) );
+      else if (c.substring(0, 1) != "#" && c.length == 6) {
+        color.r = parseInt(toHex(c.substring(0, 2)));
+        color.g = parseInt(toHex(c.substring(2, 4)));
+        color.b = parseInt(toHex(c.substring(4, 6)));
         color.a = 255;
       }
     }
-    catch(e){}
-    
+    catch (e) { }
+
     c = color;
   }
-  
-  
+
+
   return c;
 };
 // カラーパターンのhtmlカラーをRGBに
-for( var i=0; i<CONFIG.FREERELIEF_COLORPATTERNS.length; i++ ) {
+for (var i = 0; i < CONFIG.FREERELIEF_COLORPATTERNS.length; i++) {
   var pattern = CONFIG.FREERELIEF_COLORPATTERNS[i];
-  for( var j=0;j<pattern.colors.length; j++ ) {
+  for (var j = 0; j < pattern.colors.length; j++) {
     var color = pattern.colors[j];
-    if ( color.r || color.r == 0 ) continue;
+    if (color.r || color.r == 0) continue;
     pattern.colors[j] = GSI3D.ReliefTileLayer.colorStringToRGBA(color);
   }
 }
@@ -24105,144 +22431,131 @@ for( var i=0; i<CONFIG.FREERELIEF_COLORPATTERNS.length; i++ ) {
 
 
 // データのURL用エンコード
-GSI3D.ReliefTileLayer.encodeElevationData = function(data)
-{
-  if ( !data ) return;
-  
+GSI3D.ReliefTileLayer.encodeElevationData = function (data) {
+  if (!data) return;
+
   var result = "";
-  
-  for( var i=0; i<data.colors.length; i++ )
-  {
+
+  for (var i = 0; i < data.colors.length; i++) {
     var c = data.colors[i];
-    
+
     var hText = "";
-    if ( c.h || c.h == 0)
+    if (c.h || c.h == 0)
       hText = c.h.toString(16);
     var colorText = ""
-    
-    if ( c && c.color)
-    {
-      if ( jQuery.type(c.color) == "string" )
-      {
-        if ( c.color.charAt(0) == "#" )
-          colorText=c.color.slice( 1 ) ;
+
+    if (c && c.color) {
+      if (jQuery.type(c.color) == "string") {
+        if (c.color.charAt(0) == "#")
+          colorText = c.color.slice(1);
         else
-          colorText=c.color;
+          colorText = c.color;
       }
-      else
-      {
-        
-        colorText = 
+      else {
+
+        colorText =
           ("00" + c.color.r.toString(16).toUpperCase()).substr(-2)
-          +("00" + c.color.g.toString(16).toUpperCase()).substr(-2)
-          +("00" + c.color.b.toString(16).toUpperCase()).substr(-2);
+          + ("00" + c.color.g.toString(16).toUpperCase()).substr(-2)
+          + ("00" + c.color.b.toString(16).toUpperCase()).substr(-2);
       }
     }
-    
-    result += ( result == "" ? "" : "G" ) +hText + "G" + colorText;
-    
-    
+
+    result += (result == "" ? "" : "G") + hText + "G" + colorText;
+
+
   }
-  
+
   //parseInt(suji2,2);
-  
-  
-  var flags = ( data.gradate ? "1" : 0) + ( data.useHillshademap ? "1" : 0);
-  result = parseInt(flags,2) + result;
+
+
+  var flags = (data.gradate ? "1" : 0) + (data.useHillshademap ? "1" : 0);
+  result = parseInt(flags, 2) + result;
   return result.toUpperCase();
 };
 
-GSI3D.ReliefTileLayer.decodeElevationDataText = function(txt)
-{
+GSI3D.ReliefTileLayer.decodeElevationDataText = function (txt) {
   var result = {};
-  try
-  {
-  
-    var flags = parseInt( txt.charAt(0) ).toString(2);
+  try {
+
+    var flags = parseInt(txt.charAt(0)).toString(2);
     flags = ('00' + flags).slice(-2);
-    
-    result.gradate = ( flags.charAt(0) == "1" ? true : false );
-    result.useHillshademap = ( flags.charAt(1) == "1" ? true : false );
-    
-    txt = txt.slice( 1 ) ;
-    
-    var parts = txt.split( "G" );
-    
+
+    result.gradate = (flags.charAt(0) == "1" ? true : false);
+    result.useHillshademap = (flags.charAt(1) == "1" ? true : false);
+
+    txt = txt.slice(1);
+
+    var parts = txt.split("G");
+
     result.colors = [];
-    for ( var i=0; i<parts.length; i+=2 )
-    {
-      var item ={};
+    for (var i = 0; i < parts.length; i += 2) {
+      var item = {};
       /*
       if ( parts[i] == "" )
         item.h = null;
       else
         item.h= parseInt( parts[i],16 );
       */
-      if (parts[i] == ""){
+      if (parts[i] == "") {
         item.h = null;
       }
-      else{
-        if (parts[i].match(/\.8$/)){
+      else {
+        if (parts[i].match(/\.8$/)) {
           var g = parts[i].indexOf(".");
 
-          var dec = parseInt(parts[i].substr(0, g),16);
+          var dec = parseInt(parts[i].substr(0, g), 16);
           var pt = 0;
-          for(var a = 0; a < parts[i].substr(g + 1).length; a++){
+          for (var a = 0; a < parts[i].substr(g + 1).length; a++) {
             pt = pt + parts[i].charAt(a + g + 1) / Math.pow(16, a + 1);
           }
           item.h = dec + pt;
         }
-        else{
+        else {
           item.h = parseInt(parts[i], 16);
         }
       }
-      
-      if ( parts[i+1] == "" )
-        item.color=null;
+
+      if (parts[i + 1] == "")
+        item.color = null;
       else
-        item.color = GSI3D.ReliefTileLayer.colorStringToRGBA("#"+parts[i+1] );
-        
+        item.color = GSI3D.ReliefTileLayer.colorStringToRGBA("#" + parts[i + 1]);
+
       result.colors.push(item);
     }
-    
+
   }
-  catch(e)
-  {
-    console.log( e);
+  catch (e) {
+    console.log(e);
     result = null;
   }
-  
+
   return result;
 };
 
 
-GSI3D.ReliefTileLayer.getElevationSampleData = function()
-{
-  return $.extend( true, {}, GSI3D.ReliefTileLayer._sampleData );
+GSI3D.ReliefTileLayer.getElevationSampleData = function () {
+  return $.extend(true, {}, GSI3D.ReliefTileLayer._sampleData);
 };
 
 
-GSI3D.ReliefTileLayer.getCanvas = function()
-{
-  if ( !GSI3D.ReliefTileLayer._canvas  )
-  {
+GSI3D.ReliefTileLayer.getCanvas = function () {
+  if (!GSI3D.ReliefTileLayer._canvas) {
     GSI3D.ReliefTileLayer._canvas = document.createElement('canvas');
-    GSI3D.ReliefTileLayer._canvas.width =256;
-    GSI3D.ReliefTileLayer._canvas.height =256;
+    GSI3D.ReliefTileLayer._canvas.width = 256;
+    GSI3D.ReliefTileLayer._canvas.height = 256;
   }
-  
+
   return GSI3D.ReliefTileLayer._canvas;
 };
 
 
 
-GSI3D.ReliefTileLayer.getEncodedElevationSampleData = function()
-{
+GSI3D.ReliefTileLayer.getEncodedElevationSampleData = function () {
   return GSI3D.ReliefTileLayer._encodedSampleData;
 };
-  
 
-GSI3D.ReliefTileLayer._encodedSampleData = 
+
+GSI3D.ReliefTileLayer._encodedSampleData =
   GSI3D.ReliefTileLayer.encodeElevationData(GSI3D.ReliefTileLayer._sampleData);
 
 
@@ -24255,140 +22568,122 @@ GSI3D.ReliefTileLayer.TileDrawer
     タイル描画
 
 *******************************************************/
-GSI3D.ReliefTileLayer.TileDrawer = function(elevationData)
-{
+GSI3D.ReliefTileLayer.TileDrawer = function (elevationData) {
   this.options = {
-    transparentGradate : false
+    transparentGradate: false
   };
   this._elevationData = this._initializeElevationData(elevationData);
 };
 
 
-GSI3D.ReliefTileLayer.TileDrawer.prototype.setElevationData= function(elevationData)
-{
+GSI3D.ReliefTileLayer.TileDrawer.prototype.setElevationData = function (elevationData) {
   this._elevationData = this._initializeElevationData(elevationData);
-  if ( !this._elevationData )
+  if (!this._elevationData)
     this._elevationData = this._initializeElevationData(GSI3D.ReliefTileLayer.getElevationSampleData());
 };
 
-GSI3D.ReliefTileLayer.TileDrawer.prototype.getElevationData= function()
-{
+GSI3D.ReliefTileLayer.TileDrawer.prototype.getElevationData = function () {
   return this._elevationData;
 };
 
 
-GSI3D.ReliefTileLayer.TileDrawer.prototype._initializeElevationData = function( data )
-{
-  if ( !data || !data.colors ) return null;
-  
+GSI3D.ReliefTileLayer.TileDrawer.prototype._initializeElevationData = function (data) {
+  if (!data || !data.colors) return null;
+
   var result = {
-    gradate : data.gradate,
-    useHillshademap : data.useHillshademap,
-    colors : []
+    gradate: data.gradate,
+    useHillshademap: data.useHillshademap,
+    colors: []
   };
-  
-  for( var i=0; i<data.colors.length; i++ )
-  {
+
+  for (var i = 0; i < data.colors.length; i++) {
     var c = data.colors[i];
-    if ( jQuery.type(c.color) == "string" )
-    {
-      var color = GSI3D.ReliefTileLayer.colorStringToRGBA(c.color );
-      
+    if (jQuery.type(c.color) == "string") {
+      var color = GSI3D.ReliefTileLayer.colorStringToRGBA(c.color);
+
       c.color = color;
     }
-    result.colors.push( c );
+    result.colors.push(c);
   }
-  
-  result.colors.sort(function(a,b){
+
+  result.colors.sort(function (a, b) {
     if (!a.h && a.h != 0) return 1;
     if (!b.h && b.h != 0) return -1;
-    if( a.h < b.h ) return -1;
-    if( a.h > b.h ) return 1;
+    if (a.h < b.h) return -1;
+    if (a.h > b.h) return 1;
     return 0;
   });
   return result;
 };
 
 
-GSI3D.ReliefTileLayer.TileDrawer.prototype._hToColor = function( h )
-{
-  if ( h == null ) return null;
-  
+GSI3D.ReliefTileLayer.TileDrawer.prototype._hToColor = function (h) {
+  if (h == null) return null;
+
   var colors = this._elevationData.colors;
   var prev = null;
   var current = null;
-  
-  for( var i=0; i<colors.length; i++ )
-  {
+
+  for (var i = 0; i < colors.length; i++) {
     var color = colors[i];
-    
-    if( !color.h && color.h != 0 ) continue;
-    if ( color.h >= h )
-    {
-      if ( i > 0 )
-      {
-        current =colors[ i ];
-        if ( i > 0 ) prev = colors[ i - 1 ];
+
+    if (!color.h && color.h != 0) continue;
+    if (color.h >= h) {
+      if (i > 0) {
+        current = colors[i];
+        if (i > 0) prev = colors[i - 1];
       }
-      else
-      {
-        current =colors[ 0 ];
-        
+      else {
+        current = colors[0];
+
       }
       break;
     }
-    
-    
+
+
   }
-  
-  
-  if ( !current ) return colors[colors.length-1].color;
-  if ( !prev ) return current.color;
-  
-  if ( !this._elevationData.gradate )
-  {
+
+
+  if (!current) return colors[colors.length - 1].color;
+  if (!prev) return current.color;
+
+  if (!this._elevationData.gradate) {
     return current.color;
   }
-  
-  var p = ( h - prev.h ) / ( current.h- prev.h );
-  
+
+  var p = (h - prev.h) / (current.h - prev.h);
+
   var result = {
-    r:0,g:0,b:0,a:0
+    r: 0, g: 0, b: 0, a: 0
   };
-  if ( current.color && prev.color )
-  {
+  if (current.color && prev.color) {
     result = {
-      r: Math.round( prev.color.r + ( ( current.color.r -prev.color.r  ) * p ) ),
-      g: Math.round( prev.color.g + ( ( current.color.g -prev.color.g  ) * p ) ),
-      b: Math.round( prev.color.b + ( ( current.color.b -prev.color.b  ) * p ) ),
+      r: Math.round(prev.color.r + ((current.color.r - prev.color.r) * p)),
+      g: Math.round(prev.color.g + ((current.color.g - prev.color.g) * p)),
+      b: Math.round(prev.color.b + ((current.color.b - prev.color.b) * p)),
       a: 255
     };
   }
-  else if ( !current.color && prev.color )
-  {
-    if ( this.options.transparentGradate )
-    {
+  else if (!current.color && prev.color) {
+    if (this.options.transparentGradate) {
       result = {
         r: prev.color.r,
         g: prev.color.g,
         b: prev.color.b,
-        a: Math.round( 255 + ( -255 * p ) ),
+        a: Math.round(255 + (-255 * p)),
       };
     }
   }
-  else if ( current.color && !prev.color )
-  {
-    if ( this.options.transparentGradate )
-    {
+  else if (current.color && !prev.color) {
+    if (this.options.transparentGradate) {
       result = {
         r: current.color.r,
         g: current.color.g,
         b: current.color.b,
-        a: Math.round( 255 * p ),
+        a: Math.round(255 * p),
       };
     }
-    else
-    {
+    else {
       result = {
         r: current.color.r,
         g: current.color.g,
@@ -24397,88 +22692,78 @@ GSI3D.ReliefTileLayer.TileDrawer.prototype._hToColor = function( h )
       };
     }
   }
-  if ( result.r > 255 ) result.r = 255;
-  if ( result.g > 255 ) result.g = 255;
-  if ( result.b > 255 ) result.b = 255;
-  if ( result.a > 255 ) result.a = 255;
+  if (result.r > 255) result.r = 255;
+  if (result.g > 255) result.g = 255;
+  if (result.b > 255) result.b = 255;
+  if (result.a > 255) result.a = 255;
   return result;
 };
 
 
-GSI3D.ReliefTileLayer.TileDrawer.prototype.draw = function(dstCanvas, demData, hillshadeMapImage)
-{
-  if ( !this._elevationData || !demData ) return;
-  
-  var destCtx = dstCanvas.getContext( '2d' );
-  var destData = destCtx.createImageData(256,256);
+GSI3D.ReliefTileLayer.TileDrawer.prototype.draw = function (dstCanvas, demData, hillshadeMapImage) {
+  if (!this._elevationData || !demData) return;
+
+  var destCtx = dstCanvas.getContext('2d');
+  var destData = destCtx.createImageData(256, 256);
   var hillshadeData = null;
-  
-  if ( hillshadeMapImage )
-  {
+
+  if (hillshadeMapImage) {
     var hillshadeCanvas = GSI3D.ReliefTileLayer.TileDrawer.getCanvas();
-    var hillshadeCtx = hillshadeCanvas.getContext( '2d' );
-    hillshadeCtx.drawImage( hillshadeMapImage, 0, 0 );
-    hillshadeData = hillshadeCtx.getImageData( 0, 0, 256, 256 ).data;
+    var hillshadeCtx = hillshadeCanvas.getContext('2d');
+    hillshadeCtx.drawImage(hillshadeMapImage, 0, 0);
+    hillshadeData = hillshadeCtx.getImageData(0, 0, 256, 256).data;
   }
-      
-      
-  var idx = 0, destIdx=0, color, hillshadeColor={r:0,g:0,b:0,a:0};
-  for(var y = 0; y < 256; ++y)
-  {
-    for(var x = 0; x < 256; ++x)
-    {
-      color = this._hToColor( demData[ idx ] );
-      
-      if ( color )
-      {
-        if ( hillshadeData )
-        {
-          
-          hillshadeColor.r =  hillshadeData[destIdx];
-          hillshadeColor.g =  hillshadeData[destIdx+1];
-          hillshadeColor.b =  hillshadeData[destIdx+2];
-          hillshadeColor.a =  hillshadeData[destIdx+3];
-          destData.data[destIdx] = Math.round(color.r *  ( hillshadeColor.r /255 ));
-          destData.data[destIdx+1] = Math.round(color.g *  ( hillshadeColor.g /255 ));
-          destData.data[destIdx+2] = Math.round(color.b *  (hillshadeColor.b /255 ));
-          destData.data[destIdx+3] = Math.round(color.a *  (hillshadeColor.a /255 ));
+
+
+  var idx = 0, destIdx = 0, color, hillshadeColor = { r: 0, g: 0, b: 0, a: 0 };
+  for (var y = 0; y < 256; ++y) {
+    for (var x = 0; x < 256; ++x) {
+      color = this._hToColor(demData[idx]);
+
+      if (color) {
+        if (hillshadeData) {
+
+          hillshadeColor.r = hillshadeData[destIdx];
+          hillshadeColor.g = hillshadeData[destIdx + 1];
+          hillshadeColor.b = hillshadeData[destIdx + 2];
+          hillshadeColor.a = hillshadeData[destIdx + 3];
+          destData.data[destIdx] = Math.round(color.r * (hillshadeColor.r / 255));
+          destData.data[destIdx + 1] = Math.round(color.g * (hillshadeColor.g / 255));
+          destData.data[destIdx + 2] = Math.round(color.b * (hillshadeColor.b / 255));
+          destData.data[destIdx + 3] = Math.round(color.a * (hillshadeColor.a / 255));
         }
-        else
-        {
-          
+        else {
+
           destData.data[destIdx] = color.r;
-          destData.data[destIdx+1] = color.g;
-          destData.data[destIdx+2] = color.b;
-          destData.data[destIdx+3] = color.a;
+          destData.data[destIdx + 1] = color.g;
+          destData.data[destIdx + 2] = color.b;
+          destData.data[destIdx + 3] = color.a;
         }
       }
-      else
-      {
+      else {
         destData.data[destIdx] = 0;
-        destData.data[destIdx+1] = 0;
-        destData.data[destIdx+2] = 0;
-        destData.data[destIdx+3] = 0;
+        destData.data[destIdx + 1] = 0;
+        destData.data[destIdx + 2] = 0;
+        destData.data[destIdx + 3] = 0;
       }
-      
+
       destIdx += 4;
       idx++;
     }
-    
-    
+
+
   }
-  
+
   destCtx.putImageData(destData, 0, 0);
-  
+
 };
 
 
-GSI3D.ReliefTileLayer.TileDrawer.getCanvas = function()
-{
-  if ( !GSI3D.ReliefTileLayer.TileDrawer._canvas  )
-  {
+GSI3D.ReliefTileLayer.TileDrawer.getCanvas = function () {
+  if (!GSI3D.ReliefTileLayer.TileDrawer._canvas) {
     GSI3D.ReliefTileLayer.TileDrawer._canvas = document.createElement('canvas');
-    GSI3D.ReliefTileLayer.TileDrawer._canvas.width =256;
-    GSI3D.ReliefTileLayer.TileDrawer._canvas.height =256;
+    GSI3D.ReliefTileLayer.TileDrawer._canvas.width = 256;
+    GSI3D.ReliefTileLayer.TileDrawer._canvas.height = 256;
   }
   return GSI3D.ReliefTileLayer.TileDrawer._canvas;
 };
@@ -24488,26 +22773,25 @@ GSI3D.ReliefTileLayer.TileDrawer.getCanvas = function()
 /************************************************************************
   - GSI.LayersJSON（layers.txt読み込み）
 ************************************************************************/
-GSI.LayersJSON = MA.Class.extend( {
+GSI.LayersJSON = MA.Class.extend({
   includes: MA.Mixin.Events,
-  ajax : null,
-  layers : [],
+  ajax: null,
+  layers: [],
   visibleLayers: [],
-  visibleLayersHash : {},
-  currentFileIndex : -1,
-  options : {
-    files : [ "layers.txt" ]
+  visibleLayersHash: {},
+  currentFileIndex: -1,
+  options: {
+    files: ["layers.txt"]
   },
-  initialize : function (options)
-  {
-    
-    this._load_base   = false;
+  initialize: function (options) {
+
+    this._load_base = false;
     this._loadingData = null;
-    this._data        = [];
+    this._data = [];
     this._urlData = {};
     this._tabs = null;//$.extend( true,[], options.layersTab );
     this._tabUrl = options.tabsUrl;
-    
+
     /*
     for ( var i=0; i<this._tabs .length; i++ )
     {
@@ -24527,77 +22811,69 @@ GSI.LayersJSON = MA.Class.extend( {
     }
     */
     options = MA.setOptions(this, options);
-    if ( options.layers )
-    {
-      this.options.layers = $.extend( true, [], options.layers );
+    if (options.layers) {
+      this.options.layers = $.extend(true, [], options.layers);
 
-      this._loadingUrlList= [];
+      this._loadingUrlList = [];
       this._urlData = {};
-      for ( var i=0; i<this.options.layers.length; i++ )
-      {
+      for (var i = 0; i < this.options.layers.length; i++) {
         var url = this.options.layers[i];
-        this._urlData[ url ] = {};
-        this._loadingUrlList.push( {
-          url    : url,
-                    load   : false,
-          layers : [],
-          isDetail : true
-        } );
+        this._urlData[url] = {};
+        this._loadingUrlList.push({
+          url: url,
+          load: false,
+          layers: [],
+          isDetail: true
+        });
       }
     }
   },
-    initialize_layers : function(layers)
-    {
-        this.visibleLayers     = [];
-        this.visibleLayersHash = {};
+  initialize_layers: function (layers) {
+    this.visibleLayers = [];
+    this.visibleLayersHash = {};
 
-    if ( !layers ){
-            this.options.visibleLayers = [];
-        }
-        else{
-            this.options.visibleLayers = layers;
-        }
-    
-        var fBaseMap = false;
-    for ( var i=0; i<this.options.visibleLayers.length; i++ )
-    {
+    if (!layers) {
+      this.options.visibleLayers = [];
+    }
+    else {
+      this.options.visibleLayers = layers;
+    }
+
+    var fBaseMap = false;
+    for (var i = 0; i < this.options.visibleLayers.length; i++) {
       var layerData = this.options.visibleLayers[i];
       var info = {
-        id : layerData.id,
-        idx : this.visibleLayers.length,
-        initialOpacity : layerData.opacity,
-        hidden : layerData.hidden
+        id: layerData.id,
+        idx: this.visibleLayers.length,
+        initialOpacity: layerData.opacity,
+        hidden: layerData.hidden
       };
-      this.visibleLayers.push( info );
-      if ( !this.visibleLayersHash[ layerData.id ] )
-        this.visibleLayersHash[ layerData.id ] = [];
-        
-      this.visibleLayersHash[ layerData.id ].push( info );
-    }
-    },
-    initialize_layers_data : function(layers)
-    {
-        this.initialize_layers(layers);
-        this._initializeData( this._data, null );
+      this.visibleLayers.push(info);
+      if (!this.visibleLayersHash[layerData.id])
+        this.visibleLayersHash[layerData.id] = [];
 
-    },
-    loadBase : function(){
-        var load = this._load_base;
-        this._load_base = true;
-        return load;
-    },
-  setHasTileList : function( tileIdList )
-  {
+      this.visibleLayersHash[layerData.id].push(info);
+    }
+  },
+  initialize_layers_data: function (layers) {
+    this.initialize_layers(layers);
+    this._initializeData(this._data, null);
+
+  },
+  loadBase: function () {
+    var load = this._load_base;
+    this._load_base = true;
+    return load;
+  },
+  setHasTileList: function (tileIdList) {
     this.hasTileList = tileIdList;
     this.refreshHasState();
   },
-  refreshHasState : function()
-  {
-    if ( !this.hasTileList || !this.layers ) return;
-    for ( var i=0; i<this.layers.length; i++ )
-    {
+  refreshHasState: function () {
+    if (!this.hasTileList || !this.layers) return;
+    for (var i = 0; i < this.layers.length; i++) {
       var info = this.layers[i];
-      info.hasTile = ( this.hasTileList[ info.id ] == true  || !info.cocotile );
+      info.hasTile = (this.hasTileList[info.id] == true || !info.cocotile);
     }
 
   },
@@ -24638,34 +22914,30 @@ GSI.LayersJSON = MA.Class.extend( {
         }
     },
     */
-    
-    add : function(layers)
-  {
-    if(!layers) return;
-    
-    for (var i = 0; i < layers.length; i++)
-    {
-      var url = "" ;
-      if ( layers[i].url )
+
+  add: function (layers) {
+    if (!layers) return;
+
+    for (var i = 0; i < layers.length; i++) {
+      var url = "";
+      if (layers[i].url)
         url = layers[i].url;
       else
         url = layers[i];
-        
-      if ( !this._urlData[url] )
-        this._urlData[ url ] = {};
-        
-        
-      this._loadingUrlList.push( {url:url,isDetail:true, top: layers[i].top} );
+
+      if (!this._urlData[url])
+        this._urlData[url] = {};
+
+
+      this._loadingUrlList.push({ url: url, isDetail: true, top: layers[i].top });
     }
-    
+
     //if(this.currentFileIndex == -1){
     //	this._loadNext();
     //}
-    
-    for ( var url in this._urlData )
-    {
-      if ( this._urlData[url].req || ( this._urlData[url].loaded && !this._urlData[url].error ) ) 
-      {
+
+    for (var url in this._urlData) {
+      if (this._urlData[url].req || (this._urlData[url].loaded && !this._urlData[url].error)) {
         continue;
       }
       this._urlData[url].req = $.ajax({
@@ -24673,85 +22945,75 @@ GSI.LayersJSON = MA.Class.extend( {
         url: url,
         dataType: "text",
         cache: CONFIG.LOADLAYERSTXTCACHE,
-        success : MA.bind(this._onLoad, this, url),
-        error : MA.bind(this._onLoadError, this, url)
+        success: MA.bind(this._onLoad, this, url),
+        error: MA.bind(this._onLoadError, this, url)
       });
     }
-    
+
     this._loadFinishCheck();
   },
-  
-  load : function()
-  {
+
+  load: function () {
     // タブ情報読み込み
-    if ( this._tabUrl && this._tabUrl != "" )
-    {
+    if (this._tabUrl && this._tabUrl != "") {
       $.ajax({
         type: "GET",
         dataType: "JSON",
         url: "./layers_txt/tab.txt",
-        async : true
+        async: true
       })
-      .done( MA.bind(function(data) {
-        CONFIG.layersTab = data;
-        this._tabs = data;
-        for ( var i=0; i<this._tabs .length; i++ )
-        {
-          this._data.push( {
+        .done(MA.bind(function (data) {
+          CONFIG.layersTab = data;
+          this._tabs = data;
+          for (var i = 0; i < this._tabs.length; i++) {
+            this._data.push({
               "type": "LayerGroup",
               "title": this._tabs[i].caption,
               "iconUrl": "",
               "toggleall": false,
-              "isDetail" : this._tabs[i].isDetail,
+              "isDetail": this._tabs[i].isDetail,
               "entries": [],
-              "isTab" : true
-          } );
-          if ( this._tabs[i].isDetail)
-          {
-            this._detailTabIndex = i;
+              "isTab": true
+            });
+            if (this._tabs[i].isDetail) {
+              this._detailTabIndex = i;
+            }
           }
-        }
-      }, this ) )
-      .always( MA.bind( this._tabLoaded, this ) );
+        }, this))
+        .always(MA.bind(this._tabLoaded, this));
     }
-    else
-    {
-      this._data.push( {
-          "type": "LayerGroup",
-          "title": "トップ",
-          "iconUrl": "",
-          "toggleall": false,
-          "isDetail" : true,
-          "entries": [],
-          "isTab" : true
-      } );
-      this._tabs = [ {
-        "isDetail" : true,
-        "caption" : "トップ",
-        "layers" : null
+    else {
+      this._data.push({
+        "type": "LayerGroup",
+        "title": "トップ",
+        "iconUrl": "",
+        "toggleall": false,
+        "isDetail": true,
+        "entries": [],
+        "isTab": true
+      });
+      this._tabs = [{
+        "isDetail": true,
+        "caption": "トップ",
+        "layers": null
       }];
       this._detailTabIndex = 0;
       this._loadLayers();
     }
   },
-  
-  _tabLoaded : function()
-  {
-    
-    if ( !this._tabs )
-    {
+
+  _tabLoaded: function () {
+
+    if (!this._tabs) {
       alert("タブ情報が読み込めません");
       return;
     }
     this._loadLayers();
   },
-  
-  _loadLayers : function()
-  {
-    for ( var url in this._urlData )
-    {
-      if ( this._urlData[url].req || ( this._urlData[url].loaded && !this._urlData[url].error ) ) 
-      {
+
+  _loadLayers: function () {
+    for (var url in this._urlData) {
+      if (this._urlData[url].req || (this._urlData[url].loaded && !this._urlData[url].error)) {
         continue;
       }
       this._urlData[url].req = $.ajax({
@@ -24759,24 +23021,21 @@ GSI.LayersJSON = MA.Class.extend( {
         url: url,
         dataType: "text",
         cache: CONFIG.LOADLAYERSTXTCACHE,
-        success : MA.bind(this._onLoad, this, url),
-        error : MA.bind(this._onLoadError, this, url)
+        success: MA.bind(this._onLoad, this, url),
+        error: MA.bind(this._onLoadError, this, url)
       });
     }
   },
 
-  _onLoadError : function(url,e)
-  {
+  _onLoadError: function (url, e) {
     //console.log( url,e );
-    if ( this._urlData )
-    {
-      this._urlData[ url ].req = null;
-      this._urlData[ url ].loaded = true;
-      this._urlData[ url ].error = true;
+    if (this._urlData) {
+      this._urlData[url].req = null;
+      this._urlData[url].loaded = true;
+      this._urlData[url].error = true;
     }
   },
-  _onLoad : function( url, data )
-  {
+  _onLoad: function (url, data) {
     var json = JSON.parse(data);
     /*
     var originalLayers = $.extend( true, [], json.layers );
@@ -24810,10 +23069,10 @@ GSI.LayersJSON = MA.Class.extend( {
       
         }
         */
-    
-    var initEvecDisaster = function(entries, func) {
-      if  (!entries) return;
-      for( var i=0; i<entries.length; i++ ) {
+
+    var initEvecDisaster = function (entries, func) {
+      if (!entries) return;
+      for (var i = 0; i < entries.length; i++) {
         if (entries[i].title == "指定緊急避難場所") {
           entries[i]["title_evac"] = CONFIG.layerEvacuationFolderSYS;
         } else if (entries[i].title == "自然災害伝承碑") {
@@ -24822,177 +23081,155 @@ GSI.LayersJSON = MA.Class.extend( {
         } else if (entries[i].title == "火山地形分類データ") {
           entries[i]["title_evac"] = CONFIG.VolcanoTerrainFolderSYS;
         } else {
-          func( entries[i].entries, func );
+          func(entries[i].entries, func);
         }
       }
     };
-    
-    if ( (json.layers) && (json.layers[0].title) && (!json.layers[0].title_sys) )
-    {
+
+    if ((json.layers) && (json.layers[0].title) && (!json.layers[0].title_sys)) {
       var hybridjson = JSON.parse("{ \"layers\":[] }");
-      for( var ll in json.layers)
-      {
-        if (json.layers[ll].title == "指定緊急避難場所")
-        {
-              var json_evac2 = JSON.parse("{ \"type\": \"LayerGroup\", \"title\": \"" + CONFIG.layerEvacuationFolder + "\", \"title_evac\": \"" + CONFIG.layerEvacuationFolderSYS + "\", \"iconUrl\": \"\", \"open\": false, \"toggleall\": false, \"entries\": [] }");
+      for (var ll in json.layers) {
+        if (json.layers[ll].title == "指定緊急避難場所") {
+          var json_evac2 = JSON.parse("{ \"type\": \"LayerGroup\", \"title\": \"" + CONFIG.layerEvacuationFolder + "\", \"title_evac\": \"" + CONFIG.layerEvacuationFolderSYS + "\", \"iconUrl\": \"\", \"open\": false, \"toggleall\": false, \"entries\": [] }");
           json_evac2.entries = json.layers[ll].entries.concat();
           hybridjson.layers.push(json_evac2);
         }
-        else if (json.layers[ll].title == "自然災害伝承碑"){
+        else if (json.layers[ll].title == "自然災害伝承碑") {
           var json_dh = JSON.parse("{ \"type\": \"LayerGroup\", \"title\": \"" + CONFIG.DisasterLoreFolder + "\", \"title_disasterlore\": \"" + CONFIG.DisasterLoreFolderSYS + "\", \"iconUrl\": \"\", \"open\": false, \"toggleall\": false, \"entries\": [] }");
           json_dh.entries = json.layers[ll].entries.concat();
           hybridjson.layers.push(json_dh);
         }
-        else
-        {
-          initEvecDisaster( json.layers[ll].entries, initEvecDisaster );
+        else {
+          initEvecDisaster(json.layers[ll].entries, initEvecDisaster);
           hybridjson.layers.push(json.layers[ll]);
         }
       }
       json = hybridjson;
-      
-    
+
+
     }
-    
-  
-    if ( json.layers ){
+
+
+    if (json.layers) {
       this._onLoad_SRC_URL(json.layers, url);
     }
-    
-    if ( this._urlData )
-    {
-      this._urlData[ url ].req = null;
-      this._urlData[ url ].loaded = true;
-      this._urlData[ url ].layers = $.extend( true, [], json.layers );
+
+    if (this._urlData) {
+      this._urlData[url].req = null;
+      this._urlData[url].loaded = true;
+      this._urlData[url].layers = $.extend(true, [], json.layers);
     }
-    
-  
-    
+
+
+
     this._loadFinishCheck();
-    
+
   },
-  
-  _loadFinishCheck : function()
-  {
+
+  _loadFinishCheck: function () {
     var loaded = true;
-    for( var key in this._urlData )
-    {
-      if ( !this._urlData[key].loaded )
-      {
+    for (var key in this._urlData) {
+      if (!this._urlData[key].loaded) {
         loaded = false;
         break;
       }
     }
-    if ( !loaded ) return;
-    
-    for ( var i=0; i<this._loadingUrlList.length; i++ )
-    {
+    if (!loaded) return;
+
+    for (var i = 0; i < this._loadingUrlList.length; i++) {
       // concatは？
-      
+
       var urlData = this._urlData[this._loadingUrlList[i].url];
-      if ( this._loadingUrlList[i].isDetail )
-      {
-        if(!this._load_base)
-        {
-          var jsonBase = { 
-            "layers": [ 
-              { 
-                "type": "LayerGroup", 
-                "title": CONFIG.layerBaseFolder, 
-                "title_sys": CONFIG.layerBaseFolderSYS, 
-                "iconUrl": "", 
-                "open": false, 
-                "toggleall": false, 
-                "entries": [] 
-              } 
-            ] 
+      if (this._loadingUrlList[i].isDetail) {
+        if (!this._load_base) {
+          var jsonBase = {
+            "layers": [
+              {
+                "type": "LayerGroup",
+                "title": CONFIG.layerBaseFolder,
+                "title_sys": CONFIG.layerBaseFolderSYS,
+                "iconUrl": "",
+                "open": false,
+                "toggleall": false,
+                "entries": []
+              }
+            ]
           };
-          
-          
-          jsonBase.layers[0].entries =  $.extend(true,[],urlData.layers ).concat();
-          
+
+
+          jsonBase.layers[0].entries = $.extend(true, [], urlData.layers).concat();
+
           urlData = jsonBase;
-          
+
         }
-        if ( !urlData.layers ) continue;
-        
-        if ( this._loadingUrlList[i].top )
-        {
+        if (!urlData.layers) continue;
+
+        if (this._loadingUrlList[i].top) {
           var baseLayerGroupIndex = null;
-          for( var j=0; j<this._data[this._detailTabIndex].entries.length; j++ )
-          {
-            if ( this._data[this._detailTabIndex].entries[j].title_sys ==CONFIG.layerBaseFolderSYS  )
-            {
+          for (var j = 0; j < this._data[this._detailTabIndex].entries.length; j++) {
+            if (this._data[this._detailTabIndex].entries[j].title_sys == CONFIG.layerBaseFolderSYS) {
               baseLayerGroupIndex = j;
               break;
             }
           }
-          for ( var j=0; j<urlData.layers.length; j++ )
-          {
+          for (var j = 0; j < urlData.layers.length; j++) {
             this._data[this._detailTabIndex].entries.splice(baseLayerGroupIndex, 0,
-              $.extend(true,{},urlData.layers[j] ) );
-            baseLayerGroupIndex ++;
-            
+              $.extend(true, {}, urlData.layers[j]));
+            baseLayerGroupIndex++;
+
           }
 
         }
-        else
-        {
-          for ( var j=0; j<urlData.layers.length; j++ )
-          {
+        else {
+          for (var j = 0; j < urlData.layers.length; j++) {
             //if ( !this._tabs[this._detailTabIndex].data ) this._tabs[this._detailTabIndex].data =[];
-            this._data[this._detailTabIndex].entries.push( $.extend(true,{},urlData.layers[j] ) );
+            this._data[this._detailTabIndex].entries.push($.extend(true, {}, urlData.layers[j]));
             //this._data.push( this._loadingData[i].layers[j] );
           }
         }
 
       }
-      else
-      {
-        for ( var j=0; j<urlData.layers.length; j++ )
-        {
+      else {
+        for (var j = 0; j < urlData.layers.length; j++) {
           //if ( !this._tabs[this._detailTabIndex].data ) this._tabs[this._detailTabIndex].data =[];
-          this._data[this._loadingUrlList[i].tabIndex].entries.push( $.extend(true,{},urlData.layers[j] ) );
+          this._data[this._loadingUrlList[i].tabIndex].entries.push($.extend(true, {}, urlData.layers[j]));
           //this._data.push( this._loadingData[i].layers[j] );
         }
       }
     }
-    
-    
+
+
     this._loadingUrlList = null;
-    
+
     var _data = this._data.concat();
     this._initializeTreeCopy(_data, null);
     this._original = $.extend(true, [], _data);
 
     this.layers = [];
-    
-    if ( !this._tabDataLoaded )
-    {
+
+    if (!this._tabDataLoaded) {
       this._loadingUrlList = [];
       this._tabDataLoaded = true;
-      for( var i=0; i<this._tabs.length; i++ )
-      {
-        if ( this._tabs[i].layers == null ) continue;
-        for( var j=0; j< this._tabs[i].layers.length; j++ )
-        {
+      for (var i = 0; i < this._tabs.length; i++) {
+        if (this._tabs[i].layers == null) continue;
+        for (var j = 0; j < this._tabs[i].layers.length; j++) {
           var url = this._tabs[i].layers[j];
-          if ( !this._urlData[url] )
-            this._urlData[ url ] = {};
-            
-            
-          this._loadingUrlList.push( {url:url,isDetail:this._tabs[i].isDetail, tabIndex:i} );
+          if (!this._urlData[url])
+            this._urlData[url] = {};
+
+
+          this._loadingUrlList.push({ url: url, isDetail: this._tabs[i].isDetail, tabIndex: i });
         }
       }
     }
-    
-    
-    this._initializeData( this._data, null );
-    
-    this.fire( "load", { tree: this.tree, visibleLayers : this.visibleLayers, visibleLayersHash: this.visibleLayersHash } );
+
+
+    this._initializeData(this._data, null);
+
+    this.fire("load", { tree: this.tree, visibleLayers: this.visibleLayers, visibleLayersHash: this.visibleLayersHash });
 
   },
-  
+
   /*
   },
     
@@ -25135,76 +23372,65 @@ GSI.LayersJSON = MA.Class.extend( {
     }
   },
     */
-  _onLoad_SRC_URL : function(data, url)
-  {
-        for(var i = 0; i < data.length; i++){
-            if(data[i].type == "LayerGroup"){
-                data[i].src_url = url;
+  _onLoad_SRC_URL: function (data, url) {
+    for (var i = 0; i < data.length; i++) {
+      if (data[i].type == "LayerGroup") {
+        data[i].src_url = url;
 
-                if(data[i].entries){
-                    this._onLoad_SRC_URL(data[i].entries, url);
-                }
-            }
+        if (data[i].entries) {
+          this._onLoad_SRC_URL(data[i].entries, url);
         }
+      }
+    }
 
-    },
-  getBase : function()
-    {
-        return this._data[this._detailTabIndex].entries[0].entries;
-    },
-  getOriginal : function()
-  {
+  },
+  getBase: function () {
+    return this._data[this._detailTabIndex].entries[0].entries;
+  },
+  getOriginal: function () {
     return this._original;
   },
-  _onFileLoad : function(e)
-  {
+  _onFileLoad: function (e) {
 
     this._data = JSON.parse(e.text);
     this._original = $.extend(true, [], this._data);
     this.layers = [];
 
-    this._initializeData( this._data, null );
-    this.fire( "load", { tree: this._data, visibleLayers : this.visibleLayers, visibleLayersHash: this.visibleLayersHash } );
+    this._initializeData(this._data, null);
+    this.fire("load", { tree: this._data, visibleLayers: this.visibleLayers, visibleLayersHash: this.visibleLayersHash });
   },
-  _initializeData : function( data, parent )
-  {
-    if ( !data ) return;
-    this._initializeTree( data, parent );
+  _initializeData: function (data, parent) {
+    if (!data) return;
+    this._initializeTree(data, parent);
     this.tree = data;
   },
-  _url2LayerType : function( url )
-  {
-    if ( !url ) return "";
-    url = $.trim( url );
+  _url2LayerType: function (url) {
+    if (!url) return "";
+    url = $.trim(url);
 
-    if ( url.match( /\{tms\}/ ) )
-    {
+    if (url.match(/\{tms\}/)) {
       return "tms";
     }
 
-    if ( url.match( /photoprot\.php/ ) )
-    {
+    if (url.match(/photoprot\.php/)) {
       return "kml";
     }
 
     var ext = "";
     var layerType = "";
-    var matchResult = url.match( /.*\.([^.]+$)/ );
+    var matchResult = url.match(/.*\.([^.]+$)/);
     // 拡張子
-    if (  matchResult ) ext = matchResult[1]
+    if (matchResult) ext = matchResult[1]
 
     // kml
-    if ( ext == "kml" )
-    {
+    if (ext == "kml") {
       layerType = "kml";
       return layerType;
     }
 
     // タイルかどうか
-    if ( url.match( /(\{x\})/ ) )
-    {
-      switch( ext )
-      {
+    if (url.match(/(\{x\})/)) {
+      switch (ext) {
         case "geojson":
           layerType = "geojson_tile";
           break;
@@ -25216,10 +23442,8 @@ GSI.LayersJSON = MA.Class.extend( {
           break;
       }
     }
-    else
-    {
-      switch( ext )
-      {
+    else {
+      switch (ext) {
         case "geojson":
         case "topojson":
         case "kml":
@@ -25230,144 +23454,127 @@ GSI.LayersJSON = MA.Class.extend( {
 
     return layerType;
   },
-  _getFolderId : function(lv)
-  {
-    if ( !this._currentFolderIdList ) this._currentFolderIdList = {};
+  _getFolderId: function (lv) {
+    if (!this._currentFolderIdList) this._currentFolderIdList = {};
 
-    if ( !this._currentFolderIdList[ '' + lv ] )
-      this._currentFolderIdList[ '' + lv ]  = 1;
+    if (!this._currentFolderIdList['' + lv])
+      this._currentFolderIdList['' + lv] = 1;
 
-    var result = this._currentFolderIdList[ '' + lv ] ;
+    var result = this._currentFolderIdList['' + lv];
 
-    this._currentFolderIdList[ '' + lv ] ++;
+    this._currentFolderIdList['' + lv]++;
 
     return result;
   },
-  _initializeTree : function( tree, parent )
-  {
-    if ( !this.layersHash ) this.layersHash = {};
-    
-    if ( !tree ) return;
+  _initializeTree: function (tree, parent) {
+    if (!this.layersHash) this.layersHash = {};
+
+    if (!tree) return;
     var folderCount = 0;
-    if ( !this._baseLayerList ) this._baseLayerList = {};
-    
-    for ( var i=0; i<tree.length; i++ )
-    {
-      if ( tree[i].type == "Layer" )
-      {
+    if (!this._baseLayerList) this._baseLayerList = {};
+
+    for (var i = 0; i < tree.length; i++) {
+      if (tree[i].type == "Layer") {
         var info = tree[i];
-        if ( window.location.protocol == "https:" )
-          info.url = info.url.replace( "http://", "https://" );
-        info.layerType = this._url2LayerType( info.url );
-        if ( info.cocotile  )
-        {
-          if (  this.hasTileList ){
-            info.hasTile = ( this.hasTileList[ info.id ] == true );
-                    }
+        if (window.location.protocol == "https:")
+          info.url = info.url.replace("http://", "https://");
+        info.layerType = this._url2LayerType(info.url);
+        if (info.cocotile) {
+          if (this.hasTileList) {
+            info.hasTile = (this.hasTileList[info.id] == true);
+          }
         }
 
-        if ( this.visibleLayersHash[ info.id ] )
-        {
-          var layerInfo = this.visibleLayersHash[ info.id ];
+        if (this.visibleLayersHash[info.id]) {
+          var layerInfo = this.visibleLayersHash[info.id];
           info.initialOpacity = layerInfo.initialOpacity;
-          this.visibleLayersHash[ info.id ].info = info;
-          
-          for ( var j = 0; j<this.visibleLayersHash[ info.id ].length; j++ )
-          {
-            var layerInfo = this.visibleLayersHash[ info.id ][j];
-            info.initialOpacity =layerInfo.initialOpacity;
-            if ( ! this.visibleLayersHash[ info.id ][j].info  )
-              this.visibleLayersHash[ info.id ][j].info = info;
+          this.visibleLayersHash[info.id].info = info;
+
+          for (var j = 0; j < this.visibleLayersHash[info.id].length; j++) {
+            var layerInfo = this.visibleLayersHash[info.id][j];
+            info.initialOpacity = layerInfo.initialOpacity;
+            if (!this.visibleLayersHash[info.id][j].info)
+              this.visibleLayersHash[info.id][j].info = info;
           }
-          
+
         }
-        
-        var isBase = GSI.GLOBALS.isBaseLayer( info );
-        
-        if ( parent.title_sys == CONFIG.layerBaseFolderSYS || isBase )
-        {
-          this._baseLayerList[ info.id ] = info;
+
+        var isBase = GSI.GLOBALS.isBaseLayer(info);
+
+        if (parent.title_sys == CONFIG.layerBaseFolderSYS || isBase) {
+          this._baseLayerList[info.id] = info;
           info._isBaseLayer = true;
         }
-        if( info.layerType == "geojson" )
-        {
+        if (info.layerType == "geojson") {
           var a = info;
           var b = "";
-          while( a.parent )
-          {
-            b = a.title + (b != "" ? "/" : "" ) + b;
-            a= a.parent;
+          while (a.parent) {
+            b = a.title + (b != "" ? "/" : "") + b;
+            a = a.parent;
           }
         }
-        
-        
-        if (!this.layersHash[info.id] )
+
+
+        if (!this.layersHash[info.id])
           this.layersHash[info.id] = info;
-        
-        
-        this.layers.push( info );
+
+
+        this.layers.push(info);
       }
-      else
-      {
-        if ( !tree[ i ] .id )
-        {
-          tree[ i ] .isMultiLayer = false;
-          tree[ i ] .id = ( parent ? parent.id + '_' + folderCount : 'f' + folderCount );
-          folderCount ++;
+      else {
+        if (!tree[i].id) {
+          tree[i].isMultiLayer = false;
+          tree[i].id = (parent ? parent.id + '_' + folderCount : 'f' + folderCount);
+          folderCount++;
         }
-        else if ( tree[ i ] .isMultiLayer != false)
-        {
+        else if (tree[i].isMultiLayer != false) {
           var info = tree[i];
           info.layerType = 'multiLayer';
           info.isMultiLayer = true;
-          if ( this.visibleLayersHash[ info.id ] )
-          {
-            for ( var j = 0; j<this.visibleLayersHash[ info.id ].length; j++ )
-            {
-              var layerInfo = this.visibleLayersHash[ info.id ][j];
-              info.initialOpacity =layerInfo.initialOpacity;
-              this.visibleLayersHash[ info.id ][j].info = info;
+          if (this.visibleLayersHash[info.id]) {
+            for (var j = 0; j < this.visibleLayersHash[info.id].length; j++) {
+              var layerInfo = this.visibleLayersHash[info.id][j];
+              info.initialOpacity = layerInfo.initialOpacity;
+              this.visibleLayersHash[info.id][j].info = info;
             }
           }
-          if (!this.layersHash[info.id] )
+          if (!this.layersHash[info.id])
             this.layersHash[info.id] = info;
-          
-          this.layers.push( info );
+
+          this.layers.push(info);
         }
-        
+
       }
       tree[i].parent = parent;
-      this._initializeTree( tree[i].entries, tree[i]);
+      this._initializeTree(tree[i].entries, tree[i]);
     }
   },
-  _initializeTreeCopy : function( tree, parent )
-    {
-    if ( !tree ) return;
+  _initializeTreeCopy: function (tree, parent) {
+    if (!tree) return;
     var folderCount = 0;
-    for ( var i=0; i<tree.length; i++ ){
+    for (var i = 0; i < tree.length; i++) {
       tree[i].parent = null;
 
-      this._initializeTreeCopy( tree[i].entries, tree[i]);
-        }
-    },
-    /*
-  _onLoadError : function()
-  {
-    if ( this._loadingData )
-      this._loadNext();
-    else
-      alert( 'レイヤー設定ファイルが読み込めませんでした。' );
+      this._initializeTreeCopy(tree[i].entries, tree[i]);
+    }
   },
-  */
-  _onFileLoadErrorRetry : function()
-  {
+  /*
+_onLoadError : function()
+{
+  if ( this._loadingData )
+    this._loadNext();
+  else
+    alert( 'レイヤー設定ファイルが読み込めませんでした。' );
+},
+*/
+  _onFileLoadErrorRetry: function () {
     this.reader = new FileReader();
-    this.reader.onload = MA.bind( this._onFileLoad, this);
-    this.reader.onerror = MA.bind( this._onLoadErrorExit, this);
+    this.reader.onload = MA.bind(this._onFileLoad, this);
+    this.reader.onerror = MA.bind(this._onLoadErrorExit, this);
     this.reader.readAsText("./layer.txt");
   },
-  _onLoadErrorExit : function() {}
-} );
+  _onLoadErrorExit: function () { }
+});
 
 
 GSI.LayersJSON.url2LayerType = function (url) {
@@ -25440,53 +23647,45 @@ GSI.LayersJSON.url2LayerType = function (url) {
 
 
 
-GLOBE.MultiLayer = MA.Class.extend( {
+GLOBE.MultiLayer = MA.Class.extend({
   includes: MA.Mixin.Events,
-  
-  initialize : function(map,info,options)
-  {
-    
+
+  initialize: function (map, info, options) {
+
     this._visible = true;
     this._map = map;
     this._info = info;
-    
+
     this._layers = [];
-    this._initializeLayers( this._layers, this._info.entries );
+    this._initializeLayers(this._layers, this._info.entries);
     options = MA.setOptions(this, options);
-    
+
   },
-  
-  
-  _initializeLayers : function(result, list)
-  {
-    
-    for( var i=0; i<list.length; i++ )
-    {
+
+
+  _initializeLayers: function (result, list) {
+
+    for (var i = 0; i < list.length; i++) {
       var item = list[i];
-      
-      if ( item.entries )
-      {
-        this._initializeLayers( this._layers, item.entries );
+
+      if (item.entries) {
+        this._initializeLayers(this._layers, item.entries);
       }
-      else
-      {
-        this._infoToLayer( item );
-        
-        result.push( item );
-        
+      else {
+        this._infoToLayer(item);
+
+        result.push(item);
+
       }
     }
   },
-  
-  _infoToLayer : function( info )
-  {
+
+  _infoToLayer: function (info) {
     info._visibleInfo = {};
-    
-    if ( info.layerType=="tile" )
-    {
-      
-      if ( !info._visibleInfo.layer)
-      {
+
+    if (info.layerType == "tile") {
+
+      if (!info._visibleInfo.layer) {
         //310-タイル表示
         //this.map.addLayer(info._visibleInfo.layer,true);
         var layers = this._map.viewer.imageryLayers;
@@ -25494,97 +23693,84 @@ GLOBE.MultiLayer = MA.Class.extend( {
           new Cesium.JapanGSIImageryProvider(info)
         );
         info._visibleInfo.layer.alpha = this._info._visibleInfo.opacity;
-        info._visibleInfo.layer._remove = function(viewer) {
+        info._visibleInfo.layer._remove = function (viewer) {
           viewer.imageryLayers.remove(this, true);
         };
-        info._visibleInfo.layer._setVisible = function(viewer,visible) {
+        info._visibleInfo.layer._setVisible = function (viewer, visible) {
           this.show = visible;
         };
       }
       info._visibleInfo.layer.alpha = this._info._visibleInfo.opacity;
-    
-    }
-    else if ( info.layerType=="kml" )
-    {
-    // KML
-      info._visibleInfo.layer = new GLOBE.KMLLayer(this._map,info);
-    }
-    else if ( info.layerType=="geojson" )
-    {
-    // GeoJSON
-      info._visibleInfo.layer = new GLOBE.GeoJSONLayer(this._map,info);
 
     }
-    else if ( info.layerType=="geojson_tile" )
-    {
-    // タイルGeoJSON
-      info._visibleInfo.layer = new GLOBE.VectorTileLayer(this._map,info);
+    else if (info.layerType == "kml") {
+      // KML
+      info._visibleInfo.layer = new GLOBE.KMLLayer(this._map, info);
     }
-    else if ( info.layerType=="topojson_tile" )
-    {
-    // タイルTopoJSON
+    else if (info.layerType == "geojson") {
+      // GeoJSON
+      info._visibleInfo.layer = new GLOBE.GeoJSONLayer(this._map, info);
+
     }
-    
+    else if (info.layerType == "geojson_tile") {
+      // タイルGeoJSON
+      info._visibleInfo.layer = new GLOBE.VectorTileLayer(this._map, info);
+    }
+    else if (info.layerType == "topojson_tile") {
+      // タイルTopoJSON
+    }
+
   },
-  
-  _setTileGeoJSONAlpha : function(layer, alpha)
-  {
-    
+
+  _setTileGeoJSONAlpha: function (layer, alpha) {
+
     var len = this._map.viewer.scene.primitives.length;
-    for(var i=0; i<len; i++){
+    for (var i = 0; i < len; i++) {
       var primitiveCollection = this._map.viewer.scene.primitives._primitives[i];
-      if(primitiveCollection.type == "GeojsonTile_labelCollection"){
-        for(var j=0; j<primitiveCollection._billboards.length; j++){
+      if (primitiveCollection.type == "GeojsonTile_labelCollection") {
+        for (var j = 0; j < primitiveCollection._billboards.length; j++) {
           var color = primitiveCollection._billboards[j]._color;
           primitiveCollection._billboards[j].color = new Cesium.Color(color.red, color.green, color.blue, alpha);
         }
       }
     }
   },
-  
-  setAlpha : function( alpha )
-  {
-    for( var i=0; i<this._layers.length; i++ )
-    {
-      var info =  this._layers[i];
-      if ( info._visibleInfo.layer.setAlpha )
-        info._visibleInfo.layer.setAlpha( alpha );
+
+  setAlpha: function (alpha) {
+    for (var i = 0; i < this._layers.length; i++) {
+      var info = this._layers[i];
+      if (info._visibleInfo.layer.setAlpha)
+        info._visibleInfo.layer.setAlpha(alpha);
       else
-        info._visibleInfo.layer.alpha =  alpha;
-      
+        info._visibleInfo.layer.alpha = alpha;
+
     }
   },
-  _remove : function( viewer )
-  {
-    
-    for( var i=0; i<this._layers.length; i++ )
-    {
-      var info =  this._layers[i];
-      if ( info._visibleInfo.layer._remove )
-      {
-        info._visibleInfo.layer._remove( viewer );
-        
+  _remove: function (viewer) {
+
+    for (var i = 0; i < this._layers.length; i++) {
+      var info = this._layers[i];
+      if (info._visibleInfo.layer._remove) {
+        info._visibleInfo.layer._remove(viewer);
+
       }
-      
+
     }
   },
-  
-  _setVisible  :function(viewer, visible)
-  {
-    
-    for( var i=0; i<this._layers.length; i++ )
-    {
-      var info =  this._layers[i];
-      if ( info._visibleInfo.layer._setVisible )
-      {
-        info._visibleInfo.layer._setVisible( viewer,visible );
-        
+
+  _setVisible: function (viewer, visible) {
+
+    for (var i = 0; i < this._layers.length; i++) {
+      var info = this._layers[i];
+      if (info._visibleInfo.layer._setVisible) {
+        info._visibleInfo.layer._setVisible(viewer, visible);
+
       }
-      
+
     }
-    
+
   }
-} );
+});
 
 /************************************************************************
   GSI.AddrLoader
@@ -25596,172 +23782,172 @@ GSI.AddrLoader = MA.Class.extend({
   initialize: function (map, options) {
     this._url = 'https://cyberjapandata.gsi.go.jp/xyz/lv01_plg/14/{x}/{y}.geojson';
   },
-  
+
   cancel: function () {
     if (this._request) {
-    this._request.abort();
-    this._request = null;
+      this._request.abort();
+      this._request = null;
     }
   },
-  
+
   destroy: function () {
     this.clearEvents();
     this.cancel();
   },
-  
+
   load: function (pos) {
     this.cancel();
-  
+
     var tileInfo = this._getTileInfo(pos.lat, pos.lng, 14);
-  
+
     var url = this._url;
     url = url.replace("{x}", tileInfo.x).replace("{y}", tileInfo.y)
-  
-  
+
+
     $.ajax({
-    type: "GET",
-    dataType: "JSON",
-    url: url
+      type: "GET",
+      dataType: "JSON",
+      url: url
     })
-    .done(MA.bind(this._onLoad, this, url, pos, tileInfo))
-    .fail(MA.bind(this._onLoadError, this, pos, tileInfo));
-  
-  
+      .done(MA.bind(this._onLoad, this, url, pos, tileInfo))
+      .fail(MA.bind(this._onLoadError, this, pos, tileInfo));
+
+
   },
-  
+
   _onLoad: function (url, pos, tileInfo, e) {
     this._request = null;
     var data = e;
-  
+
     var hitFeature = null;
     if (data && data.features) {
-    var targetPos = [pos.lng, pos.lat];
-    for (var i = 0; i < data.features.length; i++) {
-      var feature = data.features[i];
-      if (!feature.geometry || !feature.geometry.coordinates) continue;
-  
-      var coords = feature.geometry.coordinates;
-      if (feature.geometry.type != "MultiPolygon") {
-      coords = [coords];
-      }
-  
-      for (var j = 0; j < coords.length; j++) {
-      var ret = null;
-  
-      ret = this._isPointInPolygon(targetPos, coords[j][0]);
-      if (ret) {
-        for (var k = 1; k < coords[j].length; k++) {
-        // くりぬきポリゴン内なら×
-        var ret2 = this._isPointInPolygon(targetPos, coords[j][k]);
-        if (ret2) {
-          ret = false;
-          break;
+      var targetPos = [pos.lng, pos.lat];
+      for (var i = 0; i < data.features.length; i++) {
+        var feature = data.features[i];
+        if (!feature.geometry || !feature.geometry.coordinates) continue;
+
+        var coords = feature.geometry.coordinates;
+        if (feature.geometry.type != "MultiPolygon") {
+          coords = [coords];
         }
+
+        for (var j = 0; j < coords.length; j++) {
+          var ret = null;
+
+          ret = this._isPointInPolygon(targetPos, coords[j][0]);
+          if (ret) {
+            for (var k = 1; k < coords[j].length; k++) {
+              // くりぬきポリゴン内なら×
+              var ret2 = this._isPointInPolygon(targetPos, coords[j][k]);
+              if (ret2) {
+                ret = false;
+                break;
+              }
+            }
+            if (ret) {
+              hitFeature = feature;
+              break;
+            }
+          }
         }
-        if (ret) {
-        hitFeature = feature;
-        break;
-        }
+        if (hitFeature) break;
       }
-      }
-      if (hitFeature) break;
+
+
     }
-  
-  
-    }
-  
+
     var title = "";
     var titleYomi = null;
     var titleEng = null;
     if (hitFeature) {
-  
-    var properties = hitFeature.properties;
-    try {
-      title = properties["pref"] + properties["muni"];
-      if (properties["LV01"]){
-        title += properties["LV01"];
+
+      var properties = hitFeature.properties;
+      try {
+        title = properties["pref"] + properties["muni"];
+        if (properties["LV01"]) {
+          title += properties["LV01"];
+        }
+
+        //読み
+        titleYomi = properties["pref_kana"] + properties["muni_kana"];
+        if (properties["Lv01_kana"]) {
+          titleYomi += properties["Lv01_kana"];
+        }
+
+        // var code = parseInt(properties["行政コード"]);
+        // var muni = GSI.MUNI_ARRAY["" + code];
+        // if (muni) {
+
+        //   var muniParts = muni.split(",");
+        //   if (muniParts.length >= 2) title += muniParts[1].trim();
+        //   if (muniParts.length >= 4) title += muniParts[3].trim();
+        //   title += (properties["LV01"] ? properties["LV01"] : "")
+
+        //   //読み
+        //   titleYomi = properties["pref_kana"] + properties["muni_kana"] + properties["Lv01_kana"];
+        // }
+      } catch (ex) {
+        console.log(ex);
       }
-  
-      //読み
-      titleYomi = properties["pref_kana"] + properties["muni_kana"];
-      if (properties["Lv01_kana"]){
-        titleYomi += properties["Lv01_kana"];
-      }
-      
-      // var code = parseInt(properties["行政コード"]);
-      // var muni = GSI.MUNI_ARRAY["" + code];
-      // if (muni) {
-  
-      //   var muniParts = muni.split(",");
-      //   if (muniParts.length >= 2) title += muniParts[1].trim();
-      //   if (muniParts.length >= 4) title += muniParts[3].trim();
-      //   title += (properties["LV01"] ? properties["LV01"] : "")
-  
-      //   //読み
-      //   titleYomi = properties["pref_kana"] + properties["muni_kana"] + properties["Lv01_kana"];
-      // }
-    } catch (ex) {
-      console.log(ex);
-    }
-  
+
     }
     this.fire("load", { "feature": hitFeature, "title": title, "titleYomi": titleYomi, "titleEng": titleEng, "lon": pos.lng, "lat": pos.lat });
   },
-  
+
   _isPointInPolygon: function (point, polygon) {
     var wn = 0;
-  
+
     for (var i = 0; i < polygon.length - 1; i++) {
-    if ((polygon[i][1] <= point[1]) && (polygon[i + 1][1] > point[1])) {
-      var vt = (point[1] - polygon[i][1]) / (polygon[i + 1][1] - polygon[i][1]);
-      if (point[0] < (polygon[i][0] + (vt * (polygon[i + 1][0] - polygon[i][0])))) {
-  
-      ++wn;
-  
+      if ((polygon[i][1] <= point[1]) && (polygon[i + 1][1] > point[1])) {
+        var vt = (point[1] - polygon[i][1]) / (polygon[i + 1][1] - polygon[i][1]);
+        if (point[0] < (polygon[i][0] + (vt * (polygon[i + 1][0] - polygon[i][0])))) {
+
+          ++wn;
+
+        }
       }
-    }
-    else if ((polygon[i][1] > point[1]) && (polygon[i + 1][1] <= point[1])) {
-      var vt = (point[1] - polygon[i][1]) / (polygon[i + 1][1] - polygon[i][1]);
-      if (point[0] < (polygon[i][0] + (vt * (polygon[i + 1][0] - polygon[i][0])))) {
-  
-      --wn;
-  
+      else if ((polygon[i][1] > point[1]) && (polygon[i + 1][1] <= point[1])) {
+        var vt = (point[1] - polygon[i][1]) / (polygon[i + 1][1] - polygon[i][1]);
+        if (point[0] < (polygon[i][0] + (vt * (polygon[i + 1][0] - polygon[i][0])))) {
+
+          --wn;
+
+        }
       }
-    }
     }
     return (wn != 0);
-  
+
   },
-  
+
   _onLoadError: function (tileInfo, e) {
-    this.fire("load", {"lat": tileInfo.lat, "lon": tileInfo.lng});
+    this.fire("load", { "lat": tileInfo.lat, "lon": tileInfo.lng });
   },
-  
+
   _getTileInfo: function (lat, lng, z) {
     var lng_rad = lng * Math.PI / 180;
     var R = 128 / Math.PI;
     var worldCoordX = R * (lng_rad + Math.PI);
     var pixelCoordX = worldCoordX * Math.pow(2, z);
     var tileCoordX = Math.floor(pixelCoordX / 256);
-  
+
     var lat_rad = lat * Math.PI / 180;
     var worldCoordY = - R / 2 * Math.log((1 + Math.sin(lat_rad)) / (1 - Math.sin(lat_rad))) + 128;
     var pixelCoordY = worldCoordY * Math.pow(2, z);
     var tileCoordY = Math.floor(pixelCoordY / 256);
-  
-    return {
-    x: tileCoordX,
-    y: tileCoordY,
-    pX: Math.floor(pixelCoordX - tileCoordX * 256),
-    pY: Math.floor(pixelCoordY - tileCoordY * 256)
-    };
-  
-  }
-  
-  });
-  
 
-function loadfile(files, key){
+    return {
+      x: tileCoordX,
+      y: tileCoordY,
+      pX: Math.floor(pixelCoordX - tileCoordX * 256),
+      pY: Math.floor(pixelCoordY - tileCoordY * 256)
+    };
+
+  }
+
+});
+
+
+function loadfile(files, key) {
   GLOBE.DIALOG.FILEREAD.uploadFile(files, key);
 };
 
@@ -25786,11 +23972,11 @@ function getFileData(url, key) {
 /************************************************************************
  GLOBE.ComparePhotoControl（時系列選択）
  ************************************************************************/
- GLOBE.ComparePhotoControl = MA.Class.extend({
+GLOBE.ComparePhotoControl = MA.Class.extend({
 
   includes: MA.Mixin.Events,
 
-  initialize : function(map) {
+  initialize: function (map) {
     this._photoList = CONFIG.COMPAREPHOTO_PHOTOLIST;
 
     this._map = map;
@@ -25799,24 +23985,24 @@ function getFileData(url, key) {
 
   },
 
-  refreshSize:function() {
+  refreshSize: function () {
     this.adjust();
   },
 
-  destroyEvents : function() {
-    if ( this._windowResizeHandler ) $(window).off("resize", this._windowResizeHandler);
+  destroyEvents: function () {
+    if (this._windowResizeHandler) $(window).off("resize", this._windowResizeHandler);
     this._windowResizeHandler = undefined;
   },
 
-  destroyContainsChecker : function() {
-    if ( this._cocoTileLoader ) {
+  destroyContainsChecker: function () {
+    if (this._cocoTileLoader) {
       this._cocoTileLoader.stop();
       this._cocoTileLoader = undefined;
     }
   },
 
-  show : function() {
-    if ( !this._container) {
+  show: function () {
+    if (!this._container) {
       this._create();
 
     }
@@ -25824,21 +24010,21 @@ function getFileData(url, key) {
     this.destroyContainsChecker();
     this.destroyEvents();
 
-    this._windowResizeHandler = MA.bind(this._onWindowResize, this );
+    this._windowResizeHandler = MA.bind(this._onWindowResize, this);
     $(window).on("resize", this._windowResizeHandler);
 
-    this._container.css({"visibility":"hidden"});
+    this._container.css({ "visibility": "hidden" });
     this._container.show();
 
-    this._container.css({"visibility":"visible"});
+    this._container.css({ "visibility": "visible" });
 
-    if ( !this._cocoTileLoader ) {
+    if (!this._cocoTileLoader) {
       this._cocoTileLoader = new GLOBE.ComparePhotoContainsChecker(this._map, this._photoList);
-      this._cocoTileLoader.on("load", MA.bind(function(evt){
+      this._cocoTileLoader.on("load", MA.bind(function (evt) {
 
         var idList = evt.idList;
         this._slider.refresh(idList);
-      },this))
+      }, this))
     }
 
     this._cocoTileLoader.start();
@@ -25850,52 +24036,52 @@ function getFileData(url, key) {
 
   },
 
-  _onWindowResize: function() {
+  _onWindowResize: function () {
     this.refreshSize();
   },
 
-  isVisible : function() {
+  isVisible: function () {
     return this._container.is(":visible");
   },
 
-  hide : function() {
+  hide: function () {
 
     this.destroyContainsChecker();
     this.destroyEvents();
-    if ( !this._container) return;
+    if (!this._container) return;
     this._container.hide();
     this._parentContainer.hide();
   },
 
-  _onSliderChange : function(e) {
-    this.fire("select",{index:e.index});
+  _onSliderChange: function (e) {
+    this.fire("select", { index: e.index });
   },
 
-  refreshList : function(idList) {
+  refreshList: function (idList) {
     this._slider.refresh(idList);
   },
 
-  adjust : function() {
-    
+  adjust: function () {
+
     this._slider.adjust(this._parentContainer);
 
   },
 
-  _create : function() {
+  _create: function () {
     this._container = $("<div>").addClass("gsi_comparephoto_container").hide();
 
     var table = $("<table>");
     var tr = $("<tr>");
     var td = $("<td>");
-    this._clearButton = $("<a>").attr({"href":"javascript:void(0);"}).addClass("normalbutton").html("時系列解除").hide();
+    this._clearButton = $("<a>").attr({ "href": "javascript:void(0);" }).addClass("normalbutton").html("時系列解除").hide();
 
-    this._slider = new GLOBE.ComparePhotoControl.Slider( this._container, td, this._photoList, this._clearButton);
-    this._slider.on("change", MA.bind(this._onSliderChange, this ));
+    this._slider = new GLOBE.ComparePhotoControl.Slider(this._container, td, this._photoList, this._clearButton);
+    this._slider.on("change", MA.bind(this._onSliderChange, this));
     this._slider.create();
     tr.append(td);
 
-    this._clearButton.on("click", MA.bind(function(){
-      this._map._mapLayerList.remove({id:CONFIG.COMPAREPHOTO_ID });
+    this._clearButton.on("click", MA.bind(function () {
+      this._map._mapLayerList.remove({ id: CONFIG.COMPAREPHOTO_ID });
 
     }, this));
 
@@ -25912,21 +24098,21 @@ function getFileData(url, key) {
 
   },
 
-  setLeft: function(left) {
-    if ( !this._container) return;
+  setLeft: function (left) {
+    if (!this._container) return;
 
-    this._container.css({"left": ( left ) +"px"});
+    this._container.css({ "left": (left) + "px" });
     this.adjust();
   },
 
-  setRight: function(right) {
+  setRight: function (right) {
 
-    this._container.css({"right": ( right ) +"px"});
+    this._container.css({ "right": (right) + "px" });
     this.adjust();
   },
 
-  destroy: function() {
-    if ( !this._container) return;
+  destroy: function () {
+    if (!this._container) return;
     this._container.remove();
   }
 });
@@ -25939,7 +24125,7 @@ GLOBE.ComparePhotoControl.Slider = MA.Class.extend({
 
   includes: MA.Mixin.Events,
 
-  initialize : function(ownerContainer, parentContainer, photoList, clearButton) {
+  initialize: function (ownerContainer, parentContainer, photoList, clearButton) {
     this._clearButton = clearButton;
     this._ownerContainer = ownerContainer
     this._parentContainer = parentContainer;
@@ -25948,12 +24134,12 @@ GLOBE.ComparePhotoControl.Slider = MA.Class.extend({
     this._layerList = CONFIG.COMPAREPHOTO_PHOTOLIST;
   },
 
-  setActiveIndex: function(index) {
-    if ( this._activeIndex == index ) return;
+  setActiveIndex: function (index) {
+    if (this._activeIndex == index) return;
 
-    if ( index >= 0 ) {
+    if (index >= 0) {
       this._handleContainer.css({
-        left : Math.round(this._list[index].left) + "px"
+        left: Math.round(this._list[index].left) + "px"
       });
     }
 
@@ -25963,25 +24149,25 @@ GLOBE.ComparePhotoControl.Slider = MA.Class.extend({
 
   },
 
-  getActiveTitle: function() {
-    if ( this._activeIndex < 0 || this._activeIndex > this._layerList.length-1 ) return "";
+  getActiveTitle: function () {
+    if (this._activeIndex < 0 || this._activeIndex > this._layerList.length - 1) return "";
     var year = this._layerList[this._activeIndex].year;
 
-    return year.from + "年" + ( year.to ? "〜" + year.to + "年" : "" );
+    return year.from + "年" + (year.to ? "〜" + year.to + "年" : "");
   },
 
-  change:function() {
-    this.fire("change", {index:this._activeIndex});
+  change: function () {
+    this.fire("change", { index: this._activeIndex });
   },
 
-  refresh: function(idList) {
+  refresh: function (idList) {
 
-    for( var i=0; i<this._photoList.length; i++ ) {
+    for (var i = 0; i < this._photoList.length; i++) {
       var photo = this._photoList[i];
 
       const id = photo.id;
 
-      if ( idList.indexOf( id ) >= 0 ) {
+      if (idList.indexOf(id) >= 0) {
         this._list[i].label.addClass("haslayer");
       } else {
         this._list[i].label.removeClass("haslayer");
@@ -25989,16 +24175,16 @@ GLOBE.ComparePhotoControl.Slider = MA.Class.extend({
     }
   },
 
-  adjust: function(parentContainer) {
+  adjust: function (parentContainer) {
 
     var container = this._ownerContainer;
     if (parentContainer) container = parentContainer.container;
 
     var isSmall = container.outerWidth() < 800;
 
-    if ( isSmall ) {
+    if (isSmall) {
       this._container.addClass("small");
-      if ( container.outerWidth() < 500 ) {
+      if (container.outerWidth() < 500) {
         this._clearButton.html("×");
         this._clearButton.addClass("small");
       } else {
@@ -26013,9 +24199,9 @@ GLOBE.ComparePhotoControl.Slider = MA.Class.extend({
 
     var containerWidth = this._barContainer.outerWidth();
 
-    var sizeInterval =containerWidth / ( this._list.length -1);
+    var sizeInterval = containerWidth / (this._list.length - 1);
     var left = 0;
-    for( var i=0; i<this._list.length; i++ ) {
+    for (var i = 0; i < this._list.length; i++) {
       var item = this._list[i];
       item.left = left;
       item.elem.css({
@@ -26023,18 +24209,18 @@ GLOBE.ComparePhotoControl.Slider = MA.Class.extend({
       });
 
       item.label.css({
-        left: Math.round(left - (item.label.outerWidth() / 2) ) + "px"
+        left: Math.round(left - (item.label.outerWidth() / 2)) + "px"
       });
 
-      if ( isSmall && i %2 == 1) {
+      if (isSmall && i % 2 == 1) {
         item.label.addClass("top");
       } else {
         item.label.removeClass("top");
       }
 
-      if ( this._activeIndex == i ) {
+      if (this._activeIndex == i) {
         this._handleContainer.css({
-          left : Math.round(left) + "px"
+          left: Math.round(left) + "px"
         });
       }
 
@@ -26042,19 +24228,19 @@ GLOBE.ComparePhotoControl.Slider = MA.Class.extend({
     }
   },
 
-  create : function() {
-    if ( this._container ) return;
+  create: function () {
+    if (this._container) return;
 
     this._container = $("<div>").addClass("gsi_comparephoto_slider_container");
 
-    this._container.on("click", MA.bind( this._onContainerClick,this));
+    this._container.on("click", MA.bind(this._onContainerClick, this));
 
     // 背景用バー
     this._barContainer = $("<div>").addClass("gsi_comparephoto_slider_container_bar");
 
     // メモリ
     this._list = [];
-    for( var i=0; i<this._photoList.length; i++ ) {
+    for (var i = 0; i < this._photoList.length; i++) {
       var photo = this._photoList[i];
       var item = {};
 
@@ -26062,16 +24248,16 @@ GLOBE.ComparePhotoControl.Slider = MA.Class.extend({
       item.label = $("<div>").addClass("gsi_comparephoto_slider_container_bar_label");
 
       item.label.html(
-        photo.year.from + ( photo.year.to ? "<br>〜" + photo.year.to : ""));
+        photo.year.from + (photo.year.to ? "<br>〜" + photo.year.to : ""));
 
-      if ( i === 0 || i===this._photoList.length-1 ) {
+      if (i === 0 || i === this._photoList.length - 1) {
         item.elem.hide();
       }
 
-      this._barContainer.append( item.label);
-      this._barContainer.append( item.elem);
+      this._barContainer.append(item.label);
+      this._barContainer.append(item.elem);
 
-      this._list.push( item );
+      this._list.push(item);
     }
 
     // つまみ
@@ -26080,8 +24266,8 @@ GLOBE.ComparePhotoControl.Slider = MA.Class.extend({
     this._handleContainer.on("mousedown", MA.bind(this._onHandleMouseDown, this));
     this._handleContainer.on("touchstart", MA.bind(this._onHandleMouseDown, this));
 
-    this._barContainer.append( this._handleContainer);
-    this._container.append( this._barContainer);
+    this._barContainer.append(this._handleContainer);
+    this._container.append(this._barContainer);
 
     this.setActiveIndex(0);
 
@@ -26089,37 +24275,37 @@ GLOBE.ComparePhotoControl.Slider = MA.Class.extend({
 
   },
 
-  destroyMouseEvents : function() {
+  destroyMouseEvents: function () {
     this._container.removeClass("dragging");
 
-    if ( this._mouseMoveHandler ) {
+    if (this._mouseMoveHandler) {
       $(window).off("mousemove", this._mouseMoveHandler);
       $(window).off("touchmove", this._mouseMoveHandler);
       this._mouseMoveHandler = undefined;
     }
-    if ( this._mouseUpHandler ) {
+    if (this._mouseUpHandler) {
       $(window).off("mouseup", this._mouseUpHandler);
       $(window).off("touchend", this._mouseUpHandler);
       this._mouseUpHandler = undefined;
     }
   },
 
-  _onContainerClick : function(e) {
-    var targetIndex = this._screenLeftToIndex(e.pageX );
-    if ( targetIndex >= 0 ) {
+  _onContainerClick: function (e) {
+    var targetIndex = this._screenLeftToIndex(e.pageX);
+    if (targetIndex >= 0) {
       this.setActiveIndex(targetIndex);
     }
   },
 
-  _onHandleMouseDown : function(e) {
+  _onHandleMouseDown: function (e) {
 
     e.preventDefault();
     e.stopPropagation();
 
     this.destroyMouseEvents();
 
-    this._mouseMoveHandler = MA.bind( this._onWindowMouseMove, this);
-    this._mouseUpHandler = MA.bind( this._onWindowMouseUp, this);
+    this._mouseMoveHandler = MA.bind(this._onWindowMouseMove, this);
+    this._mouseUpHandler = MA.bind(this._onWindowMouseUp, this);
     $(window).on("mousemove", this._mouseMoveHandler);
     $(window).on("touchmove", this._mouseMoveHandler);
     $(window).on("mouseup", this._mouseUpHandler);
@@ -26129,25 +24315,25 @@ GLOBE.ComparePhotoControl.Slider = MA.Class.extend({
 
   },
 
-  _screenLeftToIndex : function ( screenLeft ) {
+  _screenLeftToIndex: function (screenLeft) {
 
     var left = 0;
     var barPosition = this._barContainer.offset();
 
-    left =  screenLeft- barPosition.left;
+    left = screenLeft - barPosition.left;
 
     var containerWidth = this._barContainer.outerWidth();
 
-    var sizeInterval =containerWidth / ( this._list.length -1);
+    var sizeInterval = containerWidth / (this._list.length - 1);
     var lineLeft = 0;
     var minDistance = undefined;
     var targetIndex = -1;
-    for( var i=0; i<this._list.length; i++ ) {
+    for (var i = 0; i < this._list.length; i++) {
       var item = this._list[i];
       item.left = lineLeft;
 
-      var distance = Math.abs( item.left - left );
-      if ( minDistance === undefined || minDistance > distance ) {
+      var distance = Math.abs(item.left - left);
+      if (minDistance === undefined || minDistance > distance) {
         targetIndex = i;
         minDistance = distance;
       }
@@ -26157,21 +24343,21 @@ GLOBE.ComparePhotoControl.Slider = MA.Class.extend({
     return targetIndex;
   },
 
-  _onWindowMouseMove : function(e) {
+  _onWindowMouseMove: function (e) {
 
     var pageX = e.pageX;
-    if ( e.type =="touchmove") {
+    if (e.type == "touchmove") {
       pageX = e.originalEvent.changedTouches[0].pageX;
     }
 
-    var targetIndex = this._screenLeftToIndex(pageX );
+    var targetIndex = this._screenLeftToIndex(pageX);
 
-    if ( targetIndex >= 0 ) {
+    if (targetIndex >= 0) {
       this.setActiveIndex(targetIndex);
     }
   },
 
-  _onWindowMouseUp : function(e) {
+  _onWindowMouseUp: function (e) {
     this.destroyMouseEvents();
 
   }
@@ -26181,7 +24367,7 @@ GLOBE.ComparePhotoControl.Slider = MA.Class.extend({
 /************************************************************************
 GLOBE.ComparePhotoLayer（時系列表示レイヤ）initにlayerを追加
 ************************************************************************/
-GLOBE.ComparePhotoLayer = MA.TileLayer.extend( {
+GLOBE.ComparePhotoLayer = MA.TileLayer.extend({
 
   activeIndex: 0,
   isGrayScale: false,
@@ -26197,7 +24383,7 @@ GLOBE.ComparePhotoLayer = MA.TileLayer.extend( {
     this._layerList = CONFIG.COMPAREPHOTO_PHOTOLIST;
 
     options = MA.setOptions(this, {});
-//    options.minZoom = 2;
+    //    options.minZoom = 2;
     this.setActiveIndex(this.activeIndex);
     this.setGrayScale(defaultMapGrayScale);
     this.onAdd(this._map);
@@ -26207,7 +24393,7 @@ GLOBE.ComparePhotoLayer = MA.TileLayer.extend( {
     }
   },
 
-  getLayerInfo : function() {
+  getLayerInfo: function () {
     return this._layerInfo;
   },
 
@@ -26217,8 +24403,8 @@ GLOBE.ComparePhotoLayer = MA.TileLayer.extend( {
   setOpacity: function (opacity) {
     this.opacity = opacity;
     this.options.opacity = opacity;
-    if ( this._layer ) {
-      this._layer.setOpacity( opacity );
+    if (this._layer) {
+      this._layer.setOpacity(opacity);
     }
   },
 
@@ -26229,11 +24415,11 @@ GLOBE.ComparePhotoLayer = MA.TileLayer.extend( {
   //   return "";
   // },
 
-  getActiveTitle: function() {
-    if ( this.activeIndex < 0 || this.activeIndex > this._layerList.length-1 ) return "";
+  getActiveTitle: function () {
+    if (this.activeIndex < 0 || this.activeIndex > this._layerList.length - 1) return "";
     var year = this._layerList[this.activeIndex].year;
 
-    return year.from + "年" + ( year.to ? "〜" + year.to + "年" : "" );
+    return year.from + "年" + (year.to ? "〜" + year.to + "年" : "");
   },
 
   getActiveId: function () {
@@ -26281,16 +24467,16 @@ GLOBE.ComparePhotoLayer = MA.TileLayer.extend( {
 
       // 前の時系列レイヤーは削除
       var deletePos = null;
-      if ( this._layer && this._mapLayerList) {
+      if (this._layer && this._mapLayerList) {
         deletePos = this._remove();
       }
 
-//      var zIndex = undefined;
-      if ( this._layerList[idx].type == "LayerGroup") {
+      //      var zIndex = undefined;
+      if (this._layerList[idx].type == "LayerGroup") {
 
-        this._layer = new GLOBE.MultiLayer( this._layerList[idx].entries);
+        this._layer = new GLOBE.MultiLayer(this._layerList[idx].entries);
         this._layer.isGrayScale = this.isGrayScale;
-        this._layer.setOpacity( this.options.opacity ? this.options.opacity : this.opacity );
+        this._layer.setOpacity(this.options.opacity ? this.options.opacity : this.opacity);
         this._layer.load();
       } else {
 
@@ -26301,8 +24487,8 @@ GLOBE.ComparePhotoLayer = MA.TileLayer.extend( {
           var layers = this._map.viewer.imageryLayers;
 
           this._layer = layers.addImageryProvider(
-           new Cesium.JapanGSIImageryProvider(this._layerInfo),
-           deletePos
+            new Cesium.JapanGSIImageryProvider(this._layerInfo),
+            deletePos
           );
 
         }
@@ -26310,58 +24496,58 @@ GLOBE.ComparePhotoLayer = MA.TileLayer.extend( {
       }
 
       this._mapLayerList.fire('tilechange');
-      this._mapLayerList.fire('change'); 
+      this._mapLayerList.fire('change');
 
-      this.fire("change", {index:this.activeIndex});
+      this.fire("change", { index: this.activeIndex });
     }
     this.activeIndexPre = this.activeIndex;
 
   },
 
-  onAdd  : function(map) {
+  onAdd: function (map) {
 
-    if ( this._layerInfo && !this._map) {
+    if (this._layerInfo && !this._map) {
 
-      this._layerInfo._visibleInfo.opacity = this.options.opacity ? this.options.opacity :this.opacity;
-      
+      this._layerInfo._visibleInfo.opacity = this.options.opacity ? this.options.opacity : this.opacity;
+
       var layers = this._map.viewer.imageryLayers;
 
       this._layer = layers.addImageryProvider(
-      new Cesium.JapanGSIImageryProvider(this._layerInfo)
+        new Cesium.JapanGSIImageryProvider(this._layerInfo)
       );
 
     }
 
-    if ( !this._selectHandler ) {
-      this._selectHandler = MA.bind(function(e){
+    if (!this._selectHandler) {
+      this._selectHandler = MA.bind(function (e) {
         this.setActiveIndex(e.index);
       }, this);
     }
 
     var control = this._map.getComparePhotoControl();
 
-    if ( control ) {
-      control.on("select",this._selectHandler );
+    if (control) {
+      control.on("select", this._selectHandler);
     }
 
     this._setMoveEnd(true);
 
   },
 
-  _onZoomEnd:function() {
-    this.fire("change", {index:this.activeIndex});
+  _onZoomEnd: function () {
+    this.fire("change", { index: this.activeIndex });
   },
 
-  onRemove : function() {
+  onRemove: function () {
 
     this._setMoveEnd(false);
 
-    if ( this._layer ) this._remove();
+    if (this._layer) this._remove();
 
     var control = this._map.hideComparePhotoControl();
 
-    if ( this._selectHandler)
-      control.off("select",this._selectHandler );
+    if (this._selectHandler)
+      control.off("select", this._selectHandler);
 
   },
 
@@ -26377,7 +24563,7 @@ GLOBE.ComparePhotoLayer = MA.TileLayer.extend( {
 
     if (this.isGrayScale != isGrayScale) {
       this.isGrayScale = isGrayScale;
-      if ( this._layer ) {
+      if (this._layer) {
         this._layer.isGrayScale = this.isGrayScale;
         this._layer.redraw();
       }
@@ -26462,7 +24648,7 @@ GLOBE.ComparePhotoLayer = MA.TileLayer.extend( {
     $(tile).data({ "_src": null });
   },
 
-  _setVisible: function(viewer,visible) {
+  _setVisible: function (viewer, visible) {
     this.show = visible;
     this._layerInfo._visibleInfo._isHidden = !visible;
 
@@ -26476,7 +24662,7 @@ GLOBE.ComparePhotoLayer = MA.TileLayer.extend( {
 
   },
 
-  _remove: function() {
+  _remove: function () {
 
     var index = this._map.viewer.scene.imageryLayers.indexOf(this._layer);
 
@@ -26486,21 +24672,20 @@ GLOBE.ComparePhotoLayer = MA.TileLayer.extend( {
 
   },
 
-  setAlpha : function( alpha )
-  {
+  setAlpha: function (alpha) {
     this._layer.alpha = alpha;
 
   },
 
-  _setMoveEnd : function(visible) {
+  _setMoveEnd: function (visible) {
 
-    if ( !this._moveEndHandler && visible ) {
-      this._moveEndHandler = MA.bind(this._onZoomEnd,this );
-      this._map.viewer.camera.moveEnd.addEventListener( this._moveEndHandler );
+    if (!this._moveEndHandler && visible) {
+      this._moveEndHandler = MA.bind(this._onZoomEnd, this);
+      this._map.viewer.camera.moveEnd.addEventListener(this._moveEndHandler);
 
     }
 
-    if ( this._moveEndHandler && !visible) {
+    if (this._moveEndHandler && !visible) {
       this._map.viewer.camera.moveEnd.removeEventListener(this._moveEndHandler);
       this._moveEndHandler = undefined;
     }
@@ -26514,37 +24699,37 @@ GLOBE.ComparePhotoLayer = MA.TileLayer.extend( {
 /************************************************************************
 GLOBE.ComparePhotoContainsChecker
 ************************************************************************/
-GLOBE.ComparePhotoContainsChecker = MA.Class.extend( {
+GLOBE.ComparePhotoContainsChecker = MA.Class.extend({
 
   includes: MA.Mixin.Events,
 
-  initialize : function(map, photoList) {
+  initialize: function (map, photoList) {
     this._map = map;
     this._photoList = photoList;
   },
 
-  start : function() {
+  start: function () {
 
-    if ( !this._onMapMoveEndHandler ) {
-      this._onMapMoveEndHandler = MA.bind( this._onMapMoveEnd, this );
+    if (!this._onMapMoveEndHandler) {
+      this._onMapMoveEndHandler = MA.bind(this._onMapMoveEnd, this);
       this._map.viewer.camera.moveEnd.addEventListener(this._onMapMoveEndHandler);
     }
 
     this._onMapMoveEndHandler();
   },
 
-  stop : function() {
+  stop: function () {
 
     this._destroyRequest();
-    if ( this._onMapMoveEndHandler) {
+    if (this._onMapMoveEndHandler) {
       this._map.viewer.camera.moveEnd.removeEventListener(this._onMapMoveEndHandler);
       this._onMapMoveEndHandler = undefined;
     }
   },
 
-  _destroyRequest: function() {
-    if ( this._requests ) {
-      for( var i=0; i<this._requests.length; i++ ) {
+  _destroyRequest: function () {
+    if (this._requests) {
+      for (var i = 0; i < this._requests.length; i++) {
         this._requests[i].request.abort();
       }
 
@@ -26563,39 +24748,39 @@ GLOBE.ComparePhotoContainsChecker = MA.Class.extend( {
     return { n: tileCoordY, px: Math.floor(pixelCoordY - tileCoordY * 256) };
   },
 
-  _onMapMoveEnd : function() {
+  _onMapMoveEnd: function () {
 
     var z = this._map.getZoomFromHeight();
     var center = this._map.getCenterPosition(true);
 
     var hash = {};
 
-    for( var i=0; i<this._photoList.length; i++ ) {
+    for (var i = 0; i < this._photoList.length; i++) {
       var photo = this._photoList[i];
       var maxNativeZoom = photo.maxNativeZoom;
       var url = CONFIG.COMPAREPHOTO_COCOTILEURL;
 
-      if ( maxNativeZoom && maxNativeZoom < z ) {
+      if (maxNativeZoom && maxNativeZoom < z) {
 
-        if( hash[maxNativeZoom+""] ) continue;
+        if (hash[maxNativeZoom + ""]) continue;
 
         var x = this._getTileX(maxNativeZoom, center[1]);
         var y = this._getTileY(maxNativeZoom, center[0]);
-        url = url.replace( "{x}", x.n).replace( "{y}", y.n).replace("{z}", maxNativeZoom);
-        hash[maxNativeZoom+""] = url;
+        url = url.replace("{x}", x.n).replace("{y}", y.n).replace("{z}", maxNativeZoom);
+        hash[maxNativeZoom + ""] = url;
       } else {
-        if( hash[z+""] ) continue;
+        if (hash[z + ""]) continue;
         var x = this._getTileX(z, center[1]);
         var y = this._getTileY(z, center[0]);
-        url = url.replace( "{x}", x.n).replace( "{y}", y.n).replace("{z}", z );
+        url = url.replace("{x}", x.n).replace("{y}", y.n).replace("{z}", z);
 
-        hash[z+""] = url;
+        hash[z + ""] = url;
       }
     }
 
     this._requests = [];
     this._idList = [];
-    for( var key in hash) {
+    for (var key in hash) {
       var url = hash[key];
       var request = $.ajax({
         type: "GET",
@@ -26603,38 +24788,38 @@ GLOBE.ComparePhotoContainsChecker = MA.Class.extend( {
         datatype: "text",
         cache: false,
       })
-      .done(MA.bind(function (data) {
-        try {
-          var ids = data.split(",");
-          for( var i=0; i<ids.length; i++ ) {
-            if ( this._idList.indexOf(ids[i]) < 0 ) {
-              this._idList.push(ids[i]);
+        .done(MA.bind(function (data) {
+          try {
+            var ids = data.split(",");
+            for (var i = 0; i < ids.length; i++) {
+              if (this._idList.indexOf(ids[i]) < 0) {
+                this._idList.push(ids[i]);
+              }
+            }
+          } catch (ex) {
+
+          }
+        }, this))
+        .always(MA.bind(function (req1, b, req2) {
+          var loaded = true;
+          for (var i = 0; i < this._requests.length; i++) {
+            if (req1 == this._requests[i].request || req2 == this._requests[i].request) {
+              this._requests[i].loaded = true;
+            }
+
+            if (!this._requests[i].loaded) {
+              loaded = false;
             }
           }
-        }catch(ex) {
 
-        }
-      },this ) )
-      .always(MA.bind(function(req1,b,req2) {
-        var loaded = true;
-        for( var i=0; i<this._requests.length; i++ ) {
-          if ( req1 == this._requests[i].request || req2 == this._requests[i].request) {
-            this._requests[i].loaded = true;
+          if (loaded) {
+            this.fire("load", { idList: this._idList });
           }
+        }, this));
 
-          if ( !this._requests[i].loaded ) {
-            loaded = false;
-          }
-        }
-
-        if ( loaded ) {
-          this.fire("load", {idList:this._idList});
-        }
-      }, this ) );
-
-      this._requests.push( {
-        request : request,
-        loaded : false
+      this._requests.push({
+        request: request,
+        loaded: false
       });
     }
 
@@ -26645,48 +24830,46 @@ GLOBE.ComparePhotoContainsChecker = MA.Class.extend( {
 /************************************************************************
  GLOBE.DIALOG.COMPAREPHOTO（時系列表示レイヤダイアログ）
  ************************************************************************/
- GLOBE.DIALOG.COMPAREPHOTO = $.extend({}, new GLOBE.CLASS.DIALOG('gsi_dialog_comparephoto'), {
+GLOBE.DIALOG.COMPAREPHOTO = $.extend({}, new GLOBE.CLASS.DIALOG('gsi_dialog_comparephoto'), {
   options: {
     title: '時系列表示'
   },
-  defaultTop:   '5%',
-  defaultLeft:  '10%',
+  defaultTop: '5%',
+  defaultLeft: '10%',
   defaultRight: 'auto',
-  defaultBottom:'auto',
-  
+  defaultBottom: 'auto',
+
   resizable: true,
 
-  initialize: function() {
+  initialize: function () {
     this._photoLayerList = CONFIG.COMPAREPHOTO_PHOTOLIST;
     this._activeIndex = -1;
   },
-  
-  create: function()
-  {
+
+  create: function () {
     this.initialize();
     this.createDialog();
     this.initPosition();
 
     this.setDialogHeader(this.createHeader());
-//    this.setDialogContent(this.createContent());
+    //    this.setDialogContent(this.createContent());
   },
-  
-  initPosition: function()
-  {
+
+  initPosition: function () {
     this.container
-        .css({
+      .css({
         'color': '#fff',
         'background': '#333',
         'opacity': '.90',
         'width': '80%',
         'min-width': '88px'
       });
-    
+
     this.container.css('top', this.defaultTop);
     this.container.css('left', this.defaultLeft);
     this.container.css('right', this.defaultRight);
     this.container.css('bottom', this.defaultBottom);
-    
+
     this.contentFrame.css({
       'padding': '10px',
       'background-color': '#333',
@@ -26694,42 +24877,38 @@ GLOBE.ComparePhotoContainsChecker = MA.Class.extend( {
     });
   },
 
-  createHeader : function()
-  {
-    this._title = $( '<div>' ).html( this.options.title );
-    return $( '<div>' ).append( this._title );
+  createHeader: function () {
+    this._title = $('<div>').html(this.options.title);
+    return $('<div>').append(this._title);
   },
 
-  createContent : function()
-  {
+  createContent: function () {
     this._content = $('<div>').addClass("gsi_comparephoto_slider_container");
 
     this._content.append(this._barContainer);
 
-//    this.setActiveIndex(0);
+    //    this.setActiveIndex(0);
 
     return this._content;
   },
-  
-  onBeforeShow: function()
-  {
+
+  onBeforeShow: function () {
     this.initPosition();
   },
-  
-  onDragStart: function()
-  {
+
+  onDragStart: function () {
     this.container.css({
       'right': 'auto',
       'bottom': 'auto'
     });
   },
 
-  setActiveIndex: function(index) {
+  setActiveIndex: function (index) {
     if (this._activeIndex == index) return;
 
-    if ( index >= 0 ) {
+    if (index >= 0) {
       this._handleContainer.css({
-        left : Math.round(this._list[index].left) + "px"
+        left: Math.round(this._list[index].left) + "px"
       });
     }
 

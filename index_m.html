@@ -7,21 +7,21 @@
   <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
   <meta name="viewport" content="width=device-width,initial-scale=1.0, ,user-scalable=no" />
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-  <meta name="description" content="地形図、写真、標高、地形分類、災害情報など、日本の国土の様子を発信するウェブ地図です。地形図や写真の3D表示も可能。">
+  <meta name="description" content="地震学に役立つ各種地理データをまとめました。どこでも、簡易なデータ観察をお助けします。">
 
   <!-- PWA android-->
   <link rel="manifest" href="manifest.json">
   <!-- PWA ios-->
   <meta name="apple-mobile-web-app-capable" content="yes">
   <meta name="apple-mobile-web-app-status-bar-style" content="black">
-  <meta name="apple-mobile-web-app-title" content="地理院地図">
+  <meta name="apple-mobile-web-app-title" content="地震学地図">
   <link rel="apple-touch-icon" href="image/logo-192.png">
   <!-- PWA serviceWorker register-->
   <script>
-  if ('serviceWorker' in navigator) {navigator.serviceWorker.register('serviceworker.js').then(function(registration) {});}
+    if ('serviceWorker' in navigator) { navigator.serviceWorker.register('serviceworker.js').then(function (registration) { }); }
   </script>
 
-  <title>（ページタイトル）</title>
+  <title>地震学地図</title>
 
   <link rel="stylesheet" href="js.lib/leaflet-1.2.0/leaflet.css" />
   <script type="text/javascript" src="js.lib/leaflet-1.2.0/leaflet.js"></script>
@@ -32,11 +32,11 @@
   <!-- <script type="text/javascript" src="./js.lib/jquery/ZeroClipboard2.0.2/ZeroClipboard.js"></script> -->
   <script type="text/javascript" src="./js.lib/jquery/jquery.xdomainrequest.min.js"></script>
   <script type="text/javascript" src="./js.lib/jquery/jquery-ui.min.js"></script>
-<!--  <script type="text/javascript" src="./js.lib/jquery/jquery.ui.touch-punch.js"></script> -->
+  <!--  <script type="text/javascript" src="./js.lib/jquery/jquery.ui.touch-punch.js"></script> -->
   <script type="text/javascript" src="./js.lib/jquery/jquery.qrcode/jquery.qrcode.min.js"></script>
   <script type="text/javascript" src="./js.lib/jquery/jquery.csv/jquery.csv.min.js"></script>
 
-<!--  <script type="text/javascript" src="./js.lib/jquery/jquery.cookie.js"></script> -->
+  <!--  <script type="text/javascript" src="./js.lib/jquery/jquery.cookie.js"></script> -->
   <script type="text/javascript" src="./js.lib/js.cookie.min.js"></script>
   <link rel="stylesheet" href="./js.lib/jquery/jquery.alerts.css" type="text/css" media="all" />
   <script type="text/javascript" src="./js.lib/jquery/jquery.alerts.js"></script>
@@ -114,12 +114,13 @@
   <div id="map"></div>
   <div class="leaflet-control-flatpanel leaflet-control" id="zoomGuidePanel" style="display: none;z-index: 2;position: absolute;right: 10px;bottom: 35px;">
     <div class="leaflet-control-crpanel" id="zoomGuideMinMax" style="border-radius: 5px 5px 0px 0px;">この情報はズームmin～maxで表示されます。</div>
-    <div class="leaflet-control-crpanel">なお、整備範囲が全国であるとは限りません。</div><div class="leaflet-control-crpanel" style="border-radius: 0px 0px 5px 5px;">
+    <div class="leaflet-control-crpanel">なお、整備範囲が全国であるとは限りません。</div>
+    <div class="leaflet-control-crpanel" style="border-radius: 0px 0px 5px 5px;">
       <input class="" type="checkbox" id="zoomGuideCheckbox">
       <label class="" for="zoomGuideCheckbox">以後、この案内を表示しない</label>
     </div>
   </div>
-<!-- test10 -->
+  <!-- test10 -->
 </body>
 
 </html>

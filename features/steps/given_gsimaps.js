@@ -18,15 +18,15 @@ const checkTitleContains = require("../support/check/checkTitleContains");
 const checkUrlContains = require("../support/check/checkUrlContains");
 
 Given(
-  "地理院地図を開く",
-  async function() {
+  "地震学地図を開く",
+  async function () {
     await openUrl.call(this, "http://localhost:4444");
   }
 );
 
 Given(
   "URL {string} が開かれている",
-  async function(url) {
+  async function (url) {
     await openUrl.call(this, "http://localhost:4444/" + url);
   }
 );

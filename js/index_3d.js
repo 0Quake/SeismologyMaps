@@ -12,19 +12,19 @@ function INCLUDE() {
 INCLUDE();
 
 /*-----------------------------------------------------------------------------------------------*
- * 地理院地図：style.js 用ラッパー関数
+ * 地震学地図：style.js 用ラッパー関数
  *-----------------------------------------------------------------------------------------------*/
 GSI =
-	{
-		GLOBALS: {
-			map: {
-				getZoom:
-					function () {
-						return args["z"];
-					}
-			}
+{
+	GLOBALS: {
+		map: {
+			getZoom:
+				function () {
+					return args["z"];
+				}
 		}
-	};
+	}
+};
 
 /*-----------------------------------------------------------------------------------------------*
  * 設定
@@ -1105,11 +1105,11 @@ function InitProgress(o) {
 };
 
 function InitProgressMsgInfo(msg) {
-	console.log("地理院地図３Ｄ[情報]>" + msg);
+	console.log("地震学地図３Ｄ[情報]>" + msg);
 };
 
 function InitProgressMsgError(msg) {
-	console.log("地理院地図３Ｄ[エラー]>" + msg);
+	console.log("地震学地図３Ｄ[エラー]>" + msg);
 };
 
 function setCameraPosition(param) {
@@ -1237,11 +1237,11 @@ function InitFrameDownload(o) {
 			+ "</div>"
 			;
 		vFrame3D_H_Ctrl += 125;
-		//+ '<div style="position:absolute; right:0; top: 0;"><a id="gsimap_link" target="_blank" style="font-size:11pt;" href="./">地理院地図で表示</a></div>'
+		//+ '<div style="position:absolute; right:0; top: 0;"><a id="gsimap_link" target="_blank" style="font-size:11pt;" href="./">地震学地図で表示</a></div>'
 		oGSIMapLink = $("<a>").attr({
 			id: "gsimap_link",
 			"target": "_blank"
-		}).html("地理院地図で表示");
+		}).html("地震学地図で表示");
 
 
 		oHelpPanel = $("<div>").attr({
@@ -1254,7 +1254,7 @@ function InitFrameDownload(o) {
 		oHelpLink = $("<a>").attr({
 			id: "gsimap_help",
 			"href": "javascript:void(0);"
-		}).html("操作説明").on('click',function () {
+		}).html("操作説明").on('click', function () {
 			if (oHelpPanel.is(":visible")) {
 				oHelpPanel.fadeOut(300);
 			} else {
@@ -1266,11 +1266,11 @@ function InitFrameDownload(o) {
 
 
 		oCameraPosition = $("<div>").addClass("camera-control-frame");
-		var setCameraPositionEastButton = $("<a>").addClass("camera-east").attr({ "href": "javascript:void(0);" }).on('click',function () { setCameraPosition("e"); });
-		var setCameraPositionWestButton = $("<a>").addClass("camera-west").attr({ "href": "javascript:void(0);" }).on('click',function () { setCameraPosition("w"); });
-		var setCameraPositionNorthButton = $("<a>").addClass("camera-north").attr({ "href": "javascript:void(0);" }).on('click',function () { setCameraPosition("n"); });
-		var setCameraPositionSouthButton = $("<a>").addClass("camera-south").attr({ "href": "javascript:void(0);" }).on('click',function () { setCameraPosition("s"); });
-		var setCameraPositionResetButton = $("<a>").addClass("camera-reset").attr({ "href": "javascript:void(0);" }).on('click',function () { setCameraPosition(); });
+		var setCameraPositionEastButton = $("<a>").addClass("camera-east").attr({ "href": "javascript:void(0);" }).on('click', function () { setCameraPosition("e"); });
+		var setCameraPositionWestButton = $("<a>").addClass("camera-west").attr({ "href": "javascript:void(0);" }).on('click', function () { setCameraPosition("w"); });
+		var setCameraPositionNorthButton = $("<a>").addClass("camera-north").attr({ "href": "javascript:void(0);" }).on('click', function () { setCameraPosition("n"); });
+		var setCameraPositionSouthButton = $("<a>").addClass("camera-south").attr({ "href": "javascript:void(0);" }).on('click', function () { setCameraPosition("s"); });
+		var setCameraPositionResetButton = $("<a>").addClass("camera-reset").attr({ "href": "javascript:void(0);" }).on('click', function () { setCameraPosition(); });
 
 		oCameraPosition.append(setCameraPositionEastButton);
 		oCameraPosition.append(setCameraPositionWestButton);
@@ -1281,7 +1281,7 @@ function InitFrameDownload(o) {
 		var transFrame = $("<div>").addClass("trans_frame");
 		oFaceTransparentCheck = $("<input>").attr({ "type": "checkbox", "id": "facetrans_check" })
 			.prop({ "checked": bFaceTransparent })
-			.on('click',function () {
+			.on('click', function () {
 				if (!oFaceMaterial) return;
 				if ($(this).is(":checked")) {
 					bFaceTransparent = true;
@@ -1314,7 +1314,7 @@ function InitFrameDownload(o) {
 
 		oDisplayInfoCheck = $("<input>").attr({ "type": "checkbox", "id": "displayinfo_check" })
 			.prop({ "checked": bDisplayInfo })
-			.on('click',function () {
+			.on('click', function () {
 				if ($(this).is(":checked")) {
 					bDisplayInfo = true;
 					showDirectionArrows();
@@ -1585,10 +1585,10 @@ function RequestLayers(url, z, x, y, nTilesOTS_X, nTilesOTS_Y) {
 		var vURLStyle = vLayers[nLayers].styleurl;
 		var bzyx = false;
 
-		if (vURLI.length < 2){
+		if (vURLI.length < 2) {
 			//not zxy, may be zyx
 			var tURLI = vURL.replace("\{z\}\/\{y\}\/\{x\}", "*").split("*");
-			if (tURLI.length == 2){
+			if (tURLI.length == 2) {
 				bzyx = true;
 				vURLI = tURLI;
 			}
@@ -1619,7 +1619,7 @@ function RequestLayers(url, z, x, y, nTilesOTS_X, nTilesOTS_Y) {
 						xx = checkTileCoord(xx, nz);
 						yy = checkTileCoord(yy, nz);
 						var src = vURLI[0] + z + "/" + xx + "/" + yy + vURLI[1];
-						if (bzyx){
+						if (bzyx) {
 							src = vURLI[0] + z + "/" + yy + "/" + xx + vURLI[1];
 						}
 						if (vURLExt == "img") {
@@ -2545,24 +2545,24 @@ function RequestTileDemResultProgress(max, current) {
 }
 /*
 function RequestTileDemResult_Progress(){
-    var p = 0.0;
-    var pMax = args["tile_n"] * (args["tile_n"] * 2);
-    var pN   = RequestLayersN() + vTilesDem.length;
+	var p = 0.0;
+	var pMax = args["tile_n"] * (args["tile_n"] * 2);
+	var pN   = RequestLayersN() + vTilesDem.length;
 
-    if(pN > 0){
-        if(pN == pMax){
-            p = 100;
-        }
-        else{
-            p = (1 - ((pMax - pN + 1) / pMax)) * 100;
-        }
-    }
-    if(oProgressBar != null){
-        if(p >= 100){
-            p = 98;
-        }
-	    $( "#" + oProgressBar.id).progressbar("value", p);
-    }
+	if(pN > 0){
+		if(pN == pMax){
+			p = 100;
+		}
+		else{
+			p = (1 - ((pMax - pN + 1) / pMax)) * 100;
+		}
+	}
+	if(oProgressBar != null){
+		if(p >= 100){
+			p = 98;
+		}
+		$( "#" + oProgressBar.id).progressbar("value", p);
+	}
 };
 */
 /*-----------------------------------------------------------------------------------------------*/
@@ -2617,18 +2617,18 @@ function LoadLayers(z, x, y, nTilesOTS_X, nTilesOTS_Y) {
 			var i= ny_tile * nTilesOTS_X + nx_tile;
 			
 			var vTilesDemAry = null;
-	        if(vTilesDem[i] != ""){
-	            vTilesDemAry = vTilesDem[i].replace(/\n/g,",").split(",");
-	        }
-	        
-	        for(ny_dem = 0; ny_dem < 256; ny_dem++){
+			if(vTilesDem[i] != ""){
+				vTilesDemAry = vTilesDem[i].replace(/\n/g,",").split(",");
+			}
+		    
+			for(ny_dem = 0; ny_dem < 256; ny_dem++){
 				for(nx_dem = 0; nx_dem < 256; nx_dem++){
-	                var vTilesDemAryV = 0;
-	                if(vTilesDemAry != null){
-					    vTilesDemAryV = vTilesDemAry[256 * ny_dem + nx_dem];
-	    				if(vTilesDemAryV == "e"){
-		    				vTilesDemAryV = 0;
-	                    }
+					var vTilesDemAryV = 0;
+					if(vTilesDemAry != null){
+						vTilesDemAryV = vTilesDemAry[256 * ny_dem + nx_dem];
+						if(vTilesDemAryV == "e"){
+							vTilesDemAryV = 0;
+						}
 					}
 					//if ( vTilesDemAryV <= 0 ) vTilesDemAryV= 1000;
 					var xx = ( nx_tile * 256 ) +nx_dem;
@@ -2637,8 +2637,8 @@ function LoadLayers(z, x, y, nTilesOTS_X, nTilesOTS_Y) {
 					vDem[sizeW * yy + xx] = vTilesDemAryV;
 					
 				}
-	    	}
-	    	*/
+			}
+			*/
 		}
 	}
 	// トリミング
@@ -2693,7 +2693,7 @@ function LoadLayersProc(oTextureCanvas_2D, x, y, wTileImg, hTileImg) {
 
 			var nx_tile = 0;
 			var ny_tile = 0;
-			for (var i = 0; i < vLayer.length; i++ , ny_tile++) {
+			for (var i = 0; i < vLayer.length; i++, ny_tile++) {
 				if (!fProc) {
 					break;
 				}
@@ -2778,8 +2778,8 @@ function LoadLayersProc(oTextureCanvas_2D, x, y, wTileImg, hTileImg) {
 
 	try {
 		LoadLayers_GeotiffOpener(oTextureCanvas_2D);
-	} catch(ex) {
-		console.log( ex );
+	} catch (ex) {
+		console.log(ex);
 	}
 
 	if (fProc) {
@@ -2833,12 +2833,12 @@ function LoadLayersProc(oTextureCanvas_2D, x, y, wTileImg, hTileImg) {
 		}
 	}
 
-	
+
 };
 
 function LoadLayers_GeotiffOpener(ctx) {
 	const geoTiffList = window.opener.GeoTiffList();
-	console.log( geoTiffList );
+	console.log(geoTiffList);
 
 
 	var vZ = parseInt(args["z"], 10);
@@ -2856,11 +2856,11 @@ function LoadLayers_GeotiffOpener(ctx) {
 	vRange_Lat_B = GetTile2Lat(vRange_Y_B + nY, vZ);
 	var vDeg2PxX = vTextureCanvas_W / (vRange_Lon_R - vRange_Lon_L);
 	var vDeg2PxY = vTextureCanvas_H / (LoadLayers_Vectors_MercaY(vRange_Lat_T, vZ) - LoadLayers_Vectors_MercaY(vRange_Lat_B, vZ));
-	
 
-	if ( !geoTiffList) return;
 
-	for( var i=0; i<geoTiffList.length; i++ ) {
+	if (!geoTiffList) return;
+
+	for (var i = 0; i < geoTiffList.length; i++) {
 		var geoTiffInfo = geoTiffList[i];
 
 		var left = LoadLayers_Vectors_2PX(geoTiffInfo.sw.lng, vRange_Lon_L, vDeg2PxX, "lon");
@@ -2868,7 +2868,7 @@ function LoadLayers_GeotiffOpener(ctx) {
 		var right = LoadLayers_Vectors_2PX(geoTiffInfo.ne.lng, vRange_Lon_L, vDeg2PxX, "lon");
 		var bottom = LoadLayers_Vectors_2PX(geoTiffInfo.sw.lat, vRange_Lat_T, vDeg2PxY, "lat");
 
-		ctx.drawImage(geoTiffInfo.canvas, left, top, right-left,bottom-top );
+		ctx.drawImage(geoTiffInfo.canvas, left, top, right - left, bottom - top);
 
 
 	}
@@ -4881,11 +4881,11 @@ function Draw3DGEOData() {
 			var mesh2 = new THREE.Mesh( geometry2, material2 );
 			mesh2.position.set( point.x, point.y, point.z );
 			oSceneGEODataMeshArr.push( {
-		    	type : "Icon",
-		    	point : latlngPoint,
-		    	mesh:mesh2,
-		    	iconSize : iconSize
-		    } );
+				type : "Icon",
+				point : latlngPoint,
+				mesh:mesh2,
+				iconSize : iconSize
+			} );
 			oScene.add(mesh2);
 			*/
 
@@ -5426,7 +5426,7 @@ function SceneGeometryZ() {
 			}
 
 			else if (meshData.triangles) {
-				for (var i = 0, idx = 0; i < meshData.triangles.length; i++ , idx += 3) {
+				for (var i = 0, idx = 0; i < meshData.triangles.length; i++, idx += 3) {
 					var triangle = meshData.triangles[i];
 					var points = triangle.getPoints();
 					var p1 = _latLngToPointData(viewBox, points[0].y, points[0].x, points[0].__h);
@@ -6190,7 +6190,7 @@ function Download_ConvertFromDem(type, vDem, vZRate, vDistance) {
 	var objPointList = "";
 	var objTextureList = "";
 	var objFaceList = "";
-	
+
 	/*....................................................................
 	 * VALUE
 	 *....................................................................*/
@@ -6537,8 +6537,8 @@ function Download_ConvertFromDem(type, vDem, vZRate, vDistance) {
 			}
 		}
 		// 面リスト
-		for (nY = 0; nY < colY-1; nY++) {
-			for (nX = 0; nX < colX-1; nX++) {
+		for (nY = 0; nY < colY - 1; nY++) {
+			for (nX = 0; nX < colX - 1; nX++) {
 				objFaceList += "f " + (nY * colX + nX + 1) + "/" + (nY * colX + nX + 1) + " " + ((nY + 1) * colX + nX + 1) + "/" + ((nY + 1) * colX + nX + 1) + " " + (nY * colX + nX + 2) + "/" + (nY * colX + nX + 2) + "\n";
 				objFaceList += "f " + (nY * colX + nX + 2) + "/" + (nY * colX + nX + 2) + " " + ((nY + 1) * colX + nX + 1) + "/" + ((nY + 1) * colX + nX + 1) + " " + ((nY + 1) * colX + nX + 2) + "/" + ((nY + 1) * colX + nX + 2) + "\n";
 			}
@@ -7058,7 +7058,7 @@ GSI3D.bind = function (fn, obj) {
 /*************************************************************
 
   GSI3D.Event
-    イベント
+	イベント
 
 *************************************************************/
 GSI3D.Event = function () {
@@ -7124,7 +7124,7 @@ GSI3D.Event = function () {
 /*************************************************************
 
   GSI3D.LayersJSONLoader
-    レイヤー定義ファイル読込
+	レイヤー定義ファイル読込
 
 *************************************************************/
 GSI3D.LayersJSONLoader = function (list, requestIds) {
@@ -7279,7 +7279,7 @@ GSI3D.LayersJSONLoader.prototype._loadedCheck = function () {
 /*************************************************************
 
   GSI3D.Point
-    point管理
+	point管理
 
 *************************************************************/
 GSI3D.Point = function (x, y) {
@@ -7311,7 +7311,7 @@ GSI3D.point = function (x, y) {
 /*************************************************************
 
   GSI3D.DEMManager
-    標高データ管理
+	標高データ管理
 
 *************************************************************/
 GSI3D.DEMManager = function (options) {
@@ -7430,7 +7430,7 @@ GSI3D.DEMManager.prototype._checkLoaded = function () {
 /*************************************************************
 
   GSI3D.DEMLoader
-    標高データ読み込み
+	標高データ読み込み
 
 *************************************************************/
 GSI3D.DEMLoader = function (x, y, z, urlList, options) {
@@ -7723,12 +7723,12 @@ GSI3D.DEMLoader.prototype._demLoadSuccess = function (urlList, coords, targetUrl
 		this._startLoadDEM(this._currentCoords);
 
 	}
-	else if (hasErrorPixel == true){
-		if ((urlList) && (urlList.length > 0)){
+	else if (hasErrorPixel == true) {
+		if ((urlList) && (urlList.length > 0)) {
 			this._urlList = urlList;
 			this._startLoadDEM(this._currentCoords);
 		}
-		else{
+		else {
 			this._demLoaded = true;
 			this._checkLoaded();
 		}
@@ -7788,7 +7788,7 @@ GSI3D.DEMLoader.getCanvas = function () {
 /*******************************************************
 
  GSI3D.DEMLoader.getURLList
-    標高データURL
+	標高データURL
 
 *******************************************************/
 
@@ -7845,37 +7845,37 @@ GSI3D.DEMLoader.getURLList = function (x, y, z) {
 	key = coordsToKey(getCoords(x, y, z, 9));
 	if (!GSI3D.DEMLoader.DEMAREA2[key]) return [
 		{
-	        id: "DEM1A",
-	        url: "https://cyberjapandata.gsi.go.jp/xyz/dem1a_png/{z}/{x}/{y}.png",
-	        minZoom: 9,
-	        maxZoom: 17,
-	        complementList: [
-	          {
-	            id: "DEM5A",
-	            url: "https://cyberjapandata.gsi.go.jp/xyz/dem5a_png/{z}/{x}/{y}.png",
-	            minZoom: 9,
-	            maxZoom: 15
-	          },
-	          {
-	            id: "DEM5B",
-	            url: "https://cyberjapandata.gsi.go.jp/xyz/dem5b_png/{z}/{x}/{y}.png",
-	            minZoom: 9,
-	            maxZoom: 15
-	          },
-	          {
-	            id: "DEM5C",
-	            url: "https://cyberjapandata.gsi.go.jp/xyz/dem5c_png/{z}/{x}/{y}.png",
-	            minZoom: 9,
-	            maxZoom: 15
-	          },
-	          {
-	            id: "DEM10B",
-	            url: "https://cyberjapandata.gsi.go.jp/xyz/dem_png/{z}/{x}/{y}.png",
-	            minZoom: 9,
-	            maxZoom: 14
-	          }
-	        ]
-      	},
+			id: "DEM1A",
+			url: "https://cyberjapandata.gsi.go.jp/xyz/dem1a_png/{z}/{x}/{y}.png",
+			minZoom: 9,
+			maxZoom: 17,
+			complementList: [
+				{
+					id: "DEM5A",
+					url: "https://cyberjapandata.gsi.go.jp/xyz/dem5a_png/{z}/{x}/{y}.png",
+					minZoom: 9,
+					maxZoom: 15
+				},
+				{
+					id: "DEM5B",
+					url: "https://cyberjapandata.gsi.go.jp/xyz/dem5b_png/{z}/{x}/{y}.png",
+					minZoom: 9,
+					maxZoom: 15
+				},
+				{
+					id: "DEM5C",
+					url: "https://cyberjapandata.gsi.go.jp/xyz/dem5c_png/{z}/{x}/{y}.png",
+					minZoom: 9,
+					maxZoom: 15
+				},
+				{
+					id: "DEM10B",
+					url: "https://cyberjapandata.gsi.go.jp/xyz/dem_png/{z}/{x}/{y}.png",
+					minZoom: 9,
+					maxZoom: 14
+				}
+			]
+		},
 		{
 			url: "https://cyberjapandata.gsi.go.jp/xyz/dem5a_png/{z}/{x}/{y}.png",
 			minZoom: 9,
@@ -7891,11 +7891,11 @@ GSI3D.DEMLoader.getURLList = function (x, y, z) {
 					minZoom: 9,
 					maxZoom: 15
 				},
-			  	{
+				{
 					url: "https://cyberjapandata.gsi.go.jp/xyz/dem_png/{z}/{x}/{y}.png",
 					minZoom: 0,
 					maxZoom: 14
-			  	}
+				}
 			]
 		},
 		{
@@ -7908,11 +7908,11 @@ GSI3D.DEMLoader.getURLList = function (x, y, z) {
 					minZoom: 9,
 					maxZoom: 15
 				},
-			  	{
+				{
 					url: "https://cyberjapandata.gsi.go.jp/xyz/dem_png/{z}/{x}/{y}.png",
 					minZoom: 0,
 					maxZoom: 14
-			  	}
+				}
 			]
 		},
 		{
@@ -7924,7 +7924,7 @@ GSI3D.DEMLoader.getURLList = function (x, y, z) {
 					url: "https://cyberjapandata.gsi.go.jp/xyz/dem_png/{z}/{x}/{y}.png",
 					minZoom: 0,
 					maxZoom: 14
-			  	}
+				}
 			]
 		},
 		{
@@ -7969,26 +7969,26 @@ GSI3D.DEMLoader.getURLList = function (x, y, z) {
 /*************************************************************
 
   GSI3D.ReliefTileLayer
-    自分で作る色別標高図
+	自分で作る色別標高図
 
 *************************************************************/
 GSI3D.ReliefTileLayer = {};
 
 
 GSI3D.ReliefTileLayer._sampleData =
-	{
-		gradate: false,
-		useHillshademap: false,
-		colors: [
-			{ h: 0, color: "#2db4b4" },
-			{ h: 100, color: "#71b42d" },
-			{ h: 300, color: "#b4a72d" },
-			{ h: 1000, color: "#b4562d" },
-			{ h: 2000, color: "#b4491b" },
-			{ h: 4000, color: "#b43d09" },
-			{ h: null, color: "#b43d09" }
-		]
-	};
+{
+	gradate: false,
+	useHillshademap: false,
+	colors: [
+		{ h: 0, color: "#2db4b4" },
+		{ h: 100, color: "#71b42d" },
+		{ h: 300, color: "#b4a72d" },
+		{ h: 1000, color: "#b4562d" },
+		{ h: 2000, color: "#b4491b" },
+		{ h: 4000, color: "#b43d09" },
+		{ h: null, color: "#b43d09" }
+	]
+};
 
 
 // 色別標高図の#000000→内部で利用するrgb形式
@@ -8091,7 +8091,7 @@ GSI3D.ReliefTileLayer.getCanvas = function () {
 /*******************************************************
 
  GSI3D.ReliefTileLayer.TileDrawer
-    タイル描画
+	タイル描画
 
 *******************************************************/
 GSI3D.ReliefTileLayer.TileDrawer = function (elevationData) {
@@ -8126,7 +8126,7 @@ GSI3D.ReliefTileLayer.TileDrawer.prototype._initializeElevationData = function (
 
 	for (var i = 0; i < data.colors.length; i++) {
 		var c = data.colors[i];
-	if (typeof c.color === "string") {
+		if (typeof c.color === "string") {
 			var color = GSI3D.ReliefTileLayer.colorStringToRGBA(c.color);
 
 			c.color = color;

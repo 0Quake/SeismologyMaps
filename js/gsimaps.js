@@ -958,23 +958,23 @@ L.Draw.Polyline.prototype._onContextMenu = function (e) {
   this.deleteLastVertex();
 },
 
-L.Draw.Polyline.prototype._onMouseUp = function (e) {
-  if (this._mouseDownOrigin) {
-    if (e.originalEvent.button == 2) {
-    }
-    else {
-      // We detect clicks within a certain tolerance, otherwise let it
-      // be interpreted as a drag by the map
-      var distance = L.point(e.originalEvent.clientX, e.originalEvent.clientY)
-        .distanceTo(this._mouseDownOrigin);
-      if (Math.abs(distance) < 9 * (window.devicePixelRatio || 1)) {
-        this.addVertex(e.latlng);
+  L.Draw.Polyline.prototype._onMouseUp = function (e) {
+    if (this._mouseDownOrigin) {
+      if (e.originalEvent.button == 2) {
+      }
+      else {
+        // We detect clicks within a certain tolerance, otherwise let it
+        // be interpreted as a drag by the map
+        var distance = L.point(e.originalEvent.clientX, e.originalEvent.clientY)
+          .distanceTo(this._mouseDownOrigin);
+        if (Math.abs(distance) < 9 * (window.devicePixelRatio || 1)) {
+          this.addVertex(e.latlng);
+        }
       }
     }
-  }
 
-  this._mouseDownOrigin = null;
-};
+    this._mouseDownOrigin = null;
+  };
 
 GSI.Draw.Polyline = L.Draw.Polyline.extend({
 
@@ -1468,7 +1468,7 @@ GSI.Links = {};
 GSI.Links.getURL = function (pageStateManager, id, center, z, bounds) {
   if (id == "gsi3d_l") {
     if (GSI.Utils.Browser.ie && (GSI.Utils.Browser.version <= 10)) {
-      alert('お使いのWebブラウザは地理院地図3Dに対応していません。\nChrome、Firefox、IE11　をご使用ください。');
+      alert('お使いのWebブラウザは地震学地図3Dに対応していません。\nChrome、Firefox、IE11　をご使用ください。');
       return null;
     }
     var args = "";
@@ -1482,7 +1482,7 @@ GSI.Links.getURL = function (pageStateManager, id, center, z, bounds) {
   }
   else if (id == "gsi3d_s") {
     if (GSI.Utils.Browser.ie && (GSI.Utils.Browser.version <= 10)) {
-      alert('お使いのWebブラウザは地理院地図3Dに対応していません。\nChrome、Firefox、IE11　をご使用ください。');
+      alert('お使いのWebブラウザは地震学地図3Dに対応していません。\nChrome、Firefox、IE11　をご使用ください。');
       return null;
     }
     var args = "";
@@ -1496,7 +1496,7 @@ GSI.Links.getURL = function (pageStateManager, id, center, z, bounds) {
   }
   else if (id == "gsi3d_view") {
     if (GSI.Utils.Browser.ie && (GSI.Utils.Browser.version <= 10)) {
-      alert('お使いのWebブラウザは地理院地図3Dに対応していません。\nChrome、Firefox、IE11　をご使用ください。');
+      alert('お使いのWebブラウザは地震学地図3Dに対応していません。\nChrome、Firefox、IE11　をご使用ください。');
       return null;
     }
 
@@ -1520,7 +1520,7 @@ GSI.Links.getURL = function (pageStateManager, id, center, z, bounds) {
 
   else if (id == 'gsiglobe') {
     if (GSI.Utils.Browser.ie && (GSI.Utils.Browser.version <= 10)) {
-      alert('お使いのWebブラウザは地理院地図Globeに対応していません。\nChrome、Firefox、IE11　をご使用ください。');
+      alert('お使いのWebブラウザは地震学地図Globeに対応していません。\nChrome、Firefox、IE11　をご使用ください。');
       return null;
     }
 
@@ -2051,7 +2051,7 @@ GSI.Utils.sendSelectedFunction = function (function_id) {
     data: function_id,
     url: "./js/anchor_func.js",
     datatype: "text",
-    converters: {'text script': window.String},
+    converters: { 'text script': window.String },
     cache: false,
   });
 };
@@ -2136,12 +2136,12 @@ GSI.Utils.setMixBlendMode = function (item, flg) {
   item._visibleInfo.layer._container.setAttribute('style', el);
 };
 
-GSI.Utils.objAssign = function(tt, src){
+GSI.Utils.objAssign = function (tt, src) {
   var dest;
-  if (Array.isArray(src) == true){
+  if (Array.isArray(src) == true) {
     dest = $.extend([], src);
   }
-  else{
+  else {
     dest = $.extend({}, src);
 
   }
@@ -2149,12 +2149,12 @@ GSI.Utils.objAssign = function(tt, src){
   return dest;
 };
 
-GSI.Utils.getNextOutsideTileNo = function(){
-	if ( !GSI.Utils._outsideTileNo ){
-		GSI.Utils._outsideTileNo = 0;
-	}
+GSI.Utils.getNextOutsideTileNo = function () {
+  if (!GSI.Utils._outsideTileNo) {
+    GSI.Utils._outsideTileNo = 0;
+  }
 
-	return GSI.Utils._outsideTileNo++;
+  return GSI.Utils._outsideTileNo++;
 };
 
 /************************************************************************
@@ -3868,9 +3868,9 @@ GSI.Dialog = L.Evented.extend({
     if (this.options.width) {
       this.container.css({ width: this.options.width });
     }
-    this.closeBtn.on('click',L.bind(this._cloceButtonClick, this));
+    this.closeBtn.on('click', L.bind(this._cloceButtonClick, this));
 
-    if (this.minimizeBtn) this.minimizeBtn.on('click',L.bind(this._minimizeButtonClick, this));
+    if (this.minimizeBtn) this.minimizeBtn.on('click', L.bind(this._minimizeButtonClick, this));
 
     this.container.hide();
 
@@ -4100,7 +4100,7 @@ GSI.HelpDialog = L.Class.extend({
     this.map = map;
     this.mapMouse = mapMouse;
     this._blind = $("<div>")
-      .on('click',L.bind(function () { this.hide(); }, this))
+      .on('click', L.bind(function () { this.hide(); }, this))
       .addClass("help_window_blind");
 
     this._frame = $("<div>").addClass("help_window_frame");
@@ -4147,7 +4147,7 @@ GSI.HelpDialog = L.Class.extend({
 
     this._closeButton = $("<a>")
       .attr({ "href": "javascript:void(0);" })
-      .on('click',L.bind(function () { this.hide(); }, this))
+      .on('click', L.bind(function () { this.hide(); }, this))
       .addClass("help_window_closebtn").html("×");
 
     this._titleFrame.append($("<span>"));
@@ -4162,7 +4162,7 @@ GSI.HelpDialog = L.Class.extend({
       .addClass("help_window_frame_button")
       .addClass("help_window_frame_next_button")
       .html("")
-      .on('click',L.bind(function () { this._nextButton.trigger('blur'); this.next(); }, this));
+      .on('click', L.bind(function () { this._nextButton.trigger('blur'); this.next(); }, this));
 
     this._prevButton = $("<a>")
       .attr({
@@ -4171,7 +4171,7 @@ GSI.HelpDialog = L.Class.extend({
       .addClass("help_window_frame_button")
       .addClass("help_window_frame_prev_button")
       .html("")
-      .on('click',L.bind(function () { this._prevButton.trigger('blur'); this.prev(); }, this));
+      .on('click', L.bind(function () { this._prevButton.trigger('blur'); this.prev(); }, this));
 
     this._frame.append(this._prevButton);
     this._frame.append(this._nextButton);
@@ -4296,20 +4296,20 @@ GSI.SearchResultDialog = GSI.Dialog.extend({
 
     this.shiSelect = $('<select>').css({ 'width': '48%', 'margin-left': '4px' });
 
-    this.typeSelect = $('<select>').css({ 'width': '48%', 'margin-left': '4px','margin-top': '3px' });
-    this.typeSelectDiv = $('<div>').css({ 'width': '100%', 'text-align': 'left'});
+    this.typeSelect = $('<select>').css({ 'width': '48%', 'margin-left': '4px', 'margin-top': '3px' });
+    this.typeSelectDiv = $('<div>').css({ 'width': '100%', 'text-align': 'left' });
 
     this.initializeKenSelect();
 
-    this.kenSelect.on('change',L.bind(this.onKenChange, this));
+    this.kenSelect.on('change', L.bind(this.onKenChange, this));
     this.shiSelect.empty();
     this.shiSelect.append($('<option>').html("市区町村").val(","));
-    this.shiSelect.on('change',L.bind(this.onShiChange, this));
+    this.shiSelect.on('change', L.bind(this.onShiChange, this));
     this.typeSelect.empty();
     this.typeSelect.append($('<option>').html("すべて").val(","));
     this.typeSelect.append($('<option>').html("居住地名").val("5,居住地名"));
     this.typeSelect.append($('<option>').html("居住地名以外").val("3,居住地名以外"));
-    this.typeSelect.on('change',L.bind(this.onTypeSelectChange, this));
+    this.typeSelect.on('change', L.bind(this.onTypeSelectChange, this));
     this.typeSelectDiv.append(this.typeSelect);
 
     selectFrame.append(this.kenSelect).append(this.shiSelect).append(this.typeSelectDiv);
@@ -4376,7 +4376,7 @@ GSI.SearchResultDialog = GSI.Dialog.extend({
   onShiChange: function () {
     this.showResult();
   },
-  onTypeSelectChange: function (){
+  onTypeSelectChange: function () {
     this.showResult();
   },
   setChimeisResult: function (result) {
@@ -4419,7 +4419,7 @@ GSI.SearchResultDialog = GSI.Dialog.extend({
       a.append(div);
     }
 
-    a.on('click',L.bind(this.onResultClick, this, item));
+    a.on('click', L.bind(this.onResultClick, this, item));
     a.on('mouseenter', L.bind(this.onResultMouseover, this, item));
     a.on('mouseleave', L.bind(this.onResultMouseout, this, item));
     a.css({ "padding-left": '32px' });
@@ -4460,7 +4460,7 @@ GSI.SearchResultDialog = GSI.Dialog.extend({
     return a;
   },
   showResult: function () {
-    this.container.css({"height":"auto"});
+    this.container.css({ "height": "auto" });
     if (this.markerList) this.map.removeLayer(this.markerList);
 
     this.markerList = L.layerGroup();
@@ -4492,12 +4492,12 @@ GSI.SearchResultDialog = GSI.Dialog.extend({
         if (selectedKenCode != '' && addressCode.substring(0, addressCode.length - 3) != selectedKenCode) return;
         if (selectedSiCode != '' && selectedSiCode != addressCode) return;
 
-        if (selectedTypeCode != ''){
+        if (selectedTypeCode != '') {
           var dataSource = record.properties.dataSource;
           if (selectedTypeCode == '5') {
-            if (dataSource != 5 && dataSource != null && dataSource != undefined)  return;
+            if (dataSource != 5 && dataSource != null && dataSource != undefined) return;
           } else if (selectedTypeCode == '3') {
-            if (dataSource == 5 || dataSource == null || dataSource == undefined)  return;
+            if (dataSource == 5 || dataSource == null || dataSource == undefined) return;
           }
         }
         var li = $('<li>');
@@ -4777,9 +4777,9 @@ GSI.ShareDialog = GSI.Dialog.extend({
 
     var lp = _location.pathname;
     var da = lp.lastIndexOf("/");
-    if ((da >= 0) && (da < lp.length - 1)){
+    if ((da >= 0) && (da < lp.length - 1)) {
       var x = lp.substring(da + 1);
-      if (x == "index.html"){
+      if (x == "index.html") {
         lp = lp.substring(0, da + 1);
       }
     }
@@ -4857,7 +4857,7 @@ GSI.ShareDialog = GSI.Dialog.extend({
     var ls = this.pageStateManager.getLayersQueryString();
     var disp = this.pageStateManager.getTileViewSetting();
 
-    var hasReliefFree = ls.indexOf( "relief_free") >= 0 ? true: false;
+    var hasReliefFree = ls.indexOf("relief_free") >= 0 ? true : false;
     if (this._layerpCheck.is(':checked')) {
       if (ls != '') {
         if (fBassLS_Trim) {
@@ -5022,7 +5022,7 @@ GSI.ShareDialog = GSI.Dialog.extend({
 
       var ls = this.pageStateManager.getLayersQueryString2();
       var disp = this.pageStateManager.getTileViewSetting2();
-      var hasReliefFree2 = ls.indexOf( "relief_free") >= 0 ? true: false;
+      var hasReliefFree2 = ls.indexOf("relief_free") >= 0 ? true : false;
       if (this._layerpCheck.is(':checked')) {
         if (ls != '') {
           if (fBassLS_Trim) {
@@ -5172,13 +5172,13 @@ GSI.ShareDialog = GSI.Dialog.extend({
     var frame = $('<div>').addClass('textareacontent');
 
     var textareaFrame = $('<div>');
-    this._textarea = $('<textarea>').attr({ rows: 4, readonly: "readonly", 'wrap': 'off' }).on('click',function () { this.select(); });
+    this._textarea = $('<textarea>').attr({ rows: 4, readonly: "readonly", 'wrap': 'off' }).on('click', function () { this.select(); });
     this._textarea.trigger('focus');
     this._textarea.val('');
     textareaFrame.append(this._textarea);
 
     this._downloadButton = $('<a>').attr({ 'href': 'javascript:void(0);' }).addClass("normalbutton").css({ 'float': 'right' })
-      .html(GSI.TEXT.SHARE.DIALOG_DOWNLOADBTN).on('click',L.bind(this._onDownLoadClick, this));
+      .html(GSI.TEXT.SHARE.DIALOG_DOWNLOADBTN).on('click', L.bind(this._onDownLoadClick, this));
 
     if (!GSI.Utils.canUseFlashPlayer()) {
       this._copyButton = $('<span>').css({ 'float': 'right' }).html(GSI.TEXT.SHARE.DIALOG_NOCOPYMSG);
@@ -5192,7 +5192,7 @@ GSI.ShareDialog = GSI.Dialog.extend({
 
     this._settingButton = $('<a>').attr({ 'href': 'javascript:void(0);' }).addClass("normalbutton").css({ 'float': 'left' })
       .html('詳細設定')
-      .on('click',L.bind(function () { this._settingFrame.slideToggle('fast'); }, this));
+      .on('click', L.bind(function () { this._settingFrame.slideToggle('fast'); }, this));
 
     var buttonFrame = $('<div>').addClass('buttonframe');
 
@@ -5225,7 +5225,7 @@ GSI.ShareDialog = GSI.Dialog.extend({
       var label = $('<label>').attr({ 'for': id });
       label.html(title);
       li.append(label);
-      check.on('click',L.bind($this._onSettingChange, $this));
+      check.on('click', L.bind($this._onSettingChange, $this));
       return { li: li, checkbox: check };
     };
 
@@ -5419,7 +5419,7 @@ GSI.LoadOutsideTileDialog = GSI.Dialog.extend({
     this._optionBtn = $("<a>")
       .addClass("option_btn").attr({ "href": "javascript:void(0);" })
       .html("オプション")
-      .on('click',L.bind(function () {
+      .on('click', L.bind(function () {
         if (this._optionFrame.is(":visible")) {
           this._optionBtn.removeClass("expand");
           this._optionFrame.slideUp(300, L.bind(function () {
@@ -5485,19 +5485,19 @@ GSI.LoadOutsideTileDialog = GSI.Dialog.extend({
 
     this.frame.append(dl);
 
-    var msgFrame = $("<div>").addClass("msg_frame").html("※国土地理院以外の機関が配信しているデータをご利用の際は、当該データの利用規約に従いご利用ください。");
+    var msgFrame = $("<div>").addClass("msg_frame").html("※データの利用規約に従いご利用ください。");
     this.frame.append(msgFrame);
 
     var btnFrame = $("<div>").addClass("button_frame");
 
     this._loadButton = $("<a>").addClass("normalbutton").attr({ "href": "javascript:void(0);" }).html("上記の内容で読込開始");
-    this._loadButton.on('click',L.bind(function () { this._load(); }, this));
+    this._loadButton.on('click', L.bind(function () { this._load(); }, this));
     btnFrame.append(this._loadButton);
 
     this.frame.append(btnFrame);
 
-    this._loadFromUrlRadio.on('click',L.bind(this._loadModeChange, this));
-    this._loadFromFileRadio.on('click',L.bind(this._loadModeChange, this));
+    this._loadFromUrlRadio.on('click', L.bind(this._loadModeChange, this));
+    this._loadFromFileRadio.on('click', L.bind(this._loadModeChange, this));
 
     this._fileInput.on("change", L.bind(this._onFileInputChange, this));
     this._loadModeChange();
@@ -5535,15 +5535,15 @@ GSI.LoadOutsideTileDialog = GSI.Dialog.extend({
       // this._layerNameInput.removeProp("disabled");
       // this._urlInput.removeProp("disabled");
       // this._tmsInput.removeProp("disabled");
-      this._layerNameInput.prop({"disabled": false});
+      this._layerNameInput.prop({ "disabled": false });
       this._urlInput.prop({ "disabled": false });
       this._tmsInput.prop({ "disabled": false });
       this._fileInput.prop({ "disabled": "disabled" });
     }
     else {
 
-//      this._fileInput.removeProp("disabled");
-      this._fileInput.prop({"disabled": false});
+      //      this._fileInput.removeProp("disabled");
+      this._fileInput.prop({ "disabled": false });
 
       this._layerNameInput.prop({ "disabled": "disabled" });
       this._urlInput.prop({ "disabled": "disabled" });
@@ -5611,7 +5611,7 @@ GSI.LoadOutsideTileDialog = GSI.Dialog.extend({
       var url = info.url;
       var title = info.title;
 
-      if (!info.layerType){
+      if (!info.layerType) {
         info.layerType = GSI.LayersJSON.url2LayerType(url);
       }
 
@@ -5853,7 +5853,7 @@ GSI.EditOutsideTileDialog = GSI.Dialog.extend({
     var btnFrame = $("<div>").addClass("button_frame");
 
     this._okBtn = $("<a>").addClass("normalbutton").attr({ "href": "javascript:void(0);" }).html("上記の内容で変更");
-    this._okBtn.on('click',L.bind(this._onOkClick, this));
+    this._okBtn.on('click', L.bind(this._onOkClick, this));
     btnFrame.append(this._okBtn);
     this.frame.append(btnFrame);
 
@@ -5907,7 +5907,7 @@ GSI.EditOutsideTileDialog = GSI.Dialog.extend({
     var select = $("<select>");
     select.append($('<option>').html("").val(""));
 
-    for (var z = CONFIG.OUTSIDETILE.ZOOMRANGE.MIN; z <=  CONFIG.OUTSIDETILE.ZOOMRANGE.MAX; z++) {
+    for (var z = CONFIG.OUTSIDETILE.ZOOMRANGE.MIN; z <= CONFIG.OUTSIDETILE.ZOOMRANGE.MAX; z++) {
 
       select.append($('<option>').html(z).val(z));
     }
@@ -6109,7 +6109,7 @@ GSI.QRCodeDialog = GSI.Dialog.extend({
       .append($('<option>').html("小(120px×120px)").val("120"));
 
     this._sizeSelect.val("180")
-      .on('change',L.bind(function () {
+      .on('change', L.bind(function () {
         this._refreshQRCode();
       }, this));
     td = $('<td>').attr({ "colspan": 3 }).append(this._sizeSelect);
@@ -6136,7 +6136,7 @@ GSI.QRCodeDialog = GSI.Dialog.extend({
     this._imageTypeSelect.val("image/png")
 
     this._saveButton = $("<a>").attr({ "href": "javascript:void(0);" }).html("でダウンロードする")
-      .on('click',L.bind(function () { this._saveImage(this._imageTypeSelect.val()); }, this));
+      .on('click', L.bind(function () { this._saveImage(this._imageTypeSelect.val()); }, this));
 
     this._saveFrame.append(this._imageTypeSelect);
     this._saveFrame.append(this._saveButton);
@@ -6846,7 +6846,7 @@ GSI.Header = L.Evented.extend({
 
         this.topMessage.append(closeBtn);
 
-        closeBtn.on('click',L.bind(this.onCloseClick, this));
+        closeBtn.on('click', L.bind(this.onCloseClick, this));
 
         this.topMessageVisible = true;
       }
@@ -6919,7 +6919,7 @@ GSI.Header = L.Evented.extend({
   getHeight: function () {
     if (!this.options.visible) return 0;
     var height = this.header.outerHeight();
-    if ( !this.header.is(":visible")) height = 40;
+    if (!this.header.is(":visible")) height = 40;
     return height + (this.topMessageVisible ? this.topMessage.outerHeight(true) : 0);
 
   },
@@ -6961,7 +6961,7 @@ GSI.IconSelector = L.Evented.extend({
 
     options = L.setOptions(this, options);
 
-    this.image.on('click',L.bind(this.onClick, this));
+    this.image.on('click', L.bind(this.onClick, this));
   },
   onClick: function () {
     this.show();
@@ -7001,7 +7001,7 @@ GSI.IconSelector = L.Evented.extend({
       }
 
       var td = $('<td>');
-      var a = $('<a>').attr({ href: 'javascript:void(0);' }).on('click',L.bind(this.onSelect, this, iconInfo));
+      var a = $('<a>').attr({ href: 'javascript:void(0);' }).on('click', L.bind(this.onSelect, this, iconInfo));
       var image = $('<img>').attr({ src: iconInfo.url });
       if (iconInfo.size) {
         image.css({
@@ -8295,9 +8295,9 @@ GSI.LayersJSON = L.Evented.extend({
   _onLoad: function (url, data) {
     var json = JSON.parse(data);
 
-    var initEvecDisaster = function(entries, func) {
-      if  (!entries) return;
-      for( var i=0; i<entries.length; i++ ) {
+    var initEvecDisaster = function (entries, func) {
+      if (!entries) return;
+      for (var i = 0; i < entries.length; i++) {
         if (entries[i].title == "指定緊急避難場所") {
           entries[i]["title_evac"] = CONFIG.layerEvacuationFolderSYS;
         } else if (entries[i].title == "自然災害伝承碑") {
@@ -8306,7 +8306,7 @@ GSI.LayersJSON = L.Evented.extend({
         } else if (entries[i].title == "火山土地条件図　数値データ（火山地形分類）") {
           entries[i]["title_evac"] = CONFIG.VolcanoTerrainFolderSYS;
         } else {
-          func( entries[i].entries, func );
+          func(entries[i].entries, func);
         }
       }
     };
@@ -8329,7 +8329,7 @@ GSI.LayersJSON = L.Evented.extend({
           hybridjson.layers.push(json_dh);
         }
         else {
-          initEvecDisaster( json.layers[ll].entries, initEvecDisaster );
+          initEvecDisaster(json.layers[ll].entries, initEvecDisaster);
           hybridjson.layers.push(json.layers[ll]);
         }
       }
@@ -8631,7 +8631,7 @@ GSI.LayersJSON = L.Evented.extend({
           this.layers.push(info);
         }
       }
-      if (tree[i].id != "f0"){
+      if (tree[i].id != "f0") {
         //最上層にparentを付けない
         tree[i].parent = parent;
       }
@@ -8898,7 +8898,7 @@ GSI.Utils.infoToLayer = function (info, noFinishMove) {
     options.crossOrigin = true;
     layer = L.videoOverlay(info.url, info.videoBounds, options);
     layer.on("load", L.bind(function () {
-      $(this.getElement()).on('click',L.bind(function () {
+      $(this.getElement()).on('click', L.bind(function () {
         this.getElement().play();
       }, this))
     }, layer));
@@ -8954,11 +8954,11 @@ GSI.MapMouse = L.Evented.extend({
     }
   },
 
-  onDrawCancel : function() {
-    setTimeout(L.bind(function(){
+  onDrawCancel: function () {
+    setTimeout(L.bind(function () {
       this._clearRightClickTimer();
       this.rightClickTime = null;
-    },this), 0);
+    }, this), 0);
   },
 
   onMouseDown: function (e) {
@@ -9018,7 +9018,7 @@ GSI.MapMouse = L.Evented.extend({
     }
   },
 
-  setRightClickMoveVisible: function (visible){
+  setRightClickMoveVisible: function (visible) {
     this._rightClicMoveVisible = visible;
   },
   getRightClickMoveVisible: function () {
@@ -9068,10 +9068,10 @@ GSI.MapMouse = L.Evented.extend({
   },
   _zoom_Out: function (latlng) {
     if (this.rightClickTime != null) {
-      if ( this._rightClicMoveVisible)
+      if (this._rightClicMoveVisible)
         this._move(latlng);
 
-      if(this._mapManager._footer && !this._mapManager._footer.isVisible()){
+      if (this._mapManager._footer && !this._mapManager._footer.isVisible()) {
         this._mapManager._footer.onBtnClick();
       }
     }
@@ -9165,12 +9165,12 @@ GSI.Modal.BaseClass = L.Evented.extend({
     this.adjustWindow();
 
     if (!GSI.Modal.blind.is(':visible'))
-        // 202303 displayをclassで管理する。
-//      GSI.Modal.blind.show("fade", { "direction": "both", "easing": "linear" }, "fast");
+      // 202303 displayをclassで管理する。
+      //      GSI.Modal.blind.show("fade", { "direction": "both", "easing": "linear" }, "fast");
       GSI.Modal.blind.fadeIn('fast', 'linear').removeClass('gsi_modal_dialog_display');;
 
     this.container.fadeIn('fast', 'linear').removeClass('gsi_modal_dialog_display');
-//    this.container.show("fade", { "direction": "both", "easing": "linear" }, "fast");
+    //    this.container.show("fade", { "direction": "both", "easing": "linear" }, "fast");
 
     if (!this._onWindowResize) {
       this._onWindowResize = L.bind(this.onWindowResize, this);
@@ -9201,7 +9201,7 @@ GSI.Modal.BaseClass = L.Evented.extend({
 
     if (!isVisible) {
       this.container.addClass('gsi_modal_dialog_display');
-//      this.container.hide().css({ "visibility": "visible" });
+      //      this.container.hide().css({ "visibility": "visible" });
     }
   },
   createContainer: function () {
@@ -9268,7 +9268,7 @@ GSI.Modal.BaseClass = L.Evented.extend({
         display: "none",
         cursor: "pointer"
       })
-      .on('click',function () {
+      .on('click', function () {
       });
 
     $(document.body).append(GSI.Modal.blind);
@@ -9302,9 +9302,9 @@ GSI.Modal.Dialog = GSI.Modal.BaseClass.extend({
     this.buttonFrame = $('<div>').addClass('gsi_modal_dialog_btn_frame');
 
     this.positiveButton = $('<a>').attr({ "href": "javascript:void(0);" })
-      .html(this.options.positiveButtonText).on('click',L.bind(this.onPositiveButtonClick, this));
+      .html(this.options.positiveButtonText).on('click', L.bind(this.onPositiveButtonClick, this));
     this.negativeButton = $('<a>').attr({ "href": "javascript:void(0);" })
-      .html(this.options.nagativeButtonText).on('click',L.bind(this.onNegativeButtonClick, this));
+      .html(this.options.nagativeButtonText).on('click', L.bind(this.onNegativeButtonClick, this));
 
     this.buttonFrame.append(this.positiveButton).append(this.negativeButton);
 
@@ -9535,7 +9535,7 @@ GSI.Modal.dsloreDialog = GSI.Modal.Dialog.extend({
     GSI.Modal.blind.on('mousedown', L.bind(function () { this.hide(); }, this));
     $(GSI.Modal.blind).on('touchstart', L.bind(function () { this.hide(); }, this));
 
-    $(window).on('resize',L.bind(function () { this.hide(true); }, this));
+    $(window).on('resize', L.bind(function () { this.hide(true); }, this));
 
     this.closeButton.css({ "color": "#fff", "padding-top": "0.3em", "padding-right": "0.3em" });
   },
@@ -9555,10 +9555,10 @@ GSI.Modal.dsloreDialog = GSI.Modal.Dialog.extend({
         "z-index": GSI.Modal.zIndexOffset,
         cursor: "pointer"
       })
-      .on('click',function () {
+      .on('click', function () {
       });
 
-      GSI.Modal.blind.addClass('gsi_modal_dialog_display');
+    GSI.Modal.blind.addClass('gsi_modal_dialog_display');
 
     $(document.body).append(GSI.Modal.blind);
   },
@@ -9821,10 +9821,10 @@ GSI.OnOffSwitch = L.Evented.extend({
 
     if (GSI.Utils.Browser.ie && GSI.Utils.Browser.version <= 8) {
       this._initCheckBoxIE8();
-      this.frame.on('click',L.bind(this.onFrameClick, this));
+      this.frame.on('click', L.bind(this.onFrameClick, this));
     }
     else {
-      this.input.on('click',L.bind(function () { this.fire('change'); }, this));
+      this.input.on('click', L.bind(function () { this.fire('change'); }, this));
     }
   },
   _initCheckBoxIE8: function () {
@@ -9914,10 +9914,10 @@ GSI.ToggleSwitch = L.Evented.extend({
 
     if (GSI.Utils.Browser.ie && GSI.Utils.Browser.version <= 8) {
       this._initCheckBoxIE8();
-      this.frame.on('click',L.bind(this.onFrameClick, this));
+      this.frame.on('click', L.bind(this.onFrameClick, this));
     }
     else {
-      this.input.on('click',L.bind(function () { this.fire('change'); }, this));
+      this.input.on('click', L.bind(function () { this.fire('change'); }, this));
     }
   },
   _initCheckBoxIE8: function () {
@@ -9931,7 +9931,7 @@ GSI.ToggleSwitch = L.Evented.extend({
     }
   },
   onFrameClick: function () {
-    this.input.prop( 'checked', !this.input.is(":checked"));
+    this.input.prop('checked', !this.input.is(":checked"));
     this._initCheckBoxIE8();
     this.fire('change');
   },
@@ -10298,25 +10298,25 @@ GSI.PagePrinter = L.Evented.extend({
 
     // タイトル
     td = $('<td>');
-    td.append($('<img>').attr({ 'src': 'image/print/title.png' })).css({ 'text-align': 'left' ,width:"150px"});
+    td.append($('<h3>').text("地震学地図")).css({ 'text-align': 'left', width: "150px" });
     tr.append(td);
 
     var tdtitle = $('<td>');
 
     tdtitle
-      .attr({colspan: "3"})
-      .css({"text-align":"center"});
-      //.addClass('no_print');
+      .attr({ colspan: "3" })
+      .css({ "text-align": "center" });
+    //.addClass('no_print');
 
     var tid = 'gsi_print_title';
-    this._title = $("<input>").attr({"type":"textbox", "id":tid}).css({"width":"420px", border:"solid 1px", "white-space":"no-wrap"});
+    this._title = $("<input>").attr({ "type": "textbox", "id": tid }).css({ "width": "420px", border: "solid 1px", "white-space": "no-wrap" });
     var labelTitle = $("<span>").attr({ "for": tid }).html("タイトル：").addClass("no_print");
     tr.append(tdtitle.append(labelTitle).append(this._title));
     tbody.append(tr);
 
     // サイズ選択
     tr = $('<tr>');
-    td = $('<td>').attr({colspan:"2"}).css({ width: "240px" ,"text-align":"right"});
+    td = $('<td>').attr({ colspan: "2" }).css({ width: "240px", "text-align": "right" });
     this._paperSizeSelect = $('<select>').addClass('no_print');
     if (CONFIG.USELARGEPAPERSIZE || !CONFIG.PAPERSIZE["A4_portrait"]["large"]) {
       this._paperSizeSelect.append($('<option>').html("A4縦(標準)").val("A4_portrait"));
@@ -10373,20 +10373,20 @@ GSI.PagePrinter = L.Evented.extend({
     else
       this._paperSizeSelect[0].selectedIndex = 0;
 
-    this._paperSizeSelect.on('change',L.bind(this._paperSizeChage, this));
+    this._paperSizeSelect.on('change', L.bind(this._paperSizeChage, this));
     td.append($('<span>').html('用紙サイズ：').addClass('no_print'));
     td.append(this._paperSizeSelect);
     tr.append(td);
 
     // 印刷ボタン
     td = $('<td>').css({ width: "64px" });
-    var printBtn = $('<button>').html('印刷').addClass('no_print').on('click',L.bind(this.print, this));
+    var printBtn = $('<button>').html('印刷').addClass('no_print').on('click', L.bind(this.print, this));
     td.append(printBtn);
     tr.append(td);
 
     // 戻るボタン
     td = $('<td>').css({ width: "120px" });
-    var backBtn = $('<button>').css({ 'white-space': 'nowrap' }).html('元の画面に戻る').addClass('no_print').on('click',L.bind(this.hide, this));
+    var backBtn = $('<button>').css({ 'white-space': 'nowrap' }).html('元の画面に戻る').addClass('no_print').on('click', L.bind(this.hide, this));
     td.append(backBtn);
     tr.append(td);
 
@@ -10445,16 +10445,16 @@ GSI.PagePrinter = L.Evented.extend({
     window.print();
     this._titleClear();
   },
-  _titleSet: function(){
+  _titleSet: function () {
     var titletext = document.getElementById('gsi_print_title');
-    if (titletext != null){
-      $(titletext).css({border:"none"});
+    if (titletext != null) {
+      $(titletext).css({ border: "none" });
     }
   },
-  _titleClear: function(){
+  _titleClear: function () {
     var titletext = document.getElementById('gsi_print_title');
-    if (titletext != null){
-      $(titletext).css({border:"solid 1px"});
+    if (titletext != null) {
+      $(titletext).css({ border: "solid 1px" });
     }
   }
 });
@@ -10483,19 +10483,19 @@ GSI.PageStateManager = L.Class.extend({
     var path = this._mapMenu.getMapListPanel().getCurrentPath();
     var hit = false;
 
-    if ( path && path != '' ) {
+    if (path && path != '') {
       var mapLayerList = this._gsimaps._mainMap._mapLayerList;
       var tileList = mapLayerList.getTileList();
-      for( var i=0; i<tileList.length; i++ ) {
-        if ( tileList[i].id == path) {
+      for (var i = 0; i < tileList.length; i++) {
+        if (tileList[i].id == path) {
           hit = true;
           break;
         }
       }
-      if ( !hit) {
+      if (!hit) {
         var list = mapLayerList.getList();
-        for( var i=0; i<list.length; i++ ) {
-          if ( list[i].id == path) {
+        for (var i = 0; i < list.length; i++) {
+          if (list[i].id == path) {
             hit = true;
             break;
           }
@@ -10511,19 +10511,19 @@ GSI.PageStateManager = L.Class.extend({
 
     var hit = false;
 
-    if ( path && path != '' ) {
+    if (path && path != '') {
       var mapLayerList = this._gsimaps._subMap._mapLayerList;
       var tileList = mapLayerList.getTileList();
-      for( var i=0; i<tileList.length; i++ ) {
-        if ( tileList[i].id == path) {
+      for (var i = 0; i < tileList.length; i++) {
+        if (tileList[i].id == path) {
           hit = true;
           break;
         }
       }
-      if ( !hit) {
+      if (!hit) {
         var list = mapLayerList.getList();
-        for( var i=0; i<list.length; i++ ) {
-          if ( list[i].id == path) {
+        for (var i = 0; i < list.length; i++) {
+          if (list[i].id == path) {
             hit = true;
             break;
           }
@@ -10593,7 +10593,7 @@ GSI.PageStateManager = L.Class.extend({
       var tileList = this._mapLayerList.getTileList();
 
       for (var i = 0; i < tileList.length; i++) {
-        if (!tileList[i]._isOutside )
+        if (!tileList[i]._isOutside)
           tileIdList.push(tileList[i]);
       }
     }
@@ -10698,7 +10698,7 @@ GSI.PageStateManager = L.Class.extend({
       var tileList = this._gsimaps._subMap._mapLayerList.getTileList();
 
       for (var i = 0; i < tileList.length; i++) {
-        if (!tileList[i]._isOutside )
+        if (!tileList[i]._isOutside)
           tileIdList.push(tileList[i]);
       }
     }
@@ -10793,22 +10793,22 @@ GSI.PageStateManager = L.Class.extend({
     return target.obj[target.getter]();
   },
 
-  getToukyokenCenter: function() {
+  getToukyokenCenter: function () {
     var target = this._onOffObjects[CONFIG.PARAMETERNAMES.TOUKYOKEN];
     if (!target) return undefined;
 
-    if ( target.obj[target.getter]() ) {
+    if (target.obj[target.getter]()) {
       return target.obj.getCenter();
     } else {
       return undefined;
     }
 
   },
-  getHouiLineCenter: function() {
+  getHouiLineCenter: function () {
     var target = this._onOffObjects[CONFIG.PARAMETERNAMES.HOUILINE];
     if (!target) return undefined;
 
-    if ( target.obj[target.getter]() ) {
+    if (target.obj[target.getter]()) {
       return target.obj.getCenter();
     } else {
       return undefined;
@@ -10918,7 +10918,7 @@ GSI.PageStateManager = L.Class.extend({
 
       for (var i = 0; i < tileList.length; i++) {
         // 202303 条件を変更
-//        if (!tileList[i]._isOutside && !tileList[i]._isComparePhoto)
+        //        if (!tileList[i]._isOutside && !tileList[i]._isComparePhoto)
         if (!tileList[i]._isOutside)
           tileIdList.push(tileList[i]);
       }
@@ -10956,7 +10956,7 @@ GSI.PageStateManager = L.Class.extend({
 
       for (var i = 0; i < tileList.length; i++) {
         // 202303 条件を変更
-//        if (!tileList[i]._isOutside && !tileList[i]._isComparePhoto)
+        //        if (!tileList[i]._isOutside && !tileList[i]._isComparePhoto)
         if (!tileList[i]._isOutside)
           tileIdList.push(tileList[i]);
       }
@@ -11033,8 +11033,8 @@ GSI.Searcher = L.Class.extend({
     //   likeApple: true
     // }).attr({ "title": CONFIG.TOOLTIP.TOP.QUERY });
     $(this.querySelector).attr({ "title": CONFIG.TOOLTIP.TOP.QUERY });
-    $(this.formSelector).on('submit',L.bind(this.onSubmit, this));
-    $('#magnifyimage').on('click',L.bind(this.onSubmit, this));
+    $(this.formSelector).on('submit', L.bind(this.onSubmit, this));
+    $('#magnifyimage').on('click', L.bind(this.onSubmit, this));
     L.setOptions(this, options);
   },
 
@@ -12709,27 +12709,27 @@ GSI.MultiLayer = L.LayerGroup.extend({
 
   },
 
-  redraw : function() {
+  redraw: function () {
     var layers = this.getLayers();
-    for( var i=0; i<layers.length; i++ ) {
+    for (var i = 0; i < layers.length; i++) {
       var l = layers[i];
       l.isGrayScale = this.isGrayScale;
       l.highQuality = this.highQuality;
-      if ( l.redraw) l.redraw();
+      if (l.redraw) l.redraw();
     }
   },
-  _resetView : function() {
+  _resetView: function () {
     var layers = this.getLayers();
-    for( var i=0; i<layers.length; i++ ) {
+    for (var i = 0; i < layers.length; i++) {
       var l = layers[i];
-      if ( l._resetView) l._resetView();
+      if (l._resetView) l._resetView();
     }
   },
-  _setView : function(center, zoom) {
+  _setView: function (center, zoom) {
     var layers = this.getLayers();
-    for( var i=0; i<layers.length; i++ ) {
+    for (var i = 0; i < layers.length; i++) {
       var l = layers[i];
-      if ( l._setView) l._setView(center,zoom);
+      if (l._setView) l._setView(center, zoom);
     }
   },
 
@@ -12799,8 +12799,7 @@ GSI.MultiLayer = L.LayerGroup.extend({
 
     L.TileLayer.prototype._tileOnLoad.call(this, done, tile);
   },
-  grayscaleIE1011: function (img)
-  {
+  grayscaleIE1011: function (img) {
     var size = this.getTileSize();
 
     var canvas = document.createElement('canvas');
@@ -12852,7 +12851,7 @@ L.LayerGroup.prototype._setMarkerZIndex = function (layer, offset) {
   if (layer.setZIndexOffset) {
     layer.setZIndexOffset(offset);
   }
-  else if (layer.setZIndex){
+  else if (layer.setZIndex) {
     layer.setZIndex(offset)
   }
   else if (layer.getLayers) {
@@ -13042,8 +13041,8 @@ GSI.BaseLayer = L.Layer.extend({
   setOpacity: function (opacity) {
     this.opacity = opacity;
     this.options.opacity = opacity;
-    if ( this._layer ) {
-      this._layer.setOpacity( opacity );
+    if (this._layer) {
+      this._layer.setOpacity(opacity);
     }
   },
 
@@ -13095,23 +13094,23 @@ GSI.BaseLayer = L.Layer.extend({
       }
       options.errorTileUrl = errorTileUrl;
 
-      if ( this._layer && this._map) {
+      if (this._layer && this._map) {
         this._map.removeLayer(this._layer);
       }
 
-      if ( this.baseLayerList[idx].type == "LayerGroup") {
+      if (this.baseLayerList[idx].type == "LayerGroup") {
 
-        this._layer = new GSI.MultiLayer( this.baseLayerList[idx].entries);
+        this._layer = new GSI.MultiLayer(this.baseLayerList[idx].entries);
         this._layer.isGrayScale = this.isGrayScale;
         this._layer.highQuality = this.highQuality;
-        this._layer.setOpacity( this.options.opacity ? this.options.opacity : this.opacity );
+        this._layer.setOpacity(this.options.opacity ? this.options.opacity : this.opacity);
         this._layer.load();
       } else {
         this._layer = L.tileLayer(url, options);
 
         this._layer.isGrayScale = this.isGrayScale;
         this._layer.highQuality = this.highQuality;
-        this._layer.setOpacity( this.options.opacity ? this.options.opacity : this.opacity );
+        this._layer.setOpacity(this.options.opacity ? this.options.opacity : this.opacity);
 
         this._layer._clampZoom = this._clampZoom;
         this._layer._tileOnLoad = this._tileOnLoad;
@@ -13123,44 +13122,44 @@ GSI.BaseLayer = L.Layer.extend({
       }
 
       if (this._map) {
-        this._layer.addTo( this._map);
+        this._layer.addTo(this._map);
         this._layer._setView(this._map.getCenter(), this._map.getZoom());
       }
     }
     this.activeIndexPre = this.activeIndex;
   },
 
-	_clampZoom: function (zoom) {
-		var options = this.options;
+  _clampZoom: function (zoom) {
+    var options = this.options;
 
-    if ( undefined !== options.maxZoom && zoom > options.maxZoom ) {
+    if (undefined !== options.maxZoom && zoom > options.maxZoom) {
       return zoom;
     }
 
-		if (undefined !== options.minNativeZoom && zoom < options.minNativeZoom) {
-			return options.minNativeZoom;
-		}
+    if (undefined !== options.minNativeZoom && zoom < options.minNativeZoom) {
+      return options.minNativeZoom;
+    }
 
-		if (undefined !== options.maxNativeZoom && options.maxNativeZoom < zoom) {
-			return options.maxNativeZoom;
-		}
+    if (undefined !== options.maxNativeZoom && options.maxNativeZoom < zoom) {
+      return options.maxNativeZoom;
+    }
 
-		return zoom;
+    return zoom;
   },
 
-  onAdd  : function(map) {
-    if ( this._layer  && !this._layer._map) {
+  onAdd: function (map) {
+    if (this._layer && !this._layer._map) {
 
       this._layer.isGrayScale = this.isGrayScale;
 
       this._layer.highQuality = this.highQuality;
-      this._layer.setOpacity(  this.options.opacity ? this.options.opacity :this.opacity );
-      this._layer.addTo( this._map);
+      this._layer.setOpacity(this.options.opacity ? this.options.opacity : this.opacity);
+      this._layer.addTo(this._map);
     }
   },
 
-  onRemove : function() {
-    if ( this._layer ) this._layer.remove( this._map);
+  onRemove: function () {
+    if (this._layer) this._layer.remove(this._map);
 
   },
 
@@ -13171,7 +13170,7 @@ GSI.BaseLayer = L.Layer.extend({
 
     if (this.isGrayScale != isGrayScale) {
       this.isGrayScale = isGrayScale;
-      if ( this._layer ) {
+      if (this._layer) {
         this._layer.isGrayScale = this.isGrayScale;
         this._layer.redraw();
       }
@@ -13181,7 +13180,7 @@ GSI.BaseLayer = L.Layer.extend({
   setHighQuality: function (on) {
     this.highQuality = on;
     if (this._map) {
-      if ( this._layer ) {
+      if (this._layer) {
         this._layer.highQuality = this.highQuality;
         this._layer.redraw();
         this._layer._resetView();
@@ -13239,8 +13238,7 @@ GSI.BaseLayer = L.Layer.extend({
 
     L.TileLayer.prototype._tileOnLoad.call(this, done, tile);
   },
-  grayscaleIE1011: function (img)
-  {
+  grayscaleIE1011: function (img) {
     var size = this.getTileSize();
 
     var canvas = document.createElement('canvas');
@@ -13348,9 +13346,9 @@ GSI.TileLayer = L.TileLayer.extend({
   },
 
   // update 2020-11-24
-  _update : function (center) {
-		if ( this._map.getZoom() > this.options.maxZoom ) { return; }
-    return L.TileLayer.prototype._update.apply(this,center);
+  _update: function (center) {
+    if (this._map.getZoom() > this.options.maxZoom) { return; }
+    return L.TileLayer.prototype._update.apply(this, center);
   }
 });
 
@@ -13689,7 +13687,7 @@ GSI.GeoJSON = L.Layer.extend({
   postMessage
  ************************************************************************/
 window.addEventListener('message', function (event) {
-  if (L.Browser.ie){
+  if (L.Browser.ie) {
     return;
   }
   var d = event.data;
@@ -13880,7 +13878,7 @@ GSI.BookmarkPanel = L.Class.extend({
 function GeoTiffList() {
 
   var sakuzuList = GSI.GLOBALS.gsimaps._sakuzuList;
-  if ( !sakuzuList ) return [];
+  if (!sakuzuList) return [];
 
   return sakuzuList.getGeotiffList();
 }
@@ -13955,7 +13953,7 @@ GSI.MapToImage = L.Evented.extend({
       else if (item.type == "geotiff" || item.type == "videooverlay") {
         item.drawLayer = new GSI.MapToImage.OverlayLayer(this._map, layer, { opacity: item.opacity, pixelBounds: this.options.pixelBounds });
       }
-      else if ( layer instanceof GSI.ComparePhotoLayer) {
+      else if (layer instanceof GSI.ComparePhotoLayer) {
         item.drawLayer = new GSI.MapToImage.TileLayer(this._map, layer._layer, {
           opacity: item.opacity,
           grayscale: item.grayscale,
@@ -14041,9 +14039,9 @@ GSI.MapToImage = L.Evented.extend({
     };
 
     this._mapCanvas = $("<canvas>").attr({
-        "width": size.x,
-        "height": size.y
-      });
+      "width": size.x,
+      "height": size.y
+    });
     this._mapTexture = this._mapCanvas[0].getContext("2d");
     this._mapTexture.fillStyle = "rgb(255, 255, 255)";
     this._mapTexture.fillRect(0, 0, size.x, size.y);
@@ -14520,7 +14518,7 @@ GSI.MapToImage = L.Evented.extend({
       width: size.x,
       height: size.y,
       backgroundColor: "transparent"
-    }).then(function(canvas){
+    }).then(function (canvas) {
       outerthis._onMarkerRendered(canvas);
     });
 
@@ -14602,7 +14600,7 @@ GSI.MapToImage = L.Evented.extend({
       width: size.x,
       height: size.y,
       backgroundColor: "transparent"
-    }).then(function(canvas){
+    }).then(function (canvas) {
       outerthis._onPopupRendered(canvas);
     });
   },
@@ -14707,7 +14705,7 @@ GSI.MapToImage = L.Evented.extend({
     var xx = baloon.find(".leaflet-popup-content-wrapper").remove();
     baloon.find(".leaflet-popup-tip-container").remove();
     xx.removeClass("leaflet-popup-content-wrapper");
-    xx.css({'background':'#ffffff','color':'#333','padding':'1px','text-align':'left','border-radius':'12px'});
+    xx.css({ 'background': '#ffffff', 'color': '#333', 'padding': '1px', 'text-align': 'left', 'border-radius': '12px' });
     baloon.find(".leaflet-popup-tip-container").remove();
     baloon.append(xx);
 
@@ -14735,7 +14733,7 @@ GSI.MapToImage = L.Evented.extend({
       "top": 0
     });
 
-    var outerthis =this;
+    var outerthis = this;
     html2canvas(baloon[0], {
       logging: false,
       userCORS: true,
@@ -14743,7 +14741,7 @@ GSI.MapToImage = L.Evented.extend({
       width: this._baloons[0].width,
       height: this._baloons[0].height,
       backgroundColor: "transparent"
-    }).then(function(canvas){
+    }).then(function (canvas) {
       outerthis._onBalloonRendered(canvas);
     });
   },
@@ -14835,9 +14833,9 @@ GSI.MapToImage = L.Evented.extend({
     };
 
     var canvas = $("<canvas>").attr({
-        "width": size.x,
-        "height": size.y
-      });
+      "width": size.x,
+      "height": size.y
+    });
     texture = canvas[0].getContext("2d");
     texture.fillStyle = "rgb(255, 255, 255)";
     texture.fillRect(0, 0, size.x, size.y);
@@ -15088,7 +15086,7 @@ GSI.MapToImage.TileLayer = L.Evented.extend({
   },
 
   load: function () {
-    if (!this._queue){
+    if (!this._queue) {
       this.fire('loaded');
       return;
     }
@@ -15683,7 +15681,7 @@ GSI.MapToImageWindow = L.Evented.extend({
     ctx.putImageData(src, 0, 0);
 
     if (this._drawCreditCheck.is(":checked")) {
-      var text = "地理院地図";
+      var text = "地震学地図";
       ctx.font = "normal 21px 'メイリオ','ヒラギノ角ゴ Pro W3'";
 
       ctx.strokeStyle = '#000';
@@ -15700,8 +15698,8 @@ GSI.MapToImageWindow = L.Evented.extend({
     }
 
     if (this._drawScalelineCheck.is(":checked")
-    && $('#gsi_maptoimage_scaleline_check_div').css("display") != "none"
-    && ($('#gsi_maptoimagedialog_modeselect_area').is(":checked") || $('#gsi_maptoimagedialog_modeselect_size').is(":checked"))) {
+      && $('#gsi_maptoimage_scaleline_check_div').css("display") != "none"
+      && ($('#gsi_maptoimagedialog_modeselect_area').is(":checked") || $('#gsi_maptoimagedialog_modeselect_size').is(":checked"))) {
       var area = $('.leaflet-control-scale.leaflet-control');
       var text = $('.leaflet-control-scale-line').text();
 
@@ -15709,15 +15707,15 @@ GSI.MapToImageWindow = L.Evented.extend({
       ctx.lineWidth = 2;
 
       ctx.beginPath();
-      ctx.moveTo(5, size.y -22);
-      ctx.lineTo(5, size.y -7);
-      ctx.lineTo(3 + area.width(), size.y -7);
-      ctx.lineTo(3 + area.width(), size.y -22);
+      ctx.moveTo(5, size.y - 22);
+      ctx.lineTo(5, size.y - 7);
+      ctx.lineTo(3 + area.width(), size.y - 7);
+      ctx.lineTo(3 + area.width(), size.y - 22);
       ctx.stroke();
 
       ctx.globalAlpha = 0.5;
       ctx.fillStyle = "#fff";
-      ctx.fillRect(6, size.y -22, area.width() - 4, area.height() - 3);
+      ctx.fillRect(6, size.y - 22, area.width() - 4, area.height() - 3);
 
       ctx.font = "normal 11px 'メイリオ','ヒラギノ角ゴ Pro W3'";
       ctx.fillStyle = "#333";
@@ -15745,21 +15743,21 @@ GSI.MapToImageWindow = L.Evented.extend({
       this._text = $("<div>").addClass("gsi_maptoimage_window_text").html(GSI.TEXT.MAPTOIMAGE.WINDOW_MSG);
       this._frame.append(this._text);
 
-      this._closeBtn = $("<a>").addClass("close_btn").attr({ "href": "javascript:void(0);" }).html("×").on('click',L.bind(function () { this.hide(); }, this));
+      this._closeBtn = $("<a>").addClass("close_btn").attr({ "href": "javascript:void(0);" }).html("×").on('click', L.bind(function () { this.hide(); }, this));
       this._frame.append(this._closeBtn);
 
       var checkFrame = $("<div>").addClass("gsi_maptoimage_window_check_frame");
 
       var id = 'gsi_maptoimage_credit_check';
-      var fDiv =$('<div>');
+      var fDiv = $('<div>');
       this._drawCreditCheck = $("<input>").addClass("normalcheck").attr({ "type": "checkbox", "id": id }).prop({ "checked": "checked" });
 
-      var label = $("<label>").attr({ "for": id }).html("画像に「地理院地図」クレジットを表示");
+      var label = $("<label>").attr({ "for": id }).html("画像に「地震学地図」クレジットを表示");
 
       var sId = 'gsi_maptoimage_scaleline_check';
-      var sDiv =$('<div>').attr({"id": sId + "_div"}).css("display","none");
-      if ($('#gsi_maptoimagedialog_modeselect_area').is(":checked") || $('#gsi_maptoimagedialog_modeselect_size').is(":checked")){
-        sDiv.css("display","");
+      var sDiv = $('<div>').attr({ "id": sId + "_div" }).css("display", "none");
+      if ($('#gsi_maptoimagedialog_modeselect_area').is(":checked") || $('#gsi_maptoimagedialog_modeselect_size').is(":checked")) {
+        sDiv.css("display", "");
       }
       this._drawScalelineCheck = $("<input>").addClass("normalcheck").attr({ "type": "checkbox", "id": sId }).prop({ "checked": "checked" });
 
@@ -15775,13 +15773,13 @@ GSI.MapToImageWindow = L.Evented.extend({
       this._frame.append(checkFrame);
 
       var buttonFrame = $("<div>").addClass("gsi_maptoimage_window_button_frame");
-      this._dlImageButton = $("<a>").attr({ "href": "javascript:void(0);" }).html(GSI.TEXT.MAPTOIMAGE.WINDOW_SAVEIMGBTN).on('click',L.bind(function () {
+      this._dlImageButton = $("<a>").attr({ "href": "javascript:void(0);" }).html(GSI.TEXT.MAPTOIMAGE.WINDOW_SAVEIMGBTN).on('click', L.bind(function () {
         var canvas = this.getDownloadImageCanvas();
 
         GSI.Utils.saveFile("image/png", this._fileName + ".png", this._makeImage(canvas.toDataURL()));
 
       }, this));
-      this._dlWorldButton = $("<a>").attr({ "href": "javascript:void(0);" }).html(GSI.TEXT.MAPTOIMAGE.WINDOW_SAVEPGWBTN).on('click',L.bind(function () {
+      this._dlWorldButton = $("<a>").attr({ "href": "javascript:void(0);" }).html(GSI.TEXT.MAPTOIMAGE.WINDOW_SAVEPGWBTN).on('click', L.bind(function () {
 
         var blob = new Blob([this._worldFileText], { "type": "text/plain" })
 
@@ -15800,7 +15798,7 @@ GSI.MapToImageWindow = L.Evented.extend({
       $("body").append(this._frame);
     }
 
-    if ( this.options.disableWorldFile ) {
+    if (this.options.disableWorldFile) {
       this._dlWorldButton.hide();
       this._dlWorldMessage.hide();
     } else {
@@ -16321,7 +16319,7 @@ GSI.SHARE.showTwitter = function () {
     'via=' + encodeURIComponent('gsi_cyberjapan') + '&' +
     'related=' + 'gsi_cyberjapan' + '&' +
     'hashtags=' + '' + '&' +
-    'text=' + encodeURIComponent('地理院地図で見る');
+    'text=' + encodeURIComponent('地震学地図で見る');
   window.open(url);
 };
 
@@ -16756,7 +16754,7 @@ L.extend(L.LatLng, {
 /************************************************************************
  L.Control
  - GSI.Control.MapSplitControl
- 　2画面解除等のコントロール
+  2画面解除等のコントロール
  ************************************************************************/
 GSI.Control.MapSplitControl = L.Control.extend({
   includes: L.Evented.prototype || L.Mixin.Events,
@@ -16793,7 +16791,7 @@ GSI.Control.MapSplitControl = L.Control.extend({
     this._splitEndButton = $("<a>").addClass("normalbutton")
       .attr({ "href": "javascript:void(0)" }).html(this.options.caption);
 
-    this._splitEndButton.on('click',L.bind(function () {
+    this._splitEndButton.on('click', L.bind(function () {
 
       try {
 
@@ -16805,7 +16803,7 @@ GSI.Control.MapSplitControl = L.Control.extend({
           "position": { my: "right top+10", at: "center bottom", collision: "flipfit" }
         });
 
-      }catch(ex) {
+      } catch (ex) {
       }
       this.fire("stop");
     }, this));
@@ -16845,19 +16843,19 @@ GSI.Control.MapSplitControl = L.Control.extend({
     this.fire("syncchange", { sync: this._sync });
   },
 
-  setTopMargin : function() {
-    $( this._frame ).css({"margin-top":"90px"})
+  setTopMargin: function () {
+    $(this._frame).css({ "margin-top": "90px" })
   },
 
-  removeTopMargin : function() {
-    $( this._frame ).css({"margin-top":"0"});
+  removeTopMargin: function () {
+    $(this._frame).css({ "margin-top": "0" });
   }
 });
 
 /************************************************************************
  L.Control
  - GSI.Control.MapCompareControl
- 　比較解除等のコントロール
+  比較解除等のコントロール
  ************************************************************************/
 GSI.Control.MapCompareControl = L.Control.extend({
   includes: L.Evented.prototype || L.Mixin.Events,
@@ -16891,7 +16889,7 @@ GSI.Control.MapCompareControl = L.Control.extend({
     this._splitEndButton = $("<a>").addClass("normalbutton")
       .attr({ "href": "javascript:void(0)" }).html(this.options.caption);
 
-    this._splitEndButton.on('click',L.bind(function () {
+    this._splitEndButton.on('click', L.bind(function () {
 
       $("body").tooltip("destroy").tooltip({
         "show": { duration: 300 },
@@ -17218,7 +17216,7 @@ GSI.ReliefTileLayer = L.TileLayer.extend({
     for (var i = 0; i < data.colors.length; i++) {
       var c = data.colors[i];
       if (c.color !== null && typeof c.color === "string") {
-          var color = GSI.ReliefTileLayer.colorStringToRGBA(c.color);
+        var color = GSI.ReliefTileLayer.colorStringToRGBA(c.color);
 
         c.color = color;
       }
@@ -17265,7 +17263,7 @@ GSI.ReliefTileLayer = L.TileLayer.extend({
     // 現在は同じタイルが読み込まれる可能性があるが、読み込み中タイルをチェックせずに読み込むようにしています。
 
     var loader = new GSI.FreeReliefDEMLoader(this._map, coords.x, coords.y, coords.z, this._demUrlList, {
-        overZooming: true,
+      overZooming: true,
       useHillshademap: this._elevationData.useHillshademap,
       hillshademapUrl: this._hillshademapUrl
 
@@ -19347,13 +19345,13 @@ GSI.AddrLoader = L.Evented.extend({
       var properties = hitFeature.properties;
       try {
         title = properties["pref"] + properties["muni"];
-        if (properties["LV01"]){
+        if (properties["LV01"]) {
           title += properties["LV01"];
         }
 
         //読み
         titleYomi = properties["pref_kana"] + properties["muni_kana"];
-        if (properties["Lv01_kana"]){
+        if (properties["Lv01_kana"]) {
           titleYomi += properties["Lv01_kana"];
         }
 
@@ -19448,7 +19446,7 @@ GSI.MapLayerList = L.Evented.extend({
 
   },
 
-  getOutsideTileList : function() {
+  getOutsideTileList: function () {
 
     var result = [];
     for (var i = 0; i < this.tileList.length; i++) {
@@ -19460,7 +19458,7 @@ GSI.MapLayerList = L.Evented.extend({
 
   },
 
-  hasOutsideTile : function() {
+  hasOutsideTile: function () {
 
     var hasOutsideTile = false;
     for (var i = 0; i < this.tileList.length; i++) {
@@ -19473,7 +19471,7 @@ GSI.MapLayerList = L.Evented.extend({
 
   },
 
-  hasComparePhotoTile : function() {
+  hasComparePhotoTile: function () {
 
     var result = false;
     for (var i = 0; i < this.tileList.length; i++) {
@@ -19500,34 +19498,34 @@ GSI.MapLayerList = L.Evented.extend({
   },
 
   // 202303 isHideを追加
-  appendComparePhoto : function(layerInfo, isHide) {
-    if ( this.hasComparePhotoTile() ) return;
+  appendComparePhoto: function (layerInfo, isHide) {
+    if (this.hasComparePhotoTile()) return;
 
     var info = $.extend({
       id: CONFIG.COMPAREPHOTO_ID,
       title: "時系列表示"
-    },{});
+    }, {});
     info._visibleInfo = {};
     info._visibleInfo.opacity = 1.0;
     info._isComparePhoto = true;
-    info._visibleInfo.layer = new GSI.ComparePhotoLayer(this._mapManager,false, undefined, layerInfo);
+    info._visibleInfo.layer = new GSI.ComparePhotoLayer(this._mapManager, false, undefined, layerInfo);
     if (isHide) info._visibleInfo._isHidden = true;
 
-    info._visibleInfo.layer.on("change", L.bind(function(info){
+    info._visibleInfo.layer.on("change", L.bind(function (info) {
       var title = info._visibleInfo.layer.getActiveTitle();
       var layerInfo = info._visibleInfo.layer.getLayerInfo();
-      if ( layerInfo.minZoom && layerInfo.minZoom > this.map.getZoom() ) {
+      if (layerInfo.minZoom && layerInfo.minZoom > this.map.getZoom()) {
         title = null;
       }
-      info.title = (title ? "時系列表示("+ title + ")" : "時系列表示" );
+      info.title = (title ? "時系列表示(" + title + ")" : "時系列表示");
       this.fire('change');
-    },this, info));
+    }, this, info));
 
     var title = info._visibleInfo.layer.getActiveTitle();
-    if ( layerInfo.minZoom && layerInfo.minZoom > this.map.getZoom() ) {
+    if (layerInfo.minZoom && layerInfo.minZoom > this.map.getZoom()) {
       title = null;
     }
-    if ( title ) info.title += "("+ title + ")";
+    if (title) info.title += "(" + title + ")";
 
     this.map.addLayer(info._visibleInfo.layer, true, info._visibleInfo.blend);
     GSI.Utils.setMixBlendMode(info, info._visibleInfo.blend);
@@ -19667,7 +19665,7 @@ GSI.MapLayerList = L.Evented.extend({
     }
 
     // 時系列表示
-    if ( info.id == CONFIG.COMPAREPHOTO_ID ) {
+    if (info.id == CONFIG.COMPAREPHOTO_ID) {
       this.appendComparePhoto(info, isHide);
       return;
     }
@@ -19703,7 +19701,7 @@ GSI.MapLayerList = L.Evented.extend({
       if (info._visibleInfo.layer.setElevationData)
         info._visibleInfo.layer.setElevationData(this._elevationData);
 
-      if ( info.parent && info.parent != null && info.parent.title_sys == CONFIG.layerBaseFolderSYS ) {
+      if (info.parent && info.parent != null && info.parent.title_sys == CONFIG.layerBaseFolderSYS) {
 
         if (!info._visibleInfo._isHidden) {
           info._visibleInfo.grayscale = this._mapManager._baseLayer.isGrayScale;
@@ -19718,7 +19716,7 @@ GSI.MapLayerList = L.Evented.extend({
         this.tileList.push(info);
         this._initZIndex(this.tileList);
 
-      } else if (info.layerType == "tile" ) {
+      } else if (info.layerType == "tile") {
         if (!info._visibleInfo._isHidden) {
           this.map.addLayer(info._visibleInfo.layer, true, info._visibleInfo.blend);
           GSI.Utils.setMixBlendMode(info, info._visibleInfo.blend);
@@ -19904,7 +19902,7 @@ GSI.MapLayerList = L.Evented.extend({
         if (this.list[i].id == info.id) return true;
       }
 
-      if ( info.isMultiLayer ) {
+      if (info.isMultiLayer) {
         for (var i = 0; i < this.tileList.length; i++) {
           if (this.tileList[i] == info) return true;
 
@@ -21987,12 +21985,12 @@ GSI.Toukyoken = L.Evented.extend({
 
     this._initialCenter = options.center ? options.center.clone() : null;
 
-    if ( options.visible ) {
-      this.setVisible(true );
+    if (options.visible) {
+      this.setVisible(true);
     }
   },
 
-  getCenter: function() {
+  getCenter: function () {
     return this._center;
   },
 
@@ -22033,7 +22031,7 @@ GSI.Toukyoken = L.Evented.extend({
       this._dlg.setDistance(this._interval);
       this._dlg.show();
 
-      if ( this._initialCenter ) {
+      if (this._initialCenter) {
         this._center = this._initialCenter;
         this._initialCenter = null;
       } else {
@@ -22553,7 +22551,7 @@ GSI.HouiLineDialog = GSI.Dialog.extend({
       }
 
     }, this);
-    input.on('click',refreshHandler);
+    input.on('click', refreshHandler);
     container.append(input).append(label);
 
     if (value == 1) {
@@ -22635,13 +22633,13 @@ GSI.HouiLine = L.Evented.extend({
     this._dialogManager = dialogManager;
     this._menu = menu;
 
-    this._initialCenter = (  options.center ? options.center.clone() : null );
-    if ( options.visible ) {
+    this._initialCenter = (options.center ? options.center.clone() : null);
+    if (options.visible) {
       this.setVisible(true);
     }
   },
 
-  getCenter : function() {
+  getCenter: function () {
     return this._center;
   },
 
@@ -22677,7 +22675,7 @@ GSI.HouiLine = L.Evented.extend({
       }
       this._dlg.setLineStyle(this.options.lineStyle);
       this._dlg.show();
-      if ( this._initialCenter ) {
+      if (this._initialCenter) {
         this._center = this._initialCenter;
         this._initialCenter = null;
       } else {
@@ -23004,11 +23002,11 @@ GSI.ElevationLoader = L.Evented.extend({
     this._initUtils();
   },
 
-  _initUrlList: function(){
+  _initUrlList: function () {
     this._demUrlList = CONFIG.DEMURLLIST;
   },
 
-  _initUtils(){
+  _initUtils() {
     this.pow2_8 = Math.pow(2, 8);
     this.pow2_16 = Math.pow(2, 16);
     this.pow2_23 = Math.pow(2, 23);
@@ -23077,11 +23075,11 @@ GSI.ElevationLoader = L.Evented.extend({
 
   },
 
-  _parseValidUrl: function(valueError){
+  _parseValidUrl: function (valueError) {
     if (!this._current.urlList || this._current.urlList.length <= 0) return null;   //not found
 
     var url = this._current.urlList.shift();
-    if ( valueError && url.title=="DEMGM") return null;
+    if (valueError && url.title == "DEMGM") return null;
 
     return url;
   },
@@ -23092,7 +23090,7 @@ GSI.ElevationLoader = L.Evented.extend({
     if (this._current != current) return;
 
     var url = this._parseValidUrl(valueError);
-    if(!url) {
+    if (!url) {
       this.fire("load", {
         h: undefined,
         pos: current.pos
@@ -23170,8 +23168,8 @@ GSI.ElevationLoader = L.Evented.extend({
 
   },
 
-  _initImgInfo: function(url){
-    if(!url) return;
+  _initImgInfo: function (url) {
+    if (!url) return;
     var tileInfo = this._getTileInfo(this._current.pos.lat, this._current.pos.lng, url.zoom);
     this._img = document.createElement("img");
     this._img.setAttribute("crossorigin", "anonymous");
@@ -23184,7 +23182,7 @@ GSI.ElevationLoader = L.Evented.extend({
     this._img.src = this._makeUrlFromTile(url, tileInfo);
   },
 
-  _makeUrlFromTile: function(url, tileInfo) {
+  _makeUrlFromTile: function (url, tileInfo) {
     var result = url.url.replace("{x}", tileInfo.x);
     result = result.replace("{y}", tileInfo.y);
     result = result.replace("{z}", url.zoom);
@@ -23198,15 +23196,15 @@ GSI.ElevationLoader = L.Evented.extend({
    - GSI.FooterElevationLoader (フッター用標高画像ローダー)
  ************************************************************************/
 GSI.FooterElevationLoader = GSI.ElevationLoader.extend({
-  _initUrlList: function(){
+  _initUrlList: function () {
     this._demUrlList = CONFIG.FOOTERDEMURLLIST;
   },
 
-  _parseValidUrl: function(valueError){
+  _parseValidUrl: function (valueError) {
     if (!this._current.urlList || this._current.urlList.length <= 0) return null;   //not found
 
     var url = this._current.urlList.shift();
-    if ( valueError && url.title=="DEMGM") return null;
+    if (valueError && url.title == "DEMGM") return null;
     if ((this._map.getZoom() > url.zoom) && (url.title == "DEMGM")) return null;
 
     return url;
@@ -23238,7 +23236,7 @@ GSI.LakeDataLoader = GSI.ElevationLoader.extend({
     return list;
   },
 
-  _parseValidUrl: function(valueError){
+  _parseValidUrl: function (valueError) {
     if (!this._current.urlList || this._current.urlList.length <= 0) return null;   //not found
 
     var url = this._current.urlList.shift();
@@ -23248,7 +23246,7 @@ GSI.LakeDataLoader = GSI.ElevationLoader.extend({
     return url;
   },
 
-  _makeUrlFromTile: function(url, tileInfo) {
+  _makeUrlFromTile: function (url, tileInfo) {
     var result = url.url.replace("{x}", tileInfo.x);
     result = result.replace("{y}", tileInfo.y);
     result = result.replace("{z}", '14');
@@ -23452,7 +23450,7 @@ GSI.ThreeDAreaDialog = GSI.Dialog.extend({
       .addClass("normalbutton threedareadialog_button")
       .attr({ "href": "javascript:void(0);" })
       .html(GSI.TEXT.THREEDAREA.DIALOG_OKBTN)
-      .on('click',L.bind(this._onOkClick, this));
+      .on('click', L.bind(this._onOkClick, this));
 
     this._buttonFrame
       .append(this._errorMessage)
@@ -23931,10 +23929,10 @@ GSI.MapToImageAreaSelectDialog = GSI.Dialog.extend({
 
   },
 
-  setSubMapManager : function(subMapManager) {
+  setSubMapManager: function (subMapManager) {
     this._subMapManager = subMapManager;
 
-    if( this._subMapManager ) {
+    if (this._subMapManager) {
       this._subMap = this._subMapManager.getMap();
     } else {
       this._subMap = null;
@@ -24076,7 +24074,7 @@ GSI.MapToImageAreaSelectDialog = GSI.Dialog.extend({
       .addClass("normalbutton threedareadialog_button")
       .attr({ "href": "javascript:void(0);" })
       .html(GSI.TEXT.THREEDAREA.DIALOG_OKBTN)
-      .on('click',L.bind(this._onOkClick, this));
+      .on('click', L.bind(this._onOkClick, this));
 
     this._buttonFrame
       .append(this._errorMessage)
@@ -24372,7 +24370,7 @@ GSI.MapToImageAreaSelectDialog = GSI.Dialog.extend({
 
   },
 
-  _execute : function( mapManager, mapToImage,  latLngBounds, isCustom, isSubMap ) {
+  _execute: function (mapManager, mapToImage, latLngBounds, isCustom, isSubMap) {
 
     var pixelBounds = null;
 
@@ -24390,7 +24388,7 @@ GSI.MapToImageAreaSelectDialog = GSI.Dialog.extend({
     var otherList = mapManager._mapLayerList.getList();
     var multiTileList = [];
 
-    if ( !isSubMap ) {
+    if (!isSubMap) {
 
       if (this._gsimaps._onoffObjects[CONFIG.PARAMETERNAMES.TILEGRID].obj
         && this._gsimaps._onoffObjects[CONFIG.PARAMETERNAMES.TILEGRID].obj.getVisible()) {
@@ -24542,11 +24540,11 @@ GSI.MapToImageAreaSelectDialog = GSI.Dialog.extend({
     for (var i = 0; i < tileList.length; i++) {
 
       if (!tileList[i]._visibleInfo || tileList[i]._visibleInfo._isHidden) continue;
-      if ( tileList[i].isMultiLayer ) {
+      if (tileList[i].isMultiLayer) {
         var l = tileList[i];
 
-        for( var j=0; j<l.entries.length; j++ ) {
-          if ( l.entries[j].layerType == "tile") {
+        for (var j = 0; j < l.entries.length; j++) {
+          if (l.entries[j].layerType == "tile") {
             list.push({
               type: l.entries[j].layerType,
               layer: l.entries[j]._layer,
@@ -24584,16 +24582,16 @@ GSI.MapToImageAreaSelectDialog = GSI.Dialog.extend({
 
     return {
       mapToImage: mapToImage,
-      pixelBounds : pixelBounds,
-      latLngBounds : latLngBounds
+      pixelBounds: pixelBounds,
+      latLngBounds: latLngBounds
     };
 
   },
 
   execute: function (latLngBounds, isCustom) {
-    var result = this._execute(this._mapManager,this._mapToImage, latLngBounds, isCustom );
+    var result = this._execute(this._mapManager, this._mapToImage, latLngBounds, isCustom);
 
-    if ( !this._mapToImage ) {
+    if (!this._mapToImage) {
       this._mapToImage = result.mapToImage;
       this._mapToImage.on("finish", L.bind(function (e) {
         this._mapToImageWindow.setCanvas(e.canvas[0]);
@@ -24621,18 +24619,18 @@ GSI.MapToImageAreaSelectDialog = GSI.Dialog.extend({
 
   },
 
-  executeAll : function(compareLeft) {
+  executeAll: function (compareLeft) {
 
     $('#gsi_maptoimage_scaleline_check_div').hide();
-    if ( !this._subMapManager || ( !this._subMapManager._compared && !this._subMapManager._splited ) ) {
-      return this.execute( this._map.getBounds(), false );
+    if (!this._subMapManager || (!this._subMapManager._compared && !this._subMapManager._splited)) {
+      return this.execute(this._map.getBounds(), false);
     }
 
-    var result = this._execute(this._mapManager,this._mapToImage1, this._map.getBounds(), false, false );
+    var result = this._execute(this._mapManager, this._mapToImage1, this._map.getBounds(), false, false);
 
     this._compareLeft = compareLeft;
 
-    if ( !this._mapToImage1 ) {
+    if (!this._mapToImage1) {
       this._mapToImage1 = result.mapToImage;
       this._mapToImage1.on("finish", L.bind(function (e) {
 
@@ -24640,17 +24638,17 @@ GSI.MapToImageAreaSelectDialog = GSI.Dialog.extend({
         var canvas1 = e.canvas[0];
         var canvas2 = this._mapToImage2._mapCanvas[0];
 
-        if ( this._subMapManager._splited ) {
+        if (this._subMapManager._splited) {
           canvas.width = canvas2.width + canvas1.width + 2;
           canvas.height = canvas2.height;
           var ctx = canvas.getContext("2d");
           ctx.fillStyle = "#333";
-          ctx.fillRect(0,0,canvas.width, canvas.height);
+          ctx.fillRect(0, 0, canvas.width, canvas.height);
 
-          ctx.drawImage( canvas1,
-            0, 0, canvas1.width, canvas1.height, 0,0, canvas1.width, canvas1.height);
-          ctx.drawImage( canvas2,
-            0, 0, canvas2.width, canvas2.height, canvas2.width+2,0, canvas2.width, canvas2.height);
+          ctx.drawImage(canvas1,
+            0, 0, canvas1.width, canvas1.height, 0, 0, canvas1.width, canvas1.height);
+          ctx.drawImage(canvas2,
+            0, 0, canvas2.width, canvas2.height, canvas2.width + 2, 0, canvas2.width, canvas2.height);
 
         } else {
 
@@ -24658,24 +24656,24 @@ GSI.MapToImageAreaSelectDialog = GSI.Dialog.extend({
           canvas.height = canvas2.height;
           var ctx = canvas.getContext("2d");
 
-          ctx.drawImage( canvas2,
-            0, 0, canvas2.width, canvas2.height, 0,0, canvas2.width, canvas2.height);
+          ctx.drawImage(canvas2,
+            0, 0, canvas2.width, canvas2.height, 0, 0, canvas2.width, canvas2.height);
 
-          ctx.drawImage( canvas1,
-            0, 0, this._compareLeft, canvas1.height, 0,0, this._compareLeft, canvas1.height);
+          ctx.drawImage(canvas1,
+            0, 0, this._compareLeft, canvas1.height, 0, 0, this._compareLeft, canvas1.height);
 
           ctx.fillStyle = "rgb(32,32,32)";
           ctx.globalAlpha = 0.4;
-          ctx.fillRect(canvas.width/2,0,1, canvas.height);
+          ctx.fillRect(canvas.width / 2, 0, 1, canvas.height);
 
         }
         this._mapToImageWindow.setCanvas(canvas);//this._mapToImage2._mapCanvas[0]);
       }, this));
     }
 
-    var result2 = this._execute(this._subMapManager,this._mapToImage2, this._subMap.getBounds(), false, true );
+    var result2 = this._execute(this._subMapManager, this._mapToImage2, this._subMap.getBounds(), false, true);
 
-    if ( !this._mapToImage2 ) {
+    if (!this._mapToImage2) {
       this._mapToImage2 = result2.mapToImage;
       this._mapToImage2.on("finish", L.bind(function (e) {
         this._mapToImage1.start();
@@ -26463,25 +26461,25 @@ GSI.MapManager = L.Evented.extend({
     }
 
     this._mapLayerList = new GSI.MapLayerList(this._gsimaps, this, this._map);
-    this._mapLayerList.on("change", L.bind(function(){
+    this._mapLayerList.on("change", L.bind(function () {
       // 外部タイルのmaxZoomが18以上の場合の処理
       var outsideTileList = this._mapLayerList.getOutsideTileList();
       var maxZoom = 0;
 
-      for( let i=0; i<outsideTileList.length; i++ ) {
+      for (let i = 0; i < outsideTileList.length; i++) {
         var tile = outsideTileList[i];
-        if ( tile.maxZoom && tile.maxZoom > maxZoom ) {
+        if (tile.maxZoom && tile.maxZoom > maxZoom) {
           maxZoom = tile.maxZoom;
         }
       }
 
-      if ( CONFIG.MAXZOOM >= maxZoom ) maxZoom = CONFIG.MAXZOOM;
+      if (CONFIG.MAXZOOM >= maxZoom) maxZoom = CONFIG.MAXZOOM;
 
-      if ( this._map.getMaxZoom() != maxZoom ) {
+      if (this._map.getMaxZoom() != maxZoom) {
         this._map.setMaxZoom(maxZoom);
       }
 
-    },this));
+    }, this));
 
     this._mapMouse = new GSI.MapMouse(this, this._map, {
       dblClickInterval: CONFIG.DBLCLICKINTERVAL,
@@ -26669,7 +26667,7 @@ GSI.MapManager = L.Evented.extend({
 
     this._centerCross = new GSI.CenterCross(this._map, { visible: viewSetting.centerCross });
 
-    this._zoomGuide = new GSI.ZoomGuide(this._map, {visible: viewSetting.zoomGuide});
+    this._zoomGuide = new GSI.ZoomGuide(this._map, { visible: viewSetting.zoomGuide });
   },
 
   // ダイアログ等初期化
@@ -26771,14 +26769,14 @@ GSI.MapManager = L.Evented.extend({
     this._mapMenu.hidePanel();
   },
 
-  getComparePhotoControl: function() {
-    if ( !this._comparePhotoControl ) {
+  getComparePhotoControl: function () {
+    if (!this._comparePhotoControl) {
       this._comparePhotoControl = new GSI.ComparePhotoControl(this);
     }
     return this._comparePhotoControl;
   },
 
-  showComparePhotoControl: function() {
+  showComparePhotoControl: function () {
     var control = this.getComparePhotoControl();
     control.show();
 
@@ -26790,32 +26788,32 @@ GSI.MapManager = L.Evented.extend({
     return control;
   },
 
-  setTopMargin : function() {
+  setTopMargin: function () {
     this._mapMenu.setTopMargin();
-    if ( this._syncControl ) {
+    if (this._syncControl) {
       this._syncControl.setTopMargin();
     }
   },
 
-  hideComparePhotoControl: function() {
-    if ( !this._comparePhotoControl ) return;
+  hideComparePhotoControl: function () {
+    if (!this._comparePhotoControl) return;
 
     this._comparePhotoControl.hide();
 
     this._mapMenu.removeTopMargin();
 
-    if ( this._syncControl ) {
+    if (this._syncControl) {
       this._syncControl.removeTopMargin();
     }
 
-    return  this._comparePhotoControl;
+    return this._comparePhotoControl;
   },
 
-  enableLakeData: function(enabled) {
+  enableLakeData: function (enabled) {
     this._enableLakeData = enabled;
   },
 
-  lakeDataEnabled: function() {
+  lakeDataEnabled: function () {
     return this._enableLakeData;
   }
 });
@@ -27228,7 +27226,7 @@ GSI.Footer = L.Evented.extend({
       this._latlngContainer.show();
       this._utmContainer.show();
       this._elevationContainer.show();
-      if(this._lakeDepthEnabled) this._lakeDepthContainer.show();
+      if (this._lakeDepthEnabled) this._lakeDepthContainer.show();
       if (this._seamlessPhotoVisible) this._seamlessContainer.show();
       else this._seamlessContainer.hide();
     }, this);
@@ -27400,12 +27398,12 @@ GSI.Footer = L.Evented.extend({
     this._setDisplayMode(dispMode);
   },
 
-  _onLargeModeAddrChangeClick: function(){
-    if (this._dispAddrMode == GSI.Footer.DISP_ADDR_KANJI){
+  _onLargeModeAddrChangeClick: function () {
+    if (this._dispAddrMode == GSI.Footer.DISP_ADDR_KANJI) {
       this._dispAddrMode = GSI.Footer.DISP_ADDR_YOMI;
       this._addrChangeReading.html("漢");
     }
-    else{
+    else {
       this._dispAddrMode = GSI.Footer.DISP_ADDR_KANJI;
       this._addrChangeReading.html("あ");
     }
@@ -27494,9 +27492,9 @@ GSI.Footer = L.Evented.extend({
     var end = $("<span>").addClass("heading").html(")");
 
     container.append(lakeDepthLabel).append(this._lakeDepthView)
-    .append(lakeBtmHeightLabel).append(this._lakeBtmHeightView)
-    .append(lakeStdHeightLabel).append(this._lakeStdHeightView)
-    .append(end);
+      .append(lakeBtmHeightLabel).append(this._lakeBtmHeightView)
+      .append(lakeStdHeightLabel).append(this._lakeStdHeightView)
+      .append(end);
 
     parentContainer.append(container);
     return container;
@@ -27530,11 +27528,11 @@ GSI.Footer = L.Evented.extend({
       lngs = "0.00";
       dms.lng.m += 1;
     }
-    if (dms.lat.m == 60){
+    if (dms.lat.m == 60) {
       dms.lat.m = 0;
       dms.lat.d += 1;
     }
-    if (dms.lng.m == 60){
+    if (dms.lng.m == 60) {
       dms.lng.m = 0;
       dms.lng.d += 1;
     }
@@ -27640,17 +27638,17 @@ GSI.Footer = L.Evented.extend({
 
   },
 
-  _loadAddr: function(center, z){
+  _loadAddr: function (center, z) {
     if (!this._addrLoader) {
       this._addrLoader = new GSI.AddrLoader();
       this._addrLoader.on("load", L.bind(function (e) {
         if (e.title == undefined) return;
 
-        if (this._dispAddrMode == GSI.Footer.DISP_ADDR_YOMI){
-        this._setAddressResult(e.titleYomi);
+        if (this._dispAddrMode == GSI.Footer.DISP_ADDR_YOMI) {
+          this._setAddressResult(e.titleYomi);
         }
-        else{
-        this._setAddressResult(e.title);
+        else {
+          this._setAddressResult(e.title);
         }
       }, this));
     } else {
@@ -27676,7 +27674,7 @@ GSI.Footer = L.Evented.extend({
 
     this._refreshSeamlessInfo(center);
 
-    const loadCondition = {lat: center.lat, lng: center.lng, zoom: zoom};
+    const loadCondition = { lat: center.lat, lng: center.lng, zoom: zoom };
     if (!this._elevationLoader) {
       this._elevationLoader = new GSI.FooterElevationLoader(map);
       this._elevationLoader.on("load", L.bind(function (e) {
@@ -27688,27 +27686,27 @@ GSI.Footer = L.Evented.extend({
     }
     this._elevationLoader.load(loadCondition);
 
-    if ( !this._lakedepthLoader ) {
+    if (!this._lakedepthLoader) {
       this._lakedepthLoader = new GSI.LakeDepthLoader(map);
-      this._lakedepthLoader.on("load", L.bind( function(e) {
+      this._lakedepthLoader.on("load", L.bind(function (e) {
         if (e.h == undefined) return;
-        this._setLakeResult({type: "lakedepth", info: e});
+        this._setLakeResult({ type: "lakedepth", info: e });
       }, this));
     } else {
       this._lakedepthLoader.cancel();
     }
 
-    if ( !this._lakeStdHeightLoader ) {
+    if (!this._lakeStdHeightLoader) {
       this._lakeStdHeightLoader = new GSI.LakeStdHeightLoader(map);
-      this._lakeStdHeightLoader.on("load", L.bind( function(e) {
+      this._lakeStdHeightLoader.on("load", L.bind(function (e) {
         if (e.h == undefined) return;
-        this._setLakeResult({type: "lakestdheight", info: e});
+        this._setLakeResult({ type: "lakestdheight", info: e });
       }, this));
     } else {
       this._lakeStdHeightLoader.cancel();
     }
 
-    if(this._mapManager.lakeDataEnabled()){
+    if (this._mapManager.lakeDataEnabled()) {
       this._lakedepthLoader.load(loadCondition);
       this._lakeStdHeightLoader.load(loadCondition);
     }
@@ -27857,37 +27855,37 @@ GSI.Footer = L.Evented.extend({
     this._contentSizeChange();
   },
 
-  updateLakeDepthVisible: function(enabled){
+  updateLakeDepthVisible: function (enabled) {
     this._mapManager.enableLakeData(enabled);
     this._lakeDepthEnabled = enabled;
-    this._lakeDepthContainer.css("display", this._dispMode == GSI.Footer.DISP_LARGE && enabled ? "block":"none");
+    this._lakeDepthContainer.css("display", this._dispMode == GSI.Footer.DISP_LARGE && enabled ? "block" : "none");
   },
 
   _setLakeResult: function (params) {
-    if(!params || !params.type || !params.info) return;
+    if (!params || !params.type || !params.info) return;
     var curType = params.type;
     var curInfo = params.info;
 
     let strH = '---';
-    if(curType == "lakedepth"){
-      this._lakeDepthFix = curInfo.fixed !== undefined ? curInfo.fixed:0;
+    if (curType == "lakedepth") {
+      this._lakeDepthFix = curInfo.fixed !== undefined ? curInfo.fixed : 0;
       this._lakeDepth = curInfo.h !== undefined ? curInfo.h.toFixed(this._lakeDepthFix) : undefined;
-      if(this._lakeDepth !== undefined) strH = this._lakeDepth+'m';
+      if (this._lakeDepth !== undefined) strH = this._lakeDepth + 'm';
       this._lakeDepthView.html(strH);
-    } else if(curType == "lakestdheight"){
-      this._lakeStdHeightFix = curInfo.fixed !== undefined ? curInfo.fixed:0;
-      this._lakeStdHeight = curInfo.h !== undefined ? curInfo.h.toFixed(curInfo.fixed !== undefined?curInfo.fixed:0) : undefined;
-      if(this._lakeStdHeight !== undefined) strH = this._lakeStdHeight+'m';
+    } else if (curType == "lakestdheight") {
+      this._lakeStdHeightFix = curInfo.fixed !== undefined ? curInfo.fixed : 0;
+      this._lakeStdHeight = curInfo.h !== undefined ? curInfo.h.toFixed(curInfo.fixed !== undefined ? curInfo.fixed : 0) : undefined;
+      if (this._lakeStdHeight !== undefined) strH = this._lakeStdHeight + 'm';
       this._lakeStdHeightView.html(strH);
     }
 
     strH = '---';
-    if(this._lakeDepth !== undefined && this._lakeStdHeight !== undefined){
-      try{
+    if (this._lakeDepth !== undefined && this._lakeStdHeight !== undefined) {
+      try {
         let fix = Math.max(this._lakeDepthFix, this._lakeStdHeightFix);
         let fLakeBtmHeight = (parseFloat(this._lakeStdHeight) - parseFloat(this._lakeDepth)).toFixed(fix);
         strH = fLakeBtmHeight + 'm';
-      } catch {}
+      } catch { }
     }
     this._lakeBtmHeightView.html(strH);
 
@@ -27899,8 +27897,8 @@ GSI.Footer.DISP_LARGE = 2;
 GSI.Footer.DISP_MINI = 1;
 GSI.Footer.DISP_CLOSE = 0;
 
-GSI.Footer.DISP_ADDR_KANJI=0;
-GSI.Footer.DISP_ADDR_YOMI=1;
+GSI.Footer.DISP_ADDR_KANJI = 0;
+GSI.Footer.DISP_ADDR_YOMI = 1;
 
 /************************************************************************
  L.Class
@@ -28308,8 +28306,8 @@ GSI.MeasureDialog = GSI.Dialog.extend({
       'id': 'GSI_MeasureDialog_distance',
       'type': 'radio',
       'name': 'measure'//,
-//      'checked': true
-    }).on('click',L.bind(this.onMeasureTypeChange, this));
+      //      'checked': true
+    }).on('click', L.bind(this.onMeasureTypeChange, this));
     this.distanceRadio.prop('checked', true);
     this.distanceLabel = $('<label>').attr({ 'for': 'GSI_MeasureDialog_distance' }).append(this.distanceRadio)
       .append($('<span>').html(GSI.TEXT.MEASURE.DIALOG_DISTANCE_CAPTION));
@@ -28319,8 +28317,8 @@ GSI.MeasureDialog = GSI.Dialog.extend({
       'id': 'GSI_MeasureDialog_area',
       'type': 'radio',
       'name': 'measure'//,
-//      'checked': false
-    }).on('click',L.bind(this.onMeasureTypeChange, this));
+      //      'checked': false
+    }).on('click', L.bind(this.onMeasureTypeChange, this));
     this.areaRadio.prop('checked', false);
     this.areaLabel = $('<label>').attr({ 'for': 'GSI_MeasureDialog_area' }).append(this.areaRadio)
       .append($('<span>').html(GSI.TEXT.MEASURE.DIALOG_AREA_CAPTION));
@@ -28330,8 +28328,8 @@ GSI.MeasureDialog = GSI.Dialog.extend({
       'id': 'GSI_MeasureDialog_feature',
       'type': 'radio',
       'name': 'measure'//,
-//      'checked': false
-    }).on('click',L.bind(this.onMeasureTypeChange, this));
+      //      'checked': false
+    }).on('click', L.bind(this.onMeasureTypeChange, this));
     this.featureRadio.prop('checked', false);
     this.featureLabel = $('<label>').attr({ 'for': 'GSI_MeasureDialog_feature' }).append(this.featureRadio)
       .append($('<span>').html(GSI.TEXT.MEASURE.DIALOG_OBJECT_CAPTION));
@@ -28341,8 +28339,8 @@ GSI.MeasureDialog = GSI.Dialog.extend({
       'id': 'GSI_MeasureDialog_multi',
       'type': 'radio',
       'name': 'measure'//,
-//      'checked': false
-    }).on('click',L.bind(this.onMeasureTypeChange, this));
+      //      'checked': false
+    }).on('click', L.bind(this.onMeasureTypeChange, this));
     this.multiRadio.prop('checked', false);
     this.multiLabel = $('<label>').attr({ 'for': 'GSI_MeasureDialog_multi' }).append(this.multiRadio)
       .append($('<span>').html(GSI.TEXT.MEASURE.DIALOG_MULTI_CAPTION));
@@ -28869,7 +28867,7 @@ GSI.TileImageRGBLoader = L.Evented.extend({
       var result = url.replace("{x}", tileInfo.x);
       result = result.replace("{y}", tileInfo.y);
       result = result.replace("{z}", zoom);
-      result += ( result.indexOf("?") >= 0 ? "&" : "?" ) + (new Date()).getTime();
+      result += (result.indexOf("?") >= 0 ? "&" : "?") + (new Date()).getTime();
       return result;
     }
     var url = this._layer.url;
@@ -29043,7 +29041,7 @@ GSI.EditReliefDialog = GSI.Dialog.extend({
 
     this._orderDescCheck = $("<input>").attr({ "id": id, "type": "checkbox" }).addClass("normalcheck");
 
-    this._orderDescCheck.on('click',L.bind(function () {
+    this._orderDescCheck.on('click', L.bind(function () {
       var data = this._makeElevationData(!this._orderDescCheck.is(":checked"));
       data.desc = this._orderDescCheck.is(":checked");
       this._refreshReriefEdit(data);
@@ -29080,7 +29078,7 @@ GSI.EditReliefDialog = GSI.Dialog.extend({
     id = "gsi_editreliefdialog_gradate" + GSI.EditReliefDialog._labelIdInc;
 
     this._gradateInput = $("<input>")
-      .on('click',L.bind(function () {
+      .on('click', L.bind(function () {
         this._refreshGradationBar();
       }, this))
       .addClass("normalcheck").attr({ "id": id, "type": "checkbox" });
@@ -29104,15 +29102,15 @@ GSI.EditReliefDialog = GSI.Dialog.extend({
     var reflectionFrame = $("<div>").css({ "padding": "4px", "width": "100%" });
     a = $("<a>").addClass("normalbutton").css({ "text-align": "center", "width": "100%", "padding-left": "7px", "padding-right": "7px" }).attr({ "href": "javascript:void(0);" }).html("上記の内容で地図に反映");
 
-    a.on('click',L.bind(function () {
+    a.on('click', L.bind(function () {
       this._reflection();
       var isshow = false;
-      for(var i=0; i < this._mapLayerList.tileList.length; i++){
+      for (var i = 0; i < this._mapLayerList.tileList.length; i++) {
         var t = this._mapLayerList.tileList[i];
-        if (t.id == CONFIG.FREERELIEFID){
+        if (t.id == CONFIG.FREERELIEFID) {
           //自分で作る色別標高図が非表示の時だけ起動
-          if (t._visibleInfo && t._visibleInfo._isHidden){
-            if (t._visibleInfo._isHidden == true){
+          if (t._visibleInfo && t._visibleInfo._isHidden) {
+            if (t._visibleInfo._isHidden == true) {
               var x = this._mapLayerList._gsimaps._mainMap._mapMenu.getShowingMapListPanel();
               x.showReliefFree(t);
               this._mapLayerList.fire("change");
@@ -29123,9 +29121,9 @@ GSI.EditReliefDialog = GSI.Dialog.extend({
         }
       }
 
-      if (isshow == false){
-        if (this.options.listItem && this.options.listObj){
-          if (!this.options.listObj._visibleInfo){
+      if (isshow == false) {
+        if (this.options.listItem && this.options.listObj) {
+          if (!this.options.listObj._visibleInfo) {
             var y = this._mapLayerList._gsimaps._mainMap._mapMenu.getMapListPanel();
             y.selectReliefFree(this.options.listItem, this.options.listObj);
             GSI.Utils.sendSelectedLayer(CONFIG.FREERELIEFID);
@@ -29336,7 +29334,7 @@ GSI.EditReliefDialog = GSI.Dialog.extend({
         "title": "スタイルをファイルから読み込み"
       });
 
-    a.on('click',L.bind(this._showLoadView, this));
+    a.on('click', L.bind(this._showLoadView, this));
     a.append(img);
     frame.append(a);
 
@@ -29348,7 +29346,7 @@ GSI.EditReliefDialog = GSI.Dialog.extend({
         "title": "スタイルをファイルに保存"
       });
 
-    a.on('click',L.bind(this._save, this));
+    a.on('click', L.bind(this._save, this));
     a.append(img);
     frame.append(a);
 
@@ -29364,13 +29362,13 @@ GSI.EditReliefDialog = GSI.Dialog.extend({
       img.attr({ "title": CONFIG.TOOLTIP.EDITRELIEF.HANREI });
     }
 
-    a.on('click',L.bind(function () {
+    a.on('click', L.bind(function () {
       this._saveHanrei();
     }, this));
     frame.append(a);
 
     // 新しく作成（廃止）
-        // 自動作成
+    // 自動作成
     a = $("<a>").attr({ "href": "javascript:void(0);" });
 
     img = $("<img>").css({ "width": "24px", "height": "24px" })
@@ -29382,7 +29380,7 @@ GSI.EditReliefDialog = GSI.Dialog.extend({
     if (CONFIG.TOOLTIP && CONFIG.TOOLTIP.EDITRELIEF) {
       img.attr({ "title": CONFIG.TOOLTIP.EDITRELIEF.AUTO });
     }
-    a.on('click',L.bind(function () {
+    a.on('click', L.bind(function () {
       this._createAutoNewData();
     }, this));
     frame.append(a);
@@ -29398,7 +29396,7 @@ GSI.EditReliefDialog = GSI.Dialog.extend({
     if (CONFIG.TOOLTIP && CONFIG.TOOLTIP.EDITRELIEF) {
       img.attr({ "title": CONFIG.TOOLTIP.EDITRELIEF.LOW });
     }
-    a.on('click',L.bind(function () {
+    a.on('click', L.bind(function () {
       this._createLowNewData();
     }, this));
     frame.append(a);
@@ -29414,7 +29412,7 @@ GSI.EditReliefDialog = GSI.Dialog.extend({
     if (CONFIG.TOOLTIP && CONFIG.TOOLTIP.EDITRELIEF) {
       img.attr({ "title": CONFIG.TOOLTIP.EDITRELIEF.RESET });
     }
-    a.on('click',L.bind(function () {
+    a.on('click', L.bind(function () {
       if (window.confirm("編集中の色情報は削除されます。\n初期状態に戻してもよろしいですか？")) {
         var data = GSI.ReliefTileLayer.getElevationSampleData();
         this._refreshReriefEdit(data);
@@ -29597,7 +29595,7 @@ GSI.EditReliefDialog = GSI.Dialog.extend({
       var buttonFrame = $("<div>").addClass("button_frame");
 
       var btn = $("<a>").addClass("normalbutton").attr({ "href": "javascript:void(0);" }).html("上記の内容で作成");
-      btn.on('click',L.bind(function () {
+      btn.on('click', L.bind(function () {
         if (this._newSplitRadio.is(":checked"))
           this._createNewData();
         else
@@ -29607,7 +29605,7 @@ GSI.EditReliefDialog = GSI.Dialog.extend({
       buttonFrame.append(btn);
 
       btn = $("<a>").addClass("normalbutton").attr({ "href": "javascript:void(0);" }).html("キャンセル");
-      btn.on('click',L.bind(function () {
+      btn.on('click', L.bind(function () {
 
         var data = this._mapLayerList.getElevationData();
         if (!data || data["default"])
@@ -29743,7 +29741,7 @@ GSI.EditReliefDialog = GSI.Dialog.extend({
           var colors = $.extend(true, [], GSI.ReliefTileLayer.getElevationSampleData().colors);
           var low = Math.floor(minMax.min);
           var hi = Math.floor(minMax.max);
-          if (low < 0 && hi > 0){
+          if (low < 0 && hi > 0) {
             low = 0;
           }
           colors[0].h = low;
@@ -29775,7 +29773,7 @@ GSI.EditReliefDialog = GSI.Dialog.extend({
   },
 
   // 低い範囲を表示
-  _createLowNewData: function() {
+  _createLowNewData: function () {
     // loading
     if (!this._loadingPanel) {
       this._loadingPanel = $("<div>").addClass("loadingpanel");
@@ -29786,7 +29784,7 @@ GSI.EditReliefDialog = GSI.Dialog.extend({
       this.frame.append(this._loadingMessage);
     }
 
-    if ( this._elevationLoader ) this._elevationLoader.cancel();
+    if (this._elevationLoader) this._elevationLoader.cancel();
     this._elevationLoader = new GSI.ElevationLoader();
     this._elevationLoader.on("load", L.bind(function (e) {
       this._elevationLoader = undefined;
@@ -29798,10 +29796,10 @@ GSI.EditReliefDialog = GSI.Dialog.extend({
         return;
       }
       var colors = [{
-        h: this._reliefRound( e.h ), color:CONFIG.FREERELIEF_AUTOLOWCOLOR,
+        h: this._reliefRound(e.h), color: CONFIG.FREERELIEF_AUTOLOWCOLOR,
       },
       {
-        h:null, color:null
+        h: null, color: null
       }];
 
       var data = {
@@ -29980,14 +29978,14 @@ GSI.EditReliefDialog = GSI.Dialog.extend({
       var buttonFrame = $("<div>").addClass("button_frame");
 
       var btn = $("<a>").addClass("normalbutton").attr({ "href": "javascript:void(0);" }).html("ファイルを読み込む");
-      btn.on('click',L.bind(function () {
+      btn.on('click', L.bind(function () {
         this._loadData(this._loadFileInput);
       }, this));
 
       buttonFrame.append(btn);
 
       btn = $("<a>").addClass("normalbutton").attr({ "href": "javascript:void(0);" }).html("キャンセル");
-      btn.on('click',L.bind(function () {
+      btn.on('click', L.bind(function () {
         this._loadDataView.fadeOut(200);
       }, this));
 
@@ -30350,14 +30348,14 @@ GSI.EditReliefDialog = GSI.Dialog.extend({
     $(table.find("tr")[0]).prepend(td);
 
     var removeButtons = frame.find("a.remove_btn");
-    if (removeButtons.length <= 2){
-      if (removeButtons.length > 0){
+    if (removeButtons.length <= 2) {
+      if (removeButtons.length > 0) {
         removeButtons.hide();
       }
-      else{
+      else {
         //createLowDataを通った場合はframeが空でtableにしかデータが無い
         removeButtons = table.find("a.remove_btn");
-        if (removeButtons.length <= 2){
+        if (removeButtons.length <= 2) {
           removeButtons.hide();
         }
       }
@@ -30390,45 +30388,45 @@ GSI.EditReliefDialog = GSI.Dialog.extend({
 
     if (next) {
       var input = $("<input>")
-      .addClass("elevation").attr({ "type": "number", "step":"0.5" })
-      .css({"ime-mode": "disabled"})
-      .val(current.h);
+        .addClass("elevation").attr({ "type": "number", "step": "0.5" })
+        .css({ "ime-mode": "disabled" })
+        .val(current.h);
 
       td = $("<td>").append(input);
       tr.append(td);
       input
-        .on('focus',L.bind(function (elem) {
+        .on('focus', L.bind(function (elem) {
           elem.trigger('select');
         }, this, input))
         .on('blur', L.bind(function (tr) {
 
           this._checkInputElevation(tr);
         }, this, tr))
-        .on("keydown", L.bind(function(e){
+        .on("keydown", L.bind(function (e) {
           var keyCode = e.keyCode;
 
-          var str = ( e.key ? e.key : String.fromCharCode(keyCode) );
+          var str = (e.key ? e.key : String.fromCharCode(keyCode));
 
-          if ( e.ctrlKey || e.metaKey) return;
+          if (e.ctrlKey || e.metaKey) return;
 
-          if( ( !str.match(/[0-9.-]/) )
-            && (keyCode != 8 && keyCode != 46 && keyCode != 189 && keyCode != 190 )
-            && (keyCode != 37 && keyCode != 38 && keyCode != 39 && keyCode != 40 )){
+          if ((!str.match(/[0-9.-]/))
+            && (keyCode != 8 && keyCode != 46 && keyCode != 189 && keyCode != 190)
+            && (keyCode != 37 && keyCode != 38 && keyCode != 39 && keyCode != 40)) {
             e.preventDefault();
             e.stopPropagation();
             return false;
           }
         }))
-        .on("beforeinput", L.bind(function(e){
+        .on("beforeinput", L.bind(function (e) {
           var str = e.originalEvent.data;
-          if ( !str ) return;
-          if(!str.match(/[0-9.-]/) ){
+          if (!str) return;
+          if (!str.match(/[0-9.-]/)) {
             e.preventDefault();
             e.stopPropagation();
             return false;
           }
         }))
-        .on('click',function () {
+        .on('click', function () {
           $(this).trigger('select');
           return false;
         });
@@ -30491,7 +30489,7 @@ GSI.EditReliefDialog = GSI.Dialog.extend({
     if (next) {
       td = $("<td>");
       a = $("<a>").attr({ "title": "この行を削除", "href": "javascript:void(0);" }).addClass("btn").addClass("remove_btn");
-      a.on('click',L.bind(function (prev, current, next, tr) {
+      a.on('click', L.bind(function (prev, current, next, tr) {
         this._removeLine(tr);
 
       }, this, prev, current, next, tr));
@@ -30502,7 +30500,7 @@ GSI.EditReliefDialog = GSI.Dialog.extend({
       td = $("<td>");
       a = $("<a>").attr({ "title": "ここに追加", "href": "javascript:void(0);" }).addClass("btn")
         .addClass((desc ? "append_prev_btn" : "append_next_btn")).html("+");
-      a.on('click',L.bind(function (prev, current, next, tr) {
+      a.on('click', L.bind(function (prev, current, next, tr) {
         this._appendLine(tr);
       }, this, prev, current, next, tr));
 
@@ -33561,7 +33559,7 @@ GSI.CrossSectionViewDialog = GSI.Dialog.extend({
   // 初期化
   initialize: function (dialogManager, map, options) {
     this._map = map;
-    this._useDEMTileList = ["DEM1A","DEM5A", "DEM5B", "DEM5C", "DEM10B", "DEMGM"];
+    this._useDEMTileList = ["DEM1A", "DEM5A", "DEM5B", "DEM5C", "DEM10B", "DEMGM"];
     this._crossSectionView = new GSI.CrossSectionView(this._map, {
       autoGraph: true
     });
@@ -33678,7 +33676,7 @@ GSI.CrossSectionViewDialog = GSI.Dialog.extend({
     // 開閉ボタン
     this._optionToggleButton = $("<a>")
       .attr({ "href": "javascript:void(0);" }).html("オプション").addClass("option-toggle-button")
-      .on('click',L.bind(function () {
+      .on('click', L.bind(function () {
         if (this._optionFrame.is(":visible")) {
           this._optionFrame.slideUp(300);
           this._optionToggleButton.removeClass("open");
@@ -34115,7 +34113,7 @@ GSI.CrossSectionViewDisplayDialog = GSI.Dialog.extend({
     this._ratioResetButton = $("<a>").attr({ "href": "javascript:void(0);" }).html("等倍に戻す").addClass("normalbutton");
     container.append(this._ratioResetButton);
 
-    this._ratioResetButton.on('click',L.bind(function () {
+    this._ratioResetButton.on('click', L.bind(function () {
       this._ratioVertInput.val(1).data({ "vert": 1 });
       this._scaleSliderContainer.slider("value", 0);
       this._refreshRatio();
@@ -35394,7 +35392,7 @@ GSI.HashOptions = L.Class.extend({
       hash += o.vHashOptions;
       o.vHash = hash;
       // 202303
-//      if (CONFIG.USECOOKIE) $.cookie(CONFIG.COOKIEKEY_HASH, hash, { path: '/', expires: 365 });
+      //      if (CONFIG.USECOOKIE) $.cookie(CONFIG.COOKIEKEY_HASH, hash, { path: '/', expires: 365 });
       if (CONFIG.USECOOKIE) Cookies.set(CONFIG.COOKIEKEY_HASH, hash, { path: '/', expires: 365 });
     }
     else if (t == "hashchange") {
@@ -35550,7 +35548,7 @@ GSI.HashOptions = L.Class.extend({
       }
 
       for (var i = 1; i <= 5; i++) {
-        v = GSI.FILEURL["url" + i] == undefined? "" : GSI.FILEURL["url" + i];
+        v = GSI.FILEURL["url" + i] == undefined ? "" : GSI.FILEURL["url" + i];
         if (v != "") {
           hash += "&url" + i + "=" + encodeURIComponent(v);
         }
@@ -35605,14 +35603,14 @@ GSI.HashOptions = L.Class.extend({
 
       // 等距圏
       var toukyokenCenter = this._gsimaps._pageStateManager.getToukyokenCenter();
-      if ( toukyokenCenter ) {
+      if (toukyokenCenter) {
         hash += "&tpos=" +
           toukyokenCenter.lat.toFixed(6) + "," +
           toukyokenCenter.lng.toFixed(6);
       }
       // 方位線
       var houilineCenter = this._gsimaps._pageStateManager.getHouiLineCenter();
-      if ( houilineCenter ) {
+      if (houilineCenter) {
         hash += "&hpos=" +
           houilineCenter.lat.toFixed(6) + "," +
           houilineCenter.lng.toFixed(6);
@@ -35684,13 +35682,13 @@ GSI.HashOptions = L.Class.extend({
       }
     }
 
-    if (lcd != ""){
+    if (lcd != "") {
       this._gsimaps._mainMap._layersJSON.initialize_layers_data(layers);
       this._gsimaps._mainMap._mapMenu.getMapListPanel().setLayers(layers);
       this._gsimaps._mainMap._mapMenu.getMapListPanel().setCurrentPath(lcd);
       this._gsimaps._mainMap._mapMenu.getShowingMapListPanel().refresh(this._gsimaps._mainMap._layersJSON.visibleLayers);
     }
-    else{
+    else {
       this._gsimaps._mainMap._layersJSON.initialize_layers_data(layers);
       this._gsimaps._mainMap._mapMenu.getShowingMapListPanel().refresh(this._gsimaps._mainMap._layersJSON.visibleLayers);
     }
@@ -35773,13 +35771,13 @@ GSI.HashOptions = L.Class.extend({
       var layers2 = this._gsimaps._queryParams.getLayers2();
       var lcd2 = this._gsimaps._queryParams.getCurrentPath2();
 
-      if (lcd2 != ""){
+      if (lcd2 != "") {
         this._gsimaps._subMap._layersJSON.initialize_layers_data(layers2);
         this._gsimaps._subMap._mapMenu.getMapListPanel().setLayers(layers2);
         this._gsimaps._subMap._mapMenu.getMapListPanel().setCurrentPath(lcd2);
         this._gsimaps._subMap._mapMenu.getShowingMapListPanel().refresh(this._gsimaps._subMap._layersJSON.visibleLayers);
       }
-      else{
+      else {
         this._gsimaps._subMap._layersJSON.initialize_layers_data(layers2);
         this._gsimaps._subMap._mapMenu.getShowingMapListPanel().refresh(this._gsimaps._subMap._layersJSON.visibleLayers);
       }
@@ -35931,17 +35929,17 @@ GSI.HashOptions = L.Class.extend({
     this._gsimaps._mainMap._confirmDlg.hide();
   },
 
-  baseHashCheck: function(hash) {
+  baseHashCheck: function (hash) {
     // 202303
     // baseMapの状況に応じてhashを書き換える。
     var baseDisp = this._checkBaseDispParams(hash);
 
     if (!baseDisp) {
-      for(var i=0; i < CONFIG.BASEMAPLIST.length; i++) {
+      for (var i = 0; i < CONFIG.BASEMAPLIST.length; i++) {
         var baseOption = '&base=';
         baseOption += CONFIG.BASEMAPLIST[i].id;
         if (hash.indexOf(baseOption) != -1) {
-          hash= hash.replace(baseOption, '');
+          hash = hash.replace(baseOption, '');
         }
       }
     } else {
@@ -35957,18 +35955,18 @@ GSI.HashOptions = L.Class.extend({
             if (hash.indexOf(lsOption) != -1) {
               baseOption += this._gsimaps._queryParams._baseMap;
               baseOption += '&';
-              hash= hash.replace('/&', baseOption);
+              hash = hash.replace('/&', baseOption);
             }
           }
 
         }
 
       }
-  }
+    }
 
     return hash;
   },
-  _checkBaseDispParams: function(hash) {
+  _checkBaseDispParams: function (hash) {
     // lsの値とdispの値からbaseのdispを判断する。
     // 202303 baseMap非表示時にlsからbaseMapを取得する。
 
@@ -35988,9 +35986,9 @@ GSI.HashOptions = L.Class.extend({
             if (CONFIG.BASETILES[n].id == parts[0]) {
 
               if (disp.length > i && disp.charAt(i) == '0') {
-                  return false;
+                return false;
               } else {
-                  return true;
+                return true;
               }
 
             }
@@ -36010,7 +36008,7 @@ GSI.HashOptions = L.Class.extend({
  L.Class
  - GSI.QueryParams
 
-　GETパラメータ||ハッシュll 10進経度,10進経度
+ GETパラメータ||ハッシュll 10進経度,10進経度
   z    ズームレベル
   base ベース
   hc   隠す機能
@@ -36111,10 +36109,10 @@ GSI.QueryParams = L.Class.extend({
 
     return ret;
   },
-  getToukyokenCenter: function() {
+  getToukyokenCenter: function () {
     return this._toukyokenCenter;
   },
-  getHouilineCenter: function() {
+  getHouilineCenter: function () {
     return this._houilineCenter;
   },
 
@@ -36316,7 +36314,7 @@ GSI.QueryParams = L.Class.extend({
                   this._baseMap = parts[0];
                   fBaseMap = true;
                   break;
-                  }
+                }
               }
             }
           }
@@ -36376,7 +36374,7 @@ GSI.QueryParams = L.Class.extend({
                   this._baseMap2 = parts[0];
                   fBaseMap = true;
                   break;
-                  }
+                }
               }
             }
           }
@@ -36824,34 +36822,34 @@ GSI.QueryParams = L.Class.extend({
 
   },
 
-  _initToukyokenCenter:function() {
+  _initToukyokenCenter: function () {
     var center = this.params["tpos"]
     if (!center) return;
 
     const parts = center.split(",");
-    if ( parts.length != 2 ) return;
+    if (parts.length != 2) return;
 
     if (
       (parts[0].match(/^-?[0-9]+\.[0-9]+$/) || parts[0].match(/^-?[0-9]+$/))
       &&
       (parts[1].match(/^-?[0-9]+\.[0-9]+$/) || parts[1].match(/^-?[0-9]+$/))
     ) {
-      this._toukyokenCenter = L.latLng( parseFloat(parts[0]), parseFloat(parts[1]));
+      this._toukyokenCenter = L.latLng(parseFloat(parts[0]), parseFloat(parts[1]));
     }
   },
-  _initHouilineCenter: function() {
+  _initHouilineCenter: function () {
     var center = this.params["hpos"];
     if (!center) return;
 
     const parts = center.split(",");
-    if ( parts.length != 2 ) return;
+    if (parts.length != 2) return;
 
     if (
       (parts[0].match(/^-?[0-9]+\.[0-9]+$/) || parts[0].match(/^-?[0-9]+$/))
       &&
       (parts[1].match(/^-?[0-9]+\.[0-9]+$/) || parts[1].match(/^-?[0-9]+$/))
     ) {
-      this._houilineCenter = L.latLng( parseFloat(parts[0]), parseFloat(parts[1]));
+      this._houilineCenter = L.latLng(parseFloat(parts[0]), parseFloat(parts[1]));
     }
   },
 
@@ -37013,7 +37011,7 @@ GSI.DEMLoader = L.Evented.extend({
     }
 
     if (!this.options.useTileList) {
-      this.options.useTileList = ["DEM1A","DEM5A", "DEM5B", "DEM5C", "DEM10B", "DEMGM"];
+      this.options.useTileList = ["DEM1A", "DEM5A", "DEM5B", "DEM5C", "DEM10B", "DEMGM"];
     }
 
     var useTileList = this.options.useTileList;
@@ -37365,26 +37363,26 @@ GSI.FreeReliefDEMLoader = GSI.DEMLoader.extend({
     var targetId = null;
     var z = coords.z;
 
-    if (urlList.length > 0){
+    if (urlList.length > 0) {
       var urlInfo = urlList.shift();
       targetUrl = $.extend(true, {}, urlInfo);
       targetId = urlInfo.id;
 
-      if (this.options.overZooming){
-        if (targetId == "DEM10B"){
-          if (z > 14){
+      if (this.options.overZooming) {
+        if (targetId == "DEM10B") {
+          if (z > 14) {
             coords = this._slideZoom(urlInfo.maxZoom);
           }
         }
       }
-      else{
-        if (urlInfo.maxZoom < z || urlInfo.minZoom > z){
+      else {
+        if (urlInfo.maxZoom < z || urlInfo.minZoom > z) {
           this._demLoadError();
           return;
         }
       }
     }
-    else{
+    else {
       //遡らない
       this._demLoadError();
       return;
@@ -38076,7 +38074,7 @@ GSI.CrossSectionDEMLoader.getURLList = function (x, y, z) {
   }
 };
 
-GSI.FreeReliefDEMLoader.getURLList = function(x, y, z){
+GSI.FreeReliefDEMLoader.getURLList = function (x, y, z) {
   var getCoords = function (x, y, z, targetZoom) {
     var scale = Math.pow(2, z - targetZoom);
     var point = L.point(x * 256 / scale, y * 256 / scale).divideBy(256)._floor();
@@ -38337,7 +38335,7 @@ GSI.Control.GPSButton = L.Control.extend({
     if (this._state.userInteraction && !this._selfMove) {
       this.stop();
       if (this._state.otherGPSButtons) {
-        this._state.otherGPSButtons.forEach(function(button) {
+        this._state.otherGPSButtons.forEach(function (button) {
           if (button._on) {
             button.stop();
           }
@@ -38472,10 +38470,10 @@ GSI.SharePanel = L.Evented.extend({
 
     // url
     this._urlTextarea = $("<textarea>")
-      .on('focus',function () {
+      .on('focus', function () {
         setTimeout(L.bind(function () { $(this).trigger('select'); }, this), 1);
       })
-      .on('click',function () {
+      .on('click', function () {
         setTimeout(L.bind(function () { $(this).trigger('select'); }, this), 1);
         return false;
       });
@@ -38494,7 +38492,7 @@ GSI.SharePanel = L.Evented.extend({
         "href": "javascript:void(0);",
         "title": (CONFIG.TOOLTIP && CONFIG.TOOLTIP.SHARE ? CONFIG.TOOLTIP.SHARE.FACEBOOK : "")
       });
-      a.on('click',function () { GSI.SHARE.showFacebook(); });
+      a.on('click', function () { GSI.SHARE.showFacebook(); });
       container.append(a);
     }
     // twitter
@@ -38503,7 +38501,7 @@ GSI.SharePanel = L.Evented.extend({
         "href": "javascript:void(0);",
         "title": (CONFIG.TOOLTIP && CONFIG.TOOLTIP.SHARE ? CONFIG.TOOLTIP.SHARE.TWITTER : "")
       });
-      a.on('click',function () { GSI.SHARE.showTwitter(); });
+      a.on('click', function () { GSI.SHARE.showTwitter(); });
       container.append(a);
     }
 
@@ -38514,7 +38512,7 @@ GSI.SharePanel = L.Evented.extend({
           "href": "javascript:void(0);",
           "title": (CONFIG.TOOLTIP && CONFIG.TOOLTIP.SHARE ? CONFIG.TOOLTIP.SHARE.SAVEIMAGE : "")
         });
-        a.on('click',L.bind(function () {
+        a.on('click', L.bind(function () {
           this._gsimaps.executeSaveImage();
         }, this));
         container.append(a);
@@ -38527,7 +38525,7 @@ GSI.SharePanel = L.Evented.extend({
         "href": "javascript:void(0);",
         "title": (CONFIG.TOOLTIP && CONFIG.TOOLTIP.SHARE ? CONFIG.TOOLTIP.SHARE.QRCODE : "")
       });
-      a.on('click',L.bind(function () {
+      a.on('click', L.bind(function () {
         this._gsimaps.showQRCodeDialog();
       }, this));
       container.append(a);
@@ -38552,7 +38550,7 @@ GSI.SharePanel = L.Evented.extend({
           "href": "javascript:void(0);",
           "title": (CONFIG.TOOLTIP && CONFIG.TOOLTIP.SHARE ? CONFIG.TOOLTIP.SHARE.SAVEHTML : "")
         });
-        a.on('click',L.bind(function () {
+        a.on('click', L.bind(function () {
           this._gsimaps.showShareDialog(GSI.ShareDialog.MODE.FILE);
         }, this));
         container.append(a);
@@ -38564,14 +38562,14 @@ GSI.SharePanel = L.Evented.extend({
           "href": "javascript:void(0);",
           "title": (CONFIG.TOOLTIP && CONFIG.TOOLTIP.SHARE ? CONFIG.TOOLTIP.SHARE.IFRAME : "")
         });
-        a.on('click',L.bind(function () {
+        a.on('click', L.bind(function () {
           this._gsimaps.showShareDialog(GSI.ShareDialog.MODE.BUILTIN);
         }, this));
         container.append(a);
       }
     }
 
-    container.find("a").on('click',L.bind(function () {
+    container.find("a").on('click', L.bind(function () {
       this.hide();
     }, this));
 
@@ -38691,7 +38689,7 @@ GSI.SakuzuListItem = L.Evented.extend({
     if (visible) this._owner._map.addLayer(this._layer);
   },
 
-  getMap : function() {
+  getMap: function () {
     return this._owner._map;
   },
   getVisible: function () {
@@ -38716,15 +38714,15 @@ GSI.SakuzuListItem = L.Evented.extend({
     return this._iconLabelVisible;
   },
 
-  getIconLabelSize: function() {
-    return ( this._iconLabelSize ? this._iconLabelSize : "middle" );
+  getIconLabelSize: function () {
+    return (this._iconLabelSize ? this._iconLabelSize : "middle");
   },
 
-  setIconLabelSize: function(size) {
-    if ( size) {
+  setIconLabelSize: function (size) {
+    if (size) {
       this._iconLabelSize = size;
     } else {
-      size =this._iconLabelSize;
+      size = this._iconLabelSize;
     }
     if (this._layer) {
       if (this._layer.getLayers) {
@@ -38761,7 +38759,7 @@ GSI.SakuzuListItem = L.Evented.extend({
       layer.setLabelVisible(visible);
     }
     if (layer.options && layer.options.icon && layer.options.icon.setLabelVisible) {
-       layer.options.icon.setLabelVisible(visible);
+      layer.options.icon.setLabelVisible(visible);
     }
     if (layer.getLayers) {
       var layers = layer.getLayers();
@@ -38783,7 +38781,7 @@ GSI.SakuzuListItem = L.Evented.extend({
     }
   },
 
-  getDataType : function() {
+  getDataType: function () {
     return this._dataType;
   },
 
@@ -38819,19 +38817,19 @@ GSI.SakuzuListItem = L.Evented.extend({
     return this._getLayerCount(this._layer);
   },
 
-  _setUrl: function(fKey){
+  _setUrl: function (fKey) {
     var items = window.location.href.split('&');
-    items = items.filter((item)=>{
-      return !item.startsWith(fKey+"=")
+    items = items.filter((item) => {
+      return !item.startsWith(fKey + "=")
     })
     var url = items.join('&');
-    window.history.pushState({url: url, title: document.title}, document.title, url);
-    if(GSI.FILEURL[fKey]) GSI.FILEURL[fKey] = null;
+    window.history.pushState({ url: url, title: document.title }, document.title, url);
+    if (GSI.FILEURL[fKey]) GSI.FILEURL[fKey] = null;
   },
 
   remove: function () {
     this._owner.remove(this);
-    if(this._fKey) this._setUrl(this._fKey);
+    if (this._fKey) this._setUrl(this._fKey);
   },
 
   removeAllLayers: function () {
@@ -38898,7 +38896,7 @@ GSI.SakuzuListItem = L.Evented.extend({
     var icon = null;
     var iconInfo = style._iconInfo;
     var lineStyle = style.lineStyle;
-    if ( lineStyle ) delete style["lineStyle"];
+    if (lineStyle) delete style["lineStyle"];
     if (iconInfo) {
       delete style["_iconInfo"];
       if (iconInfo.html || iconInfo.html == '') {
@@ -38979,7 +38977,7 @@ GSI.SakuzuListItem = L.Evented.extend({
       // その他
       if (this._editingEditingLayer.setStyle) {
         this._editingEditingLayer.setStyle(newStyle);
-        if( ( newStyle.geodesic ==true || newStyle.geodesic == false ) && this._editingEditingLayer.redraw)
+        if ((newStyle.geodesic == true || newStyle.geodesic == false) && this._editingEditingLayer.redraw)
           this._editingEditingLayer.redraw();
 
       }
@@ -39005,7 +39003,7 @@ GSI.SakuzuListItem = L.Evented.extend({
 
       if (shape && shape.setStyle) {
         shape.setStyle(newStyle);
-        if( ( newStyle.geodesic ==true || newStyle.geodesic == false ) && shape.redraw)
+        if ((newStyle.geodesic == true || newStyle.geodesic == false) && shape.redraw)
           shape.redraw();
       }
       if (this._nextPath.setOptions)
@@ -39032,7 +39030,7 @@ GSI.SakuzuListItem = L.Evented.extend({
 
         if (shape && shape.setStyle) {
           shape.setStyle(newStyle);
-          if( ( newStyle.geodesic ==true || newStyle.geodesic == false ) && shape.redraw)
+          if ((newStyle.geodesic == true || newStyle.geodesic == false) && shape.redraw)
             shape.redraw();
         }
         if (this._editingPathList.setOptions)
@@ -39042,7 +39040,7 @@ GSI.SakuzuListItem = L.Evented.extend({
     }
   },
 
-  _startAddInner : function(rect, layer) {
+  _startAddInner: function (rect, layer) {
 
     if (!this._reservedFreatureGroup) {
       this._reservedFreatureGroup = L.featureGroup();
@@ -39055,7 +39053,7 @@ GSI.SakuzuListItem = L.Evented.extend({
         this._editingPathList[i].disable();
       }
     }
-    if ( rect ) this._reservedFrameFreatureGroup.removeLayer(rect);
+    if (rect) this._reservedFrameFreatureGroup.removeLayer(rect);
     this._reservedFreatureGroup.removeLayer(layer);
 
     this._editingPathList = [];
@@ -39089,21 +39087,21 @@ GSI.SakuzuListItem = L.Evented.extend({
     this._startAddInnerPolygon();
   },
 
-  _getPolygonCenter : function(latlngs) {
-    var minLat =undefined;
+  _getPolygonCenter: function (latlngs) {
+    var minLat = undefined;
     var minLng = undefined;
-    var maxLat =undefined;
+    var maxLat = undefined;
     var maxLng = undefined;
 
-    for ( var i=0; i<latlngs.length; i++ ) {
+    for (var i = 0; i < latlngs.length; i++) {
       var latlng = latlngs[i];
-      if ( minLat == undefined || minLat > latlng.lat ) minLat = latlng.lat;
-      if ( minLng == undefined || minLng > latlng.lng ) minLng = latlng.lng;
-      if ( maxLat == undefined || maxLat < latlng.lat ) maxLat = latlng.lat;
-      if ( maxLng == undefined || maxLng < latlng.lng ) maxLng = latlng.lng;
+      if (minLat == undefined || minLat > latlng.lat) minLat = latlng.lat;
+      if (minLng == undefined || minLng > latlng.lng) minLng = latlng.lng;
+      if (maxLat == undefined || maxLat < latlng.lat) maxLat = latlng.lat;
+      if (maxLng == undefined || maxLng < latlng.lng) maxLng = latlng.lng;
     }
 
-    return L.latLng( (minLat + maxLat) / 2, (minLng + maxLng) / 2 );
+    return L.latLng((minLat + maxLat) / 2, (minLng + maxLng) / 2);
 
   },
   _startAddInnerPolygon: function () {
@@ -39127,16 +39125,16 @@ GSI.SakuzuListItem = L.Evented.extend({
       geodesic: true
     };
 
-    if ( this._editingEditingLayer.options.weight ) {
+    if (this._editingEditingLayer.options.weight) {
       shapeOptions.weight = this._editingEditingLayer.options.weight;
     }
-    if ( this._editingEditingLayer.options.color ) {
+    if (this._editingEditingLayer.options.color) {
       shapeOptions.color = this._editingEditingLayer.options.color;
     }
-    if ( !this._editingEditingLayer.options.stroke ) {
+    if (!this._editingEditingLayer.options.stroke) {
       shapeOptions.stroke = false;
     }
-    if ( this._editingEditingLayer.options.opacity != undefined ) {
+    if (this._editingEditingLayer.options.opacity != undefined) {
       shapeOptions.opacity = this._editingEditingLayer.options.opacity;
     }
 
@@ -39153,7 +39151,7 @@ GSI.SakuzuListItem = L.Evented.extend({
       edit: { featureGroup: this._editingFreatureGroup },
       showArea: true,
       allowIntersection: false,
-      ownerPolygon : this._editingEditingLayer
+      ownerPolygon: this._editingEditingLayer
     });
 
     path.enable();
@@ -39163,25 +39161,25 @@ GSI.SakuzuListItem = L.Evented.extend({
     this._initializeInnerRemoveButtons();
   },
 
-  _initializeInnerRemoveButtons : function() {
-    if ( this._removeInnerButtons ) this._removeInnerButtons.remove();
+  _initializeInnerRemoveButtons: function () {
+    if (this._removeInnerButtons) this._removeInnerButtons.remove();
     this._removeInnerButtons = L.featureGroup();
 
     var latlngs = this._editingEditingLayer.getLatLngs();
 
-    if ( !L.LineUtil.isFlat(latlngs) ) {
+    if (!L.LineUtil.isFlat(latlngs)) {
 
-      if ( latlngs.length < 0 || L.LineUtil.isFlat(latlngs[0])) {
+      if (latlngs.length < 0 || L.LineUtil.isFlat(latlngs[0])) {
 
-        for( var i=1; i<latlngs.length; i++ ) {
+        for (var i = 1; i < latlngs.length; i++) {
 
           var center = this._getPolygonCenter(latlngs[i]);
           var removeMarker = L.marker(center, {
             icon: L.divIcon({ iconSize: [30, 30], iconAnchor: [16, 16], className: 'gsi_pathframerectangle_removebtn', html: "" }),
             zIndexOffset: 4000
-          }).on("click", L.bind(function(idx) {
+          }).on("click", L.bind(function (idx) {
             var latlngs = this._editingEditingLayer.getLatLngs();
-            latlngs.splice( idx,1);
+            latlngs.splice(idx, 1);
             this._editingEditingLayer.setLatLngs(latlngs);
 
             this._initializeInnerRemoveButtons();
@@ -39190,26 +39188,26 @@ GSI.SakuzuListItem = L.Evented.extend({
 
         }
       } else {
-        for( var i=0; i<latlngs.length; i++ ) {
-          for( var j=1; j<latlngs[i].length; j++ ) {
+        for (var i = 0; i < latlngs.length; i++) {
+          for (var j = 1; j < latlngs[i].length; j++) {
             var center = this._getPolygonCenter(latlngs[i][j]);
             var removeMarker = L.marker(center, {
               icon: L.divIcon({ iconSize: [30, 30], iconAnchor: [16, 16], className: 'gsi_pathframerectangle_removebtn', html: "" }),
               zIndexOffset: 4000
-            }).on("click", L.bind(function(idx, idx2) {
+            }).on("click", L.bind(function (idx, idx2) {
               var latlngs = this._editingEditingLayer.getLatLngs();
-              latlngs[idx].splice( idx2,1);
+              latlngs[idx].splice(idx2, 1);
               this._editingEditingLayer.setLatLngs(latlngs);
 
               this._initializeInnerRemoveButtons();
-            }, this, i,j));
+            }, this, i, j));
             this._removeInnerButtons.addLayer(removeMarker);
 
           }
         }
       }
     }
-    this._removeInnerButtons.addTo( this._owner._map );
+    this._removeInnerButtons.addTo(this._owner._map);
   },
 
   startCreate: function (id) {
@@ -39536,26 +39534,26 @@ GSI.SakuzuListItem = L.Evented.extend({
 
   },
 
-  getReserveLength : function() {
-    if ( !this._reservedFreatureGroup ) return 0;
+  getReserveLength: function () {
+    if (!this._reservedFreatureGroup) return 0;
     return this._reservedFreatureGroup.getLayers().length;
 
   },
 
-  getEditedReserveLength : function() {
-    if ( !this._reservedFreatureGroup ) return 0;
+  getEditedReserveLength: function () {
+    if (!this._reservedFreatureGroup) return 0;
     var layers = this._reservedFreatureGroup.getLayers();
     var num = 0;
-    for(var i=0;i<layers.length; i++ ) {
-      if ( layers[i]._edited ) num++;
+    for (var i = 0; i < layers.length; i++) {
+      if (layers[i]._edited) num++;
 
     }
     return num;
 
   },
 
-  getRemovedReserveLength : function() {
-    if ( !this._reservedFreatureGroup || !this._originalLayers) return 0;
+  getRemovedReserveLength: function () {
+    if (!this._reservedFreatureGroup || !this._originalLayers) return 0;
     return this._originalLayers.length - this._reservedFreatureGroup.getLayers().length;
 
   },
@@ -39565,7 +39563,7 @@ GSI.SakuzuListItem = L.Evented.extend({
     cloneLayer._originalLayer = (layer._originalLayer ? layer._originalLayer : layer);
     layer._cloneLayer = cloneLayer;
 
-    if ( edited == true ) {
+    if (edited == true) {
       cloneLayer._edited = true;
       layer._edited = true;
     }
@@ -39711,7 +39709,7 @@ GSI.SakuzuListItem = L.Evented.extend({
     };
     var path = new GSI.Draw.CircleMarker(this._owner._map, {
       shapeOptions: shapeOptions,
-      repeatMode : true,
+      repeatMode: true,
       edit: { featureGroup: this._editingFreatureGroup },
       showLength: true
     });
@@ -39822,7 +39820,7 @@ GSI.SakuzuListItem = L.Evented.extend({
 
     var path = new GSI.Draw.Circle(this._owner._map, {
       shapeOptions: shapeOptions,
-      repeatMode : true,
+      repeatMode: true,
       edit: { featureGroup: this._editingFreatureGroup },
       showLength: true
     });
@@ -39849,7 +39847,7 @@ GSI.SakuzuListItem = L.Evented.extend({
 
     var path = new GSI.Draw.FreehandPolyline(this._owner._map, {
       shapeOptions: shapeOptions,
-      repeatMode : true,
+      repeatMode: true,
       edit: { featureGroup: this._editingFreatureGroup },
       showLength: true
     });
@@ -39868,7 +39866,7 @@ GSI.SakuzuListItem = L.Evented.extend({
     try {
       this.fire('circlechange', event);
       this._owner.fire('circlechange', event);
-    } catch(ex ) {}
+    } catch (ex) { }
   },
 
   createNext: function (info) {
@@ -39964,7 +39962,7 @@ GSI.SakuzuListItem = L.Evented.extend({
 
           var path = new GSI.Draw.FreehandPolyline(this._owner._map, {
             shapeOptions: shapeOptions,
-            repeatMode:true,
+            repeatMode: true,
             edit: { featureGroup: this._editingFreatureGroup },
             showLength: true
           });
@@ -39973,7 +39971,7 @@ GSI.SakuzuListItem = L.Evented.extend({
           path.enable();
 
         } else {
-        // ライン編集開始
+          // ライン編集開始
           L.drawLocal.draw.handlers.polyline.tooltip.start = '開始位置をクリック';
           L.drawLocal.draw.handlers.polyline.tooltip.cont = '次の位置を選択(最終点を2回クリックして終了)';
           L.drawLocal.draw.handlers.polyline.tooltip.end = GSI.TEXT.LINEEDITTIP + '次の位置を選択(最終点を2回クリックして終了)';
@@ -39986,8 +39984,8 @@ GSI.SakuzuListItem = L.Evented.extend({
             fill: false,
             clickable: true,
             geodesic: true,
-            opacity : 0.5,
-            dashArray : null
+            opacity: 0.5,
+            dashArray: null
           };
 
           if (prevLayer && prevLayer.options) {
@@ -40027,7 +40025,7 @@ GSI.SakuzuListItem = L.Evented.extend({
           fill: true,
           clickable: true,
           geodesic: true,
-          dashArray : null
+          dashArray: null
         };
 
         if (prevLayer && prevLayer.options) {
@@ -40065,7 +40063,7 @@ GSI.SakuzuListItem = L.Evented.extend({
           stroke: true,
           fill: true,
           clickable: true,
-          dashArray : null
+          dashArray: null
         };
 
         if (prevLayer && prevLayer.options) {
@@ -40077,7 +40075,7 @@ GSI.SakuzuListItem = L.Evented.extend({
         }
         var path = new GSI.Draw.CircleMarker(this._owner._map, {
           shapeOptions: shapeOptions,
-          repeatMode : true,
+          repeatMode: true,
           edit: { featureGroup: this._editingFreatureGroup },
           showLength: true
         });
@@ -40104,7 +40102,7 @@ GSI.SakuzuListItem = L.Evented.extend({
           stroke: true,
           fill: true,
           clickable: true,
-          dashArray : null
+          dashArray: null
         };
 
         if (prevLayer && prevLayer.options) {
@@ -40117,7 +40115,7 @@ GSI.SakuzuListItem = L.Evented.extend({
 
         var path = new GSI.Draw.Circle(this._owner._map, {
           shapeOptions: shapeOptions,
-          repeatMode:true,
+          repeatMode: true,
           edit: { featureGroup: this._editingFreatureGroup },
           showLength: true
         });
@@ -40131,7 +40129,7 @@ GSI.SakuzuListItem = L.Evented.extend({
 
     }
 
-    if ( this._removeInnerButtons ) this._removeInnerButtons.remove();
+    if (this._removeInnerButtons) this._removeInnerButtons.remove();
     this._removeInnerButtons = null;
 
     var path = this._nextPath;
@@ -40160,8 +40158,8 @@ GSI.SakuzuListItem = L.Evented.extend({
     var reservedFrameRectangle = null;
 
     if (oldEditingLayer) {
-      if ( info )
-        oldEditingLayer._layerInfo = $.extend( true, {}, info );
+      if (info)
+        oldEditingLayer._layerInfo = $.extend(true, {}, info);
       this._editingEditingLayer = null;
 
       this._addReservedFeature(oldEditingLayer);
@@ -40181,8 +40179,8 @@ GSI.SakuzuListItem = L.Evented.extend({
     return reservedFrameRectangle;
   },
 
-  editRollback : function(finish) {
-    if ( !this._editingEditingLayer || !this._editingOriginalLayer ) return;
+  editRollback: function (finish) {
+    if (!this._editingEditingLayer || !this._editingOriginalLayer) return;
 
     if (!this._reservedFreatureGroup) {
       this._reservedFreatureGroup = L.featureGroup();
@@ -40198,12 +40196,12 @@ GSI.SakuzuListItem = L.Evented.extend({
 
     this._editingFreatureGroup.removeLayer(this._editingEditingLayer);
 
-    if ( !finish) {
+    if (!finish) {
 
       this._editingEditingLayer = this._editingOriginalLayer;
       this._editingEditingLayer._layerInfo = this._editingEditingLayer._information;
 
-      if ( this._editingEditingLayer._cloneLayer )
+      if (this._editingEditingLayer._cloneLayer)
         this._editingEditingLayer._cloneLayer._layerInfo = this._editingEditingLayer._layerInfo;
 
       this._editingOriginalLayer = null;
@@ -40218,7 +40216,7 @@ GSI.SakuzuListItem = L.Evented.extend({
       table: null
     };
 
-    if ( !finish) return ;
+    if (!finish) return;
     var reservedFrameRectangle = null;
 
     if (oldEditingLayer) {
@@ -40338,7 +40336,7 @@ GSI.SakuzuListItem = L.Evented.extend({
           path.enable();
 
         } else {
-        // ライン編集開始
+          // ライン編集開始
           L.drawLocal.draw.handlers.polyline.tooltip.start = '開始位置をクリック';
           L.drawLocal.draw.handlers.polyline.tooltip.cont = '次の位置を選択(最終点を2回クリックして終了)';
           L.drawLocal.draw.handlers.polyline.tooltip.end = GSI.TEXT.LINEEDITTIP + '次の位置を選択(最終点を2回クリックして終了)';
@@ -40351,7 +40349,7 @@ GSI.SakuzuListItem = L.Evented.extend({
             fill: false,
             clickable: true,
             geodesic: true,
-            opacity : 0.5
+            opacity: 0.5
           };
 
           if (prevLayer && prevLayer.options) {
@@ -40491,7 +40489,7 @@ GSI.SakuzuListItem = L.Evented.extend({
 
     }
 
-    if ( this._removeInnerButtons ) this._removeInnerButtons.remove();
+    if (this._removeInnerButtons) this._removeInnerButtons.remove();
     this._removeInnerButtons = null;
 
     var path = this._nextPath;
@@ -40528,7 +40526,7 @@ GSI.SakuzuListItem = L.Evented.extend({
           currentLayer: oldEditingLayer,
           nextPath: path
         });
-      }catch(ex) {
+      } catch (ex) {
 
       }
 
@@ -40618,28 +40616,28 @@ GSI.SakuzuListItem = L.Evented.extend({
 
       this._destroyEditPathList();
 
-    } else if ( this._editingType == GSI.SakuzuListItem.POLYGONINNER) {
+    } else if (this._editingType == GSI.SakuzuListItem.POLYGONINNER) {
 
       var latlngs = this._editingEditingLayer.getLatLngs();
 
-      if ( L.LineUtil.isFlat(latlngs) ) latlngs = [latlngs];
+      if (L.LineUtil.isFlat(latlngs)) latlngs = [latlngs];
 
-      var inner = $.extend(true, [], ( L.LineUtil.isFlat(event.layer._latlngs ) ? event.layer._latlngs :  event.layer._latlngs[0] ) );
+      var inner = $.extend(true, [], (L.LineUtil.isFlat(event.layer._latlngs) ? event.layer._latlngs : event.layer._latlngs[0]));
       latlngs.push(inner);
       this._editingEditingLayer.setLatLngs(latlngs);
       this._startAddInnerPolygon();
 
       return;
 
-    } else if ( this._editingType == GSI.SakuzuListItem.POLYGONINNER2) {
+    } else if (this._editingType == GSI.SakuzuListItem.POLYGONINNER2) {
 
       var latlngs = this._editingEditingLayer.getLatLngs();
 
-      if ( L.LineUtil.isFlat(latlngs) ) latlngs = [latlngs];
+      if (L.LineUtil.isFlat(latlngs)) latlngs = [latlngs];
 
-      var inner = $.extend(true, [], ( L.LineUtil.isFlat(event.layer._latlngs ) ? event.layer._latlngs :  event.layer._latlngs[0] ) );
+      var inner = $.extend(true, [], (L.LineUtil.isFlat(event.layer._latlngs) ? event.layer._latlngs : event.layer._latlngs[0]));
 
-      if ( event.layer.options._ownerIndex || event.layer.options._ownerIndex == 0 )
+      if (event.layer.options._ownerIndex || event.layer.options._ownerIndex == 0)
         latlngs[event.layer.options._ownerIndex].push(inner);
       else
         latlngs.push(inner);
@@ -40664,13 +40662,13 @@ GSI.SakuzuListItem = L.Evented.extend({
     var reservedFrameRectangle = this.createNext();
     this._editReservedPath(reservedFrameRectangle, reservedFrameRectangle._targetPath, true);
 
-    this.fire("created", {"layer":this._editingEditingLayer, "info": this._editingEditingLayerInfo});
+    this.fire("created", { "layer": this._editingEditingLayer, "info": this._editingEditingLayerInfo });
     this._owner.fire('created');
 
     this._fireReserve();
   },
 
-  restartCreate : function() {
+  restartCreate: function () {
 
     if (this._editingPathList) {
       for (var i = 0; i < this._editingPathList.length; i++) {
@@ -40772,14 +40770,14 @@ GSI.SakuzuListItem = L.Evented.extend({
 
   },
 
-  editingCancel : function() {
+  editingCancel: function () {
 
   },
 
-  editingToReserve :function(info) {
+  editingToReserve: function (info) {
     this._owner._map.stopAutoPan();
 
-    if ( this._polyInnerPath ) this.commitPolygonInner();
+    if (this._polyInnerPath) this.commitPolygonInner();
 
     if (!this._reservedFreatureGroup) {
       this._reservedFreatureGroup = L.featureGroup();
@@ -40803,11 +40801,11 @@ GSI.SakuzuListItem = L.Evented.extend({
         oldEditingLayer._layerInfo = {};
       }
 
-      if ( info ) {
-        var newLayerInfo =$.extend( true, {}, info );
+      if (info) {
+        var newLayerInfo = $.extend(true, {}, info);
         oldEditingLayer._layerInfo = newLayerInfo;
       }
-      var changed = !this._layerEquals( this._editingOriginalLayer, oldEditingLayer );
+      var changed = !this._layerEquals(this._editingOriginalLayer, oldEditingLayer);
       this._addReservedFeature(oldEditingLayer, changed);
       oldEditingLayer._cloneLayer._layerInfo = oldEditingLayer._layerInfo;
       this._addReservedFrameRectangle(oldEditingLayer._cloneLayer);
@@ -40816,26 +40814,26 @@ GSI.SakuzuListItem = L.Evented.extend({
     this._editingOriginalLayer = null;
   },
 
-  isEditingChange : function() {
-    if ( !this._editingOriginalLayer || !this._editingEditingLayer ) return false;
-    return !this._layerEquals( this._editingOriginalLayer, this._editingEditingLayer );
+  isEditingChange: function () {
+    if (!this._editingOriginalLayer || !this._editingEditingLayer) return false;
+    return !this._layerEquals(this._editingOriginalLayer, this._editingEditingLayer);
   },
 
-  setEditingInfo : function( info ) {
-    if ( !this._editingEditingLayer) return;
+  setEditingInfo: function (info) {
+    if (!this._editingEditingLayer) return;
 
-    if ( info ) {
-      this._editingEditingLayer._layerInfo = $.extend( true, {}, info );
+    if (info) {
+      this._editingEditingLayer._layerInfo = $.extend(true, {}, info);
     } else {
       oldEditingLayer._layerInfo = {};
     }
   },
 
-  _layerEquals : function( layer1, layer2 ) {
-    var layerType = this._getType( layer1);
-    layer1._information = $.extend( true, {}, layer1._layerInfo );
-    layer2._information = $.extend( true, {}, layer2._layerInfo );
-    var getGetJSON = L.bind(function(layer) {
+  _layerEquals: function (layer1, layer2) {
+    var layerType = this._getType(layer1);
+    layer1._information = $.extend(true, {}, layer1._layerInfo);
+    layer2._information = $.extend(true, {}, layer2._layerInfo);
+    var getGetJSON = L.bind(function (layer) {
       var itemType = this._getType(layer);
       var geoJSONData = null;
 
@@ -40867,19 +40865,19 @@ GSI.SakuzuListItem = L.Evented.extend({
 
       return geoJSONData;
 
-    },this);
+    }, this);
 
-    var l1Txt = JSON.stringify( getGetJSON( layer1) );
-    var l2Txt  =JSON.stringify( getGetJSON( layer2) );
+    var l1Txt = JSON.stringify(getGetJSON(layer1));
+    var l2Txt = JSON.stringify(getGetJSON(layer2));
 
-    return ( l1Txt == l2Txt && layer1.options.geodesic == layer2.options.geodesic );
+    return (l1Txt == l2Txt && layer1.options.geodesic == layer2.options.geodesic);
   },
 
   _editReservedPath: function (rect, layer, withoutEvent) {
 
     this._owner._map.stopAutoPan();
 
-    if ( this._polyInnerPath ) this.commitPolygonInner();
+    if (this._polyInnerPath) this.commitPolygonInner();
 
     if (!this._reservedFreatureGroup) {
       this._reservedFreatureGroup = L.featureGroup();
@@ -40892,7 +40890,7 @@ GSI.SakuzuListItem = L.Evented.extend({
         this._editingPathList[i].disable();
       }
     }
-    if ( rect ) this._reservedFrameFreatureGroup.removeLayer(rect);
+    if (rect) this._reservedFrameFreatureGroup.removeLayer(rect);
     this._reservedFreatureGroup.removeLayer(layer);
 
     this._editingPathList = [];
@@ -40910,7 +40908,7 @@ GSI.SakuzuListItem = L.Evented.extend({
 
     this._editingOriginalLayer = layer;
 
-    if ( !layer) {
+    if (!layer) {
 
       if (oldEditingLayer) {
         oldEditingLayer._cloneLayer._layerInfo = oldEditingLayer._layerInfo;
@@ -40926,11 +40924,11 @@ GSI.SakuzuListItem = L.Evented.extend({
     }
 
     (layer._parent ? layer._parent : this._layer).removeLayer(layer);
-    this._editingEditingLayer = this._cloneLayer(this._editingType ,layer);
+    this._editingEditingLayer = this._cloneLayer(this._editingType, layer);
     this._editingFreatureGroup.addLayer(this._editingEditingLayer);
 
-    if(!withoutEvent) {
-      this.fire("editstart", {"layer": this._editingEditingLayer, "info":this._editingEditingLayer._layerInfo});
+    if (!withoutEvent) {
+      this.fire("editstart", { "layer": this._editingEditingLayer, "info": this._editingEditingLayer._layerInfo });
     }
     try {
       this._owner.fire("createedit", {
@@ -40938,7 +40936,7 @@ GSI.SakuzuListItem = L.Evented.extend({
         currentLayer: this._editingEditingLayer,
         itemType: this._getType(layer)
       });
-    } catch(ex) {}
+    } catch (ex) { }
 
     if (oldEditingLayer) {
       oldEditingLayer._cloneLayer._layerInfo = oldEditingLayer._layerInfo;
@@ -40947,11 +40945,11 @@ GSI.SakuzuListItem = L.Evented.extend({
     this._reservedFrameFreatureGroup.addTo(this._owner._map);
     this._startPathEdit();
 
-    if(!withoutEvent) this._fireReserve();
+    if (!withoutEvent) this._fireReserve();
   },
 
-  _fireReserve : function() {
-    this.fire("reserve", {"len": this._reservedFreatureGroup.getLayers().length});
+  _fireReserve: function () {
+    this.fire("reserve", { "len": this._reservedFreatureGroup.getLayers().length });
   },
 
   _nextStartCreate: function (layerType, path) {
@@ -41108,11 +41106,11 @@ GSI.SakuzuListItem = L.Evented.extend({
     }
   },
 
-  startPolygonInner : function() {
+  startPolygonInner: function () {
 
     var targetLayer = this._editingEditingLayer;
 
-    for ( var i=0; i<this._editingPathList.length; i++ ) {
+    for (var i = 0; i < this._editingPathList.length; i++) {
       this._editingPathList[i].disable();
     }
 
@@ -41123,24 +41121,24 @@ GSI.SakuzuListItem = L.Evented.extend({
     this._startAddInnerPolygon2();
   },
 
-  commitPolygonInner : function() {
-    if ( this._polyInnerPath ) this._polyInnerPath.disable();
+  commitPolygonInner: function () {
+    if (this._polyInnerPath) this._polyInnerPath.disable();
     this._polyInnerPath = undefined;
-    if ( this._removeInnerButtons ) this._removeInnerButtons.remove();
+    if (this._removeInnerButtons) this._removeInnerButtons.remove();
     this._removeInnerButtons = undefined;
 
     this._editingType = this._editingTypeBuff;
 
-    for ( var i=0; i<this._editingPathList.length; i++ ) {
+    for (var i = 0; i < this._editingPathList.length; i++) {
       this._editingPathList[i].enable();
     }
   },
 
-  rollbackPolygonInner : function() {
+  rollbackPolygonInner: function () {
 
   },
 
-  _startAddInnerPolygon2 : function() {
+  _startAddInnerPolygon2: function () {
 
     // ポリゴン編集開始
     L.drawLocal.draw.handlers.polygon.tooltip.start = '中抜き-開始位置をクリック';
@@ -41160,16 +41158,16 @@ GSI.SakuzuListItem = L.Evented.extend({
       geodesic: true
     };
 
-    if ( this._editingEditingLayer.options.weight ) {
+    if (this._editingEditingLayer.options.weight) {
       shapeOptions.weight = this._editingEditingLayer.options.weight;
     }
-    if ( this._editingEditingLayer.options.color ) {
+    if (this._editingEditingLayer.options.color) {
       shapeOptions.color = this._editingEditingLayer.options.color;
     }
-    if ( !this._editingEditingLayer.options.stroke ) {
+    if (!this._editingEditingLayer.options.stroke) {
       shapeOptions.stroke = false;
     }
-    if ( this._editingEditingLayer.options.opacity != undefined ) {
+    if (this._editingEditingLayer.options.opacity != undefined) {
       shapeOptions.opacity = this._editingEditingLayer.options.opacity;
     }
 
@@ -41186,7 +41184,7 @@ GSI.SakuzuListItem = L.Evented.extend({
       edit: { featureGroup: this._editingFreatureGroup },
       showArea: true,
       allowIntersection: false,
-      ownerPolygon : this._editingEditingLayer
+      ownerPolygon: this._editingEditingLayer
     });
 
     path.enable();
@@ -41390,7 +41388,7 @@ GSI.SakuzuListItem = L.Evented.extend({
         }
         catch (e) {
           console.log(e);
-         }
+        }
       }
 
       delete this._editingPathList;
@@ -41410,10 +41408,10 @@ GSI.SakuzuListItem = L.Evented.extend({
   _destroyEditObjects: function () {
     this._editingEditingLayerInfo = null;
 
-    if ( this._polyInnerPath ) this._polyInnerPath.disable();
+    if (this._polyInnerPath) this._polyInnerPath.disable();
     this._polyInnerPath = null;
 
-    if ( this._removeInnerButtons ) this._removeInnerButtons.remove();
+    if (this._removeInnerButtons) this._removeInnerButtons.remove();
     this._removeInnerButtons = null;
 
     this._owner._mapMouse.setClickMoveEnable(true);
@@ -41551,7 +41549,7 @@ GSI.SakuzuListItem = L.Evented.extend({
   },
 
   toKML: function (styleList) {
-    if ( !this._layer.getLayers ) return [];
+    if (!this._layer.getLayers) return [];
     // KML生成
     var data = '';
     var layers = this._layer.getLayers();
@@ -41846,8 +41844,8 @@ GSI.SakuzuListItem = L.Evented.extend({
       style: '',
       data: ''
     };
-    result.data  = "";
-    for( var i=0; i<latLngs.length; i++ ) {
+    result.data = "";
+    for (var i = 0; i < latLngs.length; i++) {
 
       result.data += '<Placemark>\n';
 
@@ -41861,10 +41859,10 @@ GSI.SakuzuListItem = L.Evented.extend({
         '<styleUrl>#' + styleId + '</styleUrl>' + '\n' +
         '<Polygon>' + '\n';
 
-      for( var j= 0; j<latLngs[i].length; j++ ) {
-        result.data += ( j== 0 ? '<outerBoundaryIs>' : '<innerBoundaryIs>' ) + '\n' +
-        '<LinearRing>' + '\n' +
-        '<coordinates>';
+      for (var j = 0; j < latLngs[i].length; j++) {
+        result.data += (j == 0 ? '<outerBoundaryIs>' : '<innerBoundaryIs>') + '\n' +
+          '<LinearRing>' + '\n' +
+          '<coordinates>';
         for (var k = 0; k < latLngs[i][j].length; k++) {
           result.data += (k > 0 ? ' ' : '')
             + latLngs[i][j][k].lng + "," + latLngs[i][j][k].lat + (latLngs[i][j][k].alt ? "," + latLngs[i][j][k].alt : "");
@@ -41874,8 +41872,8 @@ GSI.SakuzuListItem = L.Evented.extend({
           result.data += ' ' + latLngs[i][j][0].lng + "," + latLngs[i][j][0].lat + (latLngs[i][j][0].alt ? "," + latLngs[i][j][0].alt : "");
         }
         result.data += '</coordinates>\n' +
-        '</LinearRing>' + '\n' +
-        ( j== 0 ? '</outerBoundaryIs>' : '</innerBoundaryIs>' ) + '\n';
+          '</LinearRing>' + '\n' +
+          (j == 0 ? '</outerBoundaryIs>' : '</innerBoundaryIs>') + '\n';
       }
       result.data +=
         '</Polygon>\n';
@@ -42054,10 +42052,10 @@ GSI.SakuzuListItem = L.Evented.extend({
     var flat = L.LineUtil.isFlat(latLngs);
 
     if (flat) latLngs = [latLngs];
-    for( var i= 0; i<latLngs.length; i++ ) {
-      result.data += ( i== 0 ? '<outerBoundaryIs>' : '<innerBoundaryIs>' ) + '\n' +
-      '<LinearRing>' + '\n' +
-      '<coordinates>';
+    for (var i = 0; i < latLngs.length; i++) {
+      result.data += (i == 0 ? '<outerBoundaryIs>' : '<innerBoundaryIs>') + '\n' +
+        '<LinearRing>' + '\n' +
+        '<coordinates>';
       for (var j = 0; j < latLngs[i].length; j++) {
         result.data += (j > 0 ? ' ' : '')
           + latLngs[i][j].lng + "," + latLngs[i][j].lat + (latLngs[i][j].alt ? "," + latLngs[i][j].alt : "");
@@ -42067,8 +42065,8 @@ GSI.SakuzuListItem = L.Evented.extend({
         result.data += ' ' + latLngs[i][0].lng + "," + latLngs[i][0].lat + (latLngs[i][0].alt ? "," + latLngs[i][0].alt : "");
       }
       result.data += '</coordinates>\n' +
-      '</LinearRing>' + '\n' +
-      ( i== 0 ? '</outerBoundaryIs>' : '</innerBoundaryIs>' ) + '\n';
+        '</LinearRing>' + '\n' +
+        (i == 0 ? '</outerBoundaryIs>' : '</innerBoundaryIs>') + '\n';
     }
     result.data +=
       '</Polygon>\n' +
@@ -42128,7 +42126,7 @@ GSI.SakuzuListItem = L.Evented.extend({
 
   toGeoJSON: function () {
 
-    if ( !this._layer.getLayers ) return [];
+    if (!this._layer.getLayers) return [];
 
     // GeoJSON生成
     var features = [];
@@ -42257,7 +42255,7 @@ GSI.SakuzuListItem = L.Evented.extend({
     result.properties["_color"] = color;
     result.properties["_opacity"] = opacity;
     result.properties["_weight"] = parseInt(weight);
-    if ( dashArray && dashArray != "" ) result.properties["_dashArray"] = dashArray;
+    if (dashArray && dashArray != "") result.properties["_dashArray"] = dashArray;
 
     if (layer.feature && layer.feature.properties) {
       for (var key in layer.feature.properties) {
@@ -42299,7 +42297,7 @@ GSI.SakuzuListItem = L.Evented.extend({
     result.properties["_fillColor"] = fillColor;
     result.properties["_fillOpacity"] = fillOpacity;
     result.properties["_radius"] = parseFloat(parseFloat(layer.getRadius()).toFixed(1));
-    if ( dashArray && dashArray != "" ) result.properties["_dashArray"] = dashArray;
+    if (dashArray && dashArray != "") result.properties["_dashArray"] = dashArray;
 
     if (layer.feature && layer.feature.properties) {
       for (var key in layer.feature.properties) {
@@ -42390,7 +42388,7 @@ GSI.SakuzuListItem = L.Evented.extend({
     result.properties["_weight"] = parseInt(weight);
     result.properties["_fillColor"] = fillColor;
     result.properties["_fillOpacity"] = fillOpacity;
-    if ( dashArray && dashArray != "" ) result.properties["_dashArray"] = dashArray;
+    if (dashArray && dashArray != "") result.properties["_dashArray"] = dashArray;
 
     if (layer.feature && layer.feature.properties) {
       for (var key in layer.feature.properties) {
@@ -42430,9 +42428,9 @@ GSI.SakuzuListItem.MULTIPOINT = "multipoint";
 GSI.SakuzuListItem.MULTILINESTRING = "multiline";
 GSI.SakuzuListItem.MULTIPOLYGON = "multipolygon";
 
-GSI.SakuzuListItem.typeToTitle = function(drawType) {
+GSI.SakuzuListItem.typeToTitle = function (drawType) {
   var result = "";
-  switch(drawType) {
+  switch (drawType) {
     case GSI.SakuzuListItem.POINT:
       result = "マーカー（アイコン）";
       break;
@@ -42442,32 +42440,32 @@ GSI.SakuzuListItem.typeToTitle = function(drawType) {
       break;
 
     case GSI.SakuzuListItem.POINT_CIRCLE:
-        result = "マーカー（円）";
-        break;
+      result = "マーカー（円）";
+      break;
 
     case GSI.SakuzuListItem.POINT_TEXT:
-        result = "テキスト";
-        break;
+      result = "テキスト";
+      break;
 
     case GSI.SakuzuListItem.LINESTRING:
-        result = "線";
-        break;
+      result = "線";
+      break;
 
     case GSI.SakuzuListItem.MULTILINESTRING:
-        result = "線（マルチパート）";
-        break;
+      result = "線（マルチパート）";
+      break;
 
     case GSI.SakuzuListItem.POLYGON:
-        result = "ポリゴン";
-        break;
+      result = "ポリゴン";
+      break;
 
     case GSI.SakuzuListItem.CIRCLE:
-        result = "円";
-        break;
+      result = "円";
+      break;
 
     case GSI.SakuzuListItem.FREEHAND:
-        result = "フリーハンドの線";
-        break;
+      result = "フリーハンドの線";
+      break;
 
     case GSI.SakuzuListItem.MULTIPOLYGON:
       result = "ポリゴン（マルチパート）";
@@ -42522,13 +42520,13 @@ GSI.SakuzuList = L.Evented.extend({
     }
   },
 
-  getSaveTargetLayerCount : function() {
+  getSaveTargetLayerCount: function () {
     var totalLayerCount = 0;
     for (var i = 0; i < this._list.length; i++) {
       var item = this._list[i];
       var dataType = item.getDataType();
       if (dataType != GSI.SakuzuListItem.IMAGE && dataType != GSI.SakuzuListItem.IMAGEICON)
-        totalLayerCount+=item.getLayerCount();
+        totalLayerCount += item.getLayerCount();
     }
 
     return totalLayerCount;
@@ -42571,10 +42569,10 @@ GSI.SakuzuList = L.Evented.extend({
     }
   },
 
-  loadFromImage: function( buff, fileName ) {
+  loadFromImage: function (buff, fileName) {
 
     var layer = new GSI.GeoTIFFImageOverlay();
-    layer._setImage( buff );
+    layer._setImage(buff);
 
     var item = new GSI.SakuzuListItem(
       this, GSI.SakuzuListItem.IMAGE, fileName, fileName, layer, true);
@@ -42590,16 +42588,16 @@ GSI.SakuzuList = L.Evented.extend({
 
   },
 
-  getGeotiffList : function() {
+  getGeotiffList: function () {
 
-    var list =[];
+    var list = [];
 
-    for( var i=0; i<this._list.length; i++ ) {
+    for (var i = 0; i < this._list.length; i++) {
       var item = this._list[i];
-      if ( !item._visible || item._dataType != GSI.SakuzuListItem.IMAGE ) continue;
+      if (!item._visible || item._dataType != GSI.SakuzuListItem.IMAGE) continue;
 
-      list.push( {
-        canvas : item._layer._image,
+      list.push({
+        canvas: item._layer._image,
         sw: item._layer._bounds.getSouthWest(),
         ne: item._layer._bounds.getNorthEast()
       });
@@ -42608,23 +42606,23 @@ GSI.SakuzuList = L.Evented.extend({
     return list;
   },
 
-  loadFromImageList: function( list ) {
+  loadFromImageList: function (list) {
 
     var addedList = [];
-    for( var i=0; i<list.length; i++ ) {
-      var buff  = list[i].data;
+    for (var i = 0; i < list.length; i++) {
+      var buff = list[i].data;
       var fileName = list[i].fileName;
       var file = list[i].file;
       // Tiff
       try {
         var layer = new GSI.GeoTIFFImageOverlay();
-        layer._setImage( buff );
+        layer._setImage(buff);
 
         var item = new GSI.SakuzuListItem(
           this, GSI.SakuzuListItem.IMAGE, fileName, fileName, layer, true);
         this._list.push(item);
-        addedList.push( item);
-      }catch (ex) {
+        addedList.push(item);
+      } catch (ex) {
         // Jpeg
         try {
 
@@ -42633,37 +42631,37 @@ GSI.SakuzuList = L.Evented.extend({
           var item = new GSI.SakuzuListItem(
             this, GSI.SakuzuListItem.IMAGEICON, fileName, fileName, layer, true);
           this._list.push(item);
-          addedList.push( item);
-        } catch( ex) {
+          addedList.push(item);
+        } catch (ex) {
 
         }
       }
     }
 
     var boundsAll = null;
-    for( var i=0; i<addedList.length; i++ ) {
+    for (var i = 0; i < addedList.length; i++) {
       var addedItem = addedList[i];
       if (addedItem._layer && addedItem._layer.getBounds) {
 
         try {
           var bounds = addedItem._layer.getBounds();
-          if ( !boundsAll ) boundsAll= bounds;
-          else boundsAll.extend( bounds);
+          if (!boundsAll) boundsAll = bounds;
+          else boundsAll.extend(bounds);
         } catch (e) {
         }
       } else if (addedItem._layer && addedItem._layer.getLatLng) {
 
         try {
           var latLng = addedItem._layer.getLatLng();
-          if ( !boundsAll ) boundsAll= new L.LatLngBounds();
+          if (!boundsAll) boundsAll = new L.LatLngBounds();
 
-          boundsAll.extend( latLng);
+          boundsAll.extend(latLng);
         } catch (e) {
         }
       }
 
     }
-    if ( boundsAll)
+    if (boundsAll)
       this._map.fitBounds(boundsAll);
 
     this.fire('load', { error: (addedList.length > 0 ? false : true) });
@@ -42695,7 +42693,7 @@ GSI.SakuzuList = L.Evented.extend({
 
   loadFromTextList: function (list) {
     var addedList = [];
-    for( var i=0; i<list.length; i++ ) {
+    for (var i = 0; i < list.length; i++) {
       var item = null;
       try {
         var json = JSON.parse(list[i].data);
@@ -42707,55 +42705,55 @@ GSI.SakuzuList = L.Evented.extend({
         }
         catch (e) { }
       }
-      if ( item ) {
+      if (item) {
         addedList.push(item);
       }
     }
 
     var boundsAll = null;
-    for( var i=0; i<addedList.length; i++ ) {
+    for (var i = 0; i < addedList.length; i++) {
       var addedItem = addedList[i];
 
       if (addedItem._layer && addedItem._layer.getBounds) {
 
         try {
           var bounds = addedItem._layer.getBounds();
-          if ( !boundsAll ) boundsAll= bounds;
-          else boundsAll.extend( bounds);
+          if (!boundsAll) boundsAll = bounds;
+          else boundsAll.extend(bounds);
         } catch (e) {
-         }
+        }
 
       }
-      if ( boundsAll)
+      if (boundsAll)
         this._map.fitBounds(boundsAll);
     }
     this.fire('load', { error: (addedList.length ? false : true) });
     this.fire('change');
   },
 
-  loadFromCSV : function(txt, fname) {
-    if ( !this._csvLoadDialog) {
+  loadFromCSV: function (txt, fname) {
+    if (!this._csvLoadDialog) {
       var windowSize = GSI.Utils.getScreenSize();
       this._csvLoadDialog = new GSI.CSVLoadDialog(this._gsimaps, this._gsimaps._mainMap._dialogManager, this._gsimaps._mainMap.getMap(), {
         width: 350,
-        left: Math.floor( windowSize.w /2 - 180 ),
-        top: Math.floor( windowSize.h /2 - 180 ),
-        height:"auto",
+        left: Math.floor(windowSize.w / 2 - 180),
+        top: Math.floor(windowSize.h / 2 - 180),
+        height: "auto",
         effect: CONFIG.EFFECTS.DIALOG,
         resizable: "e,w"
       });
     }
-    this._csvLoadDialog.show(txt,fname);
+    this._csvLoadDialog.show(txt, fname);
   },
 
-  loadFromCSVList : function(list) {
-    if ( !this._csvLoadDialog) {
+  loadFromCSVList: function (list) {
+    if (!this._csvLoadDialog) {
       var windowSize = GSI.Utils.getScreenSize();
       this._csvLoadDialog = new GSI.CSVLoadDialog(this._gsimaps, this._gsimaps._mainMap._dialogManager, this._gsimaps._mainMap.getMap(), {
         width: 350,
-        left: Math.floor( windowSize.w /2 - 180 ),
-        top: Math.floor( windowSize.h /2 - 180 ),
-        height:"auto",
+        left: Math.floor(windowSize.w / 2 - 180),
+        top: Math.floor(windowSize.h / 2 - 180),
+        height: "auto",
         effect: CONFIG.EFFECTS.DIALOG,
         resizable: "e,w"
       });
@@ -42764,7 +42762,7 @@ GSI.SakuzuList = L.Evented.extend({
     this._csvLoadDialog.show(list);
   },
 
-  addCSVGeoJSON: function( geoJSON, fileName ) {
+  addCSVGeoJSON: function (geoJSON, fileName) {
     item = this._loadJSON(fileName, geoJSON);
 
     try {
@@ -42780,22 +42778,22 @@ GSI.SakuzuList = L.Evented.extend({
   _onFileLoad: function (fileName) {
     var item = null;
 
-    if ( fileName.match(/\.tif[f]*$/i )) {
+    if (fileName.match(/\.tif[f]*$/i)) {
       this.loadFromImage(this._fileReader.result, fileName);
       return;
-    } else if (fileName.match(/\.csv$/i) ) {
+    } else if (fileName.match(/\.csv$/i)) {
 
       var arr = Encoding.convert(new Uint8Array(this._fileReader.result), "UNICODE", "AUTO");
-      if ( arr[0] == 65279 ) arr.splice(0,1);
+      if (arr[0] == 65279) arr.splice(0, 1);
       var txt = Encoding.codeToString(arr);
-      this.loadFromCSV( txt, fileName );
+      this.loadFromCSV(txt, fileName);
       this.fire('load', { error: false });
       return;
     }
     try {
 
       var arr = Encoding.convert(new Uint8Array(this._fileReader.result), "UNICODE", "AUTO");
-      if ( arr[0] == 65279 ) arr.splice(0,1);
+      if (arr[0] == 65279) arr.splice(0, 1);
       var txt = Encoding.codeToString(arr);
       var json = JSON.parse(txt);
 
@@ -43005,15 +43003,15 @@ GSI.SakuzuDialog = GSI.Dialog.extend({
     return $('<div>').append(this._title);
   },
 
-  _createAfter : function() {
+  _createAfter: function () {
     //ui-resizable-handle ui-resizable-s
-    this.container.find(".ui-resizable-handle.ui-resizable-s").on("dblclick", L.bind(function(){
+    this.container.find(".ui-resizable-handle.ui-resizable-s").on("dblclick", L.bind(function () {
       this._topPanelHeight = undefined;
       try {
-        this._topPanelList.css({"height":"auto"});
-        this.container.css({"height":"auto"});
-      } catch(ex) {}
-    },this));
+        this._topPanelList.css({ "height": "auto" });
+        this.container.css({ "height": "auto" });
+      } catch (ex) { }
+    }, this));
   },
 
   createContent: function () {
@@ -43041,16 +43039,20 @@ GSI.SakuzuDialog = GSI.Dialog.extend({
 
     // ファイル
     btn = $('<a>').addClass("").attr({ "href": "javascript:void(0);" }).append(
-      $('<img>').attr({ 'src': 'image/sakuzu/icon_fileopen.png',
-      'title': GSI.Utils.getTooltipText("SAKUZU","LOAD") }).css({ 'width': '24px', 'height': '24px' })
-    ).on('click',L.bind(this._toolBtnClick, this, "file_load"));
+      $('<img>').attr({
+        'src': 'image/sakuzu/icon_fileopen.png',
+        'title': GSI.Utils.getTooltipText("SAKUZU", "LOAD")
+      }).css({ 'width': '24px', 'height': '24px' })
+    ).on('click', L.bind(this._toolBtnClick, this, "file_load"));
     frame.append(btn);
     this._openFileButton = btn;
 
     btn = $('<a>').attr({ "href": "javascript:void(0);" }).append(
-      $('<img>').attr({ 'src': 'image/sakuzu/icon_filesave.png',
-      'title': GSI.Utils.getTooltipText("SAKUZU","SAVE") }).css({ 'width': '24px', 'height': '24px' })
-    ).on('click',L.bind(this._toolBtnClick, this, "file_save"));
+      $('<img>').attr({
+        'src': 'image/sakuzu/icon_filesave.png',
+        'title': GSI.Utils.getTooltipText("SAKUZU", "SAVE")
+      }).css({ 'width': '24px', 'height': '24px' })
+    ).on('click', L.bind(this._toolBtnClick, this, "file_save"));
     frame.append(btn);
     this._saveFileButton = btn;
 
@@ -43059,51 +43061,65 @@ GSI.SakuzuDialog = GSI.Dialog.extend({
 
     // ポイント
     btn = $('<a>').addClass(GSI.SakuzuListItem.POINT).attr({ "href": "javascript:void(0);" }).append(
-      $('<img>').attr({ 'src': 'image/sakuzu/icon_mark.png',
-      'title': GSI.Utils.getTooltipText("SAKUZU","MARKER") }).css({ 'width': '24px', 'height': '24px' })
-    ).on('click',L.bind(this._toolBtnClick, this, GSI.SakuzuListItem.POINT));
+      $('<img>').attr({
+        'src': 'image/sakuzu/icon_mark.png',
+        'title': GSI.Utils.getTooltipText("SAKUZU", "MARKER")
+      }).css({ 'width': '24px', 'height': '24px' })
+    ).on('click', L.bind(this._toolBtnClick, this, GSI.SakuzuListItem.POINT));
     frame.append(btn);
 
     // 円（マーカー）
     btn = $('<a>').addClass(GSI.SakuzuListItem.POINT_CIRCLE).attr({ "href": "javascript:void(0);" }).append(
-      $('<img>').attr({ 'src': 'image/sakuzu/icon_markc.png',
-      'title': GSI.Utils.getTooltipText("SAKUZU","CIRCLEMARKER") }).css({ 'width': '24px', 'height': '24px' })
-    ).on('click',L.bind(this._toolBtnClick, this, GSI.SakuzuListItem.POINT_CIRCLE));
+      $('<img>').attr({
+        'src': 'image/sakuzu/icon_markc.png',
+        'title': GSI.Utils.getTooltipText("SAKUZU", "CIRCLEMARKER")
+      }).css({ 'width': '24px', 'height': '24px' })
+    ).on('click', L.bind(this._toolBtnClick, this, GSI.SakuzuListItem.POINT_CIRCLE));
     frame.append(btn);
 
     // 線
     btn = $('<a>').addClass(GSI.SakuzuListItem.LINESTRING).attr({ "href": "javascript:void(0);" }).append(
-      $('<img>').attr({ 'src': 'image/sakuzu/icon_line.png',
-      'title': GSI.Utils.getTooltipText("SAKUZU","LINE") }).css({ 'width': '24px', 'height': '24px' })
-    ).on('click',L.bind(this._toolBtnClick, this, GSI.SakuzuListItem.LINESTRING));
+      $('<img>').attr({
+        'src': 'image/sakuzu/icon_line.png',
+        'title': GSI.Utils.getTooltipText("SAKUZU", "LINE")
+      }).css({ 'width': '24px', 'height': '24px' })
+    ).on('click', L.bind(this._toolBtnClick, this, GSI.SakuzuListItem.LINESTRING));
     frame.append(btn);
 
     // ポリゴン
     btn = $('<a>').addClass(GSI.SakuzuListItem.POLYGON).attr({ "href": "javascript:void(0);" }).append(
-      $('<img>').attr({ 'src': 'image/sakuzu/icon_polygon.png',
-      'title': GSI.Utils.getTooltipText("SAKUZU","POLYGON") }).css({ 'width': '24px', 'height': '24px' })
-    ).on('click',L.bind(this._toolBtnClick, this, GSI.SakuzuListItem.POLYGON));
+      $('<img>').attr({
+        'src': 'image/sakuzu/icon_polygon.png',
+        'title': GSI.Utils.getTooltipText("SAKUZU", "POLYGON")
+      }).css({ 'width': '24px', 'height': '24px' })
+    ).on('click', L.bind(this._toolBtnClick, this, GSI.SakuzuListItem.POLYGON));
     frame.append(btn);
 
     // 円
     btn = $('<a>').addClass(GSI.SakuzuListItem.CIRCLE).attr({ "href": "javascript:void(0);" }).append(
-      $('<img>').attr({ 'src': 'image/sakuzu/icon_circle.png',
-      'title': GSI.Utils.getTooltipText("SAKUZU","CIRCLE") }).css({ 'width': '24px', 'height': '24px' })
-    ).on('click',L.bind(this._toolBtnClick, this, GSI.SakuzuListItem.CIRCLE));
+      $('<img>').attr({
+        'src': 'image/sakuzu/icon_circle.png',
+        'title': GSI.Utils.getTooltipText("SAKUZU", "CIRCLE")
+      }).css({ 'width': '24px', 'height': '24px' })
+    ).on('click', L.bind(this._toolBtnClick, this, GSI.SakuzuListItem.CIRCLE));
     frame.append(btn);
 
     // ポイント(テキスト)
     btn = $('<a>').addClass(GSI.SakuzuListItem.POINT_TEXT).attr({ "href": "javascript:void(0);" }).append(
-      $('<img>').attr({ 'src': 'image/sakuzu/icon_text.png',
-      'title': GSI.Utils.getTooltipText("SAKUZU","TEXT") }).css({ 'width': '24px', 'height': '24px' })
-    ).on('click',L.bind(this._toolBtnClick, this, GSI.SakuzuListItem.POINT_TEXT));
+      $('<img>').attr({
+        'src': 'image/sakuzu/icon_text.png',
+        'title': GSI.Utils.getTooltipText("SAKUZU", "TEXT")
+      }).css({ 'width': '24px', 'height': '24px' })
+    ).on('click', L.bind(this._toolBtnClick, this, GSI.SakuzuListItem.POINT_TEXT));
     frame.append(btn);
 
     // フリーハンド
     btn = $('<a>').addClass(GSI.SakuzuListItem.FREEHAND).attr({ "href": "javascript:void(0);" }).append(
-      $('<img>').attr({ 'src': 'image/sakuzu/icon_freehand.png',
-      'title': GSI.Utils.getTooltipText("SAKUZU","FREEHAND") }).css({ 'width': '24px', 'height': '24px' })
-    ).on('click',L.bind(this._toolBtnClick, this, GSI.SakuzuListItem.FREEHAND));
+      $('<img>').attr({
+        'src': 'image/sakuzu/icon_freehand.png',
+        'title': GSI.Utils.getTooltipText("SAKUZU", "FREEHAND")
+      }).css({ 'width': '24px', 'height': '24px' })
+    ).on('click', L.bind(this._toolBtnClick, this, GSI.SakuzuListItem.FREEHAND));
     frame.append(btn);
 
     frame.append($('<div>').css({ clear: 'both' }));
@@ -43120,22 +43136,22 @@ GSI.SakuzuDialog = GSI.Dialog.extend({
     return frame;
   },
 
-  _refreshToolButton : function() {
+  _refreshToolButton: function () {
 
     this._topPanelToolBar.find("a").removeClass("active");
-    if ( this._drawManager && this._drawManager.isRunning() && this._drawManager.getDrawType()!="") {
+    if (this._drawManager && this._drawManager.isRunning() && this._drawManager.getDrawType() != "") {
 
-      this._topPanelToolBar.find("a." + this._drawManager.getDrawType() ).addClass("active");
+      this._topPanelToolBar.find("a." + this._drawManager.getDrawType()).addClass("active");
     }
 
     var liList = this._listUL.find("li");
     liList.removeClass("editing");
     liList.removeClass("creating");
 
-    if ( !this._drawManager ) return;
-    for( var i=0; i<liList.length; i++ ) {
+    if (!this._drawManager) return;
+    for (var i = 0; i < liList.length; i++) {
       var sakuzuItem = $(liList[i]).data("sakuzuItem");
-      if ( sakuzuItem == this._drawManager.getSakuzuItem()) {
+      if (sakuzuItem == this._drawManager.getSakuzuItem()) {
         var editing = this._drawManager instanceof GSI.EditManager;
         $(liList[i]).addClass(editing ? "editing" : "creating");
         break;
@@ -43148,14 +43164,14 @@ GSI.SakuzuDialog = GSI.Dialog.extend({
     this._refreshList();
   },
 
-  _onSakuzuListChange : function() {
+  _onSakuzuListChange: function () {
     this._refreshList();
     this._refreshFileButton();
   },
 
-  _refreshFileButton : function() {
+  _refreshFileButton: function () {
 
-    if ( this._sakuzuList.getSaveTargetLayerCount() > 0 ) {
+    if (this._sakuzuList.getSaveTargetLayerCount() > 0) {
       this._saveFileButton.removeClass("disabled");
     } else {
       this._saveFileButton.addClass("disabled");
@@ -43164,7 +43180,7 @@ GSI.SakuzuDialog = GSI.Dialog.extend({
 
   _refreshList: function () {
     //自動調整用css再設定
-    this.container.css({height:"auto"});
+    this.container.css({ height: "auto" });
 
     this._listUL.empty();
 
@@ -43173,17 +43189,17 @@ GSI.SakuzuDialog = GSI.Dialog.extend({
     this._sakuzuList.eachItems(L.bind(function (item) {
       item._viewData = {};
 
-      var table = $("<table>").css({"width": "100%"});
+      var table = $("<table>").css({ "width": "100%" });
       var tbody = $("<tbody>")
       var tr = $('<tr>');
       var td = null;
       var id = 'GSI_SakuzuDialog_check' + GSI.Utils.getCurrentID();
 
       // 表示チェック
-//      var checkBox = $('<input>').attr({ 'id': id, 'type': 'checkbox', 'checked': item.getVisible() }).addClass('normalcheck');
-      var checkBox = $('<input>').attr({ 'id': id, 'type': 'checkbox'}).addClass('normalcheck');
+      //      var checkBox = $('<input>').attr({ 'id': id, 'type': 'checkbox', 'checked': item.getVisible() }).addClass('normalcheck');
+      var checkBox = $('<input>').attr({ 'id': id, 'type': 'checkbox' }).addClass('normalcheck');
       checkBox.prop('checked', item.getVisible());
-      checkBox.on('click',L.bind(function (checkBox, item) {
+      checkBox.on('click', L.bind(function (checkBox, item) {
         item.setVisible(checkBox.is(':checked'));
       }, this, checkBox, item));
 
@@ -43233,11 +43249,11 @@ GSI.SakuzuDialog = GSI.Dialog.extend({
       if (dataType != GSI.SakuzuListItem.IMAGE && dataType != GSI.SakuzuListItem.IMAGEICON) {
         tr = $('<tr>');
         id = 'GSI_SakuzuDialog_label_check' + GSI.Utils.getCurrentID();
-//        var checkbox2 = $('<input>').attr({ 'id': id, 'type': 'checkbox', 'checked': item.getIconLabelVisible() }).addClass('normalcheck');
-        var checkbox2 = $('<input>').attr({ 'id': id, 'type': 'checkbox'}).addClass('normalcheck');
+        //        var checkbox2 = $('<input>').attr({ 'id': id, 'type': 'checkbox', 'checked': item.getIconLabelVisible() }).addClass('normalcheck');
+        var checkbox2 = $('<input>').attr({ 'id': id, 'type': 'checkbox' }).addClass('normalcheck');
         checkbox2.prop('checked', item.getIconLabelVisible());
 
-        checkbox2.on('click',L.bind(function (checkBox2, item) {
+        checkbox2.on('click', L.bind(function (checkBox2, item) {
           item.setIconLabelVisible(checkBox2.is(':checked'));
           // ラベル選択コンボボックス 表示/非表示
           if (checkBox2.is(':checked')) {
@@ -43252,12 +43268,12 @@ GSI.SakuzuDialog = GSI.Dialog.extend({
 
         // ラベル選択コンボボックス作成
         var keyNameList = ['name'];
-        item._layer.getLayers().forEach(function(lval,index,ar) {
+        item._layer.getLayers().forEach(function (lval, index, ar) {
           if (lval.feature) {
-            if (lval.feature.geometry.type.toLowerCase() == 'point' && (lval.feature.properties._markerType == undefined || lval.feature.properties._markerType.toLowerCase() =="icon")) {
+            if (lval.feature.geometry.type.toLowerCase() == 'point' && (lval.feature.properties._markerType == undefined || lval.feature.properties._markerType.toLowerCase() == "icon")) {
               var obj = lval.feature.properties;
               Object.keys(obj).forEach(function (key) {
-                if(key === "description") return;
+                if (key === "description") return;
                 if (key[0] != '_' && !keyNameList.includes(key)) {
                   keyNameList.push(key);
                 }
@@ -43266,8 +43282,8 @@ GSI.SakuzuDialog = GSI.Dialog.extend({
           } else {
             if (lval._icon != undefined && lval.options.icon.options.iconUrl && lval._information.table != null) {
               var ary = lval._information.table;
-              ary.forEach(function(aval,index,ar) {
-                if(aval.key === "description") return;
+              ary.forEach(function (aval, index, ar) {
+                if (aval.key === "description") return;
                 if (!keyNameList.includes(aval.key)) {
                   keyNameList.push(aval.key);
                 }
@@ -43278,32 +43294,32 @@ GSI.SakuzuDialog = GSI.Dialog.extend({
         id = id + 'div';
         var keyNameDiv = $('<div>').attr({ 'id': id });
         if (!checkbox2.is(':checked')) keyNameDiv.css({ "display": "none" });
-        var keyNameLabel =  $('<label>').html(GSI.TEXT.SAKUZU.DIALOG_LIST_SELECTLABEL);
+        var keyNameLabel = $('<label>').html(GSI.TEXT.SAKUZU.DIALOG_LIST_SELECTLABEL);
         id = 'GSI_SakuzuDialog_label_select' + GSI.Utils.getCurrentID();
         var keyNameSelect = $('<select>').attr({ 'id': id });
-        keyNameList.forEach(function(val,index,ar) {
+        keyNameList.forEach(function (val, index, ar) {
           keyNameSelect.append($('<option>').html(val).val(val));
         });
-        keyNameSelect.on('change',L.bind(function (selectBox, item) {
+        keyNameSelect.on('change', L.bind(function (selectBox, item) {
           var arylist = item._layer.getLayers();
           var selval = selectBox.val();
           item._iconLabelSelectValue = selval
-          arylist.forEach(function(val,index,ar) {
+          arylist.forEach(function (val, index, ar) {
             if (val.feature) {
               var valText = "";
-              if (selval =='name') {
+              if (selval == 'name') {
                 valText = val.feature.properties['name'];
               } else {
                 if (val.feature.properties[selval]) valText = val.feature.properties[selval];
               }
               if (val.options.icon && val.options.icon.options && val.options.icon.options.iconUrl && val.options.icon.setLabelText) val.options.icon.setLabelText(valText);
-            } else if (val._information){
+            } else if (val._information) {
               var valText = "";
-              if (selval =='name') {
+              if (selval == 'name') {
                 valText = val._information.title;
-              }else{
+              } else {
                 if (val._information.table && val._information.table.length > 0) {
-                  val._information.table.forEach(function(tval,index,ar) {
+                  val._information.table.forEach(function (tval, index, ar) {
                     if (tval.key == selval) valText = tval.value;
                   });
                 }
@@ -43316,22 +43332,22 @@ GSI.SakuzuDialog = GSI.Dialog.extend({
           keyNameSelect.val(item._iconLabelSelectValue);
           var arylist = item._layer.getLayers();
           var selval = item._iconLabelSelectValue;
-          arylist.forEach(function(val,index,ar) {
+          arylist.forEach(function (val, index, ar) {
             if (val.feature) {
               var valText = "";
-              if (selval =='name') {
+              if (selval == 'name') {
                 valText = val.feature.properties['name'];
               } else {
                 if (val.feature.properties[selval]) valText = val.feature.properties[selval];
               }
               if (val.options.icon && val.options.icon.options && val.options.icon.options.iconUrl && val.options.icon.setLabelText) val.options.icon.setLabelText(valText);
-            } else if (val._information){
+            } else if (val._information) {
               var valText = "";
-              if (selval =='name') {
+              if (selval == 'name') {
                 valText = val._information.title;
               } else {
                 if (val._information.table && val._information.table.length > 0) {
-                  val._information.table.forEach(function(tval,index,ar) {
+                  val._information.table.forEach(function (tval, index, ar) {
                     if (tval.key == selval) valText = tval.value;
                   });
                 }
@@ -43350,26 +43366,26 @@ GSI.SakuzuDialog = GSI.Dialog.extend({
         var labelMiddle = $("<a>").attr({ "href": "javascript:void(0);" }).html("中").addClass("middle");
         var labelSmall = $("<a>").attr({ "href": "javascript:void(0);" }).html("小").addClass("small");
 
-        labelLarge.on('click',L.bind(function (labelSizeFrame, item) {
+        labelLarge.on('click', L.bind(function (labelSizeFrame, item) {
           item.setIconLabelSize("large");
           this._refreshIconLabelSizeButton(labelSizeFrame, item);
         }, this, labelSizeFrame, item));
 
-        labelLarge.attr({"title":GSI.Utils.getTooltipText("SAKUZU","LABEL_L")});
+        labelLarge.attr({ "title": GSI.Utils.getTooltipText("SAKUZU", "LABEL_L") });
 
-        labelMiddle.on('click',L.bind(function (labelSizeFrame, item) {
+        labelMiddle.on('click', L.bind(function (labelSizeFrame, item) {
           item.setIconLabelSize("middle");
           this._refreshIconLabelSizeButton(labelSizeFrame, item);
         }, this, labelSizeFrame, item));
 
-        labelSmall.on('click',L.bind(function (labelSizeFrame, item) {
+        labelSmall.on('click', L.bind(function (labelSizeFrame, item) {
           item.setIconLabelSize("small");
           this._refreshIconLabelSizeButton(labelSizeFrame, item);
         }, this, labelSizeFrame, item));
 
-        labelLarge.attr({"title":GSI.Utils.getTooltipText("SAKUZU","LABEL_L")});
-        labelMiddle.attr({"title":GSI.Utils.getTooltipText("SAKUZU","LABEL_M")});
-        labelSmall.attr({"title":GSI.Utils.getTooltipText("SAKUZU","LABEL_S")});
+        labelLarge.attr({ "title": GSI.Utils.getTooltipText("SAKUZU", "LABEL_L") });
+        labelMiddle.attr({ "title": GSI.Utils.getTooltipText("SAKUZU", "LABEL_M") });
+        labelSmall.attr({ "title": GSI.Utils.getTooltipText("SAKUZU", "LABEL_S") });
 
         labelSizeFrame.append(labelLarge).append(labelMiddle).append(labelSmall);
         this._refreshIconLabelSizeButton(labelSizeFrame, item);
@@ -43384,45 +43400,45 @@ GSI.SakuzuDialog = GSI.Dialog.extend({
         tbody.append(tr);
       }
 
-      table.append( tbody );
-      var li = $("<li>").append( table ).data({"sakuzuItem": item });
-      this._listUL.append( li );
+      table.append(tbody);
+      var li = $("<li>").append(table).data({ "sakuzuItem": item });
+      this._listUL.append(li);
 
       if (editBtn) {
-        editBtn.on('click',L.bind(this._onEditSakuzuItemClick, this, item, li ));
-        editBtn.attr({"title":GSI.Utils.getTooltipText("SAKUZU","EDIT")});
+        editBtn.on('click', L.bind(this._onEditSakuzuItemClick, this, item, li));
+        editBtn.attr({ "title": GSI.Utils.getTooltipText("SAKUZU", "EDIT") });
       }
-      if ( clearBtn ){
-        clearBtn.on('click',L.bind(this._onClearButtonClick, this, item));
-        clearBtn.attr({"title":GSI.Utils.getTooltipText("SAKUZU","REMOVE")});
+      if (clearBtn) {
+        clearBtn.on('click', L.bind(this._onClearButtonClick, this, item));
+        clearBtn.attr({ "title": GSI.Utils.getTooltipText("SAKUZU", "REMOVE") });
       }
-      if (opacityBtn) opacityBtn.on('click',L.bind(this._onOpacityBtnClick, this, item, opacityBtn, tr));
+      if (opacityBtn) opacityBtn.on('click', L.bind(this._onOpacityBtnClick, this, item, opacityBtn, tr));
 
     }, this));
 
     this._refreshToolButton();
 
-    for(var x = 0; x < this._listUL.length; x++){
+    for (var x = 0; x < this._listUL.length; x++) {
       liHeight += $(this._listUL[x]).outerHeight();
     }
 
-    if (liHeight > 0 && this._userResized == false){
+    if (liHeight > 0 && this._userResized == false) {
       //ダイアログが表示されていて、変更された時
       var ws = GSI.Utils.getScreenSize();
-      var titleHeight = this._title? this._title.outerHeight(): 30;
-      var tBarHeight = this._topPanelToolBar? this._topPanelToolBar.outerHeight() : 40;
+      var titleHeight = this._title ? this._title.outerHeight() : 30;
+      var tBarHeight = this._topPanelToolBar ? this._topPanelToolBar.outerHeight() : 40;
       var limitHeight = ws.h - 50 - titleHeight - tBarHeight - this.container.offset().top;
 
-      if (liHeight > limitHeight){
+      if (liHeight > limitHeight) {
         liHeight = limitHeight;
       }
-      $(this.container).find(".gsi-sakuzudialog-list-container").css({"height": liHeight});
+      $(this.container).find(".gsi-sakuzudialog-list-container").css({ "height": liHeight });
     }
   },
 
-  _onOpacityBtnClick:function(item,btn, tr) {
+  _onOpacityBtnClick: function (item, btn, tr) {
 
-    var opacity = ( item._opacity != undefined ? item._opacity : 1 );//(item._visibleInfo ? item._visibleInfo.opacity : 1);
+    var opacity = (item._opacity != undefined ? item._opacity : 1);//(item._visibleInfo ? item._visibleInfo.opacity : 1);
     if (!this._opacityWindow) {
       this._opacityWindow = $('<div>').addClass('viewlistdialog_opacity_window');
       this._opacityValue = $('<div>').addClass('value').html('透過率:');
@@ -43441,7 +43457,7 @@ GSI.SakuzuDialog = GSI.Dialog.extend({
     var offset = btn.offset();
     this._opacityWindow.css({
       top: offset.top + btn.outerHeight(),
-      left: ( offset.left + btn.outerWidth() - 300 ) + 'px'
+      left: (offset.left + btn.outerWidth() - 300) + 'px'
     }).data({ "item": item });
 
     var opacityPercentage = Math.round(100 - (opacity * 100));
@@ -43517,20 +43533,20 @@ GSI.SakuzuDialog = GSI.Dialog.extend({
     }
   },
 
-  _onClearButtonClick : function(item ) {
-    if( this._drawManager && this._drawManager.getReserveLength() > 0 ) {
+  _onClearButtonClick: function (item) {
+    if (this._drawManager && this._drawManager.getReserveLength() > 0) {
 
-      this._showDrawManagerConfirm( L.bind(this._clearLayer,this, item),
+      this._showDrawManagerConfirm(L.bind(this._clearLayer, this, item),
 
-        [{"id":"ok","caption":"確定して続行"},{"id":"destroy","caption":"破棄して続行"},{"id":"cancel","caption":"キャンセル"}]
+        [{ "id": "ok", "caption": "確定して続行" }, { "id": "destroy", "caption": "破棄して続行" }, { "id": "cancel", "caption": "キャンセル" }]
       );
     } else {
-      this._clearLayer( item );
+      this._clearLayer(item);
     }
   },
 
   _clearLayer: function (item) {
-    if( this._drawManager ) this._drawManager.cancel();
+    if (this._drawManager) this._drawManager.cancel();
 
     if (item.getLayerCount() > 0) {
       if (!confirm(GSI.TEXT.SAKUZU.DIALOG_EDIT_REMOVELAYERCONFIRMMSG)) return;
@@ -43539,15 +43555,15 @@ GSI.SakuzuDialog = GSI.Dialog.extend({
     item.remove();
   },
 
-  _showDrawManagerConfirm : function(func, buttons) {
-    if( this._drawManager && this._drawManager.changed() ) {
-      if ( !this._drawManagerConfirm  ) {
+  _showDrawManagerConfirm: function (func, buttons) {
+    if (this._drawManager && this._drawManager.changed()) {
+      if (!this._drawManagerConfirm) {
         this._drawManagerConfirm = new GSI.SakuzuConfirm();
-        this._drawManagerConfirm.on("hide", L.bind(function(func,evt){
-          if( evt.button == "ok") {
+        this._drawManagerConfirm.on("hide", L.bind(function (func, evt) {
+          if (evt.button == "ok") {
             this._onReserveOkClick();
           }
-          if( evt.button != "cancel") {
+          if (evt.button != "cancel") {
             // 終了時のアラート表示 外す
             window._shareDialogFlag = false;
             if (!window._sakuzuDialogFlag) $(window).off('beforeunload');
@@ -43568,8 +43584,8 @@ GSI.SakuzuDialog = GSI.Dialog.extend({
   // 編集開始
   _onEditSakuzuItemClick: function (item, li) {
 
-    if( this._drawManager && this._drawManager instanceof GSI.EditManager && this._drawManager.getSakuzuItem() == item) {
-      if ( this._drawManager.getReserveLength() <= 0) {
+    if (this._drawManager && this._drawManager instanceof GSI.EditManager && this._drawManager.getSakuzuItem() == item) {
+      if (this._drawManager.getReserveLength() <= 0) {
         this._drawManager.cancel();
       }
       return;
@@ -43577,23 +43593,23 @@ GSI.SakuzuDialog = GSI.Dialog.extend({
 
     if (item.getLayerCount() <= 0) return;
 
-    if( this._drawManager && this._drawManager.getReserveLength() > 0 ) {
+    if (this._drawManager && this._drawManager.getReserveLength() > 0) {
 
-      this._showDrawManagerConfirm( L.bind(this._execEditStart,this, item),
+      this._showDrawManagerConfirm(L.bind(this._execEditStart, this, item),
 
-        [{"id":"ok","caption":"確定して続行"},{"id":"destroy","caption":"破棄して続行"},{"id":"cancel","caption":"キャンセル"}]
+        [{ "id": "ok", "caption": "確定して続行" }, { "id": "destroy", "caption": "破棄して続行" }, { "id": "cancel", "caption": "キャンセル" }]
       );
     } else {
-      this._execEditStart( item );
+      this._execEditStart(item);
     }
   },
 
-  _execEditStart : function(item) {
+  _execEditStart: function (item) {
 
-    if ( this._drawManager ) {
+    if (this._drawManager) {
       this._drawManager.cancel();
     }
-    this._drawManager = new GSI.EditManager( this._dialogManager, item);
+    this._drawManager = new GSI.EditManager(this._dialogManager, item);
     this._drawManager.on("reservechange", L.bind(this._onReserveChange, this));
     this._drawManager.on("start", L.bind(this._onDrawManagerStart, this));
     this._drawManager.on("stop", L.bind(this._onDrawManagerStop, this));
@@ -43603,82 +43619,82 @@ GSI.SakuzuDialog = GSI.Dialog.extend({
 
   // 作成・ファイル保存読み込み開始
   _toolBtnClick: function (btnId) {
-    if( this._drawManager && this._drawManager.getReserveLength() > 0 ) {
+    if (this._drawManager && this._drawManager.getReserveLength() > 0) {
 
-      if ( this._drawManager.getDrawType() == btnId ) return;
+      if (this._drawManager.getDrawType() == btnId) return;
 
-      this._showDrawManagerConfirm( L.bind(this._execToolButton,this, btnId),
+      this._showDrawManagerConfirm(L.bind(this._execToolButton, this, btnId),
 
-        [{"id":"ok","caption":"確定して続行"},{"id":"destroy","caption":"破棄して続行"},{"id":"cancel","caption":"キャンセル"}]
+        [{ "id": "ok", "caption": "確定して続行" }, { "id": "destroy", "caption": "破棄して続行" }, { "id": "cancel", "caption": "キャンセル" }]
       );
     } else {
-      if ( this._drawManager && this._drawManager.getDrawType() == btnId ) {
+      if (this._drawManager && this._drawManager.getDrawType() == btnId) {
         this._drawManager.cancel();
       } else {
-        this._execToolButton( btnId );
+        this._execToolButton(btnId);
       }
     }
   },
 
-  _execToolButton : function( btnId) {
+  _execToolButton: function (btnId) {
 
-    if ( this._drawManager ) {
+    if (this._drawManager) {
       this._drawManager.cancel();
     }
 
     if (btnId == 'file_load') {
-      if ( !this._fileLoadWindow ) {
-        this._fileLoadWindow = new GSI.SakuzuLoadFileWindow (this._sakuzuList);
+      if (!this._fileLoadWindow) {
+        this._fileLoadWindow = new GSI.SakuzuLoadFileWindow(this._sakuzuList);
       }
       this._fileLoadWindow.show();
 
     }
     else if (btnId == 'file_save') {
 
-      if ( this._sakuzuList.getSaveTargetLayerCount() <= 0 ) {
+      if (this._sakuzuList.getSaveTargetLayerCount() <= 0) {
         return;
       }
-      if ( !this._fileSaveWindow ) {
-        this._fileSaveWindow = new GSI.SakuzuSaveFileWindow (this._sakuzuList);
+      if (!this._fileSaveWindow) {
+        this._fileSaveWindow = new GSI.SakuzuSaveFileWindow(this._sakuzuList);
       }
       this._fileSaveWindow.show();
     }
     else {
-      this._startCreateDraw( btnId);
+      this._startCreateDraw(btnId);
 
     }
   },
 
-  _startCreateDraw : function( id) {
-    if ( this._drawManager ) {
+  _startCreateDraw: function (id) {
+    if (this._drawManager) {
       this._drawManager.cancel();
     }
-    this._drawManager = new GSI.DrawManager( id,this._dialogManager, this._sakuzuList.getSakuzuItem());
+    this._drawManager = new GSI.DrawManager(id, this._dialogManager, this._sakuzuList.getSakuzuItem());
     this._drawManager.on("reservechange", L.bind(this._onReserveChange, this));
     this._drawManager.on("start", L.bind(this._onDrawManagerStart, this));
     this._drawManager.on("stop", L.bind(this._onDrawManagerStop, this));
     this._drawManager.start();
   },
 
-  _onDrawManagerStart : function() {
+  _onDrawManagerStart: function () {
     this._refreshToolButton();
   },
 
-  _onDrawManagerStop : function() {
+  _onDrawManagerStop: function () {
     this._refreshToolButton();
 
-    if ( this._reserveInfoPanel ) {
+    if (this._reserveInfoPanel) {
       this._reserveInfoPanel.slideUp(300);
     }
   },
 
-  _onReserveOkClick : function() {
+  _onReserveOkClick: function () {
     // 終了時のアラート表示 外す
     window._shareDialogFlag = false;
     if (!window._sakuzuDialogFlag) $(window).off('beforeunload');
 
     var sakuzuItem = this._drawManager.getSakuzuItem();
-    if ( this._drawManager  ) {
+    if (this._drawManager) {
       this._drawManager.commit();
     }
 
@@ -43691,12 +43707,12 @@ GSI.SakuzuDialog = GSI.Dialog.extend({
     this._topPanelToolBar.find("a").removeClass("active");
     this._drawManager.cancel();
 
-    if ( this._reserveInfoPanel ) {
+    if (this._reserveInfoPanel) {
       this._reserveInfoPanel.slideUp(300);
     }
   },
 
-  _onReserveCancelClick : function() {
+  _onReserveCancelClick: function () {
 
     // 終了時のアラート表示 外す
     window._shareDialogFlag = false;
@@ -43711,31 +43727,31 @@ GSI.SakuzuDialog = GSI.Dialog.extend({
     this._sakuzuList._defaultIcon._iconScale = CONFIG.SAKUZU.SYMBOL.ICON_SCALE;
 
     this._drawManager.cancel();
-    if ( this._reserveInfoPanel ) {
+    if (this._reserveInfoPanel) {
       this._reserveInfoPanel.slideUp(300);
     }
   },
 
-  _onReserveChange : function(evt) {
-    if ( evt.len > 0 ) {
-      if ( !this._reserveInfoPanel ) {
+  _onReserveChange: function (evt) {
+    if (evt.len > 0) {
+      if (!this._reserveInfoPanel) {
         this._reserveInfoPanel = $("<div>").addClass("gsi-reserveinfo-panel").hide();
         this._reserveInfoPanelMessage = $("<div>").addClass("message");
-        this._reserveInfoPanel.append( this._reserveInfoPanelMessage );
+        this._reserveInfoPanel.append(this._reserveInfoPanelMessage);
 
         var buttonPanel = $("<div>").addClass("button-panel");
 
-        this._reserveOkButton = $("<a>").addClass("normalbutton").attr({"href":"javascript:void(0);"}).html("確定");
-        this._reserveCancelButton = $("<a>").addClass("normalbutton").attr({"href":"javascript:void(0);"}).html("取り消し");
+        this._reserveOkButton = $("<a>").addClass("normalbutton").attr({ "href": "javascript:void(0);" }).html("確定");
+        this._reserveCancelButton = $("<a>").addClass("normalbutton").attr({ "href": "javascript:void(0);" }).html("取り消し");
 
-        buttonPanel.append( this._reserveOkButton);
-        buttonPanel.append( this._reserveCancelButton);
+        buttonPanel.append(this._reserveOkButton);
+        buttonPanel.append(this._reserveCancelButton);
 
-        this._reserveInfoPanel.append( buttonPanel);
-        this._topPanelList .append( this._reserveInfoPanel);
+        this._reserveInfoPanel.append(buttonPanel);
+        this._topPanelList.append(this._reserveInfoPanel);
 
-        this._reserveOkButton.on("click", L.bind(this._onReserveOkClick,this));
-        this._reserveCancelButton.on("click", L.bind(this._onReserveCancelClick,this));
+        this._reserveOkButton.on("click", L.bind(this._onReserveOkClick, this));
+        this._reserveCancelButton.on("click", L.bind(this._onReserveCancelClick, this));
       }
 
       this._reserveInfoPanelMessage.html(
@@ -43744,7 +43760,7 @@ GSI.SakuzuDialog = GSI.Dialog.extend({
       this._reserveInfoPanel.slideDown(300);
 
     } else {
-      if ( this._reserveInfoPanel ) {
+      if (this._reserveInfoPanel) {
         // 終了時のアラート表示 外す
         window._shareDialogFlag = false;
         if (!window._sakuzuDialogFlag) $(window).off('beforeunload');
@@ -43759,26 +43775,26 @@ GSI.SakuzuDialog = GSI.Dialog.extend({
 
   hide: function () {
 
-    this._showDrawManagerConfirm( L.bind( this._execHide,this),
-      [{"id":"ok","caption":"確定して閉じる"},{"id":"destroy","caption":"破棄して閉じる"},{"id":"cancel","caption":"キャンセル"}]
+    this._showDrawManagerConfirm(L.bind(this._execHide, this),
+      [{ "id": "ok", "caption": "確定して閉じる" }, { "id": "destroy", "caption": "破棄して閉じる" }, { "id": "cancel", "caption": "キャンセル" }]
     );
   },
 
-  _execHide : function() {
+  _execHide: function () {
 
-    if ( this._fileLoadWindow) {
+    if (this._fileLoadWindow) {
       this._fileLoadWindow.destroy();
     }
 
-    if ( this._fileSaveWindow) {
+    if (this._fileSaveWindow) {
       this._fileSaveWindow.destroy();
     }
 
-    if ( this._reserveInfoPanel ) {
+    if (this._reserveInfoPanel) {
       this._reserveInfoPanel.hide();
     }
 
-    if ( this._drawManager ) {
+    if (this._drawManager) {
 
       this._drawManager.cancel();
     }
@@ -43802,28 +43818,28 @@ GSI.SakuzuDialog = GSI.Dialog.extend({
     this._refreshFileButton();
 
     var liHeight = 0;
-    for(var x = 0; x < this._listUL.length; x++){
+    for (var x = 0; x < this._listUL.length; x++) {
       liHeight += $(this._listUL[x]).outerHeight();
     }
 
-    if (liHeight > 0 && this._userResized == false){
+    if (liHeight > 0 && this._userResized == false) {
       //ダイアログが表示されていない時に、変更された時
       var ws = GSI.Utils.getScreenSize();
-      var titleHeight = this._title? this._title.outerHeight(): 30;
-      var tBarHeight = this._topPanelToolBar? this._topPanelToolBar.outerHeight() : 40;
+      var titleHeight = this._title ? this._title.outerHeight() : 30;
+      var tBarHeight = this._topPanelToolBar ? this._topPanelToolBar.outerHeight() : 40;
       //not offset().top, need offsetTop
       var limitHeight = ws.h - 50 - titleHeight - tBarHeight - $(this.container)[0].offsetTop;
 
-      if (liHeight > limitHeight){
+      if (liHeight > limitHeight) {
         liHeight = limitHeight;
       }
-      $(this.container).find(".gsi-sakuzudialog-list-container").css({"height": liHeight});
+      $(this.container).find(".gsi-sakuzudialog-list-container").css({ "height": liHeight });
     }
 
   },
 
   _showTopPanel: function (beforePanel) {
-    if ( this._createPathMessagePanel ) {
+    if (this._createPathMessagePanel) {
       this._createPathMessagePanel.hide();
     }
 
@@ -43965,65 +43981,65 @@ GSI.SakuzuInfoEditDialog = GSI.Dialog.extend({
     this.headerFrame
       .addClass("gsi-sakuzuinfoedit-dialog-header");
     this.contentFrame.addClass("gsi-sakuzuinfoedit-dialog-content-contentframe");
-    this.headerTitle.css({"padding":"0px"})
+    this.headerTitle.css({ "padding": "0px" })
 
     this.options.effect = {
-      "animation" : "fade",
-      "speed" :200
+      "animation": "fade",
+      "speed": 200
     };
   },
 
-  setSakuzuItem : function(sakuzuItem) {
-    this._sakuzuItem =sakuzuItem;
+  setSakuzuItem: function (sakuzuItem) {
+    this._sakuzuItem = sakuzuItem;
   },
 
-  setLayer : function(layer) {
+  setLayer: function (layer) {
     this._layer = layer;
   },
 
-  setInfo : function( info ) {
+  setInfo: function (info) {
     this._info = info;
   },
 
-  hasLayer : function() {
-    return( this._layer ? true : false );
+  hasLayer: function () {
+    return (this._layer ? true : false);
   },
 
-  setType : function(drawType) {
+  setType: function (drawType) {
     this._drawType = drawType;
   },
 
-  _okButtonClick : function() {
+  _okButtonClick: function () {
 
     this.commit();
 
     this.fire("ok", {
-      "layer" : this._layer,
-      "info" : this._info
+      "layer": this._layer,
+      "info": this._info
     });
   },
 
-  commit : function() {
-    if ( !this.hasLayer()) return;
-    this._info= this._viewToInfo();
+  commit: function () {
+    if (!this.hasLayer()) return;
+    this._info = this._viewToInfo();
     this._sakuzuItem.setEditingInfo(this._info);
 
   },
 
-  _onCheckChangeTimer : function() {
-    if ( !this.hasLayer()) return;
-    this.fire("check", {"changed" : this._sakuzuItem.isEditingChange()})
+  _onCheckChangeTimer: function () {
+    if (!this.hasLayer()) return;
+    this.fire("check", { "changed": this._sakuzuItem.isEditingChange() })
   },
 
-  isChange : function() {
-    if ( !this.hasLayer()) return false;
+  isChange: function () {
+    if (!this.hasLayer()) return false;
     this.commit();
     var result = this._sakuzuItem.isEditingChange();
-    if ( !result ) result = this._layer._edited;
+    if (!result) result = this._layer._edited;
     return result;
   },
 
-  _cancelButtonClick : function() {
+  _cancelButtonClick: function () {
     this.fire("cancel");
   },
 
@@ -44032,12 +44048,12 @@ GSI.SakuzuInfoEditDialog = GSI.Dialog.extend({
 
     if (!this.container) this.create();
 
-    if ( this._drawType== "") {
-      this._drawType = this._sakuzuItem._getType( this._layer );
+    if (this._drawType == "") {
+      this._drawType = this._sakuzuItem._getType(this._layer);
     }
 
     this.closeBtn.hide();
-    if ( this.frame ) {
+    if (this.frame) {
       this.frame.empty();
       this._createView();
       this._resetView();
@@ -44047,61 +44063,61 @@ GSI.SakuzuInfoEditDialog = GSI.Dialog.extend({
     if (!visible) this.container.css({ "visibility": "hidden" }).show();
 
     var size = {
-      width:this.container.outerWidth(),
-      height:this.container.outerHeight()
+      width: this.container.outerWidth(),
+      height: this.container.outerHeight()
     };
 
     var windowSize = this._dialogManager.getScreenSize();
     if (this._drawType == GSI.SakuzuListItem.POINT ||
-        this._drawType == GSI.SakuzuListItem.POINT_TEXT) {
-        if ( position.y +size.height > windowSize.h) {
-          position.y = position.y - size.height;
-        } else {
-          position.y += 90;
-        }
-        position.x = position.x - Math.floor(size.width/2);
+      this._drawType == GSI.SakuzuListItem.POINT_TEXT) {
+      if (position.y + size.height > windowSize.h) {
+        position.y = position.y - size.height;
+      } else {
+        position.y += 90;
+      }
+      position.x = position.x - Math.floor(size.width / 2);
 
     } else {
-      position.x = position.x - Math.floor(size.width/3);
+      position.x = position.x - Math.floor(size.width / 3);
       position.y = position.y - size.height;
     }
 
-    if ( position.x + size.width > windowSize.w ) position.x = windowSize.w-size.width;
-    if ( position.y + size.height > windowSize.h ) position.y = windowSize.h-size.height;
+    if (position.x + size.width > windowSize.w) position.x = windowSize.w - size.width;
+    if (position.y + size.height > windowSize.h) position.y = windowSize.h - size.height;
 
-    if ( position.x < 0 ) position.x =0;
-    if ( position.y < 0 ) position.y =0;
+    if (position.x < 0) position.x = 0;
+    if (position.y < 0) position.y = 0;
 
     this.container.css({
-      "left": position.x+"px",
-      "top": position.y+"px"
+      "left": position.x + "px",
+      "top": position.y + "px"
     });
 
     if (!visible) this.container.css({ "visibility": "visible" }).hide();
 
     this._resetTitle();
 
-    if ( !this._checkChangeTimer ) {
-      this._checkChangeTimer = setInterval( L.bind( this._onCheckChangeTimer, this ), 200 );
+    if (!this._checkChangeTimer) {
+      this._checkChangeTimer = setInterval(L.bind(this._onCheckChangeTimer, this), 200);
     }
     // 終了時のアラート表示 追加
     window._shareDialogFlag = true;
-    $(window).off('beforeunload').on('beforeunload', function(e) { return 'このページから移動しますか？ 入力した情報は保存されません。';});
+    $(window).off('beforeunload').on('beforeunload', function (e) { return 'このページから移動しますか？ 入力した情報は保存されません。'; });
     GSI.Dialog.prototype.show.call(this);
   },
 
-  _resetTitle : function() {
+  _resetTitle: function () {
 
     var title = "作図情報の入力";
-    if ( this._sakuzuItem && this._layer ) {
+    if (this._sakuzuItem && this._layer) {
 
       var layerType = this._drawType;
-      if ( layerType== "")
-        layerType = this._sakuzuItem._getType( this._layer );
+      if (layerType == "")
+        layerType = this._sakuzuItem._getType(this._layer);
       title = '<span class="strong">' + GSI.SakuzuListItem.typeToTitle(layerType) + "</span>の情報入力";
     }
 
-    this.setTitle( title );
+    this.setTitle(title);
   },
 
   afterShow: function () {
@@ -44120,27 +44136,27 @@ GSI.SakuzuInfoEditDialog = GSI.Dialog.extend({
     // カラーピッカーのエレメント掃除
     var colorPickers = $(".color-picker");
 
-    for( var i=0; i<colorPickers.length; i++ ) {
+    for (var i = 0; i < colorPickers.length; i++) {
       var elem = $(colorPickers[i]);
       var id = elem.attr("id");
-      if ( !id ) continue;
-      if ( id.indexOf("GSI_SakuzuDialog_") == 0 ) {
+      if (!id) continue;
+      if (id.indexOf("GSI_SakuzuDialog_") == 0) {
         elem.remove();
       }
     }
   },
 
-  _clearHandler : function() {
-    if ( this._checkChangeTimer ) {
-      clearTimeout( this._checkChangeTimer );
+  _clearHandler: function () {
+    if (this._checkChangeTimer) {
+      clearTimeout(this._checkChangeTimer);
       this._checkChangeTimer = null;
     }
 
-    if ( this._circleChangeHandler ) {
-      if ( this._sakuzuItem ) {
-        this._sakuzuItem.off( "circlechange", this._circleChangeHandler );
+    if (this._circleChangeHandler) {
+      if (this._sakuzuItem) {
+        this._sakuzuItem.off("circlechange", this._circleChangeHandler);
       }
-      this._circleChangeHandler  = null;
+      this._circleChangeHandler = null;
     }
 
     if (this._lineInputCheckTimer) {
@@ -44153,7 +44169,7 @@ GSI.SakuzuInfoEditDialog = GSI.Dialog.extend({
       this._fillInputCheckTimer = null;
     }
 
-    if ( this._pointEditTextareaCheckTimer ) {
+    if (this._pointEditTextareaCheckTimer) {
       clearTimeout(this._pointEditTextareaCheckTimer);
       this._pointEditTextareaCheckTimer = null;
     }
@@ -44164,9 +44180,9 @@ GSI.SakuzuInfoEditDialog = GSI.Dialog.extend({
     GSI.Dialog.prototype.create.call(this);
   },
 
-  setTitle : function(title) {
+  setTitle: function (title) {
     this.options.title = title;
-    if ( this.title) {
+    if (this.title) {
       this.title.html(this.options.title);
     }
   },
@@ -44184,14 +44200,14 @@ GSI.SakuzuInfoEditDialog = GSI.Dialog.extend({
 
   },
 
-  _setLayerStyle : function(style) {
+  _setLayerStyle: function (style) {
 
     this._sakuzuItem.setEditingStyle(style);
 
   },
 
   // 編集部分生成
-  _createView : function() {
+  _createView: function () {
     this._container = $("<div>");
 
     // マーカー編集
@@ -44201,18 +44217,18 @@ GSI.SakuzuInfoEditDialog = GSI.Dialog.extend({
       this._drawType == GSI.SakuzuListItem.MULTIPOINT
     ) {
       this._markerEditPanel = this._createMarkerEditPanel();
-      this._container.append( this._markerEditPanel);
+      this._container.append(this._markerEditPanel);
     }
 
     // 円編集
-    if ( this._drawType == GSI.SakuzuListItem.POINT_CIRCLE ||
-      this._drawType == GSI.SakuzuListItem.CIRCLE ) {
+    if (this._drawType == GSI.SakuzuListItem.POINT_CIRCLE ||
+      this._drawType == GSI.SakuzuListItem.CIRCLE) {
       this._lineEditPanel = this._createLineEditPanel();
-      this._container.append( this._lineEditPanel);
+      this._container.append(this._lineEditPanel);
       this._polygonEditPanel = this._createPolygonEditPanel();
-      this._container.append( this._polygonEditPanel);
+      this._container.append(this._polygonEditPanel);
       this._circleEditPanel = this._createCircleEditPanel();
-      this._container.append( this._circleEditPanel);
+      this._container.append(this._circleEditPanel);
     }
 
     // ライン編集
@@ -44221,39 +44237,39 @@ GSI.SakuzuInfoEditDialog = GSI.Dialog.extend({
       this._drawType == GSI.SakuzuListItem.MULTILINESTRING
     ) {
       this._lineEditPanel = this._createLineEditPanel();
-      this._container.append( this._lineEditPanel);
+      this._container.append(this._lineEditPanel);
     }
 
     // ポリゴン編集
-    if( this._drawType == GSI.SakuzuListItem.POLYGON ||
+    if (this._drawType == GSI.SakuzuListItem.POLYGON ||
       this._drawType == GSI.SakuzuListItem.MULTIPOLYGON) {
       this._lineEditPanel = this._createLineEditPanel();
-      this._container.append( this._lineEditPanel);
+      this._container.append(this._lineEditPanel);
       this._polygonEditPanel = this._createPolygonEditPanel(true);
-      this._container.append( this._polygonEditPanel);
+      this._container.append(this._polygonEditPanel);
     }
 
     // フリーハンド
-    if( this._drawType == GSI.SakuzuListItem.FREEHAND) {
+    if (this._drawType == GSI.SakuzuListItem.FREEHAND) {
       this._lineEditPanel = this._createLineEditPanel();
-      this._container.append( this._lineEditPanel);
+      this._container.append(this._lineEditPanel);
     }
 
     // 情報編集部
     this._infoEditPanel = this._createInfoEditPanel();
-    this._container.append( this._infoEditPanel);
+    this._container.append(this._infoEditPanel);
 
     // ok cancel
     this._buttonPanel = this._createButtonPanel();
-    this._container.append( this._buttonPanel);
+    this._container.append(this._buttonPanel);
 
-    this.frame.append( this._container );
+    this.frame.append(this._container);
   },
 
   // 値リセット
-  _resetView : function() {
+  _resetView: function () {
     // マーカー編集部
-    if(
+    if (
       this._drawType == GSI.SakuzuListItem.POINT ||
       this._drawType == GSI.SakuzuListItem.POINT_TEXT
     ) {
@@ -44268,36 +44284,36 @@ GSI.SakuzuInfoEditDialog = GSI.Dialog.extend({
       this._refreshMarkerEditPanel(options);
     }
     // 円編集部
-    if ( this._drawType == GSI.SakuzuListItem.POINT_CIRCLE ||
-      this._drawType == GSI.SakuzuListItem.CIRCLE ) {
-      this._refreshLineEditPanel( this._layer.options);
-      this._refreshPolygonEditPanel( this._layer.options);
-      this._refreshCircleEditPanel( this._layer.options);
+    if (this._drawType == GSI.SakuzuListItem.POINT_CIRCLE ||
+      this._drawType == GSI.SakuzuListItem.CIRCLE) {
+      this._refreshLineEditPanel(this._layer.options);
+      this._refreshPolygonEditPanel(this._layer.options);
+      this._refreshCircleEditPanel(this._layer.options);
     }
     // ライン編集部
     if (
       this._drawType == GSI.SakuzuListItem.LINESTRING ||
       this._drawType == GSI.SakuzuListItem.MULTILINESTRING
     ) {
-      this._refreshLineEditPanel( this._layer.options);
+      this._refreshLineEditPanel(this._layer.options);
     }
     // ポリゴン編集部
-    if ( this._drawType == GSI.SakuzuListItem.POLYGON ||
+    if (this._drawType == GSI.SakuzuListItem.POLYGON ||
       this._drawType == GSI.SakuzuListItem.MULTIPOLYGON) {
-      this._refreshLineEditPanel( this._layer.options);
-      this._refreshPolygonEditPanel( this._layer.options);
+      this._refreshLineEditPanel(this._layer.options);
+      this._refreshPolygonEditPanel(this._layer.options);
     }
     // フリーハンド
-    if( this._drawType == GSI.SakuzuListItem.FREEHAND) {
-      this._refreshLineEditPanel( this._layer.options);
+    if (this._drawType == GSI.SakuzuListItem.FREEHAND) {
+      this._refreshLineEditPanel(this._layer.options);
     }
 
     // 情報
-    this._refreshInfoEditPanel( this._info );
+    this._refreshInfoEditPanel(this._info);
 
   },
 
-  _refreshMarkerEditPanel : function( style ) {
+  _refreshMarkerEditPanel: function (style) {
     if (!style.icon.options.iconUrl && (style.icon.options.html || style.icon.options.html == '')) {
       var text = style.icon.options.html;
 
@@ -44315,9 +44331,9 @@ GSI.SakuzuInfoEditDialog = GSI.Dialog.extend({
   },
 
   // ライン編集部の値リセット
-  _refreshLineEditPanel : function(style) {
+  _refreshLineEditPanel: function (style) {
     // 大圏航路と等角航路
-    if ( this._taikenKouroRadio ) {
+    if (this._taikenKouroRadio) {
       if (style.geodesic) {
         this._taikenKouroRadio[0].checked = true;
       } else {
@@ -44353,7 +44369,7 @@ GSI.SakuzuInfoEditDialog = GSI.Dialog.extend({
     this._lineTypeSelect.val(dashArrayMode);
   },
 
-  _refreshPolygonEditPanel : function(style) {
+  _refreshPolygonEditPanel: function (style) {
     this._fillColorSelector.css({ background: style.fillColor });//.ColorPickerSetColor(style.color);
     var opacity = style.fillOpacity;
     opacity = Math.round((1 - opacity) * 100);
@@ -44361,7 +44377,7 @@ GSI.SakuzuInfoEditDialog = GSI.Dialog.extend({
 
   },
 
-  _refreshCircleEditPanel : function( style ) {
+  _refreshCircleEditPanel: function (style) {
 
     this._circleRadiusUnitSelect.children('option').remove();
     if (this._drawType == GSI.SakuzuListItem.POINT_CIRCLE) {
@@ -44394,9 +44410,9 @@ GSI.SakuzuInfoEditDialog = GSI.Dialog.extend({
       }
     }
 
-    if ( !this._circleChangeHandler ) {
-      if ( this._sakuzuItem ) {
-        this._circleChangeHandler  = L.bind( function(evt) {
+    if (!this._circleChangeHandler) {
+      if (this._sakuzuItem) {
+        this._circleChangeHandler = L.bind(function (evt) {
           var radius = evt.radius;
           var unit = evt.unit;
 
@@ -44415,17 +44431,17 @@ GSI.SakuzuInfoEditDialog = GSI.Dialog.extend({
             this._circleRadiusUnitSelect.val(unit);
           }
           this._onCircleRadiusChange(true);
-        },this);
-        this._sakuzuItem.on( "circlechange", this._circleChangeHandler );
+        }, this);
+        this._sakuzuItem.on("circlechange", this._circleChangeHandler);
       }
     }
   },
 
-  _refreshHeight : function() {
-    this.container.css({"height":"auto"})
+  _refreshHeight: function () {
+    this.container.css({ "height": "auto" })
   },
   // 情報編集部の値リセット
-  _refreshInfoEditPanel : function( info ) {
+  _refreshInfoEditPanel: function (info) {
     if (info && info.title)
       this._titleInput.val(info.title);
     else
@@ -44492,7 +44508,7 @@ GSI.SakuzuInfoEditDialog = GSI.Dialog.extend({
 
     var btn = $('<a>').attr({ 'href': 'javascript:void(0);' }).addClass("btn")
       .html('<img title="この行を削除" src="image/sakuzu/icon_remove.png">')
-      .on('click',L.bind(
+      .on('click', L.bind(
         function (tr) {
           var no = 0;
           var trList = this._infoTableTbody.find('tr');
@@ -44509,7 +44525,7 @@ GSI.SakuzuInfoEditDialog = GSI.Dialog.extend({
             tr.fadeOut('fast', L.bind(function (tr) {
               tr.remove();
               this._refreshHeight();
-            }, this, tr ) );
+            }, this, tr));
           }
         },
         this, tr));
@@ -44520,15 +44536,15 @@ GSI.SakuzuInfoEditDialog = GSI.Dialog.extend({
     td = $('<td>').css({ width: "24px", "text-align": "center" });
     var btn = $('<a>').attr({ 'href': 'javascript:void(0);' }).addClass("btn")
       .html('<img title="この下に行を追加" src="image/sakuzu/icon_enter.png">')
-      .on('click',L.bind(
+      .on('click', L.bind(
         function (tr) {
 
           var insertTr = this._createEditInfoTableLine(0, "", "");
           insertTr.hide();
           insertTr.insertAfter(tr);
-          insertTr.fadeIn('fast',L.bind(function(){
+          insertTr.fadeIn('fast', L.bind(function () {
             this._refreshHeight();
-          },this));
+          }, this));
           this._refreshHeight();
         },
         this, tr));
@@ -44561,13 +44577,13 @@ GSI.SakuzuInfoEditDialog = GSI.Dialog.extend({
   },
 
   // ライン編集部分生成
-  _createLineEditPanel  : function() {
+  _createLineEditPanel: function () {
     var frame = $('<div>').addClass('lineedit-panel');
 
     // 大圏航路と等角航路の選択
 
-    if ( this._drawType != GSI.SakuzuListItem.POINT_CIRCLE &&
-          this._drawType != GSI.SakuzuListItem.CIRCLE ) {
+    if (this._drawType != GSI.SakuzuListItem.POINT_CIRCLE &&
+      this._drawType != GSI.SakuzuListItem.CIRCLE) {
       var geodesicFrame = $("<div>");
 
       var name = "gsi-kouro-radio" + GSI.Utils.getCurrentID();
@@ -44578,7 +44594,7 @@ GSI.SakuzuInfoEditDialog = GSI.Dialog.extend({
           "id": id,
           "type": "radio"
         }
-      ).addClass('normalcheck').on("click", L.bind(function(){
+      ).addClass('normalcheck').on("click", L.bind(function () {
         this._setLayerStyle({ geodesic: this._taikenKouroRadio.is(":checked") });
       }, this));
       var taikenkouroLabel = $("<label>").attr({ "for": id }).html("大圏航路");
@@ -44590,16 +44606,16 @@ GSI.SakuzuInfoEditDialog = GSI.Dialog.extend({
           "id": id,
           "type": "radio"
         }
-      ).addClass('normalcheck').on("click", L.bind(function(){
+      ).addClass('normalcheck').on("click", L.bind(function () {
         this._setLayerStyle({ geodesic: this._taikenKouroRadio.is(":checked") });
       }, this));
-      var toukakukouroLabel = $("<label>").attr({ "for": id}).html("等角航路");
+      var toukakukouroLabel = $("<label>").attr({ "for": id }).html("等角航路");
 
-      if( CONFIG.TOOLTIP && CONFIG.TOOLTIP.SAKUZU) {
-        this._taikenKouroRadio.attr({"title":CONFIG.TOOLTIP.SAKUZU.LINE_GEODESIC});
-        this._toukakuKouroRadio.attr({"title":CONFIG.TOOLTIP.SAKUZU.LINE_STRAIGHT});
-        taikenkouroLabel.attr({"title":CONFIG.TOOLTIP.SAKUZU.LINE_GEODESIC});
-        toukakukouroLabel.attr({"title":CONFIG.TOOLTIP.SAKUZU.LINE_STRAIGHT});
+      if (CONFIG.TOOLTIP && CONFIG.TOOLTIP.SAKUZU) {
+        this._taikenKouroRadio.attr({ "title": CONFIG.TOOLTIP.SAKUZU.LINE_GEODESIC });
+        this._toukakuKouroRadio.attr({ "title": CONFIG.TOOLTIP.SAKUZU.LINE_STRAIGHT });
+        taikenkouroLabel.attr({ "title": CONFIG.TOOLTIP.SAKUZU.LINE_GEODESIC });
+        toukakukouroLabel.attr({ "title": CONFIG.TOOLTIP.SAKUZU.LINE_STRAIGHT });
       }
 
       geodesicFrame.append(this._taikenKouroRadio).append(taikenkouroLabel);
@@ -44639,7 +44655,7 @@ GSI.SakuzuInfoEditDialog = GSI.Dialog.extend({
     this._lineWeightSelect.append($('<option>').html("10px").val("10"));
     this._lineWeightSelect.append($('<option>').html("15px").val("15"));
     this._lineWeightSelect.append($('<option>').html("25px").val("25"));
-    this._lineWeightSelect.on('change',L.bind(lineStyleChange, this));
+    this._lineWeightSelect.on('change', L.bind(lineStyleChange, this));
 
     tr.append($('<td>').append(this._lineWeightSelect));
 
@@ -44667,7 +44683,7 @@ GSI.SakuzuInfoEditDialog = GSI.Dialog.extend({
     this._lineTypeSelect.append($('<option>').html("実線").val("normal"));
     this._lineTypeSelect.append($('<option>').html("破線").val("dash"));
     this._lineTypeSelect.append($('<option>').html("点線").val("dot"));
-    this._lineTypeSelect.on('change',L.bind(lineStyleChange, this));
+    this._lineTypeSelect.on('change', L.bind(lineStyleChange, this));
 
     tr.append($('<td>').append(this._lineTypeSelect));
 
@@ -44676,13 +44692,13 @@ GSI.SakuzuInfoEditDialog = GSI.Dialog.extend({
     editFrame.append(table);
 
     // 透明度
-    var table2 = $('<table>').css({"width":"100%"});
+    var table2 = $('<table>').css({ "width": "100%" });
     var tbody2 = $('<tbody>');
     var tr2 = $('<tr>');
 
     this._lineOpacityTextArea = $('<div>').css({ "white-space": "nowrap" });
     this._lineOpacityTextArea.text('線の透過率:');
-    this._lineOpacityInput = $("<input>").attr({ "type": "text" }).css({"margin-left":"4px"}).addClass("line-opacity");
+    this._lineOpacityInput = $("<input>").attr({ "type": "text" }).css({ "margin-left": "4px" }).addClass("line-opacity");
 
     this._lineOpacityTextArea.append(this._lineOpacityInput).append($("<span>").html("%"));
     tr2.append(
@@ -44767,7 +44783,7 @@ GSI.SakuzuInfoEditDialog = GSI.Dialog.extend({
   },
 
   // ポリゴン編集部分生成
-  _createPolygonEditPanel : function(useInner) {
+  _createPolygonEditPanel: function (useInner) {
     var frame = $('<div>').addClass('polygon-panel');
     var editFrame = $('<div>').css({ 'vertical-align': 'middle' });
     var table = $('<table>');
@@ -44790,14 +44806,14 @@ GSI.SakuzuInfoEditDialog = GSI.Dialog.extend({
     editFrame.append(table);
 
     // 透明度
-    var table2 = $('<table>').css({"width":"100%"});
+    var table2 = $('<table>').css({ "width": "100%" });
     var tbody2 = $('<tbody>');
     var tr2 = $('<tr>');
 
     this._fillOpacityTextArea = $('<div>').css({ "white-space": "nowrap" });
     this._fillOpacityTextArea.text('塗潰しの透過率:');
 
-    this._fillOpacityInput = $("<input>").attr({ "type": "text" }).addClass("fill-opacity").css({"margin-left":"4px"});
+    this._fillOpacityInput = $("<input>").attr({ "type": "text" }).addClass("fill-opacity").css({ "margin-left": "4px" });
 
     this._fillOpacityTextArea.append(this._fillOpacityInput).append($("<span>").html("%"));
 
@@ -44876,10 +44892,10 @@ GSI.SakuzuInfoEditDialog = GSI.Dialog.extend({
     editFrame.append(table2);
 
     //　ポリゴン中抜きモードボタン
-    if ( useInner ) {
+    if (useInner) {
       this._polyInnerModeBtn = $('<a>').attr({ 'href': 'javascript:void(0);' })
         .html(GSI.TEXT.SAKUZU.DIALOG_EDIT_POLYINNERBTN)
-        .addClass('plyinnerbtn').on('click',L.bind(this._onPolyInnerClick, this));
+        .addClass('plyinnerbtn').on('click', L.bind(this._onPolyInnerClick, this));
 
       editFrame.append(this._polyInnerModeBtn);
     }
@@ -44889,7 +44905,7 @@ GSI.SakuzuInfoEditDialog = GSI.Dialog.extend({
     return frame;
   },
 
-  _onPolyInnerClick : function() {
+  _onPolyInnerClick: function () {
     if (!this._polyInnerFrame) {
       this._polyInnerFrame = $("<div>").addClass("gsi_sakuzu_dialog_edit_polyinner");
 
@@ -44902,7 +44918,7 @@ GSI.SakuzuInfoEditDialog = GSI.Dialog.extend({
 
       this._polyInnerOkBtn = $("<a>").attr({ 'href': 'javascript:void(0);' })
         .html(GSI.TEXT.SAKUZU.DIALOG_EDIT_POLYINNER_OKBTN)
-        .addClass('normalbutton').on('click',L.bind(this._onPolyInnerOkClick, this));
+        .addClass('normalbutton').on('click', L.bind(this._onPolyInnerOkClick, this));
 
       btnFrame.append(this._polyInnerOkBtn);
 
@@ -44917,7 +44933,7 @@ GSI.SakuzuInfoEditDialog = GSI.Dialog.extend({
     this._sakuzuItem.startPolygonInner();
   },
 
-  _onPolyInnerOkClick : function() {
+  _onPolyInnerOkClick: function () {
 
     this._sakuzuItem.commitPolygonInner();
     this._polyInnerFrame.hide();
@@ -44936,7 +44952,7 @@ GSI.SakuzuInfoEditDialog = GSI.Dialog.extend({
 
     td = $('<td>');
     this._circleRadiusInput = $('<input>').attr({ 'type': 'text' }).addClass('circle_input');
-    this._circleRadiusChangeHandler = L.bind(function(skipRefresh){
+    this._circleRadiusChangeHandler = L.bind(function (skipRefresh) {
       var radius = this._circleRadiusInput.val();
 
       if (radius.match(/^[0-9]+\.[0-9]+$/) || radius.match(/^[0-9]+$/)) {
@@ -44990,7 +45006,7 @@ GSI.SakuzuInfoEditDialog = GSI.Dialog.extend({
   },
 
   // マーカー編集部分生成
-  _createMarkerEditPanel : function () {
+  _createMarkerEditPanel: function () {
     var frame = $('<div>').addClass('gsi_sakuzu_dialog_pointedit');
 
     this._pointEditMarkerFrame = $('<div>');
@@ -45035,7 +45051,7 @@ GSI.SakuzuInfoEditDialog = GSI.Dialog.extend({
 
     this._pointEditTextFrame.append(messageFrame);
 
-    this._pointEditTextModeButton.on('click',L.bind(function () {
+    this._pointEditTextModeButton.on('click', L.bind(function () {
       if (this._pointEditTextArea.val() != "" && !this._pointEditTextArea.hasClass("textmode")) {
         if (!confirm('スタイル等の情報が失われる可能性があります。よろしいですか？')) return;
       }
@@ -45060,7 +45076,7 @@ GSI.SakuzuInfoEditDialog = GSI.Dialog.extend({
       }, this))
       .on('blur', L.bind(function () {
         if (this._pointEditTextareaCheckTimer) {
-          clearTimeout( this._pointEditTextareaCheckTimer );
+          clearTimeout(this._pointEditTextareaCheckTimer);
           this._pointEditTextareaCheckTimer = null;
         }
         this._onPointIconHTMLChange();
@@ -45338,12 +45354,12 @@ GSI.SakuzuInfoEditDialog = GSI.Dialog.extend({
     // テキストモード
     var fontSize = this._pointEditTextFontSizeSelect.val();
     var style = '';
-    if (fontSize && fontSize != ''){
+    if (fontSize && fontSize != '') {
       style += "font-size:" + fontSize + 'pt;'
     }
-    else{
+    else {
       //See css defnition of 'gsi-div-icon'.
-      if (text.indexOf("font-size") < 0){
+      if (text.indexOf("font-size") < 0) {
         style += "font-size:9.5pt;";
       }
     }
@@ -45387,7 +45403,7 @@ GSI.SakuzuInfoEditDialog = GSI.Dialog.extend({
 
     // 情報
     this._toggleInfoBtn = $('<a>').html(GSI.TEXT.SAKUZU.DIALOG_EDIT_INFOFREE_BTN).attr({ 'href': 'javascript:void(0);' }).addClass('toggleinfobtn')
-      .on('click',L.bind(function () {
+      .on('click', L.bind(function () {
 
         if (this._infoFreeWordTextarea.is(':visible')) {
           this._infoFreeWordTextarea.fadeOut('fast', L.bind(function () {
@@ -45416,7 +45432,7 @@ GSI.SakuzuInfoEditDialog = GSI.Dialog.extend({
     this._infoTableTbody = tbody;
     this._infoTable.append(tbody);
 
-    this._infoTableFrame.append( this._infoTable );
+    this._infoTableFrame.append(this._infoTable);
     frame.append(this._infoTableFrame);
 
     this._infoFreeWordTextarea = $('<textarea>').attr({ 'wrap': 'off' }).addClass('inputtextarea').css({ height: '100px', 'width': '100%', "margin-top": "2px" }).hide();
@@ -45426,17 +45442,17 @@ GSI.SakuzuInfoEditDialog = GSI.Dialog.extend({
   },
 
   // OKキャンセル等ボタン
-  _createButtonPanel : function() {
+  _createButtonPanel: function () {
     var frame = $("<div>").addClass("button-panel");
 
-    this._okButton = $("<a>").attr({"href":"javascript:void(0);"}).addClass("normalbutton").html("OK");
-    this._cancelButton = $("<a>").attr({"href":"javascript:void(0);"}).addClass("normalbutton").html("キャンセル");
+    this._okButton = $("<a>").attr({ "href": "javascript:void(0);" }).addClass("normalbutton").html("OK");
+    this._cancelButton = $("<a>").attr({ "href": "javascript:void(0);" }).addClass("normalbutton").html("キャンセル");
 
-    this._okButton.on("click",L.bind(this._okButtonClick, this));
-    this._cancelButton.on("click",L.bind(this._cancelButtonClick, this));
+    this._okButton.on("click", L.bind(this._okButtonClick, this));
+    this._cancelButton.on("click", L.bind(this._cancelButtonClick, this));
 
-    frame.append( this._okButton);
-    frame.append( this._cancelButton);
+    frame.append(this._okButton);
+    frame.append(this._cancelButton);
 
     return frame;
   },
@@ -45448,12 +45464,12 @@ GSI.SakuzuInfoEditDialog = GSI.Dialog.extend({
       table: null
     };
 
-    if ( result.title == "" ) result.title = null;
+    if (result.title == "") result.title = null;
 
     if (this._infoFreeWordTextarea.is(':visible')) {
       result.description = this._infoFreeWordTextarea.val();
     }
-    else  {
+    else {
       result.table = [];
       var keyTextAreaList = this._infoTableTbody.find("textarea[name=info_table_key]");
       var valueTextAreaList = this._infoTableTbody.find("textarea[name=info_table_value]");
@@ -45467,7 +45483,7 @@ GSI.SakuzuInfoEditDialog = GSI.Dialog.extend({
           result.table.push(item);
       }
 
-      if ( result.table.length<=0 ) result.table = null;
+      if (result.table.length <= 0) result.table = null;
     }
 
     return result;
@@ -45665,7 +45681,7 @@ GSI.SakuzuSaveFileWindow = L.Evented.extend({
     selectFrame.append(radio);
     selectFrame.append(label);
 
-    radio.on('click',L.bind(this._onSaveTypeChange, this, radio));
+    radio.on('click', L.bind(this._onSaveTypeChange, this, radio));
 
     id = 'GSI_SakuzuDialog_check' + GSI.Utils.getCurrentID();
     var radio = $('<input>').attr({ id: id, type: "radio", name: "gsi_sakuzu_dialog_savetype", value: "geojson" }).addClass('normalcheck');
@@ -45673,7 +45689,7 @@ GSI.SakuzuSaveFileWindow = L.Evented.extend({
     selectFrame.append(radio);
     selectFrame.append(label);
 
-    radio.on('click',L.bind(this._onSaveTypeChange, this, radio));
+    radio.on('click', L.bind(this._onSaveTypeChange, this, radio));
 
     // テキストエリア
     var textareaFrame = $("<div>").addClass("textarea-frame");
@@ -46213,26 +46229,26 @@ GSI.MapMenu = L.Evented.extend({
     this._panelOverlap = panelOverlap;
     this._initializeView(panelVisible, panelOverlap);
 
-    this._gsimaps.on("initialized", L.bind(function() {
+    this._gsimaps.on("initialized", L.bind(function () {
       this._mapPanel.getMapListPanel().getBaseMapPanel().setList(
         this._gsimaps._layersJSON.getBase()
       );
-    },this));
+    }, this));
 
   },
 
-  destroy : function() {
-    if ( this._mapPanel ) {
+  destroy: function () {
+    if (this._mapPanel) {
       this._mapPanel.destroy();
     }
   },
 
-  setTopMargin : function() {
-    $( this._rootButton.elem ).addClass("margintop");
+  setTopMargin: function () {
+    $(this._rootButton.elem).addClass("margintop");
     this._mapPanel.setHideButtonTopMargin();
   },
-  removeTopMargin : function() {
-    $( this._rootButton.elem ).removeClass("margintop");
+  removeTopMargin: function () {
+    $(this._rootButton.elem).removeClass("margintop");
     this._mapPanel.removeHideButtonTopMargin();
   },
 
@@ -46243,7 +46259,7 @@ GSI.MapMenu = L.Evented.extend({
       .html('<img src="" class="" title="地図を選択">')
       .css({ "white-space": "nowrap", "position": "relative" })
       .addClass('gsi-mapmenu-btn')
-      .on('click',L.bind(this._onItemClick, this));
+      .on('click', L.bind(this._onItemClick, this));
 
     var title = $("<div>").html("地図");
     elem.append(title);
@@ -46251,48 +46267,48 @@ GSI.MapMenu = L.Evented.extend({
     this._rootButton.addTo(this._map);
     this._onBaseChange({});
 
-    var img = $(this._rootButton.elem).find( "img");
-    img.attr({"src":"./image/map/layer_map.png"});
+    var img = $(this._rootButton.elem).find("img");
+    img.attr({ "src": "./image/map/layer_map.png" });
 
-    this._mapPanel = new GSI.MapPanel(this._mapManager, this._container, panelVisible, panelOverlap,{
-      "position" : (this.options.panelPosition == "right" ? "right" : "left"),
-      "hideButtonHidden" : !this.options.visible
+    this._mapPanel = new GSI.MapPanel(this._mapManager, this._container, panelVisible, panelOverlap, {
+      "position": (this.options.panelPosition == "right" ? "right" : "left"),
+      "hideButtonHidden": !this.options.visible
     });
     this._mapPanel
-      .on("show", L.bind(function(evt) {
+      .on("show", L.bind(function (evt) {
         this._rootButton.hide();
         this.fire("panelshow", evt);
-      },this))
-      .on("resize", L.bind(function(evt){
+      }, this))
+      .on("resize", L.bind(function (evt) {
         this.fire("panelresize", evt);
-      },this))
-      .on("hide", L.bind(function(evt) {
+      }, this))
+      .on("hide", L.bind(function (evt) {
         this.fire("panelhide", evt);
-      },this))
-      .on("showafter", L.bind(function(evt) {
+      }, this))
+      .on("showafter", L.bind(function (evt) {
         this.fire("panelchange", evt);
-      },this))
-      .on("hideafter", L.bind(function(evt) {
+      }, this))
+      .on("hideafter", L.bind(function (evt) {
         this._rootButton.show();
         this.fire("panelchange", evt);
-      },this))
-      .on("overlapchange", L.bind(function(evt) {
-        if ( this.getPanelVisible())
+      }, this))
+      .on("overlapchange", L.bind(function (evt) {
+        if (this.getPanelVisible())
           this.fire("paneloverlapchange", evt);
-      },this));
+      }, this));
 
     this.rootItem = {
       elem: elem,
       children: [],
       depth: 0
     };
-    if ( panelVisible || !this.options.visible) {
+    if (panelVisible || !this.options.visible) {
       this._rootButton.hide();
     }
     this._mapPanel.create();
   },
 
-  setButtonLeftPosition : function(left) {
+  setButtonLeftPosition: function (left) {
 
     if (left == undefined) left = 0;
     this.rootItem.left = left;
@@ -46300,64 +46316,64 @@ GSI.MapMenu = L.Evented.extend({
 
   },
 
-  _onItemClick : function() {
+  _onItemClick: function () {
     this.showPanel();
   },
 
-  showPanel : function(noAnimate) {
+  showPanel: function (noAnimate) {
     this._mapPanel.show(noAnimate);
   },
 
-  hidePanel : function(noAnimate) {
+  hidePanel: function (noAnimate) {
     this._mapPanel.hide(noAnimate);
   },
 
-  getPanelVisible : function() {
+  getPanelVisible: function () {
     return this._mapPanel.getVisible();
   },
 
-  getPanelPosition : function() {
+  getPanelPosition: function () {
     return this._mapPanel.options.position;
   },
 
-  getPanelWidth : function () {
+  getPanelWidth: function () {
     return this._mapPanel.getWidth();
   },
 
-  setData : function( data ) {
+  setData: function (data) {
     this._cocoTileLayer = data.cocoTileLayer;
     this._mapLayerList = data.mapLayerList;
-    this._mapPanel._mapListPanel.initCurrentPath(data.currentPath );
-    this._mapPanel._mapListPanel._baseMapPanel.on("change", L.bind( this._onBaseChange, this ));
+    this._mapPanel._mapListPanel.initCurrentPath(data.currentPath);
+    this._mapPanel._mapListPanel._baseMapPanel.on("change", L.bind(this._onBaseChange, this));
 
-    this._mapPanel._mapListPanel.setCocoTileLayer( this._cocoTileLayer );
-    this._mapPanel._mapListPanel.setMapLayerList( this._mapLayerList );
+    this._mapPanel._mapListPanel.setCocoTileLayer(this._cocoTileLayer);
+    this._mapPanel._mapListPanel.setMapLayerList(this._mapLayerList);
 
-    this._mapPanel._showingMapListPanel.setCocoTileLayer( this._cocoTileLayer );
-    this._mapPanel._showingMapListPanel.setMapLayerList( this._mapLayerList );
+    this._mapPanel._showingMapListPanel.setCocoTileLayer(this._cocoTileLayer);
+    this._mapPanel._showingMapListPanel.setMapLayerList(this._mapLayerList);
   },
 
-  setTree : function( tree, visibleLayers, visibleLayersHash ) {
-    this._mapPanel._mapListPanel.setTree(tree, visibleLayers, visibleLayersHash );
+  setTree: function (tree, visibleLayers, visibleLayersHash) {
+    this._mapPanel._mapListPanel.setTree(tree, visibleLayers, visibleLayersHash);
 
   },
 
-  isPanelOverlap : function() {
+  isPanelOverlap: function () {
     return this._mapPanel.isOverlap();
   },
 
-  setPanelOverlap : function(on) {
+  setPanelOverlap: function (on) {
     this._mapPanel.setOverlap(on);
   },
 
-  getMapListPanel : function() {
+  getMapListPanel: function () {
     return this._mapPanel._mapListPanel;
   },
 
-  getShowingMapListPanel : function() {
+  getShowingMapListPanel: function () {
     return this._mapPanel._showingMapListPanel;
   },
-  _onBaseChange : function( evt) {
+  _onBaseChange: function (evt) {
 
   }
 });
@@ -46368,192 +46384,194 @@ GSI.MapMenu = L.Evented.extend({
  ************************************************************************/
 GSI.MapPanel = L.Evented.extend({
 
-  options : {
-    position : "left",
-    toggleSpeed : 200
+  options: {
+    position: "left",
+    toggleSpeed: 200
   },
 
-  SIZEMODE : [
-    { width:210, screenWidth: 350, minMode :true},
-    { width:280, screenWidth: 600},
-    { width:350}
+  SIZEMODE: [
+    { width: 210, screenWidth: 350, minMode: true },
+    { width: 280, screenWidth: 600 },
+    { width: 350 }
   ],
-  initialize : function(mapManager,parentContainer, visible, overlap, options) {
+  initialize: function (mapManager, parentContainer, visible, overlap, options) {
 
     options = L.setOptions(this, options);
     this._overlap = overlap;
 
-    this._sizeMode = ( CONFIG.MOBILE ? 0 : 2);
+    this._sizeMode = (CONFIG.MOBILE ? 0 : 2);
     this._mapManager = mapManager;
     this._parentContainer = parentContainer;
     this._splitterInitialized = false;
     this._initialVisible = visible;
 
-    if ( !this._windowResizeHandler ) {
-      this._windowResizeHandler = L.bind( this._onWindowResize, this );
+    if (!this._windowResizeHandler) {
+      this._windowResizeHandler = L.bind(this._onWindowResize, this);
       $(window).on("resize", this._windowResizeHandler);
     }
   },
 
-  isOverlap : function() {
+  isOverlap: function () {
     return this._overlap;
   },
 
-  setOverlap : function(on) {
-    if ( this._overlap == on ) return;
+  setOverlap: function (on) {
+    if (this._overlap == on) return;
     this._overlap = on;
 
-    if ( this._overlap )
+    if (this._overlap)
       this._container.addClass("overlap");
     else
       this._container.removeClass("overlap");
 
-    this.fire("overlapchange",{"overlap":this._overlap});
+    this.fire("overlapchange", { "overlap": this._overlap });
   },
 
-  getVisible : function() {
+  getVisible: function () {
     return this._container.is(":visible");
   },
-  getWidth : function() {
+  getWidth: function () {
     return this._container.outerWidth();
   },
 
-  show : function(noAnimate) {
+  show: function (noAnimate) {
     this.create();
-    if ( this._container.is(":visible")) return;
-    this._container.css({"visibility":"hidden"});
+    if (this._container.is(":visible")) return;
+    this._container.css({ "visibility": "hidden" });
     this._container.show();
 
-    if ( !this._splitterInitialized ) {
-      this._splitter.adjust( Math.round( this._container.outerHeight() *0.7 ) );
+    if (!this._splitterInitialized) {
+      this._splitter.adjust(Math.round(this._container.outerHeight() * 0.7));
       this._splitterInitialized = true;
 
     }
 
     var bottomHeight = this._showingMapListPanel.getHeight();
 
-    if ( bottomHeight < 80 ) {
+    if (bottomHeight < 80) {
 
-      this._splitter.adjust( this._container.outerHeight() - 80 );
+      this._splitter.adjust(this._container.outerHeight() - 80);
     }
 
     var width = this._container.outerWidth();
 
-    this._container.hide().css({"visibility":"visible"});
-    this.fire("show",{"width":width, "duration": this.options.toggleSpeed,
-      "position": ( this.options.position == "right" ? "right" : "left" )});
-    this._container.show("slide",{"direction":( this.options.position == "right" ? "right" : "left" )},this.options.toggleSpeed, L.bind(function() {
+    this._container.hide().css({ "visibility": "visible" });
+    this.fire("show", {
+      "width": width, "duration": this.options.toggleSpeed,
+      "position": (this.options.position == "right" ? "right" : "left")
+    });
+    this._container.show("slide", { "direction": (this.options.position == "right" ? "right" : "left") }, this.options.toggleSpeed, L.bind(function () {
       this.fire("showafter");
-    },this));
+    }, this));
     this._mapListPanel.adjust();
     this._showingMapListPanel.adjust();
 
-    if ( CONFIG.MOBILE ) {
-      if ( !this._bodyMousedownHandler ) {
-        this._bodyMousedownHandler = L.bind( function(evt) {
+    if (CONFIG.MOBILE) {
+      if (!this._bodyMousedownHandler) {
+        this._bodyMousedownHandler = L.bind(function (evt) {
           var target = evt.target;
-          if ( $(target).hasClass("close-btn")) return;
-          while( target) {
-            if ( target == this._container[0]) return;
+          if ($(target).hasClass("close-btn")) return;
+          while (target) {
+            if (target == this._container[0]) return;
             target = target.parentNode;
           }
-        },this);
-        $(document.body).on("mousedown",this._bodyMousedownHandler);
+        }, this);
+        $(document.body).on("mousedown", this._bodyMousedownHandler);
       }
     }
   },
 
-  hide : function() {
-    if ( this._bodyMousedownHandler ) {
-      $(document.body).off("mousedown",this._bodyMousedownHandler);
-      this._bodyMousedownHandler  = undefined;
+  hide: function () {
+    if (this._bodyMousedownHandler) {
+      $(document.body).off("mousedown", this._bodyMousedownHandler);
+      this._bodyMousedownHandler = undefined;
     }
-    this.fire("hide", { "position": ( this.options.position == "right" ? "right" : "left" ), "duration": this.options.toggleSpeed});
-    this._container.hide("slide",{"direction":( this.options.position == "right" ? "right" : "left" )},this.options.toggleSpeed, L.bind(function() {
+    this.fire("hide", { "position": (this.options.position == "right" ? "right" : "left"), "duration": this.options.toggleSpeed });
+    this._container.hide("slide", { "direction": (this.options.position == "right" ? "right" : "left") }, this.options.toggleSpeed, L.bind(function () {
       this.fire("hideafter");
-    },this));
+    }, this));
   },
 
-  destroy : function() {
+  destroy: function () {
 
-    if ( this._windowResizeHandler ) {
+    if (this._windowResizeHandler) {
       $(window).off("resize", this._windowResizeHandler);
       this._windowResizeHandler = undefined;
     }
 
-    if ( this._bodyMousedownHandler ) {
-      $(document.body).off("mousedown",this._bodyMousedownHandler);
-      this._bodyMousedownHandler  = undefined;
+    if (this._bodyMousedownHandler) {
+      $(document.body).off("mousedown", this._bodyMousedownHandler);
+      this._bodyMousedownHandler = undefined;
     }
 
-    if ( this._container ) {
+    if (this._container) {
       this._container.remove();
       this._container = undefined;
     }
   },
 
-  setHideButtonTopMargin : function() {
+  setHideButtonTopMargin: function () {
     this._closeButton.addClass("margintop");
   },
 
-  removeHideButtonTopMargin : function() {
+  removeHideButtonTopMargin: function () {
     this._closeButton.removeClass("margintop");
 
   },
 
-  create : function() {
-    if ( this._container ) return false;
+  create: function () {
+    if (this._container) return false;
 
     this._container = $("<div>").addClass("gsi-mapmenu-container");
-    if ( this.SIZEMODE[this._sizeMode].minMode) {
+    if (this.SIZEMODE[this._sizeMode].minMode) {
       this._container.addClass("minmode");
     }
 
-    if ( this.options.position == "right") {
+    if (this.options.position == "right") {
       //右表示
       this._container.addClass("right");
     }
 
-    if ( this._overlap ) {
+    if (this._overlap) {
       this._container.addClass("overlap");
     }
-    this.setWidth( this.SIZEMODE[this._sizeMode].width);
-    if ( !this._initialVisible )this._container.hide();
+    this.setWidth(this.SIZEMODE[this._sizeMode].width);
+    if (!this._initialVisible) this._container.hide();
 
-    this._parentContainer.append( this._container );
+    this._parentContainer.append(this._container);
 
     // 閉じるボタン
     this._closeButton = $("<a>")
       .addClass("close-btn")
-      .on("click", L.bind(this._onCloseButtonClick,this))
-      .attr({"href":"javascript:void(0);"});
+      .on("click", L.bind(this._onCloseButtonClick, this))
+      .attr({ "href": "javascript:void(0);" });
 
-    if ( !this.options.hideButtonHidden ) {
+    if (!this.options.hideButtonHidden) {
       this._container.append(this._closeButton);
     }
 
     // 表示できる地図用パネル
-    this._mapListPanel = new GSI.MapListPanel(this._mapManager,this._container);
+    this._mapListPanel = new GSI.MapListPanel(this._mapManager, this._container);
     this._mapListPanel.show();
 
     // 表示中地図用パネル
-    this._showingMapListPanel = new GSI.ShowingMapListPanel(this._mapManager,this._container);
+    this._showingMapListPanel = new GSI.ShowingMapListPanel(this._mapManager, this._container);
 
-    this._showingMapListPanel.on("folderclick",L.bind(function(evt, a) {
-      this._mapListPanel.openFolder( evt.folder );
-    },this));
+    this._showingMapListPanel.on("folderclick", L.bind(function (evt, a) {
+      this._mapListPanel.openFolder(evt.folder);
+    }, this));
     this._showingMapListPanel.show();
 
     // サイズ調節用スプリッター
-    this._splitter= new GSI.MapPanelSplitter(this._container, null, this._mapListPanel, this._showingMapListPanel);
+    this._splitter = new GSI.MapPanelSplitter(this._container, null, this._mapListPanel, this._showingMapListPanel);
     this._splitter.show();
-    this._splitter.on("change", L.bind(function(){
+    this._splitter.on("change", L.bind(function () {
       this._mapListPanel.adjust();
-    }, this ) );
+    }, this));
     this.adjust();
 
-    if ( this._initialVisible ) {
-      this._splitter.adjust( Math.round( this._container.outerHeight() *0.7 ) );
+    if (this._initialVisible) {
+      this._splitter.adjust(Math.round(this._container.outerHeight() * 0.7));
       this._splitterInitialized = true;
     }
 
@@ -46562,67 +46580,67 @@ GSI.MapPanel = L.Evented.extend({
     return true;
   },
 
-  _onCloseButtonClick : function() {
+  _onCloseButtonClick: function () {
     this.hide();
   },
 
-  adjust : function() {
+  adjust: function () {
     this._splitter.adjust();
   },
 
-  setWidth : function(w) {
+  setWidth: function (w) {
     this._width = w;
-    this._container.css({"width":this._width + "px"});
-    if ( this._container.is(":visible")) this.fire("resize",{"width":w, "position": ( this.options.position == "right" ? "right" : "left" )});
+    this._container.css({ "width": this._width + "px" });
+    if (this._container.is(":visible")) this.fire("resize", { "width": w, "position": (this.options.position == "right" ? "right" : "left") });
   },
 
-  setSizeMode : function(mode ) {
-    if ( this._sizeMode == mode ) return;
+  setSizeMode: function (mode) {
+    if (this._sizeMode == mode) return;
     this._sizeMode = mode;
-    this.setWidth( this.SIZEMODE[mode].width);
+    this.setWidth(this.SIZEMODE[mode].width);
 
-    if ( this._mapListPanel ) this._mapListPanel.refreshSize();
-    if ( this._showingMapListPanel ) this._showingMapListPanel.setMiniMode(this.SIZEMODE[mode].minMode);
+    if (this._mapListPanel) this._mapListPanel.refreshSize();
+    if (this._showingMapListPanel) this._showingMapListPanel.setMiniMode(this.SIZEMODE[mode].minMode);
 
   },
 
-  _onWindowResize : function() {
+  _onWindowResize: function () {
 
-    if ( !this._container.parent().is(":visible"))return;
+    if (!this._container.parent().is(":visible")) return;
 
     var size = GSI.Utils.getScreenSize();
 
-    if ( CONFIG.MOBILE ) {
-      this.setSizeMode( 0);
+    if (CONFIG.MOBILE) {
+      this.setSizeMode(0);
     } else {
-      for( var i=0; i<this.SIZEMODE.length; i++ ) {
+      for (var i = 0; i < this.SIZEMODE.length; i++) {
         var mode = this.SIZEMODE[i];
-        if ( !mode.screenWidth || mode.screenWidth >= size.w ) {
+        if (!mode.screenWidth || mode.screenWidth >= size.w) {
 
-          this.setSizeMode( i);
+          this.setSizeMode(i);
           break;
         }
       }
     }
     var isVisible = this._container.is(":visible");
 
-    if ( !isVisible) {
-      this._container.css({"visibility":"hidden"});
+    if (!isVisible) {
+      this._container.css({ "visibility": "hidden" });
       this._container.show();
     }
     var bottomHeight = this._showingMapListPanel.getHeight();
 
-    if ( bottomHeight < 80 ) {
+    if (bottomHeight < 80) {
       bottomHeight = 80;
-      this._splitter.adjust( this._container.outerHeight() - bottomHeight );
+      this._splitter.adjust(this._container.outerHeight() - bottomHeight);
     }
 
-    if ( !isVisible) {
-      this._container.hide().css({"visibility":"visible"});
+    if (!isVisible) {
+      this._container.hide().css({ "visibility": "visible" });
     }
   },
 
-  getMapListPanel : function() {
+  getMapListPanel: function () {
     return this._mapListPanel;
   }
 });
@@ -46634,45 +46652,45 @@ GSI.MapPanel = L.Evented.extend({
 GSI.MapPanelContainer = L.Evented.extend({
 
   options: {
-    className : ""
+    className: ""
   },
 
-  getHeight : function() {
-    if ( !this._container ) return -1;
+  getHeight: function () {
+    if (!this._container) return -1;
     return this._container.outerHeight();
   },
 
-  initialize : function(parentContainer, options) {
+  initialize: function (parentContainer, options) {
     this._parentContainer = parentContainer;
     options = L.setOptions(this, options);
   },
 
-  getContainer : function() {
+  getContainer: function () {
     return this._container;
   },
 
-  destroy : function() {
+  destroy: function () {
 
   },
 
-  create : function() {
+  create: function () {
 
-    if ( this._container ) return;
+    if (this._container) return;
 
     this._container = $("<div>").addClass(this.options.className).hide();
 
-    this._parentContainer.append( this._container );
-    if ( this._createAfter ) this._createAfter();
+    this._parentContainer.append(this._container);
+    if (this._createAfter) this._createAfter();
   },
 
-  show : function() {
+  show: function () {
     this.create();
     this._container.show();
-    if ( this._showAfter ) this._showAfter();
+    if (this._showAfter) this._showAfter();
   },
 
-  hide : function() {
-    if ( !this._container ) return;
+  hide: function () {
+    if (!this._container) return;
     this._container.hide();
   }
 });
@@ -46684,54 +46702,54 @@ GSI.MapPanelContainer = L.Evented.extend({
 GSI.MapPanelSplitter = GSI.MapPanelContainer.extend({
 
   options: {
-    className : "gsi-maplistpanelsplitter-container"
+    className: "gsi-maplistpanelsplitter-container"
   },
 
-  initialize : function(parentContainer, options, topPanel, bottomPanel) {
+  initialize: function (parentContainer, options, topPanel, bottomPanel) {
     GSI.MapPanelContainer.prototype.initialize.call(this, parentContainer, options);
     this._topPanel = topPanel;
     this._bottomPanel = bottomPanel;
     this._ljsSrc = null;
   },
 
-  _createAfter : function() {
+  _createAfter: function () {
 
     this._container.draggable({
-      containment : "parent",
+      containment: "parent",
       axis: "y",
-      start : L.bind( this._onDragStart, this),
-      drag : L.bind( this._onDragMove, this),
-      stop : L.bind( this._onDragStop, this),
+      start: L.bind(this._onDragStart, this),
+      drag: L.bind(this._onDragMove, this),
+      stop: L.bind(this._onDragStop, this),
     });
   },
 
-  _onDragStart : function(evt, ui) {
-    this.adjust( ui.position.top);
+  _onDragStart: function (evt, ui) {
+    this.adjust(ui.position.top);
   },
 
-  _onDragMove : function(evt, ui) {
-    this.adjust( ui.position.top);
+  _onDragMove: function (evt, ui) {
+    this.adjust(ui.position.top);
 
   },
 
-  _onDragStop : function(evt, ui) {
-    this.adjust( ui.position.top);
+  _onDragStop: function (evt, ui) {
+    this.adjust(ui.position.top);
   },
-  adjust : function(topHeight) {
+  adjust: function (topHeight) {
 
     var topPanelContainer = this._topPanel.getContainer();
     var bottomPanelContainer = this._bottomPanel.getContainer();
 
-    if ( topHeight ) {
-      topPanelContainer.css( {"height": topHeight + "px"});
+    if (topHeight) {
+      topPanelContainer.css({ "height": topHeight + "px" });
     } else {
       topHeight = topPanelContainer.outerHeight();
     }
     var splitterHeight = 0;// this._container.outerHeight();
 
-    this._container.css( {"top": ( topHeight ) + "px"});
+    this._container.css({ "top": (topHeight) + "px" });
 
-    bottomPanelContainer.css( {"top": ( topHeight + splitterHeight ) + "px"});
+    bottomPanelContainer.css({ "top": (topHeight + splitterHeight) + "px" });
 
     this.fire("change");
   }
@@ -46744,10 +46762,10 @@ GSI.MapPanelSplitter = GSI.MapPanelContainer.extend({
 GSI.BaseMapPanel = GSI.MapPanelContainer.extend({
 
   options: {
-    className : "gsi-basemappanel-container"
+    className: "gsi-basemappanel-container"
   },
 
-  initialize : function(mapListPanel, parentContainer, options) {
+  initialize: function (mapListPanel, parentContainer, options) {
 
     this._mapListPanel = mapListPanel;
 
@@ -46756,112 +46774,112 @@ GSI.BaseMapPanel = GSI.MapPanelContainer.extend({
     GSI.MapPanelContainer.prototype.initialize.call(this, parentContainer, options);
   },
 
-  setList : function( list ) {
-    this._initializeList( list );
+  setList: function (list) {
+    this._initializeList(list);
     this.refresh();
     this.fire("initialized");
   },
 
-  _createAfter : function() {
+  _createAfter: function () {
 
-    this._listFrame = $( "<ul>");
+    this._listFrame = $("<ul>");
     this._initializeList(this._list);
-    this._container.append( this._listFrame );
+    this._container.append(this._listFrame);
 
   },
 
-  _initializeList : function(list) {
+  _initializeList: function (list) {
 
     this._listFrame.empty();
-    for( var i=0; i<list.length; i++ ) {
+    for (var i = 0; i < list.length; i++) {
       var item = list[i];
       var li = this._createListItem(item);
 
-      this._listFrame.append( li );
+      this._listFrame.append(li);
 
     }
   },
-  getPosition : function() {
+  getPosition: function () {
 
     return this._container.position();
   },
 
-  getSize : function() {
+  getSize: function () {
 
     var result = {
-      width : this._container.outerWidth(),
-      height : this._container.outerHeight()
+      width: this._container.outerWidth(),
+      height: this._container.outerHeight()
     };
 
     return result;
   },
 
-  _createListItem : function(item) {
+  _createListItem: function (item) {
     var li = $("<li>");
-    var a = $( "<a>")
-      .attr({"href":"javascript:void(0);","title": ""+item.title+""})
-      .data({"item":item})
-      .on('click', L.bind(this._onItemClick,this, item));
+    var a = $("<a>")
+      .attr({ "href": "javascript:void(0);", "title": "" + item.title + "" })
+      .data({ "item": item })
+      .on('click', L.bind(this._onItemClick, this, item));
 
     var thumbImage = item.thumb;
-    if ( !thumbImage || thumbImage == "" ) {
+    if (!thumbImage || thumbImage == "") {
       thumbImage = "image/map/layer_" + item.id + ".png";
 
     }
     item.thumb = thumbImage;
 
-    var img = $("<img>").attr( {"src":thumbImage,"alt": item.title});
+    var img = $("<img>").attr({ "src": thumbImage, "alt": item.title });
 
-    var title = $( "<div>").html( item.title).addClass("title");
+    var title = $("<div>").html(item.title).addClass("title");
 
     a.append(img);
-    a.append( title );
+    a.append(title);
 
-    li.append( a );
-    if ( item["__hidden"]) {
+    li.append(a);
+    if (item["__hidden"]) {
       li.hide();
     }
     return li;
   },
 
-  setMapLayerList : function(mapLayerList) {
+  setMapLayerList: function (mapLayerList) {
     this._mapLayerList = mapLayerList;
   },
 
-  refresh : function() {
+  refresh: function () {
 
-    this.fire("change", {"item": null});
+    this.fire("change", { "item": null });
     var aList = this._listFrame.find("li a");
-    for( var i=0; i<aList.length; i++ ) {
-      var a = $( aList[i] );
+    for (var i = 0; i < aList.length; i++) {
+      var a = $(aList[i]);
       var item = a.data("item");
-      if ( this._mapLayerList.exists( item ) ) {
+      if (this._mapLayerList.exists(item)) {
         a.addClass("active");
-        this.fire("change", {"item": item});
+        this.fire("change", { "item": item });
       } else {
         a.removeClass("active");
       }
     }
   },
 
-  _onItemClick : function(item) {
+  _onItemClick: function (item) {
 
-    this.fire( "select", {item:item});
+    this.fire("select", { item: item });
   },
 
-  adjust : function(w) {
-    if ( w <= 0 ) return;
-    w-=2;
+  adjust: function (w) {
+    if (w <= 0) return;
+    w -= 2;
     var aList = this._listFrame.find("li a");
 
-    var size = Math.floor( w / aList.length )-1;
+    var size = Math.floor(w / aList.length) - 1;
 
-    if ( size< 50 ) {
+    if (size < 50) {
       aList.addClass("mini");
     } else {
       aList.removeClass("mini");
     }
-    aList.css({"width": size + "px", "height" : size+"px"});
+    aList.css({ "width": size + "px", "height": size + "px" });
   }
 });
 
@@ -46872,50 +46890,50 @@ GSI.BaseMapPanel = GSI.MapPanelContainer.extend({
 GSI.MapListPanel = GSI.MapPanelContainer.extend({
 
   options: {
-    className : "gsi-maplistpanel-container"
+    className: "gsi-maplistpanel-container"
   },
 
-  initialize : function(mapManager, parentContainer, options) {
+  initialize: function (mapManager, parentContainer, options) {
     this._activeTabIndex = 0;
     this._mapManager = mapManager;
     GSI.MapPanelContainer.prototype.initialize.call(this, parentContainer, options);
   },
 
-  refreshSize : function() {
+  refreshSize: function () {
     this.adjust();
   },
 
-  getBaseMapPanel : function() {
+  getBaseMapPanel: function () {
     return this._baseMapPanel;
   },
 
-  _createAfter : function() {
+  _createAfter: function () {
 
     // ベースマップ表示用パネル
-    this._baseMapPanel= new GSI.BaseMapPanel(this,this._container, null);
-    this._baseMapPanel.on("select", L.bind( this._onBaseSelect, this));
-    this._baseMapPanel.on("initialized", L.bind( this.adjust, this));
+    this._baseMapPanel = new GSI.BaseMapPanel(this, this._container, null);
+    this._baseMapPanel.on("select", L.bind(this._onBaseSelect, this));
+    this._baseMapPanel.on("initialized", L.bind(this.adjust, this));
     this._baseMapPanel.show();
 
     // 表示できる情報用
-    this._contentFrame = $( "<div>"  ).addClass("gsi-maplist-contentframe");
-    this._headerFrame = $( "<div>").addClass("gsi-maplist-headerframe");
-    this._headerFrame.append( $("<div>").addClass("title").html("地図の種類") );
+    this._contentFrame = $("<div>").addClass("gsi-maplist-contentframe");
+    this._headerFrame = $("<div>").addClass("gsi-maplist-headerframe");
+    this._headerFrame.append($("<div>").addClass("title").html("地図の種類"));
 
-    this._contentContainer= $("<div>").addClass("gsi-maplist-contentcontainer");
+    this._contentContainer = $("<div>").addClass("gsi-maplist-contentcontainer");
     // this._searchFrame = this._createSearchFrame();
     this._controlFrame = this._createControl();
     this._pankzFrame = $("<div>").addClass("gsi-maplist-pankzframe");
-    this._titleTextFrame = $( "<div>");
+    this._titleTextFrame = $("<div>");
 
-    this._listFrame = $( "<div>" ).addClass("scroll-frame");
+    this._listFrame = $("<div>").addClass("scroll-frame");
 
-    this._pankzFrame.append( this._titleTextFrame );
+    this._pankzFrame.append(this._titleTextFrame);
 
-    this._contentFrame.append( this._headerFrame);
+    this._contentFrame.append(this._headerFrame);
     // this._contentContainer.append( this._searchFrame);
-    this._contentContainer.append( this._controlFrame);
-    this._contentContainer.append( this._pankzFrame);
+    this._contentContainer.append(this._controlFrame);
+    this._contentContainer.append(this._pankzFrame);
 
     this._searchResultTextFrame = $('<div>').append($('<span>').html(this.options.title)).addClass("layertreedialog_searchresult_text_frame").hide()
 
@@ -46924,10 +46942,10 @@ GSI.MapListPanel = GSI.MapPanelContainer.extend({
 
     this._searchResultTextFrame.append(this._clearSearchButton);
 
-    this._contentContainer.append(this._searchResultTextFrame );
-    this._contentContainer.append( this._listFrame );
-    this._contentFrame.append( this._contentContainer);
-    this._container.append( this._contentFrame);
+    this._contentContainer.append(this._searchResultTextFrame);
+    this._contentContainer.append(this._listFrame);
+    this._contentFrame.append(this._contentContainer);
+    this._container.append(this._contentFrame);
 
     this._searchResult = $("<div>").addClass("layertreedialog_searchresult_frame").hide();
     this._searchResult.append($("<ul>"));
@@ -46937,7 +46955,7 @@ GSI.MapListPanel = GSI.MapPanelContainer.extend({
 
   },
 
-  _onBaseSelect : function( evt ) {
+  _onBaseSelect: function (evt) {
     var item = evt.item;
     var baseLayerTarget = null;
 
@@ -46948,7 +46966,7 @@ GSI.MapListPanel = GSI.MapPanelContainer.extend({
       }
     }
 
-    if (baseLayerTarget ) {
+    if (baseLayerTarget) {
       var f = false;
       if (this._mapLayerList.exists(baseLayerTarget)) {
         f = true;
@@ -46983,7 +47001,7 @@ GSI.MapListPanel = GSI.MapPanelContainer.extend({
 
   },
 
-  initCurrentPath : function(path) {
+  initCurrentPath: function (path) {
 
     this._current_id = this.path = path;
   },
@@ -46991,8 +47009,10 @@ GSI.MapListPanel = GSI.MapPanelContainer.extend({
   _createControl: function () {
     var frame = $('<div>').addClass('gsi-maplist-controlframe');
 
-    this.onOffSwitch = new GSI.OnOffSwitch({ className: 'onoff',
-      checked: ( this._cocoTileLayer ? this._cocoTileLayer.getVisible() : false ), title: "" });
+    this.onOffSwitch = new GSI.OnOffSwitch({
+      className: 'onoff',
+      checked: (this._cocoTileLayer ? this._cocoTileLayer.getVisible() : false), title: ""
+    });
 
     var onoffFrame = $('<div>');
     var label = $('<label>').css({ "padding-left": "5px" }).attr({ 'for': this.onOffSwitch.getId() }).html('表示範囲に絞込み');
@@ -47011,8 +47031,8 @@ GSI.MapListPanel = GSI.MapPanelContainer.extend({
     frame.append(this._showAllButton);
     frame.append(onoffFrame);
 
-    this._showAllButton.on('click',L.bind(this._onShowAllClick, this));
-    this._hideAllButton.on('click',L.bind(this._onHideAllClick, this));
+    this._showAllButton.on('click', L.bind(this._onShowAllClick, this));
+    this._hideAllButton.on('click', L.bind(this._onHideAllClick, this));
 
     return frame;
   },
@@ -47047,43 +47067,43 @@ GSI.MapListPanel = GSI.MapPanelContainer.extend({
       }
     }
   },
-/*
-  _createSearchFrame: function () {
-    // 検索
-    this._searchFrame = $("<div>").addClass("gsi-maplist-searchframe");
-    this._queryInput = $("<input>").attr({ "type": "search", "placeholder": "例：写真/標高/災害" });
-    this._layerTreeSearcher = new GSI.LayerTreeSearcher(this._queryInput, this._mapManager);
-    this._layerTreeSearcher
-      .on("start", L.bind(function (e) { this._startSearch(); }, this))
-      .on("focus", L.bind(function (e) { this._showSearchResult(); }, this))
-      .on("clear", L.bind(function (e) { this._clearSearch(); }, this))
-      .on("hit", L.bind(function (e) { this._appendSearchResult(e.list, e.result); }, this))
-      .on("finish", L.bind(function (e) { this._finishSearch(e.result); }, this));
-    this._queryInput
-      .on("click", function () { this.focus(); })
-      .on("focus", L.bind(function () {
-        this._layerTreeSearcher.start();
-      }, this))
-      .on("blur", L.bind(function () {
-        this._layerTreeSearcher.stop();
-      }, this));
-    this._searchFrame.append(this._queryInput);
-
-    return this._searchFrame;
-
-  },
-*/
-  _showAfter : function() {
+  /*
+    _createSearchFrame: function () {
+      // 検索
+      this._searchFrame = $("<div>").addClass("gsi-maplist-searchframe");
+      this._queryInput = $("<input>").attr({ "type": "search", "placeholder": "例：写真/標高/災害" });
+      this._layerTreeSearcher = new GSI.LayerTreeSearcher(this._queryInput, this._mapManager);
+      this._layerTreeSearcher
+        .on("start", L.bind(function (e) { this._startSearch(); }, this))
+        .on("focus", L.bind(function (e) { this._showSearchResult(); }, this))
+        .on("clear", L.bind(function (e) { this._clearSearch(); }, this))
+        .on("hit", L.bind(function (e) { this._appendSearchResult(e.list, e.result); }, this))
+        .on("finish", L.bind(function (e) { this._finishSearch(e.result); }, this));
+      this._queryInput
+        .on("click", function () { this.focus(); })
+        .on("focus", L.bind(function () {
+          this._layerTreeSearcher.start();
+        }, this))
+        .on("blur", L.bind(function () {
+          this._layerTreeSearcher.stop();
+        }, this));
+      this._searchFrame.append(this._queryInput);
+  
+      return this._searchFrame;
+  
+    },
+  */
+  _showAfter: function () {
     this.adjust();
   },
 
-  adjust : function() {
+  adjust: function () {
     this._baseMapPanel.adjust(this._container.outerWidth());
-    this._contentFrame.css({"top": this._baseMapPanel.getSize().height + "px"});
+    this._contentFrame.css({ "top": this._baseMapPanel.getSize().height + "px" });
     var pankzHeight = this._pankzFrame.outerHeight();
     var height = this._contentFrame.outerHeight();
 
-    this._listFrame.css({"height": (height-this._pankzFrame.position().top-pankzHeight) + "px"});
+    this._listFrame.css({ "height": (height - this._pankzFrame.position().top - pankzHeight) + "px" });
   },
 
   getCurrentPath: function () {
@@ -47099,25 +47119,25 @@ GSI.MapListPanel = GSI.MapPanelContainer.extend({
     this.setTree(this.tree);
   },
 
-  setLayers: function(layers, tree, layersHash){
-    if (layers && layers.length > 0){
+  setLayers: function (layers, tree, layersHash) {
+    if (layers && layers.length > 0) {
       this._visibleLayers = [];
       this._visibleLayersHash = {};
       this._visibleLayers = GSI.Utils.objAssign(this._visibleLayers, this._mapManager._layersJSON.visibleLayers);
       this._visibleLayersHash = GSI.Utils.objAssign(this._visibleLayersHash, this._mapManager._layersJSON.visibleLayersHash);
 
       var needsrc = [];
-      if (this._visibleLayers && this._visibleLayers.length > 0){
-        for (var x = 0; x < this._visibleLayers.length; x++){
+      if (this._visibleLayers && this._visibleLayers.length > 0) {
+        for (var x = 0; x < this._visibleLayers.length; x++) {
           var v = this._visibleLayers[x];
           needsrc.push(v.id);
         }
       }
-      if (needsrc.length > 0){
+      if (needsrc.length > 0) {
         var outerthis = this;
         this._ljsSrc = new GSI.layersJSONSearchSRC(this._mapManager);
-        this._ljsSrc.on('searchEnd', L.bind(function(){
-          if (tree && layersHash){
+        this._ljsSrc.on('searchEnd', L.bind(function () {
+          if (tree && layersHash) {
             outerthis.setTree(tree, layers, layersHash);
           }
         }));
@@ -47126,20 +47146,20 @@ GSI.MapListPanel = GSI.MapPanelContainer.extend({
     }
   },
 
-  setMapLayerList : function(mapLayerList) {
+  setMapLayerList: function (mapLayerList) {
     this._mapLayerList = mapLayerList;
-    this._baseMapPanel.setMapLayerList( mapLayerList);
+    this._baseMapPanel.setMapLayerList(mapLayerList);
     this._mapLayerList.on('change', L.bind(this.onMapLayerListChange, this));
   },
-  setCocoTileLayer : function(cocoTileLayer) {
+  setCocoTileLayer: function (cocoTileLayer) {
     this._cocoTileLayer = cocoTileLayer;
 
     cocoTileLayer.on('load', L.bind(this.onCOCOTileLoad, this));
     cocoTileLayer.on('hide', L.bind(this.onCOCOTileHide, this));
   },
 
-  setTree : function(tree, visibleLayers, visibleLayersHash) {
-    if ( visibleLayers ) {
+  setTree: function (tree, visibleLayers, visibleLayersHash) {
+    if (visibleLayers) {
 
       this._visibleLayers = visibleLayers;
       this._visibleLayersHash = visibleLayersHash;
@@ -47169,7 +47189,7 @@ GSI.MapListPanel = GSI.MapPanelContainer.extend({
     this._toolTipViewCounter = 0;
     this._baseMapPanel.refresh();
 
-    if(this._mapManager._footer){
+    if (this._mapManager._footer) {
       this._mapManager._footer.updateLakeDepthVisible(false);
     }
   },
@@ -47217,26 +47237,26 @@ GSI.MapListPanel = GSI.MapPanelContainer.extend({
     }
     else {
       var needsrc = [];
-      if (this._visibleLayers && this._visibleLayers.length > 0){
-        for (var x = 0; x < this._visibleLayers.length; x++){
+      if (this._visibleLayers && this._visibleLayers.length > 0) {
+        for (var x = 0; x < this._visibleLayers.length; x++) {
           var v = this._visibleLayers[x];
           needsrc.push(v.id);
         }
       }
-      if (needsrc.length > 0){
+      if (needsrc.length > 0) {
         var outerthis = this;
         this._ljsSrc = new GSI.layersJSONSearchSRC(this._mapManager);
-        this._ljsSrc.on('searchEnd', L.bind( function (){
+        this._ljsSrc.on('searchEnd', L.bind(function () {
           outerthis._initializeListProc();
         }));
         this._ljsSrc.kick(needsrc);
       }
-      else{
+      else {
         this._initializeListProc();
       }
     }
 
-    if ( this._showAllButton ) {
+    if (this._showAllButton) {
       if (this.current && this.current.toggleall) {
         this._showAllButton.show();
         this._hideAllButton.show();
@@ -47270,7 +47290,7 @@ GSI.MapListPanel = GSI.MapPanelContainer.extend({
       return;
     }
 
-    if (!this._listContainer){
+    if (!this._listContainer) {
       return;
     }
     var liList = (liRefresh ? this._listContainer.children('li') : null);
@@ -47286,7 +47306,7 @@ GSI.MapListPanel = GSI.MapPanelContainer.extend({
       a.data({ 'data': item });
       idx++;
       if ((item.entries && !item.isMultiLayer) || item.src) {
-        if ( CONFIG.layerBaseFolderVisible || item.title_sys != CONFIG.layerBaseFolderSYS)
+        if (CONFIG.layerBaseFolderVisible || item.title_sys != CONFIG.layerBaseFolderSYS)
           this._makeFolder(li, a, item);
         else {
           idx--;
@@ -47305,7 +47325,7 @@ GSI.MapListPanel = GSI.MapPanelContainer.extend({
       else showAllButtonEnable = true;
     }
 
-    if ( this._showAllButton ) {
+    if (this._showAllButton) {
       if (showAllButtonEnable) {
         this._showAllButton.removeClass('disabled');
       }
@@ -47314,7 +47334,7 @@ GSI.MapListPanel = GSI.MapPanelContainer.extend({
       }
     }
 
-    if ( this._hideAllButton ) {
+    if (this._hideAllButton) {
       if (hideAllButtonEnable) {
         this._hideAllButton.removeClass('disabled');
       }
@@ -47372,12 +47392,12 @@ GSI.MapListPanel = GSI.MapPanelContainer.extend({
       this._initializeList_IDProc_DataSrc(srcurl, path);
     }
     else {
-      if (current != null){
+      if (current != null) {
         //lcdがベースマップだとこれが邪魔だが、これがないとsrc属性を探せない
-        if (!this._visibleLayers || this._visibleLayers.length < 1){
+        if (!this._visibleLayers || this._visibleLayers.length < 1) {
           this._mapManager._layersJSON._initializeTree(this.tree, current.id);
-          this._visibleLayers = GSI.Utils.objAssign(this._visibleLayers,this._mapManager._layersJSON.visibleLayers);
-          this._visibleLayersHash = GSI.Utils.objAssign(this._visibleLayersHash,this._mapManager._layersJSON.visibleLayersHash);
+          this._visibleLayers = GSI.Utils.objAssign(this._visibleLayers, this._mapManager._layersJSON.visibleLayers);
+          this._visibleLayersHash = GSI.Utils.objAssign(this._visibleLayersHash, this._mapManager._layersJSON.visibleLayersHash);
         }
       }
       this._initializeList_IDProc(current);
@@ -47400,7 +47420,7 @@ GSI.MapListPanel = GSI.MapPanelContainer.extend({
     if (this._initializeList_ID_Mode == "current") {
       this.current = current;
       var target = this.current;
-      if ( target && target.title_sys == CONFIG.layerBaseFolderSYS && !CONFIG.layerBaseFolderVisible ) {
+      if (target && target.title_sys == CONFIG.layerBaseFolderSYS && !CONFIG.layerBaseFolderVisible) {
         target = null;
         this.current = null;
       }
@@ -47503,7 +47523,7 @@ GSI.MapListPanel = GSI.MapPanelContainer.extend({
       if (json.layers) {
         for (var i = 0; i < json.layers.length; i++) {
           json.layers[i].parent = this._CurrentData_SRC[srcurl];
-          if(this._CurrentData_SRC[srcurl]){
+          if (this._CurrentData_SRC[srcurl]) {
             json.layers[i].src_url = this._CurrentData_SRC[srcurl].src_url;
           }
         }
@@ -47518,10 +47538,10 @@ GSI.MapListPanel = GSI.MapPanelContainer.extend({
         this._initializeList_IDProc_DataSrc_Error(srcurl, path);
       }
       else {
-        if (this._visibleLayers == null || this._visibleLayers.length == 0){
+        if (this._visibleLayers == null || this._visibleLayers.length == 0) {
           this._visibleLayers = this._mapManager._layersJSON.visibleLayers;
           this._visibleLayersHash = this._mapManager._layersJSON.visibleLayersHash;
-          if (!this._current_id || this._current_id == ""){
+          if (!this._current_id || this._current_id == "") {
             this._current_id = this.options.currentPath;
           }
         }
@@ -47532,14 +47552,14 @@ GSI.MapListPanel = GSI.MapPanelContainer.extend({
   _initializeList_IDProc_DataSrc_Error: function (srcurl, path) {
     delete this._CurrentData_SRC[srcurl];
     var src = "";
-    for(var key in this._CurrentData_SRC){
+    for (var key in this._CurrentData_SRC) {
       src = this._CurrentData_SRC[key].src;
       break;
     }
     this._initializeList_IDProc_DataSrc(src, path);
   },
 
-  _makePankz : function( target ) {
+  _makePankz: function (target) {
     var pankz = $("<div>");
 
     if (target._isOutside) {
@@ -47627,27 +47647,30 @@ GSI.MapListPanel = GSI.MapPanelContainer.extend({
     }
     a.addClass('item').append(title);
 
-    if ( item.area ) {
+    if (item.area) {
       // 範囲
       var areaBtn = $('<a>').attr({
         'href': 'javascript:void(0);',
-        'title' : GSI.Utils.getTooltipText("SELECTMAP","AREA") }).addClass('area_btn').html("");
+        'title': GSI.Utils.getTooltipText("SELECTMAP", "AREA")
+      }).addClass('area_btn').html("");
       li.append(areaBtn);
       areaBtn.off('click').on('click', L.bind(this._onAreaBtnClick, this, a, item));
     }
     // 自分で作る色別標高図 設定
-    if(item.id == CONFIG.FREERELIEFID){
-      var settingBtn =  $('<a>').attr({
+    if (item.id == CONFIG.FREERELIEFID) {
+      var settingBtn = $('<a>').attr({
         'href': 'javascript:void(0);',
-        'title' : GSI.Utils.getTooltipText("SELECTMAP","SETTING") }).addClass('setting_btn').html("");
+        'title': GSI.Utils.getTooltipText("SELECTMAP", "SETTING")
+      }).addClass('setting_btn').html("");
       li.append(settingBtn);
       settingBtn.off('click').on('click', L.bind(this._onReliefStyleEidtClick, this, a, item));
     }
     // 詳細
-    if ( item.html ) {
+    if (item.html) {
       var descriptionBtn = $('<a>').attr({
         'href': 'javascript:void(0);',
-        'title' : GSI.Utils.getTooltipText("SELECTMAP","INFORMATION") }).addClass('description_btn').html("i");
+        'title': GSI.Utils.getTooltipText("SELECTMAP", "INFORMATION")
+      }).addClass('description_btn').html("i");
       li.append(descriptionBtn);
       descriptionBtn.off('click').on('click', L.bind(this._onLayerMouseEnter, this, a, item));
     }
@@ -47676,37 +47699,37 @@ GSI.MapListPanel = GSI.MapPanelContainer.extend({
       li.removeClass('nococotile');
     }
 
-    a.on('click',L.bind(this.onItemClick, this, a));
+    a.on('click', L.bind(this.onItemClick, this, a));
   },
 
-  _onAreaBtnClick : function(a, item) {
-    if (this._mapLayerList.exists(item) == false){
+  _onAreaBtnClick: function (a, item) {
+    if (this._mapLayerList.exists(item) == false) {
       this.onItemClick(a, item);
     }
-    if ( !item.area ) return;
+    if (!item.area) return;
     var map = this._mapManager.getMap();
 
-    var lat =undefined;
+    var lat = undefined;
     var lng = undefined;
     var zoom = undefined;
 
-    if ( item.area.lat || item.area.lat == 0 ) {
+    if (item.area.lat || item.area.lat == 0) {
       lat = item.area.lat;
     }
-    if ( item.area.lng || item.area.lng == 0 ) {
+    if (item.area.lng || item.area.lng == 0) {
       lng = item.area.lng;
     }
 
-    if ( item.area.zoom  ) {
+    if (item.area.zoom) {
       zoom = item.area.zoom;
     }
-    if ( lat != undefined && lng != undefined && zoom != undefined) {
+    if (lat != undefined && lng != undefined && zoom != undefined) {
       map.setView([lat, lng], zoom);
       map.setView([lat, lng], zoom);  // 1回だけだとデータが表示されない場合がある
-    } else if ( lat != undefined && lng != undefined ) {
-      map.setView( [lat, lng]);
-    } else if( zoom != undefined) {
-      map.setZoom( zoom );
+    } else if (lat != undefined && lng != undefined) {
+      map.setView([lat, lng]);
+    } else if (zoom != undefined) {
+      map.setZoom(zoom);
     }
   },
 
@@ -47759,10 +47782,10 @@ GSI.MapListPanel = GSI.MapPanelContainer.extend({
     var title = $('<div>').addClass('title').html(item.title);
     var num = $('<div>').addClass('num').append($('<span>').html(entriesCount));
     if (entriesCount >= 0) {
-      a.addClass('folder').append(title).on('click',L.bind(this._onFolderClick, this, a));
+      a.addClass('folder').append(title).on('click', L.bind(this._onFolderClick, this, a));
     }
     else {
-      a.addClass('folder').append(title).on('click',L.bind(this._onFolderClick, this, a));
+      a.addClass('folder').append(title).on('click', L.bind(this._onFolderClick, this, a));
     }
 
     if (item.iconUrl && item.iconUrl != "") {
@@ -47789,7 +47812,7 @@ GSI.MapListPanel = GSI.MapPanelContainer.extend({
     this.openFolder(item);
   },
 
-  openFolder : function(item) {
+  openFolder: function (item) {
     if ((item) && (item.title_evac && item.title_evac == CONFIG.layerEvacuationFolderSYS)) {
       if (this._checkEvacuationLayer() == false && !CONFIG.layerEvacuationIsConfirmOK) {
         this._mapManager._confirmDlg.onPositiveButtonClick = L.bind(this.onConfirmOkClick, this, item);
@@ -47802,9 +47825,9 @@ GSI.MapListPanel = GSI.MapPanelContainer.extend({
     else {
       this._expandFolder(item);
       // 202303 hideにする条件を変更。
-//      if (this._checkEvacuationLayer() == false && !CONFIG.layerEvacuationIsConfirmOK) {
+      //      if (this._checkEvacuationLayer() == false && !CONFIG.layerEvacuationIsConfirmOK) {
       if (this._checkEvacuationLayer() == false) {
-          this._mapManager._evacDialog.hide();
+        this._mapManager._evacDialog.hide();
       }
     }
   },
@@ -47922,10 +47945,10 @@ GSI.MapListPanel = GSI.MapPanelContainer.extend({
 
   onZoomCheck: function (item) {
     var zoom = this._mapManager.getMap().getZoom();
-    if (item.maxZoom && zoom > item.maxZoom){
+    if (item.maxZoom && zoom > item.maxZoom) {
       return true;
     }
-    if (item.minZoom && zoom < item.minZoom){
+    if (item.minZoom && zoom < item.minZoom) {
       return true;
     }
     return false;
@@ -47962,7 +47985,7 @@ GSI.MapListPanel = GSI.MapPanelContainer.extend({
         }
       }
       if (f) {
-        if ( this._currentItemId == item.id ) this._currentItemId = "";
+        if (this._currentItemId == item.id) this._currentItemId = "";
         this._mapManager._map.removeLayer(this._mapManager._baseLayer);
 
       }
@@ -47993,23 +48016,23 @@ GSI.MapListPanel = GSI.MapPanelContainer.extend({
     }
     else if (target && target.title_disasterlore && target.title_disasterlore == CONFIG.DisasterLoreFolderSYS) {
       var f = false;
-      if (item.id == CONFIG.DisasterLoreAll){
+      if (item.id == CONFIG.DisasterLoreAll) {
         if (this._mapLayerList.exists(item)) {
           f = true;
           added = false;
         }
-        else{
+        else {
           this._onHideAllClick();
         }
       }
-      else{
-        if (this._mapLayerList.exists(item)){
+      else {
+        if (this._mapLayerList.exists(item)) {
           f = true;
           added = false;
         }
-        else{
-          for(var x = 0; x < this._mapLayerList.list.length; x++){
-            if (this._mapLayerList.list[x].id == CONFIG.DisasterLoreAll){
+        else {
+          for (var x = 0; x < this._mapLayerList.list.length; x++) {
+            if (this._mapLayerList.list[x].id == CONFIG.DisasterLoreAll) {
               this._mapLayerList.remove(this._mapLayerList.list[x]);
               break;
             }
@@ -48021,8 +48044,8 @@ GSI.MapListPanel = GSI.MapPanelContainer.extend({
         this._mapLayerList.append(item);
         GSI.Utils.sendSelectedLayer(this._current_id);
       }
-      else{
-        if ( this._currentItemId == item.id ) this._currentItemId = "";
+      else {
+        if (this._currentItemId == item.id) this._currentItemId = "";
         this._mapLayerList.remove(item);
       }
     }
@@ -48053,7 +48076,7 @@ GSI.MapListPanel = GSI.MapPanelContainer.extend({
 
       }
       else {
-        if ( this._currentItemId == item.id ) this._currentItemId = "";
+        if (this._currentItemId == item.id) this._currentItemId = "";
         this._mapLayerList.remove(item);
         added = false;
       }
@@ -48071,9 +48094,9 @@ GSI.MapListPanel = GSI.MapPanelContainer.extend({
 
     // 202303 evacDialog生成後にzoomGuideを調整
     if (GSI.GLOBALS.gsimaps._mainMap && GSI.GLOBALS.gsimaps._mainMap._zoomGuide.getVisible()
-        && !a[0].className.includes('view') && this.onZoomCheck(item)) {
+      && !a[0].className.includes('view') && this.onZoomCheck(item)) {
 
-      $("#zoomGuideCheckbox").off('change').on('change', function(){
+      $("#zoomGuideCheckbox").off('change').on('change', function () {
         var bol = $('#zoomGuideCheckbox').is(":checked");
         GSI.GLOBALS.gsimaps._mainMap._zoomGuide.setVisible(!bol);
       });
@@ -48108,13 +48131,13 @@ GSI.MapListPanel = GSI.MapPanelContainer.extend({
 
       $('#zoomGuidePanel').show();
       clearTimeout(GSI.ZOOMGUIDETIMER);
-      GSI.ZOOMGUIDETIMER = setTimeout(function(){
-        $('#zoomGuidePanel').slideUp(function() {
+      GSI.ZOOMGUIDETIMER = setTimeout(function () {
+        $('#zoomGuidePanel').slideUp(function () {
           if (evacDialogOffset) {
             $('#zoomGuidePanel').css('bottom', '35px');
           }
         });
-      },3000);
+      }, 3000);
     }
 
   },
@@ -48124,10 +48147,10 @@ GSI.MapListPanel = GSI.MapPanelContainer.extend({
     //if (a) item = a.data('data');
 
     if (GSI.GLOBALS.gsimaps._mainMap._zoomGuide.getVisible()
-    && !a[0].className.includes('view')
-    && this.onZoomCheck(item)) {
+      && !a[0].className.includes('view')
+      && this.onZoomCheck(item)) {
 
-      $("#zoomGuideCheckbox").off('change').on('change', function(){
+      $("#zoomGuideCheckbox").off('change').on('change', function () {
         var bol = $('#zoomGuideCheckbox').is(":checked");
         GSI.GLOBALS.gsimaps._mainMap._zoomGuide.setVisible(!bol);
       });
@@ -48143,9 +48166,9 @@ GSI.MapListPanel = GSI.MapPanelContainer.extend({
       $('#zoomGuideMinMax').text(minmaxtxt);
       $('#zoomGuidePanel').show();
       clearTimeout(GSI.ZOOMGUIDETIMER);
-      GSI.ZOOMGUIDETIMER = setTimeout(function(){
+      GSI.ZOOMGUIDETIMER = setTimeout(function () {
         $('#zoomGuidePanel').slideUp();
-      },3000);
+      }, 3000);
     }
 
     //var added = true;
@@ -48182,13 +48205,13 @@ GSI.MapListPanel = GSI.MapPanelContainer.extend({
     var legend = null;
     var description = null;
 
-    if ( CONFIG.baseMapDescription[item.id]) {
-      var baseMapDescription =$('<div>').addClass('description').html(CONFIG.baseMapDescription[item.id] );
+    if (CONFIG.baseMapDescription[item.id]) {
+      var baseMapDescription = $('<div>').addClass('description').html(CONFIG.baseMapDescription[item.id]);
       infoFrame.append(baseMapDescription);
     }
 
     if (item.legendUrl && item.legendUrl != '') {
-      legend = $('<a>').html(item.id=="english" ? "Show legend" : '凡例を表示').addClass('legend').attr({ 'href': item.legendUrl, 'target': '_blank' });
+      legend = $('<a>').html(item.id == "english" ? "Show legend" : '凡例を表示').addClass('legend').attr({ 'href': item.legendUrl, 'target': '_blank' });
     }
     if (legend)
       infoFrame.append(legend);
@@ -48218,7 +48241,7 @@ GSI.MapListPanel = GSI.MapPanelContainer.extend({
 
     if (!this._mapLayerList._editReliefDialog) {
       this._mapLayerList._editReliefDialog = new GSI.EditReliefDialog(this._mapManager._dialogManager,
-          this._mapManager.getMap(), this._mapLayerList, {
+        this._mapManager.getMap(), this._mapLayerList, {
         width: 300, left: parseInt(windowSize.w / 2 - 160), top: windowSize.h - 500,
         effect: CONFIG.EFFECTS.DIALOG, listItem: a, listObj: item
       }
@@ -48391,7 +48414,7 @@ GSI.MapListPanel = GSI.MapPanelContainer.extend({
 
     li.append(a);
 
-    a.on('click',L.bind(function (item) {
+    a.on('click', L.bind(function (item) {
       if (item.type == "LayerGroup" && item.layerType != "multiLayer") {
         this._hideSearchResult();
         this.onFolderClick(null, item);
@@ -48535,26 +48558,26 @@ GSI.MapListPanel = GSI.MapPanelContainer.extend({
 GSI.ShowingMapListPanel = GSI.MapPanelContainer.extend({
 
   options: {
-    className : "gsi-showingmaplistpanel-container"
+    className: "gsi-showingmaplistpanel-container"
   },
 
-  initialize : function(mapManager,parentContainer, options) {
+  initialize: function (mapManager, parentContainer, options) {
     this._mapManager = mapManager;
     this._mini = false;
     GSI.MapPanelContainer.prototype.initialize.call(this, parentContainer, options);
   },
 
-  setMapLayerList : function(mapLayerList) {
+  setMapLayerList: function (mapLayerList) {
     this._mapLayerList = mapLayerList;
     this._mapLayerList.on('change', L.bind(this._onMapLayerListChange, this));
   },
-  setCocoTileLayer : function(cocoTileLayer) {
+  setCocoTileLayer: function (cocoTileLayer) {
     this._cocoTileLayer = cocoTileLayer;
     cocoTileLayer.on('load', L.bind(this.onCOCOTileLoad, this));
     cocoTileLayer.on('hide', L.bind(this.onCOCOTileHide, this));
 
   },
-  _showAfter : function() {
+  _showAfter: function () {
     this.adjust();
   },
 
@@ -48565,14 +48588,14 @@ GSI.ShowingMapListPanel = GSI.MapPanelContainer.extend({
     this._initializeList(true);
   },
 
-  adjust : function() {
+  adjust: function () {
     var controlHeight = this._controlFrame.outerHeight();
-    this._listFrame.css({"top": ( this._controlFrame.position().top + 1 + controlHeight) + "px"});
+    this._listFrame.css({ "top": (this._controlFrame.position().top + 1 + controlHeight) + "px" });
   },
-  _createAfter : function() {
+  _createAfter: function () {
     this._createContent();
 
-    this._container.append( this._contentFrame);
+    this._container.append(this._contentFrame);
 
     this.adjust();
   },
@@ -48580,14 +48603,15 @@ GSI.ShowingMapListPanel = GSI.MapPanelContainer.extend({
   _createContent: function () {
     this._contentFrame = $('<div>').addClass("gsi-showingmaplist-contentframe");
 
-    this._headerFrame = $( "<div>").addClass("gsi-showingmaplist-headerframe");
+    this._headerFrame = $("<div>").addClass("gsi-showingmaplist-headerframe");
     var title = $("<div>").addClass("title").html("選択中の地図");
     var resetButton = $("<a>").addClass("normalbutton").addClass("reset-button")
-    .attr({
-      "title": GSI.Utils.getTooltipText("SELECTMAP","RESET"),
-      "href":"javascript:void(0);"}).html("リセット");
+      .attr({
+        "title": GSI.Utils.getTooltipText("SELECTMAP", "RESET"),
+        "href": "javascript:void(0);"
+      }).html("リセット");
 
-    resetButton.on('click',L.bind(this._onResetClick, this));
+    resetButton.on('click', L.bind(this._onResetClick, this));
     this._headerFrame.append(title);
     this._headerFrame.append(resetButton);
     this._controlFrame = this._createControl();
@@ -48624,7 +48648,7 @@ GSI.ShowingMapListPanel = GSI.MapPanelContainer.extend({
     var dummy = $('<div>').html('&nbsp;').css({ "font-size": '9.5pt' });
     frame.append(dummy);
 
-    this._saveOutsideTileBtn.on('click',L.bind(this._sasveOutsideTileBtnClick, this));
+    this._saveOutsideTileBtn.on('click', L.bind(this._sasveOutsideTileBtnClick, this));
 
     return frame;
   },
@@ -48642,14 +48666,14 @@ GSI.ShowingMapListPanel = GSI.MapPanelContainer.extend({
       this._tileListContainer = $('<ul>').addClass('viewlistdialog_ul');
       if (this._mini) this._tileListContainer.addClass("mini");
       this._listFrame.append(this._tileListContainer);
-      if ( !CONFIG.MOBILE ) {
+      if (!CONFIG.MOBILE) {
         this._tileListContainer.sortable({
           cursor: 'move',
           update: L.bind(this._onSortChange, this),
           handle: ".item_frame",
           cancel: ".item_frame_fixed",
           scroll: false,
-          helper : 'clone',
+          helper: 'clone',
           delay: 500
         });
       }
@@ -48673,7 +48697,7 @@ GSI.ShowingMapListPanel = GSI.MapPanelContainer.extend({
       if (item.parent && item.parent.title_sys && item.parent.title_sys == CONFIG.layerBaseFolderSYS) {
         if (i != liList.length - 1) {
           f = false;
-          if ( !CONFIG.MOBILE ) this._tileListContainer.sortable("cancel");
+          if (!CONFIG.MOBILE) this._tileListContainer.sortable("cancel");
           break;
         }
       }
@@ -48738,7 +48762,7 @@ GSI.ShowingMapListPanel = GSI.MapPanelContainer.extend({
 
     var fileName = 'layers' + GSI.Utils.getTimeStampString();
 
-    GSI.Utils.saveFile( "text/plain", fileName + ".txt", blob );
+    GSI.Utils.saveFile("text/plain", fileName + ".txt", blob);
 
   },
 
@@ -48750,24 +48774,24 @@ GSI.ShowingMapListPanel = GSI.MapPanelContainer.extend({
     this._checkEvacuationLayer();
   },
 
-  setMiniMode : function(value) {
-    if ( this._mini == value ) return;
+  setMiniMode: function (value) {
+    if (this._mini == value) return;
     this._mini = value;
-    if ( this._listContainer ) {
-      if ( this._mini ) this._listContainer.addClass("mini");
+    if (this._listContainer) {
+      if (this._mini) this._listContainer.addClass("mini");
       else this._listContainer.removeClass("mini");
     }
-    if ( this._tileListContainer ) {
-      if ( this._mini ) this._tileListContainer.addClass("mini");
+    if (this._tileListContainer) {
+      if (this._mini) this._tileListContainer.addClass("mini");
       else this._tileListContainer.removeClass("mini");
     }
-    if ( this._mapLayerList ) this.initializeList();
+    if (this._mapLayerList) this.initializeList();
   },
 
-  _enableLakeDepthForItem: function(id, enabled){
-    if(id == "lakedata" && this._mapManager._footer){
+  _enableLakeDepthForItem: function (id, enabled) {
+    if (id == "lakedata" && this._mapManager._footer) {
       this._mapManager._footer.updateLakeDepthVisible(enabled);
-      if(enabled) this._mapManager._footer._refresh();
+      if (enabled) this._mapManager._footer._refresh();
     }
   },
 
@@ -48791,7 +48815,7 @@ GSI.ShowingMapListPanel = GSI.MapPanelContainer.extend({
 
     if ((!GSI.Utils.Browser.ie && !L.Browser.edge) && (item.url) && (!fBaseMap)) {
 
-      if ( item.layerType=="tile" ) { // item.url.match(/\.png|\.jpg|\.jpeg/g) ) {
+      if (item.layerType == "tile") { // item.url.match(/\.png|\.jpg|\.jpeg/g) ) {
         vClassTitle = 'title_mt';
         enablemt = true;
       }
@@ -48819,7 +48843,7 @@ GSI.ShowingMapListPanel = GSI.MapPanelContainer.extend({
       a.removeClass('view');
       this._enableLakeDepthForItem(item.id, false);
     }
-    a.append( viewMark);
+    a.append(viewMark);
     a.addClass('item').append(title);
 
     if (cocoVisible && item.cocotile && !item.hasTile) {
@@ -48828,10 +48852,10 @@ GSI.ShowingMapListPanel = GSI.MapPanelContainer.extend({
     }
 
     var buttonElements = {
-      grayScale : undefined,
-      mp : undefined,
-      opacity : undefined,
-      colorSet : undefined
+      grayScale: undefined,
+      mp: undefined,
+      opacity: undefined,
+      colorSet: undefined
     };
 
     // グレースケール
@@ -48843,7 +48867,7 @@ GSI.ShowingMapListPanel = GSI.MapPanelContainer.extend({
       ) {
         var grayScale = new GSI.ToggleSwitch({ className: 'toggle', checked: (this._mapManager._baseLayer.getGrayScale()) });
         var grayScaleElement = grayScale.getElement();
-        grayScaleElement.attr({"title": GSI.Utils.getTooltipText("SELECTMAP","GRAYSCALE")});
+        grayScaleElement.attr({ "title": GSI.Utils.getTooltipText("SELECTMAP", "GRAYSCALE") });
         grayScaleElement.addClass("grayscale");
         grayScaleElement.on('change', L.bind(this._gray_scale, this, a, grayScale));
 
@@ -48857,7 +48881,7 @@ GSI.ShowingMapListPanel = GSI.MapPanelContainer.extend({
         var mp = new GSI.ToggleSwitch({ className: 'toggle', checked: (item._visibleInfo.blend) });
         var mpElement = mp.getElement();
         mpElement.addClass("multiplytile");
-        mpElement.attr({"title": GSI.Utils.getTooltipText("SELECTMAP","MULTIPLY")});
+        mpElement.attr({ "title": GSI.Utils.getTooltipText("SELECTMAP", "MULTIPLY") });
         mpElement.on('change', L.bind(this._onBlendSwitchChange, this, a, mp));
 
         li.append(mpElement);
@@ -48867,8 +48891,8 @@ GSI.ShowingMapListPanel = GSI.MapPanelContainer.extend({
 
     // 透過
     var opacityBtn = $("<a>").addClass("opacity_btn")
-    .attr({ "href": "javascript:void(0);","title": GSI.Utils.getTooltipText("SELECTMAP","OPACITY") }).html('透過率');
-    opacityBtn.on('click',L.bind(function (li) { this._onOpacityBtnClick(li); }, this,li));
+      .attr({ "href": "javascript:void(0);", "title": GSI.Utils.getTooltipText("SELECTMAP", "OPACITY") }).html('透過率');
+    opacityBtn.on('click', L.bind(function (li) { this._onOpacityBtnClick(li); }, this, li));
     li.append(opacityBtn);
     buttonElements.opacity = opacityBtn;
 
@@ -48882,14 +48906,14 @@ GSI.ShowingMapListPanel = GSI.MapPanelContainer.extend({
       });
     }
     // メニューボタン
-    var menuBtn = $("<a>").addClass("menubtn").attr({ "href": "javascript:void(0);"});
-    menuBtn.on('click',L.bind(this._onMenuButtonClick, this, menuBtn, buttonElements));
+    var menuBtn = $("<a>").addClass("menubtn").attr({ "href": "javascript:void(0);" });
+    menuBtn.on('click', L.bind(this._onMenuButtonClick, this, menuBtn, buttonElements));
     li.append(menuBtn);
 
     // 自分で作る色別標高図 設定
-    if(item.id == CONFIG.FREERELIEFID){
+    if (item.id == CONFIG.FREERELIEFID) {
       var settingBtn = $("<span>").addClass('setting_btn')
-      .attr({"title": GSI.Utils.getTooltipText("SELECTMAP","SETTING")});
+        .attr({ "title": GSI.Utils.getTooltipText("SELECTMAP", "SETTING") });
       li.append(settingBtn);
       settingBtn.off('click').on('click', L.bind(this._onReliefStyleEidtClick, this, a, item));
       li.addClass("free_relief_id");
@@ -48906,7 +48930,7 @@ GSI.ShowingMapListPanel = GSI.MapPanelContainer.extend({
     else {
 
       var descriptionBtn = $('<span>')
-        .attr({"title": GSI.Utils.getTooltipText("SELECTMAP","INFORMATION")})
+        .attr({ "title": GSI.Utils.getTooltipText("SELECTMAP", "INFORMATION") })
         .addClass('description_btn').html("i");
       li.append(descriptionBtn);
       descriptionBtn.off('click').on('click', L.bind(this._onLayerMouseEnter, this, a, item));
@@ -48914,7 +48938,7 @@ GSI.ShowingMapListPanel = GSI.MapPanelContainer.extend({
 
     // 閉じる
     var closeBtn = $("<span>").addClass('closebtn')
-      .attr({"title": GSI.Utils.getTooltipText("SELECTMAP","REMOVE")});
+      .attr({ "title": GSI.Utils.getTooltipText("SELECTMAP", "REMOVE") });
     li.append(closeBtn);
     closeBtn.off('click').on('click', L.bind(this._onRemoveClick, this, li));
 
@@ -48923,13 +48947,15 @@ GSI.ShowingMapListPanel = GSI.MapPanelContainer.extend({
 
       var updownFrame = $("<div>").addClass('updown_frame');
       var upButton = $("<a>").attr({
-        "title": GSI.Utils.getTooltipText("SELECTMAP","UP"),
-        "href": "javascript:void(0);" }).addClass("up")
-        .on('click',L.bind(function () { this._up(li); }, this));
+        "title": GSI.Utils.getTooltipText("SELECTMAP", "UP"),
+        "href": "javascript:void(0);"
+      }).addClass("up")
+        .on('click', L.bind(function () { this._up(li); }, this));
       var downButton = $("<a>").attr({
-        "title": GSI.Utils.getTooltipText("SELECTMAP","DOWN"),
-        "href": "javascript:void(0);" }).addClass("down")
-        .on('click',L.bind(function () { this._down(li); }, this));
+        "title": GSI.Utils.getTooltipText("SELECTMAP", "DOWN"),
+        "href": "javascript:void(0);"
+      }).addClass("down")
+        .on('click', L.bind(function () { this._down(li); }, this));
 
       if (isFirstTile)
         upButton.addClass("disabled");//.hide();
@@ -48949,16 +48975,16 @@ GSI.ShowingMapListPanel = GSI.MapPanelContainer.extend({
 
     }
 
-    a.on('click',L.bind(this._onItemClick, this, li, a, viewMark));
+    a.on('click', L.bind(this._onItemClick, this, li, a, viewMark));
   },
 
-  _onMenuButtonClick : function(menuBtn,menuElements) {
+  _onMenuButtonClick: function (menuBtn, menuElements) {
 
-    if ( !this._popupLayerMenu ) {
+    if (!this._popupLayerMenu) {
       this._popupLayerMenu = new GSI.ShowingMapListPanel.PopupLayerMenu(
         this._listFrame, this._contentFrame.parents(".gsi-mapmenu-container"));
     }
-    this._popupLayerMenu.show( menuBtn, menuElements);
+    this._popupLayerMenu.show(menuBtn, menuElements);
   },
 
   refresh: function (visibleLayers) {
@@ -48970,14 +48996,14 @@ GSI.ShowingMapListPanel = GSI.MapPanelContainer.extend({
       var l = visibleLayers[i];
       needsrc.push(l.id);
     }
-    if (needsrc.length > 0){
+    if (needsrc.length > 0) {
       this._ljsSrc.kick(needsrc);
       var outerthis = this;
-      this._ljsSrc.on('searchEnd', L.bind(function (){
+      this._ljsSrc.on('searchEnd', L.bind(function () {
         outerthis._initializeList(true);
       }));
     }
-    else{
+    else {
       this._initializeList(true);
     }
   },
@@ -49001,8 +49027,8 @@ GSI.ShowingMapListPanel = GSI.MapPanelContainer.extend({
       ul = this._tileListContainer;
       this._initializeListOne(tileList, liList, ul, liRefresh, true);
       try {
-        if ( !CONFIG.MOBILE )this._tileListContainer.sortable("refresh");
-      }catch(e){}
+        if (!CONFIG.MOBILE) this._tileListContainer.sortable("refresh");
+      } catch (e) { }
     }
   },
   _initializeListOne: function (list, liList, ul, liRefresh, isTile) {
@@ -49029,30 +49055,30 @@ GSI.ShowingMapListPanel = GSI.MapPanelContainer.extend({
       if (!liRefresh) ul.append(li);
     }
   },
-  _onAreaBtnClick : function(a, item) {
-    if ( !item.area ) return;
+  _onAreaBtnClick: function (a, item) {
+    if (!item.area) return;
     var map = this._mapManager.getMap();
 
-    var lat =undefined;
+    var lat = undefined;
     var lng = undefined;
     var zoom = undefined;
 
-    if ( item.area.lat || item.area.lat == 0 ) {
+    if (item.area.lat || item.area.lat == 0) {
       lat = item.area.lat;
     }
-    if ( item.area.lng || item.area.lng == 0 ) {
+    if (item.area.lng || item.area.lng == 0) {
       lng = item.area.lng;
     }
 
-    if ( item.area.zoom  ) {
+    if (item.area.zoom) {
       zoom = item.area.zoom;
     }
-    if ( lat != undefined && lng != undefined && zoom != undefined) {
+    if (lat != undefined && lng != undefined && zoom != undefined) {
       map.setView([lat, lng], zoom);
-    } else if ( lat != undefined && lng != undefined ) {
-      map.setView( [lat, lng]);
-    } else if( zoom != undefined) {
-      map.setZoom( zoom );
+    } else if (lat != undefined && lng != undefined) {
+      map.setView([lat, lng]);
+    } else if (zoom != undefined) {
+      map.setZoom(zoom);
     }
   },
 
@@ -49154,7 +49180,7 @@ GSI.ShowingMapListPanel = GSI.MapPanelContainer.extend({
     if (hasOutsideTile) {
       this._controlFrame.show();
       this.adjust();
-    }else {
+    } else {
       this._controlFrame.hide();
       this.adjust();
     }
@@ -49248,18 +49274,18 @@ GSI.ShowingMapListPanel = GSI.MapPanelContainer.extend({
     this._blendTile(a, mp.checked());
   },
 
-  _onPankzFolderClick : function(a) {
+  _onPankzFolderClick: function (a) {
     var target = a.data("data");
-    this.fire("folderclick",{"folder" : target });
+    this.fire("folderclick", { "folder": target });
   },
-  _makePankz : function( target ) {
+  _makePankz: function (target) {
     var pankz = $("<div>");
 
     if (target._isOutside) {
       return "外部タイル";
     }
 
-    if ( CONFIG.baseMapDescription[target.id]) {
+    if (CONFIG.baseMapDescription[target.id]) {
       return target.title;
     }
 
@@ -49295,20 +49321,20 @@ GSI.ShowingMapListPanel = GSI.MapPanelContainer.extend({
     var infoFrame = $('<div>').addClass('layerinfo')
       .css({ "max-width": "350px" });
 
-    var pankzframe = $( "<div>").addClass("pankz-frame");
+    var pankzframe = $("<div>").addClass("pankz-frame");
     pankzframe.append(this._makePankz(item));
     infoFrame.append(pankzframe);
 
     var legend = null;
     var description = null;
 
-    if ( CONFIG.baseMapDescription[item.id]) {
-      var baseMapDescription =$('<div>').addClass('description').html(CONFIG.baseMapDescription[item.id] );
+    if (CONFIG.baseMapDescription[item.id]) {
+      var baseMapDescription = $('<div>').addClass('description').html(CONFIG.baseMapDescription[item.id]);
       infoFrame.append(baseMapDescription);
     }
 
     if (item.legendUrl && item.legendUrl != '') {
-      legend = $('<a>').html(item.id=="english" ? "Show legend" : '凡例を表示').addClass('legend').attr({ 'href': item.legendUrl, 'target': '_blank' });
+      legend = $('<a>').html(item.id == "english" ? "Show legend" : '凡例を表示').addClass('legend').attr({ 'href': item.legendUrl, 'target': '_blank' });
     }
     if (legend)
       infoFrame.append(legend);
@@ -49541,15 +49567,15 @@ GSI.ShowingMapListPanel = GSI.MapPanelContainer.extend({
       return;
     }
     var offset = li.find(".description_btn").offset();
-    if ( !offset ) offset = li.find(".outside_edit_btn").offset();
-    var left = offset.left - 200 ;
-    if ( left < 0 ) left = 0;
+    if (!offset) offset = li.find(".outside_edit_btn").offset();
+    var left = offset.left - 200;
+    if (left < 0) left = 0;
     var height = li.find(".description_btn").outerHeight();
-    if ( !height ) height =  li.find(".outside_edit_btn").outerHeight();
+    if (!height) height = li.find(".outside_edit_btn").outerHeight();
 
     this._opacityWindow.css({
       top: offset.top + height - 2,
-      left: left+ 'px'
+      left: left + 'px'
     }).data({ "item": item });
 
     var opacityPercentage = Math.round(100 - (opacity * 100));
@@ -49683,50 +49709,50 @@ GSI.ShowingMapListPanel = GSI.MapPanelContainer.extend({
 });
 
 GSI.ShowingMapListPanel.PopupLayerMenu = L.Evented.extend({
-  options : {
+  options: {
 
   },
 
-  initialize : function(listFrame,ownerContainer) {
+  initialize: function (listFrame, ownerContainer) {
     this._listFrame = listFrame;
     this._ownerContainer = ownerContainer;
   },
 
-  _initEvents : function() {
-    if ( !this._scrollHandler ) {
-      this._scrollHandler = L.bind( function(){ this.hide();}, this );
-      this._listFrame.on("scroll",this._scrollHandler);
+  _initEvents: function () {
+    if (!this._scrollHandler) {
+      this._scrollHandler = L.bind(function () { this.hide(); }, this);
+      this._listFrame.on("scroll", this._scrollHandler);
     }
 
-    if ( !this._windowMousedownHandler ) {
-      this._windowMousedownHandler = L.bind( function(evt){
-        if ( !this._container) return;
+    if (!this._windowMousedownHandler) {
+      this._windowMousedownHandler = L.bind(function (evt) {
+        if (!this._container) return;
         var target = evt.target;
-        while(target) {
-          if ( target == this._container[0]) return;
+        while (target) {
+          if (target == this._container[0]) return;
           target = target.parentNode;
         }
         this.hide();
-      }, this );
-      $(document.body).on("mousedown",this._windowMousedownHandler).on("touchstart",this._windowMousedownHandler);
+      }, this);
+      $(document.body).on("mousedown", this._windowMousedownHandler).on("touchstart", this._windowMousedownHandler);
     }
   },
 
-  _destroyEvents : function() {
-    if ( this._scrollHandler ) {
-      this._listFrame.off("scroll",this._scrollHandler);
+  _destroyEvents: function () {
+    if (this._scrollHandler) {
+      this._listFrame.off("scroll", this._scrollHandler);
       this._scrollHandler = undefined;
     }
 
-    if ( this._windowMousedownHandler ) {
-      $(document.body).off("mousedown",this._windowMousedownHandler).off("touchstart",this._windowMousedownHandler);
+    if (this._windowMousedownHandler) {
+      $(document.body).off("mousedown", this._windowMousedownHandler).off("touchstart", this._windowMousedownHandler);
       this._windowMousedownHandler = undefined;
     }
   },
 
-  show : function(btn, buttonElements) {
+  show: function (btn, buttonElements) {
 
-    if ( this._container && this._container.is(":visible") && this._buttonElements == buttonElements ) {
+    if (this._container && this._container.is(":visible") && this._buttonElements == buttonElements) {
       this.hide();
       return;
     }
@@ -49738,83 +49764,83 @@ GSI.ShowingMapListPanel.PopupLayerMenu = L.Evented.extend({
     var framePos = this._ownerContainer.offset();
 
     this._container.css({
-      "visibility" : "hidden"
+      "visibility": "hidden"
     }).show();
     var height = this._container.outerHeight();
     var width = this._container.outerWidth();
     this._container.css({
-      "visibility" : "visible"
+      "visibility": "visible"
     }).hide();
 
     var pos = this._btn.offset();
     pos.left = this._btn.position().left;
-    pos.left -= (width-35);
+    pos.left -= (width - 35);
 
-    this._container.css( {
-      left : pos.left + "px",
-      top:( pos.top - framePos.top-height - 2) + "px"
+    this._container.css({
+      left: pos.left + "px",
+      top: (pos.top - framePos.top - height - 2) + "px"
     })
 
     this._initEvents();
     this._container.fadeIn(200);
   },
 
-  _create : function() {
-    if ( this._container ) this._container.remove();
+  _create: function () {
+    if (this._container) this._container.remove();
     this._container = $("<div>").addClass("gsi-showingmaplist-layerpopup").hide();
     var ul = $("<ul>");
 
-    if ( this._buttonElements.up && !this._buttonElements.up.hasClass("disabled") ) {
-      ul.append( this._createLine("手前に表示",this._buttonElements.up) );
+    if (this._buttonElements.up && !this._buttonElements.up.hasClass("disabled")) {
+      ul.append(this._createLine("手前に表示", this._buttonElements.up));
     }
-    if ( this._buttonElements.down && !this._buttonElements.down.hasClass("disabled") ) {
-      ul.append( this._createLine("後ろに表示",this._buttonElements.down) );
-    }
-
-    if ( this._buttonElements.grayScale ) {
-      ul.append( this._createLine("グレースケール",this._buttonElements.grayScale,this._buttonElements.grayScale[0].checked) );
+    if (this._buttonElements.down && !this._buttonElements.down.hasClass("disabled")) {
+      ul.append(this._createLine("後ろに表示", this._buttonElements.down));
     }
 
-    if ( this._buttonElements.mp ) {
-      ul.append( this._createLine("合成",this._buttonElements.mp, this._buttonElements.mp[0].checked) );
+    if (this._buttonElements.grayScale) {
+      ul.append(this._createLine("グレースケール", this._buttonElements.grayScale, this._buttonElements.grayScale[0].checked));
     }
 
-    if ( this._buttonElements.opacity ) {
-      ul.append( this._createLine("透過率",this._buttonElements.opacity) );
+    if (this._buttonElements.mp) {
+      ul.append(this._createLine("合成", this._buttonElements.mp, this._buttonElements.mp[0].checked));
     }
 
-    if ( this._buttonElements.colorSet ) {
-      ul.append( this._createLine("スタイル変更",this._buttonElements.colorSet) );
+    if (this._buttonElements.opacity) {
+      ul.append(this._createLine("透過率", this._buttonElements.opacity));
+    }
+
+    if (this._buttonElements.colorSet) {
+      ul.append(this._createLine("スタイル変更", this._buttonElements.colorSet));
     }
 
     this._container.append(ul);
-    this._ownerContainer.append( this._container );
+    this._ownerContainer.append(this._container);
 
   },
 
-  _createLine : function(title, elem, checked) {
+  _createLine: function (title, elem, checked) {
     var li = $("<li>");
 
-    if ( checked == undefined ) {
+    if (checked == undefined) {
 
-      var a = $("<a>").attr({"href":"javascript:void(0);"});
+      var a = $("<a>").attr({ "href": "javascript:void(0);" });
       a.html(title);
 
-      a.on("click",L.bind(function(elem) {
+      a.on("click", L.bind(function (elem) {
         elem.trigger('click');
         this.hide();
-      },this,elem));
+      }, this, elem));
 
       li.append(a);
     } else {
       var onOff = new GSI.OnOffSwitch({ className: 'onoff', checked: checked });
       var onOffElem = onOff.getElement();
-      var label = $("<label>").html(title).attr({"for":onOff.getId()});
-      li.append( label );
-      li.append( onOffElem );
+      var label = $("<label>").html(title).attr({ "for": onOff.getId() });
+      li.append(label);
+      li.append(onOffElem);
 
-      onOff.on('change', L.bind(function(elem,onOff,evt){
-        if ( elem[0].checked != onOff.checked() ) {
+      onOff.on('change', L.bind(function (elem, onOff, evt) {
+        if (elem[0].checked != onOff.checked()) {
           elem.trigger('click');
         }
       }, this, elem, onOff));
@@ -49824,8 +49850,8 @@ GSI.ShowingMapListPanel.PopupLayerMenu = L.Evented.extend({
 
   },
 
-  hide : function() {
-    if ( !this._container) return;
+  hide: function () {
+    if (!this._container) return;
     this._destroyEvents();
     this._container.fadeOut(200);
   }
@@ -49839,189 +49865,189 @@ GSI.ShowingMapListPanel.PopupLayerMenu = L.Evented.extend({
  layers_txtのsrc探索をMapListPanel以外で実行する為の補完
  ************************************************************************/
 
- GSI.layersJSONSearchSRC = L.Evented.extend({
+GSI.layersJSONSearchSRC = L.Evented.extend({
   initialize: function (mapManager) {
-      this._mapManager = mapManager;
-      this.current = null;
-      this._CurrentData_SRC = null;
-      this._idMap = null;
-      this._pathidx = 0;
+    this._mapManager = mapManager;
+    this.current = null;
+    this._CurrentData_SRC = null;
+    this._idMap = null;
+    this._pathidx = 0;
   },
-  _nextSearch: function(){
-      this._pathidx += 1;
-      var keys = Object.keys(this._paths);
-      if (this._pathidx < keys.length){
-          this._initializeList_ID(this._paths[this._pathidx]);
-      }
-      else{
-          this.fire("searchEnd");
-      }
+  _nextSearch: function () {
+    this._pathidx += 1;
+    var keys = Object.keys(this._paths);
+    if (this._pathidx < keys.length) {
+      this._initializeList_ID(this._paths[this._pathidx]);
+    }
+    else {
+      this.fire("searchEnd");
+    }
   },
-  kick: function(paths){
-      this.tree = this._mapManager._layersJSON.tree;
-      this._CurrentData_SRC = new Array();
-      this._paths = paths;
-      this._idMap = {};
-      for(var s = 0; s < paths.length; s++){
-          this._idMap[paths[s]] = 0;
-      }
-      if (paths.length > 0){
-          this._initializeList_ID(paths[0]);
-      }
+  kick: function (paths) {
+    this.tree = this._mapManager._layersJSON.tree;
+    this._CurrentData_SRC = new Array();
+    this._paths = paths;
+    this._idMap = {};
+    for (var s = 0; s < paths.length; s++) {
+      this._idMap[paths[s]] = 0;
+    }
+    if (paths.length > 0) {
+      this._initializeList_ID(paths[0]);
+    }
   },
   _initializeList_ID: function (path) {
-      var current = null;
-      if (!path || path == '') return null;
+    var current = null;
+    if (!path || path == '') return null;
 
-      current = this._initializeList_IDProc_Data(this.tree, path);
-      if (current == null && this._CurrentData_SRC.length > 0) {
-          var srcurl = this._CurrentData_SRC[this._idMap[path]].src;
-          this._initializeList_IDProc_DataSrc(srcurl, path);
+    current = this._initializeList_IDProc_Data(this.tree, path);
+    if (current == null && this._CurrentData_SRC.length > 0) {
+      var srcurl = this._CurrentData_SRC[this._idMap[path]].src;
+      this._initializeList_IDProc_DataSrc(srcurl, path);
+    }
+    else {
+      //src属性の場合も2回目はこちら側を通るので、visibleLayersを作る必要がある
+      if (current != null) {
+        if (!this._visibleLayers || this._visibleLayers.length < 1) {
+          this._mapManager._layersJSON._initializeTree(this.tree, current.id);
+          this._visibleLayers = this._mapManager._layersJSON.visibleLayers;
+          this._visibleLayersHash = this._mapManager._layersJSON.visibleLayersHash;
+        }
       }
-      else {
-          //src属性の場合も2回目はこちら側を通るので、visibleLayersを作る必要がある
-          if (current != null){
-            if (!this._visibleLayers || this._visibleLayers.length < 1){
-              this._mapManager._layersJSON._initializeTree(this.tree, current.id);
-              this._visibleLayers = this._mapManager._layersJSON.visibleLayers;
-              this._visibleLayersHash = this._mapManager._layersJSON.visibleLayersHash;
-            }
-          }
-          this._initializeList_IDProc(current, path);
-          this._nextSearch();
-      }
-      //return current;
+      this._initializeList_IDProc(current, path);
+      this._nextSearch();
+    }
+    //return current;
   },
   _initializeList_IDProc_Data: function (tree, id) {
 
-      var current = null;
-      for (var i = 0; i < tree.length; i++) {
-          if (tree[i].src && !tree[i].entries) {
-              if (!tree[i].src_ && tree[i].src.indexOf('./') == 0) {
-                  var path = tree[i].src_url.substring(0, tree[i].src_url.lastIndexOf('/'));
-                  tree[i].src_ = true;
-                  tree[i].src = path + "/" + tree[i].src.substr(2);
-              }
-              if (this._CurrentData_SRC.includes(tree[i]) == false){
-                  this._CurrentData_SRC.push(tree[i]);
-              }
-          }
-          else if (tree[i].entries && !tree[i].isMultiLayer) {
-              current = this._initializeList_IDProc_Data(tree[i].entries, id);
-              if (current != null) {
-                  break;
-              }
-          }
-          else {
-              if (tree[i].id == id) {
-                  if (tree[i].parent) {
-                      current = tree[i].parent;
-
-                      this._CurrentData_SRC.length = 0;
-                  }
-                  else {
-                      current = null;
-                  }
-                  break;
-              }
-          }
+    var current = null;
+    for (var i = 0; i < tree.length; i++) {
+      if (tree[i].src && !tree[i].entries) {
+        if (!tree[i].src_ && tree[i].src.indexOf('./') == 0) {
+          var path = tree[i].src_url.substring(0, tree[i].src_url.lastIndexOf('/'));
+          tree[i].src_ = true;
+          tree[i].src = path + "/" + tree[i].src.substr(2);
+        }
+        if (this._CurrentData_SRC.includes(tree[i]) == false) {
+          this._CurrentData_SRC.push(tree[i]);
+        }
       }
-      return current;
-  },
-  _initializeList_IDProc: function (current, path) {
-      this.current = current;
-      var target = this.current;
-      if (target && target.title_sys == CONFIG.layerBaseFolderSYS && !CONFIG.layerBaseFolderVisible) {
-          target = null;
-          this.current = null;
-      }
-
-      this._initializeListProc(path);
-  },
-  _initializeListProc: function (id) {
-      if (this._visibleLayers && this._visibleLayers.length > 0) {
-          for (var i = 0; i < this._visibleLayers.length; i++) {
-              var l = this._visibleLayers[i];
-              if (l.info != null && (id && l.id == id)) {
-                 this._mapManager._mapLayerList.append(l.info, true, l.hidden, null, l.blend);
-              }
-          }
-      }
-  },
-  _initializeList_IDProc_DataSrc: function (srcurl, path) {
-      if (this._CurrentData_SRC.length > 0) {
-          if (GSI.GLOBALS.layersJSONCache &&
-              GSI.GLOBALS.layersJSONCache[srcurl]) {
-              this._initializeList_IDProc_DataSrc_Success(
-                  srcurl, path, GSI.GLOBALS.layersJSONCache[srcurl], true
-              );
-          }
-          else {
-              $.ajax({
-                  type: "GET",
-                  url: srcurl,
-                  dataType: "text",
-                  cache: true,
-                  success: L.bind(this._initializeList_IDProc_DataSrc_Success, this, srcurl, path),
-                  error: L.bind(this._initializeList_IDProc_DataSrc_Error, this, srcurl, path)
-              });
-          }
+      else if (tree[i].entries && !tree[i].isMultiLayer) {
+        current = this._initializeList_IDProc_Data(tree[i].entries, id);
+        if (current != null) {
+          break;
+        }
       }
       else {
-          this._initializeList_IDProc(null);
-      }
-  },
-  _initializeList_IDProc_DataSrc_Success: function (srcurl, path, data, isCached) {
-      if (this._CurrentData_SRC.length > 0) {
+        if (tree[i].id == id) {
+          if (tree[i].parent) {
+            current = tree[i].parent;
 
-          if (!isCached || isCached == false){
-              if (!GSI.GLOBALS.layersJSONCache) GSI.GLOBALS.layersJSONCache = {};
-
-              GSI.GLOBALS.layersJSONCache[srcurl] = data;
-          }
-
-          var json = JSON.parse(data);
-          if (json.layers) {
-              for (var i = 0; i < json.layers.length; i++) {
-                  json.layers[i].parent = this._CurrentData_SRC[this._idMap[path]];
-                  json.layers[i].src_url = this._CurrentData_SRC[this._idMap[path]].src_url;
-              }
-          }
-
-          this._CurrentData_SRC[this._idMap[path]].entries = json.layers;
-          this._mapManager._layersJSON._initializeTree(this._CurrentData_SRC[this._idMap[path]].entries, this._CurrentData_SRC[this._idMap[path]]);
-          current = this._initializeList_IDProc_Data(this._CurrentData_SRC[this._idMap[path]].entries, path);
-
-          if (current == null) {
-              if (this._CurrentData_SRC.length > this._idMap[path]){
-                  this._initializeList_IDProc_DataSrc_Error(srcurl, path);
-              }
-              else{
-                  this._nextSearch();
-                  //return current;
-              }
+            this._CurrentData_SRC.length = 0;
           }
           else {
-              if (this._visibleLayers == null || this._visibleLayers.length == 0) {
-                  this._visibleLayers = this._mapManager._layersJSON.visibleLayers;
-                  this._visibleLayersHash = this._mapManager._layersJSON.visibleLayersHash;
-              }
-              this._initializeList_IDProc(current, path);
-              this._nextSearch();
+            current = null;
           }
+          break;
+        }
       }
+    }
+    return current;
   },
-  _initializeList_IDProc_DataSrc_Error: function (srcurl, path) {
-      var idx = this._idMap[path];
-      this._idMap[path] = ++idx;
+  _initializeList_IDProc: function (current, path) {
+    this.current = current;
+    var target = this.current;
+    if (target && target.title_sys == CONFIG.layerBaseFolderSYS && !CONFIG.layerBaseFolderVisible) {
+      target = null;
+      this.current = null;
+    }
 
-      if (idx < this._CurrentData_SRC.length){
-        var src = this._CurrentData_SRC[this._idMap[path]].src;
-        this._initializeList_IDProc_DataSrc(src, path);
+    this._initializeListProc(path);
+  },
+  _initializeListProc: function (id) {
+    if (this._visibleLayers && this._visibleLayers.length > 0) {
+      for (var i = 0; i < this._visibleLayers.length; i++) {
+        var l = this._visibleLayers[i];
+        if (l.info != null && (id && l.id == id)) {
+          this._mapManager._mapLayerList.append(l.info, true, l.hidden, null, l.blend);
+        }
       }
-      else{
+    }
+  },
+  _initializeList_IDProc_DataSrc: function (srcurl, path) {
+    if (this._CurrentData_SRC.length > 0) {
+      if (GSI.GLOBALS.layersJSONCache &&
+        GSI.GLOBALS.layersJSONCache[srcurl]) {
+        this._initializeList_IDProc_DataSrc_Success(
+          srcurl, path, GSI.GLOBALS.layersJSONCache[srcurl], true
+        );
+      }
+      else {
+        $.ajax({
+          type: "GET",
+          url: srcurl,
+          dataType: "text",
+          cache: true,
+          success: L.bind(this._initializeList_IDProc_DataSrc_Success, this, srcurl, path),
+          error: L.bind(this._initializeList_IDProc_DataSrc_Error, this, srcurl, path)
+        });
+      }
+    }
+    else {
+      this._initializeList_IDProc(null);
+    }
+  },
+  _initializeList_IDProc_DataSrc_Success: function (srcurl, path, data, isCached) {
+    if (this._CurrentData_SRC.length > 0) {
+
+      if (!isCached || isCached == false) {
+        if (!GSI.GLOBALS.layersJSONCache) GSI.GLOBALS.layersJSONCache = {};
+
+        GSI.GLOBALS.layersJSONCache[srcurl] = data;
+      }
+
+      var json = JSON.parse(data);
+      if (json.layers) {
+        for (var i = 0; i < json.layers.length; i++) {
+          json.layers[i].parent = this._CurrentData_SRC[this._idMap[path]];
+          json.layers[i].src_url = this._CurrentData_SRC[this._idMap[path]].src_url;
+        }
+      }
+
+      this._CurrentData_SRC[this._idMap[path]].entries = json.layers;
+      this._mapManager._layersJSON._initializeTree(this._CurrentData_SRC[this._idMap[path]].entries, this._CurrentData_SRC[this._idMap[path]]);
+      current = this._initializeList_IDProc_Data(this._CurrentData_SRC[this._idMap[path]].entries, path);
+
+      if (current == null) {
+        if (this._CurrentData_SRC.length > this._idMap[path]) {
+          this._initializeList_IDProc_DataSrc_Error(srcurl, path);
+        }
+        else {
+          this._nextSearch();
+          //return current;
+        }
+      }
+      else {
+        if (this._visibleLayers == null || this._visibleLayers.length == 0) {
+          this._visibleLayers = this._mapManager._layersJSON.visibleLayers;
+          this._visibleLayersHash = this._mapManager._layersJSON.visibleLayersHash;
+        }
+        this._initializeList_IDProc(current, path);
         this._nextSearch();
       }
+    }
+  },
+  _initializeList_IDProc_DataSrc_Error: function (srcurl, path) {
+    var idx = this._idMap[path];
+    this._idMap[path] = ++idx;
+
+    if (idx < this._CurrentData_SRC.length) {
+      var src = this._CurrentData_SRC[this._idMap[path]].src;
+      this._initializeList_IDProc_DataSrc(src, path);
+    }
+    else {
+      this._nextSearch();
+    }
   }
 });
 
@@ -50030,11 +50056,11 @@ GSI.ShowingMapListPanel.PopupLayerMenu = L.Evented.extend({
  - GSI.MenuBase
  ************************************************************************/
 GSI.MenuBase = L.Evented.extend({
-  options : {
+  options: {
 
   },
 
-  initialize : function(menu, owner, opener, options) {
+  initialize: function (menu, owner, opener, options) {
     options = L.setOptions(this, options);
     this._opener = opener;
     this._owner = owner;
@@ -50043,248 +50069,249 @@ GSI.MenuBase = L.Evented.extend({
     this._container = null;
   },
 
-  destroy : function() {
+  destroy: function () {
     this._stopMouseDownWatch();
-    if ( this._container ) {
+    if (this._container) {
       this._container.remove();
       this._container = null;
     }
-    if ( this._child) {
+    if (this._child) {
       this._child.destroy();
     }
   },
 
-  refresh : function() {
-    if ( this._child) {
+  refresh: function () {
+    if (this._child) {
       this._child.refresh();
     }
   },
-  toggle : function() {
+  toggle: function () {
 
-    if ( this.isVisible() ) {
+    if (this.isVisible()) {
       this.hide();
     } else {
       this.show();
     }
   },
 
-  _showSlide : function(direction, duration) {
+  _showSlide: function (direction, duration) {
     var size = this.getSize();
-    if ( direction == "bottom") {
-      this._container.finish().css({"opacity":0,"transform":"scaleY(0) translateY("+ -size.height +"px)"}).show().animate(
+    if (direction == "bottom") {
+      this._container.finish().css({ "opacity": 0, "transform": "scaleY(0) translateY(" + -size.height + "px)" }).show().animate(
         {
-          "opacity":1
+          "opacity": 1
         },
         {
-          "duration" : duration,
-          "step" : L.bind(function(h, now) {
-            var y = (h-Math.floor(h*now)) / (now*2);
-            this._container.css({"transform":"scaleY("+now+") translateY(" + -y + "px)"});
-          }, this, size.height ),
+          "duration": duration,
+          "step": L.bind(function (h, now) {
+            var y = (h - Math.floor(h * now)) / (now * 2);
+            this._container.css({ "transform": "scaleY(" + now + ") translateY(" + -y + "px)" });
+          }, this, size.height),
 
-          "complete" : L.bind(function() {
-          },this)
+          "complete": L.bind(function () {
+          }, this)
         }
       );
     } else {
-      this._container.finish().css({"opacity":0,"transform":"scaleX(0) translateX("+ size.width +"px)"}).show().animate(
+      this._container.finish().css({ "opacity": 0, "transform": "scaleX(0) translateX(" + size.width + "px)" }).show().animate(
         {
-          "opacity":1
+          "opacity": 1
         },
         {
-          "duration" : duration,
-          "step" : L.bind(function(w, now) {
-            var x = (w-Math.floor(w*now)) / (now*2);
-            this._container.css({"transform":"scaleX("+now+") translateX(" + x + "px)"});
-          }, this, size.width ),
+          "duration": duration,
+          "step": L.bind(function (w, now) {
+            var x = (w - Math.floor(w * now)) / (now * 2);
+            this._container.css({ "transform": "scaleX(" + now + ") translateX(" + x + "px)" });
+          }, this, size.width),
 
-          "complete" : L.bind(function() {
-          },this)
+          "complete": L.bind(function () {
+          }, this)
         }
       );
     }
   },
 
-  _hideSlide : function(direction, duration) {
+  _hideSlide: function (direction, duration) {
 
     var size = this.getSize();
 
-    if ( direction == "bottom") {
+    if (direction == "bottom") {
       this._container.animate(
         {
-          "opacity":0
+          "opacity": 0
         },
         {
-          "duration" : duration,
-          "step" : L.bind(function(h, now) {
-            var y = (h-Math.floor(h*now)) / (now*2);
-            this._container.css({"transform":"scaleY("+now+") translateY(" + -y + "px)"});
-          }, this, size.height ),
-          "complete" : L.bind(function() {
-            this._container.css({"opacity":1,"transform":"scaleY(1) translateY(0px)"}).hide();
-          },this)
+          "duration": duration,
+          "step": L.bind(function (h, now) {
+            var y = (h - Math.floor(h * now)) / (now * 2);
+            this._container.css({ "transform": "scaleY(" + now + ") translateY(" + -y + "px)" });
+          }, this, size.height),
+          "complete": L.bind(function () {
+            this._container.css({ "opacity": 1, "transform": "scaleY(1) translateY(0px)" }).hide();
+          }, this)
         }
       );
 
     } else {
       this._container.animate(
         {
-          "opacity":0
+          "opacity": 0
         },
         {
-          "duration" : duration,
-          "step" : L.bind(function(w, now) {
-            var x = (w-Math.floor(w*now)) / (now*2);
-            this._container.css({"transform":"scaleX("+now+") translateX(" + x + "px)"});
-          }, this, size.width ),
-          "complete" : L.bind(function() {
-            this._container.css({"opacity":1,"transform":"scaleX(1) translateX(0px)"}).hide();
-          },this)
+          "duration": duration,
+          "step": L.bind(function (w, now) {
+            var x = (w - Math.floor(w * now)) / (now * 2);
+            this._container.css({ "transform": "scaleX(" + now + ") translateX(" + x + "px)" });
+          }, this, size.width),
+          "complete": L.bind(function () {
+            this._container.css({ "opacity": 1, "transform": "scaleX(1) translateX(0px)" }).hide();
+          }, this)
         }
       );
 
     }
   },
 
-  show : function(){
-    if ( !this._owner ) return;
-    if (!( this instanceof GSI.Menu.Panel )) {
-      if ( this._owner instanceof GSI.Menu.PopupList || this._owner instanceof GSI.Menu.PopupMenu
-        || this instanceof GSI.Menu.Panel ||  this instanceof GSI.Menu.PopupPanel) return;
+  show: function () {
+    if (!this._owner) return;
+    if (!(this instanceof GSI.Menu.Panel)) {
+      if (this._owner instanceof GSI.Menu.PopupList || this._owner instanceof GSI.Menu.PopupMenu
+        || this instanceof GSI.Menu.Panel || this instanceof GSI.Menu.PopupPanel) return;
     }
     this._startMouseDownWatch();
     this.refresh();
   },
-  hide : function(){
+  hide: function () {
     this._stopMouseDownWatch();
-    if ( this._child ) {
+    if (this._child) {
       this._child.hide();
     }
   },
 
-  getPosition : function() {
-    if ( !this._container) return {"left":0,"top":0};
+  getPosition: function () {
+    if (!this._container) return { "left": 0, "top": 0 };
     return this._container.offset();
   },
 
-  getSize : function() {
-    if ( !this._container) return {"width":0,"height":0};
+  getSize: function () {
+    if (!this._container) return { "width": 0, "height": 0 };
 
     var visible = this.isVisible();
 
-    if ( !visible ) {
-      this._container.css({"visibility":"hidden"}).show();
+    if (!visible) {
+      this._container.css({ "visibility": "hidden" }).show();
     }
 
-    var result= {
-      "width" : this._container.outerWidth(),
-      "height" : this._container.outerHeight()
+    var result = {
+      "width": this._container.outerWidth(),
+      "height": this._container.outerHeight()
     };
 
-    if ( !visible ) {
-      this._container.css({"visibility":"visible"}).hide();
+    if (!visible) {
+      this._container.css({ "visibility": "visible" }).hide();
     }
 
     return result;
   },
 
-  getOpener : function() {
+  getOpener: function () {
     return this._opener;
   },
 
-  getOwner: function() {
+  getOwner: function () {
     return this._owner;
   },
 
-  isVisible : function() {
-    return ( this._container && this._container.is(":visible") );
+  isVisible: function () {
+    return (this._container && this._container.is(":visible"));
   },
 
-  hasOwner : function() {
-    return ( this._owner ? true : false );
+  hasOwner: function () {
+    return (this._owner ? true : false);
   },
 
-  hasOpener : function() {
-    return ( this._opener ? true : false );
+  hasOpener: function () {
+    return (this._opener ? true : false);
   },
 
-  getContainer : function() {
+  getContainer: function () {
     return this._container;
   },
 
-  setChild : function(child) {
+  setChild: function (child) {
     this._child = child;
   },
 
-  childMouseOver : function( evt ) {
+  childMouseOver: function (evt) {
 
     var target = evt.target;
-    this._menu.fire( "mouseover", {"item":target.options});
+    this._menu.fire("mouseover", { "item": target.options });
   },
 
-  childMouseOut : function( evt ) {
+  childMouseOut: function (evt) {
 
     var target = evt.target;
-    this._menu.fire( "mouseout", {"item":target.options});
+    this._menu.fire("mouseout", { "item": target.options });
   },
 
-  childClick : function(evt) {
+  childClick: function (evt) {
 
-    if ( this._activeChild ) {
+    if (this._activeChild) {
       this._activeChild = null;
     }
 
     var target = evt.target;
 
     var owner = target;
-    if ( owner instanceof GSI.Menu.IconButton || owner instanceof GSI.Menu.PopupList.Item
-      || owner instanceof GSI.Menu.Panel.Item || owner instanceof GSI.Menu.PopupPanel.Item  ) {
+    if (owner instanceof GSI.Menu.IconButton || owner instanceof GSI.Menu.PopupList.Item
+      || owner instanceof GSI.Menu.Panel.Item || owner instanceof GSI.Menu.PopupPanel.Item) {
       owner = target.getOwner();
     }
 
-    switch( target.options.childViewStyle) {
+    switch (target.options.childViewStyle) {
       case "popupmenu":
-        if ( !target._child ) {
-          target._child = new GSI.Menu.PopupMenu(this._menu,owner,target,{
-            children:target.options.children,
-            popupDirection:target.options.popupDirection});
+        if (!target._child) {
+          target._child = new GSI.Menu.PopupMenu(this._menu, owner, target, {
+            children: target.options.children,
+            popupDirection: target.options.popupDirection
+          });
         }
         owner._child = target._child;
         this._activeChild = target._child;
         break;
 
       case "popuplist":
-        if ( !target._child ) {
-          target._child = new GSI.Menu.PopupList(this._menu,owner, target,
+        if (!target._child) {
+          target._child = new GSI.Menu.PopupList(this._menu, owner, target,
             {
-            children:target.options.children,
-            popupDirection:target.options.popupDirection,
-            childrenWidth : target.options.childrenWidth
-          });
+              children: target.options.children,
+              popupDirection: target.options.popupDirection,
+              childrenWidth: target.options.childrenWidth
+            });
         }
         owner._child = target._child;
         this._activeChild = owner._child;
         break;
 
       case "panel":
-        if ( !target._child ) {
-          target._child = new GSI.Menu.Panel(this._menu,owner, target,{
-            children:target.options.children,
-            "class" : target.options.panelClass
+        if (!target._child) {
+          target._child = new GSI.Menu.Panel(this._menu, owner, target, {
+            children: target.options.children,
+            "class": target.options.panelClass
           });
         }
         owner._child = target._child;
         this._activeChild = owner._child;
-        if (!(this instanceof GSI.Menu) )
+        if (!(this instanceof GSI.Menu))
           this.hide();
         break;
 
       case "popuppanel":
-        if ( !target._child ) {
-          target._child = new GSI.Menu.PopupPanel(this._menu,owner, target,{
-            children:target.options.children,
-            popupDirection:target.options.popupDirection,
-            "class" : target.options.panelClass
+        if (!target._child) {
+          target._child = new GSI.Menu.PopupPanel(this._menu, owner, target, {
+            children: target.options.children,
+            popupDirection: target.options.popupDirection,
+            "class": target.options.panelClass
           });
         }
         owner._child = target._child;
@@ -50292,33 +50319,33 @@ GSI.MenuBase = L.Evented.extend({
         break;
 
       default:
-        if( target.options.typeA == "check") {
+        if (target.options.typeA == "check") {
           var obj = this._gsimaps._onoffObjects[target.options.id];
-          if ( obj ) {
+          if (obj) {
             obj.obj[obj.setter](!obj.obj[obj.getter]());
             var on = obj.obj[obj.getter]();
-            if ( on ) {
+            if (on) {
               target.getContainer().addClass("on");
             } else {
               target.getContainer().removeClass("on");
             }
           }
         } else {
-          this._menu.fire( "select", {"item":target.options, "from": target});
+          this._menu.fire("select", { "item": target.options, "from": target });
         }
-        if ( !target.options.keepPanel )this.hide();
+        if (!target.options.keepPanel) this.hide();
         break;
     }
 
-    if ( this._activeChild ) this._activeChild.toggle();
+    if (this._activeChild) this._activeChild.toggle();
 
-    if (target && target.options){
-      if (target.options.id && target.options.id != ""){
+    if (target && target.options) {
+      if (target.options.id && target.options.id != "") {
         var usedid = target.options.id;
-        if (["jihokuline","houiline","toukyoken","othermap"].includes(usedid)){
-          if (this._gsimaps._onoffObjects[usedid]){
+        if (["jihokuline", "houiline", "toukyoken", "othermap"].includes(usedid)) {
+          if (this._gsimaps._onoffObjects[usedid]) {
             //非表示なら抜ける
-            if (this._gsimaps._onoffObjects[usedid].obj.options.visible == false){
+            if (this._gsimaps._onoffObjects[usedid].obj.options.visible == false) {
               return;
             }
           }
@@ -50328,20 +50355,20 @@ GSI.MenuBase = L.Evented.extend({
     }
   },
 
-  _onMapMouseDown : function() {
+  _onMapMouseDown: function () {
     this.hide();
   },
 
-  _hitCheck : function(target) {
+  _hitCheck: function (target) {
     var hit = false;
-    if ( this._child ) {
+    if (this._child) {
       hit = this._child._hitCheck(target);
-      if ( hit ) return hit;
+      if (hit) return hit;
       this._child.hide(true);
     }
 
-    while( target) {
-      if ( this._container && target == this._container[0]) {
+    while (target) {
+      if (this._container && target == this._container[0]) {
         hit = true;
         break;
       }
@@ -50350,49 +50377,49 @@ GSI.MenuBase = L.Evented.extend({
     return hit;
   },
 
-  _onBodyMouseDown : function (evt) {
+  _onBodyMouseDown: function (evt) {
     var target = evt.target;
 
     var hit = false;
 
-    if ( this._child ) {
+    if (this._child) {
       hit = this._child._hitCheck(target);
-      if ( hit ) return;
+      if (hit) return;
       this._child.hide(true);
     }
 
-    if ( !this._hitCheck(target) ) this.hide();
+    if (!this._hitCheck(target)) this.hide();
   },
 
-  _startMouseDownWatch : function() {
-    if ( !this._mapMousedownHandler ) {
-      this._mapMousedownHandler = L.bind( this._onMapMouseDown, this );
-      if ( this._gsimaps._mainMap ) {
+  _startMouseDownWatch: function () {
+    if (!this._mapMousedownHandler) {
+      this._mapMousedownHandler = L.bind(this._onMapMouseDown, this);
+      if (this._gsimaps._mainMap) {
         var map = this._gsimaps._mainMap.getMap();
-        map.on("touchstart",this._mapMousedownHandler);
+        map.on("touchstart", this._mapMousedownHandler);
         map.on("mousedown", this._mapMousedownHandler);
       }
-      if ( this._gsimaps._subMap ) {
+      if (this._gsimaps._subMap) {
         var map = this._gsimaps._subMap.getMap();
-        map.on("touchstart",this._mapMousedownHandler);
+        map.on("touchstart", this._mapMousedownHandler);
         map.on("mousedown", this._mapMousedownHandler);
       }
     }
 
-    if ( !this._mouseDownHandler ) {
-      this._mouseDownHandler = L.bind( this._onBodyMouseDown, this );
+    if (!this._mouseDownHandler) {
+      this._mouseDownHandler = L.bind(this._onBodyMouseDown, this);
       $("body").on("mousedown", this._mouseDownHandler);
     }
   },
 
-  _stopMouseDownWatch : function() {
-    if ( this._mapMousedownHandler ) {
-      if ( this._gsimaps._mainMap ) {
+  _stopMouseDownWatch: function () {
+    if (this._mapMousedownHandler) {
+      if (this._gsimaps._mainMap) {
         var map = this._gsimaps._mainMap.getMap();
         map.off("touchstart", this._mapMousedownHandler);
         map.off("mousedown", this._mapMousedownHandler);
       }
-      if ( this._gsimaps._subMap ) {
+      if (this._gsimaps._subMap) {
         var map = this._gsimaps._subMap.getMap();
         map.off("touchstart", this._mapMousedownHandler);
         map.off("mousedown", this._mapMousedownHandler);
@@ -50400,7 +50427,7 @@ GSI.MenuBase = L.Evented.extend({
       this._mapMousedownHandler = null;
     }
 
-    if ( this._mouseDownHandler ) {
+    if (this._mouseDownHandler) {
       $("body").off("mousedown", this._mouseDownHandler);
       this._mouseDownHandler = null;
     }
@@ -50417,9 +50444,9 @@ GSI.Menu = GSI.MenuBase.extend({
     visible: true
   },
 
-  initialize : function(gsimaps, container, config,options, onOffObjects) {
+  initialize: function (gsimaps, container, config, options, onOffObjects) {
 
-    GSI.MenuBase.prototype.initialize.call(this,this, null,null,options);
+    GSI.MenuBase.prototype.initialize.call(this, this, null, null, options);
     this._gsimaps = gsimaps;
     this._container = container;
     this._config = config;
@@ -50428,33 +50455,33 @@ GSI.Menu = GSI.MenuBase.extend({
     this._initializeOnOffObjects(onOffObjects);
   },
 
-  _initializeIcons : function() {
+  _initializeIcons: function () {
 
     this._iconButtons = [];
-    for( var i=0; i<this._config.length; i++ ) {
+    for (var i = 0; i < this._config.length; i++) {
       var iconInfo = this._config[i];
-      if ( this._container.hasClass("local")) {
+      if (this._container.hasClass("local")) {
         if (iconInfo.id == "reset") continue;
       }
-      var iconButton = new GSI.Menu.IconButton(this,this, iconInfo);
-      iconButton.create( this._container);
-      this._iconButtons.push( iconButton );
-      iconButton.on("click", L.bind( this.childClick, this ) );
+      var iconButton = new GSI.Menu.IconButton(this, this, iconInfo);
+      iconButton.create(this._container);
+      this._iconButtons.push(iconButton);
+      iconButton.on("click", L.bind(this.childClick, this));
     }
   },
 
-  _initializeOnOffObjects : function( onOffObjects) {
-    var proc = L.bind(function(evt){
+  _initializeOnOffObjects: function (onOffObjects) {
+    var proc = L.bind(function (evt) {
       this.refresh();
-    },this);
+    }, this);
     for (key in onOffObjects) {
       var obj = onOffObjects[key];
-      if ( !obj.obj.on ) continue;
+      if (!obj.obj.on) continue;
       obj.obj.on("change", proc);
     }
   },
 
-  getToolsWidth :function () {
+  getToolsWidth: function () {
     return this._container.outerWidth();
   }
 });
@@ -50464,64 +50491,64 @@ GSI.Menu = GSI.MenuBase.extend({
  - GSI.MenuIconButton
  ************************************************************************/
 GSI.Menu.IconButton = GSI.MenuBase.extend({
-  options : {
-    class : "gsi-header-tool-icon"
+  options: {
+    class: "gsi-header-tool-icon"
   },
 
-  initialize : function(menu, owner, options) {
-    GSI.MenuBase.prototype.initialize.call(this, menu, owner,null,options);
+  initialize: function (menu, owner, options) {
+    GSI.MenuBase.prototype.initialize.call(this, menu, owner, null, options);
     this._owner = owner;
   },
 
-  destroy : function() {
-    if ( this._container ) {
+  destroy: function () {
+    if (this._container) {
       this._container.remove();
       this._container = undefined;
     }
   },
 
-  create : function(parentContainer) {
-    this._container = $("<a>").attr({"href":"javascript:void(0);"}).addClass(this.options["class"]);
-    if ( this.options["url"] && this.options["url"] != "" ) {
-      this._container.attr( {
-        "href":this.options["url"],
-        "target" : this.options["target"] ? this.options["target"] : ""
+  create: function (parentContainer) {
+    this._container = $("<a>").attr({ "href": "javascript:void(0);" }).addClass(this.options["class"]);
+    if (this.options["url"] && this.options["url"] != "") {
+      this._container.attr({
+        "href": this.options["url"],
+        "target": this.options["target"] ? this.options["target"] : ""
       });
     } else {
-      this._container.on("click", L.bind( this._onClick, this));
+      this._container.on("click", L.bind(this._onClick, this));
     }
 
-    if ( this.options["text"] && this.options["text"] != "" ) {
-      this._container.html( this.options["text"]);
+    if (this.options["text"] && this.options["text"] != "") {
+      this._container.html(this.options["text"]);
     }
 
-    if ( this.options["description"] && this.options["description"] != "" ) {
-      this._container.attr( {"title":this.options["description"]});
+    if (this.options["description"] && this.options["description"] != "") {
+      this._container.attr({ "title": this.options["description"] });
     }
 
-    if ( this.options["icon"] && this.options["icon"] != "" ) {
-      this._container.css({"background-image": "url(" + this.options["icon"] + ")" });
+    if (this.options["icon"] && this.options["icon"] != "") {
+      this._container.css({ "background-image": "url(" + this.options["icon"] + ")" });
     }
 
-    if ( this.options["title"] && this.options["title"] != "" ) {
-      var titleElement = $("<span>").html( this.options["title"]).addClass("title");
-      this._container.append( titleElement ).addClass("withtitle");
+    if (this.options["title"] && this.options["title"] != "") {
+      var titleElement = $("<span>").html(this.options["title"]).addClass("title");
+      this._container.append(titleElement).addClass("withtitle");
     }
 
-    if ( this.options["buttonWidth"]) {
-      this._container.css({width: this.options["buttonWidth"]});
+    if (this.options["buttonWidth"]) {
+      this._container.css({ width: this.options["buttonWidth"] });
     }
 
-    parentContainer.append( this._container);
+    parentContainer.append(this._container);
     return this._container;
   },
 
-  _onClick : function() {
+  _onClick: function () {
     this.fire("click");
-    if ( this._container ) {
-      try{
+    if (this._container) {
+      try {
         this._container.trigger('blur');
-      } catch(e) {}
+      } catch (e) { }
     }
   }
 });
@@ -50531,30 +50558,30 @@ GSI.Menu.IconButton = GSI.MenuBase.extend({
  - GSI.Menu.PopupMenu
  ************************************************************************/
 GSI.Menu.PopupMenu = GSI.MenuBase.extend({
-  options : {
-    "class" : "gsi-menu-popupmenu"
+  options: {
+    "class": "gsi-menu-popupmenu"
   },
 
-  initialize : function(menu, owner, opener,  options) {
+  initialize: function (menu, owner, opener, options) {
 
-    GSI.MenuBase.prototype.initialize.call(this,menu, owner,opener,options);
+    GSI.MenuBase.prototype.initialize.call(this, menu, owner, opener, options);
     this.create();
   },
 
-  create : function() {
+  create: function () {
     this._container = $("<div>").addClass(this.options["class"]).hide();
 
-    for( var i=0; i<this.options.children.length; i++ ) {
+    for (var i = 0; i < this.options.children.length; i++) {
 
       var iconInfo = this.options.children[i];
       var iconButton = new GSI.Menu.IconButton(this._menu, this, iconInfo);
-      iconButton.create( this._container);
-      iconButton.on("click", L.bind( this.childClick, this ) );
+      iconButton.create(this._container);
+      iconButton.on("click", L.bind(this.childClick, this));
     }
-    $("body").append( this._container);
+    $("body").append(this._container);
   },
 
-  show : function() {
+  show: function () {
     var screenSize = GSI.Utils.getScreenSize();
     var pos = this._opener.getPosition();
     var openerSize = this._opener.getSize();
@@ -50562,18 +50589,18 @@ GSI.Menu.PopupMenu = GSI.MenuBase.extend({
     var right = 2;
     var top = 0;
 
-    switch( this.options.popupDirection) {
+    switch (this.options.popupDirection) {
       case "bottom":
-          right = parseInt( screenSize.w - pos.left -(openerSize.width/2) -(size.width/2));
-          top = pos.top + openerSize.height + 2;
+        right = parseInt(screenSize.w - pos.left - (openerSize.width / 2) - (size.width / 2));
+        top = pos.top + openerSize.height + 2;
         break;
     }
 
-    if ( right <= 0 ) right = 1;
+    if (right <= 0) right = 1;
 
-    this._container.css( {
-      "top" : top + "px",
-      "right" : right+ "px"
+    this._container.css({
+      "top": top + "px",
+      "right": right + "px"
     });
     this._container.slideDown(300);
 
@@ -50581,14 +50608,14 @@ GSI.Menu.PopupMenu = GSI.MenuBase.extend({
 
   },
 
-  hide : function() {
+  hide: function () {
     this._container.slideUp(300);
     GSI.MenuBase.prototype.hide.call(this);
   },
 
-  toggle : function() {
+  toggle: function () {
 
-    if ( this.isVisible() ) {
+    if (this.isVisible()) {
       this.hide();
     } else {
       this.show();
@@ -50601,42 +50628,42 @@ GSI.Menu.PopupMenu = GSI.MenuBase.extend({
  - GSI.Menu.PopupList
  ************************************************************************/
 GSI.Menu.PopupList = GSI.MenuBase.extend({
-  options : {
-    "class" : "gsi-menu-popuplist"
+  options: {
+    "class": "gsi-menu-popuplist"
   },
 
-  initialize : function(menu, owner, opener, options) {
+  initialize: function (menu, owner, opener, options) {
 
-    GSI.MenuBase.prototype.initialize.call(this, menu,owner,opener,options);
+    GSI.MenuBase.prototype.initialize.call(this, menu, owner, opener, options);
     this.create();
   },
 
-  refresh : function() {
-    for( var i=0; i<this._items.length; i++ ) {
+  refresh: function () {
+    for (var i = 0; i < this._items.length; i++) {
       this._items[i].refresh();
     }
     GSI.MenuBase.prototype.refresh.call(this);
   },
 
-  create : function() {
+  create: function () {
 
     this._container = $("<div>").addClass(this.options.class).hide();
     var ul = $("<ul>");
 
     this._items = [];
 
-    for( var i=0; i<this.options.children.length; i++ ) {
+    for (var i = 0; i < this.options.children.length; i++) {
       var item = new GSI.Menu.PopupList.Item(this._menu, this, this.options.children[i]);
-      item.on("click", L.bind( this.childClick, this ) );
+      item.on("click", L.bind(this.childClick, this));
       this._items.push(item);
-      ul.append( item.getContainer() );
+      ul.append(item.getContainer());
     }
 
     this._container.append(ul);
-    $("body").append( this._container );
+    $("body").append(this._container);
   },
 
-  show : function() {
+  show: function () {
     var screenSize = GSI.Utils.getScreenSize();
     var pos = this._opener.getPosition();
     var openerSize = this._opener.getSize();
@@ -50644,106 +50671,106 @@ GSI.Menu.PopupList = GSI.MenuBase.extend({
     var right = 2;
     var top = 0;
 
-    switch( this.options.popupDirection) {
+    switch (this.options.popupDirection) {
       case "bottom":
-        right = parseInt( screenSize.w - pos.left -(openerSize.width/2) -(size.width/2));
+        right = parseInt(screenSize.w - pos.left - (openerSize.width / 2) - (size.width / 2));
         top = pos.top + openerSize.height + 5;
         break;
 
       case "left":
-        right = parseInt( screenSize.w - pos.left);
-        top = pos.top + parseInt( openerSize.height / 2);
+        right = parseInt(screenSize.w - pos.left);
+        top = pos.top + parseInt(openerSize.height / 2);
         break;
     }
 
     var left = screenSize.w - right - size.width;
     var bottom = top + size.height;
 
-    if ( left < 0 ) right = screenSize.w - size.width - 1;
-    if ( right <= 0 ) right = 1;
-    if ( top < 0 ) top = 1;
-    if ( bottom > screenSize.h ) top = screenSize.h - size.height - 1;
+    if (left < 0) right = screenSize.w - size.width - 1;
+    if (right <= 0) right = 1;
+    if (top < 0) top = 1;
+    if (bottom > screenSize.h) top = screenSize.h - size.height - 1;
 
-    this._container.css( {
-      "top" : top + "px",
-      "right" : right+ "px"
+    this._container.css({
+      "top": top + "px",
+      "right": right + "px"
     });
 
-    this._showSlide( this.options.popupDirection, 200);
+    this._showSlide(this.options.popupDirection, 200);
 
     GSI.MenuBase.prototype.show.call(this);
   },
 
-  hide : function() {
-    this._hideSlide( this.options.popupDirection, 200);
+  hide: function () {
+    this._hideSlide(this.options.popupDirection, 200);
     GSI.MenuBase.prototype.hide.call(this);
   }
 });
 
 GSI.Menu.PopupList.Item = GSI.MenuBase.extend({
-  options : {
+  options: {
   },
 
-  initialize : function(menu, owner, options) {
+  initialize: function (menu, owner, options) {
 
-    GSI.MenuBase.prototype.initialize.call(this, menu,owner,null,options);
+    GSI.MenuBase.prototype.initialize.call(this, menu, owner, null, options);
     this.create();
   },
 
-  refresh:function() {
-    if ( this._onOffSwitch) {
+  refresh: function () {
+    if (this._onOffSwitch) {
       var obj = this._gsimaps._onoffObjects[this.options.id];
-      this._onOffSwitch.getCheckBox()[0].checked = ( obj ? obj.obj[obj.getter]() : false );
+      this._onOffSwitch.getCheckBox()[0].checked = (obj ? obj.obj[obj.getter]() : false);
     }
   },
 
-  create : function() {
+  create: function () {
     var item = this.options;
-    var li= $("<li>");
-    if ( item.typeA == "check") {
+    var li = $("<li>");
+    if (item.typeA == "check") {
       var obj = this._gsimaps._onoffObjects[item.id];
-      var checkState = ( obj ? obj.obj[obj.getter]() : false );
+      var checkState = (obj ? obj.obj[obj.getter]() : false);
 
       var onOffSwitch = new GSI.OnOffSwitch({ className: 'onoff', checked: checkState, title: item.title });
 
-      var label = $("<label>").attr({"for":onOffSwitch.getId()}).addClass("title").html(item.title);
+      var label = $("<label>").attr({ "for": onOffSwitch.getId() }).addClass("title").html(item.title);
 
-      if ( item["description"] && item["description"] != "" ) {
-        label.attr( {"title":item["description"]});
-        onOffSwitch.getElement().attr( {"title":item["description"]});
+      if (item["description"] && item["description"] != "") {
+        label.attr({ "title": item["description"] });
+        onOffSwitch.getElement().attr({ "title": item["description"] });
       }
 
       this._onOffSwitch = onOffSwitch;
       onOffSwitch.getCheckBox().data({ 'data': item });
       onOffSwitch.getElement().addClass("check");
 
-      onOffSwitch.on('change', L.bind(function(checkBox, obj){
-        if ( !obj ) return;
+      onOffSwitch.on('change', L.bind(function (checkBox, obj) {
+        if (!obj) return;
         obj.obj[obj.setter]($(checkBox).is(":checked"));
-        if ( obj.obj[obj.getter]() != $(checkBox).is(":checked") ) {
+        if (obj.obj[obj.getter]() != $(checkBox).is(":checked")) {
           checkBox[0].checked = !$(checkBox).is(":checked");
         }
       }, this, onOffSwitch.getCheckBox(), obj));
-      li.append(label).append( onOffSwitch.getElement());
+      li.append(label).append(onOffSwitch.getElement());
 
     } else {
-      var a = $("<a>").attr({"href":"javascript:void(0);"}).html( item.title);
+      var a = $("<a>").attr({ "href": "javascript:void(0);" }).html(item.title);
 
-      if ( item["description"] && item["description"] != "" ) {
-        a.attr( {"title":item["description"]});
+      if (item["description"] && item["description"] != "") {
+        a.attr({ "title": item["description"] });
       }
 
       if (item.arrow) {
         a.addClass("arrow");
       }
-      a.on("click", L.bind( this._onClick,this));
+      a.on("click", L.bind(this._onClick, this));
       li.append(a);
     }
 
     this._container = li;
   },
 
-  _onClick : function(evt) {
+  _onClick: function (evt) {
     this.fire("click");
   }
 });
@@ -50753,63 +50780,63 @@ GSI.Menu.PopupList.Item = GSI.MenuBase.extend({
  - GSI.Menu.Panel
  ************************************************************************/
 GSI.Menu.Panel = GSI.MenuBase.extend({
-  options : {
-    "class" : "gsi-menu-rightpanel"
+  options: {
+    "class": "gsi-menu-rightpanel"
   },
 
-  initialize : function(menu, owner, opener, options) {
-    if ( options && ( !options["class"] || options["class"] == "" ) )
+  initialize: function (menu, owner, opener, options) {
+    if (options && (!options["class"] || options["class"] == ""))
       options["class"] = "gsi-menu-rightpanel";
 
-    GSI.MenuBase.prototype.initialize.call(this, menu,owner,opener,options);
+    GSI.MenuBase.prototype.initialize.call(this, menu, owner, opener, options);
 
     this.create();
   },
 
-  refresh : function() {
-    for( var i=0; i<this._items.length; i++ ) {
+  refresh: function () {
+    for (var i = 0; i < this._items.length; i++) {
       this._items[i].refresh();
     }
     GSI.MenuBase.prototype.refresh.call(this);
   },
 
-  create : function() {
-    this._container =$("<div>").addClass(this.options["class"]).hide();
+  create: function () {
+    this._container = $("<div>").addClass(this.options["class"]).hide();
     var ul = $("<ul>");
     this._items = [];
-    for( var i=0; i<this.options.children.length; i++ ) {
+    for (var i = 0; i < this.options.children.length; i++) {
       var childInfo = this.options.children[i];
-      var item = new GSI.Menu.Panel.Item (this._menu, this, childInfo);
+      var item = new GSI.Menu.Panel.Item(this._menu, this, childInfo);
 
-      this._items.push( item );
-      item.on("click", L.bind( this.childClick,this));
+      this._items.push(item);
+      item.on("click", L.bind(this.childClick, this));
 
-      ul.append( item.getContainer() );
+      ul.append(item.getContainer());
     }
 
     this._container.append(ul);
-    $("body").append( this._container);
+    $("body").append(this._container);
 
   },
 
-  _refreshHeight : function() {
+  _refreshHeight: function () {
 
     var bottom = 0;
-    if ( this._gsimaps.splited() || this._gsimaps.compared() ) {
-      if ( this._gsimaps._subMap._footer )
+    if (this._gsimaps.splited() || this._gsimaps.compared()) {
+      if (this._gsimaps._subMap._footer)
         bottom = this._gsimaps._subMap._footer.getHeight();
     } else {
-      if ( this._gsimaps._mainMap._footer )
+      if (this._gsimaps._mainMap._footer)
         bottom = this._gsimaps._mainMap._footer.getHeight();
     }
-    this._container.css({"left":"auto","bottom" :bottom + "px"});
+    this._container.css({ "left": "auto", "bottom": bottom + "px" });
   },
 
-  show : function() {
+  show: function () {
 
     this._refreshHeight();
 
-    this._container.show("slide",{"direction":"right"},200);
+    this._container.show("slide", { "direction": "right" }, 200);
 
     GSI.MenuBase.prototype.show.call(this);
 
@@ -50819,14 +50846,14 @@ GSI.Menu.Panel = GSI.MenuBase.extend({
     }
   },
 
-  hide : function() {
+  hide: function () {
 
     if (this._onWindowResizeHandler) {
       $(window).off('resize', this._onWindowResizeHandler);
       this._onWindowResizeHandler = null;
     }
 
-    this._container.hide("slide",{"direction":"right"},200);
+    this._container.hide("slide", { "direction": "right" }, 200);
 
     GSI.MenuBase.prototype.hide.call(this);
 
@@ -50839,28 +50866,28 @@ GSI.Menu.Panel = GSI.MenuBase.extend({
         },
         "position": { my: "right top+10", at: "center bottom", collision: "flipfit" }
       });
-    }catch(ex) {
+    } catch (ex) {
 
     }
   }
 });
 
 GSI.Menu.Panel.Item = GSI.MenuBase.extend({
-  options : {
+  options: {
   },
 
-  initialize : function(menu, owner, options) {
+  initialize: function (menu, owner, options) {
 
-    GSI.MenuBase.prototype.initialize.call(this, menu,owner,null,options);
+    GSI.MenuBase.prototype.initialize.call(this, menu, owner, null, options);
     this.create();
   },
 
-  refresh : function() {
-    if ( this.options.typeA  == "check") {
+  refresh: function () {
+    if (this.options.typeA == "check") {
       var obj = this._gsimaps._onoffObjects[this.options.id];
-      if ( obj ) {
+      if (obj) {
         var on = obj.obj[obj.getter]();
-        if ( on ) {
+        if (on) {
           this.getContainer().addClass("on");
         } else {
           this.getContainer().removeClass("on");
@@ -50868,25 +50895,25 @@ GSI.Menu.Panel.Item = GSI.MenuBase.extend({
       }
     }
   },
-  create : function() {
+  create: function () {
     var item = this.options;
-    var li= $("<li>");
-    var a = $("<a>").attr({"href":"javascript:void(0);"});
+    var li = $("<li>");
+    var a = $("<a>").attr({ "href": "javascript:void(0);" });
     var div = $("<div>").addClass("title");
 
-    if ( item.icon ) {
+    if (item.icon) {
       a.addClass("image-only");
-      a.css({"background-image":"url(" + item.icon +")"});
+      a.css({ "background-image": "url(" + item.icon + ")" });
       div.html(item.title);
 
     } else {
       div.html(item.title);
     }
 
-    if ( item["description"] && item["description"] != "" ) {
-      a.attr( {"title":item["description"]});
+    if (item["description"] && item["description"] != "") {
+      a.attr({ "title": item["description"] });
     }
-    a.on("click", L.bind(this._onClick, this ));
+    a.on("click", L.bind(this._onClick, this));
 
     a.append(div);
     li.append(a);
@@ -50894,7 +50921,7 @@ GSI.Menu.Panel.Item = GSI.MenuBase.extend({
     this.refresh();
   },
 
-  _onClick : function(evt) {
+  _onClick: function (evt) {
     this.fire("click");
   }
 });
@@ -50904,46 +50931,46 @@ GSI.Menu.Panel.Item = GSI.MenuBase.extend({
  - GSI.Menu.PopupPanel
  ************************************************************************/
 GSI.Menu.PopupPanel = GSI.MenuBase.extend({
-  options : {
-    "class" : "gsi-menu-popuppanel"
+  options: {
+    "class": "gsi-menu-popuppanel"
   },
 
-  initialize : function(menu, owner, opener, options) {
+  initialize: function (menu, owner, opener, options) {
 
-    if ( options && ( !options["class"] || options["class"] == "" ) )
+    if (options && (!options["class"] || options["class"] == ""))
       options["class"] = "gsi-menu-popuppanel";
 
-    GSI.MenuBase.prototype.initialize.call(this, menu,owner,opener,options);
+    GSI.MenuBase.prototype.initialize.call(this, menu, owner, opener, options);
 
     this.create();
   },
-  refresh : function() {
-    for( var i=0; i<this._items.length; i++ ) {
+  refresh: function () {
+    for (var i = 0; i < this._items.length; i++) {
       this._items[i].refresh();
     }
     GSI.MenuBase.prototype.refresh.call(this);
   },
 
-  create : function() {
-    this._container =$("<div>").addClass(this.options["class"]).hide();
+  create: function () {
+    this._container = $("<div>").addClass(this.options["class"]).hide();
     this._items = [];
-    for( var i=0; i<this.options.children.length; i++ ) {
+    for (var i = 0; i < this.options.children.length; i++) {
       var childInfo = this.options.children[i];
-      var item = new GSI.Menu.PopupPanel.Item (this._menu, this, childInfo);
+      var item = new GSI.Menu.PopupPanel.Item(this._menu, this, childInfo);
 
-      this._items.push( item );
-      item.on("click", L.bind( this.childClick,this));
-      item.on("mouseover", L.bind( this.childMouseOver,this));
-      item.on("mouseout", L.bind( this.childMouseOut,this));
+      this._items.push(item);
+      item.on("click", L.bind(this.childClick, this));
+      item.on("mouseover", L.bind(this.childMouseOver, this));
+      item.on("mouseout", L.bind(this.childMouseOut, this));
 
-      this._container.append( item.getContainer() );
+      this._container.append(item.getContainer());
     }
 
-    $("body").append( this._container);
+    $("body").append(this._container);
 
   },
 
-  show : function() {
+  show: function () {
     var screenSize = GSI.Utils.getScreenSize();
     var pos = this._opener.getPosition();
     var openerSize = this._opener.getSize();
@@ -50951,58 +50978,58 @@ GSI.Menu.PopupPanel = GSI.MenuBase.extend({
     var right = 2;
     var top = 0;
 
-    switch( this.options.popupDirection) {
+    switch (this.options.popupDirection) {
       case "bottom":
-        right = parseInt( screenSize.w - pos.left -(openerSize.width/2) -(size.width/2));
+        right = parseInt(screenSize.w - pos.left - (openerSize.width / 2) - (size.width / 2));
         top = pos.top + openerSize.height + 5;
         break;
 
       case "left":
-        right = parseInt( screenSize.w - pos.left) +11;
-        top = pos.top + ( openerSize.height / 2 - size.height / 2);
+        right = parseInt(screenSize.w - pos.left) + 11;
+        top = pos.top + (openerSize.height / 2 - size.height / 2);
         break;
     }
 
     var left = screenSize.w - right - size.width;
     var bottom = top + size.height;
 
-    if ( left < 0 ) right = screenSize.w - size.width - 1;
-    if ( right <= 0 ) right = 1;
-    if ( top < 0 ) top = 1;
-    if ( bottom > screenSize.h ) top = screenSize.h - size.height - 1;
+    if (left < 0) right = screenSize.w - size.width - 1;
+    if (right <= 0) right = 1;
+    if (top < 0) top = 1;
+    if (bottom > screenSize.h) top = screenSize.h - size.height - 1;
 
-    this._container.css( {
-      "top" : top + "px",
-      "right" : right+ "px"
+    this._container.css({
+      "top": top + "px",
+      "right": right + "px"
     });
 
-    this._showSlide( "right",200 );
+    this._showSlide("right", 200);
 
     GSI.MenuBase.prototype.show.call(this);
   },
 
-  hide : function(noAnimate) {
-    this._hideSlide("right",200);
+  hide: function (noAnimate) {
+    this._hideSlide("right", 200);
     GSI.MenuBase.prototype.hide.call(this);
   }
 });
 
 GSI.Menu.PopupPanel.Item = GSI.MenuBase.extend({
-  options : {
+  options: {
   },
 
-  initialize : function(menu, owner, options) {
+  initialize: function (menu, owner, options) {
 
-    GSI.MenuBase.prototype.initialize.call(this, menu,owner,null,options);
+    GSI.MenuBase.prototype.initialize.call(this, menu, owner, null, options);
     this.create();
   },
 
-  refresh : function() {
-    if ( this.options.typeA  == "check") {
+  refresh: function () {
+    if (this.options.typeA == "check") {
       var obj = this._gsimaps._onoffObjects[this.options.id];
-      if ( obj ) {
+      if (obj) {
         var on = obj.obj[obj.getter]();
-        if ( on ) {
+        if (on) {
           this.getContainer().addClass("on");
         } else {
           this.getContainer().removeClass("on");
@@ -51011,41 +51038,41 @@ GSI.Menu.PopupPanel.Item = GSI.MenuBase.extend({
     }
   },
 
-  create : function() {
+  create: function () {
     var item = this.options;
-    var a = $("<a>").attr({"href":"javascript:void(0);"});
+    var a = $("<a>").attr({ "href": "javascript:void(0);" });
     var div = $("<div>").addClass("title");
 
-    if ( item.icon ) {
+    if (item.icon) {
       a.addClass("image-only");
-      a.css({"background-image":"url(" + item.icon +")"});
-      if ( item.showTitle ) div.html(item.title);
+      a.css({ "background-image": "url(" + item.icon + ")" });
+      if (item.showTitle) div.html(item.title);
     } else {
       div.html(item.title);
     }
 
-    if ( item["description"] && item["description"] != "" ) {
-      a.attr( {"title":item["description"]});
+    if (item["description"] && item["description"] != "") {
+      a.attr({ "title": item["description"] });
     }
 
-    a.on("click", L.bind(this._onClick, this ));
-    a.on("mouseover",L.bind( this._onMouseover, this ));
-    a.on("mouseout",L.bind( this._onMouseout, this ));
+    a.on("click", L.bind(this._onClick, this));
+    a.on("mouseover", L.bind(this._onMouseover, this));
+    a.on("mouseout", L.bind(this._onMouseout, this));
     a.append(div);
     this._container = a;
     this.refresh();
 
   },
 
-  _onClick : function(evt) {
+  _onClick: function (evt) {
     this.fire("click");
   },
 
-  _onMouseover : function(evt) {
+  _onMouseover: function (evt) {
     this.fire("mouseover");
   },
 
-  _onMouseout : function(evt) {
+  _onMouseout: function (evt) {
     this.fire("mouseout");
   }
 });
@@ -51108,7 +51135,7 @@ GSI.GSIMaps = L.Evented.extend({
     }
   },
 
-  getCompareSliderPos : function(value) {
+  getCompareSliderPos: function (value) {
 
     var sideMargin = this._compareSliderMargin;
 
@@ -51149,9 +51176,9 @@ GSI.GSIMaps = L.Evented.extend({
         range: "min", min: 0, max: 10000, step: 1, value: 5000,
         "slide": L.bind(function (event, ui) {
 
-          this._comparisonSeparater.setLeft( this.getCompareSliderPos(ui.value) );
+          this._comparisonSeparater.setLeft(this.getCompareSliderPos(ui.value));
           // スライダー操作後にフラグをリセット（少し遅延させる）
-          setTimeout(L.bind(function() {
+          setTimeout(L.bind(function () {
           }, this), 100);
         }, this)
       });
@@ -51170,7 +51197,7 @@ GSI.GSIMaps = L.Evented.extend({
   },
 
   // 時系列表示
-  comparePhoto: function() {
+  comparePhoto: function () {
     var targetMap = this._mainMap;
     targetMap._mapLayerList.appendComparePhoto();
   },
@@ -51249,7 +51276,7 @@ GSI.GSIMaps = L.Evented.extend({
           },
           "position": { my: "right top+10", at: "center bottom", collision: "flipfit" }
         });
-      }catch(ex) {
+      } catch (ex) {
 
       }
 
@@ -51576,7 +51603,7 @@ GSI.GSIMaps = L.Evented.extend({
       this._setCompared(true);
 
       if (this._queryParams.getReliefData2())
-      this._subMap._mapLayerList.setElevationData(this._queryParams.getReliefData2());
+        this._subMap._mapLayerList.setElevationData(this._queryParams.getReliefData2());
     }
     // ヘッダー
     this._header = new GSI.Header(
@@ -51652,7 +51679,7 @@ GSI.GSIMaps = L.Evented.extend({
       }
 
       if (typeof this._mainMap._mapMenu != "undefined") {
-        this._mainMap._mapMenu.getMapListPanel().setLayers(e.visibleLayers,e.tree, e.visibleLayersHash);
+        this._mainMap._mapMenu.getMapListPanel().setLayers(e.visibleLayers, e.tree, e.visibleLayersHash);
       }
       if (typeof this._cocoTileLayer != "undefined") {
         this._cocoTileLayer.refresh();
@@ -51697,7 +51724,7 @@ GSI.GSIMaps = L.Evented.extend({
 
             this._subMap._syncControl.addTo(this._subMap._map);
 
-            if ( this._subMap._comparePhotoControl && this._subMap._comparePhotoControl.isVisible() ) {
+            if (this._subMap._comparePhotoControl && this._subMap._comparePhotoControl.isVisible()) {
               this._subMap._syncControl.setTopMargin();
             }
 
@@ -51850,14 +51877,18 @@ GSI.GSIMaps = L.Evented.extend({
     if (this._queryParams.getReliefData2())
       this._subMap._mapLayerList.setElevationData(this._queryParams.getReliefData2());
 
-    this._onoffObjects[CONFIG.PARAMETERNAMES.TOUKYOKEN] = { obj: new GSI.Toukyoken(
-        map, dialogManager, this._funcMenu, { visible: viewSetting.toukyoKen, center: this._queryParams.getToukyokenCenter()}),
-        setter: 'setVisible', getter: 'getVisible' };
+    this._onoffObjects[CONFIG.PARAMETERNAMES.TOUKYOKEN] = {
+      obj: new GSI.Toukyoken(
+        map, dialogManager, this._funcMenu, { visible: viewSetting.toukyoKen, center: this._queryParams.getToukyokenCenter() }),
+      setter: 'setVisible', getter: 'getVisible'
+    };
 
     // 方位線
-    this._onoffObjects[CONFIG.PARAMETERNAMES.HOUILINE] = { obj: new GSI.HouiLine(
-        map, dialogManager, this._funcMenu, { visible: viewSetting.houiLine, center: this._queryParams.getHouilineCenter()}),
-        setter: 'setVisible', getter: 'getVisible' };
+    this._onoffObjects[CONFIG.PARAMETERNAMES.HOUILINE] = {
+      obj: new GSI.HouiLine(
+        map, dialogManager, this._funcMenu, { visible: viewSetting.houiLine, center: this._queryParams.getHouilineCenter() }),
+      setter: 'setVisible', getter: 'getVisible'
+    };
 
     if (this._onoffObjects[CONFIG.PARAMETERNAMES.KOKUDOKIHONZUKAKU])
       this._onoffObjects[CONFIG.PARAMETERNAMES.KOKUDOKIHONZUKAKU].obj._menu = this._funcMenu;
@@ -51909,7 +51940,7 @@ GSI.GSIMaps = L.Evented.extend({
 
     }, this);
     this._header.on('topmessagechange', adjustWindow);
-    $(window).on('resize',adjustWindow);
+    $(window).on('resize', adjustWindow);
 
     // 初期位置設定
     map.setView(this._startUpCenter, this._startUpZoom, { reset: true });
@@ -51978,11 +52009,11 @@ GSI.GSIMaps = L.Evented.extend({
 
     }, this), false);
 
-    $("#title_twitter").on('click',function () {
+    $("#title_twitter").on('click', function () {
       GSI.SHARE.showTwitter();
     });
 
-    $("#title_facebook").on('click',function () {
+    $("#title_facebook").on('click', function () {
       GSI.SHARE.showFacebook();
     });
 
@@ -51994,7 +52025,7 @@ GSI.GSIMaps = L.Evented.extend({
 
       var windowSize = GSI.Utils.getScreenSize();
       this._mapToImageAreaSelectDialog = new GSI.MapToImageAreaSelectDialog(this,
-          this._mainMap, this._mainMap.getMap(), {
+        this._mainMap, this._mainMap.getMap(), {
         width: 300, left: windowSize.w - 320, top: 45,
         effect: CONFIG.EFFECTS.DIALOG,
         zoomControl: undefined
@@ -52002,11 +52033,11 @@ GSI.GSIMaps = L.Evented.extend({
 
     }
 
-    if ( this.compared() || this.splited()) {
+    if (this.compared() || this.splited()) {
       this._mapToImageAreaSelectDialog.setSubMapManager(this._subMap);
       //subMapResult.mapToImage.
 
-      this._mapToImageAreaSelectDialog.executeAll(this.compared() ? this._comparisonSeparater.getLeft() : null );
+      this._mapToImageAreaSelectDialog.executeAll(this.compared() ? this._comparisonSeparater.getLeft() : null);
 
     } else {
       this._mapToImageAreaSelectDialog.setSubMapManager(null);
@@ -52034,7 +52065,7 @@ GSI.GSIMaps = L.Evented.extend({
 
     // 終了時のアラート表示 追加
     window._sakuzuDialogFlag = true;
-    $(window).off('beforeunload').on('beforeunload', function(e) { return 'このページから移動しますか？ 入力した情報は保存されません。';});
+    $(window).off('beforeunload').on('beforeunload', function (e) { return 'このページから移動しますか？ 入力した情報は保存されません。'; });
     this._shareDialog.show(mode);
 
   },
@@ -52108,10 +52139,10 @@ GSI.GSIMaps = L.Evented.extend({
         var a = $("<a>");
         $("body").append(a);
         a.attr({ "href": "https://www.gsi.go.jp/sokuchikijun/uPlace.html", "target": "_blank" })
-           .on('click',L.bind(function (a) {
-          //   var map = this._mainMap.getMap();
-          //   var center = map.getCenter();
-          //   var z = map.getZoom();
+          .on('click', L.bind(function (a) {
+            //   var map = this._mainMap.getMap();
+            //   var center = map.getCenter();
+            //   var z = map.getZoom();
 
             var url = 'https://www.gsi.go.jp/sokuchikijun/uPlace.html';
             a.attr({ "href": url });
@@ -52319,7 +52350,7 @@ GSI.GSIMaps = L.Evented.extend({
 
         break;
     }
-    if (evt.item.id != "help" && evt.item.id != "share" && evt.item.id != "print" && evt.item.id != "to-pc" && evt.item.id != "to-mobile" && evt.item.id != "reset"){
+    if (evt.item.id != "help" && evt.item.id != "share" && evt.item.id != "print" && evt.item.id != "to-pc" && evt.item.id != "to-mobile" && evt.item.id != "reset") {
       var usedid = evt.item.id;
       GSI.Utils.sendSelectedFunction(usedid);
     }
@@ -52393,7 +52424,7 @@ GSI.MapCompareSeparater = L.Evented.extend({
     }
   },
 
-  getLeft : function() {
+  getLeft: function () {
     return this._left;
   },
 
@@ -52535,7 +52566,7 @@ CONFIG.USECOOKIE = GSI.SaveStateManager.checkEnableCookie()
 
 $(document).ready(function () {
 
-  if (L.Browser.ie){
+  if (L.Browser.ie) {
     return;
   }
 
@@ -52596,7 +52627,7 @@ $(document).ready(function () {
  L.Layer
   - GSI.ComparePhotoLayer（時系列表示レイヤ）
  ************************************************************************/
-GSI.ComparePhotoLayer = L.Layer.extend( {
+GSI.ComparePhotoLayer = L.Layer.extend({
   activeIndex: 0,
   isGrayScale: false,
   opacity: 1,
@@ -52618,7 +52649,7 @@ GSI.ComparePhotoLayer = L.Layer.extend( {
     }
   },
 
-  getLayerInfo : function() {
+  getLayerInfo: function () {
     return this._layerInfo;
   },
 
@@ -52628,8 +52659,8 @@ GSI.ComparePhotoLayer = L.Layer.extend( {
   setOpacity: function (opacity) {
     this.opacity = opacity;
     this.options.opacity = opacity;
-    if ( this._layer ) {
-      this._layer.setOpacity( opacity );
+    if (this._layer) {
+      this._layer.setOpacity(opacity);
     }
   },
 
@@ -52640,11 +52671,11 @@ GSI.ComparePhotoLayer = L.Layer.extend( {
     return "";
   },
 
-  getActiveTitle: function() {
-    if ( this.activeIndex < 0 || this.activeIndex > this._layerList.length-1 ) return "";
+  getActiveTitle: function () {
+    if (this.activeIndex < 0 || this.activeIndex > this._layerList.length - 1) return "";
     var year = this._layerList[this.activeIndex].year;
 
-    return year.from + "年" + ( year.to ? "〜" + year.to + "年" : "" );
+    return year.from + "年" + (year.to ? "〜" + year.to + "年" : "");
   },
 
   getActiveId: function () {
@@ -52689,27 +52720,27 @@ GSI.ComparePhotoLayer = L.Layer.extend( {
       }
       options.errorTileUrl = errorTileUrl;
 
-      if ( this._layer && this._map) {
+      if (this._layer && this._map) {
         this._map.removeLayer(this._layer);
       }
 
       var zIndex = undefined;
-      if ( this._layerList[idx].type == "LayerGroup") {
+      if (this._layerList[idx].type == "LayerGroup") {
 
-        this._layer = new GSI.MultiLayer( this._layerList[idx].entries);
+        this._layer = new GSI.MultiLayer(this._layerList[idx].entries);
         this._layer.isGrayScale = this.isGrayScale;
-        this._layer.setOpacity( this.options.opacity ? this.options.opacity : this.opacity );
+        this._layer.setOpacity(this.options.opacity ? this.options.opacity : this.opacity);
         this._layer.load();
       } else {
 
-        if ( this._layer ) {
+        if (this._layer) {
           zIndex = this._layer.options.zIndex;
         }
 
         this._layer = L.tileLayer(url, options);
 
         this._layer.isGrayScale = this.isGrayScale;
-        this._layer.setOpacity( this.options.opacity ? this.options.opacity : this.opacity );
+        this._layer.setOpacity(this.options.opacity ? this.options.opacity : this.opacity);
 
         this._layer._tileOnLoad = this._tileOnLoad;
         this._layer.createTile = this.createTile;
@@ -52720,76 +52751,76 @@ GSI.ComparePhotoLayer = L.Layer.extend( {
       }
 
       if (this._map) {
-        this._layer.addTo( this._map);
-        if ( zIndex ) this._layer.setZIndex(zIndex);
+        this._layer.addTo(this._map);
+        if (zIndex) this._layer.setZIndex(zIndex);
         this._layer._setView(this._map.getCenter(), this._map.getZoom());
       }
-      this.fire("change", {index:this.activeIndex});
+      this.fire("change", { index: this.activeIndex });
     }
     this.activeIndexPre = this.activeIndex;
   },
 
-  _cancelCocotileRequest : function() {
+  _cancelCocotileRequest: function () {
 
-    if ( this._cocoTileRequest ) {
+    if (this._cocoTileRequest) {
       this._cocoTileRequest.abort();
       this._cocoTileRequest = undefined;
     }
   },
 
-  onAdd  : function(map) {
+  onAdd: function (map) {
 
-    if ( this._layer && !this._layer._map) {
+    if (this._layer && !this._layer._map) {
 
       this._layer.isGrayScale = this.isGrayScale;
 
-      this._layer.setOpacity(  this.options.opacity ? this.options.opacity :this.opacity );
-      this._layer.addTo( this._map);
+      this._layer.setOpacity(this.options.opacity ? this.options.opacity : this.opacity);
+      this._layer.addTo(this._map);
     }
 
-    if ( !this._selectHandler ) {
-      this._selectHandler = L.bind(function(e){
+    if (!this._selectHandler) {
+      this._selectHandler = L.bind(function (e) {
         this.setActiveIndex(e.index);
       }, this);
     }
 
-    var control =this._mapManager.getComparePhotoControl();
+    var control = this._mapManager.getComparePhotoControl();
 
-    if ( control ) {
-      control.on("select",this._selectHandler );
+    if (control) {
+      control.on("select", this._selectHandler);
     }
 
     this._mapManager.showComparePhotoControl();
 
-    if ( !this._moveEndHandler ) {
-      this._moveEndHandler = L.bind(this._onZoomEnd,this );
-      this._map.on("zoomend",this._moveEndHandler );
+    if (!this._moveEndHandler) {
+      this._moveEndHandler = L.bind(this._onZoomEnd, this);
+      this._map.on("zoomend", this._moveEndHandler);
     }
 
   },
 
-  _onZoomEnd:function() {
-      this.fire("change", {index:this.activeIndex});
+  _onZoomEnd: function () {
+    this.fire("change", { index: this.activeIndex });
   },
 
-  onRemove : function() {
+  onRemove: function () {
 
-    if ( this._moveEndHandler ) {
-      this._map.off("zoomend",this._moveEndHandler );
+    if (this._moveEndHandler) {
+      this._map.off("zoomend", this._moveEndHandler);
       this._moveEndHandler = undefined;
     }
 
-    if ( this._layer ) this._layer.remove( this._map);
+    if (this._layer) this._layer.remove(this._map);
 
     var control = this._mapManager.hideComparePhotoControl();
 
-    if ( this._selectHandler)
-      control.off("select",this._selectHandler );
+    if (this._selectHandler)
+      control.off("select", this._selectHandler);
 
   },
 
-  setZIndex: function(zIndex) {
-    if ( this._layer ) {
+  setZIndex: function (zIndex) {
+    if (this._layer) {
       this._layer.setZIndex(zIndex);
     }
   },
@@ -52800,7 +52831,7 @@ GSI.ComparePhotoLayer = L.Layer.extend( {
 
     if (this.isGrayScale != isGrayScale) {
       this.isGrayScale = isGrayScale;
-      if ( this._layer ) {
+      if (this._layer) {
         this._layer.isGrayScale = this.isGrayScale;
         this._layer.redraw();
       }
@@ -52890,34 +52921,34 @@ GSI.ComparePhotoLayer = L.Layer.extend( {
  L.Layer
   - GSI.ComparePhotoContainsChecker
  ************************************************************************/
-GSI.ComparePhotoContainsChecker = L.Evented.extend( {
+GSI.ComparePhotoContainsChecker = L.Evented.extend({
 
-  initialize : function(map, photoList) {
+  initialize: function (map, photoList) {
     this._map = map;
     this._photoList = photoList;
   },
 
-  start : function() {
-    if ( !this._onMapMoveEndHandler ) {
-      this._onMapMoveEndHandler = L.bind( this._onMapMoveEnd, this );
+  start: function () {
+    if (!this._onMapMoveEndHandler) {
+      this._onMapMoveEndHandler = L.bind(this._onMapMoveEnd, this);
       this._map.on("moveend", this._onMapMoveEndHandler);
     }
 
     this._onMapMoveEndHandler();
   },
 
-  stop : function() {
+  stop: function () {
 
     this._destroyRequest();
-    if ( this._onMapMoveEndHandler) {
+    if (this._onMapMoveEndHandler) {
       this._map.off("moveend", this._onMapMoveEndHandler);
       this._onMapMoveEndHandler = undefined;
     }
   },
 
-  _destroyRequest: function() {
-    if ( this._requests ) {
-      for( var i=0; i<this._requests.length; i++ ) {
+  _destroyRequest: function () {
+    if (this._requests) {
+      for (var i = 0; i < this._requests.length; i++) {
         this._requests[i].request.abort();
       }
 
@@ -52936,38 +52967,38 @@ GSI.ComparePhotoContainsChecker = L.Evented.extend( {
     return { n: tileCoordY, px: Math.floor(pixelCoordY - tileCoordY * 256) };
   },
 
-  _onMapMoveEnd : function() {
+  _onMapMoveEnd: function () {
 
     var z = this._map.getZoom();
     var center = this._map.getCenter();
 
     var hash = {};
 
-    for( var i=0; i<this._photoList.length; i++ ) {
+    for (var i = 0; i < this._photoList.length; i++) {
       var photo = this._photoList[i];
       var maxNativeZoom = photo.maxNativeZoom;
       var url = CONFIG.COMPAREPHOTO_COCOTILEURL;
-      if ( maxNativeZoom && maxNativeZoom < z ) {
-        if( hash[maxNativeZoom+""] ) continue;
+      if (maxNativeZoom && maxNativeZoom < z) {
+        if (hash[maxNativeZoom + ""]) continue;
 
         var x = this._getTileX(maxNativeZoom, center.lng);
         var y = this._getTileY(maxNativeZoom, center.lat);
-        url = url.replace( "{x}", x.n).replace( "{y}", y.n).replace("{z}", maxNativeZoom);
-        hash[maxNativeZoom+""] = url;
+        url = url.replace("{x}", x.n).replace("{y}", y.n).replace("{z}", maxNativeZoom);
+        hash[maxNativeZoom + ""] = url;
       } else {
-        if( hash[z+""] ) continue;
+        if (hash[z + ""]) continue;
 
         var x = this._getTileX(z, center.lng);
         var y = this._getTileY(z, center.lat);
-        url = url.replace( "{x}", x.n).replace( "{y}", y.n).replace("{z}", z );
+        url = url.replace("{x}", x.n).replace("{y}", y.n).replace("{z}", z);
 
-        hash[z+""] = url;
+        hash[z + ""] = url;
       }
     }
 
     this._requests = [];
     this._idList = [];
-    for( var key in hash) {
+    for (var key in hash) {
       var url = hash[key];
       var request = $.ajax({
         type: "GET",
@@ -52975,38 +53006,38 @@ GSI.ComparePhotoContainsChecker = L.Evented.extend( {
         datatype: "text",
         cache: false,
       })
-      .done(L.bind(function (data) {
-        try {
-          var ids = data.split(",");
-          for( var i=0; i<ids.length; i++ ) {
-            if ( this._idList.indexOf(ids[i]) < 0 ) {
-              this._idList.push(ids[i]);
+        .done(L.bind(function (data) {
+          try {
+            var ids = data.split(",");
+            for (var i = 0; i < ids.length; i++) {
+              if (this._idList.indexOf(ids[i]) < 0) {
+                this._idList.push(ids[i]);
+              }
+            }
+          } catch (ex) {
+
+          }
+        }, this))
+        .always(L.bind(function (req1, b, req2) {
+          var loaded = true;
+          for (var i = 0; i < this._requests.length; i++) {
+            if (req1 == this._requests[i].request || req2 == this._requests[i].request) {
+              this._requests[i].loaded = true;
+            }
+
+            if (!this._requests[i].loaded) {
+              loaded = false;
             }
           }
-        }catch(ex) {
 
-        }
-      },this ) )
-      .always(L.bind(function(req1,b,req2) {
-        var loaded = true;
-        for( var i=0; i<this._requests.length; i++ ) {
-          if ( req1 == this._requests[i].request || req2 == this._requests[i].request) {
-            this._requests[i].loaded = true;
+          if (loaded) {
+            this.fire("load", { idList: this._idList });
           }
+        }, this));
 
-          if ( !this._requests[i].loaded ) {
-            loaded = false;
-          }
-        }
-
-        if ( loaded ) {
-          this.fire("load", {idList:this._idList});
-        }
-      }, this ) );
-
-      this._requests.push( {
-        request : request,
-        loaded : false
+      this._requests.push({
+        request: request,
+        loaded: false
       });
     }
   }
@@ -53018,7 +53049,7 @@ GSI.ComparePhotoContainsChecker = L.Evented.extend( {
  ************************************************************************/
 GSI.ComparePhotoControl = L.Evented.extend({
 
-  initialize : function(mapManager) {
+  initialize: function (mapManager) {
     this._photoList = CONFIG.COMPAREPHOTO_PHOTOLIST;
 
     this._mapManager = mapManager;
@@ -53091,25 +53122,25 @@ GSI.ComparePhotoControl = L.Evented.extend({
     }, this));
   },
 
-  refreshSize:function() {
+  refreshSize: function () {
     this.adjust();
   },
 
-  destroyEvents : function() {
-    if ( this._windowResizeHandler ) $(window).off("resize", this._windowResizeHandler);
+  destroyEvents: function () {
+    if (this._windowResizeHandler) $(window).off("resize", this._windowResizeHandler);
     this._windowResizeHandler = undefined;
   },
 
-  destroyContainsChecker : function() {
+  destroyContainsChecker: function () {
 
-    if ( this._cocoTileLoader ) {
+    if (this._cocoTileLoader) {
       this._cocoTileLoader.stop();
       this._cocoTileLoader = undefined;
     }
   },
 
-  show : function() {
-    if ( !this._container) {
+  show: function () {
+    if (!this._container) {
       this._create();
 
     }
@@ -53117,29 +53148,29 @@ GSI.ComparePhotoControl = L.Evented.extend({
     this.destroyContainsChecker();
     this.destroyEvents();
 
-    this._windowResizeHandler = L.bind(this._onWindowResize, this );
+    this._windowResizeHandler = L.bind(this._onWindowResize, this);
     $(window).on("resize", this._windowResizeHandler);
 
-    this._container.css({"visibility":"hidden"});
+    this._container.css({ "visibility": "hidden" });
     this._container.show();
 
-    if ( this._mapMenu.getPanelVisible() ) {
+    if (this._mapMenu.getPanelVisible()) {
       this._onMapMenuShow({
-        width : this._mapMenu.getPanelWidth(),
-        duration :0
+        width: this._mapMenu.getPanelWidth(),
+        duration: 0
       });
 
     }
 
     this.adjust();
-    this._container.css({"visibility":"visible"});
+    this._container.css({ "visibility": "visible" });
 
-    if ( !this._cocoTileLoader ) {
-      this._cocoTileLoader = new GSI.ComparePhotoContainsChecker(this._mapManager.getMap(),this._photoList);
-      this._cocoTileLoader.on("load", L.bind(function(evt){
+    if (!this._cocoTileLoader) {
+      this._cocoTileLoader = new GSI.ComparePhotoContainsChecker(this._mapManager.getMap(), this._photoList);
+      this._cocoTileLoader.on("load", L.bind(function (evt) {
         var idList = evt.idList;
         this._slider.refresh(idList);
-      },this))
+      }, this))
     }
 
     this._cocoTileLoader.start();
@@ -53147,51 +53178,51 @@ GSI.ComparePhotoControl = L.Evented.extend({
 
   },
 
-  _onWindowResize: function() {
+  _onWindowResize: function () {
     this.refreshSize();
   },
 
-  isVisible : function() {
+  isVisible: function () {
     return this._container.is(":visible");
   },
 
-  hide : function() {
+  hide: function () {
 
     this.destroyContainsChecker();
     this.destroyEvents();
-    if ( !this._container) return;
+    if (!this._container) return;
     this._container.hide();
   },
 
-  _onSliderChange : function(e) {
-    this.fire("select",{index:e.index});
+  _onSliderChange: function (e) {
+    this.fire("select", { index: e.index });
   },
 
-  refreshList : function(idList) {
+  refreshList: function (idList) {
     this._slider.refresh(idList);
   },
 
-  adjust : function() {
+  adjust: function () {
 
     this._slider.adjust();
 
   },
 
-  _create : function() {
+  _create: function () {
     this._container = $("<div>").addClass("gsi_comparephoto_container").hide();
 
     var table = $("<table>");
     var tr = $("<tr>");
     var td = $("<td>");
-    this._clearButton = $("<a>").attr({"href":"javascript:void(0);"}).addClass("normalbutton").html("時系列解除").hide();
+    this._clearButton = $("<a>").attr({ "href": "javascript:void(0);" }).addClass("normalbutton").html("時系列解除").hide();
 
-    this._slider = new GSI.ComparePhotoControl.Slider( this._container,td, this._photoList, this._clearButton);
-    this._slider.on("change", L.bind(this._onSliderChange, this ));
+    this._slider = new GSI.ComparePhotoControl.Slider(this._container, td, this._photoList, this._clearButton);
+    this._slider.on("change", L.bind(this._onSliderChange, this));
     this._slider.create();
     tr.append(td);
 
-    this._clearButton.on("click", L.bind(function(){
-      this._mapManager._mapLayerList.remove({id:CONFIG.COMPAREPHOTO_ID });
+    this._clearButton.on("click", L.bind(function () {
+      this._mapManager._mapLayerList.remove({ id: CONFIG.COMPAREPHOTO_ID });
 
     }, this));
 
@@ -53206,28 +53237,28 @@ GSI.ComparePhotoControl = L.Evented.extend({
 
   },
 
-  setLeft: function(left) {
-    if ( !this._container) return;
+  setLeft: function (left) {
+    if (!this._container) return;
 
-    this._container.css({"left": ( left ) +"px"});
+    this._container.css({ "left": (left) + "px" });
     this.adjust();
   },
 
-  setRight: function(right) {
+  setRight: function (right) {
 
-    this._container.css({"right": ( right ) +"px"});
+    this._container.css({ "right": (right) + "px" });
     this.adjust();
   },
 
-  destroy: function() {
-    if ( !this._container) return;
+  destroy: function () {
+    if (!this._container) return;
     this._container.remove();
   }
 });
 
 GSI.ComparePhotoControl.Slider = L.Evented.extend({
 
-  initialize : function(ownerContainer, parentContainer, photoList, clearButton) {
+  initialize: function (ownerContainer, parentContainer, photoList, clearButton) {
     this._clearButton = clearButton;
     this._ownerContainer = ownerContainer
     this._parentContainer = parentContainer;
@@ -53235,12 +53266,12 @@ GSI.ComparePhotoControl.Slider = L.Evented.extend({
     this._activeIndex = -1;
   },
 
-  setActiveIndex: function(index) {
-    if ( this._activeIndex == index ) return;
+  setActiveIndex: function (index) {
+    if (this._activeIndex == index) return;
 
-    if ( index >= 0 ) {
+    if (index >= 0) {
       this._handleContainer.css({
-        left : Math.round(this._list[index].left) + "px"
+        left: Math.round(this._list[index].left) + "px"
       });
     }
 
@@ -53250,18 +53281,18 @@ GSI.ComparePhotoControl.Slider = L.Evented.extend({
 
   },
 
-  change:function() {
-    this.fire("change", {index:this._activeIndex});
+  change: function () {
+    this.fire("change", { index: this._activeIndex });
   },
 
-  refresh: function(idList) {
+  refresh: function (idList) {
 
-    for( var i=0; i<this._photoList.length; i++ ) {
+    for (var i = 0; i < this._photoList.length; i++) {
       var photo = this._photoList[i];
 
       const id = photo.id;
 
-      if ( idList.indexOf( id ) >= 0 ) {
+      if (idList.indexOf(id) >= 0) {
         this._list[i].label.addClass("haslayer");
       } else {
         this._list[i].label.removeClass("haslayer");
@@ -53269,13 +53300,13 @@ GSI.ComparePhotoControl.Slider = L.Evented.extend({
     }
   },
 
-  adjust: function() {
+  adjust: function () {
 
     var isSmall = this._ownerContainer.outerWidth() < 800;
 
-    if ( isSmall ) {
+    if (isSmall) {
       this._container.addClass("small");
-      if ( this._ownerContainer.outerWidth() < 500 ) {
+      if (this._ownerContainer.outerWidth() < 500) {
         this._clearButton.html("×");
         this._clearButton.addClass("small");
       } else {
@@ -53290,9 +53321,9 @@ GSI.ComparePhotoControl.Slider = L.Evented.extend({
 
     var containerWidth = this._barContainer.outerWidth();
 
-    var sizeInterval =containerWidth / ( this._list.length -1);
+    var sizeInterval = containerWidth / (this._list.length - 1);
     var left = 0;
-    for( var i=0; i<this._list.length; i++ ) {
+    for (var i = 0; i < this._list.length; i++) {
       var item = this._list[i];
       item.left = left;
       item.elem.css({
@@ -53300,18 +53331,18 @@ GSI.ComparePhotoControl.Slider = L.Evented.extend({
       });
 
       item.label.css({
-        left: Math.round(left - (item.label.outerWidth() / 2) ) + "px"
+        left: Math.round(left - (item.label.outerWidth() / 2)) + "px"
       });
 
-      if ( isSmall && i %2 == 1) {
+      if (isSmall && i % 2 == 1) {
         item.label.addClass("top");
       } else {
         item.label.removeClass("top");
       }
 
-      if ( this._activeIndex == i ) {
+      if (this._activeIndex == i) {
         this._handleContainer.css({
-          left : Math.round(left) + "px"
+          left: Math.round(left) + "px"
         });
       }
 
@@ -53319,19 +53350,19 @@ GSI.ComparePhotoControl.Slider = L.Evented.extend({
     }
   },
 
-  create : function() {
-    if ( this._container ) return;
+  create: function () {
+    if (this._container) return;
 
     this._container = $("<div>").addClass("gsi_comparephoto_slider_container");
 
-    this._container.on("click", L.bind( this._onContainerClick,this));
+    this._container.on("click", L.bind(this._onContainerClick, this));
 
     // 背景用バー
     this._barContainer = $("<div>").addClass("gsi_comparephoto_slider_container_bar");
 
     // メモリ
     this._list = [];
-    for( var i=0; i<this._photoList.length; i++ ) {
+    for (var i = 0; i < this._photoList.length; i++) {
       var photo = this._photoList[i];
       var item = {};
 
@@ -53339,16 +53370,16 @@ GSI.ComparePhotoControl.Slider = L.Evented.extend({
       item.label = $("<div>").addClass("gsi_comparephoto_slider_container_bar_label");
 
       item.label.html(
-        photo.year.from + ( photo.year.to ? "<br>〜" + photo.year.to : ""));
+        photo.year.from + (photo.year.to ? "<br>〜" + photo.year.to : ""));
 
-      if ( i === 0 || i===this._photoList.length-1 ) {
+      if (i === 0 || i === this._photoList.length - 1) {
         item.elem.hide();
       }
 
-      this._barContainer.append( item.label);
-      this._barContainer.append( item.elem);
+      this._barContainer.append(item.label);
+      this._barContainer.append(item.elem);
 
-      this._list.push( item );
+      this._list.push(item);
     }
 
     // つまみ
@@ -53357,8 +53388,8 @@ GSI.ComparePhotoControl.Slider = L.Evented.extend({
     this._handleContainer.on("mousedown", L.bind(this._onHandleMouseDown, this));
     this._handleContainer.on("touchstart", L.bind(this._onHandleMouseDown, this));
 
-    this._barContainer.append( this._handleContainer);
-    this._container.append( this._barContainer);
+    this._barContainer.append(this._handleContainer);
+    this._container.append(this._barContainer);
 
     this._parentContainer.append(this._container);
 
@@ -53366,39 +53397,39 @@ GSI.ComparePhotoControl.Slider = L.Evented.extend({
 
   },
 
-  destroyMouseEvents : function() {
+  destroyMouseEvents: function () {
     this._container.removeClass("dragging");
 
-    if ( this._mouseMoveHandler ) {
+    if (this._mouseMoveHandler) {
       $(window).off("mousemove", this._mouseMoveHandler);
       $(window).off("touchmove", this._mouseMoveHandler);
       this._mouseMoveHandler = undefined;
     }
-    if ( this._mouseUpHandler ) {
+    if (this._mouseUpHandler) {
       $(window).off("mouseup", this._mouseUpHandler);
       $(window).off("touchend", this._mouseUpHandler);
       this._mouseUpHandler = undefined;
     }
   },
 
-  _onContainerClick : function(e) {
+  _onContainerClick: function (e) {
 
-    var targetIndex = this._screenLeftToIndex(e.pageX );
+    var targetIndex = this._screenLeftToIndex(e.pageX);
 
-    if ( targetIndex >= 0 ) {
+    if (targetIndex >= 0) {
       this.setActiveIndex(targetIndex);
     }
   },
 
-  _onHandleMouseDown : function(e) {
+  _onHandleMouseDown: function (e) {
 
     e.preventDefault();
     e.stopPropagation();
 
     this.destroyMouseEvents();
 
-    this._mouseMoveHandler = L.bind( this._onWindowMouseMove, this);
-    this._mouseUpHandler = L.bind( this._onWindowMouseUp, this);
+    this._mouseMoveHandler = L.bind(this._onWindowMouseMove, this);
+    this._mouseUpHandler = L.bind(this._onWindowMouseUp, this);
     $(window).on("mousemove", this._mouseMoveHandler);
     $(window).on("touchmove", this._mouseMoveHandler);
     $(window).on("mouseup", this._mouseUpHandler);
@@ -53408,25 +53439,25 @@ GSI.ComparePhotoControl.Slider = L.Evented.extend({
 
   },
 
-  _screenLeftToIndex : function ( screenLeft ) {
+  _screenLeftToIndex: function (screenLeft) {
 
     var left = 0;
     var barPosition = this._barContainer.offset();
 
-    left =  screenLeft- barPosition.left;
+    left = screenLeft - barPosition.left;
 
     var containerWidth = this._barContainer.outerWidth();
 
-    var sizeInterval =containerWidth / ( this._list.length -1);
+    var sizeInterval = containerWidth / (this._list.length - 1);
     var lineLeft = 0;
     var minDistance = undefined;
     var targetIndex = -1;
-    for( var i=0; i<this._list.length; i++ ) {
+    for (var i = 0; i < this._list.length; i++) {
       var item = this._list[i];
       item.left = lineLeft;
 
-      var distance = Math.abs( item.left - left );
-      if ( minDistance === undefined || minDistance > distance ) {
+      var distance = Math.abs(item.left - left);
+      if (minDistance === undefined || minDistance > distance) {
         targetIndex = i;
         minDistance = distance;
       }
@@ -53436,27 +53467,27 @@ GSI.ComparePhotoControl.Slider = L.Evented.extend({
     return targetIndex;
   },
 
-  _onWindowMouseMove : function(e) {
+  _onWindowMouseMove: function (e) {
 
     var pageX = e.pageX;
-    if ( e.type =="touchmove") {
+    if (e.type == "touchmove") {
       pageX = e.originalEvent.changedTouches[0].pageX;
     }
 
-    var targetIndex = this._screenLeftToIndex(pageX );
+    var targetIndex = this._screenLeftToIndex(pageX);
 
-    if ( targetIndex >= 0 ) {
+    if (targetIndex >= 0) {
       this.setActiveIndex(targetIndex);
     }
   },
 
-  _onWindowMouseUp : function(e) {
+  _onWindowMouseUp: function (e) {
     this.destroyMouseEvents();
 
   }
 });
 
-function loadfile(files, key){
+function loadfile(files, key) {
   var loader = new GSI.LocalFileLoader(files);
   loader.on("load", L.bind(function (evt) {
     var list = evt.list;
@@ -53477,10 +53508,10 @@ function loadfile(files, key){
   loader.load();
 };
 
-function loadSakuzuList(sakuzuList){
-  if (GSI.GLOBALS.gsimaps._sakuzuList){
+function loadSakuzuList(sakuzuList) {
+  if (GSI.GLOBALS.gsimaps._sakuzuList) {
     GSI.GLOBALS.gsimaps._sakuzuList.loadFromTextList(sakuzuList);
-  }else{
+  } else {
     setTimeout(() => {
       loadSakuzuList(sakuzuList);
     }, 2000);

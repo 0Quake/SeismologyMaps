@@ -22999,71 +22999,78 @@ GSI.ElevationLoader = L.Evented.extend({
 
   initialize: function (map, options) {
     this._map = map;
-    MAIN__MAP = map
 
     /*Custom Scripts by Benidate*/
+    if (!MAIN__MAP) {
+      MAIN__MAP = map
+      function geojson_data_bridge(layer) {
+        if (layer.url == "/sources/blank.geojson" && layer.addData) {
+          fetch("https://www.jma.go.jp/bosai/hypo/data/time.json").then(function (r) { return r.json() }).then(function (json) {
+            var d = new Date(json.time)
+            fetch(`https://www.jma.go.jp/bosai/hypo/data/${d.getFullYear()}/${String(d.getMonth() + 1).padStart(2, '0')}/hypo${d.getFullYear()}${String(d.getMonth() + 1).padStart(2, '0')}${String(d.getDate()).padStart(2, '0')}.geojson?${Number(new Date())}`).then(function (r) { return r.json() }).then(function (geojson) {
+              fetch(`https://www.jma.go.jp/bosai/hypo/data/${d.getFullYear()}/${String(d.getMonth() + 1).padStart(2, '0')}/hypo${d.getFullYear()}${String(d.getMonth() + 1).padStart(2, '0')}${String(d.getDate() - 1).padStart(2, '0')}.geojson?${Number(new Date())}`).then(function (r) { return r.json() }).then(function (geojson2) {
+                geojson.features = geojson.features.concat(geojson2.features)
 
-    function hsv2rgb(h, s, v) {
-      h = (h < 0 ? h % 360 + 360 : h) % 360 / 60;
-      s = s < 0 ? 0 : s > 1 ? 1 : s;
-      v = v < 0 ? 0 : v > 1 ? 1 : v;
+                var yesterday = new Date()
+                yesterday.setDate(yesterday.getDate() - 1)
 
-      const c = [5, 3, 1].map(n =>
-        Math.round((v - Math.max(0, Math.min(1, 2 - Math.abs(2 - (h + n) % 6))) * s * v) * 255));
+                geojson.features = geojson.features
+                  .sort(function (a, b) { return b.properties.mag - a.properties.mag })
+                  .filter(function (e) { return new Date(yesterday) < new Date(e.properties.date) })
+                geojson.features.forEach(function (feature) {
+                  var prop = feature.properties
+                  prop._markerType = "CircleMarker"
+                  prop._stroke = true
+                  prop._color = "#000"
+                  prop._weight = 0.5
+                  prop._fillOpacity = 0.8
 
-      return `#${(c[0] << 16 | c[1] << 8 | c[2]).toString(16).padStart(6, '0')}`
-    }
+                  a = prop.dep
+                  var i = 0, e = Number(a), n = 50;
+                  e <= 10 ? (n = 50 - 25 * ((10 - e) / 10), i = 0) : e <= 20 ? i = 0 + 30 * ((e - 10) / 10) : e <= 30 ? i = 30 + 30 * ((e - 20) / 10) : e <= 50 ? i = 60 : e <= 100 ? (i = 60 + 60 * ((e - 50) / 50),
+                    n = 50 + 25 * ((50 - e) / 100)) : e <= 200 ? (i = 120 + 90 * ((e - 100) / 100),
+                      n = 25 - 30 * ((100 - e) / 100)) : e <= 700 ? (i = 210 + 30 * ((e - 200) / 500),
+                        n = 55 + 30 * ((200 - e) / 500)) : (i = 240, n = 25)
+                  prop._fillColor = "hsl(" + i + ", 100%, " + n + "%)",
+                    prop._radius = 2.5 * prop.mag
 
-    MAIN__MAP.on("layeradd", function (e) {
-      if (e.layer.url == "/sources/blank.geojson" && e.layer.addData) {
-        fetch("https://www.jma.go.jp/bosai/hypo/data/time.json").then(function (r) { return r.json() }).then(function (json) {
-          var d = new Date(json.time)
-          fetch(`https://www.jma.go.jp/bosai/hypo/data/${d.getFullYear()}/${String(d.getMonth() + 1).padStart(2, '0')}/hypo${d.getFullYear()}${String(d.getMonth() + 1).padStart(2, '0')}${String(d.getDate()).padStart(2, '0')}.geojson?${Number(new Date())}`).then(function (r) { return r.json() }).then(function (geojson) {
-            fetch(`https://www.jma.go.jp/bosai/hypo/data/${d.getFullYear()}/${String(d.getMonth() + 1).padStart(2, '0')}/hypo${d.getFullYear()}${String(d.getMonth() + 1).padStart(2, '0')}${String(d.getDate() - 1).padStart(2, '0')}.geojson?${Number(new Date())}`).then(function (r) { return r.json() }).then(function (geojson2) {
-              geojson.features = geojson.features.concat(geojson2.features)
+                  var magKind = {
+                    "J": "旧観測網における坪井変位M",
+                    "D": "坪井変位Mに準拠の変位M",
+                    "d": "坪井変位Mに準拠の変位M(2地点)",
+                    "V": "坪井変位Mに準拠の速度M",
+                    "v": "坪井変位Mに準拠の速度M(2-3地点)"
+                  }
 
-              var yesterday = new Date()
-              yesterday.setDate(yesterday.getDate() - 1)
-
-              geojson.features = geojson.features
-                .sort(function (a, b) { return b.properties.mag - a.properties.mag })
-                .filter(function (e) { return new Date(yesterday) < new Date(e.properties.date) })
-              geojson.features.forEach(function (feature) {
-                var prop = feature.properties
-                prop._markerType = "CircleMarker"
-                prop._stroke = true
-                prop._color = "#000"
-                prop._weight = 0.5
-                prop._fillOpacity = 0.8
-
-                a = prop.dep
-                var i = 0, e = Number(a), n = 50;
-                e <= 10 ? (n = 50 - 25 * ((10 - e) / 10), i = 0) : e <= 20 ? i = 0 + 30 * ((e - 10) / 10) : e <= 30 ? i = 30 + 30 * ((e - 20) / 10) : e <= 50 ? i = 60 : e <= 100 ? (i = 60 + 60 * ((e - 50) / 50),
-                  n = 50 + 25 * ((50 - e) / 100)) : e <= 200 ? (i = 120 + 90 * ((e - 100) / 100),
-                    n = 25 - 30 * ((100 - e) / 100)) : e <= 700 ? (i = 210 + 30 * ((e - 200) / 500),
-                      n = 55 + 30 * ((200 - e) / 500)) : (i = 240, n = 25)
-                prop._fillColor = "hsl(" + i + ", 100%, " + n + "%)",
-                  prop._radius = 2.5 * prop.mag
-
-
-                /*a = {
-                  aflag: " ",
-                  date: "2025/04/23.00:00",
-                  dep: "32.8",
-                  flag: " ",
-                  mag: "0.9",
-                  mj: "v",
-                  place: "SE OFF SHIKOKU",
-                  si: " "
-                }*/
+                  prop["発生時刻"] = new Date(prop.date).toLocaleString("ja", { "hour12": false, "year": "numeric", "month": "2-digit", "day": "2-digit", "hour": "2-digit", "minute": "2-digit" });
+                  prop["マグニチュード"] = prop.mag || "不明"
+                  prop["Mjma種別"] = magKind[prop.mj]
+                  prop["深さ"] = prop.dep
+                  prop["震央"] = prop.place
+                  delete prop.aflag
+                  delete prop.date
+                  delete prop.dep
+                  delete prop.flag
+                  delete prop.mag
+                  delete prop.mj
+                  delete prop.place
+                  delete prop.si
+                })
+                layer.addData(geojson)
               })
-              e.layer.addData(geojson)
             })
           })
-        })
+        }
+
       }
-    })
+
+      Object.keys(MAIN__MAP._layers).forEach(function (key) { geojson_data_bridge(MAIN__MAP._layers[key]) })
+      MAIN__MAP.on("layeradd", function (e) {
+        geojson_data_bridge(e.layer)
+      })
+    }
     /*Custom Scripts by Benidate*/
+
 
     this._initUrlList();
     this._initUtils();

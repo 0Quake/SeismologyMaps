@@ -1,0 +1,51 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="350" height="150" viewBox="60 10 350 150" font-size="12px">
+<defs>
+    <linearGradient id="grad2"  x1="100" y1="100" x2="380" y2="100" gradientUnits="userSpaceOnUse" spreadMethod="repeat">
+  <stop  offset="0%" stop-color="#800000" />
+  <stop  offset="14.3%" stop-color="#ff0000"/>
+  <stop  offset="28.5%" stop-color="#ff8c00"/>
+  <stop  offset="42.9%" stop-color="#ffff00"/>
+  <stop  offset="57.1%" stop-color="#ffff00"/>
+  <stop  offset="71.4%" stop-color="#008000"/>
+  <!--
+  <stop  offset="57.1%" stop-color="#00ff00"/>
+  <stop  offset="71.4%" stop-color="#008000"/>
+  -->
+  <stop  offset="85.7%" stop-color="#1e90ff"/>
+  <stop  offset="100%" stop-color="#00008b"/>
+</linearGradient>
+</defs>
+<rect x="100" y="100" width="280" height="10" stroke="black" fill="url(#grad2)" />
+<text x="240" y="85" text-anchor="middle">Depth[km]</text>
+<line x1="100" y1="100" x2="100" y2="115" stroke="black"/>
+<line x1="140" y1="100" x2="140" y2="115" stroke="black"/>
+<line x1="180" y1="100" x2="180" y2="115" stroke="black"/>
+<line x1="220" y1="100" x2="220" y2="115" stroke="black"/>
+<line x1="260" y1="100" x2="260" y2="115" stroke="black"/>
+<line x1="300" y1="100" x2="300" y2="115" stroke="black"/>
+<line x1="340" y1="100" x2="340" y2="115" stroke="black"/>
+<line x1="380" y1="100" x2="380" y2="115" stroke="black"/>
+<text x="100" y="130" text-anchor="middle">0</text>
+<text x="140" y="130" text-anchor="middle">10</text>
+<text x="180" y="130" text-anchor="middle">20</text>
+<text x="220" y="130" text-anchor="middle">30</text>
+<text x="260" y="130" text-anchor="middle">50</text>
+<text x="300" y="130" text-anchor="middle">100</text>
+<text x="340" y="130" text-anchor="middle">200</text>
+<text x="380" y="130" text-anchor="middle">700</text>
+<text x="70" y="30" style="text-anchor: start;">M</text>
+<circle cx="100" cy="50" r="2.5" style="" stroke="black" stroke-width="0.5" fill="rgba(255,0,0,1.0)"></circle>
+<text x="100" y="30" style="text-anchor: middle;">1</text>
+<circle cx="134.5" cy="50" r="5" style="" stroke="black" stroke-width="0.5" fill="rgba(255,0,0,1.0)"></circle>
+<text x="134.5" y="30" style="text-anchor: middle;">2</text>
+<circle cx="174" cy="50" r="7.5" style="" stroke="black" stroke-width="0.5" fill="rgba(255,0,0,1.0)"></circle>
+<text x="174" y="30" style="text-anchor: middle;">3</text>
+<circle cx="218.5" cy="50" r="10" style="" stroke="black" stroke-width="0.5" fill="rgba(255,0,0,1.0)"></circle>
+<text x="218.5" y="30" style="text-anchor: middle;">4</text>
+<circle cx="268" cy="50" r="12.5" style="" stroke="black" stroke-width="0.5" fill="rgba(255,0,0,1.0)"></circle>
+<text x="268" y="30" style="text-anchor: middle;">5</text>
+<circle cx="322.5" cy="50" r="15" style="" stroke="black" stroke-width="0.5" fill="rgba(255,0,0,1.0)"></circle>
+<text x="322.5" y="30" style="text-anchor: middle;">6</text>
+<circle cx="382" cy="50" r="17.5" style="" stroke="black" stroke-width="0.5" fill="rgba(255,0,0,1.0)"></circle>
+<text x="382" y="30" style="text-anchor: middle;">7</text>
+</svg>

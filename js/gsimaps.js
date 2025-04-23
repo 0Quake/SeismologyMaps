@@ -23004,7 +23004,7 @@ GSI.ElevationLoader = L.Evented.extend({
     if (!MAIN__MAP) {
       MAIN__MAP = map
       function geojson_data_bridge(layer) {
-        if (layer.url == "/sources/blank.geojson" && layer.addData) {
+        if (layer.url == "sources/blank.geojson" && layer.addData) {
           fetch("https://www.jma.go.jp/bosai/hypo/data/time.json").then(function (r) { return r.json() }).then(function (json) {
             var d = new Date(json.time)
             fetch(`https://www.jma.go.jp/bosai/hypo/data/${d.getFullYear()}/${String(d.getMonth() + 1).padStart(2, '0')}/hypo${d.getFullYear()}${String(d.getMonth() + 1).padStart(2, '0')}${String(d.getDate()).padStart(2, '0')}.geojson?${Number(new Date())}`).then(function (r) { return r.json() }).then(function (geojson) {

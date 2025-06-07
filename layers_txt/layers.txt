@@ -11,5 +11,7 @@
 		"url":"./S_layers4.txt"
 	},	{
 		"url":"./S_layers5.txt"
+	},	{
+		"url":"./S_layers6.txt"
 	}
 ]

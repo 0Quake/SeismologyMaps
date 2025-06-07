@@ -19814,6 +19814,8 @@ GSI.MapLayerList = L.Evented.extend({
         this._mapManager._baseLayer.setOpacity(info._visibleInfo.opacity);
       }
       else {
+
+        OpacitySetBypass(info._visibleInfo.layer, info._visibleInfo.opacity)
         if (info._visibleInfo.layer.setOpacity) {
           info._visibleInfo.layer.setOpacity(info._visibleInfo.opacity);
         }
@@ -22995,6 +22997,7 @@ GSI.HouiLine = L.Evented.extend({
  GSI.ElevationLoader
 ************************************************************************/
 var MAIN__MAP
+var ARVLayer = { layer: null, opacity: 1 }
 GSI.ElevationLoader = L.Evented.extend({
 
   initialize: function (map, options) {
@@ -23060,13 +23063,28 @@ GSI.ElevationLoader = L.Evented.extend({
               })
             })
           })
+        } else if (layer.url == "sources/blank2.geojson" && !ARVLayer.layer && L.tileLayer.mbTiles) {
+          ARVLayer.layer = L.tileLayer.mbTiles('../sources/jiban/JSHIS_ARV.mbtiles', {
+            minZoom: 0,
+            minNativeZoom: 5,
+            maxNativeZoom: 9,
+            opacity: ARVLayer.opacity,
+          }).addTo(MAIN__MAP);
+          ARVLayer.layer.on("load", function () {
+            ARVLayer.layer.options.maxZoom = 18//なぜか後から指定する必要がある
+          })
         }
-
       }
 
       Object.keys(MAIN__MAP._layers).forEach(function (key) { geojson_data_bridge(MAIN__MAP._layers[key]) })
       MAIN__MAP.on("layeradd", function (e) {
         geojson_data_bridge(e.layer)
+      })
+      MAIN__MAP.on("layerremove", function (e) {
+        if (e.layer.url == "sources/blank2.geojson" && ARVLayer.layer) {
+          ARVLayer.layer.remove()
+          ARVLayer.layer = null
+        }
       })
     }
     /*Custom Scripts by Benidate*/
@@ -49663,11 +49681,17 @@ GSI.ShowingMapListPanel = GSI.MapPanelContainer.extend({
       if (opacity < 0) opacity = 0;
       if (opacity > 1) opacity = 1;
       opacity = 1 - opacity;
+
+      /*Custom Scripts by Benidate*/
+      /*Custom Scripts by Benidate*/
+
       if (item.parent && item.parent.title_sys && item.parent.title_sys == CONFIG.layerBaseFolderSYS) {
+        OpacitySetBypass(this._mapManager._baseLayer, opacity);
         this._mapManager._baseLayer.setOpacity(opacity);
         item._visibleInfo.opacity = opacity;
       }
       else {
+        OpacitySetBypass(item._visibleInfo.layer, opacity);
         item._visibleInfo.layer.setOpacity(opacity);
         item._visibleInfo.opacity = opacity;
       }
@@ -52804,6 +52828,7 @@ GSI.ComparePhotoLayer = L.Layer.extend({
         this._layer = new GSI.MultiLayer(this._layerList[idx].entries);
         this._layer.isGrayScale = this.isGrayScale;
         this._layer.setOpacity(this.options.opacity ? this.options.opacity : this.opacity);
+
         this._layer.load();
       } else {
 
@@ -53607,3 +53632,15 @@ function getFileeData(url, key) {
     });
   }
 };
+
+/*Custom Scripts by Benidate*/
+function OpacitySetBypass(layer, opacity) {
+  try {
+    if (!layer.url) return
+    if (layer.url == "sources/blank2.geojson") {
+      ARVLayer.opacity = opacity
+      if (ARVLayer.layer) ARVLayer.layer.setOpacity(opacity)
+    }
+  } catch (err) { }
+}
+/*Custom Scripts by Benidate*/

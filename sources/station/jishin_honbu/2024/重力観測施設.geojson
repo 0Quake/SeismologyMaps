@@ -1,0 +1,9 @@
+{
+"type": "FeatureCollection",
+"name": "重力観測施設",
+"crs": { "type": "name", "properties": { "name": "urn:ogc:def:crs:OGC:1.3:CRS84" } },
+"features": [
+{ "type": "Feature", "properties": { "観測の種類": "重力", "name": "東京", "観測点名ローマ字": null, "観測点コード": null, "緯度（度）": 35.7188, "経度（度）": 139.7594, "高さ（ｍ）": 18, "測器の深度（ｍ）": null, "維持管理機関名": "東京大学地震研究所", "維持管理機関名（英語）": null, "観測開始年（西暦）": 1982, "同月": null, "観測機器名または観測項目": null }, "geometry": { "type": "Point", "coordinates": [ 139.7594, 35.7188 ] } },
+{ "type": "Feature", "properties": { "観測の種類": "超伝導", "name": "松代", "観測点名ローマ字": null, "観測点コード": null, "緯度（度）": 36.5439, "経度（度）": 138.2033, "高さ（ｍ）": 410, "測器の深度（ｍ）": null, "維持管理機関名": "東京大学地震研究所", "維持管理機関名（英語）": null, "観測開始年（西暦）": 1995, "同月": true, "観測機器名または観測項目": "重力" }, "geometry": { "type": "Point", "coordinates": [ 138.2033, 36.5439 ] } }
+]
+}

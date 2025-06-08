@@ -23002,13 +23002,31 @@ var rasterLayers = {
     url: "sources/blank2.geojson",
     url2: '../sources/jiban/JSHIS_ARV.mbtiles',
     layer: null,
-    opacity: 1
+    opacity: 1,
+    minNativeZoom: 5,
+    maxNativeZoom: 9,
   }, AVS_JSHIS: {
     url: "sources/blank3.geojson",
     url2: '../sources/jiban/JSHIS_AVS30.mbtiles',
     layer: null,
-    opacity: 1
-  }
+    opacity: 1,
+    minNativeZoom: 5,
+    maxNativeZoom: 9,
+  }, PAC_3d: {
+    url: "sources/blank4.geojson",
+    url2: '../sources/plate_3d/pac.mbtiles',
+    layer: null,
+    opacity: 1,
+    minNativeZoom: 0,
+    maxNativeZoom: 6,
+  }, PHS_3d: {
+    url: "sources/blank5.geojson",
+    url2: '../sources/plate_3d/phs.mbtiles',
+    layer: null,
+    opacity: 1,
+    minNativeZoom: 0,
+    maxNativeZoom: 6,
+  },
 }
 GSI.ElevationLoader = L.Evented.extend({
 
@@ -23081,8 +23099,8 @@ GSI.ElevationLoader = L.Evented.extend({
             if (layer.url == el.url && !el.layer) {
               el.layer = L.tileLayer.mbTiles(el.url2, {
                 minZoom: 0,
-                minNativeZoom: 5,
-                maxNativeZoom: 9,
+                minNativeZoom: el.minNativeZoom,
+                maxNativeZoom: el.maxNativeZoom,
                 opacity: el.opacity,
               }).addTo(MAIN__MAP);
               el.layer.on("load", function () {

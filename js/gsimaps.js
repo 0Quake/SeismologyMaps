@@ -23000,28 +23000,28 @@ var MAIN__MAP
 var rasterLayers = {
   ARV: {
     url: "sources/blank2.geojson",
-    url2: '../sources/jiban/JSHIS_ARV.mbtiles',
+    url2: 'sources/jiban/JSHIS_ARV.mbtiles',
     layer: null,
     opacity: 1,
     minNativeZoom: 5,
     maxNativeZoom: 9,
   }, AVS_JSHIS: {
     url: "sources/blank3.geojson",
-    url2: '../sources/jiban/JSHIS_AVS30.mbtiles',
+    url2: 'sources/jiban/JSHIS_AVS30.mbtiles',
     layer: null,
     opacity: 1,
     minNativeZoom: 5,
     maxNativeZoom: 9,
   }, PAC_3d: {
     url: "sources/blank4.geojson",
-    url2: '../sources/plate_3d/pac.mbtiles',
+    url2: 'sources/plate_3d/pac.mbtiles',
     layer: null,
     opacity: 1,
     minNativeZoom: 0,
     maxNativeZoom: 6,
   }, PHS_3d: {
     url: "sources/blank5.geojson",
-    url2: '../sources/plate_3d/phs.mbtiles',
+    url2: 'sources/plate_3d/phs.mbtiles',
     layer: null,
     opacity: 1,
     minNativeZoom: 0,

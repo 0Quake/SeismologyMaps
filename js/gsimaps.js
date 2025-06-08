@@ -22997,7 +22997,19 @@ GSI.HouiLine = L.Evented.extend({
  GSI.ElevationLoader
 ************************************************************************/
 var MAIN__MAP
-var ARVLayer = { layer: null, opacity: 1 }
+var rasterLayers = {
+  ARV: {
+    url: "sources/blank2.geojson",
+    url2: '../sources/jiban/JSHIS_ARV.mbtiles',
+    layer: null,
+    opacity: 1
+  }, AVS_JSHIS: {
+    url: "sources/blank3.geojson",
+    url2: '../sources/jiban/JSHIS_AVS30.mbtiles',
+    layer: null,
+    opacity: 1
+  }
+}
 GSI.ElevationLoader = L.Evented.extend({
 
   initialize: function (map, options) {
@@ -23063,15 +23075,20 @@ GSI.ElevationLoader = L.Evented.extend({
               })
             })
           })
-        } else if (layer.url == "sources/blank2.geojson" && !ARVLayer.layer && L.tileLayer.mbTiles) {
-          ARVLayer.layer = L.tileLayer.mbTiles('../sources/jiban/JSHIS_ARV.mbtiles', {
-            minZoom: 0,
-            minNativeZoom: 5,
-            maxNativeZoom: 9,
-            opacity: ARVLayer.opacity,
-          }).addTo(MAIN__MAP);
-          ARVLayer.layer.on("load", function () {
-            ARVLayer.layer.options.maxZoom = 18//なぜか後から指定する必要がある
+        } else if (L.tileLayer.mbTiles) {
+          Object.keys(rasterLayers).forEach(function (key) {
+            var el = rasterLayers[key]
+            if (layer.url == el.url && !el.layer) {
+              el.layer = L.tileLayer.mbTiles(el.url2, {
+                minZoom: 0,
+                minNativeZoom: 5,
+                maxNativeZoom: 9,
+                opacity: el.opacity,
+              }).addTo(MAIN__MAP);
+              el.layer.on("load", function () {
+                el.layer.options.maxZoom = 18//なぜか後から指定する必要がある
+              })
+            }
           })
         }
       }
@@ -23081,10 +23098,14 @@ GSI.ElevationLoader = L.Evented.extend({
         geojson_data_bridge(e.layer)
       })
       MAIN__MAP.on("layerremove", function (e) {
-        if (e.layer.url == "sources/blank2.geojson" && ARVLayer.layer) {
-          ARVLayer.layer.remove()
-          ARVLayer.layer = null
-        }
+        Object.keys(rasterLayers).forEach(function (key) {
+          var el = rasterLayers[key]
+
+          if (e.layer.url == el.url && el.layer) {
+            el.layer.remove()
+            el.layer = null
+          }
+        })
       })
     }
     /*Custom Scripts by Benidate*/
@@ -53637,10 +53658,14 @@ function getFileeData(url, key) {
 function OpacitySetBypass(layer, opacity) {
   try {
     if (!layer.url) return
-    if (layer.url == "sources/blank2.geojson") {
-      ARVLayer.opacity = opacity
-      if (ARVLayer.layer) ARVLayer.layer.setOpacity(opacity)
-    }
+    Object.keys(rasterLayers).forEach(function (key) {
+      var el = rasterLayers[key]
+
+      if (layer.url == el.url) {
+        el.opacity = opacity
+        if (el.layer) el.layer.setOpacity(opacity)
+      }
+    })
   } catch (err) { }
 }
 /*Custom Scripts by Benidate*/

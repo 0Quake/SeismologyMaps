@@ -39,6 +39,7 @@
       "cocotile": true,
       "maxNativeZoom": 19,
       "html" : "",
+      "attribution":"<a href=\"https://www.openstreetmap.org/copyright\">©OpenStreetMap contributors</a>",
       "legendUrl": "",
       "errorTileUrl": "./image/map/no-data-pale.png"
     },

@@ -23026,8 +23026,23 @@ var rasterLayers = {
     opacity: 1,
     minNativeZoom: 0,
     maxNativeZoom: 6,
+  }, USGS_AVS: {
+    url: "sources/blank6.geojson",
+    url2: 'sources/jiban/USGS_AVS.mbtiles',
+    layer: null,
+    opacity: 1,
+    minNativeZoom: 0,
+    maxNativeZoom: 4,
+  }, Zobun: {
+    url: "sources/blank7.geojson",
+    url2: 'sources/jiban/Zobun.mbtiles',
+    layer: null,
+    opacity: 1,
+    minNativeZoom: 0,
+    maxNativeZoom: 9,
   },
 }
+var loading_message;
 GSI.ElevationLoader = L.Evented.extend({
 
   initialize: function (map, options) {
@@ -23097,6 +23112,10 @@ GSI.ElevationLoader = L.Evented.extend({
           Object.keys(rasterLayers).forEach(function (key) {
             var el = rasterLayers[key]
             if (layer.url == el.url && !el.layer) {
+              if (!loading_message) {
+                loading_message = true;
+                GSI.Modal.LoadingMessage.show('ファイルを読み込んでいます...');
+              }
               el.layer = L.tileLayer.mbTiles(el.url2, {
                 minZoom: 0,
                 minNativeZoom: el.minNativeZoom,
@@ -23104,6 +23123,10 @@ GSI.ElevationLoader = L.Evented.extend({
                 opacity: el.opacity,
               }).addTo(MAIN__MAP);
               el.layer.on("load", function () {
+                if (loading_message) {
+                  loading_message = null;
+                  GSI.Modal.LoadingMessage.hide();
+                }
                 el.layer.options.maxZoom = 18//なぜか後から指定する必要がある
               })
             }

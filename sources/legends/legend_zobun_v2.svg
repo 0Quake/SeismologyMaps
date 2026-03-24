@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.1//EN" "http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd">
+<svg width="100%" height="100%" viewBox="0 0 591 119" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" xml:space="preserve" xmlns:serif="http://www.serif.com/" style="fill-rule:evenodd;clip-rule:evenodd;stroke-linecap:square;stroke-miterlimit:2;">
+    <g transform="matrix(0,0.232934,-3.559785,0,1352.531603,64.462475)">
+        <path d="M105,221.683L105,372.317C105,373.798 86.629,375 64,375C41.371,375 23,373.798 23,372.317L23,221.683C23,220.202 41.371,219 64,219C86.629,219 105,220.202 105,221.683Z" style="fill:url(#_Linear1);stroke:black;stroke-width:1px;"/>
+    </g>
+    <g transform="matrix(1,0,0,1,3.823925,-13)">
+        <g transform="matrix(0.622453,0,0,0.622453,7.91935,39.318307)">
+            <g transform="matrix(50,0,0,50,127.590844,50.133128)">
+            </g>
+            <text x="27.191px" y="50.133px" style="font-family:'NotoSansJP-Medium', 'Noto Sans JP', sans-serif;font-weight:500;font-size:50px;">0.03</text>
+        </g>
+        <g transform="matrix(0.622453,0,0,0.622453,506.276599,39.318307)">
+            <g transform="matrix(50,0,0,50,84.190844,50.133128)">
+            </g>
+            <text x="-16.209px" y="50.133px" style="font-family:'NotoSansJP-Medium', 'Noto Sans JP', sans-serif;font-weight:500;font-size:50px;">1.01</text>
+        </g>
+        <g transform="matrix(0.622453,0,0,0.622453,285.466257,39.318307)">
+            <g transform="matrix(50,0,0,50,110.790844,50.133128)">
+            </g>
+            <text x="-89.209px" y="50.133px" style="font-family:'NotoSansJP-Medium', 'Noto Sans JP', sans-serif;font-weight:500;font-size:50px;">震度増分</text>
+        </g>
+    </g>
+    <defs>
+        <linearGradient id="_Linear1" x1="0" y1="0" x2="1" y2="0" gradientUnits="userSpaceOnUse" gradientTransform="matrix(0,-156.171,156.171,0,0,375.308)"><stop offset="0" style="stop-color:rgb(0,3,214);stop-opacity:1"/><stop offset="0.04" style="stop-color:rgb(1,75,223);stop-opacity:1"/><stop offset="0.06" style="stop-color:rgb(4,129,184);stop-opacity:1"/><stop offset="0.09" style="stop-color:rgb(8,191,140);stop-opacity:1"/><stop offset="0.14" style="stop-color:rgb(66,239,73);stop-opacity:1"/><stop offset="0.22" style="stop-color:rgb(212,255,8);stop-opacity:1"/><stop offset="0.32" style="stop-color:rgb(255,214,0);stop-opacity:1"/><stop offset="1" style="stop-color:rgb(176,0,0);stop-opacity:1"/></linearGradient>
+    </defs>
+</svg>

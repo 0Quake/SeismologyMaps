@@ -29,7 +29,7 @@ if (location.pathname.indexOf(CONFIG.MOBILE_FILENAME) < 0) {
   ) {
     var hash = location.hash;
     if (!hash || hash.indexOf("&frommobile") < 0) {
-      location.href = CONFIG.MOBILEURL + hash;
+      if (!location.href.includes("index_m")) location.href = CONFIG.MOBILEURL + hash;
     }
   }
 }

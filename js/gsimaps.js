@@ -23052,6 +23052,65 @@ GSI.ElevationLoader = L.Evented.extend({
     if (!MAIN__MAP) {
       MAIN__MAP = map
       function geojson_data_bridge(layer) {
+
+        function usgs_geojson_process(geojson) {
+          geojson.features = geojson.features
+            .sort(function (a, b) { return b.properties.mag - a.properties.mag })
+          geojson.features.forEach(function (feature) {
+            var prop = feature.properties
+            prop._markerType = "CircleMarker"
+            prop._stroke = true
+            prop._color = "#000"
+            prop._weight = 0.5
+            prop._fillOpacity = 0.8
+
+            depth = feature.geometry.coordinates[2]
+            var i = 0, e = Number(depth), n = 50;
+            e <= 10 ? (n = 50 - 25 * ((10 - e) / 10), i = 0) : e <= 20 ? i = 0 + 30 * ((e - 10) / 10) : e <= 30 ? i = 30 + 30 * ((e - 20) / 10) : e <= 50 ? i = 60 : e <= 100 ? (i = 60 + 60 * ((e - 50) / 50),
+              n = 50 + 25 * ((50 - e) / 100)) : e <= 200 ? (i = 120 + 90 * ((e - 100) / 100),
+                n = 25 - 30 * ((100 - e) / 100)) : e <= 700 ? (i = 210 + 30 * ((e - 200) / 500),
+                  n = 55 + 30 * ((200 - e) / 500)) : (i = 240, n = 25)
+            prop._fillColor = "hsl(" + i + ", 100%, " + n + "%)",
+              prop._radius = 2.5 * prop.mag
+
+            prop["name"] = prop.title
+
+            prop["発生時刻"] = new Date(prop.time).toLocaleString("ja", { "hour12": false, "year": "numeric", "month": "2-digit", "day": "2-digit", "hour": "2-digit", "minute": "2-digit" });
+            prop["最終更新"] = new Date(prop.updated).toLocaleString("ja", { "hour12": false, "year": "numeric", "month": "2-digit", "day": "2-digit", "hour": "2-digit", "minute": "2-digit" });
+            prop["マグニチュード"] = prop.mag ? (prop.magType + prop.mag) : "不明"
+            prop["深さ"] = depth
+            prop["震央"] = prop.place
+            if (prop.mmi) prop["最大MMI震度"] = prop.mmi
+            if (prop.cdi) prop["最大CDI震度"] = prop.cdi
+            if (prop.felt) prop["有感報告"] = prop.felt + "件"
+            if (prop.nst) prop["使用観測点数"] = prop.nst
+            if (prop.rms) prop["RMS残差"] = prop.rms
+            if (prop.alert) prop["Alert Lv"] = prop.alert
+            prop["状態"] = prop.status.replace("reviewed", "精査済み").replace("automatic", "自動決定")
+            prop["津波フラグ"] = prop.tsunami == 1 ? "True" : "False"
+            prop["詳細"] = `<a href='${prop.url}' target='_blank'>詳細</a>`
+            delete prop.tz
+            delete prop.title
+            delete prop.mag
+            delete prop.place
+            delete prop.magType
+            delete prop.time
+            delete prop.detail
+            delete prop.url
+            delete prop.type
+            delete prop.updated
+            delete prop.felt
+            delete prop.mmi
+            delete prop.nst
+            delete prop.rms
+            delete prop.tsunami
+            delete prop.alert
+            delete prop.cdi
+            delete prop.status
+          });
+          return geojson
+        }
+
         if (layer.url == "sources/blank.geojson" && layer.addData) {
           fetch("https://www.jma.go.jp/bosai/hypo/data/time.json").then(function (r) { return r.json() }).then(function (json) {
             var d = new Date(json.time)
@@ -23107,6 +23166,80 @@ GSI.ElevationLoader = L.Evented.extend({
                 layer.addData(geojson)
               })
             })
+          })
+        } else if (layer.url == "sources/blank8.geojson" && layer.addData) {
+          fetch("https://earthquake.usgs.gov/earthquakes/feed/v1.0/summary/all_day.geojson").then(function (r) { return r.json() }).then(function (geojson) {
+            geojson = usgs_geojson_process(geojson);
+            layer.addData(geojson)
+          })
+        } else if (layer.url == "sources/blank9.geojson" && layer.addData) {
+          fetch("https://earthquake.usgs.gov/earthquakes/feed/v1.0/summary/all_week.geojson").then(function (r) { return r.json() }).then(function (geojson) {
+            geojson = usgs_geojson_process(geojson);
+            layer.addData(geojson)
+          })
+        } else if (layer.url == "sources/blank10.geojson" && layer.addData) {
+          fetch("https://www.jma.go.jp/bosai/quake/data/list.json").then(function (r) { return r.json() }).then(function (json) {
+            var geojson = {
+              "type": "FeatureCollection",
+              "features": []
+            }
+            json = json.sort(function (a, b) { return b.mag - a.mag })
+            json.forEach(function (feature) {
+              if (!feature.cod || !feature.mag) return;
+              var coords = feature.cod.replaceAll("+", "~+").replaceAll("-", "~-").replaceAll("/", "").split("~")
+              var depth = coords[3] / -1000
+
+              var feat = {
+                "type": "Feature",
+                "properties": {
+                  "EventID": feature.eid,
+                  "検知日時": new Date(feature.at).toLocaleString("ja", { "hour12": false, "year": "numeric", "month": "2-digit", "day": "2-digit", "hour": "2-digit", "minute": "2-digit" }),
+                  "発表日時": new Date(feature.rdt).toLocaleString("ja", { "hour12": false, "year": "numeric", "month": "2-digit", "day": "2-digit", "hour": "2-digit", "minute": "2-digit" }),
+                  "震央地名": feature.anm,
+                  "震央地名_英": feature.en_anm,
+                  "深さ": depth + "km",
+                  "マグニチュード": feature.mag,
+                  "最大震度": feature.maxi,
+                  "詳細": `<a href="https://www.jma.go.jp/bosai/quake/data/${feature.json}" target="_blank">${feature.ttl}／${feature.ift}</a>`
+
+                },
+                "geometry": {
+                  "coordinates": [
+                    Number(coords[2]),
+                    Number(coords[1])
+                  ],
+                  "type": "Point"
+                }
+              }
+              var prop = feat.properties
+
+              prop._markerType = "CircleMarker"
+              prop._stroke = true
+              prop._color = "#000"
+              prop._weight = 0.5
+              prop._fillOpacity = 0.8
+
+              var i = 0, e = Number(depth), n = 50;
+              e <= 10 ? (n = 50 - 25 * ((10 - e) / 10), i = 0) : e <= 20 ? i = 0 + 30 * ((e - 10) / 10) : e <= 30 ? i = 30 + 30 * ((e - 20) / 10) : e <= 50 ? i = 60 : e <= 100 ? (i = 60 + 60 * ((e - 50) / 50),
+                n = 50 + 25 * ((50 - e) / 100)) : e <= 200 ? (i = 120 + 90 * ((e - 100) / 100),
+                  n = 25 - 30 * ((100 - e) / 100)) : e <= 700 ? (i = 210 + 30 * ((e - 200) / 500),
+                    n = 55 + 30 * ((200 - e) / 500)) : (i = 240, n = 25)
+              prop._fillColor = "hsl(" + i + ", 100%, " + n + "%)",
+                prop._radius = 2.5 * feature.mag
+
+              geojson.features.push(feat)
+
+
+              /*
+              ctt	"20260323190238"
+              ser	"1"
+              acd	"853"
+
+*/
+
+            });
+            console.log(geojson, "aasasa")
+            layer.addData(geojson)
           })
         } else if (L.tileLayer.mbTiles) {
           Object.keys(rasterLayers).forEach(function (key) {
@@ -32373,10 +32506,10 @@ GSI.SaveFileWindow = L.Evented.extend({
 });
 
 /*******************************************************
-
+ 
  GSI.CrossSectionView
     断面図管理クラス
-
+ 
 *******************************************************/
 GSI.CrossSectionView = L.Evented.extend({
 
@@ -33277,21 +33410,21 @@ GSI.CrossSectionView.VectorFileLoader = L.Evented.extend({
 GSI.CrossSectionView.Draw = {};
 /*
 GSI.CrossSectionView.Polyline = L.Polyline.extend({
-
+ 
   initialize: function (latlngs, options) {
     L.Polyline.prototype.initialize.call(this, latlngs, options);
   },
-
+ 
   _project: function () {
     var pxBounds = new L.Bounds();
     this._rings = [];
-
+ 
     var latlngs = GSI.Utils.Geodesic.createLine([this._latlngs], GSI.Utils.Geodesic.LINESTEPS);
     this._projectLatlngs([latlngs], this._rings, pxBounds);
-
+ 
     var w = this._clickTolerance(),
       p = new L.Point(w, w);
-
+ 
     if (this._bounds.isValid() && pxBounds.isValid()) {
       pxBounds.min._subtract(p);
       pxBounds.max._add(p);
@@ -33697,10 +33830,10 @@ GSI.CrossSectionView.Graph.MINMODE_0 = 0;
 GSI.CrossSectionView.Graph.MINMODE_LOW = 1;
 
 /*******************************************************
-
+ 
  GSI.CrossSectionViewDialog
     断面図ダイアログ管理クラス
-
+ 
 *******************************************************/
 GSI.CrossSectionViewDialog = GSI.Dialog.extend({
 
@@ -35417,23 +35550,23 @@ GSI.T25000Grid = L.Class.extend({
     this._layer = null;
     this._map = map;
     this._style = null;
-
+ 
     options = L.setOptions(this, options);
-
+ 
     options.lineStyle.clickable = false;
     options.lineStyle.noGeodesic = true;
-
+ 
     this._visible = options.visible;
     this.setVisible(this._visible);
-
+ 
   },
   setVisible: function (on) {
     this._visible = on;
-
+ 
     if (this._layer)
       this._map.removeLayer(this._layer);
     if (this._visible) {
-
+ 
       if (!this._style) {
         $.ajax({
           type: "GET",
@@ -35448,7 +35581,7 @@ GSI.T25000Grid = L.Class.extend({
         this._layer = new GSI.VectorTileLayer(
           'https://cyberjapandata.gsi.go.jp/xyz/zk25000/{z}/{x}/{y}.geojson',
           this._style.options, this._style.geojsonOptions, true);
-
+ 
         this._map.addLayer(this._layer);
       }
     }
@@ -35456,7 +35589,7 @@ GSI.T25000Grid = L.Class.extend({
   getVisible: function () {
     return this._visible;
   },
-
+ 
   _onStyleLoad: function (text) {
     try {
       this._style = eval("(" + text + ")");
@@ -35469,21 +35602,21 @@ GSI.T25000Grid = L.Class.extend({
     if (this._layer)
       this._map.removeLayer(this._layer);
     if (this._visible) {
-
+ 
       this._layer = new GSI.VectorTileLayer(
         'https://maps.gsi.go.jp/xyz/zk25000/{z}/{x}/{y}.geojson',
         this._style.options, this._style.geojsonOptions, true);
-
+ 
       this._map.addLayer(this._layer, this._style.geojsonOptions);
     }
   },
-
+ 
   _onStyleLoadError: function (text) {
     if (this._visible) {
       this._layer = new L.TileLayer.GeoJSON(
         'https://maps.gsi.go.jp/xyz/zk25000/{z}/{x}/{y}.geojson',
         {});
-
+ 
       this._map.addLayer(this._layer);
     }
   }
@@ -36161,7 +36294,7 @@ GSI.HashOptions = L.Class.extend({
 /************************************************************************
  L.Class
  - GSI.QueryParams
-
+ 
  GETパラメータ||ハッシュll 10進経度,10進経度
   z    ズームレベル
   base ベース
@@ -37915,10 +38048,10 @@ GSI.CrossSectionDEMLoader.getCanvas = function () {
 }
 
 /*******************************************************
-
+ 
  GSI.DEMLoader.getURLList
     標高データURL
-
+ 
 *******************************************************/
 GSI.DEMLoader.DEMAREA = {};
 GSI.DEMLoader.DEMAREA2 = {};
@@ -38597,10 +38730,10 @@ GSI.Control.GPSButton = L.Control.extend({
 });
 
 /*******************************************************
-
+ 
  GSI.SharePanel
     共有用パネル
-
+ 
 *******************************************************/
 GSI.SharePanel = L.Evented.extend({
 
@@ -45645,10 +45778,10 @@ GSI.SakuzuInfoEditDialog = GSI.Dialog.extend({
 });
 
 /*******************************************************
-
+ 
  GSI.SakuzuLoadFileWindow
     作図ファイル読み込み画面
-
+ 
 *******************************************************/
 GSI.SakuzuLoadFileWindow = L.Evented.extend({
   initialize: function (sakuzuList) {
@@ -45777,10 +45910,10 @@ GSI.SakuzuLoadFileWindow = L.Evented.extend({
 });
 
 /*******************************************************
-
+ 
  GSI.SakuzuSaveFileWindow
     作図ファイル保存画面
-
+ 
 *******************************************************/
 GSI.SakuzuSaveFileWindow = L.Evented.extend({
   initialize: function (sakuzuList) {
@@ -50021,7 +50154,7 @@ GSI.ShowingMapListPanel.PopupLayerMenu = L.Evented.extend({
 /************************************************************************
  L.Evented
  - GSI.layersJSONSearchSRC
-
+ 
  layers_txtのsrc探索をMapListPanel以外で実行する為の補完
  ************************************************************************/
 
